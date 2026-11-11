@@ -4,7 +4,7 @@
 //
 //  End-to-end tests for the full data flow behind the status bar UI:
 //  FakeEventStore → CalendarSync → AppModel → StatusBarMenuState →
-//  MenuBuilder/NSMenu, StatusBarPresenter → attributed title, and
+//  StatusBarPopoverPresenter, StatusBarPresenter → attributed title, and
 //  NotificationScheduler → pending notification requests.
 //
 //  The NSStatusItem itself is intentionally out of scope: the menu is built
@@ -46,7 +46,6 @@ private final class EndToEndHarness {
     private(set) var snoozedEvents: [(eventID: String, action: NotificationEventTimeAction)] = []
     private(set) var providerChanges: [(provider: EventStoreProvider, signOut: Bool)] = []
     private(set) var openPreferencesCallCount = 0
-    private(set) var openChangelogCallCount = 0
 
     /// Strong reference to the installed in-app action sink. The scheduler's
     /// runner keeps only a weak reference, so the harness owns it for the test.
@@ -121,8 +120,7 @@ private final class EndToEndHarness {
             appState: { [weak self] in self?.model.state ?? AppState() },
             events: { [weak self] in self?.model.state.events ?? [] },
             send: { [weak self] action in self?.model.send(action) },
-            openPreferences: { [weak self] in self?.openPreferencesCallCount += 1 },
-            openChangelog: { [weak self] in self?.openChangelogCallCount += 1 }
+            openPreferences: { [weak self] in self?.openPreferencesCallCount += 1 }
         ))
     }
 
@@ -248,19 +246,25 @@ class EndToEndFlowTestCase: BaseTestCase {
         }
     }
 
-    /// Rebuilds the status bar menu through the production
-    /// `StatusBarItemController.updateMenu()` path and returns its items.
-    fileprivate func rebuildMenu(_ harness: EndToEndHarness) -> [NSMenuItem] {
-        harness.controller.updateMenu()
-        return harness.controller.statusItemMenu.items
+    /// Builds the popover through the production `StatusBarItemController` path.
+    fileprivate func presentation(_ harness: EndToEndHarness) -> StatusBarPopoverPresentation {
+        harness.controller.popoverPresentation()
     }
 
-    fileprivate func flatten(_ items: [NSMenuItem]) -> [NSMenuItem] {
-        items.flatMap { [$0] + flatten($0.submenu?.items ?? []) }
+    fileprivate func actions(_ harness: EndToEndHarness) -> StatusBarPopoverActions {
+        harness.controller.popover.model.actions
     }
 
-    fileprivate func menuTitles(_ harness: EndToEndHarness) -> [String] {
-        MenuBuilder.plainTitles(of: flatten(rebuildMenu(harness)))
+    /// The event the timeline marks as next, the same one the status bar shows.
+    fileprivate func nextEvent(_ harness: EndToEndHarness) -> MBEvent? {
+        presentation(harness).events.first(where: \.isNext)?.event
+    }
+
+    fileprivate func popoverTitles(_ harness: EndToEndHarness) -> [String] {
+        let popover = presentation(harness)
+        return popover.days.map(\.title)
+            + popover.events.map(\.title)
+            + [popover.notice?.title].compactMap { $0 }
     }
 
     /// Sorted, de-duplicated event IDs currently backing pending notification
@@ -270,25 +274,6 @@ class EndToEndFlowTestCase: BaseTestCase {
         Set(harness.notificationSink.currentPendingRequests()
             .compactMap { $0.content.userInfo["eventID"] as? String })
             .sorted()
-    }
-
-    /// Dispatches the item's action to its target — the same target/action
-    /// path AppKit uses when the user clicks the menu item.
-    fileprivate func performClick(
-        _ item: NSMenuItem,
-        file: StaticString = #filePath,
-        line: UInt = #line
-    ) {
-        guard let action = item.action, let target = item.target else {
-            XCTFail("Menu item '\(item.title)' has no actionable target", file: file, line: line)
-            return
-        }
-        XCTAssertTrue(
-            NSApp.sendAction(action, to: target, from: item),
-            "Menu action \(action) was not handled",
-            file: file,
-            line: line
-        )
     }
 
     /// Renders the status bar title through the production
@@ -340,17 +325,12 @@ final class StatusBarEndToEndFlowTests: EndToEndFlowTestCase {
             $0.events.count == 2
         }
 
-        let items = flatten(rebuildMenu(harness))
-        let titles = MenuBuilder.plainTitles(of: items)
+        let titles = popoverTitles(harness)
 
         XCTAssertTrue(titles.contains { $0.contains("Event E1") })
         XCTAssertTrue(titles.contains { $0.contains("Event E2") })
         XCTAssertTrue(titles.contains { $0.hasPrefix("status_bar_section_today".loco()) })
-
-        let summary = items.first {
-            $0.identifier == MenuBuilder.meetingSummaryItemIdentifier
-        }
-        XCTAssertEqual((summary?.representedObject as? MBEvent)?.id, "E1")
+        XCTAssertEqual(nextEvent(harness)?.id, "E1")
     }
 
     // MARK: Events → title
@@ -386,14 +366,7 @@ final class StatusBarEndToEndFlowTests: EndToEndFlowTestCase {
             $0.events.count == 1
         }
 
-        let summary = try XCTUnwrap(flatten(rebuildMenu(harness)).first {
-            $0.identifier == MenuBuilder.meetingSummaryItemIdentifier
-        })
-        // The summary card joins via a SwiftUI tap closure instead of
-        // target/action — trigger it through the hosted view, like a click.
-        let hosting = try XCTUnwrap(summary.view as? NSHostingView<MeetingSummaryView>)
-        let onJoin = try XCTUnwrap(hosting.rootView.onJoin)
-        onJoin()
+        actions(harness).join(try XCTUnwrap(nextEvent(harness)))
 
         XCTAssertEqual(harness.openedMeetingIDs, ["E1"])
     }
@@ -414,20 +387,14 @@ final class StatusBarEndToEndFlowTests: EndToEndFlowTestCase {
             harness.controller.statusItem.button?.attributedTitle.string.hasPrefix("Event E1") == true
         }
 
-        let dismissItem = try XCTUnwrap(flatten(harness.controller.statusItemMenu.items).first {
-            $0.action == #selector(StatusBarItemController.dismissNextMeetingAction)
-        })
-        performClick(dismissItem)
+        actions(harness).dismiss(try XCTUnwrap(nextEvent(harness)))
 
         XCTAssertEqual(Defaults[.dismissedEvents].map(\.id), ["E1"])
         try await waitUntil("dismissal updates the title without a manual redraw") {
             harness.controller.statusItem.button?.attributedTitle.string.hasPrefix("Event E2") == true
         }
 
-        let summary = flatten(harness.controller.statusItemMenu.items).first {
-            $0.identifier == MenuBuilder.meetingSummaryItemIdentifier
-        }
-        XCTAssertEqual((summary?.representedObject as? MBEvent)?.id, "E2")
+        XCTAssertEqual(nextEvent(harness)?.id, "E2")
     }
 
     func testNotificationDismissAndRestoreAutomaticallyUpdateMenuTitleAndJoinTarget() async throws {
@@ -445,10 +412,7 @@ final class StatusBarEndToEndFlowTests: EndToEndFlowTestCase {
         try await waitUntil("notification dismissal updates title") {
             harness.controller.statusItem.button?.attributedTitle.string.hasPrefix("Event E2") == true
         }
-        let summary = flatten(harness.controller.statusItemMenu.items).first {
-            $0.identifier == MenuBuilder.meetingSummaryItemIdentifier
-        }
-        XCTAssertEqual((summary?.representedObject as? MBEvent)?.id, "E2")
+        XCTAssertEqual(nextEvent(harness)?.id, "E2")
         harness.model.send(.joinNearestMeeting)
         XCTAssertEqual(harness.openedMeetingIDs, ["E2"])
 
@@ -456,10 +420,7 @@ final class StatusBarEndToEndFlowTests: EndToEndFlowTestCase {
         try await waitUntil("restoring dismissals updates title") {
             harness.controller.statusItem.button?.attributedTitle.string.hasPrefix("Event E1") == true
         }
-        let restoredSummary = flatten(harness.controller.statusItemMenu.items).first {
-            $0.identifier == MenuBuilder.meetingSummaryItemIdentifier
-        }
-        XCTAssertEqual((restoredSummary?.representedObject as? MBEvent)?.id, "E1")
+        XCTAssertEqual(nextEvent(harness)?.id, "E1")
     }
 
     func testDismissalFromNotificationResponseUpdatesMenuAndPendingAlerts() async throws {
@@ -489,10 +450,7 @@ final class StatusBarEndToEndFlowTests: EndToEndFlowTestCase {
         try await waitUntil("dismissal updates title without UI action") {
             harness.controller.statusItem.button?.attributedTitle.string.hasPrefix("Event E2") == true
         }
-        let summary = flatten(harness.controller.statusItemMenu.items).first {
-            $0.identifier == MenuBuilder.meetingSummaryItemIdentifier
-        }
-        XCTAssertEqual((summary?.representedObject as? MBEvent)?.id, "E2")
+        XCTAssertEqual(nextEvent(harness)?.id, "E2")
 
         harness.model.send(.undismissMeeting(eventID: "E1"))
 
@@ -515,10 +473,7 @@ final class StatusBarEndToEndFlowTests: EndToEndFlowTestCase {
         }
         XCTAssertTrue(try renderTitle(harness).attributedTitle.string.hasPrefix("Event E1"))
 
-        let toggleItem = try XCTUnwrap(flatten(rebuildMenu(harness)).first {
-            $0.action == #selector(StatusBarItemController.toggleMeetingTitleVisibility)
-        })
-        performClick(toggleItem)
+        harness.model.send(.toggleMeetingTitleVisibility)
 
         XCTAssertEqual(Defaults[.eventTitleFormat], .generic)
         XCTAssertTrue(
@@ -543,15 +498,12 @@ final class StatusBarEndToEndFlowTests: EndToEndFlowTestCase {
         harness.store.stubbedEvents = [first, makeEvent(id: "E2", startingIn: 3600, now: now)]
         try await settleRefreshWindow(harness)
 
-        let refreshItem = try XCTUnwrap(flatten(rebuildMenu(harness)).first {
-            $0.action == #selector(StatusBarItemController.handleManualRefresh)
-        })
-        performClick(refreshItem)
+        actions(harness).refresh()
 
         await waitForState(of: harness, description: "refreshed events reach AppModel") {
             $0.events.count == 2
         }
-        XCTAssertTrue(menuTitles(harness).contains { $0.contains("Event E2") })
+        XCTAssertTrue(popoverTitles(harness).contains { $0.contains("Event E2") })
     }
 
     // MARK: Provider health → menu
@@ -567,15 +519,11 @@ final class StatusBarEndToEndFlowTests: EndToEndFlowTestCase {
             $0.providerHealth.authRequired
         }
 
-        let items = flatten(rebuildMenu(harness))
-        XCTAssertTrue(MenuBuilder.plainTitles(of: items).contains {
-            $0.contains("status_bar_control_auth_required".loco())
-        })
+        let notice = try XCTUnwrap(presentation(harness).notice)
+        XCTAssertEqual(notice.title, "status_bar_control_auth_required".loco())
+        XCTAssertEqual(notice.action, .reconnect)
 
-        let reconnectItem = try XCTUnwrap(items.first {
-            $0.action == #selector(StatusBarItemController.reconnectProviderAction)
-        })
-        performClick(reconnectItem)
+        actions(harness).performNotice(notice.action)
 
         try await waitUntil("provider change dispatched") {
             harness.providerChanges.count == 1
@@ -596,10 +544,9 @@ final class StatusBarEndToEndFlowTests: EndToEndFlowTestCase {
             !$0.calendars.isEmpty
         }
 
-        let preferencesItem = try XCTUnwrap(flatten(rebuildMenu(harness)).first {
-            $0.action == #selector(StatusBarItemController.openPreferencesAction)
-        })
-        performClick(preferencesItem)
+        let notice = try XCTUnwrap(presentation(harness).notice)
+        XCTAssertEqual(notice.action, .openPreferences)
+        actions(harness).performNotice(notice.action)
         XCTAssertEqual(harness.openPreferencesCallCount, 1)
 
         // Idle mode (no calendars): empty title, app-icon glyph.
@@ -629,28 +576,6 @@ final class StatusBarEndToEndFlowTests: EndToEndFlowTestCase {
         harness.controller.joinNextMeeting()
 
         XCTAssertEqual(harness.openedMeetingIDs, ["E1"])
-    }
-
-    // MARK: Changelog
-
-    func testWhatsNewItemSurfacesAndRoutesToChangelog() async throws {
-        configureDisplayDefaults()
-        Defaults[.appVersion] = "5.0.0"
-        Defaults[.lastRevisedVersionInChangelog] = "4.2.0"
-        let harness = makeHarness(events: [makeEvent(id: "E1", startingIn: 300)])
-        defer { harness.stop() }
-
-        await waitForState(of: harness, description: "event reaches AppModel") {
-            $0.events.count == 1
-        }
-
-        let whatsNew = try XCTUnwrap(flatten(rebuildMenu(harness)).first {
-            $0.action == #selector(StatusBarItemController.openChangelogAction)
-        })
-        XCTAssertEqual(whatsNew.title, "status_bar_whats_new".loco())
-
-        performClick(whatsNew)
-        XCTAssertEqual(harness.openChangelogCallCount, 1)
     }
 
     // MARK: Lifecycle refresh triggers
@@ -735,10 +660,7 @@ final class NotificationEndToEndFlowTests: EndToEndFlowTestCase {
         }
 
         // Dismisses the next meeting (E1); E2's notifications must survive.
-        let dismissItem = try XCTUnwrap(flatten(rebuildMenu(harness)).first {
-            $0.action == #selector(StatusBarItemController.dismissNextMeetingAction)
-        })
-        performClick(dismissItem)
+        actions(harness).dismiss(try XCTUnwrap(nextEvent(harness)))
 
         try await waitUntil("only the dismissed event's notifications are removed") {
             self.scheduledEventIDs(harness) == ["E2"]
@@ -898,7 +820,7 @@ final class CalendarSettingsEndToEndFlowTests: EndToEndFlowTestCase {
         await waitForState(of: harness, description: "EventKit events reach AppModel") {
             $0.events.map(\.id) == ["EK"]
         }
-        XCTAssertTrue(menuTitles(harness).contains { $0.contains("Event EK") })
+        XCTAssertTrue(popoverTitles(harness).contains { $0.contains("Event EK") })
 
         // Escape the trigger-throttle window before the switch-driven refresh.
         try await settleRefreshWindow(harness)
@@ -908,7 +830,7 @@ final class CalendarSettingsEndToEndFlowTests: EndToEndFlowTestCase {
             $0.activeProvider == .googleCalendar && $0.events.map(\.id) == ["G"]
         }
 
-        let titles = menuTitles(harness)
+        let titles = popoverTitles(harness)
         XCTAssertTrue(titles.contains { $0.contains("Event G") })
         XCTAssertFalse(titles.contains { $0.contains("Event EK") })
         XCTAssertTrue(try renderTitle(harness).attributedTitle.string.hasPrefix("Event G"))
@@ -933,7 +855,7 @@ final class CalendarSettingsEndToEndFlowTests: EndToEndFlowTestCase {
             $0.events.count == 2
         }
 
-        let todayOnly = menuTitles(harness)
+        let todayOnly = popoverTitles(harness)
         XCTAssertTrue(todayOnly.contains { $0.contains("Event TODAY") })
         XCTAssertFalse(todayOnly.contains { $0.contains("Event TMRW") })
         XCTAssertFalse(todayOnly.contains {
@@ -942,7 +864,7 @@ final class CalendarSettingsEndToEndFlowTests: EndToEndFlowTestCase {
 
         Defaults[.showEventsForPeriod] = .today_n_tomorrow
 
-        let bothDays = menuTitles(harness)
+        let bothDays = popoverTitles(harness)
         XCTAssertTrue(bothDays.contains { $0.contains("Event TODAY") })
         XCTAssertTrue(bothDays.contains { $0.contains("Event TMRW") })
         XCTAssertTrue(bothDays.contains {
@@ -966,7 +888,7 @@ final class CalendarSettingsEndToEndFlowTests: EndToEndFlowTestCase {
             $0.events.map(\.id) == ["KEPT"]
         }
 
-        let titles = menuTitles(harness)
+        let titles = popoverTitles(harness)
         XCTAssertTrue(titles.contains { $0.contains("Event KEPT") })
         XCTAssertFalse(titles.contains { $0.contains("Event DECLINED") })
         XCTAssertTrue(try renderTitle(harness).attributedTitle.string.hasPrefix("Event KEPT"))
@@ -988,7 +910,7 @@ final class CalendarSettingsEndToEndFlowTests: EndToEndFlowTestCase {
             $0.events.count == 2
         }
 
-        let titles = menuTitles(harness)
+        let titles = popoverTitles(harness)
         XCTAssertTrue(titles.contains { $0.contains("Event ALLDAY") })
         XCTAssertTrue(titles.contains { $0.contains("Event TIMED") })
         XCTAssertTrue(try renderTitle(harness).attributedTitle.string.hasPrefix("Event TIMED"))
@@ -1008,15 +930,10 @@ final class CalendarSettingsEndToEndFlowTests: EndToEndFlowTestCase {
             $0.events.count == 1
         }
 
-        // The event is listed as a normal day row…
-        let items = flatten(rebuildMenu(harness))
-        XCTAssertTrue(MenuBuilder.plainTitles(of: items).contains {
-            $0.contains("Event PERSONAL")
-        })
-        // …but is not promoted to the "next meeting" summary card…
-        XCTAssertFalse(items.contains {
-            $0.identifier == MenuBuilder.meetingSummaryItemIdentifier
-        })
+        // The event stays on the timeline…
+        XCTAssertTrue(popoverTitles(harness).contains { $0.contains("Event PERSONAL") })
+        // …but is not treated as the next meeting…
+        XCTAssertNil(nextEvent(harness))
         // …and the status bar shows the "done for today" state, not the event:
         // empty title with the calendar-checkmark glyph.
         let button = try renderTitle(harness)
@@ -1040,26 +957,17 @@ final class CalendarSettingsEndToEndFlowTests: EndToEndFlowTestCase {
         harness.store.stubbedError = NSError(domain: "network", code: -1009)
         try await settleRefreshWindow(harness)
 
-        let refreshItem = try XCTUnwrap(flatten(rebuildMenu(harness)).first {
-            $0.action == #selector(StatusBarItemController.handleManualRefresh)
-        })
-        performClick(refreshItem)
+        actions(harness).refresh()
 
         await waitForState(of: harness, description: "stale health reaches AppModel") {
             $0.providerHealth.isStale && !$0.providerHealth.authRequired
         }
         XCTAssertEqual(harness.model.state.events.map(\.id), ["E1"])
 
-        let items = flatten(rebuildMenu(harness))
-        let titles = MenuBuilder.plainTitles(of: items)
+        let titles = popoverTitles(harness)
         XCTAssertTrue(titles.contains { $0.contains("status_bar_control_stale".loco()) })
         XCTAssertTrue(titles.contains { $0.contains("Event E1") })
-        XCTAssertEqual(
-            (items.first {
-                $0.identifier == MenuBuilder.meetingSummaryItemIdentifier
-            }?.representedObject as? MBEvent)?.id,
-            "E1"
-        )
+        XCTAssertEqual(nextEvent(harness)?.id, "E1")
         XCTAssertTrue(try renderTitle(harness).attributedTitle.string.hasPrefix("Event E1"))
     }
 
@@ -1153,7 +1061,7 @@ final class CalendarSettingsEndToEndFlowTests: EndToEndFlowTestCase {
                 && $0.providerHealth.lastErrorDescription == nil
                 && $0.events.map(\.id) == ["NEW"]
         }
-        let titles = menuTitles(harness)
+        let titles = popoverTitles(harness)
         XCTAssertFalse(titles.contains { $0.contains("status_bar_control_stale".loco()) })
         XCTAssertFalse(titles.contains { $0.contains("Event OLD") })
         XCTAssertTrue(titles.contains { $0.contains("Event NEW") })
@@ -1195,17 +1103,13 @@ final class CalendarSettingsEndToEndFlowTests: EndToEndFlowTestCase {
             $0.events.first?.id == "google-conference"
         }
 
-        let summary = try XCTUnwrap(flatten(rebuildMenu(harness)).first {
-            $0.identifier == MenuBuilder.meetingSummaryItemIdentifier
-        })
-        XCTAssertEqual((summary.representedObject as? MBEvent)?.id, "google-conference")
+        let next = try XCTUnwrap(nextEvent(harness))
+        XCTAssertEqual(next.id, "google-conference")
         XCTAssertEqual(
             harness.model.state.events.first?.meetingLink?.url.absoluteString,
             "https://meet.google.com/abc-defg-hij?authuser=owner@example.com"
         )
-        let hosting = try XCTUnwrap(summary.view as? NSHostingView<MeetingSummaryView>)
-        let onJoin = try XCTUnwrap(hosting.rootView.onJoin)
-        onJoin()
+        actions(harness).join(next)
         XCTAssertEqual(harness.openedMeetingIDs, ["google-conference"])
         XCTAssertEqual(
             harness.openedMeetingURLs,
@@ -1237,7 +1141,7 @@ final class CalendarSettingsEndToEndFlowTests: EndToEndFlowTestCase {
         await waitForState(of: harness, description: "selected calendar's events load") {
             $0.events.map(\.id) == ["A"]
         }
-        XCTAssertFalse(menuTitles(harness).contains { $0.contains("Event B") })
+        XCTAssertFalse(popoverTitles(harness).contains { $0.contains("Event B") })
 
         // Escape the trigger-throttle window before the selection-driven refresh.
         try await settleRefreshWindow(harness)
@@ -1246,7 +1150,7 @@ final class CalendarSettingsEndToEndFlowTests: EndToEndFlowTestCase {
         await waitForState(of: harness, description: "newly selected calendar's events load") {
             $0.events.map(\.id).sorted() == ["A", "B"]
         }
-        let titles = menuTitles(harness)
+        let titles = popoverTitles(harness)
         XCTAssertTrue(titles.contains { $0.contains("Event A") })
         XCTAssertTrue(titles.contains { $0.contains("Event B") })
     }

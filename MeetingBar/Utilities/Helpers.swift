@@ -82,60 +82,6 @@ func hexStringToUIColor(hex: String) -> NSColor {
     )
 }
 
-@MainActor func createNSViewFromText(
-    text: String,
-    font: NSFont = NSFont.systemFont(ofSize: 14),
-    maxWidth: CGFloat = 300.0
-) -> NSView {
-    // Create views
-    let paddingView = NSView()
-    let textView = NSTextView()
-    paddingView.addSubview(textView)
-
-    // Text styling
-    let paragraphStyle = NSMutableParagraphStyle()
-    paragraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping
-    textView.textStorage?.setAttributedString(
-        text.splitWithNewLineAttributedString(
-            with: [
-                NSAttributedString.Key.paragraphStyle: paragraphStyle,
-                NSAttributedString.Key.font: font
-            ],
-            maxWidth: maxWidth
-        )
-        .withLinksEnabled()
-    )
-    textView.backgroundColor = .clear
-    textView.textColor = .textColor
-
-    // Adjust frame layout for padding
-    if let textContainer = textView.textContainer {
-        textView.layoutManager?.ensureLayout(for: textContainer)
-        if let frame = textView.layoutManager?.usedRect(for: textContainer) {
-            // There's 10pt of padding seemingly built into the left side,
-            // no such thing on the right so we go 20pt to match the left side
-            textView.frame = NSRect(x: 10.0, y: 0.0, width: frame.width, height: frame.height)
-            paddingView.frame = NSRect(
-                x: 0.0, y: 0.0, width: frame.width + 20, height: frame.height)
-        } else {
-            // Backup layout if we couldn't calculate frame
-            textView.autoresizingMask = [.width, .height]
-        }
-    } else {
-        // Backup layout if we couldn't calculate frame
-        textView.autoresizingMask = [.width, .height]
-    }
-    return paddingView
-}
-
-func getInstallationDate() -> Date? {
-    let urlToDocumentsFolder: URL? = FileManager.default.urls(
-        for: .documentDirectory, in: .userDomainMask
-    ).last
-    return try? FileManager.default.attributesOfItem(atPath: (urlToDocumentsFolder?.path)!)[
-        .creationDate] as? Date
-}
-
 /*
  * -----------------------
  * MARK: - Fantastical
@@ -214,20 +160,4 @@ func generateFakeEvent() -> MBEvent {
         calendar: calendar
     )
     return event
-}
-
-extension NSImage {
-    /// Returns a copy tinted with macOS disabled text colour.
-    func tintedDisabled() -> NSImage {
-        let copy = self.copy() as! NSImage
-        copy.lockFocus()
-        NSColor.disabledControlTextColor
-            .withAlphaComponent(0.4)
-            .set()
-        let rect = NSRect(origin: .zero, size: copy.size)
-        rect.fill(using: .sourceAtop)  // keep alpha, replace colour
-
-        copy.unlockFocus()
-        return copy
-    }
 }
