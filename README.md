@@ -5,6 +5,8 @@
 [![Github all releases](https://img.shields.io/github/downloads/leits/MeetingBar/total.svg)](https://github.com/leits/MeetingBar/releases/)
 [![Made in Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)
 
+**Soon** is a fork of [MeetingBar](https://github.com/leits/MeetingBar) with a redesigned menu bar popover.
+
 **MeetingBar** is a lightweight macOS menu-bar app that shows your current or next calendar meeting and lets you join it in one click.
 
 It keeps meetings visible in the status bar, detects meeting links from calendar events, supports macOS Calendar and Google Calendar, and works with 50+ meeting services including Google Meet, Zoom, Microsoft Teams, Webex, and Discord.
@@ -21,21 +23,17 @@ MeetingBar is free, open source, and privacy-respecting.
 
 ## Install
 
-MeetingBar requires **macOS 12.0 or later**.
-
-### Mac App Store
-
-Download MeetingBar from the [Mac App Store](https://apps.apple.com/us/app/id1532419400).
-
-### Homebrew
+Soon requires **macOS 12.0 or later**. Paste this into Terminal:
 
 ```bash
-brew install --cask meetingbar
+curl -fsSL https://raw.githubusercontent.com/allison-fang/Soon/master/Scripts/install.sh | bash
 ```
 
-### Manual download
+It downloads the latest release into Applications and opens Soon. Run it again to update.
 
-Download the latest DMG from the [releases page](https://github.com/leits/MeetingBar/releases/latest/download/MeetingBar.dmg).
+Soon isn't notarized by Apple, so install it with the command above. A copy downloaded in a browser won't open.
+
+Soon is separate from MeetingBar and can be installed alongside it. Its settings start fresh.
 
 ## Calendar providers
 
@@ -110,7 +108,7 @@ Useful details for bug reports:
 
 ## Release history
 
-Read the [GitHub Releases](https://github.com/leits/MeetingBar/releases) for version highlights, fixes and contributor credits. The app also provides a short **What's New** summary for major updates.
+Read [Soon's releases](https://github.com/allison-fang/Soon/releases) for what changed in each version, and [MeetingBar's releases](https://github.com/leits/MeetingBar/releases) for version highlights, fixes and contributor credits.
 
 ## Third-party integrations
 
