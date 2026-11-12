@@ -51,6 +51,22 @@ make validate-strings # Verify English localization keys used by .loco()
 
 Unsigned local Debug builds may print entitlement or signing warnings because code signing is disabled. That warning is expected for local verification; signed Release builds still need a real signing check.
 
+## Releasing
+
+Releases are published from a Mac that has:
+
+- a self-signed code-signing certificate named "Soon Code Signing" in the login keychain (Keychain Access > Certificate Assistant > Create a Certificate…, Identity Type: Self-Signed Root, Certificate Type: Code Signing). Every release must be signed with the same certificate, or installed copies ask for Calendar and Keychain access again after updating;
+- real Google OAuth values in `XCConfig/DevTeamOverride.xcconfig`;
+- `gh` signed in with permission to create releases.
+
+Bump `MARKETING_VERSION` in a PR, merge it, then on an up-to-date `master` run:
+
+```bash
+Scripts/release.sh notes.md
+```
+
+It builds a universal Release app, signs it, zips it as `Soon.zip` and publishes a GitHub release tagged `v<version>` with `notes.md` as the release notes. `Scripts/install.sh` installs from the latest release.
+
 ## Architecture And Dependencies
 
 Read [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) before changing app flow, calendar providers, meeting-link detection, notifications, status-bar rendering, settings, package dependencies, entitlements, or release-sensitive configuration.

@@ -490,7 +490,7 @@ Treat these as release-sensitive files. Changes should be named in PR notes and 
 - `Scripts/**`
 - `MeetingBar/Resources /Localization /en.lproj/Localizable.strings`
 
-Before a signed release, verify the configuration that unsigned local Debug builds cannot prove: signing team and provisioning, hardened runtime, sandbox capabilities, URL schemes, Google OAuth placeholders and callback scheme, App Store receipt classification, StoreKit 2 patronage products, launch-at-login helper behavior, and localization validation.
+Before a signed release, verify the configuration that unsigned local Debug builds cannot prove: the release signature (see Releasing in CONTRIBUTING.md), URL schemes, Google OAuth placeholders and callback scheme, App Store receipt classification, StoreKit 2 patronage products, launch-at-login helper behavior, and localization validation.
 
 Standard release validation starts with:
 
