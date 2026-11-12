@@ -9,7 +9,7 @@ MeetingBar is trusted precisely when a meeting is about to start. Protect correc
 | Layer | Where | Typical subjects |
 | --- | --- | --- |
 | **Hostless logic** | `MeetingBarLogicTests/` via `make test-logic` | Event eligibility/selection, link candidate detection, URL cleanup, notification plans, Google policies, status-bar title/icon/presentation decisions |
-| **App-hosted** | `MeetingBarTests/` via `make test-app` | Provider adapters and calendar refresh, `AppModel` actions, settings propagation, `MenuBuilder`, notification reconciliation, AppKit layout and native interaction |
+| **App-hosted** | `MeetingBarTests/` via `make test-app` | Provider adapters and calendar refresh, `AppModel` actions, settings propagation, `StatusBarPopoverPresenter`, notification reconciliation, AppKit layout and native interaction |
 | **Manual macOS verification** | Real, preferably release-configured app | EventKit permission prompts, Google OAuth, installed meeting apps, screen/notch/VoiceOver behavior, signed distributions and upgrades |
 
 `make test` runs both automated suites. The app-hosted suite needs Xcode/macOS; SwiftPM logic tests are intentionally independent of a launched app. These are complementary layers, not three copies of the same test matrix.

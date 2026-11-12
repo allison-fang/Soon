@@ -176,7 +176,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             events: { [weak model] in model?.state.events ?? [] },
             send: { [weak model] action in model?.send(action) },
             openPreferences: { [weak self] in self?.openPreferencesWindow(nil) },
-            openChangelog: { [weak self] in self?.openChangelogWindow(nil) },
             quit: { [weak self] in self?.quit(nil) }
         ))
 

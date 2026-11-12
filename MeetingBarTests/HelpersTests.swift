@@ -310,24 +310,6 @@ final class MeetingOpenerTests: BaseTestCase {
             .missingLink(event.title)
         ])
     }
-
-    func test_emailAttendeesCollectsNonNilEmails() {
-        let attendees: [MBEventAttendee] = [
-            MBEventAttendee(email: "alice@example.com", name: "Alice", status: .accepted),
-            MBEventAttendee(email: nil, name: "No Email", status: .accepted),
-            MBEventAttendee(email: "bob@example.com", name: "Bob", status: .declined)
-        ]
-        let event = makeFakeEvent(
-            id: "EA",
-            start: Date().addingTimeInterval(60),
-            end: Date().addingTimeInterval(600),
-            withLink: false,
-            attendees: attendees
-        )
-        // emailAttendees opens an NSSharingService, but we can at least verify it does not crash
-        // with a mix of nil and non-nil emails. (Real sending is not testable headlessly.)
-        MeetingOpener.emailAttendees(for: event)
-    }
 }
 
 final class MeetingOpenSettingsTests: BaseTestCase {

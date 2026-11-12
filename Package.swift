@@ -39,7 +39,9 @@ let package = Package(
                 "Meetings/MeetingLinkDetector.swift",
                 "Meetings/MeetingProvider.swift",
                 // UI/StatusBar
-                "UI/StatusBar/StatusBarPresentation.swift"
+                "UI/StatusBar/StatusBarPresentation.swift",
+                "UI/StatusBar/TimelineLayout.swift",
+                "UI/StatusBar/TimelinePalette.swift"
             ],
             swiftSettings: [
                 .unsafeFlags(["-strict-concurrency=complete"])

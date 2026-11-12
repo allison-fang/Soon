@@ -107,6 +107,11 @@ enum ShowEventsForPeriod: String, Defaults.Serializable, Codable, CaseIterable {
     case today_n_tomorrow
 }
 
+enum TimelineDensity: String, Defaults.Serializable, Codable, CaseIterable {
+    case compact
+    case comfortable
+}
+
 enum OngoingEventVisibility: String, Defaults.Serializable, Codable, CaseIterable {
     case hideImmediateAfter
     case showTenMinAfter

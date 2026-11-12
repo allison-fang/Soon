@@ -274,6 +274,7 @@ struct StatusBarSection: View {
 // MARK: - Menu
 
 struct MenuSection: View {
+    @Default(.timelineDensity) var timelineDensity
     @Default(.shortenEventTitle) var shortenEventTitle
     @Default(.menuEventTitleLength) var menuEventTitleLength
     @Default(.showEventEndTime) var showEventEndTime
@@ -284,6 +285,15 @@ struct MenuSection: View {
 
     var body: some View {
         Section(header: Text("preferences_appearance_menu_title".loco())) {
+            Picker(
+                "preferences_appearance_menu_density_title".loco(),
+                selection: $timelineDensity
+            ) {
+                Text("preferences_appearance_menu_density_comfortable_value".loco())
+                    .tag(TimelineDensity.comfortable)
+                Text("preferences_appearance_menu_density_compact_value".loco())
+                    .tag(TimelineDensity.compact)
+            }
             Toggle(
                 preferenceLabel("preferences_appearance_menu_show_timeline_toggle"),
                 isOn: $showTimelineInMenu

@@ -14,7 +14,6 @@ import SwiftUI
 
 enum MenuStyleConstants {
     static let defaultFontSize: CGFloat = 13
-    static let runningIconName = "running_icon"
     static let appIconName = "AppIcon"
     static let calendarCheckmarkIconName = "iconCalendarCheckmark"
     static let calendarIconName = "iconCalendar"
@@ -41,15 +40,14 @@ struct StatusBarDependencies {
     var events: @MainActor () -> [MBEvent] = { [] }
     var send: @MainActor (AppAction) -> Void = { _ in }
     var openPreferences: @MainActor () -> Void = {}
-    var openChangelog: @MainActor () -> Void = {}
     var quit: @MainActor () -> Void = {}
 }
 
-/// creates the menu in the system status bar, creates the menu items and controls the whole lifecycle.
+/// creates the item in the system status bar, presents the timeline popover and controls the whole lifecycle.
 @MainActor
 final class StatusBarItemController {
     var statusItem: NSStatusItem!
-    var statusItemMenu: NSMenu!
+    let popover = StatusBarPopoverController()
 
     /// Current event list, driven by the AppModel state.
     /// A non-nil `_eventsOverride` takes precedence (used by tests to inject
@@ -59,8 +57,6 @@ final class StatusBarItemController {
         get { _eventsOverride ?? dependencies.events() }
         set { _eventsOverride = newValue }
     }
-
-    let installationDate = getInstallationDate()
 
     /// Hosting view used to render the stacked (time-under-title) layout. Kept
     /// around so successive updates reuse the same view (and its Auto Layout
@@ -77,22 +73,21 @@ final class StatusBarItemController {
             withLength: NSStatusItem.variableLength
         )
 
-        statusItemMenu = NSMenu(title: "MeetingBar in Status Bar Menu")
-
         statusItem.button?.target = self
         statusItem.button?.action = #selector(statusMenuBarAction)
+        // Mouse down only: the popover toggles, so also acting on mouse up
+        // would close it again within the same click.
         statusItem.button?.sendAction(on: [
-            NSEvent.EventTypeMask.rightMouseDown, NSEvent.EventTypeMask.leftMouseUp,
-            NSEvent.EventTypeMask.leftMouseDown
+            NSEvent.EventTypeMask.rightMouseDown, NSEvent.EventTypeMask.leftMouseDown
         ])
 
-        // Temporary icon and menu before app delegate setup
+        // Temporary icon before app delegate setup
         statusItem.button?.image = MenuStyleConstants.iconNamed(MenuStyleConstants.appIconName)
         statusItem.button?.image?.size = MenuStyleConstants.iconSize
         statusItem.button?.imagePosition = .imageLeft
-        let menuItem = statusItemMenu.addItem(
-            withTitle: "window_title_onboarding".loco(), action: nil, keyEquivalent: "")
-        menuItem.isEnabled = false
+
+        popover.model.actions = popoverActions()
+        popover.onClockTick = { [weak self] in self?.updateMenu() }
 
         setupDefaultsObservers()
         setupKeyboardShortcuts()
@@ -107,7 +102,7 @@ final class StatusBarItemController {
             .shortenEventTitle, .menuEventTitleLength,
             .showEventEndTime, .showMeetingServiceIcon,
             .showEventCalendarColor,
-            .timeFormat, .bookmarks,
+            .timeFormat, .bookmarks, .timelineDensity,
             .pastEventsAppereance, .declinedEventsAppereance,
             .showTimelineInMenu, .eventTitleFormat,
             options: []
@@ -145,18 +140,23 @@ final class StatusBarItemController {
         if event?.type == .rightMouseUp {
             // Right button click
             joinNextMeeting()
-        } else if event == nil || event?.type == .leftMouseDown || event?.type == .leftMouseUp {
-            // show the menu as normal
+        } else if event == nil || event?.type == .leftMouseDown {
             openMenu()
         }
     }
 
     func openMenu() {
-        statusItem.menu = statusItemMenu
-        statusItem.button?.performClick(nil)  // ...and click
-        statusItem.menu = nil
-        // Updates were intentionally deferred while the menu was tracking.
-        updateMenu()
+        guard !popover.isOpen else {
+            popover.close()
+            return
+        }
+        guard let button = statusItem.button else { return }
+
+        let state = menuState()
+        popover.timeFormat = state.timeFormat
+        popover.isFantasticalInstalled = checkIsFantasticalInstalled()
+        popover.update(StatusBarPopoverPresenter.presentation(for: state, now: Date()))
+        popover.open(relativeTo: button)
     }
 
     func configure(dependencies: StatusBarDependencies) {
@@ -309,64 +309,71 @@ final class StatusBarItemController {
 
     /*
      * -----------------------
-     * MARK: - MENU SECTIONS
+     * MARK: - POPOVER
      * ------------------------
      */
 
     func updateMenu() {
-        // Don't update the menu while it's open to avoid flickering
-        if statusItem.menu != nil {
-            return
-        }
+        guard popover.isOpen else { return }
+        popover.update(popoverPresentation())
+    }
 
+    func popoverPresentation(now: Date = Date()) -> StatusBarPopoverPresentation {
+        StatusBarPopoverPresenter.presentation(for: menuState(now: now), now: now)
+    }
+
+    private func menuState(now: Date = Date()) -> StatusBarMenuState {
         var appState = dependencies.appState()
         appState.events = events
-        let menuState = StatusBarMenuState.make(from: appState)
-        let builder = MenuBuilder(
-            target: self, state: menuState, installationDate: installationDate)
+        return StatusBarMenuState.make(from: appState, now: now)
+    }
 
-        statusItemMenu.autoenablesItems = false
-        statusItemMenu.removeAllItems()
-
-        statusItemMenu.items += builder.buildTopSection()
-
-        if menuState.hasSelectedCalendars {
-            let today = Calendar.current.startOfDay(for: Date())
-            let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
-
-            switch menuState.events.showEventsForPeriod {
-            case .today:
-                statusItemMenu.items += builder.buildDateSection(
-                    date: today, title: "status_bar_section_today".loco(),
-                    events: menuState.todayEvents,
-                    subdueEmptyState: menuState.todayEvents.isEmpty
-                        && !menuState.tomorrowEvents.isEmpty
-                )
-            case .today_n_tomorrow:
-                statusItemMenu.items += builder.buildDateSection(
-                    date: today, title: "status_bar_section_today".loco(),
-                    events: menuState.todayEvents)
-
-                statusItemMenu.addItem(NSMenuItem.separator())
-
-                statusItemMenu.items += builder.buildDateSection(
-                    date: tomorrow, title: "status_bar_section_tomorrow".loco(),
-                    events: menuState.tomorrowEvents)
+    private func popoverActions() -> StatusBarPopoverActions {
+        StatusBarPopoverActions(
+            join: { [weak self] event in
+                self?.popover.close()
+                self?.dependencies.send(.joinMeeting(eventID: event.id))
+            },
+            joinCandidate: { [weak self] candidate in
+                self?.popover.close()
+                MeetingOpener.open(
+                    meetingLink: MeetingLink(service: candidate.service, url: candidate.url))
+            },
+            joinBookmark: { [weak self] bookmark in
+                self?.popover.close()
+                MeetingOpener.open(
+                    meetingLink: MeetingLink(
+                        service: MeetingServices(rawValue: bookmark.service),
+                        url: bookmark.url
+                    ))
+            },
+            copyLink: { [weak self] event in
+                self?.popover.close()
+                self?.copyMeetingLink(of: event)
+            },
+            dismiss: { [weak self] event in self?.dismiss(event: event) },
+            undismiss: { [weak self] event in
+                self?.dependencies.send(.undismissMeeting(eventID: event.id))
+            },
+            openInCalendar: { [weak self] url in
+                self?.popover.close()
+                url.openInDefaultBrowser()
+            },
+            openInFantastical: { [weak self] event in
+                self?.popover.close()
+                openInFantastical(startDate: event.startDate, title: event.title)
+            },
+            performNotice: { [weak self] action in self?.perform(action) },
+            refresh: { [weak self] in self?.dependencies.send(.refreshCalendars) },
+            openPreferences: { [weak self] in
+                self?.popover.close()
+                self?.dependencies.openPreferences()
+            },
+            quit: { [weak self] in
+                self?.popover.close()
+                self?.dependencies.quit()
             }
-        }
-        statusItemMenu.addItem(NSMenuItem.separator())
-        statusItemMenu.items += builder.buildJoinSection(
-            nextEvent: menuState.nextEvent,
-            includeJoinAction: false
         )
-
-        if !menuState.meetings.bookmarks.isEmpty {
-            statusItemMenu.addItem(NSMenuItem.separator())
-            statusItemMenu.items += builder.buildBookmarksSection(bookmarks: menuState.meetings.bookmarks)
-        }
-        statusItemMenu.addItem(NSMenuItem.separator())
-
-        statusItemMenu.items += builder.buildPreferencesSection()
     }
 
     /*
@@ -374,10 +381,6 @@ final class StatusBarItemController {
      * MARK: - Actions
      * ------------------------
      */
-
-    @objc func createMeetingAction() {
-        createMeeting()
-    }
 
     @objc
     func joinNextMeeting() {
@@ -388,149 +391,33 @@ final class StatusBarItemController {
         }
     }
 
-    @objc
-    func joinEvent(sender: NSMenuItem) {
-        guard let event = sender.representedObject as? MBEvent else {
-            AppMessageCenter.shared.post(.nextMeetingMissing)
-            return
-        }
-        dependencies.send(.joinMeeting(eventID: event.id))
-    }
-
-    @objc
-    func dismissNextMeetingAction() {
-        if let nextEvent = events.nextEvent(settings: .current, now: Date()) {
-            dependencies.send(.dismissMeeting(eventID: nextEvent.id))
-            AppMessageCenter.shared.post(.meetingDismissed(title: nextEvent.title))
-        }
-    }
-
-    @objc
-    func undismissMeetingsActions() {
-        dependencies.send(.clearDismissedMeetings)
-        AppMessageCenter.shared.post(.allDismissalsRemoved)
-    }
-
-    @objc
-    func openLinkFromClipboardAction() {
-        openLinkFromClipboard()
-    }
-
-    @objc
-    func toggleMeetingTitleVisibility() {
-        dependencies.send(.toggleMeetingTitleVisibility)
-    }
-
-    @objc
-    func rateApp() {
-        Links.rateAppInAppStore.openInDefaultBrowser()
-    }
-
-    @objc
-    func joinBookmark(sender: NSMenuItem) {
-        if let bookmark: Bookmark = sender.representedObject as? Bookmark {
-            MeetingOpener.open(
-                meetingLink: MeetingLink(service: MeetingServices(rawValue: bookmark.service), url: bookmark.url))
-        }
-    }
-
-    @objc
-    func clickOnEvent(sender: NSMenuItem) {
-        if let event: MBEvent = sender.representedObject as? MBEvent {
-            dependencies.send(.joinMeeting(eventID: event.id))
-        }
-    }
-
-    @objc
-    func joinMeetingLinkCandidate(sender: NSMenuItem) {
-        if let candidate = sender.representedObject as? MeetingLinkCandidate {
-            MeetingOpener.open(
-                meetingLink: MeetingLink(service: candidate.service, url: candidate.url))
-        }
-    }
-
-    @objc
-    func openEventInCalendar(sender: NSMenuItem) {
-        // The menu attaches the provider-specific calendar URL directly
-        // (ical://ekevent/… for EventKit, htmlLink for Google).
-        if let url = sender.representedObject as? URL {
-            url.openInDefaultBrowser()
-        }
-    }
-
-    @objc func handleManualRefresh() {
-        dependencies.send(.refreshCalendars)
-    }
-
-    @objc func reconnectProviderAction() {
-        dependencies.send(.changeProvider(stateProvider, signOut: true))
-    }
-
-    @objc func openCalendarPermissionsAction() {
-        NSWorkspace.shared.open(Links.calendarPreferences)
-    }
-
-    @objc
-    func dismissEvent(sender: NSMenuItem) {
-        if let event: MBEvent = sender.representedObject as? MBEvent {
-            dismiss(event: event)
-        }
-    }
-
     func dismiss(event: MBEvent) {
         dependencies.send(.dismissMeeting(eventID: event.id))
     }
 
-    @objc
-    func undismissEvent(sender: NSMenuItem) {
-        if let event: MBEvent = sender.representedObject as? MBEvent {
-            dependencies.send(.undismissMeeting(eventID: event.id))
+    func copyMeetingLink(of event: MBEvent) {
+        if let meetingLink = event.meetingLink {
+            NSPasteboard.general.clearContents()
+            NSPasteboard.general.setString(meetingLink.url.absoluteString, forType: .string)
+        } else {
+            AppMessageCenter.shared.post(.meetingLinkMissing(title: event.title))
         }
     }
 
-    @objc
-    func copyEventMeetingLink(sender: NSMenuItem) {
-        if let event: MBEvent = sender.representedObject as? MBEvent {
-            if let meetingLink = event.meetingLink {
-                NSPasteboard.general.clearContents()
-                NSPasteboard.general.setString(meetingLink.url.absoluteString, forType: .string)
-            } else {
-                AppMessageCenter.shared.post(.meetingLinkMissing(title: event.title))
-            }
+    private func perform(_ action: StatusBarNoticeAction) {
+        switch action {
+        case .reconnect:
+            popover.close()
+            dependencies.send(.changeProvider(dependencies.appState().activeProvider, signOut: true))
+        case .grantPermission:
+            popover.close()
+            NSWorkspace.shared.open(Links.calendarPreferences)
+        case .refresh:
+            dependencies.send(.refreshCalendars)
+        case .openPreferences:
+            popover.close()
+            dependencies.openPreferences()
         }
-    }
-
-    @objc
-    func emailAttendees(sender: NSMenuItem) {
-        if let event: MBEvent = sender.representedObject as? MBEvent {
-            MeetingOpener.emailAttendees(for: event)
-        }
-    }
-
-    @objc
-    func openEventInFantastical(sender: NSMenuItem) {
-        if let event: MBEvent = sender.representedObject as? MBEvent {
-            openInFantastical(startDate: event.startDate, title: event.title)
-        }
-    }
-
-    @objc
-    func openPreferencesAction() {
-        dependencies.openPreferences()
-    }
-
-    private var stateProvider: EventStoreProvider {
-        dependencies.appState().activeProvider
-    }
-
-    @objc
-    func openChangelogAction() {
-        dependencies.openChangelog()
-    }
-
-    @objc
-    func quitAction() {
-        dependencies.quit()
     }
 }
 

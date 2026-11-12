@@ -30,10 +30,10 @@ enum StatusBarProviderWarning: Equatable {
     case refreshFailed
 }
 
-/// Value-typed snapshot of everything the status bar menu needs to render
+/// Value-typed snapshot of everything the status bar popover needs to render
 /// without reading `Defaults` or reaching through singletons.
 ///
-/// Built by `StatusBarMenuState.make(...)` and consumed by `MenuBuilder`.
+/// Built by `StatusBarMenuState.make(...)` and consumed by `StatusBarPopoverPresenter`.
 /// Must not import AppKit or UserNotifications.
 struct StatusBarMenuState: Equatable {
     // MARK: - Events (split by day)
@@ -53,7 +53,7 @@ struct StatusBarMenuState: Equatable {
 
     // MARK: - Settings snapshot
 
-    /// Full settings snapshot. `MenuBuilder` reads display/filter settings from
+    /// Full settings snapshot. The presenter reads display/filter settings from
     /// here instead of touching `Defaults` directly.
     var settings: AppSettings = .empty
 
@@ -62,39 +62,12 @@ struct StatusBarMenuState: Equatable {
     /// Whether any calendars are selected (drives the "no calendars" empty state).
     var hasSelectedCalendars: Bool = false
 
-    /// Whether more than one calendar is selected (controls calendar-name display
-    /// in event details).
-    var hasMultipleSelectedCalendars: Bool = false
-
-    /// Whether the day-timeline bar should appear above the event list.
-    var showTimeline: Bool = false
-
-    /// The timeline represents the current day, so it is intentionally hidden
-    /// when there are no events today even if the preference is enabled.
-    var shouldShowTimeline: Bool {
-        showTimeline && !todayEvents.isEmpty
-    }
-
     /// Time-format display (military vs am/pm) used when formatting event times.
     var timeFormat: TimeFormat = .military
 
-    // MARK: - Changelog / install state
-
-    /// Major-version prefix of the running app (e.g. "5.0").
-    var appMajorVersion: String = ""
-
-    /// Major-version prefix of the last release the user has acknowledged in
-    /// the changelog. When this differs from `appMajorVersion`, the menu shows
-    /// an unread-changelog hint.
-    var lastRevisedMajorVersion: String = ""
-
-    /// Whether the app was installed from the Mac App Store. Hides certain
-    /// release-channel UI when true.
-    var isInstalledFromAppStore: Bool = false
-
     // MARK: - Convenience accessors
 
-    /// Settings groups exposed for shorter call sites in MenuBuilder.
+    /// Settings groups exposed for shorter call sites.
     var events: EventDisplaySettings { settings.events }
     var statusBar: StatusBarSettings { settings.statusBar }
     var menu: MenuSettings { settings.menu }
@@ -176,12 +149,7 @@ extension StatusBarMenuState {
             selectedCalendarIDs: selectedCalendarIDs,
             settings: settings,
             hasSelectedCalendars: selectedCount > 0,
-            hasMultipleSelectedCalendars: selectedCount > 1,
-            showTimeline: settings.menu.showTimelineInMenu,
-            timeFormat: Defaults[.timeFormat],
-            appMajorVersion: String(Defaults[.appVersion].dropLast(2)),
-            lastRevisedMajorVersion: String(Defaults[.lastRevisedVersionInChangelog].dropLast(2)),
-            isInstalledFromAppStore: Defaults[.isInstalledFromAppStore]
+            timeFormat: Defaults[.timeFormat]
         )
     }
 

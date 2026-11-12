@@ -140,6 +140,9 @@
 "preferences_appearance_status_bar_next_event_toggle" = "Show only events starting within";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minutes";
 "preferences_appearance_menu_title" = "Menu";
+"preferences_appearance_menu_density_title" = "Timeline density";
+"preferences_appearance_menu_density_comfortable_value" = "Comfortable";
+"preferences_appearance_menu_density_compact_value" = "Compact";
 "preferences_appearance_menu_show_timeline_toggle" = "Show visual timeline of the day";
 "preferences_appearance_menu_shorten_event_title_toggle" = "Shorten event title to";
 "preferences_appearance_menu_shorten_event_title_stepper" = "%d characters";
@@ -303,6 +306,16 @@
 "status_bar_submenu_email_attendees" = "Email attendees";
 "status_bar_submenu_open_in_calendar" = "Open in Calendar App";
 "status_bar_submenu_open_in_fantastical" = "Open in Fantastical";
+"status_bar_submenu_open_in_google_calendar" = "Open in Google Calendar";
+"status_bar_details_organizer" = "Organizer";
+"status_bar_details_status_accepted" = "Accepted";
+"status_bar_details_status_declined" = "Declined";
+"status_bar_details_status_tentative" = "Tentative";
+"status_bar_details_status_pending" = "Not responded";
+"status_bar_details_status_canceled" = "Canceled";
+"status_bar_details_guests_summary" = "%d yes, %d no, %d awaiting";
+"status_bar_popover_updated" = "Updated %@";
+"status_bar_popover_quit" = "Quit";
 "status_bar_quick_actions" = "Quick Actions";
 "status_bar_show_meeting_names" = "Show meeting title";
 "status_bar_hide_meeting_names" = "Hide meeting title";

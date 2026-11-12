@@ -48,7 +48,7 @@ The product principle is reliability first: **show the correct meeting, stay fre
         ┌────────────▼──────────────┬──────────────────┐
         │ StatusBar                 │ Notification     │
         │ ItemController            │ Scheduler        │
-        │ + MenuBuilder             │ (mb-plan-…)      │
+        │ + timeline popover        │ (mb-plan-…)      │
         │ (via StatusBarMenuState)  │ + delayed Tasks  │
         │                           │ + ActionRunner   │
         └───────┬───────────────────┴──────────────────┘
@@ -121,11 +121,15 @@ MeetingBar/                         (~76 .swift files)
 ├── UI/
 │   ├── StatusBar/                  — menu bar item, menu construction, presentation
 │   │   ├── StatusBarItemController.swift   — renders state, observes display settings, forwards user actions
-│   │   ├── MenuBuilder.swift               — builds NSMenu from StatusBarMenuState (zero Defaults reads)
+│   │   ├── StatusBarPopoverController.swift — non-activating timeline and details panels: placement, dismissal, hover, keyboard
+│   │   ├── StatusBarPopoverPresentation.swift — builds the popover presentation from StatusBarMenuState (zero Defaults reads)
+│   │   ├── StatusBarPopoverView.swift, TimelineEventCard.swift, EventDetailsView.swift — SwiftUI timeline, event cards, hover details
+│   │   ├── TimelineLayout.swift            — pure grid and panel geometry [SPM]
+│   │   ├── TimelinePalette.swift           — card colors per calendar and response, with contrast guarantees [SPM]
 │   │   ├── StatusBarMenuState.swift        — value type + .make(from:) factory
 │   │   ├── StatusBarPresentation.swift     — Presentation + Title + Icon policies and Presenter [SPM]
 │   │   └── StatusBarPresentation+MeetingBar.swift — Defaults adapters for all three policies
-│   └── Views/                      — remaining SwiftUI views (DayTimelineView, FullscreenNotification, Changelog/)
+│   └── Views/                      — remaining SwiftUI views (FullscreenNotification, Changelog/)
 │
 ├── Utilities/
 │   ├── Constants.swift
@@ -302,7 +306,7 @@ Within one source, candidates are ranked by service tier (known conferencing ser
 | Suite | Location | Run with | Speed | Use for |
 |---|---|---|---|---|
 | Hostless | `MeetingBarLogicTests/` | `make test-logic` | Fast (~1s) | Policies, formatters, link detection, plan generation |
-| Host | `MeetingBarTests/` | `make test` | Slower, launches app | `MenuBuilder`, status item rendering, anything that needs `NSImage`/AppKit |
+| Host | `MeetingBarTests/` | `make test` | Slower, launches app | `StatusBarPopoverPresenter`, status item rendering, anything that needs `NSImage`/AppKit |
 
 **Default to hostless.** A test that needs to launch the app is a signal that you are testing a service, not a policy. That is fine — but write it consciously. Hostless tests run on every PR and contribute the bulk of the 200+ test count.
 
@@ -402,7 +406,7 @@ Touching these requires extra care, tests around behavior, and a focused PR:
 - `App/AppDelegate.swift`
 - `Calendar/CalendarSync.swift`
 - `UI/StatusBar/StatusBarItemController.swift`
-- `UI/StatusBar/MenuBuilder.swift`
+- `UI/StatusBar/StatusBarPopoverPresentation.swift`
 - `Calendar/MBEvent.swift`, `MBEvent+MeetingBar.swift`
 - `Calendar/Providers/Google/GoogleCalendarEventStore.swift`
 - `Calendar/Providers/EventKit/EventKitEventStore.swift`

@@ -52,6 +52,7 @@ struct StatusBarSettings: Equatable {
 }
 
 struct MenuSettings: Equatable {
+    var timelineDensity: TimelineDensity
     var showTimelineInMenu: Bool
     var shortenEventTitle: Bool
     var menuEventTitleLength: Int
@@ -183,6 +184,7 @@ extension AppSettings {
                 showEventEndTime: Defaults[.showEventEndTime]
             ),
             menu: MenuSettings(
+                timelineDensity: Defaults[.timelineDensity],
                 showTimelineInMenu: Defaults[.showTimelineInMenu],
                 shortenEventTitle: Defaults[.shortenEventTitle],
                 menuEventTitleLength: Defaults[.menuEventTitleLength],
@@ -256,6 +258,7 @@ extension AppSettings {
                 showEventEndTime: true
             ),
             menu: MenuSettings(
+                timelineDensity: .comfortable,
                 showTimelineInMenu: true,
                 shortenEventTitle: true,
                 menuEventTitleLength: 50,

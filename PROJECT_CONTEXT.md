@@ -45,7 +45,7 @@ The following is an orientation map, **not** a substitute for reading the curren
 | Event representation | `MeetingBar/Calendar/MBEvent.swift`, `MBEvent+MeetingBar.swift`, `MBCalendar.swift` | Normalized data from different providers and app-specific mappings. |
 | Meeting links and opening | `MeetingBar/Meetings/MeetingLinkDetector.swift`, `MeetingProvider.swift`, `MeetingOpener.swift` | Detect, rank and normalize candidates; execute meeting-opening actions separately. |
 | Notifications and timed actions | `MeetingBar/Notifications/NotificationPlanner.swift`, `NotificationScheduler.swift`, `NotificationActionRunner.swift` | Plan notifications, reconcile OS requests and own delayed/fullscreen/auto-join/script actions. |
-| Status bar and menu | `MeetingBar/UI/StatusBar/StatusBarPresentation.swift`, `StatusBarItemController.swift`, `StatusBarStackedTitleView.swift`, `MenuBuilder.swift` | Compute presentation separately from AppKit rendering and native interaction. |
+| Status bar and popover | `MeetingBar/UI/StatusBar/StatusBarPresentation.swift`, `StatusBarItemController.swift`, `StatusBarStackedTitleView.swift`, `StatusBarPopoverPresentation.swift`, `StatusBarPopoverController.swift` | Compute presentation separately from AppKit rendering and native interaction. |
 | Settings | `MeetingBar/Settings/AppSettings.swift`, `Extensions/DefaultsKeys.swift` | Persistent preferences and explicit snapshots for policies/workflows. |
 
 ### Architectural conventions
