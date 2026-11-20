@@ -33,7 +33,7 @@
 
 // MARK: - Store
 
-"store_patronage_title" = "Podpora MeetingBaru";
+"store_patronage_title" = "Podpora Soon";
 "constants_meeting_service_url" = "URL";
 "constants_meeting_service_other" = "Jiná";
 "constants_meeting_service_zoom_native" = "Zoom (nativní aplikace)";
@@ -41,7 +41,7 @@
 "constants_create_meeting_service_url" = "Vlastní adresa URL";
 
 // MARK: - Constants
-"shared_send_notification_disabled_tip" = "⚠️ Oznámení MeetingBaru jsou v macOS vypnutá. Abyste měli přehled o schůzkách, povolte oznámení v Nastavení systému.";
+"shared_send_notification_disabled_tip" = "⚠️ Oznámení Soon jsou v macOS vypnutá. Abyste měli přehled o schůzkách, povolte oznámení v Nastavení systému.";
 "shared_send_notification_no_alert_style_tip" = "Poznámka: Oznámení mají nastavený styl Bannery, takže se po chvíli skryjí. Chcete-li, aby zůstávala na obrazovce až do zavření, přepněte v nastavení oznámení macOS styl na Upozornění.";
 "general_five_minute_before" = "5 minut předem";
 "general_three_minute_before" = "3 minuty předem";
@@ -75,7 +75,7 @@
 "status_bar_event_status_in" = "za %@";
 "status_bar_event_status_now" = "nyní (zbývá %@)";
 "status_bar_no_title" = "Bez názvu";
-"status_bar_quit" = "Ukončit MeetingBar";
+"status_bar_quit" = "Ukončit Soon";
 "status_bar_preferences" = "Předvolby";
 "status_bar_whats_new" = "Co je nového?";
 "status_bar_rate_app" = "Ohodnotit aplikaci";
@@ -122,7 +122,7 @@
 "preferences_advanced_regex_add_button" = "Přidat regulární výraz";
 "preferences_advanced_regex_title" = "Vlastní regulární výrazy pro odkazy na schůzky";
 "preferences_advanced_wrong_location_button" = "Rozumím";
-"preferences_advanced_wrong_location_message" = "Vyberte složku Uživatel → Knihovna → Application Scripts → leits.MeetingBar.";
+"preferences_advanced_wrong_location_message" = "Vyberte složku Uživatel → Knihovna → Application Scripts → com.allisonfang.Soon.";
 "preferences_advanced_wrong_location_title" = "Nesprávné umístění";
 "preferences_advanced_save_script_button" = "Uložit skript";
 "preferences_advanced_apple_script_placeholder" = "# sem napište svůj skript\ntell application \"Music\" to pause";
@@ -208,7 +208,7 @@
 "preferences_appearance_status_bar_icon_no_icon_value" = " Bez ikony";
 "preferences_appearance_status_bar_icon_specific_icon_value" = " Ikona dané události (např. MS Teams)";
 "preferences_appearance_status_bar_icon_calendar_icon_value" = " Kalendář";
-"preferences_appearance_status_bar_icon_app_icon_value" = " MeetingBar";
+"preferences_appearance_status_bar_icon_app_icon_value" = " Soon";
 "preferences_appearance_status_bar_icon_title" = "Ikona";
 "preferences_appearance_status_bar_title" = "Řádek nabídek";
 "preferences_appearance_events_value_with_strikethrough" = "zobrazit jako přeškrtnuté";
@@ -227,14 +227,14 @@
 
 "preferences_appearance_events_title" = "Události";
 "preferences_general_patron_restore_purchases" = "Obnovit nákupy";
-"preferences_general_patron_thank_for_purchase" = "Děkujeme! MeetingBar podporujete už %d měs. 🎉";
+"preferences_general_patron_thank_for_purchase" = "Děkujeme! Soon podporujete už %d měs. 🎉";
 "preferences_general_patron_description" = "Jde o jednorázové nákupy bez automatického obnovení.";
 "preferences_general_patron_twelve_months" = "12 měsíců – 11,99 USD";
 "preferences_general_patron_six_months" = "6 měsíců – 5,99 USD";
 "preferences_general_patron_three_months" = "3 měsíce – 2,99 USD";
-"preferences_general_patron_title" = "Podpořte MeetingBar";
+"preferences_general_patron_title" = "Podpořte Soon";
 "preferences_general_external_contact" = "Kontakt";
-"preferences_general_meeting_bar_description" = "MeetingBar je aplikace s otevřeným zdrojovým kódem,\nkterou vytvořil Andrii Leitsius 🇺🇦,\npro snazší a plynulejší online schůzky";
+"preferences_general_meeting_bar_description" = "Soon je aplikace s otevřeným zdrojovým kódem\nzaložená na MeetingBaru, který vytvořil Andrii Leitsius 🇺🇦";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Přepnout zobrazení názvu v řádku nabídek:";
 "preferences_general_shortcut_join_from_clipboard" = "Připojit se ke schůzce ze schránky:";
 "preferences_general_shortcut_join_next" = "Připojit se k příští schůzce:";
@@ -253,12 +253,12 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Obecné";
-"windows_title_changelog" = "Co je nového v MeetingBaru";
+"windows_title_changelog" = "Co je nového v Soon";
 
 // MARK: - Window titles
 
-"window_title_preferences" = "Předvolby MeetingBaru";
-"window_title_onboarding" = "Vítejte v MeetingBaru";
+"window_title_preferences" = "Předvolby Soon";
+"window_title_onboarding" = "Vítejte v Soon";
 "next_meeting_empty_message" = "Hurá! Je čas na kakao.";
 "next_meeting_empty_title" = "Dnes vás nečekají žádné další schůzky";
 "create_meeting_error_message" = "Vlastní adresa URL „%@“ chybí nebo je neplatná. ";
@@ -295,27 +295,27 @@
 "message_google_account_connected_title" = "Účet Google byl připojen";
 "onboarding_apple_calendar_description" = "Čte kalendáře z aplikace Kalendář na tomto Macu včetně všech účtů, které jsou v ní nastavené.";
 "onboarding_apple_calendar_title" = "Aplikace Kalendář v macOS";
-"onboarding_authorization_apple_description" = "Povolte MeetingBaru číst události z aplikace Kalendář na tomto Macu.";
-"onboarding_authorization_google_description" = "Dokončete v prohlížeči přihlášení k účtu Google a potom se vraťte do MeetingBaru.";
+"onboarding_authorization_apple_description" = "Povolte Soon číst události z aplikace Kalendář na tomto Macu.";
+"onboarding_authorization_google_description" = "Dokončete v prohlížeči přihlášení k účtu Google a potom se vraťte do Soon.";
 "onboarding_authorization_title" = "Ověřte přístup ke kalendáři";
 "onboarding_authorization_waiting" = "Čekání na autorizaci…";
-"onboarding_calendar_selection_description" = "Vyberte kalendáře, jejichž schůzky se mají zobrazovat v MeetingBaru.";
+"onboarding_calendar_selection_description" = "Vyberte kalendáře, jejichž schůzky se mají zobrazovat v Soon.";
 "onboarding_calendar_selection_empty" = "Nebyly nalezeny žádné kalendáře. Obnovte seznam nebo zkontrolujte účty kalendářů.";
-"onboarding_calendar_selection_permission" = "MeetingBar potřebuje oprávnění ke kalendáři. Udělte mu přístup v Nastavení systému a potom seznam obnovte.";
+"onboarding_calendar_selection_permission" = "Soon potřebuje oprávnění ke kalendáři. Udělte mu přístup v Nastavení systému a potom seznam obnovte.";
 "onboarding_calendar_selection_reconnect" = "Kalendář Google je nutné znovu připojit.";
 "onboarding_calendar_selection_title" = "Vyberte kalendáře";
-"onboarding_calendar_source_description" = "Zvolte, jak má MeetingBar číst data kalendářů. Obě možnosti podporují také kalendáře Google.";
+"onboarding_calendar_source_description" = "Zvolte, jak má Soon číst data kalendářů. Obě možnosti podporují také kalendáře Google.";
 "onboarding_calendar_source_title" = "Vyberte zdroj kalendářů";
 "onboarding_choose_different_source" = "Vybrat jiný zdroj";
 "onboarding_continue" = "Pokračovat";
 "onboarding_done" = "Hotovo";
-"onboarding_google_calendar_description" = "Připojí MeetingBar přímo ke Kalendáři Google bez použití aplikace Kalendář v macOS.";
+"onboarding_google_calendar_description" = "Připojí Soon přímo ke Kalendáři Google bez použití aplikace Kalendář v macOS.";
 "onboarding_google_calendar_title" = "Rozhraní API Kalendáře Google";
 "onboarding_progress" = "Krok %@ z %@";
 "onboarding_success_description" = "Příští schůzka se zobrazí v řádku nabídek.";
 "onboarding_success_title" = "Vše je připraveno";
-"onboarding_welcome_description" = "MeetingBar zobrazuje příští schůzku přímo v řádku nabídek a umožňuje se k ní připojit.";
-"onboarding_welcome_title" = "Vítejte v MeetingBaru";
+"onboarding_welcome_description" = "Soon zobrazuje příští schůzku přímo v řádku nabídek a umožňuje se k ní připojit.";
+"onboarding_welcome_title" = "Vítejte v Soon";
 "preferences_advanced_regex_duplicate_error" = "Tento regulární výraz již existuje.";
 "preferences_advanced_regex_test_button" = "Otestovat regulární výraz";
 "preferences_advanced_regex_test_match" = "Nalezena shoda: %@";
@@ -390,12 +390,12 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "barvu kalendáře";
 "preferences_sidebar_advanced" = "Pokročilé";
 "preferences_appearance_status_bar_title_generic_value" = "obecný název (Schůzka)";
-"onboarding_setup_title" = "Nastavení MeetingBaru";
+"onboarding_setup_title" = "Nastavení Soon";
 "onboarding_back" = "Zpět";
 "onboarding_essentials_title" = "Nastavte běžné chování";
 "onboarding_essentials_description" = "Zvolte základní nastavení otevírání schůzek a dodržování času.";
 "onboarding_essentials_hint" = "Všechny podrobnosti můžete později upravit v Předvolbách.";
-"onboarding_start_using" = "Začít používat MeetingBar";
+"onboarding_start_using" = "Začít používat Soon";
 "preferences_advanced_run_script_before_event_start" = "Spouštět AppleScript před událostmi";
 "preferences_advanced_script_save_failed_title" = "AppleScript nelze uložit";
 "preferences_advanced_script_save_failed_message" = "Vaše změny byly zachovány. Zkontrolujte přístup ke složce Application Scripts a zkuste to znovu. %@";

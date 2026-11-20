@@ -152,7 +152,7 @@ struct ChangelogView: View {
                         Section(header: Text("Version 4.6")) {
                             Text("• Configure appearance for tentative events")
                             Text("• Open Slack huddle links directly in Slack app")
-                            Text("• Open preferences with `meetingbar://preferences` link")
+                            Text("• Open preferences with `soon://preferences` link")
                             Text("• Dismiss event action for Shortcuts")
                             Text("• Fixed a bug with autojoin when the screen is locked")
                         }
@@ -199,10 +199,8 @@ struct ChangelogView: View {
                     }
                 }
             }.listStyle(SidebarListStyle())
-            if let releasesURL = URL(string: "https://github.com/leits/MeetingBar/releases") {
-                Link(destination: releasesURL) {
-                    Text("changelog_full_release_notes".loco())
-                }
+            Link(destination: Links.releases) {
+                Text("changelog_full_release_notes".loco())
             }
             Button("general_close".loco(), action: close)
         }.padding()

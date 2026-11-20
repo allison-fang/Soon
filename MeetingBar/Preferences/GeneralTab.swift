@@ -92,8 +92,8 @@ struct PatronageAppSection: View {
 
     var body: some View {
         // The whole About card is one Form row (a single VStack) so the
-        // grouped form doesn't insert its own separators between the identity,
-        // support, and link clusters — we draw the one divider we want.
+        // grouped form doesn't insert its own separators between the identity
+        // and link clusters — we draw the one divider we want.
         VStack(alignment: .leading, spacing: 16) {
             if isInstalledFromAppStore {
                 patronagePurchaseBlock
@@ -106,7 +106,7 @@ struct PatronageAppSection: View {
                     .frame(width: 72, height: 72)
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
-                        Text("MeetingBar")
+                        Text("Soon")
                             .font(.title2).bold()
                         Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
                             .font(.callout)
@@ -122,31 +122,13 @@ struct PatronageAppSection: View {
 
             Divider()
 
-            // Primary support actions, made prominent with icons.
-            HStack(spacing: 10) {
-                Button {
-                    Links.patreon.openInDefaultBrowser()
-                } label: {
-                    Label("Patreon", systemImage: "heart.fill")
-                }
-                Button {
-                    Links.buymeacoffee.openInDefaultBrowser()
-                } label: {
-                    Label("Buy Me A Coffee", systemImage: "cup.and.saucer.fill")
-                }
-                Spacer()
-            }
-            .buttonStyle(.bordered)
-            .tint(.pink)
-
-            // Secondary links + diagnostics, visually quieter.
             HStack(spacing: 16) {
                 Button("GitHub") {
                     Links.github.openInDefaultBrowser()
                 }
                 .buttonStyle(.link)
                 Button("preferences_general_external_contact".loco()) {
-                    Links.emailMe.openInDefaultBrowser()
+                    Links.issues.openInDefaultBrowser()
                 }
                 .buttonStyle(.link)
                 Spacer()

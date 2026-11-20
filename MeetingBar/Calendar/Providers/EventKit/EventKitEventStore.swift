@@ -51,10 +51,10 @@ enum EventKitReadAccessError: LocalizedError, Equatable {
 
     var errorDescription: String? {
         switch self {
-        case .notDetermined: return "MeetingBar needs permission to read calendars"
-        case .denied: return "Calendar access is denied. Enable MeetingBar in macOS Calendar privacy settings"
+        case .notDetermined: return "Soon needs permission to read calendars"
+        case .denied: return "Calendar access is denied. Enable Soon in macOS Calendar privacy settings"
         case .restricted: return "Calendar access is restricted by macOS"
-        case .writeOnly: return "MeetingBar needs full calendar access to read meetings"
+        case .writeOnly: return "Soon needs full calendar access to read meetings"
         }
     }
 }

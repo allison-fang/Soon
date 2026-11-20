@@ -8,9 +8,9 @@ import Foundation
 import StoreKit
 
 enum PatronageProducts {
-    static let threeMonth = "leits.MeetingBar.patronage.3Month"
-    static let sixMonth = "leits.MeetingBar.patronage.6Month"
-    static let twelveMonth = "leits.MeetingBar.patronage.12Month"
+    static let threeMonth = "com.allisonfang.Soon.patronage.3Month"
+    static let sixMonth = "com.allisonfang.Soon.patronage.6Month"
+    static let twelveMonth = "com.allisonfang.Soon.patronage.12Month"
 
     static let all = [threeMonth, sixMonth, twelveMonth]
 
