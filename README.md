@@ -1,48 +1,51 @@
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://stand-with-ukraine.pp.ua)
+[![GitHub license](https://img.shields.io/github/license/allison-fang/Soon.svg)](https://github.com/allison-fang/Soon/blob/master/LICENSE)
+[![Github all releases](https://img.shields.io/github/downloads/allison-fang/Soon/total.svg)](https://github.com/allison-fang/Soon/releases/)
 
-[![GitHub license](https://img.shields.io/github/license/leits/MeetingBar.svg)](https://github.com/leits/MeetingBar/blob/master/LICENSE)
-[![Translation state](https://hosted.weblate.org/widgets/meetingbar/-/app/svg-badge.svg)](https://hosted.weblate.org/engage/meetingbar/)
-[![Github all releases](https://img.shields.io/github/downloads/leits/MeetingBar/total.svg)](https://github.com/leits/MeetingBar/releases/)
-[![Made in Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)
-
-**Soon** is a fork of [MeetingBar](https://github.com/leits/MeetingBar) with a redesigned menu bar popover.
-
-**MeetingBar** is a lightweight macOS menu-bar app that shows your current or next calendar meeting and lets you join it in one click.
+**Soon** is a lightweight macOS menu bar app that shows your day as a timeline and lets you join meetings in one click. It's a redesigned fork of [MeetingBar](https://github.com/leits/MeetingBar) by [leits](https://github.com/leits).
 
 It keeps meetings visible in the status bar, detects meeting links from calendar events, supports macOS Calendar and Google Calendar, and works with 50+ meeting services including Google Meet, Zoom, Microsoft Teams, Webex, and Discord.
 
-MeetingBar is free, open source, and privacy-respecting.
-
-<img src="https://github.com/leits/MeetingBar/blob/master/screenshot.png" width="700">
-
-<a href="https://www.producthunt.com/posts/meetingbar?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-meetingbar" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=203807&theme=light" alt="MeetingBar - Join your next meeting from your menu bar | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
-
-[![Download on the Mac App Store](mas_badge.png)](https://apps.apple.com/us/app/id1532419400)
-
-<a href="https://www.buymeacoffee.com/meetingbar" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+Soon is free, open source, and privacy-respecting.
 
 ## Install
 
-Soon requires **macOS 12.0 or later**. Paste this into Terminal:
+Soon requires **macOS 12.0 or later**.
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/allison-fang/Soon/master/Scripts/install.sh | bash
-```
+1. Open **Terminal**: press ⌘ Space, type `Terminal`, and press Return.
+2. Paste this command and press Return:
 
-It downloads the latest release into Applications and opens Soon. Run it again to update.
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/allison-fang/Soon/master/Scripts/install.sh | bash
+   ```
 
-Soon isn't notarized by Apple, so install it with the command above. A copy downloaded in a browser won't open.
+   It downloads the latest release, checks that the download isn't damaged, puts Soon in Applications, and opens it.
+3. In the setup window, choose where Soon reads your calendars from:
+   * **macOS Calendar**: when macOS asks, allow Soon to access your calendars.
+   * **Google Calendar**: sign in to Google in your browser. Google warns that it hasn't verified the app; choose **Advanced**, then **Go to Soon**. Then return to Soon.
+4. Choose which calendars to show, and finish setup.
+
+Soon lives in the menu bar, not the Dock. Click it to see your day.
 
 Soon is separate from MeetingBar and can be installed alongside it. Its settings start fresh.
 
+### Update
+
+Run the install command again. It quits Soon, replaces it with the latest version, and reopens it. Your settings are kept.
+
+### Uninstall
+
+Quit Soon from its menu, then move Soon from Applications to the Trash.
+
+### Why Terminal?
+
+macOS only opens apps downloaded in a browser if Apple has notarized them, which requires a paid Apple Developer account. Soon isn't notarized, so a copy downloaded in a browser won't open. The install command downloads Soon without that restriction.
+
 ## Calendar providers
 
-MeetingBar works with:
+Soon works with:
 
 * **macOS Calendar**: use any calendar account synchronized with Calendar.app, including iCloud, Google, Exchange, Office 365, Yahoo, AOL, and others.
-* **Google Calendar**: connect Google Calendar directly from MeetingBar.
-
-After installation, open MeetingBar and go through onboarding to choose your calendar source and preferences.
+* **Google Calendar**: connect Google Calendar directly from Soon.
 
 ## Features
 
@@ -50,17 +53,19 @@ After installation, open MeetingBar and go through onboarding to choose your cal
 
 * Show the current or next meeting in the macOS status bar.
 * Display meeting title, time, countdown, icon, or meeting service.
-* Show upcoming events from today and tomorrow in the menu.
+* See today's and tomorrow's events on a timeline, color-coded by calendar and response.
+* Hover an event to see its meeting link, guests, and notes.
 * Filter all-day, declined, tentative, pending, or linkless events.
 * Shorten long meeting titles to keep the menu bar readable.
 
 ### Join meetings faster
 
-* Join the current or next online meeting with one click.
+* Join any upcoming online meeting with one click.
 * Join the nearest meeting with a global keyboard shortcut.
-* Create ad-hoc meetings from your preferred meeting service.
+* Move between events with the arrow keys and join with Return.
+* Create ad-hoc meetings from your preferred meeting service with a keyboard shortcut.
 * Open meeting links in a preferred browser or native app per service.
-* Open event details in macOS Calendar or Fantastical.
+* Open events in Google Calendar, Calendar, or Fantastical.
 
 ### Get meeting reminders
 
@@ -72,31 +77,31 @@ After installation, open MeetingBar and go through onboarding to choose your cal
 ### Customize and automate
 
 * Bookmark recurring meetings and access them quickly.
-* Launch MeetingBar automatically at login.
+* Launch Soon automatically at login.
 * Use Shortcuts and AppleScript integrations.
 * Run custom AppleScript, for example to pause music when joining a meeting.
 
 ## Supported meeting services
 
-MeetingBar supports more than 50 meeting services, including:
+Soon supports more than 50 meeting services, including:
 
 Google Meet, Zoom, Microsoft Teams, Webex, GoToMeeting, Skype, Discord, Jitsi, RingCentral, BlueJeans, Whereby, Slack Huddle, FaceTime, LiveKit Meet, Meetecho, StreamYard, and many others.
 
-See the [full supported services list](https://github.com/leits/MeetingBar/discussions/108).
+See MeetingBar's [full supported services list](https://github.com/leits/MeetingBar/discussions/108).
 
 ## Privacy
 
-MeetingBar does not collect personal data.
+Soon does not collect personal data.
 
-Calendar data is used by the app to show your meetings, detect meeting links, and open the correct meeting action.
+Calendar data is used by the app to show your meetings, detect meeting links, and open the correct meeting action. Google Calendar access is read-only.
 
 ## Troubleshooting
 
-If meetings do not appear, links are not detected, or Google Calendar needs reconnecting, check the [FAQ](../../wiki/FAQ), install the [latest release](https://github.com/leits/MeetingBar/releases/latest), or [open an issue](https://github.com/leits/MeetingBar/issues/new).
+If meetings do not appear, links are not detected, or Google Calendar needs reconnecting, run the install command again to get the latest version, or [open an issue](https://github.com/allison-fang/Soon/issues/new).
 
 Useful details for bug reports:
 
-* MeetingBar version
+* Soon version
 * macOS version
 * Calendar provider: macOS Calendar or Google Calendar
 * Meeting service: Zoom, Google Meet, Microsoft Teams, Webex, etc.
@@ -108,35 +113,21 @@ Useful details for bug reports:
 
 ## Release history
 
-Read [Soon's releases](https://github.com/allison-fang/Soon/releases) for what changed in each version, and [MeetingBar's releases](https://github.com/leits/MeetingBar/releases) for version highlights, fixes and contributor credits.
-
-## Third-party integrations
-
-* [Raycast commands](https://github.com/raycast/script-commands/tree/master/commands#meetingbar)
+Read [Soon's releases](https://github.com/allison-fang/Soon/releases) for what changed in each version.
 
 ## Contributing
 
-MeetingBar is open source and welcomes focused fixes, meeting service integrations, translations, reliability improvements, and documentation updates.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
-## Support the project
-
-MeetingBar is free and community-supported.
-
-You can support development through [Patreon](https://www.patreon.com/meetingbar), in-app purchases, or [Buy Me a Coffee](https://www.buymeacoffee.com/meetingbar).
+Soon is open source under the [Apache 2.0 license](LICENSE). See [CONTRIBUTING.md](CONTRIBUTING.md) to build it from source.
 
 ## Credits
 
-MeetingBar is stable and in active development by [leits](https://github.com/leits). Written in Swift 6.
+Soon is built on [MeetingBar](https://github.com/leits/MeetingBar) by [leits](https://github.com/leits). Written in Swift 6.
 
-MeetingBar also uses these resources:
+Soon also uses these resources:
 
 * [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts) for managing global keyboard shortcuts
 * [Defaults](https://github.com/sindresorhus/Defaults) for managing user settings
 * [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) for launch-at-login integration
 * [AppAuth-iOS](https://github.com/openid/AppAuth-iOS) for Google Calendar OAuth
 
-App logo made by [Miroslav Rajkovic](https://www.rajkovic.co/).
-
-If you encounter any bugs or have a feature request, [open an issue](https://github.com/leits/MeetingBar/issues/new).
+If you encounter any bugs or have a feature request, [open an issue](https://github.com/allison-fang/Soon/issues/new). Soon is a personal project, so issues may not get a reply.

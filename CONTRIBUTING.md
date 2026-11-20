@@ -1,10 +1,10 @@
-# Contributing to MeetingBar
+# Contributing to Soon
 
-MeetingBar welcomes focused bug fixes, meeting-service integrations, reliability improvements, translations, and documentation updates.
+Soon welcomes focused bug fixes, meeting-service integrations, reliability improvements, translations, and documentation updates.
 
 ## GitHub Workflow
 
-Use GitHub issues for public bugs and feature requests. Keep pull requests small enough to review in one pass, and describe:
+Use [GitHub issues](https://github.com/allison-fang/Soon/issues) for public bugs and feature requests. Keep pull requests small enough to review in one pass, and describe:
 
 * What changed and why
 * User-visible behavior changes
@@ -15,7 +15,7 @@ Use GitHub issues for public bugs and feature requests. Keep pull requests small
 
 Good bug reports include:
 
-* MeetingBar version and macOS version
+* Soon version and macOS version
 * Calendar provider: macOS Calendar or Google Calendar
 * Meeting service when relevant: Zoom, Google Meet, Microsoft Teams, Webex, etc.
 * Steps to reproduce
@@ -25,7 +25,7 @@ Good bug reports include:
 
 ## Building Locally
 
-MeetingBar is a macOS app built with Xcode, Swift 6, AppKit, SwiftUI, and Xcode-managed Swift Package dependencies.
+Soon is a macOS app built with Xcode, Swift 6, AppKit, SwiftUI, and Xcode-managed Swift Package dependencies.
 
 For local signing, create `XCConfig/DevTeamOverride.xcconfig` with your Apple development team. This file is git-ignored, so you do not need to change the Xcode project:
 
@@ -73,7 +73,7 @@ Read [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) before changing app flow, ca
 
 Direct app dependencies are Xcode Swift Package references pinned by `MeetingBar.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved`. `Package.swift` defines the hostless `MeetingBarLogic` package used for fast policy tests. Do not update only `Package.resolved`; change the Xcode package requirement intentionally and review the resolved diff. StoreKit is a system framework, not an external package dependency.
 
-Describe user-visible changes in the PR so the maintainer can prepare [GitHub Release notes](https://github.com/leits/MeetingBar/releases) when publishing. Do not update an in-repository changelog for each contribution. For changes significant enough to appear in the app's What's New screen, coordinate that separately with the maintainer. Refer to [`docs/TESTING.md`](docs/TESTING.md) for choosing the appropriate test layer. For new source strings, update `MeetingBar/Resources /Localization /en.lproj/Localizable.strings` and run `make validate-strings`; non-English translations are managed through Weblate.
+Describe user-visible changes in the PR so they can go into [Soon's release notes](https://github.com/allison-fang/Soon/releases). Do not update an in-repository changelog for each contribution. Refer to [`docs/TESTING.md`](docs/TESTING.md) for choosing the appropriate test layer. For new source strings, update `MeetingBar/Resources /Localization /en.lproj/Localizable.strings` and run `make validate-strings`.
 
 ## License
 
