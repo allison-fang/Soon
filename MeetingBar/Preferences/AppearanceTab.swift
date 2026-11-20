@@ -163,7 +163,7 @@ struct StatusBarSection: View {
                 }.tag(EventTitleIconFormat.calendar)
 
                 HStack {
-                    Image(nsImage: getImage(iconName: EventTitleIconFormat.appicon.rawValue))
+                    Image(nsImage: getImage(iconName: EventTitleIconFormat.appicon.statusBarAssetName))
                         .resizable()
                         .frame(width: 16.0, height: 16.0)
                     Text("preferences_appearance_status_bar_icon_app_icon_value".loco())

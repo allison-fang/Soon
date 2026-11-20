@@ -14,7 +14,7 @@ import SwiftUI
 
 enum MenuStyleConstants {
     static let defaultFontSize: CGFloat = 13
-    static let appIconName = "AppIcon"
+    static let appIconName = "menuBarIcon"
     static let calendarCheckmarkIconName = "iconCalendarCheckmark"
     static let calendarIconName = "iconCalendar"
     static let iconSize: NSSize = .init(width: 16, height: 16)
