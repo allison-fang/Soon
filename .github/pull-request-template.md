@@ -13,4 +13,4 @@ List automated tests and manual steps you **actually ran**, with results. Note m
 ### Release-sensitive changes (if any)
 Note changes to dependencies, project settings, entitlements, signing, URL schemes, scripts, workflows, and English localization keys. Describe migration or release impact where relevant.
 
-Release notes are curated in [GitHub Releases](https://github.com/leits/MeetingBar/releases) at publication; no per-PR changelog edits are required.
+Release notes are curated in [GitHub Releases](https://github.com/allison-fang/Soon/releases) at publication; no per-PR changelog edits are required.

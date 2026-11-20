@@ -1,4 +1,4 @@
-# MeetingBar Architecture
+# Soon Architecture
 
 This document is the contributor-facing map of the codebase. It is the canonical reference for app structure, dependency ownership, and release-sensitive configuration.
 
@@ -7,9 +7,9 @@ If anything below disagrees with the actual code, the code wins — and the doc 
 
 ---
 
-## What MeetingBar is, in one paragraph
+## What Soon is, in one paragraph
 
-MeetingBar is a macOS menu-bar app that reads calendars (Apple Calendar via EventKit, Google Calendar via OAuth2), shows the next event in the system status bar, opens the right meeting URL when you click "Join", and fires notifications around event start/end. It is `NSApplicationDelegate`-based (AppKit) with SwiftUI used for Preferences/Onboarding/Fullscreen views. macOS 12+ minimum, Swift 6.
+Soon is a redesigned fork of [MeetingBar](https://github.com/leits/MeetingBar); the code, targets and types still use the MeetingBar name. It is a macOS menu-bar app that reads calendars (Apple Calendar via EventKit, Google Calendar via OAuth2), shows the next event in the system status bar, opens the right meeting URL when you click "Join", and fires notifications around event start/end. It is `NSApplicationDelegate`-based (AppKit) with SwiftUI used for Preferences/Onboarding/Fullscreen views. macOS 12+ minimum, Swift 6.
 
 The product principle is reliability first: **show the correct meeting, stay fresh, stay visible, open the right link**. New settings are a last resort — improve the default behavior instead.
 
@@ -509,8 +509,7 @@ Then manually smoke-test first launch/onboarding for EventKit and Google Calenda
 
 - Project overview and installation: [`README.md`](../README.md)
 - Contributor workflow: [`CONTRIBUTING.md`](../CONTRIBUTING.md)
-- Published release notes and change history: [GitHub Releases](https://github.com/leits/MeetingBar/releases)
-- Security and contact: [`SECURITY.md`](../SECURITY.md), [`CONTACT.md`](../CONTACT.md)
+- Published release notes and change history: [GitHub Releases](https://github.com/allison-fang/Soon/releases)
 - Localization: `MeetingBar/Resources /Localization /` (note the spaces in the path — historical)
 - Meeting service URL patterns: [`MeetingBar/Meetings/MeetingServices.swift`](../MeetingBar/Meetings/MeetingServices.swift)
 - All persistent settings keys: [`MeetingBar/Extensions/DefaultsKeys.swift`](../MeetingBar/Extensions/DefaultsKeys.swift)

@@ -183,7 +183,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1630;
-				ORGANIZATIONNAME = "Andrii Leitsius";
+				ORGANIZATIONNAME = "Allison Fang";
 				TargetAttributes = {
 					144C01782462D0C3000C9FFC = {
 						CreatedOnToolsVersion = 11.4.1;
