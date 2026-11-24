@@ -55,7 +55,7 @@ for key in GOOGLE_CLIENT_NUMBER GOOGLE_CLIENT_SECRET GOOGLE_AUTH_KEYCHAIN_NAME; 
     [[ -n "$value" && "$value" != REPLACE_BY_YOUR_* ]] || fail "$key isn't set; add it to XCConfig/DevTeamOverride.xcconfig"
 done
 
-echo "Building Soon $VERSION…"
+echo "Building Soon ${VERSION}…"
 rm -rf "$BUILD_DIR" "$DIST"
 mkdir -p "$DIST"
 xcodebuild -project MeetingBar.xcodeproj -scheme MeetingBar -configuration Release \
@@ -79,6 +79,6 @@ codesign --verify --deep --strict -R "=certificate leaf = H\"$CERT_SHA1\"" "$APP
 
 ditto -c -k --keepParent "$APP" "$ZIP"
 
-echo "Publishing $TAG…"
+echo "Publishing ${TAG}…"
 gh release create "$TAG" "$ZIP" --repo "$REPO" --target "$(git rev-parse HEAD)" \
     --title "Soon $VERSION" --notes-file "$NOTES"
