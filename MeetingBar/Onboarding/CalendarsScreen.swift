@@ -65,6 +65,9 @@ private struct CalendarSelectionContent: View {
         // Same grouped-form presentation as Preferences → Calendars, so the
         // selection list looks identical in both places.
         PreferencesGroupedForm {
+            if appModel.state.activeProvider == .googleCalendar {
+                GoogleAccountsSection()
+            }
             if appModel.state.calendars.isEmpty {
                 Section {
                     emptyState
@@ -89,7 +92,7 @@ private struct CalendarSelectionContent: View {
             HStack {
                 if presentation.canReconnect {
                     Button("preferences_status_reconnect".loco()) {
-                        appModel.send(.changeProvider(presentation.activeProvider, signOut: true))
+                        appModel.send(.reconnectProvider)
                     }
                 }
                 if presentation.canOpenCalendarSettings {

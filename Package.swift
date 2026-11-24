@@ -35,6 +35,7 @@ let package = Package(
                 "Calendar/Providers/Google/GoogleCalendarPolicy.swift",
                 "Calendar/Providers/Google/GoogleCalendarPagination.swift",
                 "Calendar/Providers/Google/GoogleCalendarHTTPClient.swift",
+                "Calendar/Providers/Google/GoogleAccountPolicy.swift",
                 // Meetings
                 "Meetings/MeetingLinkDetector.swift",
                 "Meetings/MeetingProvider.swift",

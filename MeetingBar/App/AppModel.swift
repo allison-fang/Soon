@@ -44,6 +44,10 @@ struct AppState: Equatable {
     var activeProvider: EventStoreProvider = .macOSEventKit
     var providerChangeInProgress = false
     var providerHealth = ProviderHealth()
+    /// An account add or reconnect is waiting for the user to finish signing in.
+    var accountAuthorizationInProgress = false
+    /// Why the latest account add or reconnect failed, until the next attempt.
+    var accountActionError: String?
 
     // MARK: System
 
@@ -114,6 +118,14 @@ enum AppAction {
     // Provider
     /// Switch the active calendar provider.  `signOut = true` drops the current OAuth session first.
     case changeProvider(EventStoreProvider, signOut: Bool)
+    /// Reconnect whatever the active provider needs: for Google, the account
+    /// that lost access (or a first account when none is connected).
+    case reconnectProvider
+
+    // Accounts (Google)
+    case addCalendarAccount
+    case reconnectCalendarAccount(String)
+    case removeCalendarAccount(String)
 
     // Notification responses
     case notificationResponse(NotificationResponseAction)
@@ -162,6 +174,15 @@ struct AppEnvironment {
 
     /// Switch the active calendar provider. `signOut = true` drops the current session first.
     var changeProvider: @MainActor (EventStoreProvider, Bool) async -> ProviderSelectionResult
+
+    /// Connect another account to the active provider.
+    var addCalendarAccount: @MainActor () async -> ProviderSelectionResult
+
+    /// Sign one account in again.
+    var reconnectCalendarAccount: @MainActor (String) async -> ProviderSelectionResult
+
+    /// Disconnect one account and drop its calendars.
+    var removeCalendarAccount: @MainActor (String) async -> Void
 
     /// Synchronous snapshot after provider changes. CalendarSync updates its
     /// calendars before returning success, while its publisher is delivered to
@@ -244,6 +265,15 @@ struct AppEnvironment {
             changeProvider: { newProvider, signOut in
                 await calendarSync.changeEventStoreProvider(newProvider, withSignOut: signOut)
             },
+            addCalendarAccount: {
+                await calendarSync.addAccount()
+            },
+            reconnectCalendarAccount: { id in
+                await calendarSync.reconnectAccount(id)
+            },
+            removeCalendarAccount: { id in
+                await calendarSync.removeAccount(id)
+            },
             currentCalendarSnapshot: {
                 (calendarSync.calendars, calendarSync.repository.activeProviderName)
             },
@@ -304,6 +334,9 @@ final class AppModel: ObservableObject {
     private var refreshTask: Task<Void, Never>?
     private var providerChangeTask: Task<Void, Never>?
     private var providerChangeGeneration = 0
+    private var accountAuthorizationTask: Task<Void, Never>?
+    private var accountAuthorizationGeneration = 0
+    private var accountRemovalTasks: [String: Task<Void, Never>] = [:]
     private var onboardingTask: Task<Void, Never>?
     private var notificationReconcileTask: Task<Void, Never>?
     private var snoozeTasks: [String: Task<Void, Never>] = [:]
@@ -373,6 +406,9 @@ final class AppModel: ObservableObject {
              .selectCalendar, .changeProvider, .settingsChanged,
              .toggleMeetingTitleVisibility:
             handleCalendarAction(action)
+        case .reconnectProvider, .addCalendarAccount, .reconnectCalendarAccount,
+             .removeCalendarAccount:
+            handleAccountAction(action)
         case .notificationResponse, .joinMeeting, .joinNearestMeeting, .dismissMeeting,
              .dismissNearestMeeting, .undismissMeeting, .clearDismissedMeetings,
              .snoozeMeeting:
@@ -527,6 +563,58 @@ final class AppModel: ObservableObject {
         }
     }
 
+    private func handleAccountAction(_ action: AppAction) {
+        switch action {
+        case .reconnectProvider:
+            guard state.activeProvider == .googleCalendar else {
+                send(.changeProvider(state.activeProvider, signOut: true))
+                return
+            }
+            let accounts = state.providerHealth.accounts
+            if let account = state.providerHealth.firstAccountNeedingReconnect ?? accounts.first {
+                send(.reconnectCalendarAccount(account.id))
+            } else {
+                send(.addCalendarAccount)
+            }
+        case .addCalendarAccount:
+            authorizeAccount { await $0.addCalendarAccount() }
+        case .reconnectCalendarAccount(let id):
+            authorizeAccount { await $0.reconnectCalendarAccount(id) }
+        case .removeCalendarAccount(let id):
+            guard accountRemovalTasks[id] == nil else { return }
+            accountRemovalTasks[id] = Task { [weak self] in
+                await self?.environment.removeCalendarAccount(id)
+                self?.accountRemovalTasks[id] = nil
+            }
+        default:
+            break
+        }
+    }
+
+    /// One sign-in at a time: a newer add or reconnect supersedes an older one
+    /// whose browser tab may have been abandoned.
+    private func authorizeAccount(
+        _ operation: @escaping @MainActor (AppEnvironment) async -> ProviderSelectionResult
+    ) {
+        accountAuthorizationTask?.cancel()
+        accountAuthorizationGeneration += 1
+        let generation = accountAuthorizationGeneration
+        state.accountAuthorizationInProgress = true
+        state.accountActionError = nil
+        accountAuthorizationTask = Task { [weak self] in
+            guard let self else { return }
+            let result = await operation(environment)
+            guard generation == accountAuthorizationGeneration else { return }
+            state.accountAuthorizationInProgress = false
+            switch result {
+            case .authRequired(let message), .failed(let message):
+                state.accountActionError = message
+            case .success, .cancelled:
+                break
+            }
+        }
+    }
+
     private func handleMeetingAction(_ action: AppAction) {
         switch action {
         case .notificationResponse(let response):
@@ -671,6 +759,12 @@ final class AppModel: ObservableObject {
         providerChangeTask = nil
         providerChangeGeneration += 1
         state.providerChangeInProgress = false
+        accountAuthorizationTask?.cancel()
+        accountAuthorizationTask = nil
+        accountAuthorizationGeneration += 1
+        state.accountAuthorizationInProgress = false
+        accountRemovalTasks.values.forEach { $0.cancel() }
+        accountRemovalTasks.removeAll()
         onboardingTask?.cancel()
         onboardingTask = nil
         notificationReconcileTask?.cancel()

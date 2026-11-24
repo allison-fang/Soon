@@ -40,7 +40,7 @@ struct CalendarSourcePresentation: Equatable, Identifiable {
                 titleKey: "onboarding_google_calendar_title",
                 descriptionKey: "onboarding_google_calendar_description",
                 dataSourceKey: "access_screen_provider_gcalendar_data_source",
-                accountScopeKey: "access_screen_provider_gcalendar_number_of_accounts",
+                accountScopeKey: "access_screen_provider_gcalendar_accounts",
                 authorizationDescriptionKey: "onboarding_authorization_google_description",
                 systemImage: "globe"
             )
@@ -265,6 +265,50 @@ enum ProviderPickerSelectionPolicy {
         providerChangeInProgress: Bool
     ) -> Bool {
         selectedProvider != activeProvider && !providerChangeInProgress
+    }
+}
+
+struct CalendarAccountRowPresentation: Equatable, Identifiable {
+    let id: String
+    let email: String?
+    let statusTextKey: String
+    let statusTone: PreferencesStatusTone
+    let canReconnect: Bool
+
+    /// Google accounts in name order, each with how its latest refresh went.
+    static func rows(for accounts: [ProviderAccountHealth]) -> [CalendarAccountRowPresentation] {
+        accounts
+            .map { account in
+                switch account.status {
+                case .connected:
+                    CalendarAccountRowPresentation(
+                        id: account.id,
+                        email: account.email,
+                        statusTextKey: "preferences_calendars_google_account_connected",
+                        statusTone: .success,
+                        canReconnect: false
+                    )
+                case .authRequired:
+                    CalendarAccountRowPresentation(
+                        id: account.id,
+                        email: account.email,
+                        statusTextKey: "preferences_calendars_google_account_reconnect_required",
+                        statusTone: .error,
+                        canReconnect: true
+                    )
+                case .failed:
+                    CalendarAccountRowPresentation(
+                        id: account.id,
+                        email: account.email,
+                        statusTextKey: "preferences_calendars_google_account_refresh_failed",
+                        statusTone: .warning,
+                        canReconnect: false
+                    )
+                }
+            }
+            .sorted {
+                ($0.email ?? $0.id).localizedStandardCompare($1.email ?? $1.id) == .orderedAscending
+            }
     }
 }
 

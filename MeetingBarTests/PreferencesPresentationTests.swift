@@ -33,8 +33,25 @@ final class PreferencesPresentationTests: XCTestCase {
         )
         XCTAssertEqual(
             googleSource.accountScopeKey,
-            "access_screen_provider_gcalendar_number_of_accounts"
+            "access_screen_provider_gcalendar_accounts"
         )
+    }
+
+    func testGoogleAccountRowsShowEachAccountsStatusInNameOrder() {
+        let rows = CalendarAccountRowPresentation.rows(for: [
+            ProviderAccountHealth(id: "work@example.com", email: "work@example.com", status: .authRequired),
+            ProviderAccountHealth(id: "me@example.com", email: "me@example.com", status: .connected),
+            ProviderAccountHealth(id: "school@example.com", email: "school@example.com", status: .failed("Offline"))
+        ])
+
+        XCTAssertEqual(rows.map(\.id), ["me@example.com", "school@example.com", "work@example.com"])
+        XCTAssertEqual(rows.map(\.statusTextKey), [
+            "preferences_calendars_google_account_connected",
+            "preferences_calendars_google_account_refresh_failed",
+            "preferences_calendars_google_account_reconnect_required"
+        ])
+        XCTAssertEqual(rows.map(\.statusTone), [.success, .warning, .error])
+        XCTAssertEqual(rows.map(\.canReconnect), [false, false, true])
     }
 
     func testPreferencesTabsExposeCoreProductConceptsInOrder() {
@@ -138,7 +155,7 @@ final class PreferencesPresentationTests: XCTestCase {
         )
         XCTAssertEqual(
             presentation.providerAccountScopeKey,
-            "access_screen_provider_gcalendar_number_of_accounts"
+            "access_screen_provider_gcalendar_accounts"
         )
         XCTAssertEqual(presentation.selectedCalendarCount, 1)
         XCTAssertEqual(presentation.availableCalendarCount, 2)

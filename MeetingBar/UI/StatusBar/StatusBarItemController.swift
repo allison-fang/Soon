@@ -408,7 +408,10 @@ final class StatusBarItemController {
         switch action {
         case .reconnect:
             popover.close()
-            dependencies.send(.changeProvider(dependencies.appState().activeProvider, signOut: true))
+            dependencies.send(.reconnectProvider)
+        case .reconnectAccount(let id):
+            popover.close()
+            dependencies.send(.reconnectCalendarAccount(id))
         case .grantPermission:
             popover.close()
             NSWorkspace.shared.open(Links.calendarPreferences)

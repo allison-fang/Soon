@@ -71,6 +71,7 @@ public class CalendarSync: ObservableObject {
         self.refreshInterval = refreshInterval
         AppSettings.migrateSelectedCalendarsByProviderIfNeeded()
         repository = CalendarRepository(providerName: Defaults[.eventStoreProvider])
+        providerHealth = ProviderHealth(accounts: repository.accounts)
         await configureProvider(Defaults[.eventStoreProvider])
         setupPublishers()
         refreshSubject.send() // initial load
@@ -94,7 +95,7 @@ public class CalendarSync: ObservableObject {
             providerGeneration += 1
             calendars = newCalendars
             events = []
-            providerHealth = ProviderHealth()
+            providerHealth = ProviderHealth(accounts: repository.accounts)
             subscribeToRepositoryStoreChanges()
             refreshSubject.send()
             return .success
@@ -112,9 +113,64 @@ public class CalendarSync: ObservableObject {
                 previous: providerHealth,
                 attempted: attempted,
                 error: error
+            ).applyingAccounts(repository.accounts)
+            return providerSelectionResult(for: error)
+        }
+    }
+
+    // MARK: - Accounts
+
+    /// Connects another account to the active provider (Google).
+    public func addAccount() async -> ProviderSelectionResult {
+        await authorizeAccount { [repository] in try await repository.addAccount() }
+    }
+
+    /// Signs one account in again without touching the others.
+    public func reconnectAccount(_ id: String) async -> ProviderSelectionResult {
+        await authorizeAccount { [repository] in try await repository.reconnectAccount(id) }
+    }
+
+    /// Disconnects one account. Its meetings leave the menu bar at once; the
+    /// other accounts keep working.
+    public func removeAccount(_ id: String) async {
+        guard let removal = repository.removeAccount(id) else { return }
+        AppSettings.deselectCalendars(removal.orphanedCalendarIDs)
+        calendars.removeAll { removal.calendarIDs.contains($0.id) }
+        events.removeAll { removal.calendarIDs.contains($0.calendar.id) }
+        restartRefreshAfterAccountChange()
+        await removal.revokeAccess()
+    }
+
+    private func authorizeAccount(
+        _ authorize: @MainActor () async throws -> Void
+    ) async -> ProviderSelectionResult {
+        // A provider switch while the browser is open supersedes this attempt.
+        let switchGeneration = providerSwitchGeneration
+        do {
+            try await authorize()
+            guard switchGeneration == providerSwitchGeneration else { return .cancelled }
+            restartRefreshAfterAccountChange()
+            return .success
+        } catch {
+            guard switchGeneration == providerSwitchGeneration else { return .cancelled }
+            if error is CancellationError { return .cancelled }
+            let errorDescription = String(describing: error)
+            MeetingBarLogger.calendar.error(
+                "Account authorization failed: \(errorDescription, privacy: .private)"
             )
             return providerSelectionResult(for: error)
         }
+    }
+
+    /// A refresh already running was started for the old set of accounts.
+    /// Publishing it would bring back a removed account's meetings or hide a
+    /// new account's calendars, so it is discarded and a new one started.
+    private func restartRefreshAfterAccountChange() {
+        refreshCycleTask?.cancel()
+        refreshCycleTask = nil
+        providerGeneration += 1
+        providerHealth.accounts = repository.accounts
+        refreshSubject.send()
     }
 
     private func providerSelectionResult(for error: Error) -> ProviderSelectionResult {
@@ -306,6 +362,7 @@ public class CalendarSync: ObservableObject {
                                     try await self.fetchEvents(fromCalendars: cals)
                                 }
                                 let health = ProviderHealth.success(attempted: attempted)
+                                    .applyingAccounts(self.repository.accounts)
                                 promise(.success(RefreshResult(
                                     calendars: cals,
                                     events: evts,
@@ -321,7 +378,7 @@ public class CalendarSync: ObservableObject {
                                     previous: previousHealth,
                                     attempted: attempted,
                                     error: error
-                                )
+                                ).applyingAccounts(self.repository.accounts)
                                 // Keep the last good meetings on a missing
                                 // EventKit selection, but expose the latest
                                 // calendar inventory so Preferences can remove

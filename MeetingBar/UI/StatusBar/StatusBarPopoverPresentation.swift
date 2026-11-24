@@ -77,6 +77,7 @@ struct TimelineDayPresentation: Identifiable, Equatable {
 
 enum StatusBarNoticeAction: Equatable {
     case reconnect
+    case reconnectAccount(String)
     case grantPermission
     case refresh
     case openPreferences
@@ -190,6 +191,14 @@ struct StatusBarPopoverPresenter {
                 title: "status_bar_control_auth_required".loco(),
                 actionTitle: "status_bar_control_reconnect".loco(),
                 action: .reconnect
+            )
+        case let .accountAuthRequired(accountID, email):
+            StatusBarNotice(
+                title: "status_bar_control_account_auth_required".loco(
+                    email ?? "google_calendar_account_fallback".loco()
+                ),
+                actionTitle: "preferences_status_reconnect".loco(),
+                action: .reconnectAccount(accountID)
             )
         case .permissionRequired:
             StatusBarNotice(

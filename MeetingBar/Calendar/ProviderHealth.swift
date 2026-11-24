@@ -7,6 +7,25 @@
 //
 import Foundation
 
+/// One connected account of a provider that can hold several (Google).
+public struct ProviderAccountHealth: Equatable, Identifiable, Sendable {
+    public enum Status: Equatable, Sendable {
+        case connected
+        case authRequired
+        case failed(String)
+    }
+
+    public let id: String
+    public let email: String?
+    public var status: Status
+
+    public init(id: String, email: String?, status: Status) {
+        self.id = id
+        self.email = email
+        self.status = status
+    }
+}
+
 public struct ProviderHealth: Equatable {
     public var lastSuccessfulRefresh: Date?
     public var lastAttemptedRefresh: Date?
@@ -16,6 +35,9 @@ public struct ProviderHealth: Equatable {
     public var authRequired: Bool
     /// The active calendar provider lacks permission to read events.
     public var calendarPermissionRequired: Bool
+    /// Connected accounts and how each fared in the latest refresh. Empty for
+    /// providers without separate accounts.
+    public var accounts: [ProviderAccountHealth]
 
     public init(
         lastSuccessfulRefresh: Date? = nil,
@@ -23,7 +45,8 @@ public struct ProviderHealth: Equatable {
         lastErrorDescription: String? = nil,
         isStale: Bool = false,
         authRequired: Bool = false,
-        calendarPermissionRequired: Bool = false
+        calendarPermissionRequired: Bool = false,
+        accounts: [ProviderAccountHealth] = []
     ) {
         self.lastSuccessfulRefresh = lastSuccessfulRefresh
         self.lastAttemptedRefresh = lastAttemptedRefresh
@@ -31,6 +54,11 @@ public struct ProviderHealth: Equatable {
         self.isStale = isStale
         self.authRequired = authRequired
         self.calendarPermissionRequired = calendarPermissionRequired
+        self.accounts = accounts
+    }
+
+    public var firstAccountNeedingReconnect: ProviderAccountHealth? {
+        accounts.first { $0.status == .authRequired }
     }
 }
 
@@ -58,6 +86,27 @@ extension ProviderHealth {
             authRequired: Self.isAuthRequired(error),
             calendarPermissionRequired: Self.isCalendarPermissionRequired(error)
         )
+    }
+
+    /// A refresh can succeed overall while one account is left behind,
+    /// showing its last known data. That is stale, not up to date.
+    func applyingAccounts(_ accounts: [ProviderAccountHealth]) -> ProviderHealth {
+        var health = self
+        health.accounts = accounts
+        guard !health.isStale,
+              let failing = accounts.first(where: { $0.status != .connected }) else {
+            return health
+        }
+        health.isStale = true
+        switch failing.status {
+        case .authRequired:
+            health.lastErrorDescription = AuthError.notSignedIn.localizedDescription
+        case .failed(let description):
+            health.lastErrorDescription = description
+        case .connected:
+            break
+        }
+        return health
     }
 
     private static func errorDescription(_ error: Error) -> String {

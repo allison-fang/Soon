@@ -90,12 +90,11 @@ final class GoogleAuthorizationFlowSlot {
 }
 
 // MARK: - GCEventStore
+/// Google Calendar as one provider over every connected Google account.
 @MainActor
 final class GCEventStore: NSObject,
-                           AuthenticatedEventStore,
-                           @preconcurrency OIDExternalUserAgent,
-                          @preconcurrency OIDAuthStateChangeDelegate,
-                          @preconcurrency OIDAuthStateErrorDelegate {
+                           MultiAccountEventStore,
+                           @preconcurrency OIDExternalUserAgent {
 
     // MARK: Static constants
     private static let kIssuer       = "https://accounts.google.com"
@@ -103,49 +102,23 @@ final class GCEventStore: NSObject,
     // iOS-type OAuth clients are public and have no secret; Validate xcconfig rejects blanks, so NONE means none
     private static let kClientSecret: String? = ["", "NONE"].contains(googleClientSecret) ? nil : googleClientSecret
     private static let kRedirectURI  = "com.googleusercontent.apps.\(googleClientNumber):/oauthredirect"
-    private static let kKeychainName = googleAuthKeychainName
+    #if DEBUG
+        // The Debug build must never read, move or delete the installed
+        // release app's saved Google logins.
+        private static let kKeychainName = googleAuthKeychainName + ".debug"
+    #else
+        private static let kKeychainName = googleAuthKeychainName
+    #endif
 
     // MARK: Stored properties
     @MainActor var currentAuthorizationFlow: OIDExternalUserAgentSession? {
         authorizationFlow.session
     }
     private let authorizationFlow = GoogleAuthorizationFlowSlot()
-    private(set) var userEmail: String?
-
-    private var authState: OIDAuthState? {
-        didSet {
-            // ensure delegates always set
-            authState?.stateChangeDelegate = self
-            authState?.errorDelegate       = self
-            persistAuthState()
-        }
-    }
-
-    /// The refresh currently occupying the slot, and what it is refreshing.
-    ///
-    /// Two things have to be distinguished, and neither implies the other.
-    /// `state` identity says *which account*: re-authorization installs a new
-    /// `OIDAuthState`, and a refresh started for the previous one can only ever
-    /// return the previous account's token. `generation` says *which attempt*:
-    /// a forced refresh takes the slot from an ordinary refresh of the same
-    /// state, and the superseded task must not then clear or discard on behalf
-    /// of its replacement.
-    private struct PendingRefresh {
-        let task: Task<String, Error>
-        let state: OIDAuthState
-        let generation: Int
-    }
-
-    private var pendingRefresh: PendingRefresh?
-    private var refreshGeneration = 0
-    /// Upper bound on one AppAuth token refresh.
-    ///
-    /// AppAuth issues token requests on `OIDURLSessionProvider.session`, which
-    /// defaults to `URLSession.shared` — *not* the hardened session below, so
-    /// none of its configuration applies to the refresh path. `URLSession`'s
-    /// own 60s default request timeout still bounds that call, so this deadline
-    /// sits beyond it and fires only when the callback never arrives at all.
-    private static let tokenRefreshTimeout: TimeInterval = 90
+    private let credentials: GoogleCredentialStore
+    private let accountsReader = GoogleCalendarAccountsReader()
+    /// One per connected account, ordered by email.
+    private var sessions: [GoogleAccountSession] = []
 
     // Shared URLSession to leverage connection reuse
     private static let session: URLSession = {
@@ -163,44 +136,113 @@ final class GCEventStore: NSObject,
         cfg.timeoutIntervalForResource    = 90
         return URLSession(configuration: cfg)
     }()
-    private var urlSession: URLSession { Self.session }
 
     // Singleton
     static let shared = GCEventStore()
     private override init() {
+        credentials = GoogleKeychainCredentialStore(legacyService: Self.kKeychainName)
         super.init()
-        self.authState = restoreAuthState()
-        // delegates were set in didSet, but set them again just in case restore returned nil
-        self.authState?.stateChangeDelegate = self
-        self.authState?.errorDelegate       = self
+        GoogleLegacyCredentialMigration.migrate(store: credentials) { data in
+            guard let state = Self.unarchive(data) else { return nil }
+            return state.userEmail.map(GoogleAccountKey.make(email:)) ?? GoogleAccountKey.placeholder()
+        }
+        sessions = credentials.accountKeys().map { key in
+            // An unreadable login stays listed as needing reconnect, so the
+            // user can still see and remove it.
+            makeSession(key: key, state: credentials.load(account: key).flatMap(Self.unarchive))
+        }
+        sortSessions()
+        accountsReader.onEmailDiscovered = { [weak self] key, email in
+            self?.adoptEmail(email, forAccount: key)
+        }
     }
 
     // MARK: Public API
 
-    var isAuthorized: Bool { authState?.isAuthorized == true }
+    var isAuthorized: Bool { sessions.contains { $0.isAuthorized } }
 
+    var accounts: [ProviderAccountHealth] {
+        sessions.map { session in
+            let status: ProviderAccountHealth.Status = session.hasReusableSession
+                ? accountsReader.statuses[session.key] ?? .connected
+                : .authRequired
+            return ProviderAccountHealth(id: session.key, email: session.email, status: status)
+        }
+    }
+
+    /// Selecting Google as the source: connects a first account, or keeps the
+    /// existing ones when any of them can still refresh on its own.
     func signIn(forcePrompt: Bool = false) async throws {
-        if Self.shouldSkipSignIn(forcePrompt: forcePrompt, state: authState) {
+        if sessions.contains(where: { Self.shouldSkipSignIn(forcePrompt: forcePrompt, state: $0.authState) }) {
             return
         }
+        try await authorize(prompt: forcePrompt ? "consent" : "select_account", loginHint: nil, replacing: nil)
+    }
 
-        try await performAuthorization(forcePrompt: forcePrompt)
+    func addAccount() async throws {
+        // Google's account chooser, so a second account can be picked even
+        // while the browser is signed in to the first one.
+        try await authorize(prompt: "select_account", loginHint: nil, replacing: nil)
+    }
+
+    func reconnectAccount(_ id: String) async throws {
+        let email = sessions.first { $0.key == id }?.email
+        try await authorize(prompt: email == nil ? "select_account" : nil, loginHint: email, replacing: id)
+    }
+
+    func removeAccount(_ id: String) -> CalendarAccountRemoval {
+        guard let session = sessions.first(where: { $0.key == id }) else {
+            return CalendarAccountRemoval(calendarIDs: [], orphanedCalendarIDs: [], revokeAccess: {})
+        }
+        let tokens = session.tokens
+        // Clear the local login before any network suspension. Revocation can
+        // take arbitrarily long; a newer sign-in to the same account may finish
+        // meanwhile, and a late removal must never clear it.
+        session.retire()
+        sessions.removeAll { $0 === session }
+        credentials.delete(account: id)
+        let forgotten = accountsReader.forget(id)
+        return CalendarAccountRemoval(
+            calendarIDs: forgotten.calendarIDs,
+            orphanedCalendarIDs: forgotten.orphanedCalendarIDs,
+            revokeAccess: {
+                await Self.revokeTokensAfterClearingSession(
+                    accessToken: tokens.access,
+                    refreshToken: tokens.refresh,
+                    clearSession: {},
+                    revoke: { token in try? await Self.revoke(token: token) }
+                )
+            }
+        )
+    }
+
+    /// Disconnects every account.
+    func signOut() async {
+        cancelPendingOperations()
+        let removals = sessions.map { removeAccount($0.key) }
+        for removal in removals {
+            await removal.revokeAccess()
+        }
+    }
+
+    private func authorize(prompt: String?, loginHint: String?, replacing replacedKey: String?) async throws {
+        var state = try await performAuthorization(prompt: prompt, loginHint: loginHint)
 
         // Google only issues a refresh token when the user actually walks
         // through the consent screen. An account that still holds a grant from
         // a previous install authorizes silently and returns none, which leaves
-        // `hasReusableSession` false forever: no unattended refresh can run, and
-        // because the provider switch fails before the active provider is set,
-        // Preferences hides the Reconnect button that would otherwise recover.
+        // `hasReusableSession` false forever: no unattended refresh can run.
         // Re-run the flow once demanding consent so the refresh token comes back.
-        guard !forcePrompt, authState?.refreshToken == nil else { return }
-        MeetingBarLogger.calendar.warning(
-            "Google authorization returned no refresh token; retrying with forced consent"
-        )
-        try await performAuthorization(forcePrompt: true)
+        if state.refreshToken == nil {
+            MeetingBarLogger.calendar.warning(
+                "Google authorization returned no refresh token; retrying with forced consent"
+            )
+            state = try await performAuthorization(prompt: "consent", loginHint: state.userEmail ?? loginHint)
+        }
+        install(state, replacing: replacedKey)
     }
 
-    private func performAuthorization(forcePrompt: Bool) async throws {
+    private func performAuthorization(prompt: String?, loginHint: String?) async throws -> OIDAuthState {
         // Placeholder GOOGLE_CLIENT_NUMBER (local builds) yields an invalid redirect URL
         guard let redirectURL = URL(string: Self.kRedirectURI) else {
             MeetingBarLogger.calendar.error("Google OAuth client is not configured in this build")
@@ -237,9 +279,8 @@ final class GCEventStore: NSObject,
         var extra = [
             "access_type": "offline"
         ]
-        if forcePrompt {
-            extra["prompt"] = "consent"
-        }
+        extra["prompt"] = prompt
+        extra["login_hint"] = loginHint
 
         let request = OIDAuthorizationRequest(
             configuration: config,
@@ -251,6 +292,7 @@ final class GCEventStore: NSObject,
             additionalParameters: extra
         )
 
+        var authorized: OIDAuthState?
         try await withCheckedThrowingContinuation { (cont: CheckedContinuation<Void, Error>) in
             authorizationFlow.register(generation) { result in
                 cont.resume(with: result)
@@ -266,11 +308,7 @@ final class GCEventStore: NSObject,
                         state: state,
                         error: error
                     ) { accepted in
-                        self.authState = accepted // persistence and delegates
-                        self.userEmail = accepted.userEmail
-                        AppMessageCenter.shared.post(
-                            .googleAccountConnected(email: self.userEmail ?? "")
-                        )
+                        authorized = accepted
                     }
                     self.authorizationFlow.finish(generation, result: .success(()))
                 } catch {
@@ -279,6 +317,8 @@ final class GCEventStore: NSObject,
             }
             authorizationFlow.setSession(session, for: generation)
         }
+        guard let authorized else { throw AuthError.cancelled }
+        return authorized
     }
 
     /// The AppAuth callback must not install a session belonging to a
@@ -313,20 +353,6 @@ final class GCEventStore: NSObject,
         return error
     }
 
-    func signOut() async {
-        cancelPendingOperations()
-        guard let state = authState else { return }
-
-        let access = state.lastTokenResponse?.accessToken
-        let refresh = state.refreshToken
-        await Self.revokeTokensAfterClearingSession(
-            accessToken: access,
-            refreshToken: refresh,
-            clearSession: { [self] in clearAuthState() },
-            revoke: { [self] token in try? await revoke(token: token) }
-        )
-    }
-
     /// Clear the *old* local session before any network suspension. Revocation
     /// can take arbitrarily long; a newer provider selection may sign in while
     /// the old token request is still pending. A late sign-out must never clear
@@ -346,15 +372,14 @@ final class GCEventStore: NSObject,
 
     func cancelPendingOperations() {
         authorizationFlow.cancel()
-        pendingRefresh?.task.cancel()
-        pendingRefresh = nil
+        sessions.forEach { $0.cancelPendingRefresh() }
     }
 
     func refreshSources() async {}
 
     func fetchAllCalendars() async throws -> [MBCalendar] {
-        try requireReusableSession()
-        return try await makeDataReader().fetchCalendars()
+        try requireAccount()
+        return try await accountsReader.fetchCalendars(from: readerAccounts())
     }
 
     static func eventsURL(calendarID: String, timeMin: String, timeMax: String) throws -> URL {
@@ -385,31 +410,37 @@ final class GCEventStore: NSObject,
         from: Date,
         to: Date
     ) async throws -> [MBEvent] {
-        try requireReusableSession()
-        return try await makeDataReader().fetchEvents(for: calendars, from: from, to: to)
-    }
-
-    private func makeDataReader() -> GoogleCalendarDataReader {
-        GoogleCalendarDataReader(userEmail: userEmail) { [self] url, calendarID in
-            try await fetchJSON(url, calendarID: calendarID)
-        }
+        try requireAccount()
+        return try await accountsReader.fetchEvents(from: readerAccounts(), for: calendars, from: from, to: to)
     }
 
     // MARK: - Private helpers
 
-    /// Gate for fetches, which always originate from an unattended refresh
-    /// cycle (timer, wake, day change) rather than from a user gesture.
-    ///
-    /// This deliberately never starts an interactive sign-in. Doing so from a
-    /// background refresh opened a browser tab nobody was watching and then
-    /// awaited its callback forever, so the refresh never completed and every
-    /// later one queued behind it. Interactive authorization belongs to the
-    /// explicit `signIn(forcePrompt:)` entry point that provider selection and
-    /// the Reconnect button call; here we surface "reconnect required" and let
-    /// the user act on it.
-    private func requireReusableSession() throws {
-        guard Self.hasReusableSession(authState) else {
-            throw AuthError.notSignedIn
+    /// Fetches always originate from an unattended refresh cycle (timer, wake,
+    /// day change) rather than from a user gesture, so this deliberately never
+    /// starts an interactive sign-in. Doing so from a background refresh opened
+    /// a browser tab nobody was watching and then awaited its callback forever.
+    /// Interactive authorization belongs to the explicit sign-in, add and
+    /// reconnect entry points; here we surface "reconnect required".
+    private func requireAccount() throws {
+        guard !sessions.isEmpty else { throw AuthError.notSignedIn }
+    }
+
+    private func readerAccounts() -> [GoogleCalendarAccountsReader.Account] {
+        sessions.map { session in
+            GoogleCalendarAccountsReader.Account(
+                key: session.key,
+                email: session.email,
+                isUsable: session.hasReusableSession,
+                reader: GoogleCalendarDataReader(userEmail: session.email) { [weak session] url, calendarID in
+                    guard let session else { throw AuthError.notSignedIn }
+                    return try await Self.fetchJSON(url, calendarID: calendarID, session: session)
+                },
+                isCurrent: { [weak self, weak session] in
+                    guard let self, let session else { return false }
+                    return self.sessions.contains { $0 === session }
+                }
+            )
         }
     }
 
@@ -445,119 +476,93 @@ final class GCEventStore: NSObject,
         return accessToken
     }
 
-    private func validAccessToken(forceRefresh: Bool = false) async throws -> String {
-        guard let state = authState else { throw AuthError.notSignedIn }
+    // MARK: Accounts and saved logins
 
-        if !forceRefresh,
-           state.isTokenFresh,
-           let token = state.lastTokenResponse?.accessToken {
-            return token
-        }
-
-        // Join an in-flight refresh only when it is refreshing this very state.
-        // A forced refresh never joins: it exists because the token the pending
-        // refresh will return was already rejected. A refresh belonging to a
-        // superseded `OIDAuthState` never joins either, or re-authorizing to a
-        // different account would hand that account's caller the old one's token.
-        if !forceRefresh, let pending = pendingRefresh, pending.state === state {
-            return try await pending.task.value
-        }
-
-        refreshGeneration += 1
-        let generation = refreshGeneration
-        let task = Task<String, Error> {
-            defer { if pendingRefresh?.generation == generation { pendingRefresh = nil } }
-            return try await withCheckedThrowingContinuation { cont in
-                // `performAction` owns its URLSession task internally and offers
-                // no way to cancel it, and this is an unstructured Task, so
-                // cancelling whoever awaits it does not reach in here. A
-                // continuation that AppAuth never resumes would therefore
-                // outlive every timeout the refresh cycle can apply and strand
-                // the serialized pipeline — the exact failure this change set
-                // exists to remove. Settle the wait on our own deadline instead
-                // and let a late callback find the resume already claimed.
-                let resumeGuard = SingleResumeGuard()
-                let deadline = Task {
-                    try? await Task.sleep(
-                        nanoseconds: UInt64(Self.tokenRefreshTimeout * Double(NSEC_PER_SEC))
-                    )
-                    guard !Task.isCancelled, resumeGuard.claim() else { return }
-                    MeetingBarLogger.calendar.error(
-                        "Google token refresh did not return within \(Int(Self.tokenRefreshTimeout))s"
-                    )
-                    // Only the refresh that still owns the slot may do this. A
-                    // superseded ordinary refresh timing out after a forced one
-                    // took over would otherwise swap in a stale state while the
-                    // forced refresh is still driving the old object — and when
-                    // that object later succeeds, `didChange` persists whatever
-                    // `authState` now holds, so the fresh token is dropped from
-                    // memory and the keychain both.
-                    if self.pendingRefresh?.generation == generation, state === self.authState {
-                        self.discardStuckAuthState()
-                    }
-                    cont.resume(
-                        throwing: AuthError.temporarilyUnavailable(
-                            underlying: URLError(.timedOut)
-                        )
-                    )
-                }
-
-                if forceRefresh { state.setNeedsTokenRefresh() }
-
-                state.performAction { accessToken, _, error in
-                    guard resumeGuard.claim() else { return }
-                    deadline.cancel()
-                    // `error` must be inspected before `accessToken`. When the
-                    // token endpoint is unreachable, AppAuth reports the failure
-                    // as a transient error but still passes back the *previous*,
-                    // already-expired access token (OIDAuthState only nils it out
-                    // once the grant itself is rejected). Treating that as a
-                    // success sends a known-expired token to Google, which
-                    // answers 401 → forced refresh → 401 again → "sign the user
-                    // out", so a few seconds without network destroyed the
-                    // stored refresh token and forced a full re-consent.
-                    do {
-                        let token = try Self.resolveTokenRefresh(
-                            accessToken: accessToken,
-                            error: error
-                        )
-                        cont.resume(returning: token) // stateChangeDelegate persists new tokens
-                    } catch {
-                        cont.resume(throwing: error)
-                    }
-                }
+    private func makeSession(key: String, state: OIDAuthState?) -> GoogleAccountSession {
+        GoogleAccountSession(
+            key: key,
+            state: state,
+            persist: { [weak self] session in self?.save(session) },
+            restore: { [weak self] key in
+                self?.credentials.load(account: key).flatMap(Self.unarchive)
             }
-        }
-
-        pendingRefresh = PendingRefresh(task: task, state: state, generation: generation)
-        return try await task.value
+        )
     }
 
-    // MARK: Keychain persistence
+    private func install(_ state: OIDAuthState, replacing replacedKey: String?) {
+        let email = state.userEmail
+        let key = email.map(GoogleAccountKey.make(email:)) ?? replacedKey ?? GoogleAccountKey.placeholder()
+        // A login saved before its email was known is most likely the account
+        // being reconnected now, so it is replaced rather than kept twice.
+        let replacedPlaceholder = replacedKey.flatMap { GoogleAccountKey.isPlaceholder($0) ? $0 : nil }
+        // Signing in to an already connected account replaces its login. The
+        // old tokens are not revoked: Google can hand back the identical
+        // refresh token, and revoking it would end the new login too.
+        for old in sessions where old.key == key || old.key == replacedPlaceholder {
+            old.retire()
+            if old.key != key {
+                credentials.delete(account: old.key)
+                _ = accountsReader.forget(old.key)
+            }
+        }
+        sessions.removeAll { $0.key == key || $0.key == replacedPlaceholder }
 
-    private func persistAuthState() {
-        // Only save here. Deleting the persisted session is an explicit act
-        // (`clearAuthState`), never a side effect of dropping the in-memory
-        // state — `discardStuckAuthState` relies on being able to do the latter
-        // without the former.
-        guard let state = authState else { return }
+        let session = makeSession(key: key, state: state)
+        save(session)
+        sessions.append(session)
+        sortSessions()
+        accountsReader.resetStatus(key)
+        AppMessageCenter.shared.post(.googleAccountConnected(email: email ?? ""))
+    }
+
+    /// The login moved over from an earlier version may not say which account
+    /// it is. Its primary calendar does, so the login is re-saved under it.
+    private func adoptEmail(_ email: String, forAccount key: String) -> String? {
+        guard let session = sessions.first(where: { $0.key == key }) else { return nil }
+        let newKey = GoogleAccountKey.make(email: email)
+        if sessions.contains(where: { $0.key == newKey && $0 !== session }) {
+            // The same account is connected twice. Keep the login that knows
+            // its email; never revoke, since both share one Google grant.
+            session.retire()
+            sessions.removeAll { $0 === session }
+            credentials.delete(account: key)
+            return nil
+        }
+        guard let data = Self.archive(session.authState),
+              credentials.save(data, account: newKey) else { return key }
+        session.adoptEmail(email)
+        credentials.delete(account: key)
+        sortSessions()
+        return newKey
+    }
+
+    private func sortSessions() {
+        sessions.sort { lhs, rhs in
+            (lhs.email ?? lhs.key).localizedStandardCompare(rhs.email ?? rhs.key) == .orderedAscending
+        }
+    }
+
+    private func save(_ session: GoogleAccountSession) {
+        guard let data = Self.archive(session.authState) else { return }
+        credentials.save(data, account: session.key)
+    }
+
+    private static func archive(_ state: OIDAuthState?) -> Data? {
+        guard let state else { return nil }
         do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: state, requiringSecureCoding: true)
-            Keychain.save(data: data, for: Self.kKeychainName)
+            return try NSKeyedArchiver.archivedData(withRootObject: state, requiringSecureCoding: true)
         } catch {
             let errorDescription = String(describing: error)
             MeetingBarLogger.calendar.error(
                 "Could not archive Google auth state: \(errorDescription, privacy: .private)"
             )
+            return nil
         }
     }
 
-    private func restoreAuthState() -> OIDAuthState? {
-        guard let data = Keychain.load(for: Self.kKeychainName) else { return nil }
+    private static func unarchive(_ data: Data) -> OIDAuthState? {
         do {
-            guard let state = try NSKeyedUnarchiver.unarchivedObject(ofClass: OIDAuthState.self, from: data) else { return nil }
-            userEmail = state.userEmail
-            return state
+            return try NSKeyedUnarchiver.unarchivedObject(ofClass: OIDAuthState.self, from: data)
         } catch {
             let errorDescription = String(describing: error)
             MeetingBarLogger.calendar.error(
@@ -567,79 +572,31 @@ final class GCEventStore: NSObject,
         }
     }
 
-    /// Replaces the `OIDAuthState` whose token request never came back.
-    ///
-    /// AppAuth serializes refreshes through `_pendingActions`, which only that
-    /// request's own callback clears. A request that never completes therefore
-    /// parks every later refresh behind it for the lifetime of the state
-    /// object: each one enqueues, is never called back, and waits out its own
-    /// deadline. Timing out alone would only downgrade the failure from hanging
-    /// once to failing slowly forever. Rebuilding from the persisted session
-    /// leaves the stuck queue behind while keeping the user signed in.
-    private func discardStuckAuthState() {
-        // Retiring the stuck object must not depend on the restore succeeding.
-        // Keeping it installed because the keychain read failed would park every
-        // later refresh behind the same dead request — the failure this exists to
-        // end. With no state installed, `requireReusableSession` reports
-        // "reconnect required" and the next sign-in builds a clean one. The
-        // persisted session is deliberately left alone: only an explicit sign-out
-        // deletes it, so a transient restore failure cannot cost the user
-        // their grant.
-        let restored = restoreAuthState()
-        authState?.stateChangeDelegate = nil
-        authState?.errorDelegate = nil
-        authState = restored
-    }
-
-    private func clearAuthState() {
-        authState  = nil
-        userEmail  = nil
-        Keychain.delete(for: Self.kKeychainName)
-    }
-
     // MARK: Networking helper
-    private func fetchJSON(_ url: URL, calendarID: String? = nil) async throws -> [[String: Any]] {
-        let session = urlSession
+    private static func fetchJSON(
+        _ url: URL,
+        calendarID: String?,
+        session account: GoogleAccountSession
+    ) async throws -> [[String: Any]] {
+        let session = Self.session
         let client = GoogleCalendarHTTPClient(
             transport: { request in try await session.data(for: request) },
-            accessToken: { [self] forceRefresh in
-                try await validAccessToken(forceRefresh: forceRefresh)
+            accessToken: { forceRefresh in
+                try await account.validAccessToken(forceRefresh: forceRefresh)
             }
         )
         return try await client.fetchJSON(url, calendarID: calendarID)
     }
 
-    private func revoke(token: String) async throws {
+    private static func revoke(token: String) async throws {
         var req = URLRequest(url: URL(string: "https://oauth2.googleapis.com/revoke")!)
         req.httpMethod = "POST"
         req.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         req.httpBody = Data("token=\(token)".utf8)
 
-        let (_, resp) = try await urlSession.data(for: req)
+        let (_, resp) = try await session.data(for: req)
         guard let http = resp as? HTTPURLResponse, http.statusCode == 200 else {
             throw NSError(domain: "GoogleRevoke", code: (resp as? HTTPURLResponse)?.statusCode ?? -1)
-        }
-    }
-
-    // MARK: - OIDAuthState Delegates
-    func didChange(_ state: OIDAuthState) {
-        // An abandoned state can still complete its pending request. Persisting
-        // then would write out whatever `authState` currently holds, discarding
-        // the very token that just arrived, so only the installed state counts.
-        guard state === authState else { return }
-        // persist every change (e.g., refreshed token)
-        persistAuthState()
-    }
-
-    func authState(_ state: OIDAuthState, didEncounterAuthorizationError error: Error) {
-        // A failure reported by a state we have already replaced says nothing
-        // about the session in use, and signing the user out over it would end
-        // an account because a different one failed.
-        guard state === authState else { return }
-        let nsErr = error as NSError
-        if nsErr.domain == OIDOAuthTokenErrorDomain {
-            // refresh token invalid → clean state & notify
-            clearAuthState()
         }
     }
 
@@ -792,4 +749,22 @@ final class GCEventStore: NSObject,
             )
         }
     }
+}
+
+/// Saved Google logins in the Keychain: one item per account, labeled by the
+/// account's email, beside the single item earlier versions used.
+@MainActor
+struct GoogleKeychainCredentialStore: GoogleCredentialStore {
+    let legacyService: String
+    private var accountsService: String { legacyService + ".accounts" }
+
+    func accountKeys() -> [String] { Keychain.accounts(for: accountsService) }
+    func load(account: String) -> Data? { Keychain.load(for: accountsService, account: account) }
+    @discardableResult
+    func save(_ data: Data, account: String) -> Bool {
+        Keychain.save(data: data, for: accountsService, account: account)
+    }
+    func delete(account: String) { Keychain.delete(for: accountsService, account: account) }
+    func loadLegacy() -> Data? { Keychain.load(for: legacyService) }
+    func deleteLegacy() { Keychain.delete(for: legacyService) }
 }

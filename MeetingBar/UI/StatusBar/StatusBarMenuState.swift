@@ -10,6 +10,8 @@ enum StatusBarProviderStatus: Equatable {
     case initializing
     case connected(lastRefresh: Date?)
     case authRequired(message: String?)
+    /// One of several accounts lost access; the others still show meetings.
+    case accountAuthRequired(accountID: String, email: String?)
     case permissionRequired(message: String?)
     case stale(lastRefresh: Date?, message: String?)
     case refreshFailed(message: String?)
@@ -25,6 +27,7 @@ enum StatusBarEmptyStateReason: Equatable {
 
 enum StatusBarProviderWarning: Equatable {
     case authRequired
+    case accountAuthRequired(accountID: String, email: String?)
     case permissionRequired
     case stale
     case refreshFailed
@@ -163,6 +166,9 @@ extension StatusBarMenuState {
         if health.authRequired {
             return .authRequired(message: health.lastErrorDescription)
         }
+        if let account = health.firstAccountNeedingReconnect {
+            return .accountAuthRequired(accountID: account.id, email: account.email)
+        }
         if health.isStale {
             return .stale(
                 lastRefresh: health.lastSuccessfulRefresh,
@@ -190,7 +196,7 @@ extension StatusBarMenuState {
             return .permissionRequired
         case .refreshFailed:
             return .refreshFailed
-        case .initializing, .connected, .stale:
+        case .initializing, .connected, .stale, .accountAuthRequired:
             break
         }
 
@@ -209,6 +215,8 @@ extension StatusBarMenuState {
         switch providerStatus {
         case .authRequired:
             .authRequired
+        case let .accountAuthRequired(accountID, email):
+            .accountAuthRequired(accountID: accountID, email: email)
         case .permissionRequired:
             .permissionRequired
         case .stale:

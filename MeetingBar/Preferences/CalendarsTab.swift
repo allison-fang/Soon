@@ -56,8 +56,7 @@ struct CalendarsTab: View {
                     Spacer()
                     if presentation.canReconnect {
                         Button("preferences_status_reconnect".loco()) {
-                            appModel.send(
-                                .changeProvider(presentation.activeProvider, signOut: true))
+                            appModel.send(.reconnectProvider)
                         }
                         .disabled(appModel.state.providerChangeInProgress)
                     }
@@ -79,6 +78,10 @@ struct CalendarsTab: View {
                         .textSelection(.enabled)
                         .lineLimit(3)
                 }
+            }
+
+            if appModel.state.activeProvider == .googleCalendar {
+                GoogleAccountsSection()
             }
 
             if !missingIDs.isEmpty {
@@ -214,16 +217,78 @@ struct ProviderPicker: View {
                 providerChangeInProgress: inProgress
             )
         }
+    }
+}
 
-        if appModel.state.activeProvider == .googleCalendar {
-            HStack {
-                Spacer()
-                Button("preferences_calendars_provider_gcalendar_change_account".loco()) {
-                    appModel.send(.changeProvider(.googleCalendar, signOut: true))
+/// Connected Google accounts, with adding, reconnecting and removing. Shared
+/// by Preferences and setup.
+struct GoogleAccountsSection: View {
+    @EnvironmentObject var appModel: AppModel
+    @State private var accountPendingRemoval: CalendarAccountRowPresentation?
+
+    var body: some View {
+        Section(header: Text("preferences_calendars_google_accounts_title".loco())) {
+            ForEach(CalendarAccountRowPresentation.rows(for: appModel.state.providerHealth.accounts)) { row in
+                HStack(spacing: 8) {
+                    Image(systemName: "person.crop.circle")
+                        .foregroundStyle(.secondary)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(accountName(row))
+                            .lineLimit(1)
+                            .textSelection(.enabled)
+                        Label(row.statusTextKey.loco(), systemImage: statusSystemImage(row.statusTone))
+                            .foregroundStyle(statusColor(row.statusTone))
+                            .font(.caption)
+                    }
+                    Spacer()
+                    if row.canReconnect {
+                        Button("preferences_status_reconnect".loco()) {
+                            appModel.send(.reconnectCalendarAccount(row.id))
+                        }
+                    }
+                    Button("preferences_calendars_google_account_remove".loco()) {
+                        accountPendingRemoval = row
+                    }
                 }
-                .disabled(appModel.state.providerChangeInProgress)
+            }
+
+            HStack(spacing: 8) {
+                Button("preferences_calendars_google_add_account".loco()) {
+                    appModel.send(.addCalendarAccount)
+                }
+                if appModel.state.accountAuthorizationInProgress {
+                    ProgressView()
+                        .controlSize(.small)
+                    Text("preferences_calendars_google_account_waiting".loco())
+                        .foregroundStyle(.secondary)
+                        .font(.caption)
+                }
+                Spacer()
+            }
+
+            if let error = appModel.state.accountActionError {
+                Text(error)
+                    .foregroundStyle(.red)
+                    .font(.caption)
+                    .textSelection(.enabled)
+                    .lineLimit(3)
             }
         }
+        .disabled(appModel.state.providerChangeInProgress)
+        .alert(item: $accountPendingRemoval) { row in
+            Alert(
+                title: Text("preferences_calendars_google_account_remove_title".loco(accountName(row))),
+                message: Text("preferences_calendars_google_account_remove_message".loco()),
+                primaryButton: .destructive(Text("preferences_calendars_google_account_remove".loco())) {
+                    appModel.send(.removeCalendarAccount(row.id))
+                },
+                secondaryButton: .cancel()
+            )
+        }
+    }
+
+    private func accountName(_ row: CalendarAccountRowPresentation) -> String {
+        row.email ?? "google_calendar_account_fallback".loco()
     }
 }
 

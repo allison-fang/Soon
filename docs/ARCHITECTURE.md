@@ -91,7 +91,11 @@ MeetingBar/                         (~76 .swift files)
 │       ├── EventKit/
 │       │   └── EventKitEventStore.swift    — Apple Calendar via EventKit
 │       └── Google/
-│           ├── GoogleCalendarEventStore.swift — Google Calendar via AppAuth + REST
+│           ├── GoogleCalendarEventStore.swift — Google Calendar via AppAuth + REST; owns the connected accounts
+│           ├── GoogleAccountSession.swift     — one account's AppAuth state, token refresh and saved login
+│           ├── GoogleCalendarAccountsReader.swift — merges accounts' calendars, routes event fetches, keeps per-account last good data
+│           ├── GoogleCalendarDataReader.swift — one account's calendar list and events
+│           ├── GoogleAccountPolicy.swift      — shared-calendar merge, per-account results, legacy login migration [SPM]
 │           └── GoogleCalendarPolicy.swift     — auth/error classification [SPM]
 │
 ├── Meetings/                       — meeting URL detection, opening, services catalog
@@ -347,7 +351,9 @@ Long-running or delayed work must have one stored owner and an explicit cancella
 | Provider change, snooze, onboarding, notification reconcile, refresh actions | `AppModel` | `.willTerminate`; replacement cancels superseded work |
 | Calendar refresh cycle and store-change refresh | `CalendarSync` | `stop()` |
 | Active provider operations | `CalendarRepository` / `EventStore` | provider switch and `stop()` call `cancelPendingOperations()` |
-| Google OAuth sign-in, token refresh, external authorization session | `GCEventStore` | sign-out, provider switch, app termination |
+| Google OAuth sign-in, external authorization session | `GCEventStore` | sign-out, provider switch, app termination |
+| Google token refresh for one account | `GoogleAccountSession` | account removal or reconnect, provider switch, app termination |
+| Google account add, reconnect and removal | `AppModel` | a newer add/reconnect supersedes the older one; `.willTerminate` |
 | Delayed fullscreen, auto-join, and event-start script actions | `NotificationScheduler` | reconcile removes stale plans; `stop()` cancels all |
 | Lifecycle notification registrations | `LifecycleObserver` | `stop()` |
 
@@ -390,6 +396,10 @@ Event selection requires explicit `EventSelectionSettings` and `now`, including 
 
 - **`EKEventStore`** — wraps EventKit. Always available; permission prompt the first time. No OAuth.
 - **`GCEventStore`** — wraps Google Calendar API via AppAuth-iOS. OAuth2 flow with refresh tokens persisted in Keychain. Per-calendar 403 handling so one inaccessible calendar does not disconnect the account.
+
+`GCEventStore` holds any number of Google accounts and implements `MultiAccountEventStore` (add, reconnect, remove, per-account status). Each account is a `GoogleAccountSession` saved as its own Keychain item: service `<GOOGLE_AUTH_KEYCHAIN_NAME>.accounts`, account attribute = lowercased email. On first launch after upgrading, the single pre-multi-account item (service `<GOOGLE_AUTH_KEYCHAIN_NAME>`) is copied, read back, and only then deleted; an unreadable item is left alone. Debug builds append `.debug` to the Keychain name so a local build never touches the installed app's logins.
+
+`GoogleCalendarAccountsReader` fetches every account at once. A calendar visible to several accounts is listed once, under the account with the most access (owner > writer > reader > freeBusyReader), and its events are fetched only through that account. An account that fails keeps its last good calendars and events and is reported in `ProviderHealth.accounts`; only when every account fails does the refresh fail as a whole. Adding, reconnecting or removing an account goes through `CalendarSync`, which discards any refresh in flight (provider generation), prunes a removed account's calendars and meetings immediately, and starts a new refresh. Reconnect actions reconnect only the affected account.
 
 `EventStore` contains provider-neutral fetch and cancellation operations. `AuthenticatedEventStore` extends it with explicit authorization/sign-out. Google uses that boundary for OAuth; EventKit uses it for calendar permission.
 

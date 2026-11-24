@@ -19,6 +19,10 @@ final class AppModelTestHarness {
     private(set) var reconciledEventIDs: [[String]] = []
     private(set) var providerChanges: [(provider: EventStoreProvider, signOut: Bool)] = []
     private(set) var calendarSelections: [(id: String, selected: Bool)] = []
+    private(set) var addedAccountCount = 0
+    private(set) var reconnectedAccountIDs: [String] = []
+    private(set) var removedAccountIDs: [String] = []
+    var accountAuthorizationResult: ProviderSelectionResult = .success
     private(set) var openedMeetingIDs: [String] = []
     private(set) var dismissedEventIDs: [String] = []
     private(set) var undismissedEventIDs: [String] = []
@@ -63,6 +67,21 @@ final class AppModelTestHarness {
                 self.calendarSnapshot = (self.providerCalendarsAfterChange, provider)
             }
             return self.providerSelectionResult
+        },
+        addCalendarAccount: { [weak self] in
+            guard let self else { return .failed("Harness unavailable") }
+            guard await self.waitForAsyncOperationDelay() else { return .cancelled }
+            self.addedAccountCount += 1
+            return self.accountAuthorizationResult
+        },
+        reconnectCalendarAccount: { [weak self] id in
+            guard let self else { return .failed("Harness unavailable") }
+            guard await self.waitForAsyncOperationDelay() else { return .cancelled }
+            self.reconnectedAccountIDs.append(id)
+            return self.accountAuthorizationResult
+        },
+        removeCalendarAccount: { [weak self] id in
+            self?.removedAccountIDs.append(id)
         },
         currentCalendarSnapshot: { [weak self] in
             self?.calendarSnapshot ?? ([], .macOSEventKit)
