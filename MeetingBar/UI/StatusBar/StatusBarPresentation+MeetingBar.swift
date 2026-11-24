@@ -88,7 +88,6 @@ extension StatusBarPresenterSettings {
             title: .current,
             timeDisplay: StatusBarTimeDisplay(Defaults[.eventTimeFormat]),
             iconFormat: StatusBarIconFormat(Defaults[.eventTitleIconFormat]),
-            iconFormatAssetName: Defaults[.eventTitleIconFormat].statusBarAssetName,
             iconAssets: .production,
             pendingDisplay: StatusBarParticipationDisplay(Defaults[.showPendingEvents]),
             tentativeDisplay: StatusBarParticipationDisplay(Defaults[.showTentativeEvents])
@@ -143,14 +142,6 @@ extension StatusBarIconFormat {
         case .eventtype: self = .eventtype
         case .none: self = .none
         }
-    }
-}
-
-extension EventTitleIconFormat {
-    /// The raw values are persisted settings, so `.appicon` keeps the
-    /// "AppIcon" value while the menu bar shows its own template glyph.
-    var statusBarAssetName: String {
-        self == .appicon ? MenuStyleConstants.appIconName : rawValue
     }
 }
 
