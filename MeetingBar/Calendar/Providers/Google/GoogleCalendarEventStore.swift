@@ -26,13 +26,7 @@ extension OIDAuthState {
 
     /// convenience email extraction from ID token
     var userEmail: String? {
-        guard let idToken = lastTokenResponse?.idToken else { return nil }
-        let parts = idToken.split(separator: ".")
-        guard parts.count > 1,
-              let payloadData = Data(base64Encoded: String(parts[1])),
-              let json = try? JSONSerialization.jsonObject(with: payloadData) as? [String: Any]
-        else { return nil }
-        return json["email"] as? String
+        lastTokenResponse?.idToken.flatMap(GoogleIDToken.email(from:))
     }
 }
 

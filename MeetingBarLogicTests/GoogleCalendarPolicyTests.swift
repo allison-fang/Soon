@@ -259,4 +259,22 @@ final class SingleResumeGuardTests: XCTestCase {
 
         XCTAssertEqual(winners.count(for: "won"), 1)
     }
+
+    /// Google's payloads are unpadded base64url. This one has a `_` and needs
+    /// padding, the two cases that standard base64 decoding rejects.
+    func testIDTokenEmailDecodesUnpaddedBase64URLPayload() {
+        let payload = "eyJlbWFpbCI6InBlcnNvbkBleGFtcGxlLmNvbSIsIm5hbWUiOiJUZXN0ID8_PyIsInN1YiI6IjEifQ"
+        XCTAssertNil(Data(base64Encoded: payload))
+
+        XCTAssertEqual(
+            GoogleIDToken.email(from: "eyJhbGciOiJSUzI1NiJ9.\(payload).signature"),
+            "person@example.com"
+        )
+    }
+
+    func testIDTokenEmailIsNilForMalformedTokens() {
+        XCTAssertNil(GoogleIDToken.email(from: ""))
+        XCTAssertNil(GoogleIDToken.email(from: "no-dots"))
+        XCTAssertNil(GoogleIDToken.email(from: "header.not*base64.signature"))
+    }
 }

@@ -24,7 +24,7 @@ struct GoogleCalendarDataReader {
             return MBCalendar(
                 title: title,
                 id: calendarID,
-                source: userEmail,
+                source: userEmail ?? "google_calendar_account_fallback".loco(),
                 email: userEmail,
                 color: hexStringToUIColor(hex: backgroundColor)
             )
