@@ -23,6 +23,7 @@ if pgrep -xq Soon; then
     echo "Quitting Soon…"
     pkill -x Soon || true
     for _ in {1..20}; do pgrep -xq Soon || break; sleep 0.25; done
+    ! pgrep -xq Soon || { echo "error: Soon didn't quit; quit it from its menu and run this again" >&2; exit 1; }
 fi
 
 rm -rf "$DEST"
