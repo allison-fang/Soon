@@ -92,7 +92,7 @@ struct AboutSection: View {
         // and link clusters — we draw the one divider we want.
         VStack(alignment: .leading, spacing: 16) {
             HStack(alignment: .top, spacing: 16) {
-                Image("appIconForAbout")
+                Image("appLogo")
                     .resizable()
                     .frame(width: 72, height: 72)
                 VStack(alignment: .leading, spacing: 6) {
