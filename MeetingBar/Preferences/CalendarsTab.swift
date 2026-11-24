@@ -22,36 +22,30 @@ struct CalendarsTab: View {
         )
 
         PreferencesGroupedForm {
-            Section(header: Text("preferences_calendar_source_title".loco())) {
+            Section(header: Text("preferences_calendar_configuration_title".loco())) {
                 ProviderPicker()
 
-                VStack(alignment: .leading, spacing: 5) {
-                    Label(
-                        presentation.providerDataSourceKey.loco(),
-                        systemImage: "arrow.triangle.2.circlepath"
-                    )
-                    Label(
-                        presentation.providerAccountScopeKey.loco(),
-                        systemImage: "person.2"
-                    )
-                }
-                .foregroundStyle(.secondary)
-                .font(.caption)
-
                 HStack(spacing: 6) {
-                    Label(
-                        presentation.statusTextKey.loco(),
-                        systemImage: statusSystemImage(presentation.statusTone)
-                    )
-                    .foregroundStyle(statusColor(presentation.statusTone))
-                    .font(.caption)
-                    if let lastSuccess = appModel.state.providerHealth.lastSuccessfulRefresh {
-                        Text("·")
-                            .foregroundStyle(.tertiary)
-                            .font(.caption)
-                        Text(lastSuccess.formatted(date: .omitted, time: .shortened))
-                            .foregroundStyle(.secondary)
-                            .font(.caption)
+                    VStack(alignment: .leading, spacing: 3) {
+                        HStack(spacing: 6) {
+                            PreferencesStatusLabel(text: statusText(presentation), tone: presentation.statusTone)
+                            if let lastSuccess = appModel.state.providerHealth.lastSuccessfulRefresh {
+                                Text("·")
+                                    .foregroundStyle(.tertiary)
+                                    .font(.caption)
+                                Text(lastSuccess.formatted(date: .omitted, time: .shortened))
+                                    .foregroundStyle(.secondary)
+                                    .font(.caption)
+                            }
+                        }
+                        if presentation.showsErrorDetail,
+                           let error = appModel.state.providerHealth.lastErrorDescription {
+                            Text(error)
+                                .foregroundStyle(.secondary)
+                                .font(.caption)
+                                .textSelection(.enabled)
+                                .lineLimit(3)
+                        }
                     }
                     Spacer()
                     if presentation.canReconnect {
@@ -65,23 +59,17 @@ struct CalendarsTab: View {
                             NSWorkspace.shared.open(Links.calendarPreferences)
                         }
                     }
-                    Button("general_refresh".loco()) {
-                        appModel.send(.refreshCalendars)
+                    // Google accounts each have their own Refresh; adding one
+                    // belongs beside the count of what is connected.
+                    if appModel.state.activeProvider == .googleCalendar {
+                        AddGoogleAccountButton()
+                    } else {
+                        Button("general_refresh".loco()) {
+                            appModel.send(.refreshCalendars)
+                        }
+                        .disabled(appModel.state.providerChangeInProgress)
                     }
-                    .disabled(appModel.state.providerChangeInProgress)
                 }
-
-                if let error = appModel.state.providerHealth.lastErrorDescription {
-                    Text(error)
-                        .foregroundStyle(.red)
-                        .font(.caption)
-                        .textSelection(.enabled)
-                        .lineLimit(3)
-                }
-            }
-
-            if appModel.state.activeProvider == .googleCalendar {
-                GoogleAccountsSection()
             }
 
             if !missingIDs.isEmpty {
@@ -106,16 +94,31 @@ struct CalendarsTab: View {
                 }
             }
 
-            if appModel.state.calendars.isEmpty {
+            if appModel.state.calendars.isEmpty, accounts.isEmpty {
                 Section(header: Text("preferences_calendars_select_calendars_title".loco())) {
                     CalendarPreferencesEmptyState(presentation: presentation)
                 }
             } else {
-                CalendarSectionsView(calendars: appModel.state.calendars)
+                CalendarSectionsView(calendars: appModel.state.calendars, accounts: accounts)
             }
         }
     }
 
+    private var accounts: [ProviderAccountHealth] {
+        appModel.state.activeProvider == .googleCalendar ? appModel.state.providerHealth.accounts : []
+    }
+
+    private func statusText(_ presentation: PreferencesCalendarPresentation) -> String {
+        let arguments = presentation.statusTextArguments
+        switch arguments.count {
+        case 1:
+            return presentation.statusTextKey.loco(arguments[0])
+        case 2:
+            return presentation.statusTextKey.loco(arguments[0], arguments[1])
+        default:
+            return presentation.statusTextKey.loco()
+        }
+    }
 }
 
 /// An unavailable saved calendar must remain removable even when a failed
@@ -171,17 +174,97 @@ private func statusColor(_ tone: PreferencesStatusTone) -> Color {
     }
 }
 
-struct CalendarSectionsView: View {
-    let calendars: [MBCalendar]
+/// An icon and short status text, tinted by how things stand.
+struct PreferencesStatusLabel: View {
+    let text: String
+    let tone: PreferencesStatusTone
 
     var body: some View {
-        ForEach(CalendarListPresentation.sections(for: calendars)) { section in
-            Section(header: Text(section.source)) {
-                ForEach(section.calendars, id: \.id) { cal in
-                    CalendarRow(calendar: cal)
+        HStack(spacing: 4) {
+            Image(systemName: statusSystemImage(tone))
+            Text(text)
+        }
+        .foregroundStyle(statusColor(tone))
+        .font(.caption)
+    }
+}
+
+/// Calendars grouped by source. For Google, each connected account's section
+/// starts with its status and actions.
+struct CalendarSectionsView: View {
+    @EnvironmentObject var appModel: AppModel
+    let calendars: [MBCalendar]
+    var accounts: [ProviderAccountHealth] = []
+    @State private var accountPendingRemoval: CalendarAccountRowPresentation?
+
+    var body: some View {
+        Group {
+            ForEach(CalendarListPresentation.sections(for: calendars, accounts: accounts)) { section in
+                if let account = section.account {
+                    // The account's connection gets its own card so its status
+                    // does not read as one of the calendar rows below it.
+                    Section(header: Text(title(of: section))) {
+                        accountRow(account)
+                    }
+                    if !section.calendars.isEmpty {
+                        Section {
+                            calendarRows(section)
+                        }
+                    }
+                } else {
+                    Section(header: Text(title(of: section))) {
+                        calendarRows(section)
+                    }
                 }
             }
         }
+        .alert(item: $accountPendingRemoval) { row in
+            Alert(
+                title: Text("preferences_calendars_google_account_remove_title".loco(accountName(row))),
+                message: Text("preferences_calendars_google_account_remove_message".loco()),
+                primaryButton: .destructive(Text("preferences_calendars_google_account_remove".loco())) {
+                    appModel.send(.removeCalendarAccount(row.id))
+                },
+                secondaryButton: .cancel()
+            )
+        }
+    }
+
+    private func calendarRows(_ section: CalendarListSection) -> some View {
+        ForEach(section.calendars, id: \.id) { cal in
+            CalendarRow(calendar: cal)
+        }
+    }
+
+    private func accountRow(_ row: CalendarAccountRowPresentation) -> some View {
+        HStack(spacing: 8) {
+            PreferencesStatusLabel(text: row.statusTextKey.loco(), tone: row.statusTone)
+            Spacer()
+            // Every refresh checks all accounts side by side, so this is the
+            // same refresh as the one at the top, placed where a problem shows.
+            if row.canRefresh {
+                Button("general_refresh".loco()) {
+                    appModel.send(.refreshCalendars)
+                }
+            }
+            if row.canReconnect {
+                Button("preferences_status_reconnect".loco()) {
+                    appModel.send(.reconnectCalendarAccount(row.id))
+                }
+            }
+            Button("preferences_calendars_google_account_remove".loco()) {
+                accountPendingRemoval = row
+            }
+        }
+        .disabled(appModel.state.providerChangeInProgress)
+    }
+
+    private func title(of section: CalendarListSection) -> String {
+        section.account.map(accountName) ?? section.source
+    }
+
+    private func accountName(_ row: CalendarAccountRowPresentation) -> String {
+        row.email ?? "google_calendar_account_fallback".loco()
     }
 }
 
@@ -220,75 +303,30 @@ struct ProviderPicker: View {
     }
 }
 
-/// Connected Google accounts, with adding, reconnecting and removing. Shared
-/// by Preferences and setup.
-struct GoogleAccountsSection: View {
+/// Connects another Google account. Shared by Preferences and setup.
+/// "Add Google account", with the latest add's failure stacked under it.
+struct AddGoogleAccountButton: View {
     @EnvironmentObject var appModel: AppModel
-    @State private var accountPendingRemoval: CalendarAccountRowPresentation?
+    var alignment: HorizontalAlignment = .trailing
 
     var body: some View {
-        Section(header: Text("preferences_calendars_google_accounts_title".loco())) {
-            ForEach(CalendarAccountRowPresentation.rows(for: appModel.state.providerHealth.accounts)) { row in
-                HStack(spacing: 8) {
-                    Image(systemName: "person.crop.circle")
-                        .foregroundStyle(.secondary)
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(accountName(row))
-                            .lineLimit(1)
-                            .textSelection(.enabled)
-                        Label(row.statusTextKey.loco(), systemImage: statusSystemImage(row.statusTone))
-                            .foregroundStyle(statusColor(row.statusTone))
-                            .font(.caption)
-                    }
-                    Spacer()
-                    if row.canReconnect {
-                        Button("preferences_status_reconnect".loco()) {
-                            appModel.send(.reconnectCalendarAccount(row.id))
-                        }
-                    }
-                    Button("preferences_calendars_google_account_remove".loco()) {
-                        accountPendingRemoval = row
-                    }
-                }
+        VStack(alignment: alignment, spacing: 4) {
+            Button("preferences_calendars_google_add_account".loco()) {
+                appModel.send(.addCalendarAccount)
             }
-
-            HStack(spacing: 8) {
-                Button("preferences_calendars_google_add_account".loco()) {
-                    appModel.send(.addCalendarAccount)
-                }
-                if appModel.state.accountAuthorizationInProgress {
-                    ProgressView()
-                        .controlSize(.small)
-                    Text("preferences_calendars_google_account_waiting".loco())
-                        .foregroundStyle(.secondary)
-                        .font(.caption)
-                }
-                Spacer()
-            }
+            .disabled(appModel.state.providerChangeInProgress)
 
             if let error = appModel.state.accountActionError {
                 Text(error)
                     .foregroundStyle(.red)
                     .font(.caption)
+                    .multilineTextAlignment(alignment == .trailing ? .trailing : .leading)
                     .textSelection(.enabled)
                     .lineLimit(3)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: 260, alignment: alignment == .trailing ? .trailing : .leading)
             }
         }
-        .disabled(appModel.state.providerChangeInProgress)
-        .alert(item: $accountPendingRemoval) { row in
-            Alert(
-                title: Text("preferences_calendars_google_account_remove_title".loco(accountName(row))),
-                message: Text("preferences_calendars_google_account_remove_message".loco()),
-                primaryButton: .destructive(Text("preferences_calendars_google_account_remove".loco())) {
-                    appModel.send(.removeCalendarAccount(row.id))
-                },
-                secondaryButton: .cancel()
-            )
-        }
-    }
-
-    private func accountName(_ row: CalendarAccountRowPresentation) -> String {
-        row.email ?? "google_calendar_account_fallback".loco()
     }
 }
 

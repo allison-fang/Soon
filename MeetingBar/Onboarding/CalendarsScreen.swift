@@ -66,18 +66,27 @@ private struct CalendarSelectionContent: View {
         // selection list looks identical in both places.
         PreferencesGroupedForm {
             if appModel.state.activeProvider == .googleCalendar {
-                GoogleAccountsSection()
+                Section(header: Text("preferences_calendar_configuration_title".loco())) {
+                    HStack {
+                        AddGoogleAccountButton(alignment: .leading)
+                        Spacer()
+                    }
+                }
             }
-            if appModel.state.calendars.isEmpty {
+            if appModel.state.calendars.isEmpty, accounts.isEmpty {
                 Section {
                     emptyState
                 }
             } else {
-                CalendarSectionsView(calendars: appModel.state.calendars)
+                CalendarSectionsView(calendars: appModel.state.calendars, accounts: accounts)
             }
         }
         .environmentObject(appModel)
         .frame(maxHeight: .infinity)
+    }
+
+    private var accounts: [ProviderAccountHealth] {
+        appModel.state.activeProvider == .googleCalendar ? appModel.state.providerHealth.accounts : []
     }
 
     @ViewBuilder

@@ -60,15 +60,18 @@
 "preferences_section_create_title" = "Create meetings";
 "preferences_section_apple_script_hooks_title" = "AppleScript Hooks";
 "preferences_section_regex_filters_title" = "Regex Filters";
-"preferences_calendar_source_title" = "Calendar Source";
+"preferences_calendar_configuration_title" = "Calendar Configuration";
 "preferences_meeting_opening_behavior_title" = "Open meeting links";
 "preferences_notifications_alerts_title" = "Meeting Alerts";
 "preferences_notifications_automation_title" = "Automatic Joining";
 
 // MARK: - Preferences Status
 
-"preferences_status_state_ok" = "Up to date";
+"preferences_status_state_one_calendar_connected" = "1 calendar connected";
+"preferences_status_state_calendars_connected" = "%d calendars connected";
 "preferences_status_state_stale" = "Showing cached data";
+"preferences_status_state_some_calendars_stale" = "%1$d of %2$d selected calendars may be out of date";
+"preferences_status_state_check_accounts" = "Check your Google accounts below";
 "preferences_status_state_error" = "Last refresh failed";
 "preferences_status_state_auth_required" = "Authorization required";
 "preferences_status_state_permission_required" = "Calendar permission required";
@@ -208,12 +211,10 @@
 // MARK: - Preferences Calendars
 
 "preferences_calendars_select_calendars_title" = "Select calendars to show meetings in the menu bar";
-"preferences_calendars_google_accounts_title" = "Google accounts";
 "preferences_calendars_google_add_account" = "Add Google account";
 "preferences_calendars_google_account_connected" = "Connected";
 "preferences_calendars_google_account_reconnect_required" = "Needs to be reconnected";
 "preferences_calendars_google_account_refresh_failed" = "Couldn’t refresh — showing last known meetings";
-"preferences_calendars_google_account_waiting" = "Finish signing in to Google in your browser";
 "preferences_calendars_google_account_remove" = "Remove";
 "preferences_calendars_google_account_remove_title" = "Remove %@?";
 "preferences_calendars_google_account_remove_message" = "Soon will sign this account out and stop showing its calendars. You can add it again later.";
