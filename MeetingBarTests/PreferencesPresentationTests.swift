@@ -314,6 +314,18 @@ final class PreferencesPresentationTests: XCTestCase {
         )
     }
 
+    func testBrowserPickerShowsLegacyDefaultBrowserAsTheSystemOption() {
+        let legacyDefault = Browser(name: "Default Browser", path: "", arguments: "", deletable: false)
+        let safari = Browser(name: "Safari", path: "/Applications/Safari.app")
+
+        XCTAssertEqual(
+            BrowserPickerOptions.make(configured: [safari], selected: legacyDefault),
+            [systemDefaultBrowser, safari]
+        )
+        XCTAssertEqual(legacyDefault.pickerValue, systemDefaultBrowser)
+        XCTAssertEqual(safari.pickerValue, safari)
+    }
+
     func testCalendarListSortsAccountsAndCalendarsByName() {
         func calendar(_ title: String, _ source: String) -> MBCalendar {
             MBCalendar(title: title, id: "\(source)/\(title)", source: source, email: nil, color: .blue)

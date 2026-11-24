@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct CalendarSourcePresentation: Equatable, Identifiable {
     let provider: EventStoreProvider
@@ -289,6 +290,13 @@ enum CalendarListPresentation {
     }
 }
 
+extension Browser {
+    /// A browser with no app path opens links in the Mac's default browser.
+    /// Older settings saved that choice under other names, such as "Default
+    /// Browser", so pickers show every such value as the one system option.
+    var pickerValue: Browser { path.isEmpty ? systemDefaultBrowser : self }
+}
+
 enum BrowserPickerOptions {
     static func make(
         configured: [Browser],
@@ -296,13 +304,17 @@ enum BrowserPickerOptions {
         systemDefault: Browser = systemDefaultBrowser
     ) -> [Browser] {
         var options = [systemDefault]
-        for browser in configured where !options.contains(browser) {
-            options.append(browser)
-        }
-        if !options.contains(selected) {
-            options.append(selected)
+        for browser in configured + [selected] {
+            let option = browser.path.isEmpty ? systemDefault : browser
+            if !options.contains(option) {
+                options.append(option)
+            }
         }
         return options
+    }
+
+    static func selection(_ browser: Binding<Browser>) -> Binding<Browser> {
+        Binding(get: { browser.wrappedValue.pickerValue }, set: { browser.wrappedValue = $0 })
     }
 }
 
@@ -403,7 +415,7 @@ enum MeetingProviderOpeningSelectionPolicy {
             if let mode = legacyOpeningMode(for: provider, browser: browser) {
                 return .mode(mode)
             }
-            return .browser(browser)
+            return .browser(browser.pickerValue)
         }
         return .browser(systemDefaultBrowser)
     }

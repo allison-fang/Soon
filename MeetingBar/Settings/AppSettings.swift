@@ -280,8 +280,7 @@ extension AppSettings {
                 createMeetingServiceUrl: "",
                 bookmarks: [],
                 browsers: [],
-                defaultBrowser: Browser(
-                    name: "Default Browser", path: "", arguments: "", deletable: false),
+                defaultBrowser: systemDefaultBrowser,
                 browserForCreateMeeting: systemDefaultBrowser,
                 providerBrowsers: [:],
                 providerOpeningModes: [:]

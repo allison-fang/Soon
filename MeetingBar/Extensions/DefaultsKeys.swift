@@ -103,9 +103,7 @@ extension Defaults.Keys {
     static let browsers = Key<[Browser]>("browsers", default: [])
 
     // default browser for meeting links
-    static let defaultBrowser = Key<Browser>(
-        "defaultBrowser",
-        default: Browser(name: "Default Browser", path: "", arguments: "", deletable: false))
+    static let defaultBrowser = Key<Browser>("defaultBrowser", default: systemDefaultBrowser)
 
     // show all day events - by default true
     static let allDayEvents = Key<AlldayEventsAppereance>(
