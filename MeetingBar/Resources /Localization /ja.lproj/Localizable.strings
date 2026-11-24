@@ -43,8 +43,8 @@
 "preferences_general_shortcut_join_next" = "次のミーティングに参加:";
 "preferences_general_shortcut_join_from_clipboard" = "クリップボードからミーティングに参加:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "ステータスバーのタイトル表示をトグルする:";
-"preferences_general_meeting_bar_description" = "Soon は Andrii Leitsius 🇺🇦 の MeetingBar を\nもとにしたオープンソースアプリケーションです。";
-"preferences_general_external_contact" = "お問い合わせ";
+"preferences_general_meeting_bar_description" = "Mac のメニューバーで使えるミーティングアプリ。次のミーティング、リアルタイムのカウントダウン、スケジュールを確認できます。";
+"preferences_general_version" = "バージョン %@";
 
 // MARK: - Preferences Appearance
 

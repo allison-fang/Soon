@@ -1,7 +1,8 @@
 
 
 "link_url_cant_open_message" = "Sicherstellen, dass %@ installiert ist oder in den Einstellungen festlegen, dass diese Links im Webbrowser geöffnet werden.";
-"preferences_general_meeting_bar_description" = "Soon ist eine quelloffene App,\ndie auf MeetingBar von Andrii Leitsius 🇺🇦 basiert";
+"preferences_general_meeting_bar_description" = "Eine Meeting-App für die Menüleiste des Mac. Sehen Sie Ihr nächstes Meeting, einen Live-Countdown und Ihren Zeitplan.";
+"preferences_general_version" = "Version %@";
 
 // MARK: - Notifications
 
@@ -78,7 +79,6 @@
 // MARK: - Preferences Appearance
 
 "preferences_appearance_events_title" = "Ereignisse";
-"preferences_general_external_contact" = "Kontakt";
 "preferences_general_shortcut_create_meeting" = "Meeting erstellen:";
 "preferences_general_shortcut_open_menu" = "Menü öffnen:";
 "preferences_general_option_preferred_language_system_value" = "System";

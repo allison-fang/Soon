@@ -43,8 +43,8 @@
 "preferences_general_shortcut_join_next" = "Влез в следващата среща:";
 "preferences_general_shortcut_join_from_clipboard" = "Отвори среща от клипборда:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Покажи/скрий заглавието в лентата:";
-"preferences_general_meeting_bar_description" = "Soon е приложение с отворен код,\nбазирано на MeetingBar от Andrii Leitsius 🇺🇦";
-"preferences_general_external_contact" = "Контакт";
+"preferences_general_meeting_bar_description" = "Приложение за срещи в лентата с менюта на Mac. Вижте следващата си среща, обратно броене на живо и графика си.";
+"preferences_general_version" = "Версия %@";
 
 // MARK: - Preferences Appearance
 

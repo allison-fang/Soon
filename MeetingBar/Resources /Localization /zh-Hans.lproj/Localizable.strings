@@ -27,8 +27,8 @@
 "preferences_general_shortcut_join_next" = "加入下场会议：";
 "preferences_general_shortcut_join_from_clipboard" = "从剪贴板加入会议：";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "会议名在状态栏中是否可见：";
-"preferences_general_meeting_bar_description" = "Soon是一款开源软件\n基于Andrii Leitsius 🇺🇦开发的MeetingBar";
-"preferences_general_external_contact" = "联系我们";
+"preferences_general_meeting_bar_description" = "Mac 菜单栏会议应用。查看下一场会议、实时倒计时和你的日程。";
+"preferences_general_version" = "版本 %@";
 "preferences_appearance_events_title" = "活动";
 "access_screen_access_denied_relaunch_title" = "然后手动启动应用程序以继续设置。";
 "access_screen_access_denied_system_preferences_button" = "系统偏好设置";

@@ -87,53 +87,46 @@ struct AboutSection: View {
     @EnvironmentObject var appModel: AppModel
 
     var body: some View {
-        // The whole About card is one Form row (a single VStack) so the
-        // grouped form doesn't insert its own separators between the identity
-        // and link clusters — we draw the one divider we want.
-        VStack(alignment: .leading, spacing: 16) {
-            HStack(alignment: .top, spacing: 16) {
-                Image("appLogo")
-                    .resizable()
-                    .frame(width: 72, height: 72)
-                VStack(alignment: .leading, spacing: 6) {
-                    HStack(alignment: .firstTextBaseline, spacing: 8) {
-                        Text("Soon")
-                            .font(.title2).bold()
-                        Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
-                            .font(.callout)
-                            .foregroundStyle(.secondary)
-                    }
-                    Text("preferences_general_meeting_bar_description".loco())
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
+        HStack(alignment: .center, spacing: 16) {
+            Image("appLogo")
+                .resizable()
+                .frame(width: 72, height: 72)
+            VStack(alignment: .leading, spacing: 4) {
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Text("Soon")
+                        .font(.title2).bold()
+                    Text("preferences_general_version".loco(
+                        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+                    ))
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
                 }
-                Spacer()
+                Text("preferences_general_meeting_bar_description".loco())
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
-
-            Divider()
-
-            HStack(spacing: 16) {
-                Button("GitHub") {
+            Spacer(minLength: 16)
+            // Fixed width so both buttons stretch to the wider one.
+            VStack(spacing: 6) {
+                Button {
                     Links.github.openInDefaultBrowser()
+                } label: {
+                    Text("GitHub").frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.link)
-                Button("preferences_general_external_contact".loco()) {
-                    Links.issues.openInDefaultBrowser()
-                }
-                .buttonStyle(.link)
-                Spacer()
-                Button("preferences_status_copy_diagnostics".loco()) {
+                Button {
                     DiagnosticsClipboard.copy(
                         snapshot: DiagnosticsSnapshot(appState: appModel.state)
                     )
+                } label: {
+                    Text("preferences_status_copy_diagnostics".loco()).frame(maxWidth: .infinity)
                 }
-                .controlSize(.small)
             }
+            .fixedSize(horizontal: true, vertical: false)
+            .controlSize(.small)
         }
         .padding(.vertical, 4)
     }
-
 }
 
 #Preview() {

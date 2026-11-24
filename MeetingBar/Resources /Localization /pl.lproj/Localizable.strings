@@ -40,8 +40,8 @@
 "preferences_general_shortcut_join_next" = "Dołącz do następnego spotkania:";
 "preferences_general_shortcut_join_from_clipboard" = "Dołącz do spotkania ze schowka:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Przełącz widoczność tytułu na pasku stanu:";
-"preferences_general_meeting_bar_description" = "Soon to aplikacja open-source\noparta na aplikacji MeetingBar, którą stworzył Andrii Leitsius 🇺🇦";
-"preferences_general_external_contact" = "Kontakt";
+"preferences_general_meeting_bar_description" = "Aplikacja do spotkań na pasku menu Maca. Zobacz następne spotkanie, odliczanie na żywo i swój harmonogram.";
+"preferences_general_version" = "Wersja %@";
 
 // MARK: - Preferences Appearance
 

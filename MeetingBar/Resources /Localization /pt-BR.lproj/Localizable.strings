@@ -44,8 +44,8 @@
 "preferences_general_shortcut_join_next" = "Entrar na próxima reunião:";
 "preferences_general_shortcut_join_from_clipboard" = "Entrar na reunião a partir da área de transferência:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Alternar visibilidade do título na barra de status:";
-"preferences_general_meeting_bar_description" = "Soon é um aplicativo Open Source\nbaseado no MeetingBar de Andrii Leitsius 🇺🇦";
-"preferences_general_external_contact" = "Contato";
+"preferences_general_meeting_bar_description" = "Um app de reuniões para a barra de menus do Mac. Veja sua próxima reunião, uma contagem regressiva ao vivo e sua agenda.";
+"preferences_general_version" = "Versão %@";
 
 // MARK: - Preferences Appearance
 

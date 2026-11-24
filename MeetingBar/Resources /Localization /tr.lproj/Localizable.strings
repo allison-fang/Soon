@@ -39,7 +39,6 @@
 "preferences_general_shortcut_create_meeting" = "Yeni toplantı:";
 "preferences_general_shortcut_join_from_clipboard" = "Kopyalanmış toplantı bağlantısına katıl:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Durum çubuğunda başlık görünürlüğünü aç/kapat:";
-"preferences_general_external_contact" = "İletişim";
 "preferences_appearance_events_show_events_for_today_value" = "bugün";
 "preferences_appearance_events_show_events_for_today_tomorrow_value" = "bugün ve yarın";
 "preferences_appearance_events_all_day_title" = "Gün boyu etkinlikleri:";
@@ -172,7 +171,8 @@
 
 "window_title_preferences" = "Soon Tercihler";
 "preferences_general_shortcut_join_next" = "Sonraki toplantıya katıl:";
-"preferences_general_meeting_bar_description" = "Soon, Andrii Leitsius 🇺🇦 tarafından yaratılan\nMeetingBar'a dayanan açık kaynaklı bir uygulamadır";
+"preferences_general_meeting_bar_description" = "Mac menü çubuğu için bir toplantı uygulaması. Sonraki toplantınızı, canlı geri sayımı ve programınızı görün.";
+"preferences_general_version" = "Sürüm %@";
 "preferences_appearance_events_without_guest_title" = "Misafirsiz etkinlikler:";
 "preferences_appearance_status_bar_icon_title" = "Simge";
 

@@ -21,7 +21,6 @@
 "preferences_general_shortcut_join_next" = "다음 회의 참석:";
 "preferences_general_shortcut_join_from_clipboard" = "클립보드의 회의 참석:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "메뉴 막대에서 제목 표시 토글:";
-"preferences_general_external_contact" = "Contact";
 "preferences_appearance_events_title" = "이벤트";
 "preferences_appearance_events_show_events_for_title" = "이벤트 표시";
 "preferences_appearance_events_show_events_for_today_value" = "오늘";
@@ -295,7 +294,8 @@
 "constants_meeting_service_zoom_native" = "Zoom 네이티브";
 "link_url_cant_open_title" = "이런! %@에서 링크를 열 수 없습니다";
 "link_url_cant_open_message" = "%@이(가) 설치되어 있는지 확인하거나 환경설정에서 웹 브라우저로 해당 링크를 여세요.";
-"preferences_general_meeting_bar_description" = "Soon은 오픈소스 앱으로\nAndrii Leitsius 🇺🇦의 MeetingBar를 기반으로 합니다";
+"preferences_general_meeting_bar_description" = "Mac 메뉴 막대용 미팅 앱입니다. 다음 미팅, 실시간 카운트다운, 일정을 확인하세요.";
+"preferences_general_version" = "버전 %@";
 "shared_automatic_event_join_toggle" = "다음 이벤트 미팅에 자동으로 참여";
 "shared_automatic_event_join_tip" = "이 설정은 구성된 앱 또는 브라우저에서 다음 미팅을 자동으로 엽니다";
 "shared_fullscreen_notification_toggle" = "전체 화면 알림 표시";

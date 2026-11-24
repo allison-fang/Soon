@@ -39,8 +39,8 @@
 "preferences_general_shortcut_join_next" = "அடுத்த கூட்டத்தில் சேரவும்:";
 "preferences_general_shortcut_join_from_clipboard" = "கிளிப்போர்டில் இருந்து கூட்டத்தில் சேரவும்:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "நிலை பட்டியில் தலைப்பு தெரிவுநிலையை மாற்றவும்:";
-"preferences_general_meeting_bar_description" = "Soon ஒரு திறந்த மூல பயன்பாடு\nஆண்ட்ரி லெய்சியச் 🇺🇦 உருவாக்கிய MeetingBar-ஐ அடிப்படையாகக் கொண்டது";
-"preferences_general_external_contact" = "தொடர்பு";
+"preferences_general_meeting_bar_description" = "Mac மெனு பட்டிக்கான கூட்டப் பயன்பாடு. உங்கள் அடுத்த கூட்டம், நேரடி கவுண்ட்டவுன் மற்றும் உங்கள் அட்டவணையைப் பாருங்கள்.";
+"preferences_general_version" = "பதிப்பு %@";
 "preferences_appearance_events_title" = "நிகழ்வுகள்";
 "preferences_appearance_events_show_events_for_title" = "நிகழ்வுகளைக் காட்டு";
 "preferences_appearance_events_show_events_for_today_value" = "இன்று";

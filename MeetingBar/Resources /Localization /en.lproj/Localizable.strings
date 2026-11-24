@@ -90,8 +90,8 @@
 "preferences_general_shortcut_join_next" = "Join next meeting:";
 "preferences_general_shortcut_join_from_clipboard" = "Join meeting from clipboard:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Toggle title visibility in status bar:";
-"preferences_general_meeting_bar_description" = "Soon is an open-source app built on\nMeetingBar by Andrii Leitsius 🇺🇦";
-"preferences_general_external_contact" = "Contact";
+"preferences_general_meeting_bar_description" = "A menu bar meeting app for Mac. See your next meeting, a live countdown, and your schedule.";
+"preferences_general_version" = "Version %@";
 
 // MARK: - Preferences Appearance
 

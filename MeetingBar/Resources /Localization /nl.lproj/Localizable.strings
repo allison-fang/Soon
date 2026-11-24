@@ -62,7 +62,8 @@
 
 "preferences_tab_general" = "Algemeen";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Schakel de zichtbaarheid van titels in de statusbalk:";
-"preferences_general_meeting_bar_description" = "Soon is een open-source app\ngebaseerd op MeetingBar van Andrii Leitsius 🇺🇦";
+"preferences_general_meeting_bar_description" = "Een vergaderapp voor de menubalk van je Mac. Zie je volgende vergadering, een live aftelling en je agenda.";
+"preferences_general_version" = "Versie %@";
 "preferences_appearance_events_show_events_for_today_tomorrow_value" = "vandaag en morgen";
 "preferences_appearance_events_show_events_for_today_value" = "vandaag";
 "preferences_appearance_events_without_guest_title" = "Meetings zonder deelnemers:";
@@ -88,7 +89,6 @@
 "next_meeting_empty_title" = "Er zijn vandaag geen geplande meetings";
 "preferences_appearance_events_declined_title" = "Afgewezen meetings:";
 "preferences_appearance_status_bar_next_event_toggle" = "Toon alleen meetings die beginnen binnen";
-"preferences_general_external_contact" = "Contact";
 "preferences_appearance_status_bar_icon_app_icon_value" = " Soon";
 "preferences_appearance_menu_title" = "Menu";
 "preferences_services_link_service_title" = "%@";

@@ -214,8 +214,8 @@
 // MARK: - Preferences Appearance
 
 "preferences_appearance_events_title" = "Évènements";
-"preferences_general_external_contact" = "Contact";
-"preferences_general_meeting_bar_description" = "Soon est une application à code source ouvert\nbasée sur MeetingBar d'Andrii Leitsius 🇺🇦";
+"preferences_general_meeting_bar_description" = "Une app de réunions pour la barre des menus du Mac. Voyez votre prochaine réunion, un compte à rebours en direct et votre agenda.";
+"preferences_general_version" = "Version %@";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Basculer la visibilité du titre dans la barre d'état :";
 "preferences_general_shortcut_join_from_clipboard" = "Rejoindre la réunion à partir du presse-papier :";
 "preferences_general_shortcut_join_next" = "Rejoindre la prochaine réunion :";

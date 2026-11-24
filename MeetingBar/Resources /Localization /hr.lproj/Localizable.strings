@@ -39,8 +39,8 @@
 "preferences_general_shortcut_join_next" = "Pridruži se sljedećem sastanku:";
 "preferences_general_shortcut_join_from_clipboard" = "Pridruži se sastanku iz međuspremnika:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Uključi/isključi prikaz naslova u traci stanja:";
-"preferences_general_meeting_bar_description" = "Soon je program otvorenog koda\ntemeljen na programu MeetingBar čiji je autor Andrii Leitsius 🇺🇦";
-"preferences_general_external_contact" = "Kontakt";
+"preferences_general_meeting_bar_description" = "Aplikacija za sastanke u traci izbornika na Macu. Pogledajte svoj sljedeći sastanak, odbrojavanje uživo i raspored.";
+"preferences_general_version" = "Verzija %@";
 
 // MARK: - Preferences Appearance
 
