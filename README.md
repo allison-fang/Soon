@@ -1,3 +1,5 @@
+<p align="center"><img src="MeetingBar/Assets.xcassets/AppIcon.appiconset/256x256@2x.png" width="128" height="128" alt="Soon"></p>
+
 [![GitHub license](https://img.shields.io/github/license/allison-fang/Soon.svg)](https://github.com/allison-fang/Soon/blob/master/LICENSE)
 [![Github all releases](https://img.shields.io/github/downloads/allison-fang/Soon/total.svg)](https://github.com/allison-fang/Soon/releases/)
 
