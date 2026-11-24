@@ -92,7 +92,7 @@ enum DiagnosticsReport {
         let staleData = context.health.isStale ? "yes" : "no"
         let authRequired = context.health.authRequired ? "yes" : "no"
         var lines = """
-        MeetingBar \(context.appVersion) (\(context.buildNumber))
+        Soon \(context.appVersion) (\(context.buildNumber))
         macOS: \(context.osVersion)
         Provider: \(providerLabel(context.provider))
         Provider health: \(healthLabel(context.health))
