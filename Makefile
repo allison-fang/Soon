@@ -98,7 +98,7 @@ coverage-app-report:
 	fi
 	@echo ""
 	@echo "Xcode app-hosted coverage (target summary):"
-	@set -o pipefail; xcrun xccov view --report --only-targets $(XCODE_RESULT_BUNDLE) 2>/dev/null | awk 'NR <= 2 || /MeetingBar\.app/'
+	@set -o pipefail; xcrun xccov view --report --only-targets $(XCODE_RESULT_BUNDLE) 2>/dev/null | awk 'NR <= 2 || /Soon(Dev)?\.app/'
 
 lint:
 	@if command -v $(SWIFTLINT) >/dev/null 2>&1; then \
