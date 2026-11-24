@@ -171,19 +171,10 @@ private func statusColor(_ tone: PreferencesStatusTone) -> Color {
 struct CalendarSectionsView: View {
     let calendars: [MBCalendar]
 
-    // 1. Compute once, with explicit types
-    private var grouped: [String: [MBCalendar]] {
-        Dictionary(grouping: calendars, by: \.source)
-    }
-
-    private var sources: [String] {
-        grouped.keys.sorted()
-    }
-
     var body: some View {
-        ForEach(sources, id: \.self) { source in
-            Section(header: Text(source)) {
-                ForEach(grouped[source]!, id: \.id) { cal in
+        ForEach(CalendarListPresentation.sections(for: calendars)) { section in
+            Section(header: Text(section.source)) {
+                ForEach(section.calendars, id: \.id) { cal in
                     CalendarRow(calendar: cal)
                 }
             }

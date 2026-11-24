@@ -267,6 +267,28 @@ enum ProviderPickerSelectionPolicy {
     }
 }
 
+struct CalendarListSection: Equatable, Identifiable {
+    let source: String
+    let calendars: [MBCalendar]
+
+    var id: String { source }
+}
+
+enum CalendarListPresentation {
+    /// Calendars grouped by account, with the accounts and the calendars in
+    /// each listed in name order.
+    static func sections(for calendars: [MBCalendar]) -> [CalendarListSection] {
+        Dictionary(grouping: calendars, by: \.source)
+            .map { source, calendars in
+                CalendarListSection(
+                    source: source,
+                    calendars: calendars.sorted { $0.title.localizedStandardCompare($1.title) == .orderedAscending }
+                )
+            }
+            .sorted { $0.source.localizedStandardCompare($1.source) == .orderedAscending }
+    }
+}
+
 enum BrowserPickerOptions {
     static func make(
         configured: [Browser],
