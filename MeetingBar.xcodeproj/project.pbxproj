@@ -485,7 +485,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = MeetingBar/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Soon;
+				INFOPLIST_KEY_CFBundleDisplayName = "Soon Dev";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -495,7 +495,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.allisonfang.Soon.debug;
 				PRODUCT_MODULE_NAME = MeetingBar;
-				PRODUCT_NAME = Soon;
+				PRODUCT_NAME = SoonDev;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 6.0;
 			};
@@ -549,7 +549,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.allisonfang.SoonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 6.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Soon.app/Contents/MacOS/Soon";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SoonDev.app/Contents/MacOS/SoonDev";
 			};
 			name = Debug;
 		};
