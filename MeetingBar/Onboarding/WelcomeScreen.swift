@@ -14,9 +14,9 @@ struct WelcomeScreen: View {
     var body: some View {
         VStack(spacing: 18) {
             Spacer()
-            Image(systemName: "calendar.badge.clock")
-                .font(.system(size: 52))
-                .foregroundStyle(Color.accentColor)
+            Image("appLogo")
+                .resizable()
+                .frame(width: 96, height: 96)
             Text("onboarding_welcome_title".loco())
                 .font(.largeTitle)
                 .bold()
