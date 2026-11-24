@@ -20,13 +20,11 @@ enum PermissionReporter {
             ? (GCEventStore.shared.isAuthorized ? .authorized : .notAuthorized)
             : .notActive
         let scriptFileExists = scriptExists()
-        let isAppStoreBuild = AppSourceDetector.isAppStoreBuild()
         return PermissionSnapshot(
             calendarAccess: calendarAccess,
             notificationAccess: notificationAccess,
             googleAuthStatus: googleAuthStatus,
-            scriptFileExists: scriptFileExists,
-            isAppStoreBuild: isAppStoreBuild
+            scriptFileExists: scriptFileExists
         )
     }
 

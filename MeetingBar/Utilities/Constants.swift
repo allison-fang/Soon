@@ -27,14 +27,9 @@ enum TitleTruncationRules {
 }
 
 enum Links {
-    static let patreon = URL(string: "https://www.patreon.com/meetingbar")!
-    static let buymeacoffee = URL(string: "https://www.buymeacoffee.com/meetingbar")!
-    static let github = URL(string: "https://github.com/leits/MeetingBar")!
-    static let telegram = URL(string: "https://t.me/leits")!
-    static let twitter = URL(string: "https://twitter.com/leits_dev")!
-    static let emailMe = URL(string: "mailto:leits.dev@gmail.com?subject=MeetingBar")!
+    static let github = URL(string: "https://github.com/allison-fang/Soon")!
+    static let issues = URL(string: "https://github.com/allison-fang/Soon/issues")!
     static let calendarPreferences = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Calendars")!
-    static let rateAppInAppStore = URL(string: "itms-apps://apps.apple.com/app/id1532419400?action=write-review")!
 }
 
 enum TimeFormat: String, Defaults.Serializable, Codable, CaseIterable {
@@ -194,7 +189,6 @@ struct Browser: Defaults.Serializable, Codable, Hashable, Sendable {
 enum WindowTitles {
     static let onboarding = "window_title_onboarding".loco()
     static let preferences = "window_title_preferences".loco()
-    static let changelog = "windows_title_changelog".loco()
 }
 
 enum notificationIDs {

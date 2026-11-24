@@ -23,3 +23,16 @@ build
 .ignore
 AGENTS.md
 CLAUDE.md
+dist
+
+# Coverage data
+*.profraw
+
+# Signing certificates and keys: back these up outside the repo
+*.p12
+*.cer
+*.pem
+*.mobileprovision
+
+# Local environment files
+.env*

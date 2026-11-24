@@ -75,7 +75,6 @@ struct StatusBarPresenterSettings: Equatable {
     let title: StatusBarTitleSettings
     let timeDisplay: StatusBarTimeDisplay
     let iconFormat: StatusBarIconFormat
-    let iconFormatAssetName: String
     let iconAssets: StatusBarIconAssets
     let pendingDisplay: StatusBarParticipationDisplay
     let tentativeDisplay: StatusBarParticipationDisplay
@@ -148,7 +147,6 @@ enum StatusBarPresenter {
         let icon = StatusBarIconPolicy.icon(
             mode: mode,
             format: settings.iconFormat,
-            formatAssetName: settings.iconFormatAssetName,
             meetingService: nextEvent.meetingService,
             assets: settings.iconAssets
         )
@@ -176,7 +174,6 @@ enum StatusBarPresenter {
         StatusBarIconPolicy.icon(
             mode: mode,
             format: settings.iconFormat,
-            formatAssetName: settings.iconFormatAssetName,
             meetingService: nil,
             assets: settings.iconAssets
         )
@@ -356,12 +353,12 @@ struct StatusBarIconAssets: Equatable {
 /// | afterThreshold   | calendar / eventtype / none | calendar            |
 /// | nextEvent        | none                        | no icon             |
 /// | nextEvent        | eventtype                   | meetingService(...) |
-/// | nextEvent        | appicon / calendar          | named asset         |
+/// | nextEvent        | appicon                     | app icon            |
+/// | nextEvent        | calendar                    | calendar            |
 enum StatusBarIconPolicy {
     static func icon(
         mode: StatusBarTitleMode,
         format: StatusBarIconFormat,
-        formatAssetName: String,
         meetingService: MeetingServices?,
         assets: StatusBarIconAssets
     ) -> StatusBarIcon {
@@ -382,8 +379,10 @@ enum StatusBarIconPolicy {
                 return .none
             case .eventtype:
                 return .meetingService(meetingService)
-            case .appicon, .calendar:
-                return .asset(formatAssetName)
+            case .appicon:
+                return .asset(assets.appIcon)
+            case .calendar:
+                return .asset(assets.calendar)
             }
         }
     }

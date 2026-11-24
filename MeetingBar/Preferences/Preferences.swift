@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PreferencesView: View {
-    @ObservedObject var patronageService: PatronageService
     // Non-optional: a settings window always has exactly one active tab.
     // An optional selection binding let NavigationSplitView seed the sidebar
     // highlight out of sync with the detail on first appearance.
@@ -93,7 +92,7 @@ struct PreferencesView: View {
     private func tabContent(_ tab: PreferencesTab) -> some View {
         switch tab {
         case .general:
-            GeneralTab(patronageService: patronageService)
+            GeneralTab()
         case .calendars:
             CalendarsTab()
         case .meetingOpening:
@@ -140,6 +139,6 @@ struct PreferencesGroupedForm<Content: View>: View {
 }
 
 #Preview {
-    PreferencesView(patronageService: PatronageService())
+    PreferencesView()
         .frame(width: 860, height: 620)
 }

@@ -1,7 +1,7 @@
 
 
 "link_url_cant_open_message" = "Sicherstellen, dass %@ installiert ist oder in den Einstellungen festlegen, dass diese Links im Webbrowser geöffnet werden.";
-"preferences_general_meeting_bar_description" = "MeetingBar ist eine quelloffene App,\ndie von Andrii Leitsius 🇺🇦 für reibungslosere \nund einfachere Online-Meetings entwickelt wurde.";
+"preferences_general_meeting_bar_description" = "Soon ist eine quelloffene App,\ndie auf MeetingBar von Andrii Leitsius 🇺🇦 basiert";
 
 // MARK: - Notifications
 
@@ -17,13 +17,6 @@
 "notifications_snooze_until_start" = "Schlummern bis zur Startzeit";
 "notifications_snooze_for" = "Schlummern für %@ Minuten";
 "notifications_meetingbar_join_event_action" = "Beitreten";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "Es konnte keine Verbindung zum Netzwerk hergestellt werden";
-"store_patronage_purchase_store_product_not_available_message" = "Das Produkt ist im aktuellen Schaufenster nicht verfügbar";
-"store_patronage_purchase_payment_not_allowed_message" = "Das Gerät darf die Zahlung nicht durchführen";
-"store_patronage_purchase_unknown_message" = "Unbekannter Fehler. Bitte kontaktiere den Support.";
-"store_patronage_purchase_success_message" = "Erfolgreich gekauft. Danke für die Unterstützung!";
-"store_patronage_restore_nothing_message" = "Nichts wiederherzustellen";
-"store_patronage_restore_success_message" = "Wiederhergestellt";
 "constants_meeting_service_url" = "URL";
 "constants_meeting_service_other" = "Andere";
 "preferences_configure_browsers_choose_browser_panel_message" = "Festlegen, von wo der Webbrowser starten soll.";
@@ -64,7 +57,7 @@
 "preferences_appearance_status_bar_icon_no_icon_value" = " Kein Symbol";
 "preferences_appearance_status_bar_icon_specific_icon_value" = " Meeting-Symbol (z.B. MS Teams)";
 "preferences_appearance_status_bar_icon_calendar_icon_value" = " Kalender";
-"preferences_appearance_status_bar_icon_app_icon_value" = " MeetingBar";
+"preferences_appearance_status_bar_icon_app_icon_value" = " Soon";
 "preferences_appearance_status_bar_icon_title" = "Icon";
 "preferences_appearance_status_bar_title" = "Menüleiste";
 "preferences_appearance_events_value_with_strikethrough" = "durchgestrichen anzeigen";
@@ -85,12 +78,6 @@
 // MARK: - Preferences Appearance
 
 "preferences_appearance_events_title" = "Ereignisse";
-"preferences_general_patron_restore_purchases" = "Käufe wiederherstellen";
-"preferences_general_patron_thank_for_purchase" = "Danke! Du hast MeetingBar für %d Monate unterstützt. 🎉";
-"preferences_general_patron_description" = "Es handelt sich um einmalige Käufe, die sich nicht automatisch verlängern.";
-"preferences_general_patron_twelve_months" = "12 Monate – 11,99 USD";
-"preferences_general_patron_six_months" = "6 Monate – 5,99 USD";
-"preferences_general_patron_three_months" = "3 Monate – 2,99 USD";
 "preferences_general_external_contact" = "Kontakt";
 "preferences_general_shortcut_create_meeting" = "Meeting erstellen:";
 "preferences_general_shortcut_open_menu" = "Menü öffnen:";
@@ -107,12 +94,11 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Allgemein";
-"windows_title_changelog" = "MeetingBar-Neuigkeiten";
-"window_title_onboarding" = "Willkommen bei MeetingBar";
+"window_title_onboarding" = "Willkommen bei Soon";
 
 // MARK: - Window titles
 
-"window_title_preferences" = "MeetingBar-Einstellungen";
+"window_title_preferences" = "Soon-Einstellungen";
 "next_meeting_empty_message" = "Juhu! Es ist Zeit, Kakao zu machen";
 "next_meeting_empty_title" = "Heute finden keine weiteren Meetings statt";
 "create_meeting_error_message" = "Benutzerdefinierte URL „%@“ fehlt oder ist ungültig. ";
@@ -125,7 +111,7 @@
 "general_cancel" = "Abbrechen";
 "general_ok" = "OK";
 "status_bar_no_title" = "Kein Titel";
-"status_bar_quit" = "MeetingBar beenden";
+"status_bar_quit" = "Soon beenden";
 "status_bar_preferences" = "Einstellungen";
 "status_bar_whats_new" = "Was ist neu?";
 "status_bar_rate_app" = "App bewerten";
@@ -174,7 +160,7 @@
 "preferences_advanced_regex_add_button" = "Regex hinzufügen";
 "preferences_advanced_regex_title" = "Benutzerdefinierte reguläre Ausdrücke für Meeting-Links";
 "preferences_advanced_wrong_location_button" = "Verstanden!";
-"preferences_advanced_wrong_location_message" = "Bitte wählen Sie den Ordner Benutzer → Bibliothek → Anwendungsskripte → leits.MeetingBar";
+"preferences_advanced_wrong_location_message" = "Bitte wählen Sie den Ordner Benutzer → Bibliothek → Anwendungsskripte → com.allisonfang.Soon";
 "preferences_advanced_wrong_location_title" = "Falscher Ort";
 "preferences_advanced_save_script_button" = "Skript speichern";
 "preferences_advanced_apple_script_placeholder" = "# Schreibe Dein Skript hier\ntell application \"Music\" to pause";
@@ -229,7 +215,6 @@
 
 // MARK: - Store
 
-"store_patronage_title" = "MeetingBar Schirmherrschaft";
 "constants_meeting_service_phone" = "Telefonnummer";
 "constants_create_meeting_service_url" = "Benutzerdefinierte URL";
 
@@ -263,11 +248,10 @@
 "status_bar_error_apple_script_title" = "AppleScript-Fehler";
 "status_bar_event_status_in" = "in %@";
 "constants_meeting_service_zoom_native" = "Zoom native";
-"shared_send_notification_disabled_tip" = "⚠️Benachrichtigungen für MeetingBar sind derzeit in den Systemeinstellungen von macOS deaktiviert. Bitte die Benachrichtigungen im Bereich \"Mitteilungen\" für MeetingBar aktivieren um kein Meeting zu verpassen.";
+"shared_send_notification_disabled_tip" = "⚠️Benachrichtigungen für Soon sind derzeit in den Systemeinstellungen von macOS deaktiviert. Bitte die Benachrichtigungen im Bereich \"Mitteilungen\" für Soon aktivieren um kein Meeting zu verpassen.";
 "shared_send_notification_no_alert_style_tip" = "Hinweis: Benachrichtigungen sind als Banner eingestellt, deshalb erscheinen sie kurzzeitig, bevor sie wieder verschwinden. Damit die Benachrichtigungen bis zum Verwerfen sichtbar bleiben, müssen sie als Alarme in den macOS-Benachrichtungseinstellungen eingestellt werden.";
 "status_bar_error_link_missed_message" = "Meeting-Link nicht gefunden, oder Ihr Service wird noch nicht unterstützt";
 "status_bar_error_link_missed_title" = "Ach! Kann %@ nicht beitreten";
-"preferences_general_patron_title" = "Schirmherr werden";
 "preferences_advanced_event_regex_title" = "Benutzerdefinierte reguläre Ausdrücke zum Herausfiltern von Besprechungen";
 "status_bar_section_refresh_sources" = "Quellen aktualisieren";
 "status_bar_menu_dismiss_curent_meeting" = "Aktuelles Meeting verwerfen";
@@ -334,20 +318,20 @@
 "onboarding_continue" = "Weiter";
 "onboarding_done" = "Fertig";
 "onboarding_choose_different_source" = "Eine andere Quelle wählen";
-"onboarding_welcome_title" = "Willkommen bei MeetingBar";
-"onboarding_welcome_description" = "MeetingBar zeigt Ihnen das nächste Meeting direkt in der Menüleiste an und ermöglicht den Beitritt mit einem Klick.";
+"onboarding_welcome_title" = "Willkommen bei Soon";
+"onboarding_welcome_description" = "Soon zeigt Ihnen das nächste Meeting direkt in der Menüleiste an und ermöglicht den Beitritt mit einem Klick.";
 "onboarding_calendar_source_title" = "Kalenderquelle wählen";
-"onboarding_calendar_source_description" = "Wählen Sie, wie MeetingBar Kalenderdaten liest. Beide Optionen können Google-Kalender einschließen.";
+"onboarding_calendar_source_description" = "Wählen Sie, wie Soon Kalenderdaten liest. Beide Optionen können Google-Kalender einschließen.";
 "onboarding_apple_calendar_title" = "macOS Kalender-App";
 "onboarding_apple_calendar_description" = "Liest Kalender aus der Kalender-App auf diesem Mac, einschließlich aller dort konfigurierten Konten.";
 "onboarding_google_calendar_title" = "Google Kalendar API";
-"onboarding_google_calendar_description" = "Verbindet MeetingBar direkt mit Google Kalendar, ohne die macOS Kalender-App zu verwenden.";
+"onboarding_google_calendar_description" = "Verbindet Soon direkt mit Google Kalendar, ohne die macOS Kalender-App zu verwenden.";
 "onboarding_authorization_title" = "Kalenderzugriff bestätigen";
 "onboarding_authorization_waiting" = "Warte auf Autorisierung…";
-"onboarding_authorization_apple_description" = "MeetingBar erlauben, Ereignisse aus der Kalender-App auf diesem Mac zu lesen.";
-"onboarding_authorization_google_description" = "Schließen Sie die Google-Anmeldung in Ihrem Browser ab und kehren Sie dann zu MeetingBar zurück.";
+"onboarding_authorization_apple_description" = "Soon erlauben, Ereignisse aus der Kalender-App auf diesem Mac zu lesen.";
+"onboarding_authorization_google_description" = "Schließen Sie die Google-Anmeldung in Ihrem Browser ab und kehren Sie dann zu Soon zurück.";
 "onboarding_calendar_selection_title" = "Kalender auswählen";
-"onboarding_calendar_selection_description" = "Wählen Sie die Kalender aus, deren Meetings in MeetingBar erscheinen sollen.";
+"onboarding_calendar_selection_description" = "Wählen Sie die Kalender aus, deren Meetings in Soon erscheinen sollen.";
 "onboarding_calendar_selection_empty" = "Keine Kalender gefunden. Aktualisieren Sie oder überprüfen Sie Ihre Kalenderkonten.";
 "onboarding_calendar_selection_permission" = "Kalenderberechtigung erforderlich. Gewähren Sie den Zugriff in den Systemeinstellungen und aktualisieren Sie dann.";
 "onboarding_calendar_selection_reconnect" = "Google Calendar muss erneut verbunden werden.";
@@ -390,9 +374,9 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "Kalenderfarbe";
 "preferences_sidebar_advanced" = "Erweitert";
 "preferences_appearance_status_bar_title_generic_value" = "Generischer Titel (Meeting)";
-"onboarding_setup_title" = "MeetingBar Einrichtung";
+"onboarding_setup_title" = "Soon Einrichtung";
 "onboarding_back" = "Zurück";
 "onboarding_essentials_title" = "Wähle das tägliche Verhalten";
 "onboarding_essentials_description" = "Wähle Standards für öffnen von Meetings und im Zeitplan zu bleiben.";
 "onboarding_essentials_hint" = "Du kannst jedes Detail in den Einstellungen später ändern.";
-"onboarding_start_using" = "Beginne MeetingBar zu nutzen";
+"onboarding_start_using" = "Beginne Soon zu nutzen";

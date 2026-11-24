@@ -88,7 +88,6 @@ extension StatusBarPresenterSettings {
             title: .current,
             timeDisplay: StatusBarTimeDisplay(Defaults[.eventTimeFormat]),
             iconFormat: StatusBarIconFormat(Defaults[.eventTitleIconFormat]),
-            iconFormatAssetName: Defaults[.eventTitleIconFormat].rawValue,
             iconAssets: .production,
             pendingDisplay: StatusBarParticipationDisplay(Defaults[.showPendingEvents]),
             tentativeDisplay: StatusBarParticipationDisplay(Defaults[.showTentativeEvents])

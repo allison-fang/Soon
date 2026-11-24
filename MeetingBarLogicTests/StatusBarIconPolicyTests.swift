@@ -17,25 +17,14 @@ final class StatusBarIconPolicyTests: XCTestCase {
     private func icon(
         mode: StatusBarTitleMode,
         format: StatusBarIconFormat,
-        formatAssetName: String? = nil,
         meetingService: MeetingServices? = nil
     ) -> StatusBarIcon {
         StatusBarIconPolicy.icon(
             mode: mode,
             format: format,
-            formatAssetName: formatAssetName ?? rawAssetName(for: format),
             meetingService: meetingService,
             assets: assets
         )
-    }
-
-    private func rawAssetName(for format: StatusBarIconFormat) -> String {
-        switch format {
-        case .calendar: return "iconCalendar"
-        case .appicon: return "AppIcon"
-        case .eventtype: return "ms_teams_icon"
-        case .none: return "no_online_session"
-        }
     }
 
     // MARK: - idle
@@ -98,29 +87,14 @@ final class StatusBarIconPolicyTests: XCTestCase {
     func testNextEventAppIconFormatReturnsAppIconAsset() {
         XCTAssertEqual(
             icon(mode: .nextEvent, format: .appicon),
-            .asset("AppIcon")
+            .asset(assets.appIcon)
         )
     }
 
     func testNextEventCalendarFormatReturnsCalendarAsset() {
         XCTAssertEqual(
             icon(mode: .nextEvent, format: .calendar),
-            .asset("iconCalendar")
+            .asset(assets.calendar)
         )
-    }
-
-    // MARK: - boundary cases
-
-    func testFormatAssetNameOverridesAssetsForCustomFormat() {
-        // Even if a future build adds new EventTitleIconFormat cases, the
-        // policy passes the format's rawValue through transparently for
-        // .appicon / .calendar so user-visible behavior matches the asset
-        // pinned to the Defaults enum, not the StatusBarIconAssets table.
-        let custom = icon(
-            mode: .nextEvent,
-            format: .calendar,
-            formatAssetName: "future_calendar_icon"
-        )
-        XCTAssertEqual(custom, .asset("future_calendar_icon"))
     }
 }

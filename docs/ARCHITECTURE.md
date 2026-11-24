@@ -1,4 +1,4 @@
-# MeetingBar Architecture
+# Soon Architecture
 
 This document is the contributor-facing map of the codebase. It is the canonical reference for app structure, dependency ownership, and release-sensitive configuration.
 
@@ -7,9 +7,9 @@ If anything below disagrees with the actual code, the code wins — and the doc 
 
 ---
 
-## What MeetingBar is, in one paragraph
+## What Soon is, in one paragraph
 
-MeetingBar is a macOS menu-bar app that reads calendars (Apple Calendar via EventKit, Google Calendar via OAuth2), shows the next event in the system status bar, opens the right meeting URL when you click "Join", and fires notifications around event start/end. It is `NSApplicationDelegate`-based (AppKit) with SwiftUI used for Preferences/Onboarding/Fullscreen views. macOS 12+ minimum, Swift 6.
+Soon is a redesigned fork of [MeetingBar](https://github.com/leits/MeetingBar); the code, targets and types still use the MeetingBar name. It is a macOS menu-bar app that reads calendars (Apple Calendar via EventKit, Google Calendar via OAuth2), shows the next event in the system status bar, opens the right meeting URL when you click "Join", and fires notifications around event start/end. It is `NSApplicationDelegate`-based (AppKit) with SwiftUI used for Preferences/Onboarding/Fullscreen views. macOS 12+ minimum, Swift 6.
 
 The product principle is reliability first: **show the correct meeting, stay fresh, stay visible, open the right link**. New settings are a last resort — improve the default behavior instead.
 
@@ -72,9 +72,8 @@ MeetingBar/                         (~76 .swift files)
 │   ├── AppIntent.swift             — Shortcuts integration
 │   ├── AppRuntimeBridge.swift      — AppKit/SwiftUI bridge helpers used at the composition root
 │   ├── LifecycleObserver.swift     — screen-lock / wake / timezone / day-change notifications
-│   ├── PatronageService.swift      — StoreKit 2 purchases, restore, entitlements, transaction updates
 │   ├── URLHandler.swift            — apple-event URL dispatch (oauth, preferences)
-│   └── WindowCoordinator.swift     — window lifecycle for Onboarding, Preferences, Changelog, Fullscreen
+│   └── WindowCoordinator.swift     — window lifecycle for Onboarding, Preferences, Fullscreen
 │
 ├── Calendar/                       — calendar data: models, events, filtering, selection, providers
 │   ├── EventStore.swift            — EventStore protocol (provider abstraction)
@@ -129,7 +128,7 @@ MeetingBar/                         (~76 .swift files)
 │   │   ├── StatusBarMenuState.swift        — value type + .make(from:) factory
 │   │   ├── StatusBarPresentation.swift     — Presentation + Title + Icon policies and Presenter [SPM]
 │   │   └── StatusBarPresentation+MeetingBar.swift — Defaults adapters for all three policies
-│   └── Views/                      — remaining SwiftUI views (FullscreenNotification, Changelog/)
+│   └── Views/                      — remaining SwiftUI views (FullscreenNotification)
 │
 ├── Utilities/
 │   ├── Constants.swift
@@ -350,7 +349,6 @@ Long-running or delayed work must have one stored owner and an explicit cancella
 | Active provider operations | `CalendarRepository` / `EventStore` | provider switch and `stop()` call `cancelPendingOperations()` |
 | Google OAuth sign-in, token refresh, external authorization session | `GCEventStore` | sign-out, provider switch, app termination |
 | Delayed fullscreen, auto-join, and event-start script actions | `NotificationScheduler` | reconcile removes stale plans; `stop()` cancels all |
-| StoreKit transaction update listener | `PatronageService` | `stop()` |
 | Lifecycle notification registrations | `LifecycleObserver` | `stop()` |
 
 Deliberate bounded exceptions:
@@ -466,7 +464,7 @@ Direct app dependencies are declared as Xcode Swift Package references in `Meeti
 | LaunchAtLogin | `5.0.2 ..< 6.0.0` | `5.0.2` | Login item integration |
 | AppAuth-iOS | `2.0.0 ..< 3.0.0` | `2.0.0` | Google OAuth |
 
-`swift-syntax 601.0.1` is currently transitive. StoreKit 2 is an Apple system framework used by `PatronageService`; it is not an external package dependency, and no external StoreKit package is used.
+`swift-syntax 601.0.1` is currently transitive.
 
 `Package.swift` defines the hostless `MeetingBarLogic` SwiftPM target and its tests. Keep it aligned with pure policy files that need fast `swift test` coverage, but do not use it as the source of truth for app package dependencies.
 
@@ -490,7 +488,7 @@ Treat these as release-sensitive files. Changes should be named in PR notes and 
 - `Scripts/**`
 - `MeetingBar/Resources /Localization /en.lproj/Localizable.strings`
 
-Before a signed release, verify the configuration that unsigned local Debug builds cannot prove: signing team and provisioning, hardened runtime, sandbox capabilities, URL schemes, Google OAuth placeholders and callback scheme, App Store receipt classification, StoreKit 2 patronage products, launch-at-login helper behavior, and localization validation.
+Before a signed release, verify the configuration that unsigned local Debug builds cannot prove: the release signature (see Releasing in CONTRIBUTING.md), URL schemes, Google OAuth placeholders and callback scheme, launch-at-login helper behavior, and localization validation.
 
 Standard release validation starts with:
 
@@ -501,7 +499,7 @@ make test
 make build-release
 ```
 
-Then manually smoke-test first launch/onboarding for EventKit and Google Calendar, provider switching and Google sign-out, wake/screen-lock/timezone/day-change refreshes, status-bar/menu states, meeting-link opening, notifications, fullscreen reminders, scripts, Preferences, diagnostics copy, app URL routes, and app termination while refresh, OAuth, delayed actions, or StoreKit updates are active.
+Then manually smoke-test first launch/onboarding for EventKit and Google Calendar, provider switching and Google sign-out, wake/screen-lock/timezone/day-change refreshes, status-bar/menu states, meeting-link opening, notifications, fullscreen reminders, scripts, Preferences, diagnostics copy, app URL routes, and app termination while refresh, OAuth, or delayed actions are active.
 
 ---
 
@@ -509,8 +507,7 @@ Then manually smoke-test first launch/onboarding for EventKit and Google Calenda
 
 - Project overview and installation: [`README.md`](../README.md)
 - Contributor workflow: [`CONTRIBUTING.md`](../CONTRIBUTING.md)
-- Published release notes and change history: [GitHub Releases](https://github.com/leits/MeetingBar/releases)
-- Security and contact: [`SECURITY.md`](../SECURITY.md), [`CONTACT.md`](../CONTACT.md)
+- Published release notes and change history: [GitHub Releases](https://github.com/allison-fang/Soon/releases)
 - Localization: `MeetingBar/Resources /Localization /` (note the spaces in the path — historical)
 - Meeting service URL patterns: [`MeetingBar/Meetings/MeetingServices.swift`](../MeetingBar/Meetings/MeetingServices.swift)
 - All persistent settings keys: [`MeetingBar/Extensions/DefaultsKeys.swift`](../MeetingBar/Extensions/DefaultsKeys.swift)

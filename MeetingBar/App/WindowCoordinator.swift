@@ -107,8 +107,7 @@ private enum WindowStylePolicy {
 /// Owns AppKit window lifecycle for app-level windows.
 ///
 /// Behavior stays outside this type: callers provide closures for close-time
-/// decisions such as terminating after incomplete onboarding or marking the
-/// changelog as read.
+/// decisions such as terminating after incomplete onboarding.
 @MainActor
 final class WindowCoordinator {
     private weak var preferencesWindow: NSWindow?
@@ -174,27 +173,6 @@ final class WindowCoordinator {
         // only once. The standard window level still lets other apps cover it.
         onboardingWindow.orderFrontRegardless()
         self.onboardingWindow = onboardingWindow
-    }
-
-    func openChangelogWindow() {
-        let contentView = ChangelogView()
-        let changelogWindow = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 600, height: 400),
-            styleMask: [.closable, .titled, .resizable],
-            backing: .buffered,
-            defer: false
-        )
-        changelogWindow.title = WindowTitles.changelog
-        changelogWindow.level = .floating
-        changelogWindow.contentView = NSHostingView(rootView: contentView)
-        WindowStylePolicy.applyRoundedCorners(to: changelogWindow)
-        changelogWindow.makeKeyAndOrderFront(nil)
-        NSApplication.shared.activate(ignoringOtherApps: true)
-
-        let controller = NSWindowController(window: changelogWindow)
-        controller.showWindow(self)
-
-        changelogWindow.center()
     }
 
     /// Presents the borderless fullscreen alert for an event on the preferred
@@ -293,11 +271,10 @@ final class WindowCoordinator {
 
     func openPreferencesWindow(
         appModel: AppModel?,
-        calendarSync: CalendarSync?,
-        patronageService: PatronageService
+        calendarSync: CalendarSync?
     ) {
         guard let appModel, let calendarSync else { return }
-        let contentView = PreferencesView(patronageService: patronageService)
+        let contentView = PreferencesView()
             .environmentObject(appModel)
             .environmentObject(calendarSync)
 
@@ -356,22 +333,19 @@ final class WindowCoordinator {
     func handleWindowClosed(
         _ window: NSWindow?,
         onboardingCompleted: Bool,
-        onIncompleteOnboardingClosed: () -> Void,
-        onChangelogClosed: () -> Void
+        onIncompleteOnboardingClosed: () -> Void
     ) {
         handleWindowClosed(
             title: window?.title,
             onboardingCompleted: onboardingCompleted,
-            onIncompleteOnboardingClosed: onIncompleteOnboardingClosed,
-            onChangelogClosed: onChangelogClosed
+            onIncompleteOnboardingClosed: onIncompleteOnboardingClosed
         )
     }
 
     func handleWindowClosed(
         title windowTitle: String?,
         onboardingCompleted: Bool,
-        onIncompleteOnboardingClosed: () -> Void,
-        onChangelogClosed: () -> Void
+        onIncompleteOnboardingClosed: () -> Void
     ) {
         guard let windowTitle else { return }
 
@@ -380,8 +354,6 @@ final class WindowCoordinator {
             if !onboardingCompleted {
                 onIncompleteOnboardingClosed()
             }
-        } else if windowTitle == WindowTitles.changelog {
-            onChangelogClosed()
         }
     }
 }

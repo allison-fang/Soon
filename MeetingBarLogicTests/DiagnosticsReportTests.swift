@@ -29,7 +29,7 @@ final class DiagnosticsReportTests: XCTestCase {
     func testReportHeaderIncludesVersionsAndProvider() {
         let report = DiagnosticsReport.text(from: context())
 
-        XCTAssertTrue(report.contains("MeetingBar 4.12 (999)"))
+        XCTAssertTrue(report.contains("Soon 4.12 (999)"))
         XCTAssertTrue(report.contains("macOS: Version 14.5 (Build 23F79)"))
         XCTAssertTrue(report.contains("Provider: Calendar.app (EventKit)"))
     }
@@ -181,8 +181,7 @@ final class DiagnosticsReportTests: XCTestCase {
                 calendarAccess: access,
                 notificationAccess: .authorized,
                 googleAuthStatus: .notActive,
-                scriptFileExists: false,
-                isAppStoreBuild: false
+                scriptFileExists: false
             )
             let report = DiagnosticsReport.text(from: input)
             XCTAssertTrue(report.contains("Calendar permission: \(label)"))

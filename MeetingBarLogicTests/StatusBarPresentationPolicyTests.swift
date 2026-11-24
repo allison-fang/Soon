@@ -50,7 +50,6 @@ final class StatusBarPresentationTests: XCTestCase {
             ),
             timeDisplay: timeDisplay,
             iconFormat: iconFormat,
-            iconFormatAssetName: "no_online_session",
             iconAssets: assets,
             pendingDisplay: pendingDisplay,
             tentativeDisplay: tentativeDisplay
@@ -260,7 +259,6 @@ final class StatusBarPresentationTests: XCTestCase {
             title: base.title,
             timeDisplay: base.timeDisplay,
             iconFormat: base.iconFormat,
-            iconFormatAssetName: base.iconFormatAssetName,
             iconAssets: base.iconAssets,
             pendingDisplay: base.pendingDisplay,
             tentativeDisplay: base.tentativeDisplay

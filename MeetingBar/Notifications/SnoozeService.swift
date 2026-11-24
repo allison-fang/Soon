@@ -44,7 +44,7 @@ enum SnoozeNotificationRequestFactory {
         content.categoryIdentifier = EventNotificationIdentifiers.snoozeCategory
         content.sound = UNNotificationSound.default
         content.userInfo = ["eventID": event.id]
-        content.threadIdentifier = "meetingbar"
+        content.threadIdentifier = "soon"
         content.body = "notifications_event_started_body".loco()
         content.interruptionLevel = .timeSensitive
 

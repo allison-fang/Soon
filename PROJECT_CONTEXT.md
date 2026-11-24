@@ -1,12 +1,12 @@
-# MeetingBar — Project Context
+# Soon — Project Context
 
-This document provides long-lived product and engineering context for people and coding agents working on MeetingBar. It is independent of any AI tool, task, branch, or release cycle.
+This document provides long-lived product and engineering context for people and coding agents working on Soon. It is independent of any AI tool, task, branch, or release cycle.
 
 **Authority:** The checked-out source code and tests are authoritative for current behavior. Use [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for implementation details, [`CONTRIBUTING.md`](CONTRIBUTING.md) for contributor workflow, and `Makefile` / CI workflows for validation commands. Do not assume that an issue, PR, proposal, or this document accurately describes the current branch without verification.
 
 ## Product
 
-[MeetingBar](https://github.com/leits/MeetingBar) is a free, open-source macOS menu-bar app that shows a user's current or next calendar meeting and provides quick ways to join, inspect, or prepare for it. It reads Apple Calendar through EventKit and Google Calendar through a direct integration. The app also supports meeting-service links, reminders, shortcuts, and automation.
+Soon is a free, open-source macOS menu-bar app, a redesigned fork of [MeetingBar](https://github.com/leits/MeetingBar), that shows a user's day as a timeline and their current or next calendar meeting and provides quick ways to join, inspect, or prepare for it. It reads Apple Calendar through EventKit and Google Calendar through a direct integration. The app also supports meeting-service links, reminders, shortcuts, and automation.
 
 ### Core promise: a trustworthy meeting entrypoint
 
@@ -16,7 +16,7 @@ This document provides long-lived product and engineering context for people and
 - **Visible and usable:** Keep the menu-bar entrypoint useful within native macOS layout and interaction constraints; degrade gracefully where possible.
 - **Correct action:** Detect and open the intended meeting URL, preserving required parameters and using predictable browser/native-app fallbacks.
 
-MeetingBar is a small, native-feeling macOS utility, not a general-purpose calendar client or meeting workspace. Simplicity and reliable defaults matter more than an ever-growing set of preferences.
+Soon is a small, native-feeling macOS utility, not a general-purpose calendar client or meeting workspace. Simplicity and reliable defaults matter more than an ever-growing set of preferences.
 
 ### Product decision rules
 
@@ -27,11 +27,11 @@ MeetingBar is a small, native-feeling macOS utility, not a general-purpose calen
 5. Evaluate feature proposals separately from implementation quality: a technically sound PR is not necessarily the right product decision.
 6. Avoid expanding feature scope or architecture without a concrete benefit to users or maintainability.
 
-The primary maintainer is Andrii Leitsius. Development and review time are limited; favor focused, reviewable contributions over ambitious rewrites.
+Soon is a personal project with one maintainer. Issues and PRs may not get a response; favor focused, reviewable contributions over ambitious rewrites.
 
 ## Engineering map
 
-MeetingBar uses Swift, AppKit for the macOS status bar, SwiftUI for application screens, EventKit, and a direct Google Calendar integration. The main app is built with Xcode. `Package.swift` defines a separate hostless `MeetingBarLogic` testable module for pure policies.
+Soon uses Swift, AppKit for the macOS status bar, SwiftUI for application screens, EventKit, and a direct Google Calendar integration. The main app is built with Xcode. The code, targets, folders and types still use the MeetingBar name. `Package.swift` defines a separate hostless `MeetingBarLogic` testable module for pure policies.
 
 The following is an orientation map, **not** a substitute for reading the current code:
 
@@ -113,9 +113,9 @@ Contributor feedback should be clear and specific, respectful without unnecessar
 ## Reference documents
 
 - [README](README.md) — product overview and user installation.
-- [Architecture](https://github.com/leits/MeetingBar/blob/master/docs/ARCHITECTURE.md) — detailed current component map, ownership and integration flows.
-- [Contributing](https://github.com/leits/MeetingBar/blob/master/CONTRIBUTING.md) — contributor setup and validation.
+- [Architecture](docs/ARCHITECTURE.md) — detailed current component map, ownership and integration flows.
+- [Contributing](CONTRIBUTING.md) — contributor setup and validation.
 - [Makefile](Makefile) and [CI workflows](.github/workflows) — executable validation definitions.
-- [GitHub Releases](https://github.com/leits/MeetingBar/releases) — published version notes; check relevant tags/branches rather than assuming a particular release state.
+- [GitHub Releases](https://github.com/allison-fang/Soon/releases) — published version notes; check relevant tags/branches rather than assuming a particular release state.
 
 Do not copy detailed code trees, package versions, issue lists, build numbers, coverage figures, or release snapshots into this file. Verify such details in the current repository when needed.

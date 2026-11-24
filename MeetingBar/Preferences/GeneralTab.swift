@@ -12,13 +12,12 @@ import Defaults
 import KeyboardShortcuts
 
 struct GeneralTab: View {
-    @ObservedObject var patronageService: PatronageService
     @Default(.timeFormat) var timeFormat
 
     var body: some View {
         PreferencesGroupedForm {
             Section {
-                PatronageAppSection(patronageService: patronageService)
+                AboutSection()
             }
 
             Section(header: Text("preferences_section_general_settings_title".loco())) {
@@ -84,29 +83,21 @@ private struct ShortcutRow<Recorder: View>: View {
     }
 }
 
-struct PatronageAppSection: View {
+struct AboutSection: View {
     @EnvironmentObject var appModel: AppModel
-    @Default(.patronageDuration) var patronageDuration
-    @Default(.isInstalledFromAppStore) var isInstalledFromAppStore
-    @ObservedObject var patronageService: PatronageService
 
     var body: some View {
         // The whole About card is one Form row (a single VStack) so the
-        // grouped form doesn't insert its own separators between the identity,
-        // support, and link clusters — we draw the one divider we want.
+        // grouped form doesn't insert its own separators between the identity
+        // and link clusters — we draw the one divider we want.
         VStack(alignment: .leading, spacing: 16) {
-            if isInstalledFromAppStore {
-                patronagePurchaseBlock
-                Divider()
-            }
-
             HStack(alignment: .top, spacing: 16) {
-                Image("appIconForAbout")
+                Image("appLogo")
                     .resizable()
                     .frame(width: 72, height: 72)
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
-                        Text("MeetingBar")
+                        Text("Soon")
                             .font(.title2).bold()
                         Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
                             .font(.callout)
@@ -122,31 +113,13 @@ struct PatronageAppSection: View {
 
             Divider()
 
-            // Primary support actions, made prominent with icons.
-            HStack(spacing: 10) {
-                Button {
-                    Links.patreon.openInDefaultBrowser()
-                } label: {
-                    Label("Patreon", systemImage: "heart.fill")
-                }
-                Button {
-                    Links.buymeacoffee.openInDefaultBrowser()
-                } label: {
-                    Label("Buy Me A Coffee", systemImage: "cup.and.saucer.fill")
-                }
-                Spacer()
-            }
-            .buttonStyle(.bordered)
-            .tint(.pink)
-
-            // Secondary links + diagnostics, visually quieter.
             HStack(spacing: 16) {
                 Button("GitHub") {
                     Links.github.openInDefaultBrowser()
                 }
                 .buttonStyle(.link)
                 Button("preferences_general_external_contact".loco()) {
-                    Links.emailMe.openInDefaultBrowser()
+                    Links.issues.openInDefaultBrowser()
                 }
                 .buttonStyle(.link)
                 Spacer()
@@ -161,58 +134,10 @@ struct PatronageAppSection: View {
         .padding(.vertical, 4)
     }
 
-    @ViewBuilder
-    private var patronagePurchaseBlock: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text("preferences_general_patron_title".loco()).bold()
-                Spacer()
-                Text("preferences_general_patron_description".loco()).font(.system(size: 10))
-            }
-            HStack {
-                Button(action: {
-                    Task { await patronageService.purchase(PatronageProducts.threeMonth) }
-                }) {
-                    Text("preferences_general_patron_three_months".loco())
-                }
-                .disabled(
-                    patronageService.isProcessing
-                        || !patronageService.isProductAvailable(PatronageProducts.threeMonth)
-                )
-                Button(action: {
-                    Task { await patronageService.purchase(PatronageProducts.sixMonth) }
-                }) {
-                    Text("preferences_general_patron_six_months".loco())
-                }
-                .disabled(
-                    patronageService.isProcessing
-                        || !patronageService.isProductAvailable(PatronageProducts.sixMonth)
-                )
-                Button(action: {
-                    Task { await patronageService.purchase(PatronageProducts.twelveMonth) }
-                }) {
-                    Text("preferences_general_patron_twelve_months".loco())
-                }
-                .disabled(
-                    patronageService.isProcessing
-                        || !patronageService.isProductAvailable(PatronageProducts.twelveMonth)
-                )
-                Button(action: {
-                    Task { await patronageService.restore() }
-                }) {
-                    Text("preferences_general_patron_restore_purchases".loco())
-                }
-                .disabled(patronageService.isProcessing)
-            }
-            if patronageDuration > 0 {
-                Text("preferences_general_patron_thank_for_purchase".loco(patronageDuration))
-            }
-        }
-    }
 }
 
 #Preview() {
-    GeneralTab(patronageService: PatronageService())
+    GeneralTab()
         .padding()
         .frame(width: 700, height: 620)
 }
