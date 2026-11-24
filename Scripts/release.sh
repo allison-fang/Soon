@@ -28,12 +28,19 @@ NOTES="${1:-}"
 
 [[ "$(git branch --show-current)" == "master" ]] || fail "release from master"
 git diff --quiet && git diff --cached --quiet || fail "commit or discard local changes first"
+# Xcode bundles every file in MeetingBar/, including untracked and git-ignored ones.
+[[ -z "$(git status --porcelain --ignored -- MeetingBar)" ]] ||
+    fail "remove the untracked or ignored files in MeetingBar/ first; they would ship inside Soon.app"
 git fetch -q origin master
 [[ "$(git rev-parse HEAD)" == "$(git rev-parse origin/master)" ]] || fail "master isn't in sync with origin/master"
 
 security find-identity -p codesigning | grep -q "\"$IDENTITY\"" || fail "no '$IDENTITY' certificate in the keychain.
   Keychain Access > Certificate Assistant > Create a Certificate…
   Name: $IDENTITY, Identity Type: Self-Signed Root, Certificate Type: Code Signing"
+CERT_SHA1="$(sed -n 's/^CERT_SHA1="\([0-9A-F]*\)"$/\1/p' Scripts/install.sh)"
+[[ -n "$CERT_SHA1" ]] || fail "couldn't read CERT_SHA1 from Scripts/install.sh"
+security find-certificate -a -c "$IDENTITY" -Z | grep -q "SHA-1 hash: $CERT_SHA1" ||
+    fail "'$IDENTITY' isn't the certificate Scripts/install.sh accepts; sign with the original one"
 
 settings="$(xcodebuild -project MeetingBar.xcodeproj -scheme MeetingBar -configuration Release -showBuildSettings 2>/dev/null)"
 setting() { awk -F' = ' -v key="$1" '$1 ~ "^ *"key"$" { print $2; exit }' <<<"$settings"; }
@@ -68,7 +75,7 @@ while IFS= read -r -d '' nested; do
     codesign --force --sign "$IDENTITY" "$nested"
 done < <(find "$APP/Contents" -depth \( -name "*.app" -o -name "*.framework" -o -name "*.dylib" -o -name "*.xpc" \) -print0)
 codesign --force --sign "$IDENTITY" "$APP"
-codesign --verify --deep --strict "$APP"
+codesign --verify --deep --strict -R "=certificate leaf = H\"$CERT_SHA1\"" "$APP"
 
 ditto -c -k --keepParent "$APP" "$ZIP"
 

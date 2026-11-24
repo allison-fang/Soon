@@ -10,6 +10,9 @@ set -euo pipefail
 
 URL="https://github.com/allison-fang/Soon/releases/latest/download/Soon.zip"
 DEST="/Applications/Soon.app"
+# The certificate every release is signed with (Scripts/release.sh checks it
+# too), so a swapped download signed by anyone else is refused.
+CERT_SHA1="EB229EE2F9672D93E706288563D739C710363EBB"
 
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
@@ -17,7 +20,8 @@ trap 'rm -rf "$tmp"' EXIT
 echo "Downloading Soon…"
 curl -fsSL "$URL" -o "$tmp/Soon.zip"
 ditto -x -k "$tmp/Soon.zip" "$tmp"
-codesign --verify --strict "$tmp/Soon.app" || { echo "error: the download is damaged; try again" >&2; exit 1; }
+codesign --verify --strict -R "=certificate leaf = H\"$CERT_SHA1\"" "$tmp/Soon.app" ||
+    { echo "error: the download is damaged or wasn't signed by Soon; try again" >&2; exit 1; }
 
 if pgrep -xq Soon; then
     echo "Quitting Soon…"

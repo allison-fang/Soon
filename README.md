@@ -18,7 +18,7 @@ Soon requires **macOS 12.0 or later**.
    curl -fsSL https://raw.githubusercontent.com/allison-fang/Soon/master/Scripts/install.sh | bash
    ```
 
-   It downloads the latest release, checks that the download isn't damaged, puts Soon in Applications, and opens it.
+   It downloads the latest release, checks that it's signed by Soon and isn't damaged, puts Soon in Applications, and opens it.
 3. In the setup window, choose where Soon reads your calendars from:
    * **macOS Calendar**: when macOS asks, allow Soon to access your calendars.
    * **Google Calendar**: sign in to Google in your browser. Google warns that it hasn't verified the app; choose **Advanced**, then **Go to Soon**. Then return to Soon.
