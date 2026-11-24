@@ -147,3 +147,20 @@ enum GoogleCalendarBatchPolicy {
         return events
     }
 }
+
+enum GoogleIDToken {
+    /// The account email in a Google ID token. The token's payload is
+    /// unpadded base64url, which `Data(base64Encoded:)` rejects as-is.
+    static func email(from idToken: String) -> String? {
+        let parts = idToken.split(separator: ".")
+        guard parts.count > 1 else { return nil }
+        var payload = parts[1]
+            .replacingOccurrences(of: "-", with: "+")
+            .replacingOccurrences(of: "_", with: "/")
+        payload += String(repeating: "=", count: (4 - payload.count % 4) % 4)
+        guard let data = Data(base64Encoded: payload),
+              let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
+        else { return nil }
+        return json["email"] as? String
+    }
+}

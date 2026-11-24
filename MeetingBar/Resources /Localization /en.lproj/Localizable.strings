@@ -338,6 +338,7 @@
 "onboarding_apple_calendar_title" = "macOS Calendar app";
 "onboarding_apple_calendar_description" = "Reads calendars from the Calendar app on this Mac, including every account configured there.";
 "onboarding_google_calendar_title" = "Google Calendar API";
+"google_calendar_account_fallback" = "Google Calendar";
 "onboarding_google_calendar_description" = "Connects Soon directly to Google Calendar without using the macOS Calendar app.";
 "onboarding_authorization_title" = "Verify calendar access";
 "onboarding_authorization_waiting" = "Waiting for authorization…";

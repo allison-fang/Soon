@@ -43,7 +43,7 @@ struct LinksTab: View {
             Section(header: Text("preferences_meeting_opening_behavior_title".loco())) {
                 Picker(
                     "preferences_services_link_meeting_title".loco(),
-                    selection: $defaultBrowser
+                    selection: BrowserPickerOptions.selection($defaultBrowser)
                 ) {
                     ForEach(defaultBrowserOptions, id: \.self) { (browser: Browser) in
                         Text(browser.name).tag(browser)
@@ -106,7 +106,7 @@ struct LinksTab: View {
 
                 Picker(
                     "preferences_services_create_meeting_browser_title".loco(),
-                    selection: $browserForCreateMeeting
+                    selection: BrowserPickerOptions.selection($browserForCreateMeeting)
                 ) {
                     ForEach(createMeetingBrowserOptions, id: \.self) { (browser: Browser) in
                         Text(browser.name).tag(browser)

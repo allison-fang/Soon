@@ -276,7 +276,7 @@ private struct EssentialsScreen: View {
     }
 
     private var defaultBrowserPicker: some View {
-        Picker("", selection: $defaultBrowser) {
+        Picker("", selection: BrowserPickerOptions.selection($defaultBrowser)) {
             ForEach(defaultBrowserOptions, id: \.self) { (browser: Browser) in
                 Text(browser.name).tag(browser)
             }

@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct CalendarSourcePresentation: Equatable, Identifiable {
     let provider: EventStoreProvider
@@ -267,6 +268,35 @@ enum ProviderPickerSelectionPolicy {
     }
 }
 
+struct CalendarListSection: Equatable, Identifiable {
+    let source: String
+    let calendars: [MBCalendar]
+
+    var id: String { source }
+}
+
+enum CalendarListPresentation {
+    /// Calendars grouped by account, with the accounts and the calendars in
+    /// each listed in name order.
+    static func sections(for calendars: [MBCalendar]) -> [CalendarListSection] {
+        Dictionary(grouping: calendars, by: \.source)
+            .map { source, calendars in
+                CalendarListSection(
+                    source: source,
+                    calendars: calendars.sorted { $0.title.localizedStandardCompare($1.title) == .orderedAscending }
+                )
+            }
+            .sorted { $0.source.localizedStandardCompare($1.source) == .orderedAscending }
+    }
+}
+
+extension Browser {
+    /// A browser with no app path opens links in the Mac's default browser.
+    /// Older settings saved that choice under other names, such as "Default
+    /// Browser", so pickers show every such value as the one system option.
+    var pickerValue: Browser { path.isEmpty ? systemDefaultBrowser : self }
+}
+
 enum BrowserPickerOptions {
     static func make(
         configured: [Browser],
@@ -274,13 +304,17 @@ enum BrowserPickerOptions {
         systemDefault: Browser = systemDefaultBrowser
     ) -> [Browser] {
         var options = [systemDefault]
-        for browser in configured where !options.contains(browser) {
-            options.append(browser)
-        }
-        if !options.contains(selected) {
-            options.append(selected)
+        for browser in configured + [selected] {
+            let option = browser.path.isEmpty ? systemDefault : browser
+            if !options.contains(option) {
+                options.append(option)
+            }
         }
         return options
+    }
+
+    static func selection(_ browser: Binding<Browser>) -> Binding<Browser> {
+        Binding(get: { browser.wrappedValue.pickerValue }, set: { browser.wrappedValue = $0 })
     }
 }
 
@@ -381,7 +415,7 @@ enum MeetingProviderOpeningSelectionPolicy {
             if let mode = legacyOpeningMode(for: provider, browser: browser) {
                 return .mode(mode)
             }
-            return .browser(browser)
+            return .browser(browser.pickerValue)
         }
         return .browser(systemDefaultBrowser)
     }
