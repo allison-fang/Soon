@@ -39,7 +39,6 @@
 
 "window_title_preferences" = "Soon Preferences";
 "window_title_onboarding" = "Welcome to Soon";
-"windows_title_changelog" = "Soon – What's New";
 
 // MARK: - Preferences tabs
 
@@ -90,13 +89,6 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Toggle title visibility in status bar:";
 "preferences_general_meeting_bar_description" = "Soon is an open-source app built on\nMeetingBar by Andrii Leitsius 🇺🇦";
 "preferences_general_external_contact" = "Contact";
-"preferences_general_patron_title" = "Become a Patron";
-"preferences_general_patron_three_months" = "3 months – 2.99 USD";
-"preferences_general_patron_six_months" = "6 months – 5.99 USD";
-"preferences_general_patron_twelve_months" = "12 months – 11.99 USD";
-"preferences_general_patron_description" = "These are one-off purchases, and will not auto-renew.";
-"preferences_general_patron_thank_for_purchase" = "Thanks! You have supported Soon for %d months 🎉";
-"preferences_general_patron_restore_purchases" = "Restore Purchases";
 
 // MARK: - Preferences Appearance
 
@@ -400,17 +392,6 @@
 "constants_meeting_service_other" = "Other";
 "constants_meeting_service_url" = "URL";
 
-// MARK: - Store
-
-"store_patronage_title" = "Soon Patronage";
-"store_patronage_restore_success_message" = "Restored";
-"store_patronage_restore_nothing_message" = "Nothing to restore";
-"store_patronage_purchase_success_message" = "Purchase made. Thanks for your support!";
-"store_patronage_purchase_unknown_message" = "Unknown error. Please contact support.";
-"store_patronage_purchase_payment_not_allowed_message" = "The device is not allowed to carry out the payment";
-"store_patronage_purchase_store_product_not_available_message" = "The product is not available in the current storefront";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "Could not connect to the network";
-
 // MARK: - Notifications
 
 "notifications_event_start_soon_body" = "The event starts soon";
@@ -439,4 +420,3 @@
 
 // MARK: - What's New
 
-"changelog_full_release_notes" = "Full release notes on GitHub";

@@ -25,7 +25,6 @@
 
 "window_title_preferences" = "Preferencias de Soon";
 "window_title_onboarding" = "Bienvenido a Soon";
-"windows_title_changelog" = "Soon - Novedades";
 
 // MARK: - Preferences tabs
 
@@ -46,13 +45,6 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Alternar la visibilidad del título en la barra de estado:";
 "preferences_general_meeting_bar_description" = "Soon es una app de código abierto\nbasada en MeetingBar de Andrii Leitsius 🇺🇦";
 "preferences_general_external_contact" = "Contacto";
-"preferences_general_patron_title" = "Conviértete en Patron";
-"preferences_general_patron_three_months" = "3 meses - 2.99 USD";
-"preferences_general_patron_six_months" = "6 meses - 5.99 USD";
-"preferences_general_patron_twelve_months" = "12 meses - 11.99 USD";
-"preferences_general_patron_description" = "Son compras únicas y no se renovarán automáticamente.";
-"preferences_general_patron_thank_for_purchase" = "¡Gracias! Has dado soporte a Soon para %d meses 🎉";
-"preferences_general_patron_restore_purchases" = "Restaurar compras";
 
 // MARK: - Preferences Appearance
 
@@ -253,17 +245,6 @@
 "constants_meeting_service_zoom_native" = "Zoom nativo";
 "constants_meeting_service_other" = "Otro";
 "constants_meeting_service_url" = "URL";
-
-// MARK: - Store
-
-"store_patronage_title" = "Patrocinio Soon";
-"store_patronage_restore_success_message" = "Restaurado";
-"store_patronage_restore_nothing_message" = "Nada para restaurar";
-"store_patronage_purchase_success_message" = "Compra realizada. ¡Gracias por tu apoyo!";
-"store_patronage_purchase_unknown_message" = "Error desconocido. Por favor, contacta con soporte.";
-"store_patronage_purchase_payment_not_allowed_message" = "El dispositivo no está permitido para efectuar el pago";
-"store_patronage_purchase_store_product_not_available_message" = "El producto no está disponible en la tienda actual";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "No se puede conectar a la red";
 
 // MARK: - Notifications
 

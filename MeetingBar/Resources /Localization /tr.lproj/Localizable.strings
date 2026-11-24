@@ -22,7 +22,6 @@
 "create_meeting_error_message" = "Özel bağlantı \\%@\\ eksik veya geçersiz. ";
 "next_meeting_empty_title" = "Bugün yaklaşmakta olan toplantı yok";
 "next_meeting_empty_message" = "Yaşasın! Kakao içme zamanı";
-"windows_title_changelog" = "Soon – Neler Yeni";
 
 // MARK: - Preferences tabs
 
@@ -41,9 +40,6 @@
 "preferences_general_shortcut_join_from_clipboard" = "Kopyalanmış toplantı bağlantısına katıl:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Durum çubuğunda başlık görünürlüğünü aç/kapat:";
 "preferences_general_external_contact" = "İletişim";
-"preferences_general_patron_description" = "Bunlar tek seferlik satın almalardır ve otomatik olarak yenilenmez.";
-"preferences_general_patron_thank_for_purchase" = "Teşekkürler! Soon'u %d aydır destekliyorsunuz 🎉";
-"preferences_general_patron_restore_purchases" = "Satın alımları geri yükle";
 "preferences_appearance_events_show_events_for_today_value" = "bugün";
 "preferences_appearance_events_show_events_for_today_tomorrow_value" = "bugün ve yarın";
 "preferences_appearance_events_all_day_title" = "Gün boyu etkinlikleri:";
@@ -161,13 +157,6 @@
 "constants_meeting_service_other" = "Diğer";
 "constants_meeting_service_url" = "URL";
 
-// MARK: - Store
-
-"store_patronage_title" = "Soon'u Destekle";
-"store_patronage_purchase_success_message" = "Satın alma gerçekleşti. Desteğin için teşekkürler!";
-"store_patronage_purchase_payment_not_allowed_message" = "Cihazın ödeme yapmasına izin verilmiyor";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "Ağa bağlanılamadı";
-
 // MARK: - Notifications
 
 "notifications_event_start_soon_body" = "Toplantı yakında başlıyor";
@@ -176,8 +165,6 @@
 "notifications_event_ends_three_minutes_body" = "Etkinlik üç dakika içinde sona erecek";
 "notifications_event_ends_five_minutes_body" = "Etkinlik beş dakika içinde sona erecek";
 "window_title_onboarding" = "Soon'a Hoşgeldiniz";
-"preferences_general_patron_title" = "Destekçi ol";
-"preferences_general_patron_twelve_months" = "12 aylık – 11.99 USD";
 "general_add" = "Ekle";
 "general_meeting" = "Toplantı";
 
@@ -186,8 +173,6 @@
 "window_title_preferences" = "Soon Tercihler";
 "preferences_general_shortcut_join_next" = "Sonraki toplantıya katıl:";
 "preferences_general_meeting_bar_description" = "Soon, Andrii Leitsius 🇺🇦 tarafından yaratılan\nMeetingBar'a dayanan açık kaynaklı bir uygulamadır";
-"preferences_general_patron_three_months" = "3 aylık – 2.99 USD";
-"preferences_general_patron_six_months" = "6 aylık – 5.99 USD";
 "preferences_appearance_events_without_guest_title" = "Misafirsiz etkinlikler:";
 "preferences_appearance_status_bar_icon_title" = "Simge";
 
@@ -237,8 +222,6 @@
 
 "preferences_calendars_select_calendars_title" = "Etkinlikleri durum çubuğunda göstermek için takvim seçin";
 "status_bar_section_join_current_meeting" = "Mevcut toplantıya katıl";
-"store_patronage_restore_success_message" = "Geri yüklendi";
-"store_patronage_purchase_store_product_not_available_message" = "Ürün mevcut mağazada bulunmamaktadır";
 "status_bar_submenu_location_title" = "Konum:";
 "status_bar_submenu_copy_meeting_link" = "Bağlantı linkini kopyala";
 "status_bar_submenu_dismiss_meeting" = "Toplantıyı kapat";
@@ -262,7 +245,6 @@
 "general_five_minute_before" = "5 dakika önce";
 "shared_send_notification_disabled_tip" = "⚠️ macOS bildirim ayarlarınız Soon için kapalı durumda. Toplantıları takip etmek için macOS sistem tercihlerinden bildirimleri açın.";
 "constants_meeting_service_phone" = "Telefon numarası";
-"store_patronage_purchase_unknown_message" = "Bilinmeyen hata. Lütfen desteğe başvurun.";
 "notifications_event_start_three_minutes_body" = "Toplantı üç dakika içinde başlıyor";
 "shared_automatic_event_join_toggle" = "Bir sonraki etkinlik toplantısına otomatik olarak katıl";
 "shared_automatic_event_join_tip" = "Bu ayar, yapılandırdığınız uygulamada veya tarayıcıda bir sonraki toplantınızı otomatik olarak açacaktır";
@@ -270,7 +252,6 @@
 // MARK: - Link open
 
 "link_url_cant_open_title" = "Amanın! %@ ile bağlantı açılamıyor";
-"store_patronage_restore_nothing_message" = "Geri yüklenecek bir şey yok";
 "notifications_event_start_one_minute_body" = "Toplantı bir dakika içinde başlıyor";
 "notifications_event_started_body" = "etkinlik başladı";
 "link_url_cant_open_message" = "%@ yüklü olduğundan emin olun veya bu bağlantıyı bir tarayıcıda açın.";

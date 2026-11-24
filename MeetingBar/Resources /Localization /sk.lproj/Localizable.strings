@@ -74,7 +74,6 @@
 
 "link_url_cant_open_title" = "Ups! Nepodarilo sa otvoriť odkaz v %@";
 "link_url_cant_open_message" = "Uisti sa, že máš nainštalovaný %@, alebo namiesto toho otvor takéto odkazy z predvolieb vo webovom prehliadači.";
-"preferences_general_patron_twelve_months" = "12 mesiacov - 11,99 USD";
 "preferences_appearance_events_past_title" = "Uplynulé udalosti:";
 "preferences_appearance_menu_show_event_title" = "Zobraziť udalosť:";
 "create_meeting_error_message" = "Vlastná URL adresa \"%@\" chýba alebo neplatná. ";
@@ -82,7 +81,6 @@
 // MARK: - Window titles
 
 "window_title_preferences" = "Soon Predvoľby";
-"windows_title_changelog" = "Soon - Čo je nové";
 
 // MARK: - Preferences tabs
 
@@ -95,12 +93,6 @@
 "preferences_general_shortcut_join_from_clipboard" = "Pripojiť sa k stretnutiu zo schránky:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Zobraziť/Skryť názov v lište:";
 "preferences_general_external_contact" = "Kontakt";
-"preferences_general_patron_title" = "Staň sa podporovateľom";
-"preferences_general_patron_three_months" = "3 mesiace - 2,99 USD";
-"preferences_general_patron_six_months" = "6 mesiacov - 5,99 USD";
-"preferences_general_patron_description" = "Ide o jednorazové nákupy a nebudú sa automaticky obnovovať.";
-"preferences_general_patron_thank_for_purchase" = "Vďaka! Soon podporený na %d mesiace(ov) 🎉";
-"preferences_general_patron_restore_purchases" = "Obnovenie nákupov";
 
 // MARK: - Preferences Appearance
 
@@ -253,10 +245,6 @@
 
 // MARK: - Store
 
-"store_patronage_title" = "Soon Podpora";
-"store_patronage_restore_success_message" = "Obnovené";
-"store_patronage_purchase_success_message" = "Nákup uskutočnený. Díky za tvoju podporu!";
-"store_patronage_purchase_unknown_message" = "Neznáma chyba. Kontaktuj prosím podporu.";
 "notifications_event_started_body" = "Udalosť sa začala";
 "notifications_event_start_one_minute_body" = "Udalosť sa začína o jednu minútu";
 "notifications_snooze_until_start" = "Odložiť do začatia";
@@ -270,10 +258,6 @@
 "status_bar_submenu_organizer_title" = "Organizátor: %@";
 "status_bar_submenu_notes_title" = "Poznámky:";
 "constants_meeting_service_url" = "URL adresa";
-"store_patronage_restore_nothing_message" = "Niet čo obnoviť";
-"store_patronage_purchase_payment_not_allowed_message" = "Zariadenie nie je oprávnené vykonať platbu";
-"store_patronage_purchase_store_product_not_available_message" = "Tento produkt nie je aktuálne dostupný";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "Nepodarilo sa pripojiť k sieti";
 "notifications_event_start_three_minutes_body" = "Udalosť sa začína o tri minúty";
 "notifications_event_start_five_minutes_body" = "Udalosť sa začína o päť minút";
 "notification_all_dismissals_removed_title" = "Odstránené všetky zrušené";

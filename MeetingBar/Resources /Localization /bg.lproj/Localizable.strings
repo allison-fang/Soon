@@ -25,7 +25,6 @@
 
 "window_title_preferences" = "Настройки";
 "window_title_onboarding" = "Добре дошли в Soon";
-"windows_title_changelog" = "Soon - Какво е новото";
 
 // MARK: - Preferences tabs
 
@@ -46,13 +45,6 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Покажи/скрий заглавието в лентата:";
 "preferences_general_meeting_bar_description" = "Soon е приложение с отворен код,\nбазирано на MeetingBar от Andrii Leitsius 🇺🇦";
 "preferences_general_external_contact" = "Контакт";
-"preferences_general_patron_title" = "Стани патрон";
-"preferences_general_patron_three_months" = "3 месеца - 2.99 USD";
-"preferences_general_patron_six_months" = "6 месеца - 5.99 USD";
-"preferences_general_patron_twelve_months" = "12 месеца - 11.99 USD";
-"preferences_general_patron_description" = "Това са еднократни покупки и не се подновяват автоматично.";
-"preferences_general_patron_thank_for_purchase" = "Благодарим! Подкрепата за Soon е активна за %d месеца 🎉";
-"preferences_general_patron_restore_purchases" = "Възстанови покупки";
 
 // MARK: - Preferences Appearance
 
@@ -257,17 +249,6 @@
 "constants_meeting_service_zoom_native" = "Zoom native";
 "constants_meeting_service_other" = "Друго";
 "constants_meeting_service_url" = "URL";
-
-// MARK: - Store
-
-"store_patronage_title" = "Подкрепа за Soon";
-"store_patronage_restore_success_message" = "Възстановено";
-"store_patronage_restore_nothing_message" = "Няма нищо за възстановяване";
-"store_patronage_purchase_success_message" = "Покупката е завършена. Благодарим за подкрепата!";
-"store_patronage_purchase_unknown_message" = "Неизвестна грешка. Свържи се с поддръжката.";
-"store_patronage_purchase_payment_not_allowed_message" = "Устройството няма право да извърши плащането";
-"store_patronage_purchase_store_product_not_available_message" = "Продуктът не е наличен в текущия storefront";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "Неуспешна връзка с мрежата";
 
 // MARK: - Notifications
 

@@ -17,13 +17,6 @@
 "notifications_snooze_until_start" = "Schlummern bis zur Startzeit";
 "notifications_snooze_for" = "Schlummern für %@ Minuten";
 "notifications_meetingbar_join_event_action" = "Beitreten";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "Es konnte keine Verbindung zum Netzwerk hergestellt werden";
-"store_patronage_purchase_store_product_not_available_message" = "Das Produkt ist im aktuellen Schaufenster nicht verfügbar";
-"store_patronage_purchase_payment_not_allowed_message" = "Das Gerät darf die Zahlung nicht durchführen";
-"store_patronage_purchase_unknown_message" = "Unbekannter Fehler. Bitte kontaktiere den Support.";
-"store_patronage_purchase_success_message" = "Erfolgreich gekauft. Danke für die Unterstützung!";
-"store_patronage_restore_nothing_message" = "Nichts wiederherzustellen";
-"store_patronage_restore_success_message" = "Wiederhergestellt";
 "constants_meeting_service_url" = "URL";
 "constants_meeting_service_other" = "Andere";
 "preferences_configure_browsers_choose_browser_panel_message" = "Festlegen, von wo der Webbrowser starten soll.";
@@ -85,12 +78,6 @@
 // MARK: - Preferences Appearance
 
 "preferences_appearance_events_title" = "Ereignisse";
-"preferences_general_patron_restore_purchases" = "Käufe wiederherstellen";
-"preferences_general_patron_thank_for_purchase" = "Danke! Du hast Soon für %d Monate unterstützt. 🎉";
-"preferences_general_patron_description" = "Es handelt sich um einmalige Käufe, die sich nicht automatisch verlängern.";
-"preferences_general_patron_twelve_months" = "12 Monate – 11,99 USD";
-"preferences_general_patron_six_months" = "6 Monate – 5,99 USD";
-"preferences_general_patron_three_months" = "3 Monate – 2,99 USD";
 "preferences_general_external_contact" = "Kontakt";
 "preferences_general_shortcut_create_meeting" = "Meeting erstellen:";
 "preferences_general_shortcut_open_menu" = "Menü öffnen:";
@@ -107,7 +94,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Allgemein";
-"windows_title_changelog" = "Soon-Neuigkeiten";
 "window_title_onboarding" = "Willkommen bei Soon";
 
 // MARK: - Window titles
@@ -229,7 +215,6 @@
 
 // MARK: - Store
 
-"store_patronage_title" = "Soon Schirmherrschaft";
 "constants_meeting_service_phone" = "Telefonnummer";
 "constants_create_meeting_service_url" = "Benutzerdefinierte URL";
 
@@ -267,7 +252,6 @@
 "shared_send_notification_no_alert_style_tip" = "Hinweis: Benachrichtigungen sind als Banner eingestellt, deshalb erscheinen sie kurzzeitig, bevor sie wieder verschwinden. Damit die Benachrichtigungen bis zum Verwerfen sichtbar bleiben, müssen sie als Alarme in den macOS-Benachrichtungseinstellungen eingestellt werden.";
 "status_bar_error_link_missed_message" = "Meeting-Link nicht gefunden, oder Ihr Service wird noch nicht unterstützt";
 "status_bar_error_link_missed_title" = "Ach! Kann %@ nicht beitreten";
-"preferences_general_patron_title" = "Schirmherr werden";
 "preferences_advanced_event_regex_title" = "Benutzerdefinierte reguläre Ausdrücke zum Herausfiltern von Besprechungen";
 "status_bar_section_refresh_sources" = "Quellen aktualisieren";
 "status_bar_menu_dismiss_curent_meeting" = "Aktuelles Meeting verwerfen";

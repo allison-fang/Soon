@@ -15,7 +15,6 @@
 "next_meeting_empty_message" = "வூஊ! கோகோவை உருவாக்க வேண்டிய நேரம் இது";
 "window_title_preferences" = "கூட்டத்தின் விருப்பத்தேர்வுகள்";
 "window_title_onboarding" = "கூட்டத்திற்கு வருக";
-"windows_title_changelog" = "METETYBAR - புதியது என்ன";
 "preferences_tab_general" = "பொது";
 "preferences_tab_bookmarks" = "புக்மார்க்குகள்";
 "notifications_event_start_one_minute_body" = "நிகழ்வு ஒரு நிமிடத்தில் தொடங்குகிறது";
@@ -42,13 +41,6 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "நிலை பட்டியில் தலைப்பு தெரிவுநிலையை மாற்றவும்:";
 "preferences_general_meeting_bar_description" = "Soon ஒரு திறந்த மூல பயன்பாடு\nஆண்ட்ரி லெய்சியச் 🇺🇦 உருவாக்கிய MeetingBar-ஐ அடிப்படையாகக் கொண்டது";
 "preferences_general_external_contact" = "தொடர்பு";
-"preferences_general_patron_title" = "ஒரு புரவலராகுங்கள்";
-"preferences_general_patron_three_months" = "3 மாதங்கள் - 2.99 அமெரிக்க டாலர்";
-"preferences_general_patron_six_months" = "6 மாதங்கள் - 5.99 அமெரிக்க டாலர்";
-"preferences_general_patron_twelve_months" = "12 மாதங்கள் - 11.99 அமெரிக்க டாலர்";
-"preferences_general_patron_description" = "இவை ஒரு-ஆஃப் கொள்முதல், மற்றும் தானாக புதுப்பிக்காது.";
-"preferences_general_patron_thank_for_purchase" = "நன்றி! %d மாதங்களுக்கு நீங்கள் கூட்டத்தை ஆதரித்தீர்கள்";
-"preferences_general_patron_restore_purchases" = "கொள்முதல் மீட்டமை";
 "preferences_appearance_events_title" = "நிகழ்வுகள்";
 "preferences_appearance_events_show_events_for_title" = "நிகழ்வுகளைக் காட்டு";
 "preferences_appearance_events_show_events_for_today_value" = "இன்று";
@@ -219,14 +211,6 @@
 "constants_create_meeting_service_url" = "தனிப்பயன் முகவரி";
 "constants_meeting_service_phone" = "தொலைபேசி எண்";
 "constants_meeting_service_url" = "முகவரி";
-"store_patronage_title" = "Soon சான்று";
-"store_patronage_restore_success_message" = "மீட்டெடுக்கப்பட்டது";
-"store_patronage_restore_nothing_message" = "மீட்டெடுக்க எதுவும் இல்லை";
-"store_patronage_purchase_success_message" = "வாங்கிய கொள்முதல். உங்கள் ஆதரவுக்கு நன்றி!";
-"store_patronage_purchase_unknown_message" = "தெரியாத பிழை. ஆதரவைத் தொடர்பு கொள்ளவும்.";
-"store_patronage_purchase_payment_not_allowed_message" = "பணம் செலுத்துவதற்கு சாதனம் அனுமதிக்கப்படவில்லை";
-"store_patronage_purchase_store_product_not_available_message" = "தயாரிப்பு தற்போதைய கடை முன்புறத்தில் கிடைக்கவில்லை";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "பிணையத்துடன் இணைக்க முடியவில்லை";
 "notifications_event_start_soon_body" = "நிகழ்வு விரைவில் தொடங்குகிறது";
 "notifications_event_started_body" = "நிகழ்வு தொடங்கியது";
 "preferences_appearance_menu_show_timeline_toggle" = "அன்றைய காட்சி காலவரிசையைக் காட்டு";

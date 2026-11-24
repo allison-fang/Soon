@@ -23,7 +23,6 @@
 
 "window_title_preferences" = "Soon の設定";
 "window_title_onboarding" = "Soon へようこそ";
-"windows_title_changelog" = "Soon - 新機能";
 
 // MARK: - Preferences tabs
 
@@ -46,13 +45,6 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "ステータスバーのタイトル表示をトグルする:";
 "preferences_general_meeting_bar_description" = "Soon は Andrii Leitsius 🇺🇦 の MeetingBar を\nもとにしたオープンソースアプリケーションです。";
 "preferences_general_external_contact" = "お問い合わせ";
-"preferences_general_patron_title" = "パトロンになる";
-"preferences_general_patron_three_months" = "3ヶ月 - 2.99 USD";
-"preferences_general_patron_six_months" = "6ヶ月 - 5.99 USD";
-"preferences_general_patron_twelve_months" = "12ヶ月 - 11.99 USD";
-"preferences_general_patron_description" = "これらは一回限りの購入で、自動更新されません。";
-"preferences_general_patron_thank_for_purchase" = "ありがとう！Soon をサポートしてくれて %d か月になりました！🎉";
-"preferences_general_patron_restore_purchases" = "購入の復元";
 
 // MARK: - Preferences Appearance
 
@@ -255,18 +247,6 @@
 "constants_meeting_service_zoom_native" = "Zoomネイティブ";
 "constants_meeting_service_other" = "その他";
 "constants_meeting_service_url" = "URL";
-
-// MARK: - Store
-
-
-"store_patronage_title" = "Soon のパトロンになる";
-"store_patronage_restore_success_message" = "復元しました";
-"store_patronage_restore_nothing_message" = "復元する内容がありません";
-"store_patronage_purchase_success_message" = "購入しました。あなたのサポートに感謝します！";
-"store_patronage_purchase_unknown_message" = "不明なエラーが発生しました。サポートにお問い合わせください。";
-"store_patronage_purchase_payment_not_allowed_message" = "このデバイスでは支払いが許可されていません";
-"store_patronage_purchase_store_product_not_available_message" = "製品は現在ストアフロントでご利用できません";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "ネットワークに接続できません";
 
 // MARK: - Notifications
 

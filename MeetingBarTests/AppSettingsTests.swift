@@ -121,14 +121,6 @@ final class AppSettingsTests: BaseTestCase {
         XCTAssertTrue(Defaults[.onboardingCompleted])
     }
 
-    func testAcknowledgeCurrentChangelogWriteHelper() {
-        Defaults[.appVersion] = "5.1.0"
-
-        AppSettings.acknowledgeCurrentChangelog()
-
-        XCTAssertEqual(Defaults[.lastRevisedVersionInChangelog], "5.1.0")
-    }
-
     // MARK: - StatusBarSettings
 
     func testStatusBarSettings_genericTitleHidesMeetingTitle() {
@@ -332,52 +324,6 @@ final class AppSettingsTests: BaseTestCase {
     func testAdvancedSettings_runJoinEventScript() {
         Defaults[.runJoinEventScript] = true
         XCTAssertTrue(AppSettings.current.advanced.runJoinEventScript)
-    }
-
-    // MARK: - App source / Patronage writes
-
-    func testAppSourceWriteHelper() {
-        AppSettings.setInstalledFromAppStore(true)
-        XCTAssertTrue(Defaults[.isInstalledFromAppStore])
-
-        AppSettings.setInstalledFromAppStore(false)
-        XCTAssertFalse(Defaults[.isInstalledFromAppStore])
-    }
-
-    func testPatronageWriteHelpers() {
-        AppSettings.addPatronageDuration(months: 3)
-        AppSettings.addPatronageDuration(months: 6, quantity: 2)
-
-        XCTAssertEqual(Defaults[.patronageDuration], 15)
-
-        AppSettings.resetPatronageDuration()
-
-        XCTAssertEqual(Defaults[.patronageDuration], 0)
-    }
-
-    func testPatronageTransactionsAreRecordedOnlyOnce() {
-        XCTAssertTrue(AppSettings.recordPatronageTransaction(
-            id: 42,
-            months: 3,
-            quantity: 2
-        ))
-        XCTAssertFalse(AppSettings.recordPatronageTransaction(
-            id: 42,
-            months: 3,
-            quantity: 2
-        ))
-
-        XCTAssertEqual(AppSettings.patronageDuration, 6)
-        XCTAssertEqual(AppSettings.processedPatronageTransactionIDs, ["42"])
-    }
-
-    func testResetPatronageClearsProcessedTransactions() {
-        AppSettings.recordPatronageTransaction(id: 42, months: 3, quantity: 1)
-
-        AppSettings.resetPatronageDuration()
-
-        XCTAssertEqual(AppSettings.patronageDuration, 0)
-        XCTAssertTrue(AppSettings.processedPatronageTransactionIDs.isEmpty)
     }
 
     // MARK: - currentForScheduler integration

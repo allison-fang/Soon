@@ -29,17 +29,9 @@
 "notifications_snooze_until_start" = "Répéter jusqu'à l'heure de début";
 "notifications_snooze_for" = "Répéter dans %@ min";
 "notifications_meetingbar_join_event_action" = "Rejoindre";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "Impossible de se connecter au réseau";
-"store_patronage_purchase_store_product_not_available_message" = "Le produit n'est pas disponible dans la vitrine actuelle";
-"store_patronage_purchase_payment_not_allowed_message" = "L'appareil n'est pas autorisé à effectuer le paiement";
-"store_patronage_purchase_unknown_message" = "Erreur inconnue. Veuillez contacter l'assistance technique.";
-"store_patronage_purchase_success_message" = "Achat effectué. Merci de votre soutien !";
-"store_patronage_restore_nothing_message" = "Rien à restaurer";
-"store_patronage_restore_success_message" = "Restauré";
 
 // MARK: - Store
 
-"store_patronage_title" = "Mécénat Soon";
 "constants_meeting_service_url" = "URL";
 "constants_meeting_service_other" = "Autre";
 "constants_meeting_service_phone" = "Numéro de téléphone";
@@ -222,13 +214,6 @@
 // MARK: - Preferences Appearance
 
 "preferences_appearance_events_title" = "Évènements";
-"preferences_general_patron_restore_purchases" = "Restaurer les achats";
-"preferences_general_patron_thank_for_purchase" = "Merci ! Vous soutenez Soon depuis %d mois. 🎉";
-"preferences_general_patron_description" = "Il s'agit d'achats uniques, qui ne seront pas renouvelés automatiquement.";
-"preferences_general_patron_twelve_months" = "12 mois – 11,99 USD";
-"preferences_general_patron_six_months" = "6 mois – 5,99 USD";
-"preferences_general_patron_three_months" = "3 mois – 2,99 USD";
-"preferences_general_patron_title" = "Devenir mécène";
 "preferences_general_external_contact" = "Contact";
 "preferences_general_meeting_bar_description" = "Soon est une application à code source ouvert\nbasée sur MeetingBar d'Andrii Leitsius 🇺🇦";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Basculer la visibilité du titre dans la barre d'état :";
@@ -248,7 +233,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Général";
-"windows_title_changelog" = "Nouveautés – Soon";
 "window_title_onboarding" = "Bienvenue dans Soon";
 
 // MARK: - Window titles

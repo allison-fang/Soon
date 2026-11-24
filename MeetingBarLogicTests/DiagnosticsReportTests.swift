@@ -181,8 +181,7 @@ final class DiagnosticsReportTests: XCTestCase {
                 calendarAccess: access,
                 notificationAccess: .authorized,
                 googleAuthStatus: .notActive,
-                scriptFileExists: false,
-                isAppStoreBuild: false
+                scriptFileExists: false
             )
             let report = DiagnosticsReport.text(from: input)
             XCTAssertTrue(report.contains("Calendar permission: \(label)"))

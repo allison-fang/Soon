@@ -12,13 +12,12 @@ import Defaults
 import KeyboardShortcuts
 
 struct GeneralTab: View {
-    @ObservedObject var patronageService: PatronageService
     @Default(.timeFormat) var timeFormat
 
     var body: some View {
         PreferencesGroupedForm {
             Section {
-                PatronageAppSection(patronageService: patronageService)
+                AboutSection()
             }
 
             Section(header: Text("preferences_section_general_settings_title".loco())) {
@@ -84,22 +83,14 @@ private struct ShortcutRow<Recorder: View>: View {
     }
 }
 
-struct PatronageAppSection: View {
+struct AboutSection: View {
     @EnvironmentObject var appModel: AppModel
-    @Default(.patronageDuration) var patronageDuration
-    @Default(.isInstalledFromAppStore) var isInstalledFromAppStore
-    @ObservedObject var patronageService: PatronageService
 
     var body: some View {
         // The whole About card is one Form row (a single VStack) so the
         // grouped form doesn't insert its own separators between the identity
         // and link clusters — we draw the one divider we want.
         VStack(alignment: .leading, spacing: 16) {
-            if isInstalledFromAppStore {
-                patronagePurchaseBlock
-                Divider()
-            }
-
             HStack(alignment: .top, spacing: 16) {
                 Image("appIconForAbout")
                     .resizable()
@@ -143,58 +134,10 @@ struct PatronageAppSection: View {
         .padding(.vertical, 4)
     }
 
-    @ViewBuilder
-    private var patronagePurchaseBlock: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text("preferences_general_patron_title".loco()).bold()
-                Spacer()
-                Text("preferences_general_patron_description".loco()).font(.system(size: 10))
-            }
-            HStack {
-                Button(action: {
-                    Task { await patronageService.purchase(PatronageProducts.threeMonth) }
-                }) {
-                    Text("preferences_general_patron_three_months".loco())
-                }
-                .disabled(
-                    patronageService.isProcessing
-                        || !patronageService.isProductAvailable(PatronageProducts.threeMonth)
-                )
-                Button(action: {
-                    Task { await patronageService.purchase(PatronageProducts.sixMonth) }
-                }) {
-                    Text("preferences_general_patron_six_months".loco())
-                }
-                .disabled(
-                    patronageService.isProcessing
-                        || !patronageService.isProductAvailable(PatronageProducts.sixMonth)
-                )
-                Button(action: {
-                    Task { await patronageService.purchase(PatronageProducts.twelveMonth) }
-                }) {
-                    Text("preferences_general_patron_twelve_months".loco())
-                }
-                .disabled(
-                    patronageService.isProcessing
-                        || !patronageService.isProductAvailable(PatronageProducts.twelveMonth)
-                )
-                Button(action: {
-                    Task { await patronageService.restore() }
-                }) {
-                    Text("preferences_general_patron_restore_purchases".loco())
-                }
-                .disabled(patronageService.isProcessing)
-            }
-            if patronageDuration > 0 {
-                Text("preferences_general_patron_thank_for_purchase".loco(patronageDuration))
-            }
-        }
-    }
 }
 
 #Preview() {
-    GeneralTab(patronageService: PatronageService())
+    GeneralTab()
         .padding()
         .frame(width: 700, height: 620)
 }

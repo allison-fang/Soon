@@ -71,7 +71,7 @@ It builds a universal Release app, signs it, zips it as `Soon.zip` and publishes
 
 Read [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) before changing app flow, calendar providers, meeting-link detection, notifications, status-bar rendering, settings, package dependencies, entitlements, or release-sensitive configuration.
 
-Direct app dependencies are Xcode Swift Package references pinned by `MeetingBar.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved`. `Package.swift` defines the hostless `MeetingBarLogic` package used for fast policy tests. Do not update only `Package.resolved`; change the Xcode package requirement intentionally and review the resolved diff. StoreKit is a system framework, not an external package dependency.
+Direct app dependencies are Xcode Swift Package references pinned by `MeetingBar.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved`. `Package.swift` defines the hostless `MeetingBarLogic` package used for fast policy tests. Do not update only `Package.resolved`; change the Xcode package requirement intentionally and review the resolved diff.
 
 Describe user-visible changes in the PR so they can go into [Soon's release notes](https://github.com/allison-fang/Soon/releases). Do not update an in-repository changelog for each contribution. Refer to [`docs/TESTING.md`](docs/TESTING.md) for choosing the appropriate test layer. For new source strings, update `MeetingBar/Resources /Localization /en.lproj/Localizable.strings` and run `make validate-strings`.
 

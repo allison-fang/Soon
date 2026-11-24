@@ -21,15 +21,9 @@
 "notifications_snooze_until_start" = "Snooze until start time";
 "notifications_snooze_for" = "Snooze for %@ min";
 "notifications_meetingbar_join_event_action" = "Join";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "Kunne ikke koble til nettverket";
-"store_patronage_purchase_store_product_not_available_message" = "Produktet er ikke tilgjengelig i nåværende butikkvindu";
-"store_patronage_purchase_payment_not_allowed_message" = "Enheten tillates ikke å utføre betalingen";
-"store_patronage_purchase_unknown_message" = "Ukjent feil. Kontakt brukerstøtte.";
-"store_patronage_purchase_success_message" = "Kjøp utført. Takk for din støtte!";
 
 // MARK: - Store
 
-"store_patronage_title" = "Soon-kronerulling";
 "constants_meeting_service_other" = "Annet";
 
 // MARK: - Constants
@@ -91,7 +85,6 @@
 "preferences_general_meeting_bar_description" = "Soon er et fritt program basert på MeetingBar\nlaget av Andrii Leitsius 🇺🇦";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Veksle visning av tittel i statusfelt:";
 "preferences_general_shortcut_join_from_clipboard" = "Ta del i møte fra utklippstavle:";
-"windows_title_changelog" = "Soon Hva er nytt";
 
 
 // MARK: - Window titles
@@ -105,8 +98,6 @@
 // MARK: - Link open
 
 "link_url_cant_open_title" = "Oida. Kunne ikke åpne lenken i %@";
-"store_patronage_restore_nothing_message" = "Ingenting å gjenopprette";
-"store_patronage_restore_success_message" = "Gjenopprettet";
 "constants_meeting_service_url" = "Nettadresse";
 "constants_meeting_service_phone" = "Telefon";
 "constants_create_meeting_service_url" = "Egendefinert nettadresse";
@@ -237,13 +228,6 @@
 // MARK: - Preferences Appearance
 
 "preferences_appearance_events_title" = "Begivenheter";
-"preferences_general_patron_restore_purchases" = "Gjenopprett kjøp";
-"preferences_general_patron_thank_for_purchase" = "Takk. Du støtter Soon i %d måneder! 🎉";
-"preferences_general_patron_description" = "Disse engangskjøpene fornyer seg ikke.";
-"preferences_general_patron_twelve_months" = "12 måneder – 11,99 USD";
-"preferences_general_patron_six_months" = "6 måneder – 5,99 USD";
-"preferences_general_patron_three_months" = "3 måneder – 2,99 USD";
-"preferences_general_patron_title" = "Bli kroneruller";
 "preferences_general_external_contact" = "Kontakt";
 "preferences_general_shortcut_join_next" = "Ta del i neste møte:";
 "preferences_general_shortcut_create_meeting" = "Opprett møte:";

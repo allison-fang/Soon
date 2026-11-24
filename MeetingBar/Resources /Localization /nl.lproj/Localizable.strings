@@ -10,7 +10,6 @@
 
 "window_title_preferences" = "Soon instellingen";
 "window_title_onboarding" = "Welkom bij Soon";
-"windows_title_changelog" = "Soon – Wat is er nieuw";
 "preferences_tab_bookmarks" = "Bladwijzers";
 "preferences_tab_calendars" = "Agenda's";
 "preferences_tab_advanced" = "Geavanceerd";
@@ -23,10 +22,6 @@
 "general_meeting" = "Meeting";
 "general_when_event_starts" = "wanneer meeting start";
 "preferences_general_shortcut_open_menu" = "Menu openen:";
-"preferences_general_patron_three_months" = "3 maanden – 2,99 USD";
-"preferences_general_patron_six_months" = "6 maanden – 5,99 USD";
-"preferences_general_patron_twelve_months" = "12 maanden – 11,99 USD";
-"preferences_general_patron_description" = "Dit is een eenmalige aankoop en wordt niet automatisch vernieuwd.";
 "preferences_general_shortcut_create_meeting" = "Meeting maken:";
 "preferences_general_shortcut_join_next" = "Deelnemen aan volgende meeting:";
 "preferences_general_shortcut_join_from_clipboard" = "Deelnemen aan meeting vanaf het klembord:";
@@ -68,9 +63,6 @@
 "preferences_tab_general" = "Algemeen";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Schakel de zichtbaarheid van titels in de statusbalk:";
 "preferences_general_meeting_bar_description" = "Soon is een open-source app\ngebaseerd op MeetingBar van Andrii Leitsius 🇺🇦";
-"preferences_general_patron_title" = "Word een sponsor";
-"preferences_general_patron_thank_for_purchase" = "Bedankt! Je hebt Soon gesteund voor % van de maanden";
-"preferences_general_patron_restore_purchases" = "Aankopen herstellen";
 "preferences_appearance_events_show_events_for_today_tomorrow_value" = "vandaag en morgen";
 "preferences_appearance_events_show_events_for_today_value" = "vandaag";
 "preferences_appearance_events_without_guest_title" = "Meetings zonder deelnemers:";
@@ -229,11 +221,6 @@
 "constants_meeting_service_url" = "Webadres";
 "shared_send_notification_no_alert_style_tip" = "Opmerking: Meldingen zijn ingesteld op Stroken, dus ze verschijnen kort en verdwijnen daarna weer. Om ze op het scherm te houden totdat je ze zelf sluit, schakel je over naar Waarschuwingen in de meldingsinstellingen van macOS.";
 "shared_automatic_event_join_toggle" = "Neem automatisch deel aan de volgende meeting";
-"store_patronage_restore_nothing_message" = "Niets om te herstellen";
-"store_patronage_purchase_success_message" = "Gekocht. Bedankt voor je steun!";
-"store_patronage_purchase_unknown_message" = "Onbekende fout. Neem contact op met de ondersteuning.";
-"store_patronage_purchase_payment_not_allowed_message" = "Het apparaat mag de betaling niet uitvoeren";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "Kan geen verbinding maken met het netwerk";
 "notifications_snooze_until_start" = "Snooze tot de starttijd";
 "notifications_snooze_for" = "Snooze voor %@ minuten";
 "notifications_meetingbar_join_event_action" = "Deelnemen";
@@ -249,13 +236,6 @@
 "notifications_event_start_one_minute_body" = "De meeting begint over een minuut";
 "notifications_event_start_three_minutes_body" = "De meeting begint over drie minuten";
 "notifications_event_start_five_minutes_body" = "De meeting begint over vijf minuten";
-
-// MARK: - Store
-
-"store_patronage_title" = "Soon sponsoring";
-"store_patronage_restore_success_message" = "Hersteld";
-"store_patronage_purchase_store_product_not_available_message" = "Het product is niet beschikbaar in de huidige winkel";
-
 
 // MARK: - Link open
 

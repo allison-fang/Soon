@@ -21,16 +21,9 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "החלפת מצב הצגת הכותרת בשורת המצב:";
 "preferences_general_meeting_bar_description" = "Soon הוא יישום בקוד פתוח\nהמבוסס על MeetingBar של Andrii Leitsius 🇺🇦";
 "preferences_general_external_contact" = "יצירת קשר";
-"preferences_general_patron_title" = "להפוך ל־Patron (מימון חודשי)";
-"preferences_general_patron_three_months" = "3 חודשים – 2.99 דולר";
-"preferences_general_patron_six_months" = "חצי שנה – 5.99 דולר";
-"preferences_general_patron_twelve_months" = "שנה - 11.99 דולר";
-"preferences_general_patron_description" = "אלו רכישות חד־פעמיות והן לא תתחדשנה.";
 "general_ok" = "אישור";
-"preferences_general_patron_thank_for_purchase" = "תודה רבה! תמכת ב־Soon למשך %d חודשים 🎉";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_error_apple_script_title" = "שגיאת AppleScript";
-"preferences_general_patron_restore_purchases" = "שחזור רכישות";
 "preferences_appearance_events_show_events_for_today_value" = "היום";
 "preferences_appearance_events_show_events_for_title" = "הצגת אירועים על פני";
 "preferences_appearance_events_show_events_for_today_tomorrow_value" = "היום ומחר";
@@ -171,7 +164,6 @@
 // MARK: - Window titles
 
 "window_title_preferences" = "העדפות Soon";
-"windows_title_changelog" = "Soon – מה חדש";
 "preferences_tab_bookmarks" = "סימניות";
 "preferences_tab_calendars" = "לוחות שנה";
 "preferences_appearance_status_bar_title_dot_value" = "נקודה (•)";
@@ -190,14 +182,6 @@
 
 // MARK: - Store
 
-"store_patronage_title" = "ה־Patronage של Soon";
-"store_patronage_restore_success_message" = "שוחזר";
-"store_patronage_restore_nothing_message" = "אין מה לשחזר";
-"store_patronage_purchase_success_message" = "הרכישה בוצעה. תודה רבה על התמיכה!";
-"store_patronage_purchase_unknown_message" = "שגיאה לא ידועה. נא ליצור קשר עם התמיכה.";
-"store_patronage_purchase_payment_not_allowed_message" = "למכשיר אסור לבצע את התשלום";
-"store_patronage_purchase_store_product_not_available_message" = "המוצר אינו זמין בחזית החנות הנוכחית";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "לא ניתן להתחבר לרשת";
 "notifications_event_start_one_minute_body" = "האירוע מתחיל בעוד דקה";
 "link_url_cant_open_message" = "נא לוודא שמותקן אצלך %@ או להגדיר לפתוח קישורים כאלה בדפדפן דרך ההעדפות במקום.";
 "preferences_tab_advanced" = "מתקדם";

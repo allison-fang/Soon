@@ -37,7 +37,6 @@ struct PermissionSnapshot: Equatable {
     let notificationAccess: NotificationAccess
     let googleAuthStatus: GoogleAuthStatus
     let scriptFileExists: Bool
-    let isAppStoreBuild: Bool
 }
 
 enum DiagnosticsProvider: Equatable {
@@ -156,13 +155,11 @@ enum DiagnosticsReport {
         }
 
         let script = perms.scriptFileExists ? "found" : "not found"
-        let source = perms.isAppStoreBuild ? "App Store" : "direct"
         return """
         Calendar permission: \(calendar)
         Notification permission: \(notifications)
         Google auth: \(google)
         Script file: \(script)
-        App source: \(source)
         """
     }
 

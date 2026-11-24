@@ -23,17 +23,9 @@
 "notifications_snooze_until_start" = "Odložit do začátku";
 "notifications_snooze_for" = "Odložit o %@ min";
 "notifications_meetingbar_join_event_action" = "Připojit se";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "Nepodařilo se připojit k síti";
-"store_patronage_purchase_store_product_not_available_message" = "Produkt není v aktuálním obchodě k dispozici";
-"store_patronage_purchase_payment_not_allowed_message" = "Ze zařízení nelze provést platbu";
-"store_patronage_purchase_unknown_message" = "Neznámá chyba. Kontaktujte prosím podporu.";
-"store_patronage_purchase_success_message" = "Zakoupeno. Děkujeme za podporu!";
-"store_patronage_restore_nothing_message" = "Není co obnovovat";
-"store_patronage_restore_success_message" = "Obnoveno";
 
 // MARK: - Store
 
-"store_patronage_title" = "Podpora Soon";
 "constants_meeting_service_url" = "URL";
 "constants_meeting_service_other" = "Jiná";
 "constants_meeting_service_zoom_native" = "Zoom (nativní aplikace)";
@@ -226,13 +218,6 @@
 // MARK: - Preferences Appearance
 
 "preferences_appearance_events_title" = "Události";
-"preferences_general_patron_restore_purchases" = "Obnovit nákupy";
-"preferences_general_patron_thank_for_purchase" = "Děkujeme! Soon podporujete už %d měs. 🎉";
-"preferences_general_patron_description" = "Jde o jednorázové nákupy bez automatického obnovení.";
-"preferences_general_patron_twelve_months" = "12 měsíců – 11,99 USD";
-"preferences_general_patron_six_months" = "6 měsíců – 5,99 USD";
-"preferences_general_patron_three_months" = "3 měsíce – 2,99 USD";
-"preferences_general_patron_title" = "Podpořte Soon";
 "preferences_general_external_contact" = "Kontakt";
 "preferences_general_meeting_bar_description" = "Soon je aplikace s otevřeným zdrojovým kódem\nzaložená na MeetingBaru, který vytvořil Andrii Leitsius 🇺🇦";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Přepnout zobrazení názvu v řádku nabídek:";
@@ -253,7 +238,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Obecné";
-"windows_title_changelog" = "Co je nového v Soon";
 
 // MARK: - Window titles
 
@@ -401,7 +385,6 @@
 "preferences_advanced_script_save_failed_message" = "Vaše změny byly zachovány. Zkontrolujte přístup ke složce Application Scripts a zkuste to znovu. %@";
 "preferences_advanced_script_hooks_help" = "Skripty navázané na začátek události se spouštějí i u událostí bez odkazu na schůzku. Skripty pro připojení se spouštějí pouze při připojení ke schůzce.";
 "preferences_meeting_opening_mode_tuple_app" = "Aplikace Tuple";
-"changelog_full_release_notes" = "Kompletní poznámky k vydání na GitHubu";
 "preferences_calendars_unavailable_title" = "Vybrané kalendáře nejsou dostupné";
 "preferences_calendars_unavailable_help" = "Tyto uložené kalendáře nejsou dostupné. Zkontrolujte přístup ke kalendáři v macOS nebo z výběru odeberte nedostupné kalendáře, aby se schůzky mohly znovu aktualizovat.";
 "preferences_calendars_remove_missing" = "Odebrat";

@@ -373,11 +373,6 @@ extension AppSettings {
     }
 
     @MainActor
-    static func acknowledgeCurrentChangelog() {
-        Defaults[.lastRevisedVersionInChangelog] = Defaults[.appVersion]
-    }
-
-    @MainActor
     static func dismissEvent(_ event: MBEvent) {
         dismissEvent(
             ProcessedEvent(
@@ -430,55 +425,5 @@ extension AppSettings {
         }
 
         replaceDismissedEvents(dismissedEvents)
-    }
-
-    @MainActor
-    static func setInstalledFromAppStore(_ isInstalled: Bool) {
-        Defaults[.isInstalledFromAppStore] = isInstalled
-    }
-
-    @MainActor
-    static var patronageDuration: Int {
-        Defaults[.patronageDuration]
-    }
-
-    @MainActor
-    static var processedPatronageTransactionIDs: Set<String> {
-        Set(Defaults[.processedPatronageTransactionIDs])
-    }
-
-    @MainActor
-    static func resetPatronageDuration() {
-        Defaults[.patronageDuration] = 0
-        Defaults[.processedPatronageTransactionIDs] = []
-    }
-
-    @MainActor
-    static func addPatronageDuration(months: Int, quantity: Int = 1) {
-        Defaults[.patronageDuration] += months * quantity
-    }
-
-    @MainActor
-    @discardableResult
-    static func recordPatronageTransaction(
-        id: UInt64,
-        months: Int,
-        quantity: Int
-    ) -> Bool {
-        let transactionID = String(id)
-        var processedIDs = processedPatronageTransactionIDs
-        guard !processedIDs.contains(transactionID) else { return false }
-
-        Defaults[.patronageDuration] += months * quantity
-        processedIDs.insert(transactionID)
-        Defaults[.processedPatronageTransactionIDs] = processedIDs.sorted()
-        return true
-    }
-
-    @MainActor
-    static func markPatronageTransactionProcessed(id: UInt64) {
-        var processedIDs = processedPatronageTransactionIDs
-        processedIDs.insert(String(id))
-        Defaults[.processedPatronageTransactionIDs] = processedIDs.sorted()
     }
 }

@@ -16,7 +16,6 @@
 "next_meeting_empty_message" = "是时候稍作休息了";
 "window_title_preferences" = "Soon偏好设置";
 "window_title_onboarding" = "欢迎使用Soon";
-"windows_title_changelog" = "Soon – 更新内容";
 "preferences_tab_general" = "通用";
 "preferences_tab_bookmarks" = "书签";
 "preferences_tab_calendars" = "日程表";
@@ -30,12 +29,6 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "会议名在状态栏中是否可见：";
 "preferences_general_meeting_bar_description" = "Soon是一款开源软件\n基于Andrii Leitsius 🇺🇦开发的MeetingBar";
 "preferences_general_external_contact" = "联系我们";
-"preferences_general_patron_title" = "成为赞助者";
-"preferences_general_patron_three_months" = "3个月 - 2.99 USD";
-"preferences_general_patron_six_months" = "6 个月 – 5.99 USD";
-"preferences_general_patron_description" = "这是一次性付款，不会自动续费。";
-"preferences_general_patron_thank_for_purchase" = "感谢！你为Soon提供了%d个月的支持 🎉";
-"preferences_general_patron_restore_purchases" = "重置订阅";
 "preferences_appearance_events_title" = "活动";
 "access_screen_access_denied_relaunch_title" = "然后手动启动应用程序以继续设置。";
 "access_screen_access_denied_system_preferences_button" = "系统偏好设置";
@@ -206,7 +199,6 @@
 "preferences_configure_browsers_modal_add_browser_title" = "添加浏览器";
 "preferences_configure_browsers_modal_alert_title" = "无法添加浏览器配置";
 "preferences_configure_browsers_modal_edit_browser_title" = "编辑浏览器";
-"preferences_general_patron_twelve_months" = "12 个月 – 11.99 美元";
 "preferences_meeting_opening_behavior_title" = "打开会议链接";
 "preferences_meeting_opening_mode_google_meet_pwa" = "Google Meet PWA（Chrome）";
 "preferences_meeting_opening_mode_google_meet_pwa_help" = "通过已安装的 Chrome PWA 打开 Google Meet（如可用），否则回退到浏览器。";
@@ -327,14 +319,6 @@
 "status_bar_submenu_status_unknown" = " ❔ 未知";
 "status_bar_submenu_undismiss_meeting" = "撤销忽略";
 "status_bar_whats_new" = "有什么新内容？";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "无法连接到网络";
-"store_patronage_purchase_payment_not_allowed_message" = "此设备不允许进行付款";
-"store_patronage_purchase_store_product_not_available_message" = "该产品在当前商店中不可用";
-"store_patronage_purchase_success_message" = "购买成功。感谢您的支持！";
-"store_patronage_purchase_unknown_message" = "未知错误。请联系支持。";
-"store_patronage_restore_nothing_message" = "没有可恢复的内容";
-"store_patronage_restore_success_message" = "已恢复";
-"store_patronage_title" = "Soon 赞助";
 "timeline_accessibility_label" = "包含 %d 个事件的时间轴";
 "preferences_appearance_events_no_meeting_link_title" = "无会议链接的事件";
 "preferences_appearance_menu_show_event_calendar_color_value" = "日历颜色";

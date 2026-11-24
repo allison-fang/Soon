@@ -21,7 +21,6 @@
 
 "window_title_preferences" = "Soon postavke";
 "window_title_onboarding" = "Soon dobrodošlica";
-"windows_title_changelog" = "Soon – novosti";
 
 // MARK: - Preferences tabs
 
@@ -42,13 +41,6 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Uključi/isključi prikaz naslova u traci stanja:";
 "preferences_general_meeting_bar_description" = "Soon je program otvorenog koda\ntemeljen na programu MeetingBar čiji je autor Andrii Leitsius 🇺🇦";
 "preferences_general_external_contact" = "Kontakt";
-"preferences_general_patron_title" = "Postani pokrovitelj";
-"preferences_general_patron_three_months" = "3 mjeseca – 2,99 USD";
-"preferences_general_patron_six_months" = "6 mjeseci – 5,99 USD";
-"preferences_general_patron_twelve_months" = "12 mjeseci – 11,99 USD";
-"preferences_general_patron_description" = "Ovo su jednokratne kupnje i neće se automatski obnavljati.";
-"preferences_general_patron_thank_for_purchase" = "Hvala! Podržavaš Soon %d mjeseca/i. 🎉";
-"preferences_general_patron_restore_purchases" = "Obnovi kupnje";
 
 // MARK: - Preferences Appearance
 
@@ -242,17 +234,6 @@
 "constants_meeting_service_zoom_native" = "Zoom native";
 "constants_meeting_service_other" = "Druge";
 "constants_meeting_service_url" = "URL";
-
-// MARK: - Store
-
-"store_patronage_title" = "Soon pokroviteljstvo";
-"store_patronage_restore_success_message" = "Obnovljeno";
-"store_patronage_restore_nothing_message" = "Nema se što obnoviti";
-"store_patronage_purchase_success_message" = "Kupnja obavljena. Hvala ti na podršci!";
-"store_patronage_purchase_unknown_message" = "Nepoznata greška. Kontaktiraj podršku.";
-"store_patronage_purchase_payment_not_allowed_message" = "Uređaj ne smije izvršiti plaćanje";
-"store_patronage_purchase_store_product_not_available_message" = "Proizvod trenutačno nije dostupan";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "Neuspjelo povezivanje s mrežom";
 
 // MARK: - Notifications
 

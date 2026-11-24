@@ -15,7 +15,6 @@
 "next_meeting_empty_message" = "Uau! É hora de preparar um chocolate quente";
 "window_title_preferences" = "Preferências do Soon";
 "window_title_onboarding" = "Bem-vindo ao Soon";
-"windows_title_changelog" = "Soon – Novidades";
 "preferences_tab_general" = "Geral";
 "preferences_tab_bookmarks" = "Favoritos";
 "preferences_tab_calendars" = "Calendários";
@@ -29,13 +28,6 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Alternar visibilidade do título na barra de estado:";
 "preferences_general_meeting_bar_description" = "Soon é uma app Open Source\nbaseada no MeetingBar de Andrii Leitsius 🇺🇦";
 "preferences_general_external_contact" = "Contacto";
-"preferences_general_patron_title" = "Torne-se um apoiador";
-"preferences_general_patron_three_months" = "3 meses – 2.99 USD";
-"preferences_general_patron_six_months" = "6 meses – 5.99 USD";
-"preferences_general_patron_twelve_months" = "12 meses – 11.99 USD";
-"preferences_general_patron_description" = "Estas são compras únicas e não serão renovadas automaticamente.";
-"preferences_general_patron_thank_for_purchase" = "Obrigado! Apoiou o Soon por %d meses 🎉";
-"preferences_general_patron_restore_purchases" = "Restaurar Compras";
 "preferences_appearance_events_title" = "Eventos";
 "preferences_appearance_events_show_events_for_title" = "Mostrar eventos de";
 "preferences_appearance_events_show_events_for_today_value" = "hoje";
@@ -324,14 +316,6 @@
 "status_bar_submenu_status_unknown" = " ❔ Desconhecido";
 "status_bar_submenu_undismiss_meeting" = "Remover dispensa";
 "status_bar_whats_new" = "O que há de novo?";
-"store_patronage_purchase_cloud_service_network_connection_failed" = "Não foi possível ligar à rede";
-"store_patronage_purchase_payment_not_allowed_message" = "O dispositivo não está autorizado a efetuar o pagamento";
-"store_patronage_purchase_store_product_not_available_message" = "O produto não está disponível na loja atual";
-"store_patronage_purchase_success_message" = "Compra efetuada. Obrigado pelo seu apoio!";
-"store_patronage_purchase_unknown_message" = "Erro desconhecido. Por favor contacte o suporte.";
-"store_patronage_restore_nothing_message" = "Nada a restaurar";
-"store_patronage_restore_success_message" = "Restaurado";
-"store_patronage_title" = "Mecenato Soon";
 "timeline_accessibility_label" = "Linha do tempo com %d eventos";
 "preferences_advanced_script_link_only_help" = "Executa apenas para eventos com links de reunião.";
 "preferences_sidebar_setup" = "Configuração";
