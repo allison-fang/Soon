@@ -60,6 +60,23 @@ final class StatusBarMenuStateTests: BaseTestCase {
         XCTAssertEqual(state.emptyStateReason, .authRequired)
     }
 
+    func testOneGoogleAccountLosingAccessWarnsAboutThatAccountOnly() {
+        var appState = AppState()
+        appState.activeProvider = .googleCalendar
+        appState.providerHealth = ProviderHealth(lastSuccessfulRefresh: Date()).applyingAccounts([
+            ProviderAccountHealth(id: "work@example.com", email: "work@example.com", status: .authRequired),
+            ProviderAccountHealth(id: "me@example.com", email: "me@example.com", status: .connected)
+        ])
+
+        let state = StatusBarMenuState.make(from: appState, settings: .empty)
+
+        XCTAssertEqual(
+            state.providerWarning,
+            .accountAuthRequired(accountID: "work@example.com", email: "work@example.com")
+        )
+        XCTAssertNotEqual(state.emptyStateReason, .authRequired)
+    }
+
     func testMenuStateMapsApplePermissionRequired() {
         var appState = AppState()
         appState.activeProvider = .macOSEventKit

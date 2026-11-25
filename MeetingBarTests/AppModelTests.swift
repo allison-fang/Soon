@@ -71,6 +71,72 @@ final class AppModelTests: BaseTestCase {
         await fulfillment(of: [callback], timeout: 1)
     }
 
+    func testReconnectReconnectsOnlyTheAccountThatLostAccess() async {
+        let harness = AppModelTestHarness()
+        harness.model.send(.calendarsLoaded([], provider: .googleCalendar))
+        harness.model.send(.providerHealthChanged(ProviderHealth(accounts: [
+            ProviderAccountHealth(id: "me@example.com", email: "me@example.com", status: .connected),
+            ProviderAccountHealth(id: "work@example.com", email: "work@example.com", status: .authRequired)
+        ])))
+
+        harness.model.send(.reconnectProvider)
+        await harness.flushAsyncActions()
+
+        XCTAssertEqual(harness.reconnectedAccountIDs, ["work@example.com"])
+        XCTAssertTrue(harness.providerChanges.isEmpty, "Other accounts must not be signed out")
+    }
+
+    func testReconnectWithNoGoogleAccountAddsOne() async {
+        let harness = AppModelTestHarness()
+        harness.model.send(.calendarsLoaded([], provider: .googleCalendar))
+
+        harness.model.send(.reconnectProvider)
+        await harness.flushAsyncActions()
+
+        XCTAssertEqual(harness.addedAccountCount, 1)
+        XCTAssertTrue(harness.reconnectedAccountIDs.isEmpty)
+    }
+
+    func testAddingAnAccountShowsProgressThenAnyError() async {
+        let harness = AppModelTestHarness()
+        harness.accountAuthorizationResult = .failed("Google is unreachable")
+
+        harness.model.send(.addCalendarAccount)
+        XCTAssertTrue(harness.model.state.accountAuthorizationInProgress)
+        await harness.flushAsyncActions()
+
+        XCTAssertFalse(harness.model.state.accountAuthorizationInProgress)
+        XCTAssertEqual(harness.model.state.accountActionError, "Google is unreachable")
+
+        harness.accountAuthorizationResult = .success
+        harness.model.send(.addCalendarAccount)
+        XCTAssertNil(harness.model.state.accountActionError)
+        await harness.flushAsyncActions()
+        XCTAssertEqual(harness.addedAccountCount, 2)
+    }
+
+    func testNewerSignInSupersedesAnAbandonedOne() async {
+        let harness = AppModelTestHarness(asyncOperationDelayNanoseconds: 50_000_000)
+
+        harness.model.send(.addCalendarAccount)
+        harness.model.send(.reconnectCalendarAccount("work@example.com"))
+        try? await Task.sleep(nanoseconds: 150_000_000)
+        await harness.flushAsyncActions()
+
+        XCTAssertEqual(harness.addedAccountCount, 0)
+        XCTAssertEqual(harness.reconnectedAccountIDs, ["work@example.com"])
+        XCTAssertFalse(harness.model.state.accountAuthorizationInProgress)
+    }
+
+    func testRemovingAnAccountDelegatesToTheEnvironment() async {
+        let harness = AppModelTestHarness()
+
+        harness.model.send(.removeCalendarAccount("work@example.com"))
+        await harness.flushAsyncActions()
+
+        XCTAssertEqual(harness.removedAccountIDs, ["work@example.com"])
+    }
+
     func testProviderChangeClearsStateAndDelegatesToEnvironment() async {
         let harness = AppModelTestHarness()
         let calendar = makeFakeCalendar(id: "cal")

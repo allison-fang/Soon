@@ -33,8 +33,26 @@ final class PreferencesPresentationTests: XCTestCase {
         )
         XCTAssertEqual(
             googleSource.accountScopeKey,
-            "access_screen_provider_gcalendar_number_of_accounts"
+            "access_screen_provider_gcalendar_accounts"
         )
+    }
+
+    func testGoogleAccountRowsShowEachAccountsStatusInNameOrder() {
+        let rows = CalendarAccountRowPresentation.rows(for: [
+            ProviderAccountHealth(id: "work@example.com", email: "work@example.com", status: .authRequired),
+            ProviderAccountHealth(id: "me@example.com", email: "me@example.com", status: .connected),
+            ProviderAccountHealth(id: "school@example.com", email: "school@example.com", status: .failed("Offline"))
+        ])
+
+        XCTAssertEqual(rows.map(\.id), ["me@example.com", "school@example.com", "work@example.com"])
+        XCTAssertEqual(rows.map(\.statusTextKey), [
+            "preferences_calendars_google_account_connected",
+            "preferences_calendars_google_account_refresh_failed",
+            "preferences_calendars_google_account_reconnect_required"
+        ])
+        XCTAssertEqual(rows.map(\.statusTone), [.success, .warning, .error])
+        XCTAssertEqual(rows.map(\.canReconnect), [false, false, true])
+        XCTAssertEqual(rows.map(\.errorDetail), [nil, "Offline", nil])
     }
 
     func testPreferencesTabsExposeCoreProductConceptsInOrder() {
@@ -129,17 +147,10 @@ final class PreferencesPresentationTests: XCTestCase {
         let presentation = PreferencesCalendarPresentation.make(from: state)
 
         XCTAssertEqual(presentation.connectionState, .connected)
-        XCTAssertEqual(presentation.statusTone, .success)
-        XCTAssertEqual(presentation.statusTextKey, "preferences_status_state_ok")
+        XCTAssertEqual(presentation.statusTone, .info)
+        XCTAssertEqual(presentation.statusTextKey, "preferences_status_state_one_account")
+        XCTAssertEqual(presentation.statusTextArguments, [])
         XCTAssertEqual(presentation.providerTitleKey, "onboarding_google_calendar_title")
-        XCTAssertEqual(
-            presentation.providerDataSourceKey,
-            "access_screen_provider_gcalendar_data_source"
-        )
-        XCTAssertEqual(
-            presentation.providerAccountScopeKey,
-            "access_screen_provider_gcalendar_number_of_accounts"
-        )
         XCTAssertEqual(presentation.selectedCalendarCount, 1)
         XCTAssertEqual(presentation.availableCalendarCount, 2)
         XCTAssertFalse(presentation.canReconnect)
@@ -340,6 +351,122 @@ final class PreferencesPresentationTests: XCTestCase {
         XCTAssertEqual(sections.map(\.source), ["personal@example.com", "work@example.com"])
         XCTAssertEqual(sections[0].calendars.map(\.title), ["Birthdays", "holidays"])
         XCTAssertEqual(sections[1].calendars.map(\.title), ["Work 2", "Work 10"])
+    }
+
+    func testGoogleCalendarsAreGroupedUnderTheirAccountWithItsStatus() {
+        func calendar(_ title: String, _ email: String) -> MBCalendar {
+            MBCalendar(title: title, id: "\(email)/\(title)", source: email, email: email, color: .blue)
+        }
+        let sections = CalendarListPresentation.sections(
+            for: [
+                calendar("Work", "Work@example.com"),
+                calendar("Family", "me@example.com"),
+                calendar("Birthdays", "me@example.com")
+            ],
+            accounts: [
+                ProviderAccountHealth(id: "work@example.com", email: "work@example.com", status: .authRequired),
+                ProviderAccountHealth(id: "me@example.com", email: "me@example.com", status: .connected),
+                ProviderAccountHealth(id: "new@example.com", email: "new@example.com", status: .connected)
+            ]
+        )
+
+        XCTAssertEqual(sections.map(\.account?.id), ["me@example.com", "new@example.com", "work@example.com"])
+        XCTAssertEqual(sections.map { $0.calendars.map(\.title) }, [["Birthdays", "Family"], [], ["Work"]])
+        XCTAssertEqual(sections.last?.account?.canReconnect, true)
+    }
+
+    func testWithoutAccountsCalendarsAreGroupedBySourceAsBefore() {
+        let calendars = [
+            MBCalendar(title: "Home", id: "home", source: "iCloud", email: nil, color: .blue)
+        ]
+
+        XCTAssertEqual(
+            CalendarListPresentation.sections(for: calendars, accounts: []),
+            CalendarListPresentation.sections(for: calendars)
+        )
+    }
+
+    func testOneFailingAccountCountsConnectedAccountsInsteadOfAGenericError() {
+        var state = AppState()
+        state.activeProvider = .googleCalendar
+        state.calendars = [
+            MBCalendar(title: "Work", id: "work", source: "work@example.com", email: "work@example.com", color: .blue),
+            MBCalendar(title: "Team", id: "team", source: "work@example.com", email: "work@example.com", color: .blue),
+            MBCalendar(title: "Home", id: "home", source: "me@example.com", email: "me@example.com", color: .blue)
+        ]
+        state.selectedCalendarIDs = ["work", "home"]
+        state.providerHealth = ProviderHealth(lastSuccessfulRefresh: Date()).applyingAccounts([
+            ProviderAccountHealth(id: "work@example.com", email: "work@example.com", status: .failed("Offline")),
+            ProviderAccountHealth(id: "me@example.com", email: "me@example.com", status: .connected)
+        ])
+
+        let presentation = PreferencesCalendarPresentation.make(from: state)
+
+        XCTAssertEqual(presentation.connectionState, .accountsNeedAttention)
+        XCTAssertEqual(presentation.statusTone, .warning)
+        XCTAssertEqual(presentation.statusTextKey, "preferences_status_state_some_accounts_connected")
+        XCTAssertEqual(presentation.statusTextArguments, [1, 2])
+        XCTAssertFalse(presentation.showsErrorDetail)
+    }
+
+    func testCalendarAppStatusCountsAccountsWithoutClaimingTheyAreSyncing() {
+        var state = AppState()
+        state.activeProvider = .macOSEventKit
+        state.calendars = [
+            MBCalendar(title: "Home", id: "a", source: "iCloud", email: nil, color: .blue),
+            MBCalendar(title: "Kids", id: "b", source: "iCloud", email: nil, color: .blue),
+            MBCalendar(title: "Work", id: "c", source: "work@example.com", email: nil, color: .blue)
+        ]
+        state.providerHealth = ProviderHealth.success(attempted: Date())
+
+        let presentation = PreferencesCalendarPresentation.make(from: state)
+
+        XCTAssertEqual(presentation.statusTone, .info)
+        XCTAssertEqual(presentation.statusTextKey, "preferences_status_state_accounts")
+        XCTAssertEqual(presentation.statusTextArguments, [2])
+    }
+
+    func testAllGoogleAccountsConnectedCountsAccounts() {
+        var state = AppState()
+        state.activeProvider = .googleCalendar
+        state.providerHealth = ProviderHealth.success(attempted: Date()).applyingAccounts([
+            ProviderAccountHealth(id: "a@example.com", email: "a@example.com", status: .connected),
+            ProviderAccountHealth(id: "b@example.com", email: "b@example.com", status: .connected)
+        ])
+
+        let presentation = PreferencesCalendarPresentation.make(from: state)
+
+        XCTAssertEqual(presentation.statusTone, .success)
+        XCTAssertEqual(presentation.statusTextKey, "preferences_status_state_accounts_connected")
+        XCTAssertEqual(presentation.statusTextArguments, [2])
+    }
+
+    func testAccountThatMustSignInAgainOffersReconnectInsteadOfRefresh() {
+        let rows = CalendarAccountRowPresentation.rows(for: [
+            ProviderAccountHealth(id: "a@example.com", email: "a@example.com", status: .authRequired),
+            ProviderAccountHealth(id: "b@example.com", email: "b@example.com", status: .failed("Offline")),
+            ProviderAccountHealth(id: "c@example.com", email: "c@example.com", status: .connected)
+        ])
+
+        XCTAssertEqual(rows.map(\.canRefresh), [false, true, true])
+        XCTAssertEqual(rows.map(\.canReconnect), [true, false, false])
+    }
+
+    func testEveryAccountFailingShowsNoneConnected() {
+        var state = AppState()
+        state.activeProvider = .googleCalendar
+        state.providerHealth = ProviderHealth(
+            lastErrorDescription: "Google Calendar is temporarily unreachable",
+            isStale: true,
+            accounts: [ProviderAccountHealth(id: "me@example.com", email: "me@example.com", status: .failed("Offline"))]
+        )
+
+        let presentation = PreferencesCalendarPresentation.make(from: state)
+
+        XCTAssertEqual(presentation.connectionState, .accountsNeedAttention)
+        XCTAssertEqual(presentation.statusTone, .error)
+        XCTAssertEqual(presentation.statusTextArguments, [0, 1])
+        XCTAssertFalse(presentation.showsErrorDetail, "Each account shows its own reason")
     }
 
     func testRegexDraftDoesNotMutateOriginalListBeforeSave() {

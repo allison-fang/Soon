@@ -65,16 +65,23 @@ private struct CalendarSelectionContent: View {
         // Same grouped-form presentation as Preferences → Calendars, so the
         // selection list looks identical in both places.
         PreferencesGroupedForm {
-            if appModel.state.calendars.isEmpty {
+            if appModel.state.activeProvider == .googleCalendar {
+                AddGoogleAccountSection(showsTitle: true)
+            }
+            if appModel.state.calendars.isEmpty, accounts.isEmpty {
                 Section {
                     emptyState
                 }
             } else {
-                CalendarSectionsView(calendars: appModel.state.calendars)
+                CalendarSectionsView(calendars: appModel.state.calendars, accounts: accounts)
             }
         }
         .environmentObject(appModel)
         .frame(maxHeight: .infinity)
+    }
+
+    private var accounts: [ProviderAccountHealth] {
+        appModel.state.activeProvider == .googleCalendar ? appModel.state.providerHealth.accounts : []
     }
 
     @ViewBuilder
@@ -89,7 +96,7 @@ private struct CalendarSelectionContent: View {
             HStack {
                 if presentation.canReconnect {
                     Button("preferences_status_reconnect".loco()) {
-                        appModel.send(.changeProvider(presentation.activeProvider, signOut: true))
+                        appModel.send(.reconnectProvider)
                     }
                 }
                 if presentation.canOpenCalendarSettings {

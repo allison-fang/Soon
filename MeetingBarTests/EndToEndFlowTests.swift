@@ -84,6 +84,9 @@ private final class EndToEndHarness {
                 self.providerChanges.append((provider, signOut))
                 return await self.sync.changeEventStoreProvider(provider, withSignOut: signOut)
             },
+            addCalendarAccount: { await sync.addAccount() },
+            reconnectCalendarAccount: { await sync.reconnectAccount($0) },
+            removeCalendarAccount: { await sync.removeAccount($0) },
             currentCalendarSnapshot: {
                 (sync.calendars, sync.repository.activeProviderName)
             },

@@ -346,6 +346,20 @@ extension AppSettings {
         Defaults[.selectedCalendarIDs] = selectedIDs
     }
 
+    /// Unticks calendars that are no longer available, such as those of a
+    /// removed account, in one write.
+    @MainActor
+    static func deselectCalendars(_ ids: Set<String>) {
+        guard !ids.isEmpty else { return }
+        migrateSelectedCalendarsByProviderIfNeeded()
+        let providerKey = Defaults[.eventStoreProvider].rawValue
+        var selections = Defaults[.selectedCalendarIDsByProvider]
+        let remaining = (selections[providerKey] ?? []).filter { !ids.contains($0) }
+        selections[providerKey] = remaining
+        Defaults[.selectedCalendarIDsByProvider] = selections
+        Defaults[.selectedCalendarIDs] = remaining
+    }
+
     @MainActor
     static func selectedCalendarIDs(for provider: EventStoreProvider) -> [String] {
         migrateSelectedCalendarsByProviderIfNeeded()

@@ -22,42 +22,37 @@ struct CalendarsTab: View {
         )
 
         PreferencesGroupedForm {
-            Section(header: Text("preferences_calendar_source_title".loco())) {
+            Section(header: Text("preferences_calendar_configuration_title".loco())) {
                 ProviderPicker()
 
-                VStack(alignment: .leading, spacing: 5) {
-                    Label(
-                        presentation.providerDataSourceKey.loco(),
-                        systemImage: "arrow.triangle.2.circlepath"
-                    )
-                    Label(
-                        presentation.providerAccountScopeKey.loco(),
-                        systemImage: "person.2"
-                    )
-                }
-                .foregroundStyle(.secondary)
-                .font(.caption)
-
                 HStack(spacing: 6) {
-                    Label(
-                        presentation.statusTextKey.loco(),
-                        systemImage: statusSystemImage(presentation.statusTone)
-                    )
-                    .foregroundStyle(statusColor(presentation.statusTone))
-                    .font(.caption)
-                    if let lastSuccess = appModel.state.providerHealth.lastSuccessfulRefresh {
-                        Text("·")
-                            .foregroundStyle(.tertiary)
-                            .font(.caption)
-                        Text(lastSuccess.formatted(date: .omitted, time: .shortened))
-                            .foregroundStyle(.secondary)
-                            .font(.caption)
+                    VStack(alignment: .leading, spacing: 3) {
+                        HStack(spacing: 6) {
+                            PreferencesStatusLabel(text: statusText(presentation), tone: presentation.statusTone)
+                            if let lastSuccess = appModel.state.providerHealth.lastSuccessfulRefresh {
+                                Text("·")
+                                    .foregroundStyle(.tertiary)
+                                    .font(.caption)
+                                Text("status_bar_popover_updated".loco(
+                                    lastSuccess.formatted(date: .omitted, time: .shortened)
+                                ))
+                                .foregroundStyle(.secondary)
+                                .font(.caption)
+                            }
+                        }
+                        if presentation.showsErrorDetail,
+                           let error = appModel.state.providerHealth.lastErrorDescription {
+                            Text(error)
+                                .foregroundStyle(.secondary)
+                                .font(.caption)
+                                .textSelection(.enabled)
+                                .lineLimit(3)
+                        }
                     }
                     Spacer()
                     if presentation.canReconnect {
                         Button("preferences_status_reconnect".loco()) {
-                            appModel.send(
-                                .changeProvider(presentation.activeProvider, signOut: true))
+                            appModel.send(.reconnectProvider)
                         }
                         .disabled(appModel.state.providerChangeInProgress)
                     }
@@ -66,19 +61,18 @@ struct CalendarsTab: View {
                             NSWorkspace.shared.open(Links.calendarPreferences)
                         }
                     }
-                    Button("general_refresh".loco()) {
-                        appModel.send(.refreshCalendars)
+                    // Google accounts each have their own Refresh.
+                    if appModel.state.activeProvider != .googleCalendar {
+                        Button("general_refresh".loco()) {
+                            appModel.send(.refreshCalendars)
+                        }
+                        .disabled(appModel.state.providerChangeInProgress)
                     }
-                    .disabled(appModel.state.providerChangeInProgress)
                 }
+            }
 
-                if let error = appModel.state.providerHealth.lastErrorDescription {
-                    Text(error)
-                        .foregroundStyle(.red)
-                        .font(.caption)
-                        .textSelection(.enabled)
-                        .lineLimit(3)
-                }
+            if appModel.state.activeProvider == .googleCalendar {
+                AddGoogleAccountSection()
             }
 
             if !missingIDs.isEmpty {
@@ -103,16 +97,31 @@ struct CalendarsTab: View {
                 }
             }
 
-            if appModel.state.calendars.isEmpty {
+            if appModel.state.calendars.isEmpty, accounts.isEmpty {
                 Section(header: Text("preferences_calendars_select_calendars_title".loco())) {
                     CalendarPreferencesEmptyState(presentation: presentation)
                 }
             } else {
-                CalendarSectionsView(calendars: appModel.state.calendars)
+                CalendarSectionsView(calendars: appModel.state.calendars, accounts: accounts)
             }
         }
     }
 
+    private var accounts: [ProviderAccountHealth] {
+        appModel.state.activeProvider == .googleCalendar ? appModel.state.providerHealth.accounts : []
+    }
+
+    private func statusText(_ presentation: PreferencesCalendarPresentation) -> String {
+        let arguments = presentation.statusTextArguments
+        switch arguments.count {
+        case 1:
+            return presentation.statusTextKey.loco(arguments[0])
+        case 2:
+            return presentation.statusTextKey.loco(arguments[0], arguments[1])
+        default:
+            return presentation.statusTextKey.loco()
+        }
+    }
 }
 
 /// An unavailable saved calendar must remain removable even when a failed
@@ -153,6 +162,7 @@ private struct CalendarPreferencesEmptyState: View {
 private func statusSystemImage(_ tone: PreferencesStatusTone) -> String {
     switch tone {
     case .neutral: "circle"
+    case .info: "person.crop.circle"
     case .success: "checkmark.circle.fill"
     case .warning: "exclamationmark.triangle.fill"
     case .error: "xmark.circle.fill"
@@ -161,24 +171,113 @@ private func statusSystemImage(_ tone: PreferencesStatusTone) -> String {
 
 private func statusColor(_ tone: PreferencesStatusTone) -> Color {
     switch tone {
-    case .neutral: .secondary
+    case .neutral, .info: .secondary
     case .success: .green
     case .warning: .orange
     case .error: .red
     }
 }
 
-struct CalendarSectionsView: View {
-    let calendars: [MBCalendar]
+/// An icon and short status text, tinted by how things stand.
+struct PreferencesStatusLabel: View {
+    let text: String
+    let tone: PreferencesStatusTone
 
     var body: some View {
-        ForEach(CalendarListPresentation.sections(for: calendars)) { section in
-            Section(header: Text(section.source)) {
-                ForEach(section.calendars, id: \.id) { cal in
-                    CalendarRow(calendar: cal)
+        HStack(spacing: 4) {
+            Image(systemName: statusSystemImage(tone))
+            Text(text)
+        }
+        .foregroundStyle(statusColor(tone))
+        .font(.caption)
+    }
+}
+
+/// Calendars grouped by source. For Google, each connected account's section
+/// starts with its status and actions.
+struct CalendarSectionsView: View {
+    @EnvironmentObject var appModel: AppModel
+    let calendars: [MBCalendar]
+    var accounts: [ProviderAccountHealth] = []
+    @State private var accountPendingRemoval: CalendarAccountRowPresentation?
+
+    var body: some View {
+        Group {
+            ForEach(CalendarListPresentation.sections(for: calendars, accounts: accounts)) { section in
+                if let account = section.account {
+                    // The account's connection gets its own card so its status
+                    // does not read as one of the calendar rows below it.
+                    Section(header: Text(title(of: section))) {
+                        accountRow(account)
+                    }
+                    if !section.calendars.isEmpty {
+                        Section {
+                            calendarRows(section)
+                        }
+                    }
+                } else {
+                    Section(header: Text(title(of: section))) {
+                        calendarRows(section)
+                    }
                 }
             }
         }
+        .alert(item: $accountPendingRemoval) { row in
+            Alert(
+                title: Text("preferences_calendars_google_account_remove_title".loco(accountName(row))),
+                message: Text("preferences_calendars_google_account_remove_message".loco()),
+                primaryButton: .destructive(Text("preferences_calendars_google_account_remove".loco())) {
+                    appModel.send(.removeCalendarAccount(row.id))
+                },
+                secondaryButton: .cancel()
+            )
+        }
+    }
+
+    private func calendarRows(_ section: CalendarListSection) -> some View {
+        ForEach(section.calendars, id: \.id) { cal in
+            CalendarRow(calendar: cal)
+        }
+    }
+
+    private func accountRow(_ row: CalendarAccountRowPresentation) -> some View {
+        HStack(spacing: 8) {
+            VStack(alignment: .leading, spacing: 3) {
+                PreferencesStatusLabel(text: row.statusTextKey.loco(), tone: row.statusTone)
+                if let detail = row.errorDetail {
+                    Text(detail)
+                        .foregroundStyle(.secondary)
+                        .font(.caption)
+                        .textSelection(.enabled)
+                        .lineLimit(3)
+                }
+            }
+            Spacer()
+            // Every refresh checks all accounts side by side, so any account's
+            // Refresh retries them all.
+            if row.canRefresh {
+                Button("general_refresh".loco()) {
+                    appModel.send(.refreshCalendars)
+                }
+            }
+            if row.canReconnect {
+                Button("preferences_status_reconnect".loco()) {
+                    appModel.send(.reconnectCalendarAccount(row.id))
+                }
+            }
+            Button("preferences_calendars_google_account_remove".loco()) {
+                accountPendingRemoval = row
+            }
+        }
+        .disabled(appModel.state.providerChangeInProgress)
+    }
+
+    private func title(of section: CalendarListSection) -> String {
+        section.account.map(accountName) ?? section.source
+    }
+
+    private func accountName(_ row: CalendarAccountRowPresentation) -> String {
+        row.email ?? "google_calendar_account_fallback".loco()
     }
 }
 
@@ -214,16 +313,42 @@ struct ProviderPicker: View {
                 providerChangeInProgress: inProgress
             )
         }
+    }
+}
 
-        if appModel.state.activeProvider == .googleCalendar {
-            HStack {
-                Spacer()
-                Button("preferences_calendars_provider_gcalendar_change_account".loco()) {
-                    appModel.send(.changeProvider(.googleCalendar, signOut: true))
-                }
-                .disabled(appModel.state.providerChangeInProgress)
+/// "Add Google account", with the latest add's failure under the button.
+/// Shared by Preferences and setup.
+struct AddGoogleAccountSection: View {
+    @EnvironmentObject var appModel: AppModel
+    /// Off where it follows the titled configuration section as a sub-group.
+    var showsTitle = false
+
+    var body: some View {
+        Section {
+            row
+        } header: {
+            if showsTitle {
+                Text("preferences_calendar_configuration_title".loco())
             }
         }
+    }
+
+    private var row: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Button("preferences_calendars_google_add_account".loco()) {
+                appModel.send(.addCalendarAccount)
+            }
+            .disabled(appModel.state.providerChangeInProgress)
+
+            if let error = appModel.state.accountActionError {
+                Text(error)
+                    .foregroundStyle(.red)
+                    .font(.caption)
+                    .textSelection(.enabled)
+                    .lineLimit(3)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 

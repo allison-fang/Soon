@@ -60,14 +60,18 @@
 "preferences_section_create_title" = "Create meetings";
 "preferences_section_apple_script_hooks_title" = "AppleScript Hooks";
 "preferences_section_regex_filters_title" = "Regex Filters";
-"preferences_calendar_source_title" = "Calendar Source";
+"preferences_calendar_configuration_title" = "Calendar Configuration";
 "preferences_meeting_opening_behavior_title" = "Open meeting links";
 "preferences_notifications_alerts_title" = "Meeting Alerts";
 "preferences_notifications_automation_title" = "Automatic Joining";
 
 // MARK: - Preferences Status
 
-"preferences_status_state_ok" = "Up to date";
+"preferences_status_state_one_account_connected" = "1 account connected";
+"preferences_status_state_accounts_connected" = "%d accounts connected";
+"preferences_status_state_some_accounts_connected" = "%1$d of %2$d accounts connected";
+"preferences_status_state_one_account" = "1 account";
+"preferences_status_state_accounts" = "%d accounts";
 "preferences_status_state_stale" = "Showing cached data";
 "preferences_status_state_error" = "Last refresh failed";
 "preferences_status_state_auth_required" = "Authorization required";
@@ -87,8 +91,8 @@
 "preferences_general_shortcut_join_next" = "Join next meeting:";
 "preferences_general_shortcut_join_from_clipboard" = "Join meeting from clipboard:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Toggle title visibility in status bar:";
-"preferences_general_meeting_bar_description" = "Soon is an open-source app built on\nMeetingBar by Andrii Leitsius 🇺🇦";
-"preferences_general_external_contact" = "Contact";
+"preferences_general_meeting_bar_description" = "A menu bar meeting app for Mac. See your next meeting, a live countdown, and your schedule.";
+"preferences_general_version" = "Version %@";
 
 // MARK: - Preferences Appearance
 
@@ -208,7 +212,13 @@
 // MARK: - Preferences Calendars
 
 "preferences_calendars_select_calendars_title" = "Select calendars to show meetings in the menu bar";
-"preferences_calendars_provider_gcalendar_change_account" = "Change Google Account";
+"preferences_calendars_google_add_account" = "Add Google account";
+"preferences_calendars_google_account_connected" = "Connected";
+"preferences_calendars_google_account_reconnect_required" = "Needs to be reconnected";
+"preferences_calendars_google_account_refresh_failed" = "Couldn’t refresh — showing last known meetings";
+"preferences_calendars_google_account_remove" = "Remove";
+"preferences_calendars_google_account_remove_title" = "Remove %@?";
+"preferences_calendars_google_account_remove_message" = "Soon will sign this account out and stop showing its calendars. You can add it again later.";
 "preferences_calendars_unavailable_title" = "Unavailable selected calendars";
 "preferences_calendars_unavailable_help" = "These saved calendars are not available. Check macOS Calendar access, or remove unavailable selections to resume updating meetings.";
 "preferences_calendars_remove_missing" = "Remove";
@@ -264,6 +274,7 @@
 "status_bar_control_next_meeting" = "Next meeting";
 "status_bar_control_stale" = "Calendar refresh failed — showing last known data";
 "status_bar_control_auth_required" = "Google Calendar needs to be reconnected";
+"status_bar_control_account_auth_required" = "%@ needs to be reconnected";
 "status_bar_control_reconnect" = "Reconnect Google Calendar";
 "status_bar_control_permission_required" = "Calendar permission is required";
 "status_bar_control_grant_permission" = "Grant Calendar Permission";
@@ -370,7 +381,7 @@
 "access_screen_provider_macos_data_source" = "Uses the macOS Calendar app as the data source";
 "access_screen_provider_macos_number_of_accounts" = "All configured accounts: iCloud, Google, Exchange, CalDAV, and more";
 "access_screen_provider_gcalendar_data_source" = "Connects directly through the Google Calendar API";
-"access_screen_provider_gcalendar_number_of_accounts" = "One Google account at a time";
+"access_screen_provider_gcalendar_accounts" = "One or more Google accounts";
 "access_screen_try_again" = "Try again";
 "access_screen_provider_authorization_cancelled" = "Authorization was cancelled. Try again to connect your calendar.";
 

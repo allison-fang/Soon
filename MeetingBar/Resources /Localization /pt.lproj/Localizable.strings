@@ -26,8 +26,8 @@
 "preferences_general_shortcut_create_meeting" = "Criar reunião:";
 "preferences_general_shortcut_join_next" = "Entrar na próxima reunião:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Alternar visibilidade do título na barra de estado:";
-"preferences_general_meeting_bar_description" = "Soon é uma app Open Source\nbaseada no MeetingBar de Andrii Leitsius 🇺🇦";
-"preferences_general_external_contact" = "Contacto";
+"preferences_general_meeting_bar_description" = "Uma app de reuniões para a barra de menus do Mac. Veja a sua próxima reunião, uma contagem decrescente em direto e a sua agenda.";
+"preferences_general_version" = "Versão %@";
 "preferences_appearance_events_title" = "Eventos";
 "preferences_appearance_events_show_events_for_title" = "Mostrar eventos de";
 "preferences_appearance_events_show_events_for_today_value" = "hoje";

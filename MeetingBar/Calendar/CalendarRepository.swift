@@ -31,9 +31,12 @@ func calendarDateRange(
 
 enum CalendarRepositoryError: LocalizedError {
     case noCalendars(EventStoreProvider)
+    case accountsUnsupported(EventStoreProvider)
 
     var errorDescription: String? {
         switch self {
+        case .accountsUnsupported:
+            return "This calendar source does not support adding accounts"
         case .noCalendars(.googleCalendar):
             return "Google Calendar did not return any calendars"
         case .noCalendars(.macOSEventKit):
@@ -203,6 +206,32 @@ public final class CalendarRepository {
 
     public func signOut() async {
         await (activeProvider as? AuthenticatedEventStore)?.signOut()
+    }
+
+    // MARK: - Accounts
+
+    /// Connected accounts of the active provider; empty when it has none.
+    public var accounts: [ProviderAccountHealth] {
+        (activeProvider as? MultiAccountEventStore)?.accounts ?? []
+    }
+
+    public func addAccount() async throws {
+        try await requireMultiAccountProvider().addAccount()
+    }
+
+    public func reconnectAccount(_ id: String) async throws {
+        try await requireMultiAccountProvider().reconnectAccount(id)
+    }
+
+    public func removeAccount(_ id: String) -> CalendarAccountRemoval? {
+        (activeProvider as? MultiAccountEventStore)?.removeAccount(id)
+    }
+
+    private func requireMultiAccountProvider() throws -> MultiAccountEventStore {
+        guard let store = activeProvider as? MultiAccountEventStore else {
+            throw CalendarRepositoryError.accountsUnsupported(activeProviderName)
+        }
+        return store
     }
 
     /// Forwards an OAuth callback URL to the active provider if it supports it.

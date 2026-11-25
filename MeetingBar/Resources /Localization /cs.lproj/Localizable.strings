@@ -218,8 +218,8 @@
 // MARK: - Preferences Appearance
 
 "preferences_appearance_events_title" = "Události";
-"preferences_general_external_contact" = "Kontakt";
-"preferences_general_meeting_bar_description" = "Soon je aplikace s otevřeným zdrojovým kódem\nzaložená na MeetingBaru, který vytvořil Andrii Leitsius 🇺🇦";
+"preferences_general_meeting_bar_description" = "Aplikace pro schůzky v řádku nabídek Macu. Uvidíte svou další schůzku, živé odpočítávání a svůj program.";
+"preferences_general_version" = "Verze %@";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Přepnout zobrazení názvu v řádku nabídek:";
 "preferences_general_shortcut_join_from_clipboard" = "Připojit se ke schůzce ze schránky:";
 "preferences_general_shortcut_join_next" = "Připojit se k příští schůzce:";

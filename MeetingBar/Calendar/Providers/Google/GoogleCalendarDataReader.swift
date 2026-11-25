@@ -11,22 +11,30 @@ struct GoogleCalendarDataReader {
     let fetchJSON: FetchJSON
 
     func fetchCalendars() async throws -> [MBCalendar] {
+        try await fetchCalendarEntries().map(\.calendar)
+    }
+
+    func fetchCalendarEntries() async throws -> [GoogleCalendarListEntry] {
         let url = URL(
             string: "https://www.googleapis.com/calendar/v3/users/me/calendarList?maxResults=250&showHidden=true"
         )!
         let items = try await fetchJSON(url, nil)
 
-        return items.compactMap { item -> MBCalendar? in
+        return items.compactMap { item -> GoogleCalendarListEntry? in
             guard let title = item["summary"] as? String,
                   let calendarID = item["id"] as? String,
                   let backgroundColor = item["backgroundColor"] as? String else { return nil }
 
-            return MBCalendar(
-                title: title,
-                id: calendarID,
-                source: userEmail ?? "google_calendar_account_fallback".loco(),
-                email: userEmail,
-                color: hexStringToUIColor(hex: backgroundColor)
+            return GoogleCalendarListEntry(
+                calendar: MBCalendar(
+                    title: title,
+                    id: calendarID,
+                    source: userEmail ?? "google_calendar_account_fallback".loco(),
+                    email: userEmail,
+                    color: hexStringToUIColor(hex: backgroundColor)
+                ),
+                accessRole: item["accessRole"] as? String,
+                isPrimary: item["primary"] as? Bool ?? false
             )
         }
     }
@@ -70,6 +78,26 @@ struct GoogleCalendarDataReader {
             events: events.deduplicatedPreferringResolvedAttendee(),
             successfulCalendars: successfulCalendars,
             forbiddenErrors: forbiddenErrors
+        )
+    }
+}
+
+struct GoogleCalendarListEntry: Sendable {
+    let calendar: MBCalendar
+    let accessRole: String?
+    let isPrimary: Bool
+
+    func withAccountEmail(_ email: String) -> GoogleCalendarListEntry {
+        GoogleCalendarListEntry(
+            calendar: MBCalendar(
+                title: calendar.title,
+                id: calendar.id,
+                source: email,
+                email: email,
+                color: calendar.color
+            ),
+            accessRole: accessRole,
+            isPrimary: isPrimary
         )
     }
 }

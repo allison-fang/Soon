@@ -40,8 +40,8 @@
 "preferences_general_shortcut_join_next" = "Долучитись до наступної зустрічі:";
 "preferences_general_shortcut_join_from_clipboard" = "Долучитись до зустрічі з буфера обміну:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Показати/сховати заголовок у смузі меню:";
-"preferences_general_meeting_bar_description" = "Soon – це застосунок з відкритим кодом,\nстворений на основі MeetingBar Андрія Лейціуса 🇺🇦";
-"preferences_general_external_contact" = "Зв'язатись";
+"preferences_general_meeting_bar_description" = "Застосунок для зустрічей у рядку меню Mac. Переглядайте наступну зустріч, зворотний відлік у реальному часі та свій розклад.";
+"preferences_general_version" = "Версія %@";
 
 // MARK: - Preferences Appearance
 

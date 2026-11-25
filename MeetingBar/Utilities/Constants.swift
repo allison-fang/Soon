@@ -28,7 +28,6 @@ enum TitleTruncationRules {
 
 enum Links {
     static let github = URL(string: "https://github.com/allison-fang/Soon")!
-    static let issues = URL(string: "https://github.com/allison-fang/Soon/issues")!
     static let calendarPreferences = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Calendars")!
 }
 

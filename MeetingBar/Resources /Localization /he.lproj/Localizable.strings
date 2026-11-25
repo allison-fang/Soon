@@ -19,8 +19,8 @@
 "preferences_general_shortcut_join_next" = "הצטרפות לפגישה הבאה:";
 "preferences_general_shortcut_join_from_clipboard" = "הצטרפות לפגישה שבלוח הגזירים:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "החלפת מצב הצגת הכותרת בשורת המצב:";
-"preferences_general_meeting_bar_description" = "Soon הוא יישום בקוד פתוח\nהמבוסס על MeetingBar של Andrii Leitsius 🇺🇦";
-"preferences_general_external_contact" = "יצירת קשר";
+"preferences_general_meeting_bar_description" = "אפליקציית פגישות לשורת התפריטים של Mac. ראו את הפגישה הבאה, ספירה לאחור בזמן אמת ואת לוח הזמנים שלכם.";
+"preferences_general_version" = "גרסה %@";
 "general_ok" = "אישור";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_error_apple_script_title" = "שגיאת AppleScript";

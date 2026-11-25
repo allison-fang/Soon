@@ -36,7 +36,6 @@
 "preferences_bookmarks_new_bookmark_name" = "Név";
 "preferences_advanced_apple_script_checkmark" = "AppleScript futtatása találkozóhoz való csatlakozásnál";
 "status_bar_section_tomorrow" = "Holnap";
-"preferences_general_external_contact" = "Elérhetőség";
 "preferences_appearance_events_show_events_for_today_tomorrow_value" = "ma és holnap";
 "preferences_appearance_events_past_title" = "Előző események:";
 "preferences_appearance_events_pending_title" = "Függőben lévő események";
@@ -99,7 +98,8 @@
 "preferences_configure_browsers_modal_add_browser_name" = "Név";
 "preferences_general_shortcut_join_from_clipboard" = "Csatlakozás a találkozóhoz vágólapról:";
 "preferences_advanced_setting_warning" = "⚠️ Csak akkor használd ezeket a beállításokat, ha érted amit csinálnak";
-"preferences_general_meeting_bar_description" = "A Soon egy nyílt forráskódú alkalmazás,\namely Andrii Leitsius 🇺🇦 MeetingBar alkalmazására épül";
+"preferences_general_meeting_bar_description" = "Értekezlet-alkalmazás a Mac menüsorához. Lássa a következő értekezletét, élő visszaszámlálást és a napirendjét.";
+"preferences_general_version" = "Verzió %@";
 "preferences_appearance_status_bar_time_title" = "Idő";
 "preferences_configure_browsers_modal_add_browser_title" = "Webböngésző hozzáadása";
 "preferences_appearance_status_bar_title_event_title_value" = "esemény címe";

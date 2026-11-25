@@ -309,6 +309,18 @@ final class StatusBarPopoverPresenterTests: BaseTestCase {
         XCTAssertEqual(popover.events.count, 1)
     }
 
+    func testOneAccountLosingAccessOffersToReconnectItAlongsideOtherMeetings() {
+        let health = ProviderHealth(lastSuccessfulRefresh: now).applyingAccounts([
+            ProviderAccountHealth(id: "work@example.com", email: "work@example.com", status: .authRequired)
+        ])
+
+        let popover = presentation([meeting()], health: health)
+
+        XCTAssertEqual(popover.notice?.action, .reconnectAccount("work@example.com"))
+        XCTAssertEqual(popover.notice?.title, "work@example.com needs to be reconnected")
+        XCTAssertEqual(popover.events.count, 1)
+    }
+
     func testPermissionLossOffersSettings() {
         var health = ProviderHealth()
         health.calendarPermissionRequired = true

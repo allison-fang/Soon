@@ -92,7 +92,6 @@
 "preferences_general_shortcut_join_next" = "Pripojiť sa k nasledujúcemu stretnutiu:";
 "preferences_general_shortcut_join_from_clipboard" = "Pripojiť sa k stretnutiu zo schránky:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Zobraziť/Skryť názov v lište:";
-"preferences_general_external_contact" = "Kontakt";
 
 // MARK: - Preferences Appearance
 
@@ -178,7 +177,8 @@
 "status_bar_rate_app" = "Ohodnotiť aplikáciu";
 "status_bar_quit" = "Ukončiť Soon";
 "shared_automatic_event_join_tip" = "Toto nastavenie automaticky otvorí nasledujúce stretnutie v nastavenej aplikácii alebo prehliadači";
-"preferences_general_meeting_bar_description" = "Soon je open-source aplikácia\npostavená na aplikácii MeetingBar, ktorú vytvoril Andrii Leitsius 🇺🇦";
+"preferences_general_meeting_bar_description" = "Aplikácia na stretnutia v lište ponúk Macu. Pozrite si ďalšie stretnutie, odpočítavanie naživo a svoj rozvrh.";
+"preferences_general_version" = "Verzia %@";
 "preferences_services_create_meeting_custom_url_placeholder" = "Zadaj platnú URL adresu (s http:// alebo https://)";
 "preferences_services_create_meeting_custom_url_value" = "Vlastná URL adresa";
 
