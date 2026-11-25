@@ -25,6 +25,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let lifecycleObserver = LifecycleObserver()
     private let urlHandler = URLHandler()
     private let windowCoordinator = WindowCoordinator()
+    private let updateChecker = UpdateChecker.live()
+    private var updateSubscription: AnyCancellable?
 
     private var launchTask: Task<Void, Never>?
     private var reopenRequestedDuringLaunch = false
@@ -173,6 +175,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             events: { [weak model] in model?.state.events ?? [] },
             send: { [weak model] action in model?.send(action) },
             openPreferences: { [weak self] in self?.openPreferencesWindow(nil) },
+            openUpdateSettings: { [weak self] in self?.openUpdateSettings() },
             quit: { [weak self] in self?.quit(nil) }
         ))
 
@@ -201,6 +204,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         lifecycleObserver.onDidWake = { [weak self] in
             self?.appModel?.handleWake()
+            self?.updateChecker.handleWake()
         }
         lifecycleObserver.onNetworkBecameReachable = { [weak self] in
             self?.appModel?.handleNetworkBecameReachable()
@@ -215,6 +219,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self?.appModel?.handleDayChange()
         }
         lifecycleObserver.start()
+
+        updateSubscription = updateChecker.$availableUpdate
+            .removeDuplicates()
+            .sink { [weak model] update in model?.send(.availableUpdateChanged(update)) }
+        updateChecker.start()
 
         if triggerInitialRefresh {
             model.handleLaunch()
@@ -279,7 +288,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func openPreferencesWindow(_: NSStatusBarButton?) {
         windowCoordinator.openPreferencesWindow(
             appModel: appModel,
-            calendarSync: calendarSync
+            calendarSync: calendarSync,
+            updateChecker: updateChecker
+        )
+    }
+
+    private func openUpdateSettings() {
+        windowCoordinator.openPreferencesWindow(
+            appModel: appModel,
+            calendarSync: calendarSync,
+            updateChecker: updateChecker,
+            tab: .general
         )
     }
 
@@ -333,6 +352,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusLoopTask?.cancel()
         statusLoopTask = nil
         lifecycleObserver.stop()
+        updateChecker.stop()
+        updateSubscription = nil
         appModel?.handleWillTerminate()
         notificationScheduler.stop()
         calendarSync?.stop()

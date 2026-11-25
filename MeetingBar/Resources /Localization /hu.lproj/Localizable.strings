@@ -329,3 +329,14 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "naptár színe";
 "status_bar_popover_zoom_in" = "Nagyítás";
 "status_bar_popover_zoom_out" = "Kicsinyítés";
+"status_bar_popover_update_available" = "Frissítés érhető el";
+"preferences_section_updates_title" = "Frissítések";
+"preferences_general_check_for_updates" = "Frissítések automatikus keresése";
+"preferences_general_check_for_updates_button" = "Frissítések keresése";
+"preferences_general_update_checking" = "Frissítések keresése…";
+"preferences_general_update_up_to_date" = "A Soon naprakész.";
+"preferences_general_update_failed" = "Nem sikerült frissítéseket keresni. Próbáld újra később.";
+"preferences_general_update_available" = "Elérhető a Soon %@.";
+"preferences_general_update_instructions" = "A frissítéshez futtasd a telepítési parancsot a Terminálban.";
+"preferences_general_update_copy_command" = "Telepítési parancs másolása";
+"preferences_general_update_whats_new" = "Újdonságok";

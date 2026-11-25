@@ -397,3 +397,14 @@
 "onboarding_essentials_description" = "ミーティングを開き、スケジュールに滞在するためのいくつかのデフォルトを選択します.";
 "status_bar_popover_zoom_in" = "拡大";
 "status_bar_popover_zoom_out" = "縮小";
+"status_bar_popover_update_available" = "アップデートあり";
+"preferences_section_updates_title" = "アップデート";
+"preferences_general_check_for_updates" = "アップデートを自動的に確認";
+"preferences_general_check_for_updates_button" = "アップデートを確認";
+"preferences_general_update_checking" = "アップデートを確認中…";
+"preferences_general_update_up_to_date" = "Soon は最新です。";
+"preferences_general_update_failed" = "アップデートを確認できませんでした。後でもう一度お試しください。";
+"preferences_general_update_available" = "Soon %@ が利用可能です。";
+"preferences_general_update_instructions" = "アップデートするには、ターミナルでインストールコマンドを実行してください。";
+"preferences_general_update_copy_command" = "インストールコマンドをコピー";
+"preferences_general_update_whats_new" = "新機能";

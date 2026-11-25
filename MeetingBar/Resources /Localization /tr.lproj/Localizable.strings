@@ -130,7 +130,7 @@
 "status_bar_hide_meeting_names" = "Toplantı başlığını gizle";
 "status_bar_whats_new" = "Neler yeni?";
 "status_bar_rate_app" = "Uygulamayı Değerlendir";
-"status_bar_preferences" = "Tercihler";
+"status_bar_preferences" = "Ayarlar";
 "status_bar_quit" = "Soon'dan çıkış";
 "status_bar_no_title" = "Başlık yok";
 "status_bar_error_link_missed_title" = "Amanın! %@ 'e katılınamadı";
@@ -376,3 +376,14 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "takvim rengi";
 "status_bar_popover_zoom_in" = "Yakınlaştır";
 "status_bar_popover_zoom_out" = "Uzaklaştır";
+"status_bar_popover_update_available" = "Güncelleme mevcut";
+"preferences_section_updates_title" = "Güncellemeler";
+"preferences_general_check_for_updates" = "Güncellemeleri otomatik olarak denetle";
+"preferences_general_check_for_updates_button" = "Güncellemeleri denetle";
+"preferences_general_update_checking" = "Güncellemeler denetleniyor…";
+"preferences_general_update_up_to_date" = "Soon güncel.";
+"preferences_general_update_failed" = "Güncellemeler denetlenemedi. Daha sonra yeniden deneyin.";
+"preferences_general_update_available" = "Soon %@ kullanılabilir.";
+"preferences_general_update_instructions" = "Güncellemek için kurulum komutunu Terminal'de çalıştırın.";
+"preferences_general_update_copy_command" = "Kurulum komutunu kopyala";
+"preferences_general_update_whats_new" = "Yenilikler";

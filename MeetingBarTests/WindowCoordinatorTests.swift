@@ -188,6 +188,41 @@ final class WindowCoordinatorTests: XCTestCase {
         XCTAssertEqual(originalCompletionCount, 1)
     }
 
+    func testPreferencesKeepTheUsersTabUnlessOneIsRequested() throws {
+        let coordinator = WindowCoordinator()
+        let harness = AppModelTestHarness()
+        let sync = CalendarSync(provider: FakeEventStore(calendars: [], events: []), refreshInterval: 0)
+        defer { sync.stop() }
+        let updateChecker = UpdateChecker(dependencies: .init(
+            currentVersion: "1.2.0",
+            automaticChecksAllowed: false,
+            isEnabled: { false },
+            lastCheck: { nil },
+            setLastCheck: { _ in },
+            now: { Date() },
+            fetchLatestRelease: { throw URLError(.cancelled) },
+            sleep: { _ in }
+        ))
+        func open(_ tab: PreferencesTab? = nil) {
+            coordinator.openPreferencesWindow(
+                appModel: harness.model, calendarSync: sync, updateChecker: updateChecker, tab: tab
+            )
+        }
+
+        open()
+        let window = try XCTUnwrap(coordinator.preferencesWindow)
+        defer { window.close() }
+        XCTAssertEqual(coordinator.preferencesNavigation.selectedTab, .general)
+
+        coordinator.preferencesNavigation.selectedTab = .advanced
+        open()
+        XCTAssertEqual(coordinator.preferencesNavigation.selectedTab, .advanced)
+
+        open(.general)
+        XCTAssertTrue(coordinator.preferencesWindow === window)
+        XCTAssertEqual(coordinator.preferencesNavigation.selectedTab, .general)
+    }
+
     func testFullscreenPresentationShowsJoinForJoinableEvent() {
         let event = makeFakeEvent(
             id: "joinable",

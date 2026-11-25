@@ -255,7 +255,7 @@
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "access_screen_access_screen_access_denied_go_to_title" = "Go to";
 "preferences_services_link_service_title" = "Otwórz linki do %@ w";
-"status_bar_preferences" = "Preferencje";
+"status_bar_preferences" = "Ustawienia";
 "status_bar_submenu_status_tentative" = " ☝️ Wstępnia akceptacja";
 "status_bar_menu_dismiss_curent_meeting" = "Odwołaj bieżące spotkanie";
 "status_bar_menu_dismiss_next_meeting" = "Odwołaj następne spotkanie";
@@ -376,3 +376,14 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "kolor kalendarza";
 "status_bar_popover_zoom_in" = "Powiększ";
 "status_bar_popover_zoom_out" = "Pomniejsz";
+"status_bar_popover_update_available" = "Dostępna aktualizacja";
+"preferences_section_updates_title" = "Aktualizacje";
+"preferences_general_check_for_updates" = "Automatycznie sprawdzaj aktualizacje";
+"preferences_general_check_for_updates_button" = "Sprawdź aktualizacje";
+"preferences_general_update_checking" = "Sprawdzanie aktualizacji…";
+"preferences_general_update_up_to_date" = "Soon jest aktualny.";
+"preferences_general_update_failed" = "Nie udało się sprawdzić aktualizacji. Spróbuj ponownie później.";
+"preferences_general_update_available" = "Dostępna jest wersja Soon %@.";
+"preferences_general_update_instructions" = "Aby zaktualizować, uruchom polecenie instalacji w Terminalu.";
+"preferences_general_update_copy_command" = "Kopiuj polecenie instalacji";
+"preferences_general_update_whats_new" = "Co nowego";

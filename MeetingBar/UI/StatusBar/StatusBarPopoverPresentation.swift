@@ -95,6 +95,7 @@ struct StatusBarPopoverPresentation: Equatable {
     var days: [TimelineDayPresentation] = []
     var bookmarks: [Bookmark] = []
     var lastUpdatedText: String?
+    var updateAvailableText: String?
 
     /// Display order, used for arrow-key navigation.
     var events: [TimelineEventPresentation] {
@@ -130,7 +131,10 @@ struct StatusBarPopoverPresenter {
             notice: notice(),
             bookmarks: state.meetings.bookmarks,
             lastUpdatedText: state.providerHealth.lastSuccessfulRefresh.map {
-                "status_bar_popover_updated".loco(timeFormatter.string(from: $0))
+                "status_bar_popover_updated".loco(lastUpdatedFormatter.string(from: $0))
+            },
+            updateAvailableText: state.availableUpdate.map { _ in
+                "status_bar_popover_update_available".loco()
             }
         )
         guard state.hasSelectedCalendars, !hidesEmptyDays(for: presentation.notice) else {
@@ -417,6 +421,14 @@ struct StatusBarPopoverPresenter {
         let formatter = DateFormatter()
         formatter.locale = I18N.instance.locale
         formatter.dateFormat = state.timeFormat == .am_pm ? "h:mm a" : "HH:mm"
+        return formatter
+    }
+
+    /// Always 12-hour: readable by people who use either clock, unlike 24-hour.
+    private var lastUpdatedFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = I18N.instance.locale
+        formatter.dateFormat = "h:mm a"
         return formatter
     }
 

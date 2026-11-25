@@ -453,6 +453,37 @@ final class StatusBarPopoverPresenterTests: BaseTestCase {
         XCTAssertNotNil(presentation([], health: ProviderHealth(lastSuccessfulRefresh: now)).lastUpdatedText)
     }
 
+    func testLastUpdatedUsesTwelveHourClockEvenWithTwentyFourHourSetting() throws {
+        Defaults[.timeFormat] = .military
+        let refresh = try XCTUnwrap(Calendar.current.date(bySettingHour: 23, minute: 7, second: 0, of: now))
+        let text = try XCTUnwrap(presentation([], health: ProviderHealth(lastSuccessfulRefresh: refresh)).lastUpdatedText)
+        XCTAssertTrue(text.contains("11:07"), text)
+        XCTAssertFalse(text.contains("23:07"), text)
+    }
+
+    func testAvailableUpdateShowsInFooterWithoutReplacingWarnings() {
+        var appState = AppState()
+        appState.selectedCalendarIDs = ["work"]
+        var failed = ProviderHealth()
+        failed.lastErrorDescription = "Network"
+        appState.providerHealth = failed
+        XCTAssertNil(
+            StatusBarPopoverPresenter.presentation(
+                for: StatusBarMenuState.make(from: appState, now: now), now: now
+            ).updateAvailableText
+        )
+
+        appState.availableUpdate = AvailableUpdate(
+            version: "1.3.0",
+            releaseURL: URL(string: "https://github.com/allison-fang/Soon/releases/tag/v1.3.0")!
+        )
+        let updated = StatusBarPopoverPresenter.presentation(
+            for: StatusBarMenuState.make(from: appState, now: now), now: now
+        )
+        XCTAssertEqual(updated.updateAvailableText, "status_bar_popover_update_available".loco())
+        XCTAssertNotNil(updated.notice)
+    }
+
     func testBookmarksStayReachable() throws {
         var settings = AppSettings.current
         settings.meetings.bookmarks = [

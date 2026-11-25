@@ -40,6 +40,7 @@ struct StatusBarDependencies {
     var events: @MainActor () -> [MBEvent] = { [] }
     var send: @MainActor (AppAction) -> Void = { _ in }
     var openPreferences: @MainActor () -> Void = {}
+    var openUpdateSettings: @MainActor () -> Void = {}
     var quit: @MainActor () -> Void = {}
 }
 
@@ -368,6 +369,10 @@ final class StatusBarItemController {
             openPreferences: { [weak self] in
                 self?.popover.close()
                 self?.dependencies.openPreferences()
+            },
+            openUpdateSettings: { [weak self] in
+                self?.popover.close()
+                self?.dependencies.openUpdateSettings()
             },
             quit: { [weak self] in
                 self?.popover.close()

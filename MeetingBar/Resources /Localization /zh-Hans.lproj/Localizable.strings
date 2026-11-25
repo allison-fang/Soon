@@ -280,7 +280,7 @@
 "status_bar_menu_dismiss_next_meeting" = "忽略下一个会议";
 "status_bar_menu_remove_all_dismissals" = "移除所有忽略";
 "status_bar_no_title" = "无标题";
-"status_bar_preferences" = "偏好设置";
+"status_bar_preferences" = "设置";
 "status_bar_quick_actions" = "快速操作";
 "status_bar_quit" = "退出 Soon";
 "status_bar_rate_app" = "评价应用";
@@ -330,3 +330,14 @@
 "onboarding_essentials_hint" = "你可以稍后在偏好设置中微调每处细节。";
 "status_bar_popover_zoom_in" = "放大";
 "status_bar_popover_zoom_out" = "缩小";
+"status_bar_popover_update_available" = "有可用更新";
+"preferences_section_updates_title" = "更新";
+"preferences_general_check_for_updates" = "自动检查更新";
+"preferences_general_check_for_updates_button" = "检查更新";
+"preferences_general_update_checking" = "正在检查更新…";
+"preferences_general_update_up_to_date" = "Soon 已是最新版本。";
+"preferences_general_update_failed" = "无法检查更新。请稍后再试。";
+"preferences_general_update_available" = "Soon %@ 现已推出。";
+"preferences_general_update_instructions" = "要更新，请在“终端”中运行安装命令。";
+"preferences_general_update_copy_command" = "复制安装命令";
+"preferences_general_update_whats_new" = "新功能";

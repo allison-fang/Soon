@@ -12,12 +12,29 @@ import Defaults
 import KeyboardShortcuts
 
 struct GeneralTab: View {
+    @EnvironmentObject var updateChecker: UpdateChecker
     @Default(.timeFormat) var timeFormat
 
     var body: some View {
         PreferencesGroupedForm {
             Section {
                 AboutSection()
+            }
+
+            Section(header: Text("preferences_section_updates_title".loco())) {
+                VersionSection()
+            }
+
+            if let update = updateChecker.availableUpdate {
+                Section {
+                    AvailableUpdateRow(update: update)
+                        // Grouped forms ignore listRowBackground, so the tint bleeds past the row padding instead.
+                        .background(
+                            Color.accentColor.opacity(0.14)
+                                .padding(.horizontal, -10)
+                                .padding(.vertical, -14)
+                        )
+                }
             }
 
             Section(header: Text("preferences_section_general_settings_title".loco())) {
@@ -42,6 +59,83 @@ struct GeneralTab: View {
                 ShortcutsSection()
             }
         }
+    }
+}
+
+struct VersionSection: View {
+    @EnvironmentObject var updateChecker: UpdateChecker
+    @Default(.checkForUpdates) var checkForUpdates
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("preferences_general_version".loco(updateChecker.currentVersion))
+                if let statusText {
+                    Text(statusText)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            Spacer()
+            Button("preferences_general_check_for_updates_button".loco()) {
+                updateChecker.checkNow()
+            }
+            .disabled(updateChecker.status == .checking)
+        }
+        Toggle("preferences_general_check_for_updates".loco(), isOn: $checkForUpdates)
+    }
+
+    private var statusText: String? {
+        switch updateChecker.status {
+        case .checking:
+            return "preferences_general_update_checking".loco()
+        case .upToDate:
+            return "preferences_general_update_up_to_date".loco()
+        case .failed:
+            return "preferences_general_update_failed".loco()
+        case .idle, .available:
+            return nil
+        }
+    }
+}
+
+struct AvailableUpdateRow: View {
+    let update: AvailableUpdate
+
+    var body: some View {
+        HStack(alignment: .center, spacing: 16) {
+            VStack(alignment: .leading, spacing: 4) {
+                HStack(spacing: 6) {
+                    Circle()
+                        .fill(Color.accentColor)
+                        .frame(width: 7, height: 7)
+                    Text("preferences_general_update_available".loco(update.version))
+                        .font(.body.weight(.medium))
+                }
+                Text("preferences_general_update_instructions".loco())
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer(minLength: 0)
+            // Same equal-width stack as the About card's buttons.
+            VStack(spacing: 6) {
+                Button {
+                    NSWorkspace.shared.open(update.releaseURL)
+                } label: {
+                    Text("preferences_general_update_whats_new".loco()).frame(maxWidth: .infinity)
+                }
+                Button {
+                    let pasteboard = NSPasteboard.general
+                    pasteboard.clearContents()
+                    pasteboard.setString(UpdateChecker.installCommand, forType: .string)
+                } label: {
+                    Text("preferences_general_update_copy_command".loco()).frame(maxWidth: .infinity)
+                }
+            }
+            .fixedSize(horizontal: true, vertical: false)
+        }
+        .padding(.vertical, 4)
     }
 }
 
@@ -92,15 +186,8 @@ struct AboutSection: View {
                 .resizable()
                 .frame(width: 72, height: 72)
             VStack(alignment: .leading, spacing: 4) {
-                HStack(alignment: .firstTextBaseline, spacing: 8) {
-                    Text("Soon")
-                        .font(.title2).bold()
-                    Text("preferences_general_version".loco(
-                        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-                    ))
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                }
+                Text("Soon")
+                    .font(.title2).bold()
                 Text("preferences_general_meeting_bar_description".loco())
                     .font(.subheadline)
                     .foregroundStyle(.secondary)

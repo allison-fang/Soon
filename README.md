@@ -32,7 +32,7 @@ Soon is separate from MeetingBar and can be installed alongside it. Its settings
 
 ### Update
 
-Run the install command again. It quits Soon, replaces it with the latest version, and reopens it. Your settings are kept.
+When a new version is out, Soon shows **Update available** at the bottom of its menu. Copy the install command from Preferences › General, then run it in Terminal. It quits Soon, replaces it with the latest version, and reopens it. Your settings are kept.
 
 ### Uninstall
 
@@ -96,6 +96,8 @@ See MeetingBar's [full supported services list](https://github.com/leits/Meeting
 Soon does not collect personal data.
 
 Calendar data is used by the app to show your meetings, detect meeting links, and open the correct meeting action. Google Calendar access is read-only.
+
+Once a day, Soon asks GitHub for the latest release version. The request contains no personal or calendar data; GitHub sees your IP address, as with any web request. You can turn it off in Preferences › General.
 
 ## Troubleshooting
 

@@ -93,7 +93,8 @@ enum OnboardingWindowPresentationPolicy {
 /// decisions such as terminating after incomplete onboarding.
 @MainActor
 final class WindowCoordinator {
-    private weak var preferencesWindow: NSWindow?
+    private(set) weak var preferencesWindow: NSWindow?
+    let preferencesNavigation = PreferencesNavigation()
     private(set) weak var onboardingWindow: NSWindow?
     private(set) weak var onboardingHandler: OnboardingHandler?
 
@@ -254,12 +255,18 @@ final class WindowCoordinator {
 
     func openPreferencesWindow(
         appModel: AppModel?,
-        calendarSync: CalendarSync?
+        calendarSync: CalendarSync?,
+        updateChecker: UpdateChecker,
+        tab: PreferencesTab? = nil
     ) {
         guard let appModel, let calendarSync else { return }
-        let contentView = PreferencesView()
+        if let tab {
+            preferencesNavigation.selectedTab = tab
+        }
+        let contentView = PreferencesView(navigation: preferencesNavigation)
             .environmentObject(appModel)
             .environmentObject(calendarSync)
+            .environmentObject(updateChecker)
 
         if let preferencesWindow {
             if preferencesWindow.isMiniaturized {
@@ -276,6 +283,7 @@ final class WindowCoordinator {
             return
         }
 
+        preferencesNavigation.selectedTab = tab ?? .defaultSelection
         let window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 860, height: 620),
             styleMask: [.closable, .titled, .miniaturizable, .resizable],

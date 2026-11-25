@@ -68,7 +68,7 @@
 "status_bar_event_status_now" = "nyní (zbývá %@)";
 "status_bar_no_title" = "Bez názvu";
 "status_bar_quit" = "Ukončit Soon";
-"status_bar_preferences" = "Předvolby";
+"status_bar_preferences" = "Nastavení";
 "status_bar_whats_new" = "Co je nového?";
 "status_bar_rate_app" = "Ohodnotit aplikaci";
 "status_bar_hide_meeting_names" = "Skrýt název schůzky";
@@ -390,3 +390,14 @@
 "preferences_calendars_remove_missing" = "Odebrat";
 "status_bar_popover_zoom_in" = "Zvětšit";
 "status_bar_popover_zoom_out" = "Zmenšit";
+"status_bar_popover_update_available" = "K dispozici je aktualizace";
+"preferences_section_updates_title" = "Aktualizace";
+"preferences_general_check_for_updates" = "Automaticky kontrolovat aktualizace";
+"preferences_general_check_for_updates_button" = "Zkontrolovat aktualizace";
+"preferences_general_update_checking" = "Kontrola aktualizací…";
+"preferences_general_update_up_to_date" = "Soon je aktuální.";
+"preferences_general_update_failed" = "Aktualizace se nepodařilo zkontrolovat. Zkuste to později.";
+"preferences_general_update_available" = "Je k dispozici Soon %@.";
+"preferences_general_update_instructions" = "Pro aktualizaci spusťte instalační příkaz v Terminálu.";
+"preferences_general_update_copy_command" = "Kopírovat instalační příkaz";
+"preferences_general_update_whats_new" = "Co je nového";

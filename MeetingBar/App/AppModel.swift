@@ -61,6 +61,10 @@ struct AppState: Equatable {
     /// Invalidates UI after a dismissal or language change without duplicating settings in state.
     var presentationRevision = 0
 
+    // MARK: Updates
+
+    var availableUpdate: AvailableUpdate?
+
     // MARK: Derived
 
     /// Next upcoming event that has not been dismissed and is not all-day.
@@ -143,6 +147,9 @@ enum AppAction {
 
     // Notification reconcile
     case reconcileNotifications
+
+    // Updates
+    case availableUpdateChanged(AvailableUpdate?)
 }
 
 // MARK: - Environment
@@ -417,6 +424,8 @@ final class AppModel: ObservableObject {
             handleExternalAction(action)
         case .reconcileNotifications:
             reconcileNotificationsFromState()
+        case .availableUpdateChanged(let update):
+            state.availableUpdate = update
         case .notificationSettingsChanged(let change):
             switch change {
             case .plan:
