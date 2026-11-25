@@ -66,12 +66,7 @@ private struct CalendarSelectionContent: View {
         // selection list looks identical in both places.
         PreferencesGroupedForm {
             if appModel.state.activeProvider == .googleCalendar {
-                Section(header: Text("preferences_calendar_configuration_title".loco())) {
-                    HStack {
-                        AddGoogleAccountButton(alignment: .leading)
-                        Spacer()
-                    }
-                }
+                AddGoogleAccountSection(showsTitle: true)
             }
             if appModel.state.calendars.isEmpty, accounts.isEmpty {
                 Section {

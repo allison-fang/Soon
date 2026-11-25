@@ -67,11 +67,12 @@
 
 // MARK: - Preferences Status
 
-"preferences_status_state_one_calendar_connected" = "1 calendar connected";
-"preferences_status_state_calendars_connected" = "%d calendars connected";
+"preferences_status_state_one_account_connected" = "1 account connected";
+"preferences_status_state_accounts_connected" = "%d accounts connected";
+"preferences_status_state_some_accounts_connected" = "%1$d of %2$d accounts connected";
+"preferences_status_state_one_account" = "1 account";
+"preferences_status_state_accounts" = "%d accounts";
 "preferences_status_state_stale" = "Showing cached data";
-"preferences_status_state_some_calendars_stale" = "%1$d of %2$d selected calendars may be out of date";
-"preferences_status_state_check_accounts" = "Check your Google accounts below";
 "preferences_status_state_error" = "Last refresh failed";
 "preferences_status_state_auth_required" = "Authorization required";
 "preferences_status_state_permission_required" = "Calendar permission required";

@@ -33,9 +33,11 @@ struct CalendarsTab: View {
                                 Text("·")
                                     .foregroundStyle(.tertiary)
                                     .font(.caption)
-                                Text(lastSuccess.formatted(date: .omitted, time: .shortened))
-                                    .foregroundStyle(.secondary)
-                                    .font(.caption)
+                                Text("status_bar_popover_updated".loco(
+                                    lastSuccess.formatted(date: .omitted, time: .shortened)
+                                ))
+                                .foregroundStyle(.secondary)
+                                .font(.caption)
                             }
                         }
                         if presentation.showsErrorDetail,
@@ -59,17 +61,18 @@ struct CalendarsTab: View {
                             NSWorkspace.shared.open(Links.calendarPreferences)
                         }
                     }
-                    // Google accounts each have their own Refresh; adding one
-                    // belongs beside the count of what is connected.
-                    if appModel.state.activeProvider == .googleCalendar {
-                        AddGoogleAccountButton()
-                    } else {
+                    // Google accounts each have their own Refresh.
+                    if appModel.state.activeProvider != .googleCalendar {
                         Button("general_refresh".loco()) {
                             appModel.send(.refreshCalendars)
                         }
                         .disabled(appModel.state.providerChangeInProgress)
                     }
                 }
+            }
+
+            if appModel.state.activeProvider == .googleCalendar {
+                AddGoogleAccountSection()
             }
 
             if !missingIDs.isEmpty {
@@ -159,6 +162,7 @@ private struct CalendarPreferencesEmptyState: View {
 private func statusSystemImage(_ tone: PreferencesStatusTone) -> String {
     switch tone {
     case .neutral: "circle"
+    case .info: "person.crop.circle"
     case .success: "checkmark.circle.fill"
     case .warning: "exclamationmark.triangle.fill"
     case .error: "xmark.circle.fill"
@@ -167,7 +171,7 @@ private func statusSystemImage(_ tone: PreferencesStatusTone) -> String {
 
 private func statusColor(_ tone: PreferencesStatusTone) -> Color {
     switch tone {
-    case .neutral: .secondary
+    case .neutral, .info: .secondary
     case .success: .green
     case .warning: .orange
     case .error: .red
@@ -238,10 +242,19 @@ struct CalendarSectionsView: View {
 
     private func accountRow(_ row: CalendarAccountRowPresentation) -> some View {
         HStack(spacing: 8) {
-            PreferencesStatusLabel(text: row.statusTextKey.loco(), tone: row.statusTone)
+            VStack(alignment: .leading, spacing: 3) {
+                PreferencesStatusLabel(text: row.statusTextKey.loco(), tone: row.statusTone)
+                if let detail = row.errorDetail {
+                    Text(detail)
+                        .foregroundStyle(.secondary)
+                        .font(.caption)
+                        .textSelection(.enabled)
+                        .lineLimit(3)
+                }
+            }
             Spacer()
-            // Every refresh checks all accounts side by side, so this is the
-            // same refresh as the one at the top, placed where a problem shows.
+            // Every refresh checks all accounts side by side, so any account's
+            // Refresh retries them all.
             if row.canRefresh {
                 Button("general_refresh".loco()) {
                     appModel.send(.refreshCalendars)
@@ -303,14 +316,25 @@ struct ProviderPicker: View {
     }
 }
 
-/// Connects another Google account. Shared by Preferences and setup.
-/// "Add Google account", with the latest add's failure stacked under it.
-struct AddGoogleAccountButton: View {
+/// "Add Google account", with the latest add's failure under the button.
+/// Shared by Preferences and setup.
+struct AddGoogleAccountSection: View {
     @EnvironmentObject var appModel: AppModel
-    var alignment: HorizontalAlignment = .trailing
+    /// Off where it follows the titled configuration section as a sub-group.
+    var showsTitle = false
 
     var body: some View {
-        VStack(alignment: alignment, spacing: 4) {
+        Section {
+            row
+        } header: {
+            if showsTitle {
+                Text("preferences_calendar_configuration_title".loco())
+            }
+        }
+    }
+
+    private var row: some View {
+        VStack(alignment: .leading, spacing: 4) {
             Button("preferences_calendars_google_add_account".loco()) {
                 appModel.send(.addCalendarAccount)
             }
@@ -320,13 +344,11 @@ struct AddGoogleAccountButton: View {
                 Text(error)
                     .foregroundStyle(.red)
                     .font(.caption)
-                    .multilineTextAlignment(alignment == .trailing ? .trailing : .leading)
                     .textSelection(.enabled)
                     .lineLimit(3)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .frame(maxWidth: 260, alignment: alignment == .trailing ? .trailing : .leading)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
