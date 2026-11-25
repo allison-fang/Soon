@@ -29,6 +29,7 @@ final class StatusBarPopoverModel: ObservableObject {
     var maxTimelineHeight: CGFloat = 520
     var actions = StatusBarPopoverActions()
     var onEventHover: @MainActor (String, Bool) -> Void = { _, _ in }
+    var onZoom: @MainActor (TimelineZoom) -> Void = { _ in }
 
     private let anchors = NSMapTable<NSString, TimelineAnchorView>.strongToWeakObjects()
 
@@ -155,7 +156,6 @@ struct StatusBarPopoverView: View {
         .frame(width: metrics.width)
     }
 
-    /// Freshness and Refresh sit with the date they describe.
     private var topBar: some View {
         HStack(alignment: .center, spacing: 8) {
             HStack(alignment: .firstTextBaseline, spacing: 5) {
@@ -164,6 +164,21 @@ struct StatusBarPopoverView: View {
                 Text(presentation.dateText)
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
+            }
+            .fixedSize()
+            if presentation.timelineHeight > 0 {
+                HStack(spacing: 4) {
+                    zoomButton(
+                        to: presentation.zoom.zoomedOut,
+                        systemImage: "minus.magnifyingglass",
+                        title: "status_bar_popover_zoom_out".loco()
+                    )
+                    zoomButton(
+                        to: presentation.zoom.zoomedIn,
+                        systemImage: "plus.magnifyingglass",
+                        title: "status_bar_popover_zoom_in".loco()
+                    )
+                }
             }
             Spacer(minLength: 0)
             if let updated = presentation.lastUpdatedText {
@@ -182,6 +197,19 @@ struct StatusBarPopoverView: View {
         }
         .padding(.horizontal, metrics.edgeInset)
         .frame(height: metrics.footerHeight + 4)
+    }
+
+    private func zoomButton(to zoom: TimelineZoom?, systemImage: String, title: String) -> some View {
+        Button {
+            if let zoom { model.onZoom(zoom) }
+        } label: {
+            Image(systemName: systemImage)
+                .font(.system(size: 11, weight: .medium))
+        }
+        .buttonStyle(TimelineButtonStyle(isIconOnly: true))
+        .disabled(zoom == nil)
+        .help(title)
+        .accessibilityLabel(title)
     }
 
     private func dayHeader(_ day: TimelineDayPresentation) -> some View {
@@ -408,10 +436,12 @@ struct TimelineButtonLook: ViewModifier {
     let isPressed: Bool
     var isIconOnly = false
 
+    @Environment(\.isEnabled) private var isEnabled
+
     func body(content: Content) -> some View {
         content
             .font(.system(size: 11.5, weight: .medium))
-            .foregroundColor(.primary)
+            .foregroundColor(Color.primary.opacity(isEnabled ? 1 : 0.3))
             .lineLimit(1)
             .padding(.horizontal, isIconOnly ? 0 : 9)
             .frame(width: isIconOnly ? 24 : nil, height: 24)

@@ -29,40 +29,165 @@ final class TimelineLayoutTests: XCTestCase {
 
     // MARK: Window
 
-    func testWindowCoversEventsAndNowInWholeHours() {
-        let window = TimelineLayout.window(
-            for: [event("a", at(9, 30), at(10)), event("b", at(14), at(14, 20))],
-            now: at(8, 10),
-            day: day,
-            calendar: calendar
-        )
+    func testWindowCoversTheWholeDay() {
+        let window = TimelineWindow(day: day, scale: .compact)
 
-        XCTAssertEqual(window?.start, at(8))
-        XCTAssertEqual(window?.end, at(15))
+        XCTAssertEqual(window.start, at(0))
+        XCTAssertEqual(window.end, at(24))
+        XCTAssertEqual(window.height, 24 * TimelineScale.compact.hourHeight)
     }
 
-    func testWindowIgnoresNowOutsideTheDay() {
-        let window = TimelineLayout.window(
-            for: [event("a", at(9), at(10))],
-            now: day.end.addingTimeInterval(7200),
-            day: day,
-            calendar: calendar
+    func testEventsCrossingMidnightAreClippedToTheDay() {
+        let window = TimelineWindow(day: day, scale: .compact)
+
+        let placements = TimelineLayout.placements(
+            for: [event("late", at(23), at(25)), event("early", at(-1), at(1))],
+            in: window
         )
 
-        XCTAssertEqual(window?.start, at(9))
-        XCTAssertEqual(window?.end, at(10))
+        XCTAssertEqual(placements.first { $0.id == "early" }?.top, 0)
+        XCTAssertEqual(
+            placements.first { $0.id == "late" }.map { $0.top + $0.height },
+            window.height
+        )
     }
 
-    func testWindowClampsEventsCrossingMidnightToTheDay() {
-        let window = TimelineLayout.window(
-            for: [event("late", at(23), at(25))],
-            now: at(22, 30),
-            day: day,
-            calendar: calendar
-        )
+    func testShortDayFromDaylightSavingKeepsItsRealLength() throws {
+        var newYork = Calendar(identifier: .gregorian)
+        newYork.timeZone = try XCTUnwrap(TimeZone(identifier: "America/New_York"))
+        let noon = try XCTUnwrap(newYork.date(from: DateComponents(year: 2026, month: 3, day: 8, hour: 12)))
+        let springForward = try XCTUnwrap(newYork.dateInterval(of: .day, for: noon))
 
-        XCTAssertEqual(window?.start, at(22))
-        XCTAssertEqual(window?.end, day.end)
+        let window = TimelineWindow(day: springForward, scale: .compact)
+
+        XCTAssertEqual(window.height, 23 * TimelineScale.compact.hourHeight)
+        XCTAssertEqual(TimelineLayout.hourTicks(in: window, calendar: newYork).count, 24)
+    }
+
+    // MARK: Zoom
+
+    func testZoomLevelsShowFewerHoursAsTheyGoIn() {
+        let heights = TimelineZoom.allCases.map(\.hourHeight)
+
+        XCTAssertEqual(heights, heights.sorted())
+        XCTAssertEqual(Set(heights).count, heights.count)
+    }
+
+    func testFullDayZoomFitsTheShortestPopoverTimeline() {
+        // The compact popover's timeline is at most 540 pt, with 10 pt insets.
+        XCTAssertLessThanOrEqual(TimelineZoom.fullDay.hourHeight * 24, 540 - 20)
+    }
+
+    func testZoomStepsStopAtEitherEnd() {
+        XCTAssertNil(TimelineZoom.fullDay.zoomedOut)
+        XCTAssertNil(TimelineZoom.closest.zoomedIn)
+        XCTAssertEqual(TimelineZoom.fullDay.zoomedIn, .wide)
+        XCTAssertEqual(TimelineZoom.medium.zoomedOut, .wide)
+    }
+
+    func testEveryLevelIsReachableByStepping() {
+        var level: TimelineZoom? = .fullDay
+        var visited: [TimelineZoom] = []
+        while let current = level {
+            visited.append(current)
+            level = current.zoomedIn
+        }
+
+        XCTAssertEqual(visited, TimelineZoom.allCases)
+    }
+
+    func testZoomKeepsTheOneLineMinimum() {
+        for zoom in TimelineZoom.allCases {
+            XCTAssertEqual(TimelineScale.comfortable.zoomed(to: zoom).hourHeight, zoom.hourHeight)
+            XCTAssertEqual(
+                TimelineScale.comfortable.zoomed(to: zoom).minimumEventHeight,
+                TimelineScale.comfortable.minimumEventHeight
+            )
+        }
+    }
+
+    func testDensityScalesMatchTheirZoomLevels() {
+        XCTAssertEqual(TimelineScale.compact.hourHeight, TimelineZoom.close.hourHeight)
+        XCTAssertEqual(TimelineScale.comfortable.hourHeight, TimelineZoom.closest.hourHeight)
+    }
+
+    func testShortEventStaysOneLineTallAtFullDayZoom() {
+        let window = TimelineWindow(day: day, scale: TimelineScale.compact.zoomed(to: .fullDay))
+
+        let placements = TimelineLayout.placements(for: [event("a", at(9), at(9, 30))], in: window)
+
+        XCTAssertEqual(placements[0].height, TimelineScale.compact.minimumEventHeight)
+    }
+
+    // MARK: Card content
+
+    private func card(
+        width: Double = 300,
+        height: Double = 100,
+        offersJoin: Bool = true,
+        hasCountdown: Bool = true,
+        hasGuests: Bool = true
+    ) -> TimelineCardContent {
+        TimelineCardContent(
+            width: width,
+            height: height,
+            twoRowHeight: 51,
+            threeRowHeight: 72,
+            horizontalPadding: 10,
+            offersJoin: offersJoin,
+            hasCountdown: hasCountdown,
+            hasGuests: hasGuests
+        )
+    }
+
+    func testRoomyCardShowsEverything() {
+        let content = card()
+
+        XCTAssertEqual(content.rows, 3)
+        XCTAssertEqual(content.join, .label)
+        XCTAssertTrue(content.showsCountdown)
+        XCTAssertTrue(content.showsAvatars)
+    }
+
+    func testShorterCardsDropRowsBelowTheTitle() {
+        XCTAssertEqual(card(height: 60).rows, 2)
+        XCTAssertEqual(card(height: 22).rows, 1)
+        XCTAssertEqual(card(height: 1).rows, 1)
+    }
+
+    func testOneLineCardHasNoRoomForAvatars() {
+        XCTAssertFalse(card(height: 22).showsAvatars)
+    }
+
+    func testJoinOutlastsCountdownAndAvatarsAsCardsNarrow() {
+        let narrow = card(width: 140)
+
+        XCTAssertFalse(narrow.showsCountdown)
+        XCTAssertFalse(narrow.showsAvatars)
+        XCTAssertEqual(narrow.join, .icon)
+    }
+
+    func testJoinShrinksToAnIconBeforeItHides() {
+        XCTAssertEqual(card(width: TimelineCardContent.joinLabelMinimumWidth).join, .label)
+        XCTAssertEqual(card(width: TimelineCardContent.joinLabelMinimumWidth - 1).join, .icon)
+        XCTAssertEqual(card(width: 60).join, .hidden)
+    }
+
+    func testJoinNeverSqueezesTheTitleBelowItsMinimum() {
+        for width in stride(from: 20.0, through: 400, by: 2) {
+            let content = card(width: width)
+            guard content.join == .icon else { continue }
+            XCTAssertGreaterThanOrEqual(
+                width - 20 - TimelineCardContent.joinIconWidth,
+                TimelineCardContent.minimumTitleWidth
+            )
+        }
+    }
+
+    func testCardsWithoutAJoinableMeetingOfferNoJoin() {
+        XCTAssertEqual(card(offersJoin: false).join, .hidden)
+        XCTAssertFalse(card(hasCountdown: false).showsCountdown)
+        XCTAssertFalse(card(hasGuests: false).showsAvatars)
     }
 
     func testOffsetScalesWithHourHeight() {
@@ -77,18 +202,6 @@ final class TimelineLayoutTests: XCTestCase {
         let comfortable = TimelineWindow(start: at(9), end: at(10), scale: .comfortable)
 
         XCTAssertGreaterThan(comfortable.height, compact.height)
-    }
-
-    func testWindowKeepsTheRequestedScale() {
-        let window = TimelineLayout.window(
-            for: [event("a", at(9), at(10))],
-            now: at(9),
-            day: day,
-            calendar: calendar,
-            scale: .comfortable
-        )
-
-        XCTAssertEqual(window?.scale, .comfortable)
     }
 
     func testMinimumHeightFollowsTheScale() {

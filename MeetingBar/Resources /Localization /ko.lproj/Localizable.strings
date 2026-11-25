@@ -322,3 +322,5 @@
 "status_bar_control_next_meeting" = "다음 회의";
 "preferences_appearance_events_no_meeting_link_title" = "회의 링크가 없는 일정";
 "preferences_appearance_menu_show_event_calendar_color_value" = "캘린더 색상";
+"status_bar_popover_zoom_in" = "확대";
+"status_bar_popover_zoom_out" = "축소";

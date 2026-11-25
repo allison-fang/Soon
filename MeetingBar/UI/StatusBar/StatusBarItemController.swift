@@ -102,7 +102,7 @@ final class StatusBarItemController {
             .shortenEventTitle, .menuEventTitleLength,
             .showEventEndTime, .showMeetingServiceIcon,
             .showEventCalendarColor,
-            .timeFormat, .bookmarks, .timelineDensity,
+            .timeFormat, .bookmarks, .timelineDensity, .timelineZoom,
             .pastEventsAppereance, .declinedEventsAppereance,
             .showTimelineInMenu, .eventTitleFormat,
             options: []

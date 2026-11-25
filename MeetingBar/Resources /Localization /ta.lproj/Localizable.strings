@@ -322,3 +322,5 @@
 "status_bar_control_next_meeting" = "அடுத்த கூட்டம்";
 "preferences_appearance_events_no_meeting_link_title" = "சந்திப்பு இணைப்பு இல்லாத நிகழ்வுகள்";
 "preferences_appearance_menu_show_event_calendar_color_value" = "காலெண்டர் நிறம்";
+"status_bar_popover_zoom_in" = "பெரிதாக்கு";
+"status_bar_popover_zoom_out" = "சிறிதாக்கு";

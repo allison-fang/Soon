@@ -377,3 +377,5 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "color del calendario";
 "preferences_sidebar_advanced" = "Avanzado";
 "preferences_appearance_status_bar_title_generic_value" = "título genérico (Encuentro)";
+"status_bar_popover_zoom_in" = "Acercar";
+"status_bar_popover_zoom_out" = "Alejar";

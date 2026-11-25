@@ -107,6 +107,8 @@ enum TimelineDensity: String, Defaults.Serializable, Codable, CaseIterable {
     case comfortable
 }
 
+extension TimelineZoom: Defaults.Serializable {}
+
 enum OngoingEventVisibility: String, Defaults.Serializable, Codable, CaseIterable {
     case hideImmediateAfter
     case showTenMinAfter

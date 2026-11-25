@@ -20,15 +20,50 @@ struct TimelinePlacement: Equatable {
     let columnCount: Int
 }
 
+/// How much of the day fits on screen. Raw values are stored in settings.
+enum TimelineZoom: String, CaseIterable, Sendable {
+    case fullDay
+    case wide
+    case medium
+    case close
+    case closest
+
+    /// `fullDay` fits all 24 hours in the shortest popover timeline.
+    var hourHeight: Double {
+        switch self {
+        case .fullDay: 20
+        case .wide: 36
+        case .medium: 56
+        case .close: 84
+        case .closest: 112
+        }
+    }
+
+    var zoomedIn: TimelineZoom? { step(by: 1) }
+    var zoomedOut: TimelineZoom? { step(by: -1) }
+
+    private func step(by offset: Int) -> TimelineZoom? {
+        let levels = Self.allCases
+        guard let index = levels.firstIndex(of: self) else { return nil }
+        let next = index + offset
+        return levels.indices.contains(next) ? levels[next] : nil
+    }
+}
+
 /// Vertical scale of the grid. Short meetings keep `minimumEventHeight`, tall
 /// enough for one line of title, like Google Calendar. Overlap is judged on
 /// that visual height, not on real duration.
 struct TimelineScale: Equatable {
-    static let compact = TimelineScale(hourHeight: 84, minimumEventHeight: 20)
-    static let comfortable = TimelineScale(hourHeight: 112, minimumEventHeight: 26)
+    static let compact = TimelineScale(hourHeight: TimelineZoom.close.hourHeight, minimumEventHeight: 20)
+    static let comfortable = TimelineScale(hourHeight: TimelineZoom.closest.hourHeight, minimumEventHeight: 26)
 
     let hourHeight: Double
     let minimumEventHeight: Double
+
+    /// Zoom changes the hours on screen, never the one-line minimum.
+    func zoomed(to zoom: TimelineZoom) -> TimelineScale {
+        TimelineScale(hourHeight: zoom.hourHeight, minimumEventHeight: minimumEventHeight)
+    }
 }
 
 struct TimelineWindow: Equatable {
@@ -47,29 +82,63 @@ struct TimelineWindow: Equatable {
     }
 }
 
-enum TimelineLayout {
-    /// Whole hours covering the events, plus now when now is inside `day`.
-    static func window(
-        for events: [TimelineLayoutEvent],
-        now: Date,
-        day: DateInterval,
-        calendar: Calendar,
-        scale: TimelineScale = .compact
-    ) -> TimelineWindow? {
-        var lower = events.map(\.start).min()
-        var upper = events.map(\.end).max()
-        if day.contains(now) {
-            lower = min(lower ?? now, now)
-            upper = max(upper ?? now, now)
-        }
-        guard let lower, let upper else { return nil }
+extension TimelineWindow {
+    /// Always the whole day, however few events it has.
+    init(day: DateInterval, scale: TimelineScale) {
+        self.init(start: day.start, end: day.end, scale: scale)
+    }
+}
 
-        let start = max(hourFloor(lower, calendar: calendar), day.start)
-        let end = min(hourCeiling(upper, calendar: calendar), day.end)
-        guard end > start else { return nil }
-        return TimelineWindow(start: start, end: end, scale: scale)
+/// What an event card shows at its size. As a card shrinks, details give way
+/// in reverse priority: the description line, the detail row, avatars, the
+/// countdown, then Join. The title always stays.
+struct TimelineCardContent: Equatable {
+    enum Join: Equatable {
+        case hidden
+        case icon
+        case label
     }
 
+    static let minimumTitleWidth = 64.0
+    static let joinIconWidth = 30.0
+    static let joinLabelMinimumWidth = 170.0
+    static let countdownMinimumWidth = 190.0
+    static let avatarsMinimumWidth = 150.0
+
+    let rows: Int
+    let join: Join
+    let showsCountdown: Bool
+    let showsAvatars: Bool
+
+    init(
+        width: Double,
+        height: Double,
+        twoRowHeight: Double,
+        threeRowHeight: Double,
+        horizontalPadding: Double,
+        offersJoin: Bool,
+        hasCountdown: Bool,
+        hasGuests: Bool
+    ) {
+        rows = height < twoRowHeight ? 1 : height < threeRowHeight ? 2 : 3
+
+        let titleWidthBesideIcon = width - horizontalPadding * 2 - Self.joinIconWidth
+        if !offersJoin {
+            join = .hidden
+        } else if width >= Self.joinLabelMinimumWidth {
+            join = .label
+        } else if titleWidthBesideIcon >= Self.minimumTitleWidth {
+            join = .icon
+        } else {
+            join = .hidden
+        }
+
+        showsCountdown = hasCountdown && width >= Self.countdownMinimumWidth
+        showsAvatars = hasGuests && rows > 1 && width >= Self.avatarsMinimumWidth
+    }
+}
+
+enum TimelineLayout {
     static func hourTicks(in window: TimelineWindow, calendar: Calendar) -> [Date] {
         var ticks: [Date] = []
         var tick = hourFloor(window.start, calendar: calendar)
@@ -142,11 +211,6 @@ enum TimelineLayout {
 
     private static func hourFloor(_ date: Date, calendar: Calendar) -> Date {
         calendar.dateInterval(of: .hour, for: date)?.start ?? date
-    }
-
-    private static func hourCeiling(_ date: Date, calendar: Calendar) -> Date {
-        guard let hour = calendar.dateInterval(of: .hour, for: date) else { return date }
-        return hour.start == date ? date : hour.end
     }
 }
 

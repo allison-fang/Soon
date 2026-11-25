@@ -369,3 +369,5 @@
 "status_bar_control_next_meeting" = "Prochaine réunion";
 "preferences_appearance_events_no_meeting_link_title" = "Événements sans lien de réunion";
 "preferences_appearance_menu_show_event_calendar_color_value" = "couleur du calendrier";
+"status_bar_popover_zoom_in" = "Zoom avant";
+"status_bar_popover_zoom_out" = "Zoom arrière";
