@@ -166,6 +166,15 @@ struct StatusBarPopoverView: View {
                     .foregroundColor(.secondary)
             }
             .fixedSize()
+            #if DEBUG
+                Text(verbatim: "DEV")
+                    .font(.system(size: 10, weight: .bold))
+                    .foregroundColor(.orange)
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 2)
+                    .background(Capsule().fill(Color.orange.opacity(0.14)))
+                    .fixedSize()
+            #endif
             if presentation.timelineHeight > 0 {
                 HStack(spacing: 4) {
                     zoomButton(
