@@ -69,7 +69,13 @@ final class OnboardingRouter: ObservableObject {
 /// automatically), and `success` is terminal, so neither shows a distinct
 /// progress position.
 enum OnboardingProgressPolicy {
-    static let totalStages = 4
+    static let stageTitleKeys = [
+        "onboarding_stage_welcome",
+        "onboarding_stage_calendar_source",
+        "onboarding_stage_calendars",
+        "onboarding_stage_essentials"
+    ]
+    static var totalStages: Int { stageTitleKeys.count }
 
     static func stageIndex(for step: OnboardingStep) -> Int? {
         switch step {
@@ -87,21 +93,9 @@ struct OnboardingView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            HStack(spacing: 12) {
-                Text("onboarding_setup_title".loco())
-                    .font(.headline)
-                    .foregroundStyle(.secondary)
-                OnboardingProgress(step: router.currentStep)
-                Spacer()
-                Button(action: { NSApplication.shared.keyWindow?.close() }) {
-                    Image(systemName: "xmark")
-                        .foregroundStyle(.secondary)
-                        .font(.title3)
-                }
-                .buttonStyle(.plain)
-                .help("general_close".loco())
-            }
-            .padding(.horizontal, 16)
+            OnboardingProgress(step: router.currentStep)
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 16)
             .padding(.vertical, 12)
             .background(Color(nsColor: .controlBackgroundColor))
 
@@ -126,36 +120,70 @@ struct OnboardingView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(20)
         }
-        // The window itself is clear (WindowStylePolicy); the content paints an
-        // opaque rounded background and a hairline border so the borderless
-        // window reads as a distinct surface and AppKit can derive its shadow.
-        .background(Color(nsColor: .windowBackgroundColor))
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .strokeBorder(Color(nsColor: .separatorColor), lineWidth: 1)
-        )
     }
 }
 
-/// Slim segmented progress shown in the window header. Filled segments mark
-/// completed and current stages; the textual "Step X of Y" is preserved as the
-/// accessibility label.
+/// Numbered stepper shown in the window header. Each stage shows its title so
+/// users can see what's coming; completed stages show a checkmark. `success`
+/// has no stage of its own, so every stage shows as completed there.
 private struct OnboardingProgress: View {
     let step: OnboardingStep
 
     var body: some View {
-        if let index = OnboardingProgressPolicy.stageIndex(for: step) {
-            let total = OnboardingProgressPolicy.totalStages
-            HStack(spacing: 5) {
-                ForEach(1 ... total, id: \.self) { stage in
-                    Capsule()
-                        .fill(stage <= index ? Color.accentColor : Color.secondary.opacity(0.25))
-                        .frame(width: 18, height: 4)
+        let total = OnboardingProgressPolicy.totalStages
+        let current = OnboardingProgressPolicy.stageIndex(for: step) ?? total + 1
+        HStack(spacing: 10) {
+            ForEach(Array(OnboardingProgressPolicy.stageTitleKeys.enumerated()), id: \.offset) { offset, key in
+                let stage = offset + 1
+                if stage > 1 {
+                    Rectangle()
+                        .fill(Color.secondary.opacity(0.3))
+                        .frame(width: 24, height: 1)
+                }
+                OnboardingStageLabel(number: stage, title: key.loco(), current: current)
+            }
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(
+            Text("onboarding_progress".loco("\(min(current, total))", "\(total)"))
+        )
+    }
+}
+
+private struct OnboardingStageLabel: View {
+    let number: Int
+    let title: String
+    let current: Int
+
+    private var isCompleted: Bool { number < current }
+    private var isCurrent: Bool { number == current }
+
+    var body: some View {
+        HStack(spacing: 6) {
+            ZStack {
+                Circle()
+                    .fill(isCompleted || isCurrent ? Color.accentColor : Color.clear)
+                Circle()
+                    .strokeBorder(
+                        isCompleted || isCurrent ? Color.accentColor : Color.secondary.opacity(0.5),
+                        lineWidth: 1
+                    )
+                if isCompleted {
+                    Image(systemName: "checkmark")
+                        .font(.system(size: 9, weight: .bold))
+                        .foregroundStyle(.white)
+                } else {
+                    Text("\(number)")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(isCurrent ? Color.white : Color.secondary)
                 }
             }
-            .accessibilityElement()
-            .accessibilityLabel(Text("onboarding_progress".loco("\(index)", "\(total)")))
+            .frame(width: 20, height: 20)
+
+            Text(title)
+                .font(.callout.weight(isCurrent ? .semibold : .regular))
+                .foregroundStyle(isCurrent ? Color.primary : Color.secondary)
+                .lineLimit(1)
         }
     }
 }

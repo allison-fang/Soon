@@ -327,6 +327,10 @@
 
 "onboarding_setup_title" = "Soon Setup";
 "onboarding_progress" = "Step %@ of %@";
+"onboarding_stage_welcome" = "Welcome";
+"onboarding_stage_calendar_source" = "Calendar source";
+"onboarding_stage_calendars" = "Calendars";
+"onboarding_stage_essentials" = "Daily behavior";
 "onboarding_continue" = "Continue";
 "onboarding_back" = "Back";
 "onboarding_done" = "Done";
