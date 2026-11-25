@@ -97,7 +97,9 @@
 "preferences_general_check_for_updates" = "Automatically check for updates";
 "preferences_general_check_for_updates_button" = "Check for Updates";
 "preferences_general_update_checking" = "Checking for updates…";
-"preferences_general_update_up_to_date" = "Soon is up to date.";
+"preferences_general_update_up_to_date" = "Up to date";
+"preferences_general_update_badge_available" = "Update available";
+"preferences_general_update_badge_failed" = "Couldn't check";
 "preferences_general_update_failed" = "Couldn't check for updates. Try again later.";
 "preferences_general_update_available" = "Soon %@ is available.";
 "preferences_general_update_instructions" = "To update, run the install command in Terminal.";

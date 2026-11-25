@@ -329,7 +329,9 @@
 "preferences_general_check_for_updates" = "புதுப்பிப்புகளைத் தானாகச் சரிபார்";
 "preferences_general_check_for_updates_button" = "புதுப்பிப்புகளைச் சரிபார்";
 "preferences_general_update_checking" = "புதுப்பிப்புகளைச் சரிபார்க்கிறது…";
-"preferences_general_update_up_to_date" = "Soon புதுப்பித்த நிலையில் உள்ளது.";
+"preferences_general_update_up_to_date" = "புதுப்பித்த நிலை";
+"preferences_general_update_badge_available" = "புதுப்பிப்பு உள்ளது";
+"preferences_general_update_badge_failed" = "சரிபார்க்க முடியவில்லை";
 "preferences_general_update_failed" = "புதுப்பிப்புகளைச் சரிபார்க்க முடியவில்லை. பின்னர் மீண்டும் முயலவும்.";
 "preferences_general_update_available" = "Soon %@ கிடைக்கிறது.";
 "preferences_general_update_instructions" = "புதுப்பிக்க, Terminal-இல் நிறுவல் கட்டளையை இயக்கவும்.";

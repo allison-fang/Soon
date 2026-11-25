@@ -376,7 +376,9 @@
 "preferences_general_check_for_updates" = "Rechercher automatiquement les mises à jour";
 "preferences_general_check_for_updates_button" = "Rechercher les mises à jour";
 "preferences_general_update_checking" = "Recherche de mises à jour…";
-"preferences_general_update_up_to_date" = "Soon est à jour.";
+"preferences_general_update_up_to_date" = "À jour";
+"preferences_general_update_badge_available" = "Mise à jour disponible";
+"preferences_general_update_badge_failed" = "Vérification impossible";
 "preferences_general_update_failed" = "Impossible de rechercher les mises à jour. Réessayez plus tard.";
 "preferences_general_update_available" = "Soon %@ est disponible.";
 "preferences_general_update_instructions" = "Pour mettre à jour, exécutez la commande d’installation dans Terminal.";

@@ -34,6 +34,7 @@ final class UpdateChecker: ObservableObject {
 
     @Published private(set) var status: Status = .idle
     @Published private(set) var availableUpdate: AvailableUpdate?
+    @Published private(set) var lastResult: UpdateCheckResult?
 
     private let dependencies: Dependencies
     private var checkTask: Task<Void, Never>?
@@ -120,9 +121,11 @@ final class UpdateChecker: ObservableObject {
             )
             availableUpdate = update
             status = update.map(Status.available) ?? .upToDate
+            lastResult = UpdateCheckResult(outcome: update == nil ? .upToDate : .available, finishedAt: dependencies.now())
         case .failure:
             // Leave lastCheck untouched so the next tick or wake retries.
             status = .failed
+            lastResult = UpdateCheckResult(outcome: .failed, finishedAt: dependencies.now())
         }
     }
 }

@@ -381,7 +381,9 @@
 "preferences_general_check_for_updates" = "Automatycznie sprawdzaj aktualizacje";
 "preferences_general_check_for_updates_button" = "Sprawdź aktualizacje";
 "preferences_general_update_checking" = "Sprawdzanie aktualizacji…";
-"preferences_general_update_up_to_date" = "Soon jest aktualny.";
+"preferences_general_update_up_to_date" = "Aktualny";
+"preferences_general_update_badge_available" = "Dostępna aktualizacja";
+"preferences_general_update_badge_failed" = "Nie udało się sprawdzić";
 "preferences_general_update_failed" = "Nie udało się sprawdzić aktualizacji. Spróbuj ponownie później.";
 "preferences_general_update_available" = "Dostępna jest wersja Soon %@.";
 "preferences_general_update_instructions" = "Aby zaktualizować, uruchom polecenie instalacji w Terminalu.";

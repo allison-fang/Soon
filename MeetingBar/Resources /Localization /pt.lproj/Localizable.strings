@@ -329,7 +329,9 @@
 "preferences_general_check_for_updates" = "Procurar atualizações automaticamente";
 "preferences_general_check_for_updates_button" = "Procurar atualizações";
 "preferences_general_update_checking" = "A procurar atualizações…";
-"preferences_general_update_up_to_date" = "O Soon está atualizado.";
+"preferences_general_update_up_to_date" = "Atualizado";
+"preferences_general_update_badge_available" = "Atualização disponível";
+"preferences_general_update_badge_failed" = "Não foi possível verificar";
 "preferences_general_update_failed" = "Não foi possível procurar atualizações. Tente novamente mais tarde.";
 "preferences_general_update_available" = "O Soon %@ está disponível.";
 "preferences_general_update_instructions" = "Para atualizar, execute o comando de instalação no Terminal.";
