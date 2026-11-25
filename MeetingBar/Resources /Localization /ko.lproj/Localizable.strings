@@ -335,3 +335,6 @@
 "preferences_general_update_instructions" = "업데이트하려면 터미널에서 설치 명령을 실행하세요.";
 "preferences_general_update_copy_command" = "설치 명령 복사";
 "preferences_general_update_whats_new" = "새로운 기능";
+"status_bar_details_open_google_calendar" = "Google 캘린더";
+"status_bar_details_open_calendar" = "캘린더";
+"status_bar_details_open_fantastical" = "Fantastical";

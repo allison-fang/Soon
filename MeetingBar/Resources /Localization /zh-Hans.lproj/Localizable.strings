@@ -341,3 +341,6 @@
 "preferences_general_update_instructions" = "要更新，请在“终端”中运行安装命令。";
 "preferences_general_update_copy_command" = "复制安装命令";
 "preferences_general_update_whats_new" = "新功能";
+"status_bar_details_open_google_calendar" = "Google 日历";
+"status_bar_details_open_calendar" = "日历";
+"status_bar_details_open_fantastical" = "Fantastical";

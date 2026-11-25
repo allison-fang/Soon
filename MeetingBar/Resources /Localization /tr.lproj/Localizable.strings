@@ -387,3 +387,6 @@
 "preferences_general_update_instructions" = "Güncellemek için kurulum komutunu Terminal'de çalıştırın.";
 "preferences_general_update_copy_command" = "Kurulum komutunu kopyala";
 "preferences_general_update_whats_new" = "Yenilikler";
+"status_bar_details_open_google_calendar" = "Google Takvim";
+"status_bar_details_open_calendar" = "Takvim";
+"status_bar_details_open_fantastical" = "Fantastical";

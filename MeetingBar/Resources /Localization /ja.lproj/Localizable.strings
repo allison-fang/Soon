@@ -408,3 +408,6 @@
 "preferences_general_update_instructions" = "アップデートするには、ターミナルでインストールコマンドを実行してください。";
 "preferences_general_update_copy_command" = "インストールコマンドをコピー";
 "preferences_general_update_whats_new" = "新機能";
+"status_bar_details_open_google_calendar" = "Google カレンダー";
+"status_bar_details_open_calendar" = "カレンダー";
+"status_bar_details_open_fantastical" = "Fantastical";

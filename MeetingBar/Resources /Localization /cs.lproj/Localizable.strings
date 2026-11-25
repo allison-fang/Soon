@@ -401,3 +401,6 @@
 "preferences_general_update_instructions" = "Pro aktualizaci spusťte instalační příkaz v Terminálu.";
 "preferences_general_update_copy_command" = "Kopírovat instalační příkaz";
 "preferences_general_update_whats_new" = "Co je nového";
+"status_bar_details_open_google_calendar" = "Kalendář Google";
+"status_bar_details_open_calendar" = "Kalendář";
+"status_bar_details_open_fantastical" = "Fantastical";

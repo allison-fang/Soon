@@ -397,3 +397,6 @@
 "preferences_general_update_instructions" = "Щоб оновити, виконайте команду встановлення в Terminal.";
 "preferences_general_update_copy_command" = "Скопіювати команду встановлення";
 "preferences_general_update_whats_new" = "Що нового";
+"status_bar_details_open_google_calendar" = "Google Календар";
+"status_bar_details_open_calendar" = "Календар";
+"status_bar_details_open_fantastical" = "Fantastical";

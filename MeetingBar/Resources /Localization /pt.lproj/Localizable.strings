@@ -335,3 +335,6 @@
 "preferences_general_update_instructions" = "Para atualizar, execute o comando de instalação no Terminal.";
 "preferences_general_update_copy_command" = "Copiar comando de instalação";
 "preferences_general_update_whats_new" = "Novidades";
+"status_bar_details_open_google_calendar" = "Google Agenda";
+"status_bar_details_open_calendar" = "Calendário";
+"status_bar_details_open_fantastical" = "Fantastical";

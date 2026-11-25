@@ -340,3 +340,6 @@
 "preferences_general_update_instructions" = "A frissítéshez futtasd a telepítési parancsot a Terminálban.";
 "preferences_general_update_copy_command" = "Telepítési parancs másolása";
 "preferences_general_update_whats_new" = "Újdonságok";
+"status_bar_details_open_google_calendar" = "Google Naptár";
+"status_bar_details_open_calendar" = "Naptár";
+"status_bar_details_open_fantastical" = "Fantastical";

@@ -335,3 +335,6 @@
 "preferences_general_update_instructions" = "புதுப்பிக்க, Terminal-இல் நிறுவல் கட்டளையை இயக்கவும்.";
 "preferences_general_update_copy_command" = "நிறுவல் கட்டளையை நகலெடு";
 "preferences_general_update_whats_new" = "புதியவை";
+"status_bar_details_open_google_calendar" = "Google Calendar";
+"status_bar_details_open_calendar" = "காலண்டர்";
+"status_bar_details_open_fantastical" = "Fantastical";
