@@ -186,7 +186,7 @@ struct Browser: Defaults.Serializable, Codable, Hashable, Sendable {
 }
 
 enum WindowTitles {
-    static let onboarding = "window_title_onboarding".loco()
+    static let onboarding = "onboarding_setup_title".loco()
     static let preferences = "window_title_preferences".loco()
 }
 

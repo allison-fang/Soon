@@ -283,6 +283,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
     }
 
+    /// Target of the app menu's Hide item (⌘H). AppKit disables its own
+    /// `hide:` for accessory (`LSUIElement`) apps, though hiding still works.
+    @IBAction
+    func hideApplication(_ sender: Any?) {
+        NSApp.hide(sender)
+    }
+
     @objc
     func windowClosed(notification: NSNotification) {
         let window = notification.object as? NSWindow

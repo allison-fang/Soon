@@ -80,28 +80,11 @@ final class OnboardingWindow: NSWindow {
 enum OnboardingWindowPresentationPolicy {
     static let contentRect = NSRect(x: 0, y: 0, width: 760, height: 520)
     static let minimumSize = NSSize(width: 640, height: 460)
-    static let styleMask: NSWindow.StyleMask = [.resizable]
+    static let styleMask: NSWindow.StyleMask = [
+        .titled, .closable, .miniaturizable, .resizable, .fullSizeContentView
+    ]
     static let level: NSWindow.Level = .normal
     static let isMovableByWindowBackground = true
-}
-
-private enum WindowStylePolicy {
-    @MainActor
-    static func applyRoundedCorners(to window: NSWindow, radius: CGFloat = 12) {
-        // Clear, non-opaque window so AppKit derives the drop shadow from the
-        // opaque SwiftUI content (which paints its own rounded background and
-        // hairline border). A shadow set on the content layer itself can't
-        // work here: masksToBounds clips the rounded corners *and* the shadow.
-        window.isOpaque = false
-        window.backgroundColor = .clear
-        window.hasShadow = true
-
-        guard let contentView = window.contentView else { return }
-
-        contentView.wantsLayer = true
-        contentView.layer?.cornerRadius = radius
-        contentView.layer?.masksToBounds = true
-    }
 }
 
 /// Owns AppKit window lifecycle for app-level windows.
@@ -155,7 +138,7 @@ final class WindowCoordinator {
         onboardingWindow.minSize = OnboardingWindowPresentationPolicy.minimumSize
         onboardingWindow.isMovableByWindowBackground =
             OnboardingWindowPresentationPolicy.isMovableByWindowBackground
-        WindowStylePolicy.applyRoundedCorners(to: onboardingWindow)
+        onboardingWindow.titlebarAppearsTransparent = true
         let controller = NSWindowController(window: onboardingWindow)
         controller.showWindow(self)
 
@@ -295,7 +278,7 @@ final class WindowCoordinator {
 
         let window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 860, height: 620),
-            styleMask: [.closable, .titled, .resizable],
+            styleMask: [.closable, .titled, .miniaturizable, .resizable],
             backing: .buffered,
             defer: false
         )

@@ -117,7 +117,11 @@ final class WindowCoordinatorTests: XCTestCase {
 
     func testOnboardingWindowPolicyAllowsNormalMovableResizableWindow() {
         XCTAssertEqual(OnboardingWindowPresentationPolicy.level, .normal)
-        XCTAssertTrue(OnboardingWindowPresentationPolicy.styleMask.contains(.resizable))
+        XCTAssertTrue(
+            OnboardingWindowPresentationPolicy.styleMask.isSuperset(
+                of: [.titled, .closable, .miniaturizable, .resizable]
+            )
+        )
         XCTAssertTrue(OnboardingWindowPresentationPolicy.isMovableByWindowBackground)
         XCTAssertLessThan(
             OnboardingWindowPresentationPolicy.minimumSize.width,
@@ -127,6 +131,25 @@ final class WindowCoordinatorTests: XCTestCase {
             OnboardingWindowPresentationPolicy.minimumSize.height,
             OnboardingWindowPresentationPolicy.contentRect.height
         )
+    }
+
+    func testOnboardingWindowHasStandardWindowControls() throws {
+        let coordinator = WindowCoordinator()
+        let harness = AppModelTestHarness()
+        coordinator.openOnboardingWindow(
+            appModel: harness.model,
+            onProviderSelected: { _ in .success },
+            onComplete: { _ in .success }
+        )
+        let window = try XCTUnwrap(coordinator.onboardingWindow)
+        defer { window.close() }
+
+        XCTAssertTrue(window.isMovable)
+        for button in [NSWindow.ButtonType.closeButton, .miniaturizeButton, .zoomButton] {
+            let control = try XCTUnwrap(window.standardWindowButton(button))
+            XCTAssertTrue(control.isEnabled)
+            XCTAssertFalse(control.isHidden)
+        }
     }
 
     func testReopeningOnboardingRetainsTheExistingWindowAndFlow() async throws {
