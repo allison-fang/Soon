@@ -150,7 +150,7 @@
 "status_bar_menu_dismiss_next_meeting" = "Volgende meeting afwijzen";
 "status_bar_menu_dismiss_curent_meeting" = "Huidige meeting afwijzen";
 "status_bar_menu_remove_all_dismissals" = "Verwijder alle afwijzingen";
-"status_bar_event_dismissed_mark" = "afgewezen";
+"status_bar_event_dismissed_mark" = "meldingen uitgeschakeld";
 "notification_next_meeting_dismissed_title" = "Afgewezen %@";
 "notification_all_dismissals_removed_title" = "Verwijder all afwijzingen";
 "notification_all_dismissals_removed_message" = "Alle afgewezen meetings zijn weer actief";
@@ -200,7 +200,7 @@
 "status_bar_whats_new" = "Wat is er nieuw?";
 "status_bar_rate_app" = "Beoordeel app";
 "status_bar_preferences" = "Instellingen";
-"status_bar_submenu_dismiss_meeting" = "Meeting afwijzen";
+"status_bar_submenu_dismiss_meeting" = "Meldingen uitschakelen";
 "status_bar_event_status_now" = "nu (nog %@)";
 "status_bar_error_app_link_title" = "Oeps! Kan de link in de %@ niet openen";
 "status_bar_error_app_link_message" = "Zorg ervoor dat u de %@ hebt geïnstalleerd, of open dergelijke links in een browser vanuit instellingen.";
@@ -245,7 +245,7 @@
 "status_bar_submenu_attendees_no_name" = "Anonieme deelnemer";
 "status_bar_quit" = "Stop Soon";
 "status_bar_submenu_email_attendees" = "E-mail deelnemers";
-"status_bar_submenu_undismiss_meeting" = "Verwijder afwijzingen";
+"status_bar_submenu_undismiss_meeting" = "Meldingen inschakelen";
 "status_bar_submenu_copy_meeting_link" = "Meetinglink kopiëren";
 "status_bar_submenu_open_in_calendar" = "Openen in macOS Agenda-app";
 
@@ -264,7 +264,7 @@
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "verberg 10 minuten  na start";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "verberg 10 minuten voor volgende evenement";
 "preferences_appearance_menu_show_timeline_toggle" = "Toon visuele tijdlijn van de dag";
-"notifications_meetingbar_dismiss_event_action" = "Afwijzen";
+"notifications_meetingbar_dismiss_event_action" = "Meldingen uitschakelen";
 
 "general_refresh" = "Vernieuwen";
 "general_when_event_ends" = "wanneer de meeting eindigt";

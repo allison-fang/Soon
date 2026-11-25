@@ -181,8 +181,8 @@
 "status_bar_submenu_attendees_status_tentative" = " [provizorno]";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_submenu_copy_meeting_link" = "Kopiraj poveznicu na sastanak";
-"status_bar_submenu_dismiss_meeting" = "Raspusti sastanak";
-"status_bar_submenu_undismiss_meeting" = "Ukloni raspuštanje";
+"status_bar_submenu_dismiss_meeting" = "Isključi obavijesti";
+"status_bar_submenu_undismiss_meeting" = "Uključi obavijesti";
 "status_bar_submenu_email_attendees" = "Pošalji e -mail sudionicima";
 "status_bar_submenu_open_in_calendar" = "Otvori u programu Kalendar";
 "status_bar_submenu_open_in_fantastical" = "Otvori u Fantastical";
@@ -258,7 +258,7 @@
 "status_bar_menu_dismiss_curent_meeting" = "Raspusti trenutačni sastanak";
 "status_bar_menu_dismiss_next_meeting" = "Raspusti sljedeći sastanak";
 "status_bar_menu_remove_all_dismissals" = "Ukloni sva raspuštanja";
-"status_bar_event_dismissed_mark" = "raspušten";
+"status_bar_event_dismissed_mark" = "obavijesti isključene";
 "notification_next_meeting_dismissed_title" = "Raspušten sastanak %@";
 "notification_next_meeting_dismissed_message" = "Raspuštanje možeš ukloniti iz „Brze radnje”";
 "notification_all_dismissals_removed_title" = "Uklonjena su sva raspuštanja";
@@ -269,7 +269,7 @@
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "sakrij 10 min nakon početka";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "sakrij 10 min prije sljedećeg događaja";
 "preferences_appearance_menu_show_timeline_toggle" = "Prikaži vizualnu vremensku crtu dana";
-"notifications_meetingbar_dismiss_event_action" = "Raspusti";
+"notifications_meetingbar_dismiss_event_action" = "Isključi obavijesti";
 "access_screen_provider_authorization_cancelled" = "Autorizacija je otkazana. Pokušajte ponovo povezati kalendar.";
 "general_end_of_event_notification_toggle" = "Pošalji obavijest kada događaj završi";
 "general_refresh" = "Osvježi";

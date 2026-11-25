@@ -77,8 +77,8 @@
 "status_bar_submenu_open_in_fantastical" = "Otevřít v aplikaci Fantastical";
 "status_bar_submenu_open_in_calendar" = "Otevřít v aplikaci Kalendář";
 "status_bar_submenu_copy_meeting_link" = "Zkopírovat odkaz na schůzku";
-"status_bar_submenu_dismiss_meeting" = "Skrýt schůzku";
-"status_bar_submenu_undismiss_meeting" = "Znovu zobrazit schůzku";
+"status_bar_submenu_dismiss_meeting" = "Vypnout upozornění";
+"status_bar_submenu_undismiss_meeting" = "Zapnout upozornění";
 "status_bar_submenu_email_attendees" = "Poslat e-mail účastníkům";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_submenu_attendees_status_tentative" = " [nezávazně]";
@@ -257,7 +257,7 @@
 "status_bar_menu_dismiss_curent_meeting" = "Skrýt aktuální schůzku";
 "status_bar_menu_dismiss_next_meeting" = "Skrýt příští schůzku";
 "status_bar_menu_remove_all_dismissals" = "Znovu zobrazit všechny schůzky";
-"status_bar_event_dismissed_mark" = "skryto";
+"status_bar_event_dismissed_mark" = "upozornění vypnuta";
 "notification_next_meeting_dismissed_title" = "Skryto: %@";
 "notification_next_meeting_dismissed_message" = "Schůzku můžete znovu zobrazit v Rychlých akcích.";
 "notification_all_dismissals_removed_title" = "Všechny schůzky byly znovu zobrazeny";
@@ -346,7 +346,7 @@
 "fullscreen_notification_dismiss_action" = "Zavřít";
 "shared_fullscreen_notification_without_link_toggle" = "Zobrazovat celoobrazovková oznámení také pro události bez odkazu na schůzku";
 "shared_fullscreen_notification_without_link_help" = "U událostí bez odkazu na schůzku obsahuje celoobrazovkové připomenutí pouze tlačítko Zavřít.";
-"notifications_meetingbar_dismiss_event_action" = "Zavřít";
+"notifications_meetingbar_dismiss_event_action" = "Vypnout upozornění";
 "preferences_appearance_menu_show_timeline_toggle" = "Zobrazit časovou osu dne";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "skrýt po zahájení";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "skrýt 10 min po zahájení";

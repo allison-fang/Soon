@@ -110,9 +110,9 @@ struct JoinNearestMeetingIntent: AppIntent {
 
 @available(macOS 13.0, *)
 struct DismissNearestMeetingIntent: AppIntent {
-    static let title: LocalizedStringResource = "Dismiss Nearest Meeting"
+    static let title: LocalizedStringResource = "Disable Notifications for Nearest Meeting"
     static let description = IntentDescription(
-        "Dismiss the nearest (current or next) event meeting.")
+        "Stop notifications for the nearest (current or next) event meeting.")
 
     func perform() async throws -> some IntentResult {
         await MainActor.run {

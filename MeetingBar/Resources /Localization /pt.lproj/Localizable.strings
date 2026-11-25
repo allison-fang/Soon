@@ -117,7 +117,7 @@
 "notifications_event_start_soon_body" = "O evento começa em breve";
 "notifications_event_start_three_minutes_body" = "O evento começa em três minutos";
 "notifications_event_started_body" = "O evento começou";
-"notifications_meetingbar_dismiss_event_action" = "Dispensar";
+"notifications_meetingbar_dismiss_event_action" = "Desativar notificações";
 "notifications_meetingbar_join_event_action" = "Entrar";
 "notifications_snooze_for" = "Adiar %@ min";
 "notifications_snooze_until_start" = "Adiar até à hora de início";
@@ -267,7 +267,7 @@
 "status_bar_error_apple_script_title" = "Erro AppleScript";
 "status_bar_error_link_missed_message" = "Link não encontrado, ou o seu serviço de reunião ainda não é suportado";
 "status_bar_error_link_missed_title" = "Ai! Não consigo entrar no %@";
-"status_bar_event_dismissed_mark" = "dispensado";
+"status_bar_event_dismissed_mark" = "notificações desativadas";
 "status_bar_event_start_time_all_day" = "O dia todo";
 "status_bar_event_status_in" = "em %@";
 "status_bar_event_status_now" = "agora (faltam %@)";
@@ -299,7 +299,7 @@
 "status_bar_submenu_attendees_you" = "%@ (você)";
 "status_bar_submenu_calendar_title" = "Calendário: %@";
 "status_bar_submenu_copy_meeting_link" = "Copiar link da reunião";
-"status_bar_submenu_dismiss_meeting" = "Dispensar reunião";
+"status_bar_submenu_dismiss_meeting" = "Desativar notificações";
 "status_bar_submenu_duration_all_day" = "%@ - %@ (%@ minutos)";
 "status_bar_submenu_email_attendees" = "Enviar e-mail aos participantes";
 "status_bar_submenu_location_title" = "Localização:";
@@ -314,7 +314,7 @@
 "status_bar_submenu_status_tentative" = " ☝️ Provisório";
 "status_bar_submenu_status_title" = "Estado: %@";
 "status_bar_submenu_status_unknown" = " ❔ Desconhecido";
-"status_bar_submenu_undismiss_meeting" = "Remover dispensa";
+"status_bar_submenu_undismiss_meeting" = "Ativar notificações";
 "status_bar_whats_new" = "O que há de novo?";
 "timeline_accessibility_label" = "Linha do tempo com %d eventos";
 "preferences_advanced_script_link_only_help" = "Executa apenas para eventos com links de reunião.";

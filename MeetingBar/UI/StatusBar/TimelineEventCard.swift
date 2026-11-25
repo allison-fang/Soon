@@ -291,10 +291,11 @@ struct TimelineEventCard: View {
     }
 
     private var titleText: Text {
-        let text = Text(event.title)
+        let title = event.response == .declined ? Text(event.title).strikethrough() : Text(event.title)
+        let text = event.isDismissed ? Text(Image(systemName: "bell.slash")) + Text(" ") + title : title
+        return text
             .font(.system(size: metrics.cardTitleSize, weight: .semibold))
             .foregroundColor(Color(colors.title))
-        return event.response == .declined ? text.strikethrough() : text
     }
 
     private func detailRow(includesDescription: Bool, showsAvatars: Bool) -> some View {
@@ -342,7 +343,8 @@ struct TimelineEventCard: View {
 @MainActor
 enum TimelineEventAccessibility {
     static func label(for event: TimelineEventPresentation) -> String {
-        [event.title, timeText(for: event.event), responseText(for: event)]
+        ([event.title, timeText(for: event.event), responseText(for: event)]
+            + (event.isDismissed ? ["status_bar_event_dismissed_mark".loco()] : []))
             .joined(separator: ", ")
     }
 
