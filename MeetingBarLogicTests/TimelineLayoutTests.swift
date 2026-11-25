@@ -124,7 +124,6 @@ final class TimelineLayoutTests: XCTestCase {
     private func card(
         width: Double = 300,
         height: Double = 100,
-        offersJoin: Bool = true,
         hasCountdown: Bool = true,
         hasGuests: Bool = true
     ) -> TimelineCardContent {
@@ -132,9 +131,6 @@ final class TimelineLayoutTests: XCTestCase {
             width: width,
             height: height,
             twoRowHeight: 51,
-            threeRowHeight: 72,
-            horizontalPadding: 10,
-            offersJoin: offersJoin,
             hasCountdown: hasCountdown,
             hasGuests: hasGuests
         )
@@ -143,8 +139,7 @@ final class TimelineLayoutTests: XCTestCase {
     func testRoomyCardShowsEverything() {
         let content = card()
 
-        XCTAssertEqual(content.rows, 3)
-        XCTAssertEqual(content.join, .label)
+        XCTAssertEqual(content.rows, 2)
         XCTAssertTrue(content.showsCountdown)
         XCTAssertTrue(content.showsAvatars)
     }
@@ -159,33 +154,14 @@ final class TimelineLayoutTests: XCTestCase {
         XCTAssertFalse(card(height: 22).showsAvatars)
     }
 
-    func testJoinOutlastsCountdownAndAvatarsAsCardsNarrow() {
+    func testNarrowCardsDropCountdownAndAvatars() {
         let narrow = card(width: 140)
 
         XCTAssertFalse(narrow.showsCountdown)
         XCTAssertFalse(narrow.showsAvatars)
-        XCTAssertEqual(narrow.join, .icon)
     }
 
-    func testJoinShrinksToAnIconBeforeItHides() {
-        XCTAssertEqual(card(width: TimelineCardContent.joinLabelMinimumWidth).join, .label)
-        XCTAssertEqual(card(width: TimelineCardContent.joinLabelMinimumWidth - 1).join, .icon)
-        XCTAssertEqual(card(width: 60).join, .hidden)
-    }
-
-    func testJoinNeverSqueezesTheTitleBelowItsMinimum() {
-        for width in stride(from: 20.0, through: 400, by: 2) {
-            let content = card(width: width)
-            guard content.join == .icon else { continue }
-            XCTAssertGreaterThanOrEqual(
-                width - 20 - TimelineCardContent.joinIconWidth,
-                TimelineCardContent.minimumTitleWidth
-            )
-        }
-    }
-
-    func testCardsWithoutAJoinableMeetingOfferNoJoin() {
-        XCTAssertEqual(card(offersJoin: false).join, .hidden)
+    func testCardsWithoutCountdownOrGuestsShowNeither() {
         XCTAssertFalse(card(hasCountdown: false).showsCountdown)
         XCTAssertFalse(card(hasGuests: false).showsAvatars)
     }

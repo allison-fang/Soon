@@ -88,6 +88,10 @@ final class StatusBarPopoverController {
     private var hostingView: NSView?
     private var detailsPanel: StatusBarPanel?
     private var detailsEvent: TimelineEventPresentation?
+    /// Set by clicking a card: its details stay open while the pointer moves
+    /// elsewhere, until a click away or on the same card.
+    private var pinnedEventID: String?
+    private var hoveredEventID: String?
     private var pendingDetailsChange: DispatchWorkItem?
     private var monitors: [Any] = []
     private var observers: [NSObjectProtocol] = []
@@ -103,6 +107,9 @@ final class StatusBarPopoverController {
     init() {
         model.onEventHover = { [weak self] id, isHovering in
             self?.eventHoverChanged(id: id, isHovering: isHovering)
+        }
+        model.onEventClick = { [weak self] id in
+            self?.eventClicked(id: id)
         }
         model.onZoom = { Defaults[.timelineZoom] = $0 }
     }
@@ -162,6 +169,7 @@ final class StatusBarPopoverController {
         panel.orderOut(nil)
         self.panel = nil
         hostingView = nil
+        hoveredEventID = nil
         model.highlightedEventID = nil
         model.removeAllAnchors()
         anchorButton?.highlight(false)
@@ -238,8 +246,11 @@ final class StatusBarPopoverController {
             handler: { [weak self] event in
                 nonisolated(unsafe) let click = event
                 MainActor.assumeIsolated {
-                    if let self, self.isOutsideClick(click) {
+                    guard let self else { return }
+                    if self.isOutsideClick(click) {
                         self.close()
+                    } else if click.window === self.panel {
+                        self.unpinOnClickAway()
                     }
                 }
                 return event
@@ -292,6 +303,13 @@ final class StatusBarPopoverController {
 
     private func eventHoverChanged(id: String, isHovering: Bool) {
         if isHovering {
+            hoveredEventID = id
+        } else if hoveredEventID == id {
+            hoveredEventID = nil
+        }
+        guard pinnedEventID == nil else { return }
+
+        if isHovering {
             model.highlightedEventID = id
             let delay = detailsPanel == nil ? Self.showDetailsDelay : Self.switchDetailsDelay
             scheduleDetailsChange(after: delay) { [weak self] in
@@ -305,10 +323,31 @@ final class StatusBarPopoverController {
         }
     }
 
+    private func eventClicked(id: String) {
+        pendingDetailsChange?.cancel()
+        if pinnedEventID == id {
+            hideDetails()
+            return
+        }
+        model.highlightedEventID = id
+        showDetails(eventID: id)
+        if detailsEvent?.id == id {
+            pinnedEventID = id
+        }
+    }
+
+    /// Card clicks pin or unpin themselves; any other click in the timeline
+    /// lets go.
+    private func unpinOnClickAway() {
+        guard pinnedEventID != nil, hoveredEventID == nil else { return }
+        hideDetails()
+        model.highlightedEventID = nil
+    }
+
     private func detailsHoverChanged(isHovering: Bool) {
         if isHovering {
             pendingDetailsChange?.cancel()
-        } else {
+        } else if pinnedEventID == nil {
             scheduleDetailsChange(after: Self.hideDetailsDelay) { [weak self] in
                 self?.hideDetails()
                 self?.model.highlightedEventID = nil
@@ -386,6 +425,7 @@ final class StatusBarPopoverController {
         detailsPanel?.orderOut(nil)
         detailsPanel = nil
         detailsEvent = nil
+        pinnedEventID = nil
     }
 
     // MARK: - Keyboard
@@ -451,6 +491,7 @@ final class StatusBarPopoverController {
     private func moveHighlight(by step: Int) {
         let events = model.presentation.events
         guard !events.isEmpty else { return }
+        pinnedEventID = nil
 
         let index: Int
         if let current = events.firstIndex(where: { $0.id == model.highlightedEventID }) {

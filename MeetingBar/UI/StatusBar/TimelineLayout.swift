@@ -90,23 +90,13 @@ extension TimelineWindow {
 }
 
 /// What an event card shows at its size. As a card shrinks, details give way
-/// in reverse priority: the description line, the detail row, avatars, the
-/// countdown, then Join. The title always stays.
+/// in reverse priority: the detail row, avatars, then the countdown. The title and Join always stay, with the title truncating
+/// beside Join.
 struct TimelineCardContent: Equatable {
-    enum Join: Equatable {
-        case hidden
-        case icon
-        case label
-    }
-
-    static let minimumTitleWidth = 64.0
-    static let joinIconWidth = 30.0
-    static let joinLabelMinimumWidth = 170.0
     static let countdownMinimumWidth = 190.0
     static let avatarsMinimumWidth = 150.0
 
     let rows: Int
-    let join: Join
     let showsCountdown: Bool
     let showsAvatars: Bool
 
@@ -114,25 +104,10 @@ struct TimelineCardContent: Equatable {
         width: Double,
         height: Double,
         twoRowHeight: Double,
-        threeRowHeight: Double,
-        horizontalPadding: Double,
-        offersJoin: Bool,
         hasCountdown: Bool,
         hasGuests: Bool
     ) {
-        rows = height < twoRowHeight ? 1 : height < threeRowHeight ? 2 : 3
-
-        let titleWidthBesideIcon = width - horizontalPadding * 2 - Self.joinIconWidth
-        if !offersJoin {
-            join = .hidden
-        } else if width >= Self.joinLabelMinimumWidth {
-            join = .label
-        } else if titleWidthBesideIcon >= Self.minimumTitleWidth {
-            join = .icon
-        } else {
-            join = .hidden
-        }
-
+        rows = height < twoRowHeight ? 1 : 2
         showsCountdown = hasCountdown && width >= Self.countdownMinimumWidth
         showsAvatars = hasGuests && rows > 1 && width >= Self.avatarsMinimumWidth
     }

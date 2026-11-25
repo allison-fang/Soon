@@ -202,18 +202,14 @@ struct EventDetailsView: View {
                 .help("status_bar_submenu_copy_meeting_link".loco())
                 .accessibilityLabel("status_bar_submenu_copy_meeting_link".loco())
                 if event.canJoin {
-                    Button {
+                    TimelineJoinButton(
+                        isPrimary: true,
+                        size: .details,
+                        colors: neutralColors,
+                        metrics: metrics
+                    ) {
                         actions.join(mbEvent)
-                    } label: {
-                        Text("notifications_meetingbar_join_event_action".loco())
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color(neutralColors.primaryActionText))
-                            .padding(.horizontal, 12)
-                            .frame(height: 24)
-                            .background(Capsule().fill(Color(neutralColors.primaryActionFill)))
-                            .contentShape(Capsule())
                     }
-                    .buttonStyle(.plain)
                 }
             }
             .padding(.leading, 8)

@@ -29,6 +29,7 @@ final class StatusBarPopoverModel: ObservableObject {
     var maxTimelineHeight: CGFloat = 520
     var actions = StatusBarPopoverActions()
     var onEventHover: @MainActor (String, Bool) -> Void = { _, _ in }
+    var onEventClick: @MainActor (String) -> Void = { _ in }
     var onZoom: @MainActor (TimelineZoom) -> Void = { _ in }
 
     private let anchors = NSMapTable<NSString, TimelineAnchorView>.strongToWeakObjects()
@@ -85,10 +86,6 @@ struct TimelineMetrics {
 
     var twoRowCardHeight: CGFloat {
         cardRowHeight * 2 + cardRowSpacing + cardVerticalPadding * 2
-    }
-
-    var threeRowCardHeight: CGFloat {
-        cardRowHeight * 3 + cardRowSpacing * 2 + cardVerticalPadding * 2
     }
 
     init(density: TimelineDensity) {
@@ -388,6 +385,7 @@ struct StatusBarPopoverView: View {
             metrics: metrics,
             isHighlighted: model.highlightedEventID == event.id,
             onJoin: { model.actions.join(event.event) },
+            onClick: { model.onEventClick(event.id) },
             onHover: { model.onEventHover(event.id, $0) },
             registerAnchor: { model.registerAnchor($0, id: event.id) }
         )
