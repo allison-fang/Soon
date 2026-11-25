@@ -122,8 +122,8 @@
 "status_bar_show_meeting_names" = "Vis møtetittel";
 "status_bar_quick_actions" = "Hurtighandlinger";
 "status_bar_submenu_copy_meeting_link" = "Copy meeting link";
-"status_bar_submenu_dismiss_meeting" = "Dismiss meeting";
-"status_bar_submenu_undismiss_meeting" = "Remove dismissal";
+"status_bar_submenu_dismiss_meeting" = "Slå av varsler";
+"status_bar_submenu_undismiss_meeting" = "Slå på varsler";
 "status_bar_submenu_email_attendees" = "Email attendees";
 "status_bar_submenu_open_in_fantastical" = "Åpne i Fantastical";
 "status_bar_submenu_open_in_calendar" = "Åpne i kalenderprogram";
@@ -258,7 +258,7 @@
 "status_bar_menu_dismiss_curent_meeting" = "Dismiss current meeting";
 "status_bar_menu_dismiss_next_meeting" = "Dismiss next meeting";
 "status_bar_menu_remove_all_dismissals" = "Remove all dismissals";
-"status_bar_event_dismissed_mark" = "dismissed";
+"status_bar_event_dismissed_mark" = "varsler av";
 "notification_next_meeting_dismissed_title" = "Dismissed %@";
 "notification_next_meeting_dismissed_message" = "You can remove dismissal from Quick Actions";
 "notification_all_dismissals_removed_title" = "Removed all dismissals";
@@ -347,7 +347,7 @@
 "fullscreen_notification_dismiss_action" = "Lukk";
 "shared_fullscreen_notification_without_link_toggle" = "Vis også fullskjermvarsler for hendelser uten møtekobling";
 "shared_fullscreen_notification_without_link_help" = "Hendelser uten møtekobling viser en fullskjermpåminnelse med bare Lukk-handlingen.";
-"notifications_meetingbar_dismiss_event_action" = "Lukk";
+"notifications_meetingbar_dismiss_event_action" = "Slå av varsler";
 "preferences_appearance_menu_show_timeline_toggle" = "Vis visuell tidslinje for dagen";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "skjul etter start";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "skjul 10 min etter start";

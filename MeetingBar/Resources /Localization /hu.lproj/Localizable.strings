@@ -162,7 +162,7 @@
 "notifications_event_start_soon_body" = "Az esemény hamarosan kezdődik";
 "notifications_event_start_three_minutes_body" = "Az esemény három perc múlva kezdődik";
 "notifications_event_started_body" = "Az esemény elkezdődött";
-"notifications_meetingbar_dismiss_event_action" = "Elvet";
+"notifications_meetingbar_dismiss_event_action" = "Értesítések kikapcsolása";
 "notifications_meetingbar_join_event_action" = "Csatlakozás";
 "notifications_snooze_for" = "Szundi %@ percre";
 "notifications_snooze_until_start" = "Szundi a kezdési időpontig";
@@ -277,7 +277,7 @@
 "status_bar_error_apple_script_title" = "AppleScript hiba";
 "status_bar_error_link_missed_message" = "A hivatkozás nem található, vagy az értekezlet-szolgáltatás még nem támogatott";
 "status_bar_error_link_missed_title" = "Jaj! Nem sikerül csatlakozni a következőhöz: %@";
-"status_bar_event_dismissed_mark" = "elvetett";
+"status_bar_event_dismissed_mark" = "értesítések kikapcsolva";
 "status_bar_event_start_time_all_day" = "Egész nap";
 "status_bar_event_status_in" = "%@ múlva";
 "status_bar_event_status_now" = "most (%@ van hátra)";
@@ -304,7 +304,7 @@
 "status_bar_submenu_attendees_you" = "%@ (Ön)";
 "status_bar_submenu_calendar_title" = "Naptár: %@";
 "status_bar_submenu_copy_meeting_link" = "Értekezlet-hivatkozás másolása";
-"status_bar_submenu_dismiss_meeting" = "Értekezlet elvetése";
+"status_bar_submenu_dismiss_meeting" = "Értesítések kikapcsolása";
 "status_bar_submenu_duration_all_day" = "%@ - %@ (%@ perc)";
 "status_bar_submenu_email_attendees" = "E-mail küldése a résztvevőknek";
 "status_bar_submenu_location_title" = "Helyszín:";
@@ -319,7 +319,7 @@
 "status_bar_submenu_status_tentative" = " ☝️ Bizonytalan";
 "status_bar_submenu_status_title" = "Állapot: %@";
 "status_bar_submenu_status_unknown" = " ❔ Ismeretlen";
-"status_bar_submenu_undismiss_meeting" = "Elvetés visszavonása";
+"status_bar_submenu_undismiss_meeting" = "Értesítések bekapcsolása";
 "status_bar_whats_new" = "Mi újság?";
 "timeline_accessibility_label" = "Idővonal %d eseménnyel";
 "preferences_advanced_script_link_only_help" = "Csak értekezlet-hivatkozással rendelkező eseményeknél fut.";

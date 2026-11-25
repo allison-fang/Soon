@@ -133,7 +133,7 @@
 "status_bar_menu_dismiss_curent_meeting" = "회의 무시하기";
 "status_bar_menu_dismiss_next_meeting" = "다음 회의 무시하기";
 "status_bar_menu_remove_all_dismissals" = "무시한 모든 회의 복원하기";
-"status_bar_event_dismissed_mark" = "무시됨";
+"status_bar_event_dismissed_mark" = "알림 꺼짐";
 "notification_next_meeting_dismissed_title" = "무시됨 %@";
 "notification_next_meeting_dismissed_message" = "무시된 회의는 빠른 행동에서 복원할 수 있어요";
 "notification_all_dismissals_removed_title" = "모든 회의가 복원됨";
@@ -161,8 +161,8 @@
 "status_bar_submenu_attendees_status_tentative" = " [보류]";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_submenu_copy_meeting_link" = "회의 연결 복사";
-"status_bar_submenu_dismiss_meeting" = "회의 무시";
-"status_bar_submenu_undismiss_meeting" = "회의 복원";
+"status_bar_submenu_dismiss_meeting" = "알림 끄기";
+"status_bar_submenu_undismiss_meeting" = "알림 켜기";
 "status_bar_submenu_email_attendees" = "참석자에게 이메일 발송";
 "status_bar_submenu_open_in_calendar" = "캘린더 실행";
 "status_bar_submenu_open_in_fantastical" = "Fantastical에서 열기";
@@ -270,7 +270,7 @@
 "fullscreen_notification_dismiss_action" = "닫기";
 "shared_fullscreen_notification_without_link_toggle" = "미팅 링크 없는 이벤트에도 전체 화면 알림 표시";
 "shared_fullscreen_notification_without_link_help" = "미팅 링크 없는 이벤트는 닫기 동작만 있는 전체 화면 알림을 표시합니다.";
-"notifications_meetingbar_dismiss_event_action" = "닫기";
+"notifications_meetingbar_dismiss_event_action" = "알림 끄기";
 "notifications_meetingbar_join_event_action" = "참여";
 "notifications_snooze_for" = "%@ 분 후 다시 알림";
 "notifications_snooze_until_start" = "시작 시간까지 다시 알림";

@@ -167,7 +167,7 @@
 "status_bar_menu_dismiss_curent_meeting" = "Descartar la reunión actual";
 "status_bar_menu_dismiss_next_meeting" = "Descartar la próxima reunión";
 "status_bar_menu_remove_all_dismissals" = "Borrar todos los descartados";
-"status_bar_event_dismissed_mark" = "descartado";
+"status_bar_event_dismissed_mark" = "notificaciones desactivadas";
 "notification_next_meeting_dismissed_title" = "%@ descartado";
 "notification_next_meeting_dismissed_message" = "Puedes borrar reuniones descartadas desde Acciones Rápidas";
 "notification_all_dismissals_removed_title" = "Eliminar todos los descartados";
@@ -195,8 +195,8 @@
 "status_bar_submenu_attendees_status_tentative" = " [quizás]";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_submenu_copy_meeting_link" = "Copiar enlace de reunión";
-"status_bar_submenu_dismiss_meeting" = "Descartar reunión";
-"status_bar_submenu_undismiss_meeting" = "Eliminar descartado";
+"status_bar_submenu_dismiss_meeting" = "Desactivar notificaciones";
+"status_bar_submenu_undismiss_meeting" = "Activar notificaciones";
 "status_bar_submenu_email_attendees" = "Enviar correo electrónico a los asistentes";
 "status_bar_submenu_open_in_calendar" = "Abrir en aplicación Calendario";
 "status_bar_submenu_open_in_fantastical" = "Abrir en Fantastical";
@@ -265,7 +265,7 @@
 
 "link_url_cant_open_title" = "¡Ups! No se puede abrir el enlace en %@";
 "link_url_cant_open_message" = "Asegúrate de tener %@ instalado o abre esos enlaces en un navegador web desde preferencias en su lugar.";
-"notifications_meetingbar_dismiss_event_action" = "Rechazar";
+"notifications_meetingbar_dismiss_event_action" = "Desactivar notificaciones";
 "preferences_appearance_status_bar_ongoing_title" = "Visibilidad el evento actual:";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "Esconder despues de empezar";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "esconder 10 min después de empezar";

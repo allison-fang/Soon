@@ -163,7 +163,7 @@
 "status_bar_menu_dismiss_curent_meeting" = "Ignora la riunione in corso";
 "status_bar_menu_dismiss_next_meeting" = "Ignora la prossima riunione";
 "status_bar_menu_remove_all_dismissals" = "Rimuovi tutti i respinti";
-"status_bar_event_dismissed_mark" = "respinto";
+"status_bar_event_dismissed_mark" = "notifiche disattivate";
 "notification_next_meeting_dismissed_title" = "Respinto %@";
 "notification_next_meeting_dismissed_message" = "Puoi rimuovere il respingimento da Azioni Rapide";
 "notification_all_dismissals_removed_title" = "Rimossi tutti i respinti";
@@ -191,8 +191,8 @@
 "status_bar_submenu_attendees_status_tentative" = " [tentativo]";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_submenu_copy_meeting_link" = "Copia il link della riunione";
-"status_bar_submenu_dismiss_meeting" = "Sciogli riunione";
-"status_bar_submenu_undismiss_meeting" = "Rimuovi scioglimento";
+"status_bar_submenu_dismiss_meeting" = "Disattiva notifiche";
+"status_bar_submenu_undismiss_meeting" = "Attiva notifiche";
 "status_bar_submenu_email_attendees" = "Invia una mail ai partecipanti";
 "status_bar_submenu_open_in_calendar" = "Apri nell'app Calendario";
 "status_bar_submenu_open_in_fantastical" = "Apri in Fantastical";
@@ -264,7 +264,7 @@
 
 "link_url_cant_open_title" = "Oops! Impossibile aprire il link in %@";
 "link_url_cant_open_message" = "Assicurati di aver %@ installato, oppure apri questi link in un browser dalle preferenze.";
-"notifications_meetingbar_dismiss_event_action" = "Abbandona";
+"notifications_meetingbar_dismiss_event_action" = "Disattiva notifiche";
 "preferences_appearance_status_bar_ongoing_title" = "Visibilità continua dell'evento:";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "nascondi dopo l'avvio";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "nascondi 10   minuti dopo l'inizio";

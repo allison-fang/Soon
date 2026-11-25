@@ -225,8 +225,8 @@
 "status_bar_section_join_current_meeting" = "הצטרפות לפגישת האירוע הנוכחית";
 "status_bar_submenu_attendees_status_tentative" = " [טנטטיבי]";
 "status_bar_submenu_copy_meeting_link" = "העתקת קישור פגישה";
-"status_bar_submenu_dismiss_meeting" = "התעלמות מפגישה";
-"status_bar_submenu_undismiss_meeting" = "הסרת התעלמות";
+"status_bar_submenu_dismiss_meeting" = "השבתת התראות";
+"status_bar_submenu_undismiss_meeting" = "הפעלת התראות";
 "status_bar_submenu_open_in_fantastical" = "פתיחה ב־Fantastical";
 "status_bar_show_meeting_names" = "הצגת כותרת הפגישה";
 "status_bar_hide_meeting_names" = "הסתרת כותרת הפגישה";
@@ -254,13 +254,13 @@
 "status_bar_menu_dismiss_curent_meeting" = "התעלמות מהישיבה הנוכחית";
 "status_bar_menu_dismiss_next_meeting" = "התעלמות מהפגישה הבאה";
 "status_bar_menu_remove_all_dismissals" = "הסרת כל ההתעלמויות";
-"status_bar_event_dismissed_mark" = "נתעלם";
+"status_bar_event_dismissed_mark" = "התראות מושבתות";
 "notification_next_meeting_dismissed_title" = "נתעלמו %@";
 "notification_next_meeting_dismissed_message" = "אפשר להסיר התעלמות מהפעולות המהירות";
 "notification_all_dismissals_removed_title" = "כל ההתעלמויות הוסרו";
 "notification_all_dismissals_removed_message" = "כל הפגישות שזכו להתעלמות חזרו להיות תקפות";
 "notifications_event_started_body" = "האירוע התחיל";
-"notifications_meetingbar_dismiss_event_action" = "התעלמות";
+"notifications_meetingbar_dismiss_event_action" = "השבתת התראות";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "להסתיר לאחר ההתחלה";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "להסתיר 10 דקות לאחר ההתחלה";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "להסתיר 10 דקות לפני האירוע הבא";

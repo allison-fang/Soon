@@ -181,8 +181,8 @@
 "status_bar_submenu_attendees_you" = "%@ (ty)";
 "status_bar_submenu_attendees_status_tentative" = " [oczekujący]";
 "status_bar_submenu_copy_meeting_link" = "Skopiuj link do spotkania";
-"status_bar_submenu_dismiss_meeting" = "Odwołaj spotkanie";
-"status_bar_submenu_undismiss_meeting" = "Usuń odrzucenie";
+"status_bar_submenu_dismiss_meeting" = "Wyłącz powiadomienia";
+"status_bar_submenu_undismiss_meeting" = "Włącz powiadomienia";
 "status_bar_submenu_email_attendees" = "Adresy email uczestników";
 "status_bar_submenu_open_in_calendar" = "Otwórz w aplikacji Kalendarz";
 "status_bar_submenu_open_in_fantastical" = "Otwórz w Fantastical";
@@ -260,12 +260,12 @@
 "status_bar_menu_dismiss_curent_meeting" = "Odwołaj bieżące spotkanie";
 "status_bar_menu_dismiss_next_meeting" = "Odwołaj następne spotkanie";
 "status_bar_menu_remove_all_dismissals" = "Usuń wszystkie odrzucenia";
-"status_bar_event_dismissed_mark" = "Odwołany";
+"status_bar_event_dismissed_mark" = "powiadomienia wyłączone";
 "notification_next_meeting_dismissed_title" = "Odwołany %@";
 "notification_next_meeting_dismissed_message" = "Możesz usunąć odwołania w Szybkich Akcjach";
 "notification_all_dismissals_removed_title" = "Usuń wszystkie odwołania";
 "notification_all_dismissals_removed_message" = "Wszystkie odwołania spotkania wracają do akcji";
-"notifications_meetingbar_dismiss_event_action" = "Odrzuć";
+"notifications_meetingbar_dismiss_event_action" = "Wyłącz powiadomienia";
 "preferences_appearance_status_bar_ongoing_title" = "Widoczność trwającego wydarzenia:";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "ukryj po rozpoczęciu";
 "preferences_appearance_menu_show_timeline_toggle" = "Pokaż wizualizację osi czasu dnia";

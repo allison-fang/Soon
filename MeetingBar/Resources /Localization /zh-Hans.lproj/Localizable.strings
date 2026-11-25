@@ -75,7 +75,7 @@
 "notifications_event_start_soon_body" = "事件即将开始";
 "notifications_event_start_three_minutes_body" = "事件将在三分钟后开始";
 "notifications_event_started_body" = "事件已开始";
-"notifications_meetingbar_dismiss_event_action" = "忽略";
+"notifications_meetingbar_dismiss_event_action" = "关闭通知";
 "notifications_meetingbar_join_event_action" = "加入";
 "notifications_snooze_for" = "推迟 %@ 分钟";
 "notifications_snooze_until_start" = "推迟至开始时间";
@@ -270,7 +270,7 @@
 "status_bar_error_apple_script_title" = "AppleScript 错误";
 "status_bar_error_link_missed_message" = "未找到链接，或您的会议服务尚不受支持";
 "status_bar_error_link_missed_title" = "糟糕！无法加入 %@";
-"status_bar_event_dismissed_mark" = "已忽略";
+"status_bar_event_dismissed_mark" = "通知已关闭";
 "status_bar_event_start_time_all_day" = "全天";
 "status_bar_event_status_in" = "%@ 后";
 "status_bar_event_status_now" = "进行中（剩余 %@）";
@@ -302,7 +302,7 @@
 "status_bar_submenu_attendees_you" = "%@（您）";
 "status_bar_submenu_calendar_title" = "日历：%@";
 "status_bar_submenu_copy_meeting_link" = "复制会议链接";
-"status_bar_submenu_dismiss_meeting" = "忽略会议";
+"status_bar_submenu_dismiss_meeting" = "关闭通知";
 "status_bar_submenu_duration_all_day" = "%@ - %@（%@ 分钟）";
 "status_bar_submenu_email_attendees" = "给参与者发邮件";
 "status_bar_submenu_location_title" = "地点：";
@@ -317,7 +317,7 @@
 "status_bar_submenu_status_tentative" = " ☝️ 暂定";
 "status_bar_submenu_status_title" = "状态：%@";
 "status_bar_submenu_status_unknown" = " ❔ 未知";
-"status_bar_submenu_undismiss_meeting" = "撤销忽略";
+"status_bar_submenu_undismiss_meeting" = "开启通知";
 "status_bar_whats_new" = "有什么新内容？";
 "timeline_accessibility_label" = "包含 %d 个事件的时间轴";
 "preferences_appearance_events_no_meeting_link_title" = "无会议链接的事件";

@@ -189,8 +189,8 @@
 "status_bar_submenu_attendees_status_tentative" = " [мабуть]";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_submenu_copy_meeting_link" = "Скопіювати посилання на зустріч";
-"status_bar_submenu_dismiss_meeting" = "Пропустити зустріч";
-"status_bar_submenu_undismiss_meeting" = "Повернути зустріч";
+"status_bar_submenu_dismiss_meeting" = "Вимкнути сповіщення";
+"status_bar_submenu_undismiss_meeting" = "Увімкнути сповіщення";
 "status_bar_submenu_email_attendees" = "Надіслати учасникам емейл";
 "status_bar_submenu_open_in_calendar" = "Відкрити у застосунку \"Календар\"";
 "status_bar_submenu_open_in_fantastical" = "Відкрити у застосунку \"Fantastical\"";
@@ -265,13 +265,13 @@
 "status_bar_menu_dismiss_curent_meeting" = "Пропустити поточну зустріч";
 "status_bar_menu_dismiss_next_meeting" = "Пропустити наступну зустріч";
 "status_bar_menu_remove_all_dismissals" = "Повернути пропущені зустрічі";
-"status_bar_event_dismissed_mark" = "пропущено";
+"status_bar_event_dismissed_mark" = "сповіщення вимкнено";
 "notification_next_meeting_dismissed_title" = "Пропущено %@";
 "notification_next_meeting_dismissed_message" = "Ви можете повернути пропущену зустріч зі Швидких Дій";
 "notification_all_dismissals_removed_title" = "Повернено пропущені зустрічі";
 "notification_all_dismissals_removed_message" = "Всі пропущені зустрічі знову у календарі";
 "notifications_event_started_body" = "Подія розпочалась";
-"notifications_meetingbar_dismiss_event_action" = "Відхилити";
+"notifications_meetingbar_dismiss_event_action" = "Вимкнути сповіщення";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "приховати після запуску";
 "preferences_appearance_status_bar_ongoing_title" = "Поточна видимість події:";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "приховати за 10 хвилин до наступної події";

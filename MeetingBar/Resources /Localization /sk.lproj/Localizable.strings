@@ -202,7 +202,7 @@
 "status_bar_menu_dismiss_curent_meeting" = "Zrušiť aktuálne stretnutie";
 "status_bar_menu_dismiss_next_meeting" = "Zrušiť ďalšie stretnutie";
 "status_bar_menu_remove_all_dismissals" = "Odstrániť všetky zrušené";
-"status_bar_event_dismissed_mark" = "zrušené";
+"status_bar_event_dismissed_mark" = "upozornenia vypnuté";
 "notification_next_meeting_dismissed_title" = "Zrušené %@";
 "notification_all_dismissals_removed_message" = "Všetky zrušené stretnutia sú opäť platné";
 "status_bar_section_bookmarks_title" = "Záložky";
@@ -218,7 +218,7 @@
 "status_bar_submenu_attendees_you" = "%@ (Ty)";
 "status_bar_submenu_attendees_status_tentative" = " [predbežne]";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
-"status_bar_submenu_dismiss_meeting" = "Zrušiť stretnutie";
+"status_bar_submenu_dismiss_meeting" = "Vypnúť upozornenia";
 "status_bar_submenu_email_attendees" = "Emailoví účastníci";
 "status_bar_submenu_open_in_calendar" = "Otvoriť v aplikácii Kalendár";
 "status_bar_submenu_open_in_fantastical" = "Otvoriť v aplikácii Fantastical";
@@ -262,9 +262,9 @@
 "notifications_event_start_five_minutes_body" = "Udalosť sa začína o päť minút";
 "notification_all_dismissals_removed_title" = "Odstránené všetky zrušené";
 "status_bar_section_date_nothing" = "Na %@ nič";
-"status_bar_submenu_undismiss_meeting" = "Odstrániť zrušenie";
+"status_bar_submenu_undismiss_meeting" = "Zapnúť upozornenia";
 "preferences_appearance_menu_show_timeline_toggle" = "Zobraziť vizuálnu časovú os dňa";
-"notifications_meetingbar_dismiss_event_action" = "Zavrieť";
+"notifications_meetingbar_dismiss_event_action" = "Vypnúť upozornenia";
 "preferences_appearance_status_bar_ongoing_title" = "Priebežná viditeľnosť udalosti:";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "skryť po spustení";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "skryť 10 minút.. po začiatku";

@@ -263,7 +263,7 @@
 "status_bar_menu_dismiss_curent_meeting" = "Dismiss current meeting";
 "status_bar_menu_dismiss_next_meeting" = "Dismiss next meeting";
 "status_bar_menu_remove_all_dismissals" = "Remove all dismissals";
-"status_bar_event_dismissed_mark" = "dismissed";
+"status_bar_event_dismissed_mark" = "notifications disabled";
 "notification_next_meeting_dismissed_title" = "Dismissed %@";
 "notification_next_meeting_dismissed_message" = "You can remove dismissal from Quick Actions";
 "notification_all_dismissals_removed_title" = "Removed all dismissals";
@@ -304,8 +304,8 @@
 "status_bar_submenu_attendees_status_tentative" = " [tentative]";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_submenu_copy_meeting_link" = "Copy meeting link";
-"status_bar_submenu_dismiss_meeting" = "Dismiss meeting";
-"status_bar_submenu_undismiss_meeting" = "Remove dismissal";
+"status_bar_submenu_dismiss_meeting" = "Disable notifications";
+"status_bar_submenu_undismiss_meeting" = "Enable notifications";
 "status_bar_submenu_email_attendees" = "Email attendees";
 "status_bar_submenu_open_in_calendar" = "Open in Calendar App";
 "status_bar_submenu_open_in_fantastical" = "Open in Fantastical";
@@ -424,7 +424,7 @@
 "notifications_event_ends_one_minute_body" = "The event ends in one minute";
 "notifications_event_ends_three_minutes_body" = "The event ends in three minutes";
 "notifications_event_ends_five_minutes_body" = "The event ends in five minutes";
-"notifications_meetingbar_dismiss_event_action" = "Dismiss";
+"notifications_meetingbar_dismiss_event_action" = "Disable notifications";
 
 // MARK: - Link open
 

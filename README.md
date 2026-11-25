@@ -73,7 +73,7 @@ Soon works with:
 
 * Receive macOS notifications before meetings.
 * Use full-screen reminders for important meeting starts.
-* Dismiss meeting notifications when you no longer need them.
+* Disable notifications for a single meeting.
 * Configure reminders around your own workflow.
 
 ### Customize and automate

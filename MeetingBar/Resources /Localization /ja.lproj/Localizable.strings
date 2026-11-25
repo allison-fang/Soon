@@ -192,8 +192,8 @@
 "status_bar_submenu_attendees_status_tentative" = " [名無しさん]";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_submenu_copy_meeting_link" = "ミーティングリンクをコピー";
-"status_bar_submenu_dismiss_meeting" = "ミーティングを閉じる";
-"status_bar_submenu_undismiss_meeting" = "ミーティングを元に戻す";
+"status_bar_submenu_dismiss_meeting" = "通知をオフにする";
+"status_bar_submenu_undismiss_meeting" = "通知をオンにする";
 "status_bar_submenu_email_attendees" = "参加者にメールを送信";
 "status_bar_submenu_open_in_calendar" = "カレンダーアプリで開く";
 "status_bar_submenu_open_in_fantastical" = "Fantastical で開く";
@@ -272,7 +272,7 @@
 "status_bar_menu_dismiss_curent_meeting" = "現在のミーティングを閉じる";
 "status_bar_menu_dismiss_next_meeting" = "次のミーティングを閉じる";
 "status_bar_menu_remove_all_dismissals" = "閉じたミーティングをすべて元に戻す";
-"status_bar_event_dismissed_mark" = "閉じた";
+"status_bar_event_dismissed_mark" = "通知オフ";
 "notification_next_meeting_dismissed_title" = "%@を閉じました";
 "notification_next_meeting_dismissed_message" = "クイックアクションから元に戻せます。";
 "notification_all_dismissals_removed_title" = "すべて元に戻しました";
@@ -361,7 +361,7 @@
 "fullscreen_notification_dismiss_action" = "閉じる";
 "shared_fullscreen_notification_without_link_toggle" = "ミーティングリンクのないイベントにもフルスクリーン通知を表示する";
 "shared_fullscreen_notification_without_link_help" = "ミーティングリンクのないイベントは、閉じるアクションのみのフルスクリーンリマインダーを表示します。";
-"notifications_meetingbar_dismiss_event_action" = "閉じる";
+"notifications_meetingbar_dismiss_event_action" = "通知をオフにする";
 "preferences_appearance_menu_show_timeline_toggle" = "その日のビジュアルタイムラインを表示";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "開始後に非表示";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "開始10分後に非表示";

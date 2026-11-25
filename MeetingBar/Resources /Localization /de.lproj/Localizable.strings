@@ -14,7 +14,7 @@
 "notifications_event_ends_one_minute_body" = "Das Ereignis endet in einer Minute";
 "notifications_event_ends_three_minutes_body" = "Das Ereignis endet in drei Minuten";
 "notifications_event_ends_five_minutes_body" = "Das Ereignis endet in fünf Minuten";
-"notifications_meetingbar_dismiss_event_action" = "Dieses Ereignis verwerfen";
+"notifications_meetingbar_dismiss_event_action" = "Mitteilungen deaktivieren";
 "notifications_snooze_until_start" = "Schlummern bis zur Startzeit";
 "notifications_snooze_for" = "Schlummern für %@ Minuten";
 "notifications_meetingbar_join_event_action" = "Beitreten";
@@ -119,8 +119,8 @@
 "status_bar_show_meeting_names" = "Meeting-Titel anzeigen";
 "status_bar_quick_actions" = "Schnellaktionen";
 "status_bar_submenu_copy_meeting_link" = "Meeting-Link kopieren";
-"status_bar_submenu_dismiss_meeting" = "Meeting verwerfen";
-"status_bar_submenu_undismiss_meeting" = "Verwerfen entfernen";
+"status_bar_submenu_dismiss_meeting" = "Mitteilungen deaktivieren";
+"status_bar_submenu_undismiss_meeting" = "Mitteilungen aktivieren";
 "status_bar_submenu_email_attendees" = "E-Mail an Teilnehmer";
 "status_bar_submenu_open_in_fantastical" = "Fantastical öffnen";
 "status_bar_submenu_open_in_calendar" = "In Kalender-App öffnen";
@@ -257,7 +257,7 @@
 "status_bar_menu_dismiss_curent_meeting" = "Aktuelles Meeting verwerfen";
 "status_bar_menu_dismiss_next_meeting" = "Nächstes Meeting verwerfen";
 "status_bar_menu_remove_all_dismissals" = "Alle verworfenen entfernen";
-"status_bar_event_dismissed_mark" = "verworfen";
+"status_bar_event_dismissed_mark" = "Mitteilungen deaktiviert";
 "notification_next_meeting_dismissed_title" = "%@ verworfen";
 "notification_next_meeting_dismissed_message" = "Sie können die Verwerfung aus den Schnellaktionen entfernen";
 "notification_all_dismissals_removed_title" = "Alle verworfenen entfernt";

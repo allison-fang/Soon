@@ -168,7 +168,7 @@
 "status_bar_menu_dismiss_curent_meeting" = "Ignorar reunião atual";
 "status_bar_menu_dismiss_next_meeting" = "Ignorar próxima reunião";
 "status_bar_menu_remove_all_dismissals" = "Remover todas as exclusões";
-"status_bar_event_dismissed_mark" = "ignorado";
+"status_bar_event_dismissed_mark" = "notificações desativadas";
 "notification_next_meeting_dismissed_title" = "Ignorado %@";
 "notification_next_meeting_dismissed_message" = "Você pode remover a exclusão por meio das Ações Rápidas";
 "notification_all_dismissals_removed_title" = "Todas as exclusões removidas";
@@ -196,8 +196,8 @@
 "status_bar_submenu_attendees_status_tentative" = " [provisório]";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_submenu_copy_meeting_link" = "Copiar link da reunião";
-"status_bar_submenu_dismiss_meeting" = "Ignorar reunião";
-"status_bar_submenu_undismiss_meeting" = "Remover exclusão";
+"status_bar_submenu_dismiss_meeting" = "Desativar notificações";
+"status_bar_submenu_undismiss_meeting" = "Ativar notificações";
 "status_bar_submenu_email_attendees" = "Enviar e-mail para os participantes";
 "status_bar_submenu_open_in_calendar" = "Abrir no aplicativo de Calendário";
 "status_bar_submenu_open_in_fantastical" = "Abrir no Fantastical";
@@ -274,7 +274,7 @@
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Ocultar 10 min .. depois inicie";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Ocultar 10 min antes do próximo evento";
 "preferences_appearance_menu_show_timeline_toggle" = "Mostre visualmente a linha do tempo do dia";
-"notifications_meetingbar_dismiss_event_action" = "Dispensar";
+"notifications_meetingbar_dismiss_event_action" = "Desativar notificações";
 "access_screen_provider_authorization_cancelled" = "A autorização foi cancelada. Tente novamente para conectar seu calendário.";
 "general_end_of_event_notification_toggle" = "Enviar notificação quando o evento terminar";
 "general_refresh" = "Atualizar";

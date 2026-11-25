@@ -224,8 +224,8 @@
 "status_bar_section_join_current_meeting" = "Mevcut toplantıya katıl";
 "status_bar_submenu_location_title" = "Konum:";
 "status_bar_submenu_copy_meeting_link" = "Bağlantı linkini kopyala";
-"status_bar_submenu_dismiss_meeting" = "Toplantıyı kapat";
-"status_bar_submenu_undismiss_meeting" = "İşten çıkarmayı kaldır";
+"status_bar_submenu_dismiss_meeting" = "Bildirimleri kapat";
+"status_bar_submenu_undismiss_meeting" = "Bildirimleri aç";
 "status_bar_submenu_open_in_fantastical" = "Fantastical'da aç";
 "status_bar_show_meeting_names" = "Toplantı başlığını göster";
 "status_bar_event_status_in" = "%@";
@@ -259,13 +259,13 @@
 "status_bar_menu_dismiss_curent_meeting" = "Geçerli toplantıyı kapat";
 "status_bar_menu_dismiss_next_meeting" = "Sonraki toplantıyı kapat";
 "status_bar_menu_remove_all_dismissals" = "Tüm işten çıkarmaları kaldır";
-"status_bar_event_dismissed_mark" = "reddedildi";
+"status_bar_event_dismissed_mark" = "bildirimler kapalı";
 "notification_next_meeting_dismissed_title" = "Reddedildi %@";
 "notification_next_meeting_dismissed_message" = "İşten çıkarılmayı Hızlı İşlemler'den kaldırabilirsiniz";
 "notification_all_dismissals_removed_title" = "Tüm işten çıkarmalar kaldırıldı";
 "notification_all_dismissals_removed_message" = "Kapatılan tüm toplantılar tekrar aktif";
 "notifications_meetingbar_join_event_action" = "Katıl";
-"notifications_meetingbar_dismiss_event_action" = "Yoksay";
+"notifications_meetingbar_dismiss_event_action" = "Bildirimleri kapat";
 "preferences_appearance_menu_show_timeline_toggle" = "Günün görsel zaman çizelgesini göster";
 "preferences_appearance_status_bar_ongoing_title" = "Devam eden etkinlik görünürlüğü:";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "başladıktan sonra gizle";

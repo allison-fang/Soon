@@ -172,7 +172,7 @@
 "status_bar_menu_dismiss_curent_meeting" = "Скрий текущата среща";
 "status_bar_menu_dismiss_next_meeting" = "Скрий следващата среща";
 "status_bar_menu_remove_all_dismissals" = "Възстанови всички скрити срещи";
-"status_bar_event_dismissed_mark" = "скрито";
+"status_bar_event_dismissed_mark" = "известията са изключени";
 "notification_next_meeting_dismissed_title" = "Скрито %@";
 "notification_next_meeting_dismissed_message" = "Срещата може да бъде върната от Бързи действия";
 "notification_all_dismissals_removed_title" = "Всички скрити срещи са възстановени";
@@ -200,8 +200,8 @@
 "status_bar_submenu_attendees_status_tentative" = " [може би]";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_submenu_copy_meeting_link" = "Копирай връзката към срещата";
-"status_bar_submenu_dismiss_meeting" = "Скрий срещата";
-"status_bar_submenu_undismiss_meeting" = "Премахни скриването";
+"status_bar_submenu_dismiss_meeting" = "Изключи известията";
+"status_bar_submenu_undismiss_meeting" = "Включи известията";
 "status_bar_submenu_email_attendees" = "Имейл до участниците";
 "status_bar_submenu_open_in_calendar" = "Отвори в Calendar";
 "status_bar_submenu_open_in_fantastical" = "Отвори във Fantastical";
@@ -264,7 +264,7 @@
 "notifications_event_ends_one_minute_body" = "Събитието приключва след една минута";
 "notifications_event_ends_three_minutes_body" = "Събитието приключва след три минути";
 "notifications_event_ends_five_minutes_body" = "Събитието приключва след пет минути";
-"notifications_meetingbar_dismiss_event_action" = "Скрий";
+"notifications_meetingbar_dismiss_event_action" = "Изключи известията";
 
 // MARK: - Link open
 

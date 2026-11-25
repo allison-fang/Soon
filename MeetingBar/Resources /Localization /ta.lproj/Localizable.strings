@@ -142,9 +142,9 @@
 "status_bar_menu_dismiss_curent_meeting" = "தற்போதைய கூட்டத்தை தள்ளுபடி செய்யுங்கள்";
 "status_bar_menu_dismiss_next_meeting" = "அடுத்த கூட்டத்தை தள்ளுபடி செய்யுங்கள்";
 "status_bar_menu_remove_all_dismissals" = "அனைத்து பணிநீக்கங்களையும் அகற்றவும்";
-"status_bar_event_dismissed_mark" = "தள்ளுபடி செய்யப்பட்டது";
+"status_bar_event_dismissed_mark" = "அறிவிப்புகள் முடக்கப்பட்டன";
 "notification_next_meeting_dismissed_title" = "தள்ளுபடி செய்யப்பட்ட %@";
-"status_bar_submenu_dismiss_meeting" = "கூட்டத்தை தள்ளுபடி செய்யுங்கள்";
+"status_bar_submenu_dismiss_meeting" = "அறிவிப்புகளை முடக்கு";
 "notification_next_meeting_dismissed_message" = "விரைவான செயல்களிலிருந்து நீங்கள் பணிநீக்கத்தை அகற்றலாம்";
 "notification_all_dismissals_removed_title" = "அனைத்து பணிநீக்கங்களையும் நீக்கியது";
 "notification_all_dismissals_removed_message" = "தள்ளுபடி செய்யப்பட்ட அனைத்து கூட்டங்களும் மீண்டும் செயல்படுகின்றன";
@@ -171,7 +171,7 @@
 "status_bar_submenu_attendees_status_tentative" = " [தற்காலிக]";
 "status_bar_submenu_attendees_status_unknown" = " [?]";
 "status_bar_submenu_copy_meeting_link" = "கூட்ட இணைப்பை நகலெடுக்கவும்";
-"status_bar_submenu_undismiss_meeting" = "பணிநீக்கத்தை அகற்று";
+"status_bar_submenu_undismiss_meeting" = "அறிவிப்புகளை இயக்கு";
 "status_bar_submenu_email_attendees" = "மின்னஞ்சல் பங்கேற்பாளர்கள்";
 "status_bar_submenu_open_in_calendar" = "காலண்டர் பயன்பாட்டில் திறந்திருக்கும்";
 "status_bar_submenu_open_in_fantastical" = "அருமையான திறந்திருக்கும்";
@@ -218,7 +218,7 @@
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "தொடக்கத்திற்குப் பிறகு மறை";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "தொடங்கிய பிறகு 10 மணித்துளி மறைக்கவும்";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "அடுத்த நிகழ்வுக்கு 10 நிமிடங்களுக்கு முன் மறைக்கவும்";
-"notifications_meetingbar_dismiss_event_action" = "தள்ளுபடி";
+"notifications_meetingbar_dismiss_event_action" = "அறிவிப்புகளை முடக்கு";
 "access_screen_provider_authorization_cancelled" = "அங்கீகாரம் ரத்து செய்யப்பட்டது. உங்கள் நாட்காட்டியை இணைக்க மீண்டும் முயற்சிக்கவும்.";
 "general_end_of_event_notification_toggle" = "நிகழ்வு முடியும்போது அறிவிப்பு அனுப்பு";
 "general_refresh" = "புதுப்பி";
