@@ -277,7 +277,7 @@
 "status_bar_menu_dismiss_next_meeting" = "Dispensar próxima reunião";
 "status_bar_menu_remove_all_dismissals" = "Remover todas as dispensas";
 "status_bar_no_title" = "Sem título";
-"status_bar_preferences" = "Preferências";
+"status_bar_preferences" = "Definições";
 "status_bar_quick_actions" = "Ações Rápidas";
 "status_bar_quit" = "Sair do Soon";
 "status_bar_rate_app" = "Avaliar App";
@@ -324,3 +324,14 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "cor do calendário";
 "status_bar_popover_zoom_in" = "Ampliar";
 "status_bar_popover_zoom_out" = "Reduzir";
+"status_bar_popover_update_available" = "Atualização disponível";
+"preferences_section_updates_title" = "Atualizações";
+"preferences_general_check_for_updates" = "Procurar atualizações automaticamente";
+"preferences_general_check_for_updates_button" = "Procurar atualizações";
+"preferences_general_update_checking" = "A procurar atualizações…";
+"preferences_general_update_up_to_date" = "O Soon está atualizado.";
+"preferences_general_update_failed" = "Não foi possível procurar atualizações. Tente novamente mais tarde.";
+"preferences_general_update_available" = "O Soon %@ está disponível.";
+"preferences_general_update_instructions" = "Para atualizar, execute o comando de instalação no Terminal.";
+"preferences_general_update_copy_command" = "Copiar comando de instalação";
+"preferences_general_update_whats_new" = "Novidades";

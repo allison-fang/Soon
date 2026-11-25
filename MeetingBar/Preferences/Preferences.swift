@@ -7,11 +7,19 @@
 //
 import SwiftUI
 
-struct PreferencesView: View {
+/// Lets callers open the window on a given tab, including when it is already open.
+@MainActor
+final class PreferencesNavigation: ObservableObject {
     // Non-optional: a settings window always has exactly one active tab.
     // An optional selection binding let NavigationSplitView seed the sidebar
     // highlight out of sync with the detail on first appearance.
-    @State private var selectedTab: PreferencesTab = .defaultSelection
+    @Published var selectedTab: PreferencesTab = .defaultSelection
+}
+
+struct PreferencesView: View {
+    @ObservedObject var navigation: PreferencesNavigation
+
+    private var selectedTab: PreferencesTab { navigation.selectedTab }
 
     var body: some View {
         if #available(macOS 13.0, *) {
@@ -35,7 +43,7 @@ struct PreferencesView: View {
     // Button / listRowBackground styling the legacy layout needs is gone here.
     @available(macOS 13.0, *)
     private var sidebar: some View {
-        List(selection: $selectedTab) {
+        List(selection: $navigation.selectedTab) {
             ForEach(PreferencesSidebarSection.allCases, id: \.self) { section in
                 Section(section.titleKey.loco()) {
                     ForEach(section.tabs, id: \.self) { tab in
@@ -57,7 +65,7 @@ struct PreferencesView: View {
                     Section(header: Text(section.titleKey.loco())) {
                         ForEach(section.tabs, id: \.self) { tab in
                             Button {
-                                selectedTab = tab
+                                navigation.selectedTab = tab
                             } label: {
                                 Label(tab.titleKey.loco(), systemImage: tab.systemImage)
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -139,6 +147,6 @@ struct PreferencesGroupedForm<Content: View>: View {
 }
 
 #Preview {
-    PreferencesView()
+    PreferencesView(navigation: PreferencesNavigation())
         .frame(width: 860, height: 620)
 }

@@ -53,6 +53,7 @@ struct StatusBarMenuState: Equatable {
     var providerWarning: StatusBarProviderWarning?
     var emptyStateReason: StatusBarEmptyStateReason?
     var selectedCalendarIDs: [String] = []
+    var availableUpdate: AvailableUpdate?
 
     // MARK: - Settings snapshot
 
@@ -150,6 +151,7 @@ extension StatusBarMenuState {
                 hasUpcomingMeeting: nextEvent != nil
             ),
             selectedCalendarIDs: selectedCalendarIDs,
+            availableUpdate: appState.availableUpdate,
             settings: settings,
             hasSelectedCalendars: selectedCount > 0,
             timeFormat: Defaults[.timeFormat]

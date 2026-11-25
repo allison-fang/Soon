@@ -232,7 +232,7 @@
 "status_bar_hide_meeting_names" = "הסתרת כותרת הפגישה";
 "status_bar_whats_new" = "מה חדש?";
 "status_bar_rate_app" = "דירוג היישומון";
-"status_bar_preferences" = "העדפות";
+"status_bar_preferences" = "הגדרות";
 "status_bar_quit" = "יציאה מ־Soon";
 "status_bar_no_title" = "אין כותרת";
 "status_bar_event_status_now" = "עכשיו (%@ נותרו)";
@@ -371,3 +371,14 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "צבע היומן";
 "status_bar_popover_zoom_in" = "הגדל";
 "status_bar_popover_zoom_out" = "הקטן";
+"status_bar_popover_update_available" = "עדכון זמין";
+"preferences_section_updates_title" = "עדכונים";
+"preferences_general_check_for_updates" = "בדיקה אוטומטית של עדכונים";
+"preferences_general_check_for_updates_button" = "חפש עדכונים";
+"preferences_general_update_checking" = "בודק עדכונים…";
+"preferences_general_update_up_to_date" = "Soon מעודכן.";
+"preferences_general_update_failed" = "לא ניתן לבדוק עדכונים. נסה שוב מאוחר יותר.";
+"preferences_general_update_available" = "Soon %@ זמין.";
+"preferences_general_update_instructions" = "כדי לעדכן, הרץ את פקודת ההתקנה ב-Terminal.";
+"preferences_general_update_copy_command" = "העתק פקודת התקנה";
+"preferences_general_update_whats_new" = "מה חדש";

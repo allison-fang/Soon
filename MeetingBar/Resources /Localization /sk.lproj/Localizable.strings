@@ -223,7 +223,7 @@
 "status_bar_submenu_open_in_calendar" = "Otvoriť v aplikácii Kalendár";
 "status_bar_submenu_open_in_fantastical" = "Otvoriť v aplikácii Fantastical";
 "status_bar_show_meeting_names" = "Zobraziť názov stretnutia";
-"status_bar_preferences" = "Predvoľby";
+"status_bar_preferences" = "Nastavenia";
 "status_bar_no_title" = "Žiadny názov";
 "status_bar_event_status_now" = "teraz (zostáva %@)";
 "status_bar_event_status_in" = "za %@";
@@ -374,3 +374,14 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "farba kalendára";
 "status_bar_popover_zoom_in" = "Zväčšiť";
 "status_bar_popover_zoom_out" = "Zmenšiť";
+"status_bar_popover_update_available" = "K dispozícii je aktualizácia";
+"preferences_section_updates_title" = "Aktualizácie";
+"preferences_general_check_for_updates" = "Automaticky kontrolovať aktualizácie";
+"preferences_general_check_for_updates_button" = "Skontrolovať aktualizácie";
+"preferences_general_update_checking" = "Kontrolujú sa aktualizácie…";
+"preferences_general_update_up_to_date" = "Soon je aktuálny.";
+"preferences_general_update_failed" = "Aktualizácie sa nepodarilo skontrolovať. Skúste to neskôr.";
+"preferences_general_update_available" = "Je k dispozícii Soon %@.";
+"preferences_general_update_instructions" = "Ak chcete aktualizovať, spustite inštalačný príkaz v Termináli.";
+"preferences_general_update_copy_command" = "Kopírovať inštalačný príkaz";
+"preferences_general_update_whats_new" = "Čo je nové";

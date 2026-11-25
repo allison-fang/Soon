@@ -119,6 +119,10 @@ MeetingBar/                         (~76 .swift files)
 ├── Settings/
 │   └── AppSettings.swift           — value-type settings groups, Defaults snapshots and writes
 │
+├── Updates/
+│   ├── UpdateCheckPolicy.swift     — version comparison, release decoding, check cadence [SPM]
+│   └── UpdateChecker.swift         — GitHub latest-release check at launch, hourly tick and wake; Preferences status
+│
 ├── Preferences/                    — SwiftUI Settings window tabs (General, Calendars, Meeting Opening, Menu Bar, Notifications, Advanced)
 ├── Onboarding/                     — multi-screen first-launch flow
 ├── UI/
@@ -356,6 +360,7 @@ Long-running or delayed work must have one stored owner and an explicit cancella
 | Google account add, reconnect and removal | `AppModel` | a newer add/reconnect supersedes the older one; `.willTerminate` |
 | Delayed fullscreen, auto-join, and event-start script actions | `NotificationScheduler` | reconcile removes stale plans; `stop()` cancels all |
 | Lifecycle notification registrations | `LifecycleObserver` | `stop()` |
+| Release update check and its hourly tick | `UpdateChecker` (owned by `AppDelegate`) | `applicationWillTerminate` calls `stop()` |
 
 Deliberate bounded exceptions:
 

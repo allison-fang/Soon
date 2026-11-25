@@ -382,3 +382,14 @@
 "onboarding_start_using" = "Beginne Soon zu nutzen";
 "status_bar_popover_zoom_in" = "Vergrößern";
 "status_bar_popover_zoom_out" = "Verkleinern";
+"status_bar_popover_update_available" = "Update verfügbar";
+"preferences_section_updates_title" = "Updates";
+"preferences_general_check_for_updates" = "Automatisch nach Updates suchen";
+"preferences_general_check_for_updates_button" = "Nach Updates suchen";
+"preferences_general_update_checking" = "Suche nach Updates …";
+"preferences_general_update_up_to_date" = "Soon ist auf dem neuesten Stand.";
+"preferences_general_update_failed" = "Suche nach Updates fehlgeschlagen. Versuche es später erneut.";
+"preferences_general_update_available" = "Soon %@ ist verfügbar.";
+"preferences_general_update_instructions" = "Führe zum Aktualisieren den Installationsbefehl im Terminal aus.";
+"preferences_general_update_copy_command" = "Installationsbefehl kopieren";
+"preferences_general_update_whats_new" = "Neuerungen";

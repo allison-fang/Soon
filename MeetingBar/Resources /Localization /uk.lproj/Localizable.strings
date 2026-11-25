@@ -386,3 +386,14 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "колір календаря";
 "status_bar_popover_zoom_in" = "Збільшити";
 "status_bar_popover_zoom_out" = "Зменшити";
+"status_bar_popover_update_available" = "Доступне оновлення";
+"preferences_section_updates_title" = "Оновлення";
+"preferences_general_check_for_updates" = "Автоматично перевіряти оновлення";
+"preferences_general_check_for_updates_button" = "Перевірити оновлення";
+"preferences_general_update_checking" = "Перевірка оновлень…";
+"preferences_general_update_up_to_date" = "Soon оновлено до останньої версії.";
+"preferences_general_update_failed" = "Не вдалося перевірити оновлення. Спробуйте пізніше.";
+"preferences_general_update_available" = "Доступна версія Soon %@.";
+"preferences_general_update_instructions" = "Щоб оновити, виконайте команду встановлення в Terminal.";
+"preferences_general_update_copy_command" = "Скопіювати команду встановлення";
+"preferences_general_update_whats_new" = "Що нового";

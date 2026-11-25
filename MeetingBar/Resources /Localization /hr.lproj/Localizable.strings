@@ -375,3 +375,14 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "boja kalendara";
 "status_bar_popover_zoom_in" = "Povećaj";
 "status_bar_popover_zoom_out" = "Smanji";
+"status_bar_popover_update_available" = "Dostupno ažuriranje";
+"preferences_section_updates_title" = "Ažuriranja";
+"preferences_general_check_for_updates" = "Automatski provjeravaj ažuriranja";
+"preferences_general_check_for_updates_button" = "Provjeri ažuriranja";
+"preferences_general_update_checking" = "Provjera ažuriranja…";
+"preferences_general_update_up_to_date" = "Soon je ažuran.";
+"preferences_general_update_failed" = "Provjera ažuriranja nije uspjela. Pokušajte ponovno kasnije.";
+"preferences_general_update_available" = "Dostupan je Soon %@.";
+"preferences_general_update_instructions" = "Za ažuriranje pokrenite naredbu za instalaciju u Terminalu.";
+"preferences_general_update_copy_command" = "Kopiraj naredbu za instalaciju";
+"preferences_general_update_whats_new" = "Što je novo";

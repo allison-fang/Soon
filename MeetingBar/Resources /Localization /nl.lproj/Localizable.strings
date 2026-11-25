@@ -379,3 +379,14 @@
 "onboarding_start_using" = "Begin met het gebruik van Soon";
 "status_bar_popover_zoom_in" = "Zoom in";
 "status_bar_popover_zoom_out" = "Zoom uit";
+"status_bar_popover_update_available" = "Update beschikbaar";
+"preferences_section_updates_title" = "Updates";
+"preferences_general_check_for_updates" = "Automatisch controleren op updates";
+"preferences_general_check_for_updates_button" = "Controleer op updates";
+"preferences_general_update_checking" = "Controleren op updates…";
+"preferences_general_update_up_to_date" = "Soon is up-to-date.";
+"preferences_general_update_failed" = "Kan niet controleren op updates. Probeer het later opnieuw.";
+"preferences_general_update_available" = "Soon %@ is beschikbaar.";
+"preferences_general_update_instructions" = "Voer de installatieopdracht uit in Terminal om bij te werken.";
+"preferences_general_update_copy_command" = "Kopieer installatieopdracht";
+"preferences_general_update_whats_new" = "Nieuw";

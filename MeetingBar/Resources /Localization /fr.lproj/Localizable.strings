@@ -69,7 +69,7 @@
 "status_bar_event_status_now" = "maintenant (il reste %@)";
 "status_bar_no_title" = "Sans titre";
 "status_bar_quit" = "Quitter Soon";
-"status_bar_preferences" = "Préférences";
+"status_bar_preferences" = "Réglages";
 "status_bar_whats_new" = "Quoi de neuf ?";
 "status_bar_rate_app" = "Évaluer l'appli";
 "status_bar_hide_meeting_names" = "Masquer le titre de la réunion";
@@ -371,3 +371,14 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "couleur du calendrier";
 "status_bar_popover_zoom_in" = "Zoom avant";
 "status_bar_popover_zoom_out" = "Zoom arrière";
+"status_bar_popover_update_available" = "Mise à jour disponible";
+"preferences_section_updates_title" = "Mises à jour";
+"preferences_general_check_for_updates" = "Rechercher automatiquement les mises à jour";
+"preferences_general_check_for_updates_button" = "Rechercher les mises à jour";
+"preferences_general_update_checking" = "Recherche de mises à jour…";
+"preferences_general_update_up_to_date" = "Soon est à jour.";
+"preferences_general_update_failed" = "Impossible de rechercher les mises à jour. Réessayez plus tard.";
+"preferences_general_update_available" = "Soon %@ est disponible.";
+"preferences_general_update_instructions" = "Pour mettre à jour, exécutez la commande d’installation dans Terminal.";
+"preferences_general_update_copy_command" = "Copier la commande d’installation";
+"preferences_general_update_whats_new" = "Nouveautés";

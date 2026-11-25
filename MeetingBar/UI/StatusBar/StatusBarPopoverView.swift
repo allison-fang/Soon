@@ -18,6 +18,7 @@ struct StatusBarPopoverActions {
     var performNotice: @MainActor (StatusBarNoticeAction) -> Void = { _ in }
     var refresh: @MainActor () -> Void = {}
     var openPreferences: @MainActor () -> Void = {}
+    var openUpdateSettings: @MainActor () -> Void = {}
     var quit: @MainActor () -> Void = {}
 }
 
@@ -405,6 +406,18 @@ struct StatusBarPopoverView: View {
             Button(action: model.actions.openPreferences) {
                 Label("status_bar_preferences".loco(), systemImage: "gearshape")
             }
+            if let updateText = presentation.updateAvailableText {
+                // A dot, not an arrow icon: an arrow would promise the update starts on click.
+                Button(action: model.actions.openUpdateSettings) {
+                    HStack(spacing: 6) {
+                        Circle()
+                            .fill(Color.accentColor)
+                            .frame(width: 6, height: 6)
+                        Text(updateText)
+                    }
+                }
+                .buttonStyle(TimelineButtonStyle(tint: .accentColor))
+            }
             if !presentation.bookmarks.isEmpty {
                 bookmarksMenu
             }
@@ -432,16 +445,18 @@ struct StatusBarPopoverView: View {
 /// Quiet secondary actions: clearly buttons, never louder than Join.
 struct TimelineButtonStyle: ButtonStyle {
     var isIconOnly = false
+    var tint: Color?
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .modifier(TimelineButtonLook(isPressed: configuration.isPressed, isIconOnly: isIconOnly))
+            .modifier(TimelineButtonLook(isPressed: configuration.isPressed, isIconOnly: isIconOnly, tint: tint))
     }
 }
 
 struct TimelineButtonLook: ViewModifier {
     let isPressed: Bool
     var isIconOnly = false
+    var tint: Color?
 
     @Environment(\.isEnabled) private var isEnabled
 
@@ -454,11 +469,11 @@ struct TimelineButtonLook: ViewModifier {
             .frame(width: isIconOnly ? 24 : nil, height: 24)
             .background(
                 RoundedRectangle(cornerRadius: 6)
-                    .fill(Color.primary.opacity(isPressed ? 0.14 : 0.06))
+                    .fill(tint.map { $0.opacity(isPressed ? 0.32 : 0.2) } ?? Color.primary.opacity(isPressed ? 0.14 : 0.06))
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 6)
-                    .strokeBorder(Color.primary.opacity(0.1), lineWidth: 0.5)
+                    .strokeBorder(tint.map { $0.opacity(0.4) } ?? Color.primary.opacity(0.1), lineWidth: 0.5)
             )
             .contentShape(RoundedRectangle(cornerRadius: 6))
     }

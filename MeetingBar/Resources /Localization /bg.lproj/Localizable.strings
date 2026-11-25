@@ -375,3 +375,14 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "цвят на календара";
 "status_bar_popover_zoom_in" = "Увеличи";
 "status_bar_popover_zoom_out" = "Намали";
+"status_bar_popover_update_available" = "Налична актуализация";
+"preferences_section_updates_title" = "Актуализации";
+"preferences_general_check_for_updates" = "Автоматична проверка за актуализации";
+"preferences_general_check_for_updates_button" = "Провери за актуализации";
+"preferences_general_update_checking" = "Проверка за актуализации…";
+"preferences_general_update_up_to_date" = "Soon е актуален.";
+"preferences_general_update_failed" = "Неуспешна проверка за актуализации. Опитайте отново по-късно.";
+"preferences_general_update_available" = "Soon %@ е наличен.";
+"preferences_general_update_instructions" = "За да актуализирате, изпълнете командата за инсталиране в Terminal.";
+"preferences_general_update_copy_command" = "Копирай командата за инсталиране";
+"preferences_general_update_whats_new" = "Какво ново";

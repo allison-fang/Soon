@@ -48,6 +48,9 @@ extension Defaults.Keys {
 
     static let preferredLanguage = Key<AppLanguage>("preferredLanguage", default: .system)
 
+    static let checkForUpdates = Key<Bool>("checkForUpdates", default: true)
+    static let lastUpdateCheck = Key<Date?>("lastUpdateCheck", default: nil)
+
     // Status Bar Appearance
     static let eventTitleFormat = Key<EventTitleFormat>("eventTitleFormat", default: .show)
     static let eventTimeFormat = Key<EventTimeFormat>("eventTimeFormat", default: .show)

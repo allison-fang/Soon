@@ -93,6 +93,16 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Toggle title visibility in status bar:";
 "preferences_general_meeting_bar_description" = "A menu bar meeting app for Mac. See your next meeting, a live countdown, and your schedule.";
 "preferences_general_version" = "Version %@";
+"preferences_section_updates_title" = "Updates";
+"preferences_general_check_for_updates" = "Automatically check for updates";
+"preferences_general_check_for_updates_button" = "Check for Updates";
+"preferences_general_update_checking" = "Checking for updates…";
+"preferences_general_update_up_to_date" = "Soon is up to date.";
+"preferences_general_update_failed" = "Couldn't check for updates. Try again later.";
+"preferences_general_update_available" = "Soon %@ is available.";
+"preferences_general_update_instructions" = "To update, run the install command in Terminal.";
+"preferences_general_update_copy_command" = "Copy Install Command";
+"preferences_general_update_whats_new" = "What's New";
 
 // MARK: - Preferences Appearance
 
@@ -320,13 +330,14 @@
 "status_bar_popover_updated" = "Updated %@";
 "status_bar_popover_quit" = "Quit";
 "status_bar_popover_zoom_in" = "Zoom In";
+"status_bar_popover_update_available" = "Update available";
 "status_bar_popover_zoom_out" = "Zoom Out";
 "status_bar_quick_actions" = "Quick Actions";
 "status_bar_show_meeting_names" = "Show meeting title";
 "status_bar_hide_meeting_names" = "Hide meeting title";
 "status_bar_whats_new" = "What's new?";
 "status_bar_rate_app" = "Rate App";
-"status_bar_preferences" = "Preferences";
+"status_bar_preferences" = "Settings";
 "status_bar_quit" = "Quit Soon";
 "status_bar_no_title" = "No title";
 "status_bar_event_status_now" = "now (%@ left)";

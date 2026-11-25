@@ -205,7 +205,7 @@
 "status_bar_hide_meeting_names" = "Ocultar título de reunión";
 "status_bar_whats_new" = "¿Qué hay nuevo?";
 "status_bar_rate_app" = "Calificar aplicación";
-"status_bar_preferences" = "Preferencias";
+"status_bar_preferences" = "Ajustes";
 "status_bar_quit" = "Quitar Soon";
 "status_bar_no_title" = "Sin título";
 "status_bar_event_status_now" = "ahora (%@ restante/s)";
@@ -379,3 +379,14 @@
 "preferences_appearance_status_bar_title_generic_value" = "título genérico (Encuentro)";
 "status_bar_popover_zoom_in" = "Acercar";
 "status_bar_popover_zoom_out" = "Alejar";
+"status_bar_popover_update_available" = "Actualización disponible";
+"preferences_section_updates_title" = "Actualizaciones";
+"preferences_general_check_for_updates" = "Buscar actualizaciones automáticamente";
+"preferences_general_check_for_updates_button" = "Buscar actualizaciones";
+"preferences_general_update_checking" = "Buscando actualizaciones…";
+"preferences_general_update_up_to_date" = "Soon está actualizado.";
+"preferences_general_update_failed" = "No se pudo buscar actualizaciones. Inténtalo más tarde.";
+"preferences_general_update_available" = "Soon %@ está disponible.";
+"preferences_general_update_instructions" = "Para actualizar, ejecuta el comando de instalación en Terminal.";
+"preferences_general_update_copy_command" = "Copiar comando de instalación";
+"preferences_general_update_whats_new" = "Novedades";

@@ -180,7 +180,7 @@
 "status_bar_hide_meeting_names" = "சந்திப்பு தலைப்பை மறைக்கவும்";
 "status_bar_whats_new" = "புதியது என்ன?";
 "status_bar_rate_app" = "விகித பயன்பாடு";
-"status_bar_preferences" = "விருப்பத்தேர்வுகள்";
+"status_bar_preferences" = "அமைப்புகள்";
 "status_bar_quit" = "மீட்டிங் பாவை விட்டுவிடுங்கள்";
 "status_bar_no_title" = "தலைப்பு இல்லை";
 "status_bar_event_status_now" = "இப்போது (%@ இடது)";
@@ -324,3 +324,14 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "காலெண்டர் நிறம்";
 "status_bar_popover_zoom_in" = "பெரிதாக்கு";
 "status_bar_popover_zoom_out" = "சிறிதாக்கு";
+"status_bar_popover_update_available" = "புதுப்பிப்பு உள்ளது";
+"preferences_section_updates_title" = "புதுப்பிப்புகள்";
+"preferences_general_check_for_updates" = "புதுப்பிப்புகளைத் தானாகச் சரிபார்";
+"preferences_general_check_for_updates_button" = "புதுப்பிப்புகளைச் சரிபார்";
+"preferences_general_update_checking" = "புதுப்பிப்புகளைச் சரிபார்க்கிறது…";
+"preferences_general_update_up_to_date" = "Soon புதுப்பித்த நிலையில் உள்ளது.";
+"preferences_general_update_failed" = "புதுப்பிப்புகளைச் சரிபார்க்க முடியவில்லை. பின்னர் மீண்டும் முயலவும்.";
+"preferences_general_update_available" = "Soon %@ கிடைக்கிறது.";
+"preferences_general_update_instructions" = "புதுப்பிக்க, Terminal-இல் நிறுவல் கட்டளையை இயக்கவும்.";
+"preferences_general_update_copy_command" = "நிறுவல் கட்டளையை நகலெடு";
+"preferences_general_update_whats_new" = "புதியவை";

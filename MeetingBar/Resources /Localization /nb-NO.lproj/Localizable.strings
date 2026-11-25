@@ -375,3 +375,14 @@
 "preferences_appearance_menu_show_event_calendar_color_value" = "kalenderfarge";
 "status_bar_popover_zoom_in" = "Zoom inn";
 "status_bar_popover_zoom_out" = "Zoom ut";
+"status_bar_popover_update_available" = "Oppdatering tilgjengelig";
+"preferences_section_updates_title" = "Oppdateringer";
+"preferences_general_check_for_updates" = "Se etter oppdateringer automatisk";
+"preferences_general_check_for_updates_button" = "Se etter oppdateringer";
+"preferences_general_update_checking" = "Ser etter oppdateringer …";
+"preferences_general_update_up_to_date" = "Soon er oppdatert.";
+"preferences_general_update_failed" = "Kunne ikke se etter oppdateringer. Prøv igjen senere.";
+"preferences_general_update_available" = "Soon %@ er tilgjengelig.";
+"preferences_general_update_instructions" = "For å oppdatere, kjør installasjonskommandoen i Terminal.";
+"preferences_general_update_copy_command" = "Kopier installasjonskommando";
+"preferences_general_update_whats_new" = "Nyheter";

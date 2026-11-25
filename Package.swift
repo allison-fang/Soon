@@ -26,6 +26,8 @@ let package = Package(
             sources: [
                 // Utilities/Diagnostics
                 "Utilities/Diagnostics/DiagnosticsReport.swift",
+                // Updates
+                "Updates/UpdateCheckPolicy.swift",
                 // Notifications
                 "Notifications/EventActionPolicy.swift",
                 "Notifications/NotificationPlanner.swift",

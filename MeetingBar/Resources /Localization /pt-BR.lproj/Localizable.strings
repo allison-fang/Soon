@@ -206,7 +206,7 @@
 "status_bar_hide_meeting_names" = "Ocultar título da reunião";
 "status_bar_whats_new" = "O que há de novo?";
 "status_bar_rate_app" = "Avaliar o aplicativo";
-"status_bar_preferences" = "Preferências";
+"status_bar_preferences" = "Ajustes";
 "status_bar_quit" = "Sair do Soon";
 "status_bar_no_title" = "Sem título";
 "status_bar_event_status_now" = "agora (%@ restante)";
@@ -384,3 +384,14 @@
 "preferences_appearance_status_bar_title_generic_value" = "Título genérico (Reunião)";
 "status_bar_popover_zoom_in" = "Ampliar";
 "status_bar_popover_zoom_out" = "Reduzir";
+"status_bar_popover_update_available" = "Atualização disponível";
+"preferences_section_updates_title" = "Atualizações";
+"preferences_general_check_for_updates" = "Verificar atualizações automaticamente";
+"preferences_general_check_for_updates_button" = "Verificar atualizações";
+"preferences_general_update_checking" = "Verificando atualizações…";
+"preferences_general_update_up_to_date" = "O Soon está atualizado.";
+"preferences_general_update_failed" = "Não foi possível verificar atualizações. Tente novamente mais tarde.";
+"preferences_general_update_available" = "O Soon %@ está disponível.";
+"preferences_general_update_instructions" = "Para atualizar, execute o comando de instalação no Terminal.";
+"preferences_general_update_copy_command" = "Copiar comando de instalação";
+"preferences_general_update_whats_new" = "Novidades";
