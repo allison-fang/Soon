@@ -30,9 +30,6 @@ struct TimelineEventPresentation: Identifiable, Equatable {
     let isNext: Bool
     let isDismissed: Bool
     let countdown: String?
-    /// What a card calls the meeting: the service name, or the host for an
-    /// unrecognized link.
-    let linkLabel: String?
     /// The readable part of the meeting URL, for the details panel.
     let linkPreview: String?
     let descriptionPreview: String?
@@ -41,7 +38,7 @@ struct TimelineEventPresentation: Identifiable, Equatable {
 
     var id: String { event.id }
     var isCanceled: Bool { event.status == .canceled }
-    var canJoin: Bool { event.meetingLink != nil && !isCanceled }
+    var canJoin: Bool { event.meetingLink != nil }
 }
 
 struct TimelinePlacedEvent: Identifiable, Equatable {
@@ -318,7 +315,6 @@ struct StatusBarPopoverPresenter {
             isNext: isNext,
             isDismissed: state.events.dismissedEvents.contains { $0.id == event.id },
             countdown: isNext && phase == .upcoming ? countdown(to: event) : nil,
-            linkLabel: event.meetingLink.map { linkLabel(for: $0) },
             linkPreview: event.meetingLink.map { linkPreview(for: $0) },
             descriptionPreview: descriptionPreview(for: event),
             guests: guests(of: event)

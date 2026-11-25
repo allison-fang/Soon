@@ -132,12 +132,21 @@ struct TimelineAvatarStack: View {
     }
 }
 
+/// The icon alone on cards, so every card looks the same whatever its size;
+/// spelled out in the details panel.
 struct TimelineJoinButton: View {
+    enum Size {
+        case card
+        case details
+    }
+
     let isPrimary: Bool
-    let isCompact: Bool
+    var size: Size = .card
     let colors: TimelineCardColors
     let metrics: TimelineMetrics
     let action: () -> Void
+
+    private var title: String { "notifications_meetingbar_join_event_action".loco() }
 
     private var fill: TimelineRGB {
         isPrimary ? colors.primaryActionFill : colors.quietActionFill
@@ -147,26 +156,31 @@ struct TimelineJoinButton: View {
         isPrimary ? colors.primaryActionText : colors.quietActionText
     }
 
+    private var height: CGFloat { size == .card ? metrics.joinHeight : 24 }
+    private var iconSize: CGFloat { size == .card ? 9 : 10 }
+    private var horizontalPadding: CGFloat { size == .card ? 5 : 12 }
+
     var body: some View {
         Button(action: action) {
-            Group {
-                if isCompact {
-                    Image(systemName: "video.fill")
-                        .font(.system(size: 9, weight: .semibold))
-                        .padding(.horizontal, 5)
-                } else {
-                    Text("notifications_meetingbar_join_event_action".loco())
-                        .font(.system(size: 11, weight: .semibold))
-                        .padding(.horizontal, 9)
+            HStack(spacing: 4) {
+                Image(systemName: "video.fill")
+                    .font(.system(size: iconSize, weight: .semibold))
+                if size == .details {
+                    Text(title)
+                        .font(.system(size: 12, weight: .semibold))
+                        .lineLimit(1)
                 }
             }
+            .padding(.horizontal, horizontalPadding)
             .foregroundColor(Color(text))
-            .frame(height: metrics.joinHeight)
+            .frame(height: height)
             .background(Capsule().fill(Color(fill)))
             .contentShape(Capsule())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("notifications_meetingbar_join_event_action".loco())
+        .fixedSize()
+        .help(title)
+        .accessibilityLabel(title)
     }
 }
 
@@ -178,6 +192,7 @@ struct TimelineEventCard: View {
     let metrics: TimelineMetrics
     let isHighlighted: Bool
     let onJoin: () -> Void
+    let onClick: () -> Void
     let onHover: (Bool) -> Void
     let registerAnchor: (TimelineAnchorView) -> Void
 
@@ -194,12 +209,8 @@ struct TimelineEventCard: View {
         )
     }
 
-    private var isPrimaryJoin: Bool { event.isNext || event.phase == .current }
-
-    /// One or two visible buttons answer "can I join?"; a pill on every card
-    /// would compete with the colors that say which calendar and which state.
-    private var offersJoin: Bool {
-        event.canJoin && !isDimmed && event.response != .declined && (isPrimaryJoin || isHighlighted)
+    private var isPrimaryJoin: Bool {
+        (event.isNext || event.phase == .current) && !isDimmed && event.response != .declined
     }
 
     private var otherGuests: [TimelineGuest] { event.guests.filter { !$0.isCurrentUser } }
@@ -209,9 +220,6 @@ struct TimelineEventCard: View {
             width: size.width,
             height: size.height,
             twoRowHeight: metrics.twoRowCardHeight,
-            threeRowHeight: metrics.threeRowCardHeight,
-            horizontalPadding: metrics.cardHorizontalPadding,
-            offersJoin: offersJoin,
             hasCountdown: event.countdown != nil,
             hasGuests: !otherGuests.isEmpty
         )
@@ -230,9 +238,7 @@ struct TimelineEventCard: View {
             .background(TimelineCardBackground(colors: colors, cornerRadius: metrics.cardCornerRadius))
             .overlay(highlight)
             .contentShape(RoundedRectangle(cornerRadius: metrics.cardCornerRadius))
-            .onTapGesture {
-                if event.canJoin { onJoin() }
-            }
+            .onTapGesture(perform: onClick)
             .background(TimelineAnchor(onHover: onHover, register: registerAnchor))
             .accessibilityElement(children: .combine)
             .accessibilityLabel(TimelineEventAccessibility.label(for: event))
@@ -244,22 +250,12 @@ struct TimelineEventCard: View {
 
     @ViewBuilder
     private func content(_ fit: TimelineCardContent) -> some View {
-        switch fit.rows {
-        case 1:
+        if fit.rows == 1 {
             titleRow(fit)
-        case 2:
+        } else {
             VStack(alignment: .leading, spacing: metrics.cardRowSpacing) {
                 titleRow(fit)
-                detailRow(includesDescription: true, showsAvatars: fit.showsAvatars)
-            }
-        default:
-            VStack(alignment: .leading, spacing: metrics.cardRowSpacing) {
-                titleRow(fit)
-                detailRow(includesDescription: event.linkLabel == nil, showsAvatars: fit.showsAvatars)
-                if event.linkLabel != nil, let description = event.descriptionPreview {
-                    detailText(description)
-                        .frame(height: metrics.cardRowHeight)
-                }
+                detailRow(showsAvatars: fit.showsAvatars)
             }
         }
     }
@@ -277,10 +273,9 @@ struct TimelineEventCard: View {
                     .lineLimit(1)
                     .fixedSize()
             }
-            if fit.join != .hidden {
+            if event.canJoin {
                 TimelineJoinButton(
                     isPrimary: isPrimaryJoin,
-                    isCompact: fit.join == .icon,
                     colors: colors,
                     metrics: metrics,
                     action: onJoin
@@ -297,11 +292,9 @@ struct TimelineEventCard: View {
         return event.response == .declined ? text.strikethrough() : text
     }
 
-    private func detailRow(includesDescription: Bool, showsAvatars: Bool) -> some View {
+    private func detailRow(showsAvatars: Bool) -> some View {
         HStack(spacing: 6) {
-            if let label = event.linkLabel {
-                linkLabel(label, description: includesDescription ? event.descriptionPreview : nil)
-            } else if includesDescription, let description = event.descriptionPreview {
+            if let description = event.descriptionPreview {
                 detailText(description)
             }
             Spacer(minLength: 0)
@@ -310,15 +303,6 @@ struct TimelineEventCard: View {
             }
         }
         .frame(height: metrics.cardRowHeight)
-    }
-
-    private func linkLabel(_ label: String, description: String?) -> some View {
-        HStack(spacing: 4) {
-            Image(systemName: "video.fill")
-                .font(.system(size: metrics.cardDetailSize - 2))
-                .foregroundColor(Color(colors.detail))
-            detailText(description.map { "\(label) · \($0)" } ?? label)
-        }
     }
 
     private func detailText(_ text: String) -> some View {

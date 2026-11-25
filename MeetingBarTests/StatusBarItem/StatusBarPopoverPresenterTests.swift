@@ -274,13 +274,13 @@ final class StatusBarPopoverPresenterTests: BaseTestCase {
         XCTAssertTrue(event.isCanceled)
     }
 
-    func testCanceledMeetingsCannotBeJoinedEvenWithALink() throws {
+    func testCanceledMeetingsWithALinkCanStillBeJoined() throws {
         let event = try presented(meeting(
             status: .canceled,
             location: "https://zoom.us/j/5551112222"
         ))
 
-        XCTAssertFalse(event.canJoin)
+        XCTAssertTrue(event.canJoin)
         XCTAssertNotNil(event.linkPreview)
     }
 
@@ -348,17 +348,10 @@ final class StatusBarPopoverPresenterTests: BaseTestCase {
         XCTAssertEqual(event.linkPreview, "teams.microsoft.com")
     }
 
-    func testCardsNameTheServiceRatherThanTheRawLink() throws {
-        let event = try presented(meeting(location: "https://zoom.us/j/5551112222?pwd=secret"))
-
-        XCTAssertEqual(event.linkLabel, MeetingProvider.provider(for: .zoom)?.displayName)
-    }
-
     func testEventWithoutLinkCannotJoin() throws {
         let event = try presented(meeting())
 
         XCTAssertNil(event.linkPreview)
-        XCTAssertNil(event.linkLabel)
         XCTAssertFalse(event.canJoin)
     }
 
