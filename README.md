@@ -32,7 +32,13 @@ Soon is separate from MeetingBar and can be installed alongside it. Its settings
 
 ### Update
 
-When a new version is out, Soon shows **Update available** at the bottom of its menu. Copy the install command from Preferences › General, then run it in Terminal. It quits Soon, replaces it with the latest version, and reopens it. Your settings are kept.
+When a new version is out, Soon shows **Update available** at the bottom of its menu. To update, run the install command again in Terminal (you can also copy it from Preferences › General):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/allison-fang/Soon/master/Scripts/install.sh | bash
+```
+
+It quits Soon, replaces it with the latest version, and reopens it. Your settings are kept.
 
 ### Uninstall
 
