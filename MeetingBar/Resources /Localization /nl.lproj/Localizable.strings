@@ -377,3 +377,5 @@
 "onboarding_essentials_description" = "Kies een paar vaste werkwijzen voor het openen van vergaderingen en het bewaken van de planning.";
 "onboarding_essentials_hint" = "Je kunt elk detail later nog verfijnen in de Instellingen.";
 "onboarding_start_using" = "Begin met het gebruik van Soon";
+"status_bar_popover_zoom_in" = "Zoom in";
+"status_bar_popover_zoom_out" = "Zoom uit";

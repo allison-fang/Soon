@@ -102,23 +102,68 @@ final class StatusBarPopoverPresenterTests: BaseTestCase {
         XCTAssertLessThanOrEqual(indicator.offset, day.gridHeight)
     }
 
-    func testDensityScalesTheGrid() throws {
+    private func hoursToday() throws -> Double {
+        try XCTUnwrap(Calendar.current.dateInterval(of: .day, for: now)).duration / 3600
+    }
+
+    func testOneEventStillShowsTheWholeDay() throws {
+        let result = presentation([meeting()])
+        let day = try XCTUnwrap(result.days.first)
+
+        XCTAssertEqual(day.gridHeight, try hoursToday() * result.zoom.hourHeight)
+        XCTAssertEqual(day.hourLabels.first?.offset, 0)
+        XCTAssertEqual(day.hourLabels.last?.offset, day.gridHeight)
+    }
+
+    func testZoomSetsTheHoursOnScreen() throws {
         var settings = AppSettings.current
+        settings.menu.timelineZoom = .fullDay
+        let fullDay = presentation([meeting()], settings: settings)
+        settings.menu.timelineZoom = .medium
+        let medium = presentation([meeting()], settings: settings)
+
+        XCTAssertEqual(fullDay.zoom, .fullDay)
+        XCTAssertEqual(try XCTUnwrap(fullDay.days.first).gridHeight, try hoursToday() * 20)
+        XCTAssertEqual(try XCTUnwrap(medium.days.first).gridHeight, try hoursToday() * 56)
+    }
+
+    func testWithoutAZoomDensityPicksTheScale() throws {
+        var settings = AppSettings.current
+        settings.menu.timelineZoom = nil
         settings.menu.timelineDensity = .compact
         let compact = presentation([meeting()], settings: settings)
         settings.menu.timelineDensity = .comfortable
         let comfortable = presentation([meeting()], settings: settings)
 
         XCTAssertEqual(compact.density, .compact)
+        XCTAssertEqual(compact.zoom, .close)
         XCTAssertEqual(comfortable.density, .comfortable)
-        XCTAssertGreaterThan(
-            try XCTUnwrap(comfortable.days.first).gridHeight,
-            try XCTUnwrap(compact.days.first).gridHeight
-        )
+        XCTAssertEqual(comfortable.zoom, .closest)
+    }
+
+    func testZoomKeepsDensitysOneLineMinimum() throws {
+        var settings = AppSettings.current
+        settings.menu.timelineDensity = .compact
+        settings.menu.timelineZoom = .fullDay
+        let day = try XCTUnwrap(presentation([meeting(duration: 900)], settings: settings).days.first)
+
+        XCTAssertEqual(day.timedEvents.first?.placement.height, TimelineScale.compact.minimumEventHeight)
     }
 
     func testDensityDefaultsToComfortable() {
         XCTAssertEqual(Defaults[.timelineDensity], .comfortable)
+    }
+
+    func testZoomIsUnsetUntilSomeoneZooms() {
+        XCTAssertNil(Defaults[.timelineZoom])
+        XCTAssertNil(AppSettings.empty.menu.timelineZoom)
+    }
+
+    func testSavedZoomReachesTheSettingsSnapshot() {
+        Defaults[.timelineZoom] = .wide
+
+        XCTAssertEqual(AppSettings.current.menu.timelineZoom, .wide)
+        XCTAssertEqual(presentation([meeting()]).zoom, .wide)
     }
 
     func testEmptyDayExplainsItself() throws {
@@ -126,6 +171,54 @@ final class StatusBarPopoverPresenterTests: BaseTestCase {
 
         XCTAssertTrue(day.timedEvents.isEmpty)
         XCTAssertEqual(day.emptyMessage, "🎉 \("status_bar_control_no_upcoming".loco())")
+    }
+
+    func testFullyEmptyTodayShowsOnlyItsMessage() throws {
+        let day = try XCTUnwrap(presentation([]).days.first)
+
+        XCTAssertEqual(day.gridHeight, 0)
+        XCTAssertNil(day.now)
+        XCTAssertNotNil(day.emptyMessage)
+    }
+
+    func testTodayWithEveryEventHiddenShowsOnlyItsMessage() throws {
+        var settings = AppSettings.current
+        settings.events.pastEventsAppearance = .hide
+        let day = try XCTUnwrap(presentation([meeting(startingIn: -7200)], settings: settings).days.first)
+
+        XCTAssertEqual(day.gridHeight, 0)
+        XCTAssertNotNil(day.emptyMessage)
+    }
+
+    func testTodayWithOnlyAllDayEventsStillShowsTheDayAndNow() throws {
+        let allDay = meeting(id: "ALL", startingIn: -3600 * 12, duration: 86_400, isAllDay: true)
+        let result = presentation([allDay])
+        let day = try XCTUnwrap(result.days.first)
+
+        XCTAssertEqual(day.gridHeight, try hoursToday() * result.zoom.hourHeight)
+        XCTAssertNotNil(day.now)
+        XCTAssertNil(day.emptyMessage)
+    }
+
+    func testTomorrowWithoutTimedEventsKeepsItsMessageInsteadOfAGrid() throws {
+        var settings = AppSettings.current
+        settings.events.showEventsForPeriod = .today_n_tomorrow
+        let tomorrow = try XCTUnwrap(presentation([meeting()], settings: settings).days.last)
+
+        XCTAssertEqual(tomorrow.gridHeight, 0)
+        XCTAssertNotNil(tomorrow.emptyMessage)
+    }
+
+    func testTomorrowWithEventsShowsItsWholeDay() throws {
+        var settings = AppSettings.current
+        settings.events.showEventsForPeriod = .today_n_tomorrow
+        let result = presentation([meeting(id: "TMRW", startingIn: 86_400)], settings: settings)
+        let tomorrow = try XCTUnwrap(result.days.last)
+        let start = try XCTUnwrap(Calendar.current.date(byAdding: .day, value: 1, to: Calendar.current.startOfDay(for: now)))
+        let hours = try XCTUnwrap(Calendar.current.dateInterval(of: .day, for: start)).duration / 3600
+
+        XCTAssertEqual(tomorrow.gridHeight, hours * result.zoom.hourHeight)
+        XCTAssertNil(tomorrow.now)
     }
 
     func testTomorrowFollowsTodayOnlyWhenEnabled() {

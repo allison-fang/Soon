@@ -4,6 +4,7 @@
 //
 
 import AppKit
+import Defaults
 import SwiftUI
 
 /// A borderless panel that takes key status without activating the app, so
@@ -103,13 +104,18 @@ final class StatusBarPopoverController {
         model.onEventHover = { [weak self] id, isHovering in
             self?.eventHoverChanged(id: id, isHovering: isHovering)
         }
+        model.onZoom = { Defaults[.timelineZoom] = $0 }
     }
 
     func update(_ presentation: StatusBarPopoverPresentation) {
+        let zoomChanged = presentation.zoom != model.presentation.zoom
         model.presentation = presentation
         guard isOpen else { return }
         refitPanel()
         refreshDetails()
+        if zoomChanged {
+            DispatchQueue.main.async { [weak self] in self?.model.scrollToNow() }
+        }
     }
 
     // MARK: - Showing
@@ -407,9 +413,13 @@ final class StatusBarPopoverController {
     }
 
     private func handleKeyEquivalent(_ event: NSEvent) -> Bool {
-        guard event.modifierFlags.intersection(.deviceIndependentFlagsMask) == .command else {
-            return false
+        let modifiers = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
+        // ⌘+ needs Shift on most layouts.
+        if modifiers == [.command, .shift], event.charactersIgnoringModifiers == "+" {
+            zoom(to: model.presentation.zoom.zoomedIn)
+            return true
         }
+        guard modifiers == .command else { return false }
         switch event.charactersIgnoringModifiers {
         case ",":
             model.actions.openPreferences()
@@ -417,10 +427,21 @@ final class StatusBarPopoverController {
             model.actions.quit()
         case "r":
             model.actions.refresh()
+        case "=", "+":
+            zoom(to: model.presentation.zoom.zoomedIn)
+        case "-":
+            zoom(to: model.presentation.zoom.zoomedOut)
+        case "0":
+            Defaults.reset(.timelineZoom)
         default:
             return false
         }
         return true
+    }
+
+    private func zoom(to zoom: TimelineZoom?) {
+        guard let zoom else { return }
+        model.onZoom(zoom)
     }
 
     private var highlightedEvent: TimelineEventPresentation? {

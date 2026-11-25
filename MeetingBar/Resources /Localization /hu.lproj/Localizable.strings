@@ -327,3 +327,5 @@
 "preferences_sidebar_setup" = "Beállítás";
 "preferences_appearance_events_no_meeting_link_title" = "Események értekezlet-hivatkozás nélkül";
 "preferences_appearance_menu_show_event_calendar_color_value" = "naptár színe";
+"status_bar_popover_zoom_in" = "Nagyítás";
+"status_bar_popover_zoom_out" = "Kicsinyítés";

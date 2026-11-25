@@ -380,3 +380,5 @@
 "onboarding_essentials_description" = "Wähle Standards für öffnen von Meetings und im Zeitplan zu bleiben.";
 "onboarding_essentials_hint" = "Du kannst jedes Detail in den Einstellungen später ändern.";
 "onboarding_start_using" = "Beginne Soon zu nutzen";
+"status_bar_popover_zoom_in" = "Vergrößern";
+"status_bar_popover_zoom_out" = "Verkleinern";

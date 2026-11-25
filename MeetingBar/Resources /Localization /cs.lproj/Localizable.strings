@@ -388,3 +388,5 @@
 "preferences_calendars_unavailable_title" = "Vybrané kalendáře nejsou dostupné";
 "preferences_calendars_unavailable_help" = "Tyto uložené kalendáře nejsou dostupné. Zkontrolujte přístup ke kalendáři v macOS nebo z výběru odeberte nedostupné kalendáře, aby se schůzky mohly znovu aktualizovat.";
 "preferences_calendars_remove_missing" = "Odebrat";
+"status_bar_popover_zoom_in" = "Zvětšit";
+"status_bar_popover_zoom_out" = "Zmenšit";

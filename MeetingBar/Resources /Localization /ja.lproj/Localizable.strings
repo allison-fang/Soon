@@ -395,3 +395,5 @@
 "preferences_appearance_status_bar_title_generic_value" = "一般的なタイトル（会議）";
 "onboarding_essentials_title" = "毎日の振る舞い";
 "onboarding_essentials_description" = "ミーティングを開き、スケジュールに滞在するためのいくつかのデフォルトを選択します.";
+"status_bar_popover_zoom_in" = "拡大";
+"status_bar_popover_zoom_out" = "縮小";

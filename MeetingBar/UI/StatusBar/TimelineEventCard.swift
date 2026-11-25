@@ -173,12 +173,6 @@ struct TimelineJoinButton: View {
 /// Draws one event at a size derived from its duration, showing as much as
 /// that height can carry.
 struct TimelineEventCard: View {
-    private enum Layout {
-        case single
-        case double
-        case full
-    }
-
     let event: TimelineEventPresentation
     let size: CGSize
     let metrics: TimelineMetrics
@@ -200,33 +194,38 @@ struct TimelineEventCard: View {
         )
     }
 
-    private var layout: Layout {
-        if size.height < metrics.twoRowCardHeight { return .single }
-        return size.height < metrics.threeRowCardHeight ? .double : .full
-    }
-
     private var isPrimaryJoin: Bool { event.isNext || event.phase == .current }
 
     /// One or two visible buttons answer "can I join?"; a pill on every card
     /// would compete with the colors that say which calendar and which state.
-    private var showsJoin: Bool {
-        guard event.canJoin, !isDimmed, event.response != .declined, size.width >= 72 else {
-            return false
-        }
-        return isPrimaryJoin || isHighlighted
+    private var offersJoin: Bool {
+        event.canJoin && !isDimmed && event.response != .declined && (isPrimaryJoin || isHighlighted)
     }
 
     private var otherGuests: [TimelineGuest] { event.guests.filter { !$0.isCurrentUser } }
-    private var showsAvatars: Bool { size.width >= 150 && !otherGuests.isEmpty }
+
+    private var fit: TimelineCardContent {
+        TimelineCardContent(
+            width: size.width,
+            height: size.height,
+            twoRowHeight: metrics.twoRowCardHeight,
+            threeRowHeight: metrics.threeRowCardHeight,
+            horizontalPadding: metrics.cardHorizontalPadding,
+            offersJoin: offersJoin,
+            hasCountdown: event.countdown != nil,
+            hasGuests: !otherGuests.isEmpty
+        )
+    }
 
     var body: some View {
-        content
+        let fit = fit
+        return content(fit)
             .padding(.horizontal, metrics.cardHorizontalPadding)
-            .padding(.vertical, layout == .single ? 0 : metrics.cardVerticalPadding)
+            .padding(.vertical, fit.rows == 1 ? 0 : metrics.cardVerticalPadding)
             .frame(
                 width: size.width,
                 height: size.height,
-                alignment: layout == .single ? .leading : .topLeading
+                alignment: fit.rows == 1 ? .leading : .topLeading
             )
             .background(TimelineCardBackground(colors: colors, cornerRadius: metrics.cardCornerRadius))
             .overlay(highlight)
@@ -244,19 +243,19 @@ struct TimelineEventCard: View {
     }
 
     @ViewBuilder
-    private var content: some View {
-        switch layout {
-        case .single:
-            titleRow
-        case .double:
+    private func content(_ fit: TimelineCardContent) -> some View {
+        switch fit.rows {
+        case 1:
+            titleRow(fit)
+        case 2:
             VStack(alignment: .leading, spacing: metrics.cardRowSpacing) {
-                titleRow
-                detailRow(includesDescription: true)
+                titleRow(fit)
+                detailRow(includesDescription: true, showsAvatars: fit.showsAvatars)
             }
-        case .full:
+        default:
             VStack(alignment: .leading, spacing: metrics.cardRowSpacing) {
-                titleRow
-                detailRow(includesDescription: event.linkLabel == nil)
+                titleRow(fit)
+                detailRow(includesDescription: event.linkLabel == nil, showsAvatars: fit.showsAvatars)
                 if event.linkLabel != nil, let description = event.descriptionPreview {
                     detailText(description)
                         .frame(height: metrics.cardRowHeight)
@@ -265,23 +264,23 @@ struct TimelineEventCard: View {
         }
     }
 
-    private var titleRow: some View {
+    private func titleRow(_ fit: TimelineCardContent) -> some View {
         HStack(spacing: 6) {
             titleText
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-            if let countdown = event.countdown, size.width >= 190 {
+            if let countdown = event.countdown, fit.showsCountdown {
                 Text(countdown)
                     .font(.system(size: 10, weight: .medium))
                     .foregroundColor(Color(colors.detail))
                     .lineLimit(1)
                     .fixedSize()
             }
-            if showsJoin {
+            if fit.join != .hidden {
                 TimelineJoinButton(
                     isPrimary: isPrimaryJoin,
-                    isCompact: size.width < 170,
+                    isCompact: fit.join == .icon,
                     colors: colors,
                     metrics: metrics,
                     action: onJoin
@@ -298,7 +297,7 @@ struct TimelineEventCard: View {
         return event.response == .declined ? text.strikethrough() : text
     }
 
-    private func detailRow(includesDescription: Bool) -> some View {
+    private func detailRow(includesDescription: Bool, showsAvatars: Bool) -> some View {
         HStack(spacing: 6) {
             if let label = event.linkLabel {
                 linkLabel(label, description: includesDescription ? event.descriptionPreview : nil)

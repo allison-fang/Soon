@@ -382,3 +382,5 @@
 "onboarding_back" = "Voltar";
 "onboarding_start_using" = "Começar a utilizar o Soon";
 "preferences_appearance_status_bar_title_generic_value" = "Título genérico (Reunião)";
+"status_bar_popover_zoom_in" = "Ampliar";
+"status_bar_popover_zoom_out" = "Reduzir";

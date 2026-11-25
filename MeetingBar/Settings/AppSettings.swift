@@ -53,12 +53,18 @@ struct StatusBarSettings: Equatable {
 
 struct MenuSettings: Equatable {
     var timelineDensity: TimelineDensity
+    var timelineZoom: TimelineZoom?
     var showTimelineInMenu: Bool
     var shortenEventTitle: Bool
     var menuEventTitleLength: Int
     var showEventDetails: Bool
     var showMeetingServiceIcon: Bool
     var showEventCalendarColor: Bool
+
+    /// Until someone zooms, the scale Density set before zoom existed.
+    var resolvedTimelineZoom: TimelineZoom {
+        timelineZoom ?? (timelineDensity == .compact ? .close : .closest)
+    }
 }
 
 struct NotificationSettings: Equatable {
@@ -185,6 +191,7 @@ extension AppSettings {
             ),
             menu: MenuSettings(
                 timelineDensity: Defaults[.timelineDensity],
+                timelineZoom: Defaults[.timelineZoom],
                 showTimelineInMenu: Defaults[.showTimelineInMenu],
                 shortenEventTitle: Defaults[.shortenEventTitle],
                 menuEventTitleLength: Defaults[.menuEventTitleLength],
@@ -259,6 +266,7 @@ extension AppSettings {
             ),
             menu: MenuSettings(
                 timelineDensity: .comfortable,
+                timelineZoom: nil,
                 showTimelineInMenu: true,
                 shortenEventTitle: true,
                 menuEventTitleLength: 50,

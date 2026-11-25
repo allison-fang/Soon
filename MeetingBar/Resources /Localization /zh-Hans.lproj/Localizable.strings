@@ -328,3 +328,5 @@
 "onboarding_back" = "返回";
 "onboarding_start_using" = "开始使用Soon";
 "onboarding_essentials_hint" = "你可以稍后在偏好设置中微调每处细节。";
+"status_bar_popover_zoom_in" = "放大";
+"status_bar_popover_zoom_out" = "缩小";

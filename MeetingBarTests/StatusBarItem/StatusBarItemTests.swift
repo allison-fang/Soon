@@ -544,6 +544,60 @@ final class StatusBarItemControllerPresentationTests: BaseTestCase {
         XCTAssertFalse(controller.popover.isOpen)
     }
 
+    func test_zoomFromThePopoverPersistsAcrossOpens() throws {
+        configureStatusBarDefaults()
+        Defaults[.timelineDensity] = .comfortable
+        let controller = StatusBarItemController()
+        defer {
+            controller.popover.close()
+            NSStatusBar.system.removeStatusItem(controller.statusItem)
+        }
+        controller.configure(dependencies: StatusBarDependencies(
+            appState: {
+                var state = AppState()
+                state.selectedCalendarIDs = [Self.calendarID]
+                return state
+            }
+        ))
+        controller.events = [makeStatusEvent()]
+        controller.openMenu()
+        XCTAssertEqual(controller.popover.model.presentation.zoom, .closest)
+
+        XCTAssertTrue(try openPanel().performKeyEquivalent(with: commandKey("-", keyCode: 27)))
+        XCTAssertEqual(Defaults[.timelineZoom], .close)
+        let applied = expectation(for: NSPredicate { _, _ in
+            controller.popover.model.presentation.zoom == .close
+        }, evaluatedWith: nil)
+        wait(for: [applied], timeout: 2)
+
+        controller.popover.model.onZoom(.fullDay)
+        controller.openMenu()
+        controller.openMenu()
+        XCTAssertEqual(controller.popover.model.presentation.zoom, .fullDay)
+
+        XCTAssertTrue(try openPanel().performKeyEquivalent(with: commandKey("0", keyCode: 29)))
+        XCTAssertNil(Defaults[.timelineZoom])
+    }
+
+    private func openPanel() throws -> StatusBarPanel {
+        try XCTUnwrap(NSApp.windows.compactMap { $0 as? StatusBarPanel }.first { $0.isVisible && $0.canBecomeKey })
+    }
+
+    private func commandKey(_ character: String, keyCode: UInt16) throws -> NSEvent {
+        try XCTUnwrap(NSEvent.keyEvent(
+            with: .keyDown,
+            location: .zero,
+            modifierFlags: .command,
+            timestamp: 0,
+            windowNumber: 0,
+            context: nil,
+            characters: character,
+            charactersIgnoringModifiers: character,
+            isARepeat: false,
+            keyCode: keyCode
+        ))
+    }
+
     func test_popoverCloseActionsCloseBeforeHandingOff() throws {
         configureStatusBarDefaults()
         let controller = StatusBarItemController()

@@ -91,6 +91,7 @@ struct StatusBarNotice: Equatable {
 
 struct StatusBarPopoverPresentation: Equatable {
     var density: TimelineDensity = .comfortable
+    var zoom: TimelineZoom = .closest
     var title = ""
     var dateText = ""
     var notice: StatusBarNotice?
@@ -126,6 +127,7 @@ struct StatusBarPopoverPresenter {
     func make() -> StatusBarPopoverPresentation {
         var presentation = StatusBarPopoverPresentation(
             density: state.menu.timelineDensity,
+            zoom: state.menu.resolvedTimelineZoom,
             title: "status_bar_section_today".loco(),
             dateText: dayFormatter.string(from: calendar.startOfDay(for: now)),
             notice: notice(),
@@ -239,15 +241,10 @@ struct StatusBarPopoverPresenter {
             TimelineLayoutEvent(id: $0.id, start: $0.startDate, end: $0.endDate)
         }
 
-        let window = timed.isEmpty
-            ? nil
-            : TimelineLayout.window(
-                for: layoutEvents,
-                now: now,
-                day: interval,
-                calendar: calendar,
-                scale: scale
-            )
+        // A day with nothing to show keeps its one-line message. Today shows
+        // its grid even for only all-day events, so now still has a place.
+        let showsGrid = !timed.isEmpty || (isToday && !visible.isEmpty)
+        let window = showsGrid ? TimelineWindow(day: interval, scale: scale) : nil
         let placed = window.map { window in
             TimelineLayout.placements(for: layoutEvents, in: window).compactMap { placement in
                 timed.first { $0.id == placement.id }.map {
@@ -270,7 +267,8 @@ struct StatusBarPopoverPresenter {
     }
 
     private var scale: TimelineScale {
-        state.menu.timelineDensity == .compact ? .compact : .comfortable
+        let density: TimelineScale = state.menu.timelineDensity == .compact ? .compact : .comfortable
+        return density.zoomed(to: state.menu.resolvedTimelineZoom)
     }
 
     private func emptyMessage(title: String, isToday: Bool) -> String {
