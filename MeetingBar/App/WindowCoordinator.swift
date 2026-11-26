@@ -301,10 +301,11 @@ final class WindowCoordinator {
         setPreferencesContentOnceActive(NSHostingView(rootView: contentView), in: window)
         // No custom rounded-corner / shadow layer here: this is a standard
         // titled window, so the system draws its own corners and shadow. The
-        // transparent titlebar lets the NavigationSplitView sidebar material
-        // flow up under the title bar for the System Settings look; the active
-        // tab name is shown via the detail's `.navigationTitle`.
-        window.titlebarAppearsTransparent = true
+        // full-size content view lets the NavigationSplitView sidebar flow up
+        // under the title bar; the active tab name is shown via the detail's
+        // `.navigationTitle`. The titlebar stays non-transparent so the toolbar
+        // draws its scroll-edge material and scrolled content can't collide
+        // with the title.
         window.titleVisibility = .hidden
         window.styleMask.insert(.fullSizeContentView)
         // Standard window level (not .floating): clicking another app should
