@@ -96,6 +96,18 @@
 "preferences_general_update_instructions" = "To update, run the install command in Terminal.";
 "preferences_general_update_copy_command" = "Copy Install Command";
 "preferences_general_update_whats_new" = "What's New";
+"preferences_general_update_install" = "Update";
+"preferences_general_update_try_again" = "Try Again";
+"preferences_general_update_downloading" = "Downloading…";
+"preferences_general_update_verifying" = "Verifying…";
+"preferences_general_update_installing" = "Installing…";
+"preferences_general_update_error_download" = "Couldn't download the update. Try again or run the install command in Terminal.";
+"preferences_general_update_error_damaged" = "The download was damaged. Try again or run the install command in Terminal.";
+"preferences_general_update_error_signature" = "The download wasn't signed by Soon. Try again or run the install command in Terminal.";
+"preferences_general_update_error_bundle" = "The download didn't match this release. Try again or run the install command in Terminal.";
+"preferences_general_update_error_not_writable" = "Soon can't replace itself in this folder. Run the install command in Terminal instead.";
+"preferences_general_update_error_location" = "Soon can't update itself from where it's running. Run the install command in Terminal instead.";
+"preferences_general_update_error_install" = "Couldn't install the update. Try again or run the install command in Terminal.";
 
 // MARK: - Preferences Appearance
 

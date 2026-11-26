@@ -260,6 +260,7 @@ final class WindowCoordinator {
         appModel: AppModel?,
         calendarSync: CalendarSync?,
         updateChecker: UpdateChecker,
+        updateInstaller: UpdateInstaller,
         tab: PreferencesTab? = nil
     ) {
         guard let appModel, let calendarSync else { return }
@@ -270,6 +271,7 @@ final class WindowCoordinator {
             .environmentObject(appModel)
             .environmentObject(calendarSync)
             .environmentObject(updateChecker)
+            .environmentObject(updateInstaller)
             .environment(\.preferencesWindowOpenedAt, Date())
 
         if let preferencesWindow {

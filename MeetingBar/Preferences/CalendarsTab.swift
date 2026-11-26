@@ -159,19 +159,20 @@ private struct CalendarPreferencesEmptyState: View {
     }
 }
 
-private func statusSystemImage(_ tone: PreferencesStatusTone) -> String {
+private func statusSystemImage(_ tone: PreferencesStatusTone) -> String? {
     switch tone {
     case .neutral: "circle"
     case .info: "person.crop.circle"
     case .success: "checkmark.circle.fill"
     case .warning: "exclamationmark.triangle.fill"
     case .error: "xmark.circle.fill"
+    case .busy: nil
     }
 }
 
 private func statusColor(_ tone: PreferencesStatusTone) -> Color {
     switch tone {
-    case .neutral, .info: .secondary
+    case .neutral, .info, .busy: .secondary
     case .success: .green
     case .warning: .orange
     case .error: .red
@@ -180,12 +181,21 @@ private func statusColor(_ tone: PreferencesStatusTone) -> Color {
 
 /// An icon and short status text, tinted by how things stand.
 struct PreferencesStatusLabel: View {
+    private static let capHeight = NSFont.preferredFont(forTextStyle: .callout).capHeight
+
     let text: String
     let tone: PreferencesStatusTone
 
     var body: some View {
-        HStack(spacing: 4) {
-            Image(systemName: statusSystemImage(tone))
+        // Baseline alignment keeps the icon on the first line when the text wraps.
+        HStack(alignment: .firstTextBaseline, spacing: 4) {
+            if let name = statusSystemImage(tone) {
+                Image(systemName: name)
+            } else {
+                ProgressView()
+                    .controlSize(.mini)
+                    .alignmentGuide(.firstTextBaseline) { $0[VerticalAlignment.center] + Self.capHeight / 2 }
+            }
             Text(text)
         }
         .foregroundStyle(statusColor(tone))

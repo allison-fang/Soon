@@ -132,6 +132,8 @@ enum PreferencesStatusTone: Equatable {
     case success
     case warning
     case error
+    /// Work under way; shows a spinner instead of an icon.
+    case busy
 }
 
 enum PreferencesProviderConnectionState: Equatable {

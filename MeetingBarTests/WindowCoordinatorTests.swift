@@ -203,9 +203,14 @@ final class WindowCoordinatorTests: XCTestCase {
             fetchLatestRelease: { throw URLError(.cancelled) },
             sleep: { _ in }
         ))
+        let updateInstaller = UpdateInstaller.live(currentVersion: "1.2.0")
         func open(_ tab: PreferencesTab? = nil) {
             coordinator.openPreferencesWindow(
-                appModel: harness.model, calendarSync: sync, updateChecker: updateChecker, tab: tab
+                appModel: harness.model,
+                calendarSync: sync,
+                updateChecker: updateChecker,
+                updateInstaller: updateInstaller,
+                tab: tab
             )
         }
 

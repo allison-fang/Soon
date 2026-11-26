@@ -121,7 +121,9 @@ MeetingBar/                         (~76 .swift files)
 │
 ├── Updates/
 │   ├── UpdateCheckPolicy.swift     — version comparison, release decoding, check cadence [SPM]
-│   └── UpdateChecker.swift         — GitHub latest-release check at launch, hourly tick and wake; Preferences status
+│   ├── UpdateChecker.swift         — GitHub latest-release check at launch, hourly tick and wake; Preferences status
+│   ├── UpdateInstallPolicy.swift   — release asset, downloaded-bundle and install-location checks [SPM]
+│   └── UpdateInstaller.swift       — in-app update: download, signature check, stage, quit; helper swaps and relaunches
 │
 ├── Preferences/                    — SwiftUI Settings window tabs (General, Calendars, Meeting Opening, Menu Bar, Notifications, Advanced)
 ├── Onboarding/                     — multi-screen first-launch flow
@@ -361,6 +363,7 @@ Long-running or delayed work must have one stored owner and an explicit cancella
 | Delayed fullscreen, auto-join, and event-start script actions | `NotificationScheduler` | reconcile removes stale plans; `stop()` cancels all |
 | Lifecycle notification registrations | `LifecycleObserver` | `stop()` |
 | Release update check and its hourly tick | `UpdateChecker` (owned by `AppDelegate`) | `applicationWillTerminate` calls `stop()` |
+| In-app update download, verification and staging | `UpdateInstaller` (owned by `AppDelegate`) | `applicationWillTerminate` calls `stop()`; after staging it quits Soon and a detached shell helper swaps the copy in |
 
 Deliberate bounded exceptions:
 

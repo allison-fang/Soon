@@ -131,6 +131,7 @@ private struct UpdateStatusBadgeView: View {
 }
 
 struct AvailableUpdateRow: View {
+    @EnvironmentObject var updateInstaller: UpdateInstaller
     let update: AvailableUpdate
 
     var body: some View {
@@ -138,24 +139,63 @@ struct AvailableUpdateRow: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("preferences_general_update_available".loco(update.version))
                     .font(.body.weight(.medium))
-                Text("preferences_general_update_instructions".loco())
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .fixedSize(horizontal: false, vertical: true)
+                if !canInstall {
+                    Text("preferences_general_update_instructions".loco())
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
             HStack(spacing: 8) {
-                Button("preferences_general_update_whats_new".loco()) {
-                    NSWorkspace.shared.open(update.releaseURL)
+                if canInstall, failure.map(UpdateInstallPolicy.isRetryable) ?? true {
+                    Button(failure == nil ? "preferences_general_update_install".loco() : "preferences_general_update_try_again".loco()) {
+                        updateInstaller.install(update)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(updateInstaller.isInstalling)
                 }
-                Button("preferences_general_update_copy_command".loco()) {
-                    let pasteboard = NSPasteboard.general
-                    pasteboard.clearContents()
-                    pasteboard.setString(UpdateChecker.installCommand, forType: .string)
+                if !canInstall || failure != nil {
+                    Button("preferences_general_update_copy_command".loco()) {
+                        let pasteboard = NSPasteboard.general
+                        pasteboard.clearContents()
+                        pasteboard.setString(UpdateChecker.installCommand, forType: .string)
+                    }
+                } else {
+                    Button("preferences_general_update_whats_new".loco()) {
+                        NSWorkspace.shared.open(update.releaseURL)
+                    }
                 }
             }
+            installStatus
+                .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.vertical, 4)
+    }
+
+    @ViewBuilder
+    private var installStatus: some View {
+        switch updateInstaller.status {
+        case .idle:
+            EmptyView()
+        case .downloading:
+            PreferencesStatusLabel(text: "preferences_general_update_downloading".loco(), tone: .busy)
+        case .verifying:
+            PreferencesStatusLabel(text: "preferences_general_update_verifying".loco(), tone: .busy)
+        case .installing:
+            PreferencesStatusLabel(text: "preferences_general_update_installing".loco(), tone: .busy)
+        case .failed(let error):
+            PreferencesStatusLabel(text: UpdateInstallPolicy.messageKey(for: error).loco(), tone: .warning)
+        }
+    }
+
+    private var canInstall: Bool {
+        updateInstaller.isAvailable && update.downloadURL != nil
+    }
+
+    private var failure: UpdateInstallError? {
+        if case .failed(let error) = updateInstaller.status { return error }
+        return nil
     }
 }
 
