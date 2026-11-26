@@ -392,3 +392,6 @@
 "preferences_general_update_instructions" = "Voer de installatieopdracht uit in Terminal om bij te werken.";
 "preferences_general_update_copy_command" = "Kopieer installatieopdracht";
 "preferences_general_update_whats_new" = "Nieuw";
+"status_bar_details_open_google_calendar" = "Google Agenda";
+"status_bar_details_open_calendar" = "Agenda";
+"status_bar_details_open_fantastical" = "Fantastical";

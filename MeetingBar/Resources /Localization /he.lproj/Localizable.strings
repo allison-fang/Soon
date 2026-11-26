@@ -384,3 +384,6 @@
 "preferences_general_update_instructions" = "כדי לעדכן, הרץ את פקודת ההתקנה ב-Terminal.";
 "preferences_general_update_copy_command" = "העתק פקודת התקנה";
 "preferences_general_update_whats_new" = "מה חדש";
+"status_bar_details_open_google_calendar" = "יומן Google";
+"status_bar_details_open_calendar" = "לוח שנה";
+"status_bar_details_open_fantastical" = "Fantastical";

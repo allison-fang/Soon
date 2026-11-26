@@ -388,3 +388,6 @@
 "preferences_general_update_instructions" = "Za ažuriranje pokrenite naredbu za instalaciju u Terminalu.";
 "preferences_general_update_copy_command" = "Kopiraj naredbu za instalaciju";
 "preferences_general_update_whats_new" = "Što je novo";
+"status_bar_details_open_google_calendar" = "Google kalendar";
+"status_bar_details_open_calendar" = "Kalendar";
+"status_bar_details_open_fantastical" = "Fantastical";

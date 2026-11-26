@@ -389,3 +389,6 @@
 "preferences_general_update_instructions" = "Aby zaktualizować, uruchom polecenie instalacji w Terminalu.";
 "preferences_general_update_copy_command" = "Kopiuj polecenie instalacji";
 "preferences_general_update_whats_new" = "Co nowego";
+"status_bar_details_open_google_calendar" = "Kalendarz Google";
+"status_bar_details_open_calendar" = "Kalendarz";
+"status_bar_details_open_fantastical" = "Fantastical";

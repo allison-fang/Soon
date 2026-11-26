@@ -388,3 +388,6 @@
 "preferences_general_update_instructions" = "За да актуализирате, изпълнете командата за инсталиране в Terminal.";
 "preferences_general_update_copy_command" = "Копирай командата за инсталиране";
 "preferences_general_update_whats_new" = "Какво ново";
+"status_bar_details_open_google_calendar" = "Google Календар";
+"status_bar_details_open_calendar" = "Календар";
+"status_bar_details_open_fantastical" = "Fantastical";

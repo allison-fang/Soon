@@ -323,6 +323,9 @@
 "status_bar_submenu_open_in_fantastical" = "Open in Fantastical";
 "status_bar_submenu_open_in_google_calendar" = "Open in Google Calendar";
 "status_bar_details_organizer" = "Organizer";
+"status_bar_details_open_google_calendar" = "Google Calendar";
+"status_bar_details_open_calendar" = "Calendar";
+"status_bar_details_open_fantastical" = "Fantastical";
 "status_bar_details_status_accepted" = "Accepted";
 "status_bar_details_status_declined" = "Declined";
 "status_bar_details_status_tentative" = "Tentative";

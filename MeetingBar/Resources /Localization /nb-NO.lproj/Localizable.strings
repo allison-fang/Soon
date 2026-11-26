@@ -388,3 +388,6 @@
 "preferences_general_update_instructions" = "For å oppdatere, kjør installasjonskommandoen i Terminal.";
 "preferences_general_update_copy_command" = "Kopier installasjonskommando";
 "preferences_general_update_whats_new" = "Nyheter";
+"status_bar_details_open_google_calendar" = "Google Kalender";
+"status_bar_details_open_calendar" = "Kalender";
+"status_bar_details_open_fantastical" = "Fantastical";
