@@ -12,21 +12,17 @@ import LaunchAtLogin
 import SwiftUI
 import UserNotifications
 
-/// A nested, indented picker row for a "time before event" choice that
-/// belongs to the toggle row above it. Matches the dependent-row treatment
-/// used across the preferences forms.
+/// An indented "Timing" picker that belongs to the toggle row above it.
 private struct TimeBeforeEventPickerRow: View {
     @Binding var selection: TimeBeforeEvent
 
     var body: some View {
-        Picker("", selection: $selection) {
+        Picker(preferenceLabel("notifications_timing_title"), selection: $selection) {
             Text("general_when_event_starts".loco()).tag(TimeBeforeEvent.atStart)
             Text("general_one_minute_before".loco()).tag(TimeBeforeEvent.minuteBefore)
             Text("general_three_minute_before".loco()).tag(TimeBeforeEvent.threeMinuteBefore)
             Text("general_five_minute_before".loco()).tag(TimeBeforeEvent.fiveMinuteBefore)
         }
-        .labelsHidden()
-        .fixedSize()
         .padding(.leading, 16)
     }
 }
@@ -53,47 +49,68 @@ struct AutomaticEventJoinPicker: View {
     }
 }
 
-struct FullscreenNotificationPicker: View {
+struct EventStartAlertPicker: View {
+    @Default(.joinEventNotification) var systemNotification
     @Default(.fullscreenNotification) var fullscreenNotification
-    @Default(.fullscreenNotificationTime) var fullscreenNotificationTime
+    @Default(.joinEventNotificationTime) var time
+    @Default(.eventStartAlertStyle) var storedStyle
     @Default(.fullscreenNotificationsForEventsWithoutMeetingLink)
     var fullscreenNotificationsForEventsWithoutMeetingLink
 
-    var body: some View {
-        Toggle("shared_fullscreen_notification_toggle".loco(), isOn: $fullscreenNotification)
-
-        TimeBeforeEventPickerRow(selection: $fullscreenNotificationTime)
-            .disabled(!fullscreenNotification)
-
-        Toggle(
-            "shared_fullscreen_notification_without_link_toggle".loco(),
-            isOn: $fullscreenNotificationsForEventsWithoutMeetingLink
-        )
-        .disabled(!fullscreenNotification)
-        .padding(.leading, 16)
-
-        Text("shared_fullscreen_notification_without_link_help".loco())
-            .font(.caption)
-            .foregroundStyle(.secondary)
-            .padding(.leading, 16)
-    }
-}
-
-struct JoinEventNotificationPicker: View {
-    @Default(.joinEventNotification) var joinEventNotification
-    @Default(.joinEventNotificationTime) var joinEventNotificationTime
+    private var style: EventStartAlertStyle { storedStyle ?? .system }
+    private var isEnabled: Bool { systemNotification || fullscreenNotification }
 
     var notificationSettings: (noAlertStyle: Bool, disabled: Bool) {
         checkNotificationSettings()
     }
 
     var body: some View {
-        Toggle("shared_send_notification_toggle".loco(), isOn: $joinEventNotification)
+        Toggle(
+            "notifications_event_start_toggle".loco(),
+            isOn: Binding(
+                get: { isEnabled },
+                set: { EventStartAlertPreferences.apply(enabled: $0, style: style, time: time) }
+            )
+        )
 
-        TimeBeforeEventPickerRow(selection: $joinEventNotificationTime)
-            .disabled(!joinEventNotification)
+        Picker(
+            preferenceLabel("notifications_alert_style_title"),
+            selection: Binding(
+                get: { style },
+                set: { EventStartAlertPreferences.apply(enabled: isEnabled, style: $0, time: time) }
+            )
+        ) {
+            Text("notifications_alert_style_system".loco()).tag(EventStartAlertStyle.system)
+            Text("notifications_alert_style_fullscreen".loco()).tag(EventStartAlertStyle.fullscreen)
+            Text("notifications_alert_style_both".loco()).tag(EventStartAlertStyle.both)
+        }
+        .pickerStyle(.radioGroup)
+        .padding(.leading, 16)
+        .disabled(!isEnabled)
 
-        if joinEventNotification {
+        TimeBeforeEventPickerRow(
+            selection: Binding(
+                get: { time },
+                set: { EventStartAlertPreferences.apply(enabled: isEnabled, style: style, time: $0) }
+            )
+        )
+        .disabled(!isEnabled)
+
+        if style != .system {
+            Toggle(
+                "shared_fullscreen_notification_without_link_toggle".loco(),
+                isOn: $fullscreenNotificationsForEventsWithoutMeetingLink
+            )
+            .disabled(!isEnabled)
+            .padding(.leading, 16)
+
+            Text("shared_fullscreen_notification_without_link_help".loco())
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .padding(.leading, 16)
+        }
+
+        if systemNotification {
             if notificationSettings.noAlertStyle, !notificationSettings.disabled {
                 Text("shared_send_notification_no_alert_style_tip".loco())
                     .font(.caption)
@@ -118,14 +135,12 @@ struct EndEventNotificationPicker: View {
     var body: some View {
         Toggle("general_end_of_event_notification_toggle".loco(), isOn: $endOfEventNotification)
 
-        Picker("", selection: $endOfEventNotificationTime) {
+        Picker(preferenceLabel("notifications_timing_title"), selection: $endOfEventNotificationTime) {
             Text("general_when_event_ends".loco()).tag(TimeBeforeEventEnd.atEnd)
             Text("general_one_minute_before".loco()).tag(TimeBeforeEventEnd.minuteBefore)
             Text("general_three_minute_before".loco()).tag(TimeBeforeEventEnd.threeMinuteBefore)
             Text("general_five_minute_before".loco()).tag(TimeBeforeEventEnd.fiveMinuteBefore)
         }
-        .labelsHidden()
-        .fixedSize()
         .padding(.leading, 16)
         .disabled(!endOfEventNotification)
     }
@@ -176,7 +191,7 @@ struct LaunchAtLoginANDPreferredLanguagePicker: View {
         }
 
         Picker(
-            "preferences_general_option_preferred_language_title".loco(),
+            preferenceLabel("preferences_general_option_preferred_language_title"),
             selection: $preferredLanguage
         ) {
             Text("preferences_general_option_preferred_language_system_value".loco()).tag(AppLanguage.system)
@@ -210,9 +225,7 @@ struct LaunchAtLoginANDPreferredLanguagePicker: View {
     VStack(alignment: .leading) {
         AutomaticEventJoinPicker()
         Divider()
-        FullscreenNotificationPicker()
-        Divider()
-        JoinEventNotificationPicker()
+        EventStartAlertPicker()
         Divider()
         EndEventNotificationPicker()
         Divider()

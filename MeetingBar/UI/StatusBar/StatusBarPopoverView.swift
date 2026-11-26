@@ -9,7 +9,6 @@ import SwiftUI
 struct StatusBarPopoverActions {
     var join: @MainActor (MBEvent) -> Void = { _ in }
     var joinCandidate: @MainActor (MeetingLinkCandidate) -> Void = { _ in }
-    var joinBookmark: @MainActor (Bookmark) -> Void = { _ in }
     var copyLink: @MainActor (MBEvent) -> Void = { _ in }
     var dismiss: @MainActor (MBEvent) -> Void = { _ in }
     var undismiss: @MainActor (MBEvent) -> Void = { _ in }
@@ -403,6 +402,14 @@ struct StatusBarPopoverView: View {
 
     private var footer: some View {
         HStack(spacing: 8) {
+            if presentation.showsGoogleCalendarButton {
+                Button {
+                    model.actions.openInCalendar(Links.googleCalendar)
+                } label: {
+                    Label("status_bar_details_open_google_calendar".loco(), systemImage: "arrow.up.right.square")
+                }
+                .help("status_bar_submenu_open_in_google_calendar".loco())
+            }
             Button(action: model.actions.openPreferences) {
                 Label("status_bar_preferences".loco(), systemImage: "gearshape")
             }
@@ -412,9 +419,6 @@ struct StatusBarPopoverView: View {
                 }
                 .buttonStyle(.plain)
             }
-            if !presentation.bookmarks.isEmpty {
-                bookmarksMenu
-            }
             Spacer(minLength: 0)
             Button(action: model.actions.quit) {
                 Label("status_bar_popover_quit".loco(), systemImage: "power")
@@ -423,16 +427,6 @@ struct StatusBarPopoverView: View {
         .buttonStyle(TimelineButtonStyle())
         .padding(.horizontal, metrics.edgeInset)
         .frame(height: metrics.footerHeight + 4)
-    }
-
-    private var bookmarksMenu: some View {
-        Menu("status_bar_section_bookmarks_title".loco()) {
-            ForEach(presentation.bookmarks, id: \.self) { bookmark in
-                Button(bookmark.name) { model.actions.joinBookmark(bookmark) }
-            }
-        }
-        .menuStyle(.borderlessButton)
-        .fixedSize()
     }
 }
 

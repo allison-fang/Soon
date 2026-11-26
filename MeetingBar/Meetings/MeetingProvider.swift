@@ -88,7 +88,7 @@ enum MeetingOpeningMode: String, CaseIterable, Codable, Sendable {
 ///
 /// `id` is a stable string identity. For built-in providers it equals the
 /// `rawValue` of the corresponding `MeetingServices` case so existing
-/// persistence (bookmarks, browser preferences) continues to decode.
+/// persistence (browser preferences) continues to decode.
 struct MeetingProvider: Equatable, Sendable {
     /// Stable string identity. For built-in providers this equals `MeetingServices.rawValue`.
     let id: String

@@ -14,7 +14,6 @@ struct AppearanceTab: View {
         PreferencesGroupedForm {
             EventsSection()
             StatusBarSection()
-            MenuSection()
         }
     }
 }
@@ -30,6 +29,7 @@ struct EventsSection: View {
     @Default(.showPendingEvents) var showPendingEvents
     @Default(.showTentativeEvents) var showTentativeEvents
     @Default(.showEventsForPeriod) var showEventsForPeriod
+    @Default(.timelineDensity) var timelineDensity
 
     var body: some View {
         Section(header: Text("preferences_appearance_events_title".loco())) {
@@ -42,6 +42,18 @@ struct EventsSection: View {
                 Text("preferences_appearance_events_show_events_for_today_tomorrow_value".loco())
                     .tag(ShowEventsForPeriod.today_n_tomorrow)
             }
+            .pickerStyle(.radioGroup)
+
+            Picker(
+                preferenceLabel("preferences_appearance_menu_density_title"),
+                selection: $timelineDensity
+            ) {
+                Text("preferences_appearance_menu_density_comfortable_value".loco())
+                    .tag(TimelineDensity.comfortable)
+                Text("preferences_appearance_menu_density_compact_value".loco())
+                    .tag(TimelineDensity.compact)
+            }
+            .pickerStyle(.radioGroup)
         }
 
         Section {
@@ -68,6 +80,7 @@ struct EventsSection: View {
                 Text("preferences_appearance_events_value_hide".loco())
                     .tag(NonAlldayEventsAppereance.hide_without_meeting_link)
             }
+            .pickerStyle(.radioGroup)
 
             Picker(
                 preferenceLabel("preferences_appearance_events_without_guest_title"),
@@ -80,6 +93,7 @@ struct EventsSection: View {
                 Text("preferences_appearance_events_value_hide".loco())
                     .tag(PastEventsAppereance.hide)
             }
+            .pickerStyle(.radioGroup)
         }
 
         Section {
@@ -115,25 +129,23 @@ struct EventsSection: View {
                 preferenceLabel("preferences_appearance_events_declined_title"),
                 selection: $declinedEventsAppereance
             ) {
-                Text("preferences_appearance_events_value_with_strikethrough".loco())
+                Text("preferences_appearance_events_value_show".loco())
                     .tag(DeclinedEventsAppereance.strikethrough)
-                Text("preferences_appearance_events_value_as_inactive".loco())
-                    .tag(DeclinedEventsAppereance.show_inactive)
                 Text("preferences_appearance_events_value_hide".loco())
                     .tag(DeclinedEventsAppereance.hide)
             }
+            .pickerStyle(.radioGroup)
 
             Picker(
                 preferenceLabel("preferences_appearance_events_past_title"),
                 selection: $pastEventsAppereance
             ) {
                 Text("preferences_appearance_events_value_show".loco())
-                    .tag(PastEventsAppereance.show_active)
-                Text("preferences_appearance_events_value_as_inactive".loco())
                     .tag(PastEventsAppereance.show_inactive)
                 Text("preferences_appearance_events_value_hide".loco())
                     .tag(PastEventsAppereance.hide)
             }
+            .pickerStyle(.radioGroup)
         }
     }
 }
@@ -198,22 +210,13 @@ struct StatusBarSection: View {
                     .tag(EventTitleFormat.none)
             }
 
-            HStack {
-                Spacer()
-                Stepper(
-                    value: $statusbarEventTitleLength,
-                    in: statusbarEventTitleLengthLimits.min ... statusbarEventTitleLengthLimits.max,
-                    step: 5
-                ) {
-                    Text(
-                        "preferences_appearance_status_bar_title_shorten_stepper".loco(
-                            statusbarEventTitleLength)
-                    )
-                    .monospacedDigit()
-                }
-                .fixedSize()
-            }
-            .padding(.leading, 16)
+            PreferencesChildStepperRow(
+                title: "preferences_appearance_status_bar_title_max_length".loco(),
+                valueText: "preferences_appearance_status_bar_title_shorten_stepper".loco(statusbarEventTitleLength),
+                value: $statusbarEventTitleLength,
+                range: statusbarEventTitleLengthLimits.min ... statusbarEventTitleLengthLimits.max,
+                step: 5
+            )
             .disabled(eventTitleFormat != .show)
 
             Picker(
@@ -224,6 +227,7 @@ struct StatusBarSection: View {
                     Text(option.titleKey.loco()).tag(option.format)
                 }
             }
+            .pickerStyle(.radioGroup)
         }
 
         Section {
@@ -232,22 +236,14 @@ struct StatusBarSection: View {
                 isOn: $showEventMaxTimeUntilEventEnabled
             )
 
-            HStack {
-                Spacer()
-                Stepper(
-                    value: $showEventMaxTimeUntilEventThreshold,
-                    in: 5 ... 720,
-                    step: 5
-                ) {
-                    Text(
-                        "preferences_appearance_status_bar_next_event_stepper".loco(
-                            showEventMaxTimeUntilEventThreshold)
-                    )
-                    .monospacedDigit()
-                }
-                .fixedSize()
-            }
-            .padding(.leading, 16)
+            PreferencesChildStepperRow(
+                title: "preferences_appearance_status_bar_next_event_window".loco(),
+                valueText: "preferences_appearance_status_bar_next_event_stepper".loco(
+                    showEventMaxTimeUntilEventThreshold),
+                value: $showEventMaxTimeUntilEventThreshold,
+                range: 5 ... 720,
+                step: 5
+            )
             .disabled(!showEventMaxTimeUntilEventEnabled)
 
             Picker(
@@ -268,81 +264,6 @@ struct StatusBarSection: View {
         let icon = NSImage(named: iconName)
         icon!.size = NSSize(width: 16, height: 16)
         return icon!
-    }
-}
-
-// MARK: - Menu
-
-struct MenuSection: View {
-    @Default(.timelineDensity) var timelineDensity
-    @Default(.shortenEventTitle) var shortenEventTitle
-    @Default(.menuEventTitleLength) var menuEventTitleLength
-    @Default(.showEventEndTime) var showEventEndTime
-    @Default(.showEventDetails) var showEventDetails
-    @Default(.showMeetingServiceIcon) var showMeetingServiceIcon
-    @Default(.showEventCalendarColor) var showEventCalendarColor
-    @Default(.showTimelineInMenu) var showTimelineInMenu
-
-    var body: some View {
-        Section(header: Text("preferences_appearance_menu_title".loco())) {
-            Picker(
-                "preferences_appearance_menu_density_title".loco(),
-                selection: $timelineDensity
-            ) {
-                Text("preferences_appearance_menu_density_comfortable_value".loco())
-                    .tag(TimelineDensity.comfortable)
-                Text("preferences_appearance_menu_density_compact_value".loco())
-                    .tag(TimelineDensity.compact)
-            }
-            Toggle(
-                preferenceLabel("preferences_appearance_menu_show_timeline_toggle"),
-                isOn: $showTimelineInMenu
-            )
-        }
-
-        Section(header: Text(preferenceLabel("preferences_appearance_menu_show_event_title"))) {
-            Toggle(
-                preferenceLabel("preferences_appearance_menu_show_event_end_time_value"),
-                isOn: $showEventEndTime
-            )
-            Toggle(
-                preferenceLabel("preferences_appearance_menu_show_event_icon_value"),
-                isOn: $showMeetingServiceIcon
-            )
-            Toggle(
-                preferenceLabel("preferences_appearance_menu_show_event_calendar_color_value"),
-                isOn: $showEventCalendarColor
-            )
-            Toggle(
-                preferenceLabel("preferences_appearance_menu_show_event_details_value"),
-                isOn: $showEventDetails
-            )
-        }
-
-        Section {
-            Toggle(
-                preferenceLabel("preferences_appearance_menu_shorten_event_title_toggle"),
-                isOn: $shortenEventTitle
-            )
-
-            HStack {
-                Spacer()
-                Stepper(
-                    value: $menuEventTitleLength,
-                    in: 20 ... 100,
-                    step: 5
-                ) {
-                    Text(
-                        "preferences_appearance_menu_shorten_event_title_stepper".loco(
-                            menuEventTitleLength)
-                    )
-                    .monospacedDigit()
-                }
-                .fixedSize()
-            }
-            .padding(.leading, 16)
-            .disabled(!shortenEventTitle)
-        }
     }
 }
 

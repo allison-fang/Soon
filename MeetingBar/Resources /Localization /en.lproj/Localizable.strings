@@ -12,16 +12,14 @@
 "general_delete" = "Delete";
 "general_save" = "Save";
 "general_meeting" = "Meeting";
-"general_when_event_starts" = "when event starts";
-"general_when_event_ends" = "when event ends";
+"general_when_event_starts" = "When event starts";
+"general_when_event_ends" = "When event ends";
 "general_one_minute_before" = "1 minute before";
 "general_three_minute_before" = "3 minutes before";
 "general_five_minute_before" = "5 minutes before";
 "general_refresh" = "Refresh";
-"general_end_of_event_notification_toggle" = "Send a notification when event ends";
+"general_end_of_event_notification_toggle" = "Alert me when an event ends";
 "timeline_accessibility_label" = "Timeline with %d events";
-"create_meeting_error_title" = "Cannot create new meeting";
-"create_meeting_error_message" = "Custom URL \"%@\" missing or invalid. ";
 "next_meeting_empty_title" = "There are no upcoming meetings today";
 "next_meeting_empty_message" = "Woohoo! It's time to make cocoa";
 "message_clipboard_invalid_title" = "No valid URL";
@@ -43,27 +41,21 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "General";
-"preferences_tab_bookmarks" = "Bookmarks";
 "preferences_tab_calendars" = "Calendars";
 "preferences_tab_meeting_opening" = "Meeting Links";
 "preferences_tab_menu_bar" = "Display & Events";
 "preferences_tab_notifications" = "Notifications";
 "preferences_tab_advanced" = "Advanced";
-"preferences_sidebar_setup" = "Setup";
-"preferences_sidebar_experience" = "Experience";
-"preferences_sidebar_advanced" = "Advanced";
 
 // MARK: - Preferences section titles
 
-"preferences_section_general_settings_title" = "General Settings";
-"preferences_section_shortcuts_title" = "Keyboard Shortcuts";
-"preferences_section_create_title" = "Create meetings";
-"preferences_section_apple_script_hooks_title" = "AppleScript Hooks";
-"preferences_section_regex_filters_title" = "Regex Filters";
-"preferences_calendar_configuration_title" = "Calendar Configuration";
+"preferences_section_general_settings_title" = "General settings";
+"preferences_section_shortcuts_title" = "Keyboard shortcuts";
+"preferences_section_apple_script_hooks_title" = "AppleScript hooks";
+"preferences_section_regex_filters_title" = "Regex filters";
+"preferences_calendar_configuration_title" = "Calendar configuration";
 "preferences_meeting_opening_behavior_title" = "Open meeting links";
-"preferences_notifications_alerts_title" = "Meeting Alerts";
-"preferences_notifications_automation_title" = "Automatic Joining";
+"preferences_notifications_automation_title" = "Automatic joining";
 
 // MARK: - Preferences Status
 
@@ -87,7 +79,6 @@
 "preferences_general_option_preferred_language_title" = "Language:";
 "preferences_general_option_preferred_language_system_value" = "System";
 "preferences_general_shortcut_open_menu" = "Open menu:";
-"preferences_general_shortcut_create_meeting" = "Create meeting:";
 "preferences_general_shortcut_join_next" = "Join next meeting:";
 "preferences_general_shortcut_join_from_clipboard" = "Join meeting from clipboard:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Toggle title visibility in status bar:";
@@ -110,8 +101,8 @@
 
 "preferences_appearance_events_title" = "Events";
 "preferences_appearance_events_show_events_for_title" = "Show events for";
-"preferences_appearance_events_show_events_for_today_value" = "today";
-"preferences_appearance_events_show_events_for_today_tomorrow_value" = "today and tomorrow";
+"preferences_appearance_events_show_events_for_today_value" = "Today";
+"preferences_appearance_events_show_events_for_today_tomorrow_value" = "Today and tomorrow";
 "preferences_appearance_events_no_meeting_link_title" = "Events without a meeting link";
 "preferences_appearance_events_all_day_title" = "All-day events:";
 "preferences_appearance_events_without_guest_title" = "Events without guests:";
@@ -119,12 +110,11 @@
 "preferences_appearance_events_pending_title" = "Pending events";
 "preferences_appearance_events_declined_title" = "Declined events:";
 "preferences_appearance_events_tentative_title" = "Tentative events:";
-"preferences_appearance_events_value_show" = "show";
-"preferences_appearance_events_value_hide" = "hide";
-"preferences_appearance_events_value_as_inactive" = "show as inactive";
-"preferences_appearance_events_value_as_underlined" = "show as underlined";
-"preferences_appearance_events_value_with_strikethrough" = "show with strikethrough";
-"preferences_appearance_events_value_only_with_link" = "show only those with meeting links";
+"preferences_appearance_events_value_show" = "Show";
+"preferences_appearance_events_value_hide" = "Hide";
+"preferences_appearance_events_value_as_inactive" = "Show as inactive";
+"preferences_appearance_events_value_as_underlined" = "Show as underlined";
+"preferences_appearance_events_value_only_with_link" = "Show only those with meeting links";
 "preferences_appearance_status_bar_title" = "Status bar";
 "preferences_appearance_status_bar_icon_title" = "Icon";
 "preferences_appearance_status_bar_icon_app_icon_value" = "\U00A0Soon";
@@ -132,46 +122,35 @@
 "preferences_appearance_status_bar_icon_specific_icon_value" = "\U00A0Event-specific icon (e.g. MS Teams)";
 "preferences_appearance_status_bar_icon_no_icon_value" = "\U00A0No icon";
 "preferences_appearance_status_bar_title_title" = "Title";
-"preferences_appearance_status_bar_title_event_title_value" = "event title";
-"preferences_appearance_status_bar_title_generic_value" = "generic title (Meeting)";
-"preferences_appearance_status_bar_title_dot_value" = "dot (•)";
-"preferences_appearance_status_bar_title_hide_value" = "hide";
-"preferences_appearance_status_bar_title_shorten_stepper" = "shorten to %d characters";
+"preferences_appearance_status_bar_title_event_title_value" = "Event title";
+"preferences_appearance_status_bar_title_generic_value" = "Generic title (Meeting)";
+"preferences_appearance_status_bar_title_dot_value" = "Dot (•)";
+"preferences_appearance_status_bar_title_hide_value" = "Hide";
+"preferences_appearance_status_bar_title_shorten_stepper" = "%d characters";
 "preferences_appearance_status_bar_time_title" = "Show time";
-"preferences_appearance_status_bar_time_show_value" = "show";
-"preferences_appearance_status_bar_time_show_under_title_value" = "show under title";
-"preferences_appearance_status_bar_time_hide_value" = "hide";
+"preferences_appearance_status_bar_time_show_value" = "Show";
+"preferences_appearance_status_bar_time_show_under_title_value" = "Show under title";
+"preferences_appearance_status_bar_time_hide_value" = "Hide";
 "preferences_appearance_status_bar_ongoing_title" = "Ongoing event visibility:";
-"preferences_appearance_status_bar_ongoing_time_immediate_value" = "hide after start";
-"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "hide 10 min  after start";
-"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "hide 10 min before next event";
-"preferences_appearance_status_bar_next_event_toggle" = "Show only events starting within";
+"preferences_appearance_status_bar_ongoing_time_immediate_value" = "Hide after start";
+"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Hide 10 min after start";
+"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Hide 10 min before next event";
+"preferences_appearance_status_bar_next_event_toggle" = "Only show events starting soon";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minutes";
-"preferences_appearance_menu_title" = "Menu";
 "preferences_appearance_menu_density_title" = "Timeline density";
 "preferences_appearance_menu_density_comfortable_value" = "Comfortable";
 "preferences_appearance_menu_density_compact_value" = "Compact";
-"preferences_appearance_menu_show_timeline_toggle" = "Show visual timeline of the day";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Shorten event title to";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d characters";
 "preferences_appearance_menu_time_format_title" = "Time format:";
-"preferences_appearance_menu_time_format_12_hour_value" = "12-hour (AM/PM)";
+"preferences_appearance_menu_time_format_12_hour_value" = "12-hour";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-hour";
-"preferences_appearance_menu_show_event_title" = "Show event:";
-"preferences_appearance_menu_show_event_end_time_value" = "end time";
-"preferences_appearance_menu_show_event_icon_value" = "icon";
-"preferences_appearance_menu_show_event_calendar_color_value" = "calendar color";
-"preferences_appearance_menu_show_event_details_value" = "details as submenu";
 
 // MARK: - Preferences Services
 
 "preferences_services_link_meeting_title" = "Default browser for meeting links";
 "preferences_services_link_service_title" = "%@";
 "preferences_services_link_default_browser_value" = "Default web browser";
-"preferences_services_link_default_help" = "This browser is used unless a provider-specific override is set.";
-"preferences_services_link_overrides_title" = "Service-specific opening";
-"preferences_services_link_overrides_help" = "These choices override the default browser for each meeting service.";
-"preferences_services_link_modes_help" = "App, web app, and PWA options are optional. Existing browser behavior stays unchanged until you select one.";
+"preferences_services_link_default_help" = "Used unless a service-specific override is set.";
+"preferences_services_link_overrides_title" = "Service-specific overrides";
 "preferences_meeting_opening_mode_meetinone" = "MeetInOne";
 "preferences_meeting_opening_mode_google_meet_pwa" = "Google Meet PWA (Chrome)";
 "preferences_meeting_opening_mode_google_meet_pwa_help" = "Opens Google Meet through the installed Chrome PWA when available. Falls back to your browser.";
@@ -184,11 +163,7 @@
 "preferences_meeting_opening_mode_jitsi_app" = "Jitsi App";
 "preferences_meeting_opening_mode_slack_app" = "Slack App";
 "preferences_meeting_opening_mode_riverside_app" = "Riverside App";
-"preferences_services_create_meeting_title" = "Create meetings via";
-"preferences_services_create_meeting_custom_url_value" = "Custom URL";
 "preferences_services_create_meeting_custom_url_placeholder" = "Please enter a valid URL (with http:// or https://)";
-"preferences_services_google_meet_tip" = "Tip: Google Meet supports choosing account in the URL, e.g. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Use web browser";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -208,19 +183,6 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Choose web browser";
 "preferences_configure_browsers_choose_browser_panel_message" = "Select where to run the web browser from.";
 
-// MARK: - Preferences Bookmarks
-
-"preferences_bookmarks_no_bookmarks_placeholder" = "You don't have any bookmarks yet";
-"preferences_bookmarks_delete_bookmark_title" = "Delete bookmark?";
-"preferences_bookmarks_delete_bookmark_message" = "Delete %@ bookmark?";
-"preferences_bookmarks_add_bookmark_button" = "Add bookmark";
-"preferences_bookmarks_new_bookmark_title" = "New bookmark";
-"preferences_bookmarks_new_bookmark_name" = "Name";
-"preferences_bookmarks_new_bookmark_link_phone" = "Link/phone number";
-"preferences_bookmarks_new_bookmark_service" = "Service";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ already has this link/phone number:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "Can't add bookmark";
-
 // MARK: - Preferences Calendars
 
 "preferences_calendars_select_calendars_title" = "Select calendars to show meetings in the menu bar";
@@ -237,7 +199,6 @@
 
 // MARK: - Preferences Advanced
 
-"preferences_advanced_setting_warning" = "These settings are intended for advanced users.";
 "preferences_advanced_apple_script_checkmark" = "Run AppleScript when joining";
 "preferences_advanced_apple_script_placeholder" = "# write your script here\ntell application \"Music\" to pause";
 "preferences_advanced_run_script_before_event_start" = "Run AppleScript before events";
@@ -253,7 +214,7 @@
 "preferences_advanced_event_regex_title" = "Custom regexes to filter out meetings";
 "preferences_advanced_regex_title" = "Custom regexes for meeting link";
 "preferences_advanced_regex_add_button" = "Add regex";
-"preferences_advanced_regex_edit_button" = "edit";
+"preferences_advanced_regex_edit_button" = "Edit";
 "preferences_advanced_regex_new_title" = "Enter regex";
 "preferences_advanced_regex_new_cant_save_title" = "Can't save regex";
 "preferences_advanced_regex_duplicate_error" = "This regex already exists.";
@@ -280,7 +241,6 @@
 "notification_next_meeting_dismissed_message" = "You can remove dismissal from Quick Actions";
 "notification_all_dismissals_removed_title" = "Removed all dismissals";
 "notification_all_dismissals_removed_message" = "All dismissed meetings are back in action";
-"status_bar_section_join_create_meeting" = "Create meeting";
 "status_bar_control_actions" = "More actions";
 "status_bar_control_current_meeting" = "Current meeting";
 "status_bar_control_next_meeting" = "Next meeting";
@@ -294,8 +254,6 @@
 "status_bar_control_select_calendars" = "Select Calendars in Preferences";
 "status_bar_control_refresh_failed" = "Calendar refresh failed";
 "status_bar_control_no_upcoming" = "No upcoming meetings";
-"status_bar_section_bookmarks_title" = "Bookmarks";
-"status_bar_section_bookmarks_menu" = "Bookmarks menu";
 "status_bar_section_date_nothing" = "Nothing for %@";
 "status_bar_event_start_time_all_day" = "All day";
 "status_bar_submenu_calendar_title" = "Calendar: %@";
@@ -410,8 +368,7 @@
 // MARK: - Shared
 
 "shared_send_notification_toggle" = "Send a system notification";
-"shared_fullscreen_notification_toggle" = "Show a fullscreen notification";
-"shared_fullscreen_notification_without_link_toggle" = "Also show fullscreen notifications for events without meeting links";
+"shared_fullscreen_notification_without_link_toggle" = "Also for events without meeting links";
 "shared_fullscreen_notification_without_link_help" = "Events without meeting links show a fullscreen reminder with a Dismiss action only.";
 "fullscreen_notification_dismiss_action" = "Dismiss";
 "shared_send_notification_no_alert_style_tip" = "Note: Notifications are set to Banners, so they appear briefly before disappearing. To keep them onscreen until you dismiss them, switch to Alerts in your macOS notification settings.";
@@ -420,7 +377,6 @@
 "shared_automatic_event_join_tip" = "This setting will automatically open your next meeting in your configured app or browser";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "Custom URL";
 "constants_meeting_service_phone" = "Phone number";
 "constants_meeting_service_zoom_native" = "Zoom native";
 "constants_meeting_service_other" = "Other";
@@ -453,4 +409,14 @@
 "preferences_meeting_opening_mode_tuple_app" = "Tuple App";
 
 // MARK: - What's New
-
+"preferences_appearance_status_bar_title_max_length" = "Maximum length";
+"preferences_appearance_status_bar_next_event_window" = "Starting within";
+"notifications_event_start_title" = "Event starts";
+"notifications_event_start_toggle" = "Alert me when an event starts";
+"notifications_event_end_title" = "Event ends";
+"notifications_alert_style_title" = "Alert type";
+"notifications_alert_style_system" = "System notification";
+"notifications_alert_style_fullscreen" = "Full screen";
+"notifications_alert_style_both" = "Both";
+"notifications_timing_title" = "Timing";
+"status_bar_details_open_google_calendar" = "Google Calendar";

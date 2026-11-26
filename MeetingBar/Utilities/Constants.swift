@@ -28,6 +28,7 @@ enum TitleTruncationRules {
 
 enum Links {
     static let github = URL(string: "https://github.com/allison-fang/Soon")!
+    static let googleCalendar = URL(string: "https://calendar.google.com/")!
     static let calendarPreferences = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Calendars")!
 }
 
@@ -146,6 +147,12 @@ enum TimeBeforeEvent: Int, Defaults.Serializable, Codable {
     case minuteBefore = 60
     case threeMinuteBefore = 180
     case fiveMinuteBefore = 300
+}
+
+enum EventStartAlertStyle: String, Defaults.Serializable, Codable, CaseIterable {
+    case system
+    case fullscreen
+    case both
 }
 
 enum TimeBeforeEventEnd: Int, Defaults.Serializable, Codable {

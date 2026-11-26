@@ -99,13 +99,10 @@ final class StatusBarItemController {
         Defaults.publisher(
             keys: .statusbarEventTitleLength, .eventTimeFormat,
             .eventTitleIconFormat, .showEventMaxTimeUntilEventThreshold,
-            .showEventMaxTimeUntilEventEnabled, .showEventDetails,
-            .shortenEventTitle, .menuEventTitleLength,
-            .showEventEndTime, .showMeetingServiceIcon,
-            .showEventCalendarColor,
-            .timeFormat, .bookmarks, .timelineDensity, .timelineZoom,
+            .showEventMaxTimeUntilEventEnabled,
+            .timeFormat, .timelineDensity, .timelineZoom,
             .pastEventsAppereance, .declinedEventsAppereance,
-            .showTimelineInMenu, .eventTitleFormat,
+            .eventTitleFormat,
             options: []
         )
         .receive(on: DispatchQueue.main)
@@ -117,8 +114,6 @@ final class StatusBarItemController {
     }
 
     private func setupKeyboardShortcuts() {
-        KeyboardShortcuts.onKeyUp(for: .createMeetingShortcut, action: createMeeting)
-
         KeyboardShortcuts.onKeyUp(for: .joinEventShortcut) {
             Task { @MainActor in self.joinNextMeeting() }
         }
@@ -218,7 +213,10 @@ final class StatusBarItemController {
         button.imagePosition = button.image?.name() == "no_online_session" ? .noImage : .imageLeft
 
         if presentation.mode == .nextEvent {
-            button.attributedTitle = StatusBarTitleRenderer.attributedTitle(for: presentation)
+            let title = StatusBarTitleRenderer.attributedTitle(for: presentation)
+            button.attributedTitle = button.image != nil && button.imagePosition == .imageLeft && title.length > 0
+                ? StatusBarTitleRenderer.addingIconGap(to: title)
+                : title
             button.toolTip = presentation.tooltip
         }
 
@@ -340,14 +338,6 @@ final class StatusBarItemController {
                 MeetingOpener.open(
                     meetingLink: MeetingLink(service: candidate.service, url: candidate.url))
             },
-            joinBookmark: { [weak self] bookmark in
-                self?.popover.close()
-                MeetingOpener.open(
-                    meetingLink: MeetingLink(
-                        service: MeetingServices(rawValue: bookmark.service),
-                        url: bookmark.url
-                    ))
-            },
             copyLink: { [weak self] event in
                 self?.popover.close()
                 self?.copyMeetingLink(of: event)
@@ -453,6 +443,16 @@ enum StatusBarTitleRenderer {
             // attributed title is intentionally empty here.
             return NSAttributedString(string: "")
         }
+    }
+
+    /// AppKit's default image-to-title gap reads cramped in the menu bar.
+    static func addingIconGap(to title: NSAttributedString) -> NSAttributedString {
+        let result = NSMutableAttributedString(
+            string: "\u{2009}",
+            attributes: title.attributes(at: 0, effectiveRange: nil)
+        )
+        result.append(title)
+        return result
     }
 
     private static func titleAttributes(

@@ -13,8 +13,6 @@
 "general_delete" = "Видалити";
 "general_save" = "Зберегти";
 "general_meeting" = "Зустріч";
-"create_meeting_error_title" = "Ой леле! Не вдалось створити зустріч";
-"create_meeting_error_message" = "Власне посилання \"%@\" відсутнє або неправильне. ";
 "next_meeting_empty_title" = "Сьогодні більше немає зустрічей";
 "next_meeting_empty_message" = "Овва! Час для какао";
 
@@ -26,7 +24,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Загальні";
-"preferences_tab_bookmarks" = "Закладки";
 "preferences_tab_calendars" = "Календарі";
 "preferences_tab_advanced" = "Розширені";
 
@@ -36,7 +33,6 @@
 "preferences_general_option_preferred_language_title" = "Мова:";
 "preferences_general_option_preferred_language_system_value" = "Системна";
 "preferences_general_shortcut_open_menu" = "Відкрити меню:";
-"preferences_general_shortcut_create_meeting" = "Створити зустріч:";
 "preferences_general_shortcut_join_next" = "Долучитись до наступної зустрічі:";
 "preferences_general_shortcut_join_from_clipboard" = "Долучитись до зустрічі з буфера обміну:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Показати/сховати заголовок у смузі меню:";
@@ -47,8 +43,8 @@
 
 "preferences_appearance_events_title" = "Події";
 "preferences_appearance_events_show_events_for_title" = "Показати події зі";
-"preferences_appearance_events_show_events_for_today_value" = "сьогодні";
-"preferences_appearance_events_show_events_for_today_tomorrow_value" = "сьогодні та завтра";
+"preferences_appearance_events_show_events_for_today_value" = "Сьогодні";
+"preferences_appearance_events_show_events_for_today_tomorrow_value" = "Сьогодні та завтра";
 "preferences_appearance_events_no_meeting_link_title" = "Події без посилання на зустріч";
 "preferences_appearance_events_all_day_title" = "Події на весь день:";
 "preferences_appearance_events_without_guest_title" = "Події без учасників:";
@@ -56,12 +52,11 @@
 "preferences_appearance_events_pending_title" = "Події без відповіді";
 "preferences_appearance_events_declined_title" = "Відхилені події:";
 "preferences_appearance_events_tentative_title" = "Заплановані події:";
-"preferences_appearance_events_value_show" = "показати";
-"preferences_appearance_events_value_hide" = "приховати";
-"preferences_appearance_events_value_as_inactive" = "показати як неактивні";
-"preferences_appearance_events_value_as_underlined" = "показати підкресленими";
-"preferences_appearance_events_value_with_strikethrough" = "показати перекресленими";
-"preferences_appearance_events_value_only_with_link" = "показати лише з посиланнями на зустріч";
+"preferences_appearance_events_value_show" = "Показати";
+"preferences_appearance_events_value_hide" = "Приховати";
+"preferences_appearance_events_value_as_inactive" = "Показати як неактивні";
+"preferences_appearance_events_value_as_underlined" = "Показати підкресленими";
+"preferences_appearance_events_value_only_with_link" = "Показати лише з посиланнями на зустріч";
 "preferences_appearance_status_bar_title" = "Смуга меню";
 "preferences_appearance_status_bar_icon_title" = "Значок";
 "preferences_appearance_status_bar_icon_app_icon_value" = " Значок застосунку";
@@ -69,38 +64,27 @@
 "preferences_appearance_status_bar_icon_specific_icon_value" = " Значок сервісу зустрічі (напр. MS Teams)";
 "preferences_appearance_status_bar_icon_no_icon_value" = " Без значка";
 "preferences_appearance_status_bar_title_title" = "Заголовок";
-"preferences_appearance_status_bar_title_event_title_value" = "заголовок події";
-"preferences_appearance_status_bar_title_generic_value" = "загальна назва (Зустріч)";
-"preferences_appearance_status_bar_title_dot_value" = "крапка (•)";
-"preferences_appearance_status_bar_title_hide_value" = "приховати";
-"preferences_appearance_status_bar_title_shorten_stepper" = "скоротити до %d символів";
+"preferences_appearance_status_bar_title_event_title_value" = "Заголовок події";
+"preferences_appearance_status_bar_title_generic_value" = "Загальна назва (Зустріч)";
+"preferences_appearance_status_bar_title_dot_value" = "Крапка (•)";
+"preferences_appearance_status_bar_title_hide_value" = "Приховати";
+"preferences_appearance_status_bar_title_shorten_stepper" = "%d символів";
 "preferences_appearance_status_bar_time_title" = "Час";
-"preferences_appearance_status_bar_time_show_value" = "показати";
-"preferences_appearance_status_bar_time_show_under_title_value" = "показати під заголовком";
-"preferences_appearance_status_bar_time_hide_value" = "приховати";
-"preferences_appearance_status_bar_next_event_toggle" = "Показувати лише наступну подію, яка починається через";
+"preferences_appearance_status_bar_time_show_value" = "Показати";
+"preferences_appearance_status_bar_time_show_under_title_value" = "Показати під заголовком";
+"preferences_appearance_status_bar_time_hide_value" = "Приховати";
+"preferences_appearance_status_bar_next_event_toggle" = "Показувати лише події, що скоро почнуться";
 "preferences_appearance_status_bar_next_event_stepper" = "%d хвилин";
-"preferences_appearance_menu_title" = "Меню";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Скоротити заголовок події до";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d символів";
 "preferences_appearance_menu_time_format_title" = "Формат часу:";
-"preferences_appearance_menu_time_format_12_hour_value" = "12-годинний (AM/PM)";
+"preferences_appearance_menu_time_format_12_hour_value" = "12-годинний";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-годинний";
-"preferences_appearance_menu_show_event_title" = "Показувати для події:";
-"preferences_appearance_menu_show_event_end_time_value" = "час закінчення";
-"preferences_appearance_menu_show_event_icon_value" = "значок";
-"preferences_appearance_menu_show_event_details_value" = "деталі як підменю";
 
 // MARK: - Preferences Services
 
 "preferences_services_link_meeting_title" = "Відкривати усі посилання в";
 "preferences_services_link_service_title" = "Відкривати посилання %@ у";
 "preferences_services_link_default_browser_value" = "основному браузері";
-"preferences_services_create_meeting_title" = "Створювати зустрічі в";
-"preferences_services_create_meeting_custom_url_value" = "Власне посилання";
 "preferences_services_create_meeting_custom_url_placeholder" = "Будь ласка, введіть коректне посилання (з url-схемою, напр. https://)";
-"preferences_services_google_meet_tip" = "Підказка: Google Meet підтримує вибір акаунта через параметр, напр. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Використовувати браузер";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -119,18 +103,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Виберіть веббраузер";
 "preferences_configure_browsers_choose_browser_panel_message" = "Виберіть, звідки запускати веббраузер.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "У Вас ще немає закладок";
-"preferences_bookmarks_delete_bookmark_title" = "Видалити закладку?";
-"preferences_bookmarks_delete_bookmark_message" = "Чи хочете Ви видалити закладку %@?";
-"preferences_bookmarks_add_bookmark_button" = "Додати закладку";
-"preferences_bookmarks_new_bookmark_title" = "Нова закладка";
-"preferences_bookmarks_new_bookmark_name" = "Назва";
-"preferences_bookmarks_new_bookmark_link_phone" = "Посилання/номер телефону";
-"preferences_bookmarks_new_bookmark_service" = "Сервіс";
-"preferences_bookmarks_new_bookmark_already_exist" = "Закладка з таким посиланням/телефоном уже існує з назвою %@:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "Ой леле! Не вдалось додати закладку";
 
 // MARK: - Preferences Calendars
 
@@ -142,7 +115,6 @@
 
 // MARK: - Preferences Advanced
 
-"preferences_advanced_setting_warning" = "⚠️ Використовуйте ці налаштування, тільки якщо розумієте, що вони роблять";
 "preferences_advanced_apple_script_checkmark" = "Запускати AppleScript при приєднанні до зустрічі";
 "preferences_advanced_apple_script_placeholder" = "# введіть свій скрипт тут\ntell application \"Music\" to pause";
 "preferences_advanced_test_script_on_next_event" = "Тестувати на наступній зустрічі";
@@ -153,7 +125,7 @@
 "preferences_advanced_wrong_location_button" = "Зрозуміло!";
 "preferences_advanced_regex_title" = "Власні regex для посилань на зустрічі";
 "preferences_advanced_regex_add_button" = "Додати regex";
-"preferences_advanced_regex_edit_button" = "редагувати";
+"preferences_advanced_regex_edit_button" = "Редагувати";
 "preferences_advanced_regex_new_title" = "Введіть regex";
 "preferences_advanced_regex_new_cant_save_title" = "Ой леле! Не вдалось зберегти regex";
 "preferences_advanced_event_regex_title" = "Власні regex для відсіювання зустрічей";
@@ -166,9 +138,6 @@
 "status_bar_section_join_next_meeting" = "Долучитись до наступної зустрічі";
 "status_bar_section_join_current_meeting" = "Долучитись до поточної зустрічі";
 "status_bar_section_join_from_clipboard" = "Відкрити зустріч із буфера обміну";
-"status_bar_section_join_create_meeting" = "Створити зустріч";
-"status_bar_section_bookmarks_title" = "Закладки";
-"status_bar_section_bookmarks_menu" = "Меню закладок";
 "status_bar_section_date_nothing" = "Жодних подій %@";
 "status_bar_event_start_time_all_day" = "Весь день";
 "status_bar_submenu_calendar_title" = "Календар: %@";
@@ -226,8 +195,7 @@
 // MARK: - Shared
 
 "shared_send_notification_toggle" = "Надсилати системне сповіщення";
-"shared_fullscreen_notification_toggle" = "Показувати повноекранне сповіщення";
-"general_when_event_starts" = "коли зустріч розпочинається";
+"general_when_event_starts" = "Коли зустріч розпочинається";
 "general_one_minute_before" = "за 1 хвилину до початку";
 "general_three_minute_before" = "за 3 хвилини до початку";
 "general_five_minute_before" = "за 5 хвилин до початку";
@@ -237,7 +205,6 @@
 "shared_automatic_event_join_tip" = "Це налаштування автоматично відкриє вашу наступну зустріч у вибраному застосунку чи браузері";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "Власне посилання";
 "constants_meeting_service_phone" = "Телефон";
 "constants_meeting_service_zoom_native" = "Zoom native";
 "constants_meeting_service_other" = "інше";
@@ -272,15 +239,13 @@
 "notification_all_dismissals_removed_message" = "Всі пропущені зустрічі знову у календарі";
 "notifications_event_started_body" = "Подія розпочалась";
 "notifications_meetingbar_dismiss_event_action" = "Вимкнути сповіщення";
-"preferences_appearance_status_bar_ongoing_time_immediate_value" = "приховати після запуску";
+"preferences_appearance_status_bar_ongoing_time_immediate_value" = "Приховати після запуску";
 "preferences_appearance_status_bar_ongoing_title" = "Поточна видимість події:";
-"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "приховати за 10 хвилин до наступної події";
-"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "приховати через 10 хвилин після початку";
-"preferences_appearance_menu_show_timeline_toggle" = "Показати візуальну хронологію дня";
-
+"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Приховати за 10 хвилин до наступної події";
+"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Приховати через 10 хвилин після початку";
 "general_refresh" = "Оновити";
-"general_end_of_event_notification_toggle" = "Надсилати сповіщення, коли подія завершується";
-"general_when_event_ends" = "коли зустріч завершується";
+"general_end_of_event_notification_toggle" = "Сповіщати, коли подія закінчується";
+"general_when_event_ends" = "Коли зустріч завершується";
 "timeline_accessibility_label" = "Хронологія з %d подіями";
 "message_clipboard_invalid_title" = "Недійсне посилання";
 "message_clipboard_invalid_text" = "У буфері обміну немає посилання на зустріч, тому неможливо розпочати зустріч.";
@@ -297,12 +262,10 @@
 "preferences_tab_notifications" = "Сповіщення";
 "preferences_section_general_settings_title" = "Загальні налаштування";
 "preferences_section_shortcuts_title" = "Клавіатурні скорочення";
-"preferences_section_create_title" = "Створити зустрічі";
 "preferences_section_apple_script_hooks_title" = "AppleScript хуки";
 "preferences_section_regex_filters_title" = "Regex фільтри";
 "preferences_calendar_source_title" = "Джерело календаря";
 "preferences_meeting_opening_behavior_title" = "Відкривати посилання на зустрічі";
-"preferences_notifications_alerts_title" = "Сповіщення про зустрічі";
 "preferences_notifications_automation_title" = "Автоматичне приєднання";
 "preferences_status_state_ok" = "Актуально";
 "preferences_status_state_stale" = "Відображаються кешовані дані";
@@ -315,7 +278,6 @@
 "preferences_status_copy_diagnostics" = "Скопіювати діагностику";
 "preferences_services_link_default_help" = "Цей браузер використовується, якщо не встановлено окреме правило для постачальника.";
 "preferences_services_link_overrides_title" = "Правила для постачальників";
-"preferences_services_link_overrides_help" = "Ці вибори замінюють основний браузер для кожного сервісу зустрічей.";
 "preferences_configure_browsers_help" = "Додайте власні браузери, профілі або програми для відкриття посилань на зустрічі.";
 "preferences_advanced_regex_duplicate_error" = "Цей regex вже існує.";
 "preferences_advanced_regex_test_title" = "Тестувати regex для посилань на зустрічі";
@@ -363,7 +325,7 @@
 "onboarding_success_description" = "Наступна зустріч з'явиться у смузі меню.";
 "access_screen_provider_authorization_cancelled" = "Авторизацію скасовано. Спробуй ще раз, щоб підключити календар.";
 "fullscreen_notification_dismiss_action" = "Закрити";
-"shared_fullscreen_notification_without_link_toggle" = "Також показувати повноекранні сповіщення для подій без посилання на зустріч";
+"shared_fullscreen_notification_without_link_toggle" = "Також для подій без посилання на зустріч";
 "shared_fullscreen_notification_without_link_help" = "Події без посилання на зустріч показують повноекранне нагадування лише з дією Закрити.";
 "preferences_advanced_script_link_only_help" = "Виконується лише для подій із посиланнями на зустрічі.";
 "preferences_meeting_opening_mode_google_meet_pwa" = "Google Meet PWA (Chrome)";
@@ -378,12 +340,8 @@
 "preferences_meeting_opening_mode_zoom_app" = "Zoom App";
 "preferences_meeting_opening_mode_zoom_web_app" = "Zoom Web App";
 "preferences_meeting_opening_mode_zoom_web_app_help" = "Відкриває підтримувані посилання на зустрічі Zoom у веб-клієнті Zoom.";
-"preferences_services_link_modes_help" = "Параметри додатка, веб-додатка та PWA є необов'язковими. Існуюча поведінка браузера залишається незмінною, поки ви не зробите вибір.";
-"preferences_sidebar_experience" = "Досвід";
-"preferences_sidebar_setup" = "Налаштування";
 "status_bar_control_current_meeting" = "Поточна зустріч";
 "status_bar_control_next_meeting" = "Наступна зустріч";
-"preferences_appearance_menu_show_event_calendar_color_value" = "колір календаря";
 "status_bar_popover_zoom_in" = "Збільшити";
 "status_bar_popover_zoom_out" = "Зменшити";
 "status_bar_popover_update_available" = "Доступне оновлення";
@@ -402,3 +360,13 @@
 "status_bar_details_open_google_calendar" = "Google Календар";
 "status_bar_details_open_calendar" = "Календар";
 "status_bar_details_open_fantastical" = "Fantastical";
+"preferences_appearance_status_bar_title_max_length" = "Максимальна довжина";
+"preferences_appearance_status_bar_next_event_window" = "Починаються протягом";
+"notifications_event_start_title" = "Початок події";
+"notifications_event_start_toggle" = "Сповіщати, коли подія починається";
+"notifications_event_end_title" = "Кінець події";
+"notifications_alert_style_title" = "Тип сповіщення";
+"notifications_alert_style_system" = "Системне сповіщення";
+"notifications_alert_style_fullscreen" = "На весь екран";
+"notifications_alert_style_both" = "Обидва";
+"notifications_timing_title" = "Час";

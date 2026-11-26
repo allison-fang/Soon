@@ -12,19 +12,6 @@ import SwiftUI
 struct AdvancedTab: View {
     var body: some View {
         PreferencesGroupedForm {
-            Section {
-                HStack(spacing: 10) {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .foregroundStyle(.orange)
-                        .font(.title3)
-                    Text("preferences_advanced_setting_warning".loco())
-                        .fontWeight(.medium)
-                    Spacer()
-                }
-                .padding(.vertical, 2)
-                .listRowBackground(Color.orange.opacity(0.12))
-            }
-
             Section(header: Text("preferences_section_apple_script_hooks_title".loco())) {
                 ScriptSection()
             }
@@ -63,20 +50,18 @@ struct ScriptSection: View {
                 scriptName: "eventStartScript.scpt")
         }
 
-        HStack {
-            Picker("", selection: $eventStartScriptTime) {
-                Text("general_when_event_starts".loco()).tag(TimeBeforeEvent.atStart)
-                Text("general_one_minute_before".loco()).tag(TimeBeforeEvent.minuteBefore)
-                Text("general_three_minute_before".loco()).tag(TimeBeforeEvent.threeMinuteBefore)
-                Text("general_five_minute_before".loco()).tag(TimeBeforeEvent.fiveMinuteBefore)
-            }
-            .labelsHidden()
-            .fixedSize()
-            .disabled(!runEventStartScript)
+        Picker(preferenceLabel("notifications_timing_title"), selection: $eventStartScriptTime) {
+            Text("general_when_event_starts".loco()).tag(TimeBeforeEvent.atStart)
+            Text("general_one_minute_before".loco()).tag(TimeBeforeEvent.minuteBefore)
+            Text("general_three_minute_before".loco()).tag(TimeBeforeEvent.threeMinuteBefore)
+            Text("general_five_minute_before".loco()).tag(TimeBeforeEvent.fiveMinuteBefore)
+        }
+        .padding(.leading, 16)
+        .disabled(!runEventStartScript)
 
-            Spacer()
-
-            if runEventStartScript {
+        if runEventStartScript {
+            HStack {
+                Spacer()
                 Button(action: runSampleScript) {
                     Text("preferences_advanced_test_script_on_next_event".loco())
                 }
@@ -84,8 +69,8 @@ struct ScriptSection: View {
                     showingRunEventStartScriptModal = true
                 }
             }
+            .padding(.leading, 16)
         }
-        .padding(.leading, 16)
 
         Toggle(
             "preferences_advanced_apple_script_checkmark".loco(),
@@ -277,7 +262,13 @@ struct FilterEventRegexesSection: View {
                         Button("preferences_advanced_regex_edit_button".loco()) {
                             openEditRegexModal(for: regex)
                         }
-                        Button("x") { removeRegex(regex) }
+                        Button {
+                            removeRegex(regex)
+                        } label: {
+                            Image(systemName: "minus.circle")
+                        }
+                        .buttonStyle(.borderless)
+                        .accessibilityLabel("general_delete".loco())
                     }
                 }
                 Button("preferences_advanced_regex_add_button".loco(), action: openAddRegexModal)
@@ -336,7 +327,13 @@ struct MeetingRegexesSection: View {
                         Button("preferences_advanced_regex_edit_button".loco()) {
                             openEditRegexModal(for: regex)
                         }
-                        Button("x") { removeRegex(regex) }
+                        Button {
+                            removeRegex(regex)
+                        } label: {
+                            Image(systemName: "minus.circle")
+                        }
+                        .buttonStyle(.borderless)
+                        .accessibilityLabel("general_delete".loco())
                     }
                 }
                 Button("preferences_advanced_regex_add_button".loco()) {

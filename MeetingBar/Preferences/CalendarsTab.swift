@@ -32,12 +32,12 @@ struct CalendarsTab: View {
                             if let lastSuccess = appModel.state.providerHealth.lastSuccessfulRefresh {
                                 Text("·")
                                     .foregroundStyle(.tertiary)
-                                    .font(.caption)
+                                    .font(.callout)
                                 Text("status_bar_popover_updated".loco(
                                     lastSuccess.formatted(date: .omitted, time: .shortened)
                                 ))
                                 .foregroundStyle(.secondary)
-                                .font(.caption)
+                                .font(.callout)
                             }
                         }
                         if presentation.showsErrorDetail,
@@ -189,7 +189,7 @@ struct PreferencesStatusLabel: View {
             Text(text)
         }
         .foregroundStyle(statusColor(tone))
-        .font(.caption)
+        .font(.callout)
     }
 }
 
@@ -291,6 +291,7 @@ struct ProviderPicker: View {
                 Text(source.titleKey.loco()).tag(source.provider)
             }
         }
+        .pickerStyle(.radioGroup)
         .onChange(of: picker) { provider in
             guard ProviderPickerSelectionPolicy.shouldRequestChange(
                 selectedProvider: provider,

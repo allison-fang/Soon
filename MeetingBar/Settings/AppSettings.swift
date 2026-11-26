@@ -48,18 +48,11 @@ struct StatusBarSettings: Equatable {
     var eventTitleIconFormat: EventTitleIconFormat
     var statusbarEventTitleLength: Int
     var hideMeetingTitle: Bool
-    var showEventEndTime: Bool
 }
 
 struct MenuSettings: Equatable {
     var timelineDensity: TimelineDensity
     var timelineZoom: TimelineZoom?
-    var showTimelineInMenu: Bool
-    var shortenEventTitle: Bool
-    var menuEventTitleLength: Int
-    var showEventDetails: Bool
-    var showMeetingServiceIcon: Bool
-    var showEventCalendarColor: Bool
 
     /// Until someone zooms, the scale Density set before zoom existed.
     var resolvedTimelineZoom: TimelineZoom {
@@ -78,12 +71,8 @@ struct NotificationSettings: Equatable {
 }
 
 struct MeetingSettings: Equatable {
-    var createMeetingService: CreateMeetingServices
-    var createMeetingServiceUrl: String
-    var bookmarks: [Bookmark]
     var browsers: [Browser]
     var defaultBrowser: Browser
-    var browserForCreateMeeting: Browser
     /// Unified per-provider browser preferences (keyed by provider ID).
     /// Replaces the individual meetBrowser/zoomBrowser/… fields.
     var providerBrowsers: [String: Browser]
@@ -152,6 +141,44 @@ enum StatusBarTitleFormatMigration {
     }
 }
 
+/// Declined and past events now offer only Show or Hide, because the
+/// timeline renders the dropped options identically.
+enum EventAppearanceMigration {
+    @MainActor
+    static func migrateDefaultsIfNeeded() {
+        if Defaults[.declinedEventsAppereance] == .show_inactive {
+            Defaults[.declinedEventsAppereance] = .strikethrough
+        }
+        if Defaults[.pastEventsAppereance] == .show_active {
+            Defaults[.pastEventsAppereance] = .show_inactive
+        }
+    }
+}
+
+/// Preferences shows one event-start alert with a type and a single timing.
+/// It writes through to the separate system and fullscreen keys the
+/// notification scheduler reads.
+enum EventStartAlertPreferences {
+    @MainActor
+    static func apply(enabled: Bool, style: EventStartAlertStyle, time: TimeBeforeEvent) {
+        Defaults[.eventStartAlertStyle] = style
+        Defaults[.joinEventNotification] = enabled && style != .fullscreen
+        Defaults[.fullscreenNotification] = enabled && style != .system
+        Defaults[.joinEventNotificationTime] = time
+        Defaults[.fullscreenNotificationTime] = time
+    }
+
+    @MainActor
+    static func migrateDefaultsIfNeeded() {
+        guard Defaults[.eventStartAlertStyle] == nil else { return }
+        let system = Defaults[.joinEventNotification]
+        let fullscreen = Defaults[.fullscreenNotification]
+        let style: EventStartAlertStyle = system && fullscreen ? .both : (fullscreen ? .fullscreen : .system)
+        let time = system ? Defaults[.joinEventNotificationTime] : Defaults[.fullscreenNotificationTime]
+        apply(enabled: system || fullscreen, style: style, time: time)
+    }
+}
+
 // MARK: - Defaults factory
 
 extension AppSettings {
@@ -186,18 +213,11 @@ extension AppSettings {
                 eventTimeFormat: Defaults[.eventTimeFormat],
                 eventTitleIconFormat: Defaults[.eventTitleIconFormat],
                 statusbarEventTitleLength: Defaults[.statusbarEventTitleLength],
-                hideMeetingTitle: eventTitleFormat == .generic,
-                showEventEndTime: Defaults[.showEventEndTime]
+                hideMeetingTitle: eventTitleFormat == .generic
             ),
             menu: MenuSettings(
                 timelineDensity: Defaults[.timelineDensity],
-                timelineZoom: Defaults[.timelineZoom],
-                showTimelineInMenu: Defaults[.showTimelineInMenu],
-                shortenEventTitle: Defaults[.shortenEventTitle],
-                menuEventTitleLength: Defaults[.menuEventTitleLength],
-                showEventDetails: Defaults[.showEventDetails],
-                showMeetingServiceIcon: Defaults[.showMeetingServiceIcon],
-                showEventCalendarColor: Defaults[.showEventCalendarColor]
+                timelineZoom: Defaults[.timelineZoom]
             ),
             notifications: NotificationSettings(
                 joinEventNotification: Defaults[.joinEventNotification],
@@ -210,12 +230,8 @@ extension AppSettings {
                     Defaults[.fullscreenNotificationsForEventsWithoutMeetingLink]
             ),
             meetings: MeetingSettings(
-                createMeetingService: Defaults[.createMeetingService],
-                createMeetingServiceUrl: Defaults[.createMeetingServiceUrl],
-                bookmarks: Defaults[.bookmarks],
                 browsers: Defaults[.browsers],
                 defaultBrowser: Defaults[.defaultBrowser],
-                browserForCreateMeeting: Defaults[.browserForCreateMeeting],
                 providerBrowsers: Defaults[.providerBrowsers],
                 providerOpeningModes: Defaults[.providerOpeningModes]
             ),
@@ -261,18 +277,11 @@ extension AppSettings {
                 eventTimeFormat: .show,
                 eventTitleIconFormat: .none,
                 statusbarEventTitleLength: statusbarEventTitleLengthLimits.max,
-                hideMeetingTitle: false,
-                showEventEndTime: true
+                hideMeetingTitle: false
             ),
             menu: MenuSettings(
                 timelineDensity: .comfortable,
-                timelineZoom: nil,
-                showTimelineInMenu: true,
-                shortenEventTitle: true,
-                menuEventTitleLength: 50,
-                showEventDetails: false,
-                showMeetingServiceIcon: true,
-                showEventCalendarColor: true
+                timelineZoom: nil
             ),
             notifications: NotificationSettings(
                 joinEventNotification: true,
@@ -284,12 +293,8 @@ extension AppSettings {
                 fullscreenNotificationsForEventsWithoutMeetingLink: false
             ),
             meetings: MeetingSettings(
-                createMeetingService: .zoom,
-                createMeetingServiceUrl: "",
-                bookmarks: [],
                 browsers: [],
                 defaultBrowser: systemDefaultBrowser,
-                browserForCreateMeeting: systemDefaultBrowser,
                 providerBrowsers: [:],
                 providerOpeningModes: [:]
             ),

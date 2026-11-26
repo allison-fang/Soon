@@ -506,12 +506,14 @@ final class StatusBarPopoverPresenterTests: BaseTestCase {
         XCTAssertNotNil(updated.notice)
     }
 
-    func testBookmarksStayReachable() throws {
-        var settings = AppSettings.current
-        settings.meetings.bookmarks = [
-            Bookmark(name: "Team room", service: MeetingServices.zoom.rawValue, url: URL(string: "https://zoom.us/j/1")!)
-        ]
+    func testGoogleCalendarButtonShowsOnlyForGoogleSource() {
+        var googleState = state([])
+        googleState.activeProvider = .googleCalendar
+        XCTAssertTrue(StatusBarPopoverPresenter.presentation(for: googleState, now: now).showsGoogleCalendarButton)
 
-        XCTAssertEqual(presentation([], settings: settings).bookmarks.map(\.name), ["Team room"])
+        var appleState = state([])
+        appleState.activeProvider = .macOSEventKit
+        XCTAssertFalse(StatusBarPopoverPresenter.presentation(for: appleState, now: now).showsGoogleCalendarButton)
     }
+
 }

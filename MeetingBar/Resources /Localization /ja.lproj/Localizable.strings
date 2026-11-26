@@ -13,8 +13,6 @@
 "general_delete" = "削除";
 "general_save" = "保存";
 "general_meeting" = "ミーティング";
-"create_meeting_error_title" = "新しいミーティングが作成できませんでした";
-"create_meeting_error_message" = "カスタムURL \"%@\" が存在しないか異常です。 ";
 "next_meeting_empty_title" = "今日はもうミーティングがありません";
 "next_meeting_empty_message" = "ウオー！ココアを作る時間です";
 
@@ -28,7 +26,6 @@
 
 
 "preferences_tab_general" = "一般";
-"preferences_tab_bookmarks" = "ブックマーク";
 "preferences_tab_calendars" = "カレンダー";
 "preferences_tab_advanced" = "高度な設定";
 
@@ -39,7 +36,6 @@
 "preferences_general_option_preferred_language_title" = "言語:";
 "preferences_general_option_preferred_language_system_value" = "システム設定に従う";
 "preferences_general_shortcut_open_menu" = "メニューを開く:";
-"preferences_general_shortcut_create_meeting" = "ミーティングを作成:";
 "preferences_general_shortcut_join_next" = "次のミーティングに参加:";
 "preferences_general_shortcut_join_from_clipboard" = "クリップボードからミーティングに参加:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "ステータスバーのタイトル表示をトグルする:";
@@ -63,7 +59,6 @@
 "preferences_appearance_events_value_hide" = "非表示";
 "preferences_appearance_events_value_as_inactive" = "非アクティブとして表示";
 "preferences_appearance_events_value_as_underlined" = "下線を表示";
-"preferences_appearance_events_value_with_strikethrough" = "取り消し線で表示";
 "preferences_appearance_events_value_only_with_link" = "リンクのあるイベントのみ表示";
 "preferences_appearance_status_bar_title" = "ステータスバー";
 "preferences_appearance_status_bar_icon_title" = "アイコン";
@@ -75,23 +70,16 @@
 "preferences_appearance_status_bar_title_event_title_value" = "イベント名";
 "preferences_appearance_status_bar_title_dot_value" = "ドット (•)";
 "preferences_appearance_status_bar_title_hide_value" = "非表示";
-"preferences_appearance_status_bar_title_shorten_stepper" = "%d 文字に切り詰める";
+"preferences_appearance_status_bar_title_shorten_stepper" = "%d文字";
 "preferences_appearance_status_bar_time_title" = "時間の表示";
 "preferences_appearance_status_bar_time_show_value" = "表示";
 "preferences_appearance_status_bar_time_show_under_title_value" = "タイトルの下に表示";
 "preferences_appearance_status_bar_time_hide_value" = "非表示";
-"preferences_appearance_status_bar_next_event_toggle" = "開始中のイベントのみ表示";
+"preferences_appearance_status_bar_next_event_toggle" = "まもなく始まるイベントのみ表示";
 "preferences_appearance_status_bar_next_event_stepper" = "%d分";
-"preferences_appearance_menu_title" = "メニュー";
-"preferences_appearance_menu_shorten_event_title_toggle" = "ミーティング名を短縮する";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d文字";
 "preferences_appearance_menu_time_format_title" = "時刻形式:";
-"preferences_appearance_menu_time_format_12_hour_value" = "12時間 (AM/PM)";
+"preferences_appearance_menu_time_format_12_hour_value" = "12時間";
 "preferences_appearance_menu_time_format_24_hour_value" = "24時間";
-"preferences_appearance_menu_show_event_title" = "イベント表示:";
-"preferences_appearance_menu_show_event_end_time_value" = "終了時刻";
-"preferences_appearance_menu_show_event_icon_value" = "アイコン";
-"preferences_appearance_menu_show_event_details_value" = "サブメニューに詳細表示";
 
 // MARK: - Preferences Services
 
@@ -99,11 +87,7 @@
 "preferences_services_link_meeting_title" = "ミーティングリンクを開くブラウザ";
 "preferences_services_link_service_title" = "%@";
 "preferences_services_link_default_browser_value" = "標準のウェブブラウザー";
-"preferences_services_create_meeting_title" = "ミーティングを作成するサービス";
-"preferences_services_create_meeting_custom_url_value" = "カスタム URL";
 "preferences_services_create_meeting_custom_url_placeholder" = "正しい URL を入力してください (http:// や https:// などのスキーマも必要です)";
-"preferences_services_google_meet_tip" = "Tip: Google Meet はURLでアカウントを選択することが出来ます。例: https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "使用するウェブブラウザ";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -123,19 +107,8 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "ブラウザーの選択";
 "preferences_configure_browsers_choose_browser_panel_message" = "ブラウザーをどこから起動するか選択します。";
 
-// MARK: - Preferences Bookmarks
 
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "ブックマークはまだありません";
-"preferences_bookmarks_delete_bookmark_title" = "ブックマークを削除しますか？";
-"preferences_bookmarks_delete_bookmark_message" = "ブックマーク%@を削除しますか？";
-"preferences_bookmarks_add_bookmark_button" = "ブックマークを追加する";
-"preferences_bookmarks_new_bookmark_title" = "新しいブックマーク";
-"preferences_bookmarks_new_bookmark_name" = "名前";
-"preferences_bookmarks_new_bookmark_link_phone" = "リンク / 電話番号";
-"preferences_bookmarks_new_bookmark_service" = "サービス";
-"preferences_bookmarks_new_bookmark_already_exist" = "このリンク / 電話番号のブックマークは既に %@ として登録されています:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "ブックマークを追加できません";
 
 // MARK: - Preferences Calendars
 
@@ -146,7 +119,6 @@
 // MARK: - Preferences Advanced
 
 
-"preferences_advanced_setting_warning" = "⚠️ これらの設定は、内容をご理解の上でご利用ください。";
 "preferences_advanced_apple_script_checkmark" = "参加時にAppleScriptを実行する";
 "preferences_advanced_apple_script_placeholder" = "# ここにスクリプトを書いてください\ntell application \"Music\" to pause";
 "preferences_advanced_test_script_on_next_event" = "次のイベントをテストする";
@@ -169,9 +141,6 @@
 "status_bar_section_join_next_meeting" = "次のミーティングに参加";
 "status_bar_section_join_current_meeting" = "開催中のミーティングに参加する";
 "status_bar_section_join_from_clipboard" = "クリップボードからミーティングを開く";
-"status_bar_section_join_create_meeting" = "ミーティングを作成";
-"status_bar_section_bookmarks_title" = "ブックマーク";
-"status_bar_section_bookmarks_menu" = "ブックマークメニュー";
 "status_bar_section_date_nothing" = "%@はミーティングがありません";
 "status_bar_event_start_time_all_day" = "終日";
 "status_bar_submenu_calendar_title" = "カレンダー: %@";
@@ -231,7 +200,6 @@
 
 
 "shared_send_notification_toggle" = "システム通知を送信する";
-"shared_fullscreen_notification_toggle" = "全画面通知";
 "general_when_event_starts" = "イベント開始時";
 "general_one_minute_before" = "1分前";
 "general_three_minute_before" = "3分前";
@@ -242,7 +210,6 @@
 "shared_automatic_event_join_tip" = "設定したアプリやブラウザで次のイベントを自動的に開きます";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "カスタム URL";
 "constants_meeting_service_phone" = "電話番号";
 "constants_meeting_service_zoom_native" = "Zoomネイティブ";
 "constants_meeting_service_other" = "その他";
@@ -279,7 +246,7 @@
 "notification_all_dismissals_removed_message" = "閉じたミーティングがすべて元に戻りました。";
 "status_bar_section_refresh_sources" = "ソースを更新";
 "access_screen_provider_authorization_cancelled" = "認証がキャンセルされました。カレンダーを接続するためにもう一度お試しください。";
-"general_end_of_event_notification_toggle" = "イベント終了時に通知を送信する";
+"general_end_of_event_notification_toggle" = "イベント終了時に通知";
 "general_refresh" = "再読み込み";
 "general_when_event_ends" = "イベント終了時";
 "message_clipboard_empty_text" = "クリップボードに内容がないため、ミーティングを開始できません。";
@@ -324,15 +291,12 @@
 "preferences_calendar_source_title" = "カレンダーソース";
 "preferences_configure_browsers_help" = "ミーティングリンクを開くためのカスタムブラウザ、プロファイル、またはアプリを追加します。";
 "preferences_meeting_opening_behavior_title" = "ミーティングリンクを開く";
-"preferences_notifications_alerts_title" = "ミーティングアラート";
 "preferences_notifications_automation_title" = "自動参加";
 "preferences_section_apple_script_hooks_title" = "AppleScriptフック";
-"preferences_section_create_title" = "ミーティングを作成";
 "preferences_section_general_settings_title" = "一般設定";
 "preferences_section_regex_filters_title" = "正規表現フィルター";
 "preferences_section_shortcuts_title" = "キーボードショートカット";
 "preferences_services_link_default_help" = "プロバイダー固有の上書きが設定されている場合を除き、このブラウザが使用されます。";
-"preferences_services_link_overrides_help" = "これらの設定は各ミーティングサービスのデフォルトブラウザを上書きします。";
 "preferences_services_link_overrides_title" = "サービス固有のオープン";
 "preferences_status_copy_diagnostics" = "診断情報をコピー";
 "preferences_status_open_calendar_settings" = "カレンダー設定を開く";
@@ -359,10 +323,9 @@
 "status_bar_join_with_other_link" = "別のリンクで参加";
 "timeline_accessibility_label" = "%d 件のイベントのタイムライン";
 "fullscreen_notification_dismiss_action" = "閉じる";
-"shared_fullscreen_notification_without_link_toggle" = "ミーティングリンクのないイベントにもフルスクリーン通知を表示する";
+"shared_fullscreen_notification_without_link_toggle" = "ミーティングリンクのないイベントにも表示";
 "shared_fullscreen_notification_without_link_help" = "ミーティングリンクのないイベントは、閉じるアクションのみのフルスクリーンリマインダーを表示します。";
 "notifications_meetingbar_dismiss_event_action" = "通知をオフにする";
-"preferences_appearance_menu_show_timeline_toggle" = "その日のビジュアルタイムラインを表示";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "開始後に非表示";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "開始10分後に非表示";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "次のイベントの10分前に非表示";
@@ -380,18 +343,13 @@
 "preferences_meeting_opening_mode_zoom_app" = "Zoom アプリ";
 "preferences_meeting_opening_mode_zoom_web_app" = "Zoom Web アプリ";
 "preferences_meeting_opening_mode_zoom_web_app_help" = "サポートされているZoomミーティングリンクをZoomのWebクライアントで開きます。";
-"preferences_services_link_modes_help" = "アプリ、ウェブアプリ、PWAはオプションです。 既存のブラウザの動作は、選択するまで変更されません.";
-"preferences_sidebar_experience" = "エクスペリエンス";
-"preferences_sidebar_setup" = "セットアップ";
 "status_bar_control_current_meeting" = "現在のミーティング";
 "status_bar_control_next_meeting" = "次のミーティング";
 "preferences_appearance_events_no_meeting_link_title" = "会議リンクのないイベント";
-"preferences_appearance_menu_show_event_calendar_color_value" = "カレンダーの色";
 "onboarding_setup_title" = "Soon セットアップ";
 "onboarding_back" = "もどる";
 "onboarding_essentials_hint" = "後からすべての詳細を調整できます。";
 "onboarding_start_using" = "Soonを使い始める";
-"preferences_sidebar_advanced" = "詳細設定";
 "preferences_appearance_status_bar_title_generic_value" = "一般的なタイトル（会議）";
 "onboarding_essentials_title" = "毎日の振る舞い";
 "onboarding_essentials_description" = "ミーティングを開き、スケジュールに滞在するためのいくつかのデフォルトを選択します.";
@@ -413,3 +371,13 @@
 "status_bar_details_open_google_calendar" = "Google カレンダー";
 "status_bar_details_open_calendar" = "カレンダー";
 "status_bar_details_open_fantastical" = "Fantastical";
+"preferences_appearance_status_bar_title_max_length" = "最大文字数";
+"preferences_appearance_status_bar_next_event_window" = "開始までの時間";
+"notifications_event_start_title" = "イベント開始";
+"notifications_event_start_toggle" = "イベント開始時に通知";
+"notifications_event_end_title" = "イベント終了";
+"notifications_alert_style_title" = "通知の種類";
+"notifications_alert_style_system" = "システム通知";
+"notifications_alert_style_fullscreen" = "フルスクリーン";
+"notifications_alert_style_both" = "両方";
+"notifications_timing_title" = "タイミング";

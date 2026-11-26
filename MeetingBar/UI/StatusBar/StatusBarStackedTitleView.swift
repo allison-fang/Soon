@@ -23,7 +23,7 @@ struct StatusBarStackedTitleView: View {
     let style: StatusBarTitleStyle
 
     var body: some View {
-        let content = HStack(spacing: 4) {
+        let content = HStack(spacing: 6) {
             if let icon {
                 iconImage(icon)
                     .frame(width: 16, height: 16)

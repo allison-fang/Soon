@@ -36,6 +36,8 @@ extension Defaults.Keys {
     static let endOfEventNotificationTime = Key<TimeBeforeEventEnd>(
         "endOfEventNotificationTime", default: .atEnd)
 
+    // Remembers the alert type while event-start alerts are off; nil until migrated.
+    static let eventStartAlertStyle = Key<EventStartAlertStyle?>("eventStartAlertStyle", default: nil)
     static let fullscreenNotification = Key<Bool>("fullscreenNotification", default: false)
     static let fullscreenNotificationTime = Key<TimeBeforeEvent>(
         "fullscreenNotificationTime", default: .atStart)
@@ -69,14 +71,6 @@ extension Defaults.Keys {
     // Menu Appearance
     static let timelineDensity = Key<TimelineDensity>("timelineDensity", default: .comfortable)
     static let timelineZoom = Key<TimelineZoom?>("timelineZoom", default: nil)
-    static let showTimelineInMenu = Key<Bool>("showTimelineInMenu", default: true)
-    // if the event title in the menu should be shortened or not -> the length will be stored in field menuEventTitleLength
-    static let shortenEventTitle = Key<Bool>("shortenEventTitle", default: true)
-    static let menuEventTitleLength = Key<Int>("menuEventTitleLength", default: 50)
-
-    static let showEventDetails = Key<Bool>("showEventDetails", default: false)
-    static let showMeetingServiceIcon = Key<Bool>("showMeetingServiceIcon", default: true)
-    static let showEventCalendarColor = Key<Bool>("showEventCalendarColor", default: true)
 
     static let declinedEventsAppereance = Key<DeclinedEventsAppereance>(
         "declinedEventsAppereance", default: .strikethrough)
@@ -100,8 +94,6 @@ extension Defaults.Keys {
 
     static let timeFormat = Key<TimeFormat>("timeFormat", default: .military)
 
-    // Bookmarks
-    static let bookmarks = Key<[Bookmark]>("bookmarks", default: [])
 
     // all browser configurations
     static let browsers = Key<[Browser]>("browsers", default: [])
@@ -116,16 +108,6 @@ extension Defaults.Keys {
     // show all day events - by default show all, also events without any link
     static let nonAllDayEvents = Key<NonAlldayEventsAppereance>(
         "nonAllDayEvents", default: NonAlldayEventsAppereance.show)
-
-    // show the end time of a meeting in the meetingbar for each event entry
-    static let showEventEndTime = Key<Bool>("showEventEndTime", default: true)
-
-    // Integrations
-    static let createMeetingService = Key<CreateMeetingServices>(
-        "createMeetingService", default: .zoom)
-
-    // custom url to create meetings
-    static let createMeetingServiceUrl = Key<String>("createMeetingServiceUrl", default: "")
 
     static let meetBrowser = Key<Browser>("meetBrowser", default: systemDefaultBrowser)
     static let zoomBrowser = Key<Browser>("zoomBrowser", default: systemDefaultBrowser)
@@ -142,12 +124,6 @@ extension Defaults.Keys {
     /// Opt-in provider-specific app/web/PWA mode IDs.
     /// Unknown values are ignored and fall back to normal browser resolution.
     static let providerOpeningModes = Key<[String: String]>("providerOpeningModes", default: [:])
-
-    /**
-     * browser used for creating a new meeting
-     */
-    static let browserForCreateMeeting = Key<Browser>(
-        "browserForCreateMeeting", default: systemDefaultBrowser)
 
     // Advanced
     static let automaticEventJoin = Key<Bool>("automaticEventJoin", default: false)

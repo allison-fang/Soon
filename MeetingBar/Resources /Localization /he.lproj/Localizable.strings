@@ -4,7 +4,6 @@
 "general_add" = "הוספה";
 "general_delete" = "מחיקה";
 "general_save" = "שמירה";
-"create_meeting_error_title" = "לא ניתן ליצור פגישה חדשה";
 "next_meeting_empty_title" = "אין פגישות שתתרחשנה היום";
 "next_meeting_empty_message" = "נפלא! זה בדיוק הזמן להכין שוקו";
 "window_title_onboarding" = "ברוך בואך ל־Soon";
@@ -15,7 +14,6 @@
 "preferences_general_option_preferred_language_title" = "שפה:";
 "preferences_general_option_preferred_language_system_value" = "מערכת";
 "preferences_general_shortcut_open_menu" = "פתיחת התפריט:";
-"preferences_general_shortcut_create_meeting" = "יצירת פגישה:";
 "preferences_general_shortcut_join_next" = "הצטרפות לפגישה הבאה:";
 "preferences_general_shortcut_join_from_clipboard" = "הצטרפות לפגישה שבלוח הגזירים:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "החלפת מצב הצגת הכותרת בשורת המצב:";
@@ -36,7 +34,6 @@
 "preferences_appearance_events_value_show" = "הצגה";
 "preferences_appearance_events_value_hide" = "הסתרה";
 "preferences_appearance_events_value_as_inactive" = "הצגה כבלתי פעיל";
-"preferences_appearance_events_value_with_strikethrough" = "הצגה כמסומן בקו חוצה";
 "preferences_appearance_events_value_only_with_link" = "הצגת אלו עם קישורים פגישות בלבד";
 "preferences_appearance_status_bar_title" = "שורת מצב";
 "preferences_appearance_status_bar_icon_title" = "סמל";
@@ -47,20 +44,9 @@
 "preferences_appearance_status_bar_title_event_title_value" = "כותרת אירוע";
 "preferences_appearance_status_bar_time_title" = "הצגת השעה";
 "preferences_appearance_status_bar_time_hide_value" = "הסתרה";
-"preferences_appearance_menu_title" = "תפריט";
-"preferences_appearance_menu_shorten_event_title_toggle" = "קיצור כותרות אירועים לאורך";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d תווים";
 "preferences_appearance_menu_time_format_title" = "תבנית השעה:";
-"preferences_appearance_menu_show_event_title" = "הצגת אירוע:";
-"preferences_appearance_menu_show_event_end_time_value" = "זמן הסיום";
-"preferences_appearance_menu_show_event_icon_value" = "סמל";
-"preferences_appearance_menu_show_event_details_value" = "פרטים כתת־תפריט";
 "preferences_services_link_service_title" = "%@";
 "preferences_services_link_default_browser_value" = "דפדפן ברירת המחדל";
-"preferences_services_create_meeting_title" = "יצירת פגישות דרך";
-"preferences_services_create_meeting_custom_url_value" = "כתובת משלך";
-"preferences_services_google_meet_tip" = "עצה: Google Meet תומך בבחירת חשבון בכתובת, למשל: https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "להשתמש בדפדפן";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -77,15 +63,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "נא לבחור דפדפן";
 "preferences_configure_browsers_choose_browser_panel_message" = "נא לבחור מאיפה להריץ את הדפדפן.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "אין לך סימניות עדיין";
-"preferences_bookmarks_delete_bookmark_title" = "למחוק סימניה?";
-"preferences_bookmarks_delete_bookmark_message" = "למחוק את הסימניה %@?";
-"preferences_bookmarks_new_bookmark_title" = "סימניה חדשה";
-"preferences_bookmarks_new_bookmark_link_phone" = "קישור/מספר טלפון";
-"preferences_bookmarks_new_bookmark_service" = "שירות";
-"preferences_bookmarks_new_bookmark_error_title" = "אי אפשר להוסיף סימניה";
 "preferences_advanced_apple_script_checkmark" = "להפעיל AppleScript בעת הצטרפות לפגישה";
 "preferences_advanced_apple_script_placeholder" = "# כאן ניתן לכתוב את הסקריפט שלך\ntell application \"Music\" to pause";
 "preferences_advanced_test_script_on_next_event" = "בדיקה באירוע הבא";
@@ -95,7 +73,6 @@
 
 // MARK: - Preferences Advanced
 
-"preferences_advanced_setting_warning" = "⚠️ נא להשתמש בהגדרות אלו אם ברור לך מה תפקידן";
 "preferences_advanced_wrong_location_button" = "הבנתי!";
 "preferences_advanced_regex_title" = "ביטויים רגולריים מותאמים לקישור פגישה";
 "preferences_advanced_regex_add_button" = "הוספת ביטוי רגולרי";
@@ -109,8 +86,6 @@
 "status_bar_section_tomorrow" = "מחר";
 "status_bar_section_join_next_meeting" = "הצטרפות לפגישת האירוע הבאה";
 "status_bar_section_join_from_clipboard" = "פתיחת פגישה מלוח הגזירים";
-"status_bar_section_join_create_meeting" = "יצירת פגישה";
-"status_bar_section_bookmarks_title" = "סימניות";
 "status_bar_submenu_calendar_title" = "לוח שנה: %@";
 "status_bar_submenu_duration_all_day" = "%@ - %@ (%@ דקות)";
 "status_bar_submenu_status_title" = "מצב: %@";
@@ -148,11 +123,9 @@
 // MARK: - Shared
 
 "shared_send_notification_toggle" = "לשלוח התראת מערכת";
-"shared_fullscreen_notification_toggle" = "הצגת התראה על כל המסך";
 "general_when_event_starts" = "כאשר אירוע מתחיל";
 "general_one_minute_before" = "דקה לפני";
 "general_three_minute_before" = "3 דקות לפני";
-"constants_create_meeting_service_url" = "כתובת משלך";
 "constants_meeting_service_zoom_native" = "Zoom טבעי";
 "shared_send_notification_no_alert_style_tip" = "לתשומת ליבך: התראות מוגדרות ככרזות, לכן הן מופיעות לזמן קצר לפני שנעלמות. כדי להשאיר אותן על המסך עד לסילוקן ידנית, יש להחליף להתראות בהגדרות ההתראה ב־macOS שלך.";
 "shared_send_notification_disabled_tip" = "⚠️ הגדרות ההתראות ב־macOS שלך עבור Soon כבויות. יש להפעיל את ההתראות בהגדרות המערכת של macOS כדי לעקוב אחר פגישות.";
@@ -164,11 +137,8 @@
 // MARK: - Window titles
 
 "window_title_preferences" = "העדפות Soon";
-"preferences_tab_bookmarks" = "סימניות";
 "preferences_tab_calendars" = "לוחות שנה";
 "preferences_appearance_status_bar_title_dot_value" = "נקודה (•)";
-"create_meeting_error_message" = "הכתובת שבחרת „%@” חסרה או שגויה. ";
-"preferences_bookmarks_add_bookmark_button" = "הוספת סימניה";
 
 // MARK: - Link open
 
@@ -195,30 +165,27 @@
 "preferences_appearance_events_title" = "אירועים";
 "preferences_appearance_events_value_as_underlined" = "הצגה כמסומן בקו תחתון";
 "preferences_appearance_status_bar_icon_specific_icon_value" = " סמל מוכוון אירוע (למשל MS Teams)";
-"preferences_appearance_status_bar_title_shorten_stepper" = "קיצור ל־%d תווים";
+"preferences_appearance_status_bar_title_shorten_stepper" = "%d תווים";
 "preferences_appearance_status_bar_time_show_value" = "הצגה";
 "preferences_appearance_status_bar_time_show_under_title_value" = "הצגה תחת הכותרת";
 "preferences_appearance_status_bar_next_event_stepper" = "%d דקות";
-"preferences_appearance_menu_time_format_12_hour_value" = "12 שעות (AM/PM)";
+"preferences_appearance_menu_time_format_12_hour_value" = "12 שעות";
 "preferences_appearance_menu_time_format_24_hour_value" = "24 שעות";
 
 // MARK: - Preferences Services
 
 "preferences_services_link_meeting_title" = "דפדפן ברירת מחדל לקישורי פגישות";
 "preferences_appearance_status_bar_title_hide_value" = "הסתרה";
-"preferences_appearance_status_bar_next_event_toggle" = "להציג רק אירועים שמתחילים בעוד";
+"preferences_appearance_status_bar_next_event_toggle" = "להציג רק אירועים שמתחילים בקרוב";
 "preferences_services_create_meeting_custom_url_placeholder" = "לא למלא כתובת תקפה (http://‎ או https://‎)";
 "preferences_configure_browsers_delete_alert_message" = "למחוק את הגדרות הדפדפן %@?";
 "preferences_configure_browsers_modal_add_browser_title" = "הוספת דפדפן";
-"preferences_bookmarks_new_bookmark_name" = "שם";
-"preferences_bookmarks_new_bookmark_already_exist" = "ל־%@ כבר יש את הקישור/מספר הטלפון הזה:\n%@";
 
 // MARK: - Preferences Calendars
 
 "preferences_calendars_select_calendars_title" = "נא לבחור לוחות שנה כדי לצפות באירועים בסרגל המצב";
 "preferences_calendars_provider_gcalendar_change_account" = "החלפת חשבון Google";
 "preferences_advanced_wrong_location_message" = "נא לבחור את תיקיית משתמש ← ספרייה ← סקריפטים של יישומים ← com.allisonfang.Soon";
-"status_bar_section_bookmarks_menu" = "תפריט סימניות";
 "status_bar_section_date_nothing" = "שום דבר עבור %@";
 "status_bar_event_start_time_all_day" = "כל היום";
 "status_bar_submenu_open_in_calendar" = "פתיחה ביישום לוח שנה";
@@ -265,9 +232,8 @@
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "להסתיר 10 דקות לאחר ההתחלה";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "להסתיר 10 דקות לפני האירוע הבא";
 "preferences_appearance_status_bar_ongoing_title" = "חשיפה של אירוע פעיל:";
-"preferences_appearance_menu_show_timeline_toggle" = "הצגת ציר זמן חזותי של היום";
 "access_screen_provider_authorization_cancelled" = "ההרשאה בוטלה. נסה שוב כדי לחבר את הלוח שנה שלך.";
-"general_end_of_event_notification_toggle" = "שליחת התראה בסיום האירוע";
+"general_end_of_event_notification_toggle" = "להתריע כשאירוע מסתיים";
 "general_refresh" = "ריענון";
 "general_when_event_ends" = "כאשר האירוע הסתיים";
 "message_clipboard_empty_text" = "הלוח אינו מכיל תוכן, לכן לא ניתן להפעיל את הפגישה.";
@@ -312,15 +278,12 @@
 "preferences_calendar_source_title" = "מקור לוח שנה";
 "preferences_configure_browsers_help" = "הוסף דפדפנים, פרופילים או יישומים מותאמים אישית לפתיחת קישורי פגישות.";
 "preferences_meeting_opening_behavior_title" = "פתח קישורי פגישות";
-"preferences_notifications_alerts_title" = "התראות פגישה";
 "preferences_notifications_automation_title" = "הצטרפות אוטומטית";
 "preferences_section_apple_script_hooks_title" = "קישורי AppleScript";
-"preferences_section_create_title" = "צור פגישות";
 "preferences_section_general_settings_title" = "הגדרות כלליות";
 "preferences_section_regex_filters_title" = "מסנני Regex";
 "preferences_section_shortcuts_title" = "קיצורי מקלדת";
 "preferences_services_link_default_help" = "הדפדפן הזה משמש אלא אם כן הוגדרה עקיפה נקודתית לספק.";
-"preferences_services_link_overrides_help" = "בחירות אלו מחליפות את הדפדפן ברירת המחדל עבור כל שירות פגישות.";
 "preferences_services_link_overrides_title" = "עקיפות לפי ספק";
 "preferences_status_copy_diagnostics" = "העתק אבחון";
 "preferences_status_open_calendar_settings" = "פתח הגדרות לוח שנה";
@@ -347,7 +310,7 @@
 "status_bar_join_with_other_link" = "הצטרף עם קישור אחר";
 "timeline_accessibility_label" = "ציר זמן עם %d אירועים";
 "fullscreen_notification_dismiss_action" = "סגור";
-"shared_fullscreen_notification_without_link_toggle" = "הצג גם התראות מסך מלא עבור אירועים ללא קישור פגישה";
+"shared_fullscreen_notification_without_link_toggle" = "גם לאירועים ללא קישור לפגישה";
 "shared_fullscreen_notification_without_link_help" = "אירועים ללא קישור פגישה מציגים תזכורת מסך מלא עם פעולת סגירה בלבד.";
 "preferences_advanced_script_link_only_help" = "פועל רק עבור אירועים עם קישורי פגישה.";
 "preferences_meeting_opening_mode_google_meet_pwa" = "Google Meet PWA (Chrome)";
@@ -362,13 +325,9 @@
 "preferences_meeting_opening_mode_zoom_app" = "Zoom App";
 "preferences_meeting_opening_mode_zoom_web_app" = "Zoom Web App";
 "preferences_meeting_opening_mode_zoom_web_app_help" = "פותח קישורי פגישות Zoom נתמכים בלקוח האינטרנט של Zoom.";
-"preferences_services_link_modes_help" = "אפשרויות אפליקציה, אפליקציית אינטרנט ו-PWA הן אופציונליות. ההתנהגות הקיימת של הדפדפן נשארת ללא שינוי עד שתבחר.";
-"preferences_sidebar_experience" = "חוויה";
-"preferences_sidebar_setup" = "הגדרה";
 "status_bar_control_current_meeting" = "פגישה נוכחית";
 "status_bar_control_next_meeting" = "הפגישה הבאה";
 "preferences_appearance_events_no_meeting_link_title" = "אירועים ללא קישור לפגישה";
-"preferences_appearance_menu_show_event_calendar_color_value" = "צבע היומן";
 "status_bar_popover_zoom_in" = "הגדל";
 "status_bar_popover_zoom_out" = "הקטן";
 "status_bar_popover_update_available" = "עדכון זמין";
@@ -387,3 +346,13 @@
 "status_bar_details_open_google_calendar" = "יומן Google";
 "status_bar_details_open_calendar" = "לוח שנה";
 "status_bar_details_open_fantastical" = "Fantastical";
+"preferences_appearance_status_bar_title_max_length" = "אורך מרבי";
+"preferences_appearance_status_bar_next_event_window" = "מתחילים בתוך";
+"notifications_event_start_title" = "תחילת אירוע";
+"notifications_event_start_toggle" = "להתריע כשאירוע מתחיל";
+"notifications_event_end_title" = "סיום אירוע";
+"notifications_alert_style_title" = "סוג התראה";
+"notifications_alert_style_system" = "התראת מערכת";
+"notifications_alert_style_fullscreen" = "מסך מלא";
+"notifications_alert_style_both" = "שניהם";
+"notifications_timing_title" = "תזמון";

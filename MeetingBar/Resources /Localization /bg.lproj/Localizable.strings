@@ -12,12 +12,10 @@
 "general_delete" = "Изтрий";
 "general_save" = "Запази";
 "general_meeting" = "Среща";
-"general_when_event_starts" = "когато събитието започне";
+"general_when_event_starts" = "Когато събитието започне";
 "general_one_minute_before" = "1 минута по-рано";
 "general_three_minute_before" = "3 минути по-рано";
 "general_five_minute_before" = "5 минути по-рано";
-"create_meeting_error_title" = "Не може да се създаде нова среща";
-"create_meeting_error_message" = "Персонализираният URL \"%@\" липсва или е невалиден. ";
 "next_meeting_empty_title" = "Няма предстоящи срещи днес";
 "next_meeting_empty_message" = "Няма повече срещи за днес";
 
@@ -29,7 +27,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Общи";
-"preferences_tab_bookmarks" = "Отметки";
 "preferences_tab_calendars" = "Календари";
 "preferences_tab_advanced" = "Разширени";
 
@@ -39,7 +36,6 @@
 "preferences_general_option_preferred_language_title" = "Език:";
 "preferences_general_option_preferred_language_system_value" = "Системен";
 "preferences_general_shortcut_open_menu" = "Отвори менюто:";
-"preferences_general_shortcut_create_meeting" = "Създай среща:";
 "preferences_general_shortcut_join_next" = "Влез в следващата среща:";
 "preferences_general_shortcut_join_from_clipboard" = "Отвори среща от клипборда:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Покажи/скрий заглавието в лентата:";
@@ -50,20 +46,19 @@
 
 "preferences_appearance_events_title" = "Събития";
 "preferences_appearance_events_show_events_for_title" = "Показвай събития за";
-"preferences_appearance_events_show_events_for_today_value" = "днес";
-"preferences_appearance_events_show_events_for_today_tomorrow_value" = "днес и утре";
+"preferences_appearance_events_show_events_for_today_value" = "Днес";
+"preferences_appearance_events_show_events_for_today_tomorrow_value" = "Днес и утре";
 "preferences_appearance_events_all_day_title" = "Целодневни събития:";
 "preferences_appearance_events_without_guest_title" = "Събития без гости:";
 "preferences_appearance_events_past_title" = "Минали събития:";
 "preferences_appearance_events_pending_title" = "Събития без отговор";
 "preferences_appearance_events_declined_title" = "Отказани събития:";
 "preferences_appearance_events_tentative_title" = "Събития с отговор \"може би\":";
-"preferences_appearance_events_value_show" = "покажи";
-"preferences_appearance_events_value_hide" = "скрий";
-"preferences_appearance_events_value_as_inactive" = "показвай като неактивни";
-"preferences_appearance_events_value_as_underlined" = "показвай като подчертани";
-"preferences_appearance_events_value_with_strikethrough" = "показвай със зачеркване";
-"preferences_appearance_events_value_only_with_link" = "показвай само тези с връзка";
+"preferences_appearance_events_value_show" = "Покажи";
+"preferences_appearance_events_value_hide" = "Скрий";
+"preferences_appearance_events_value_as_inactive" = "Показвай като неактивни";
+"preferences_appearance_events_value_as_underlined" = "Показвай като подчертани";
+"preferences_appearance_events_value_only_with_link" = "Показвай само тези с връзка";
 "preferences_appearance_status_bar_title" = "Лента на менюто";
 "preferences_appearance_status_bar_icon_title" = "Икона";
 "preferences_appearance_status_bar_icon_app_icon_value" = "\U00A0Soon";
@@ -71,42 +66,30 @@
 "preferences_appearance_status_bar_icon_specific_icon_value" = "\U00A0Икона на услугата (напр. MS Teams)";
 "preferences_appearance_status_bar_icon_no_icon_value" = "\U00A0Без икона";
 "preferences_appearance_status_bar_title_title" = "Заглавие";
-"preferences_appearance_status_bar_title_event_title_value" = "заглавие на събитие";
-"preferences_appearance_status_bar_title_dot_value" = "точка (•)";
-"preferences_appearance_status_bar_title_hide_value" = "скрий";
-"preferences_appearance_status_bar_title_shorten_stepper" = "съкрати до %d знака";
+"preferences_appearance_status_bar_title_event_title_value" = "Заглавие на събитие";
+"preferences_appearance_status_bar_title_dot_value" = "Точка (•)";
+"preferences_appearance_status_bar_title_hide_value" = "Скрий";
+"preferences_appearance_status_bar_title_shorten_stepper" = "%d знака";
 "preferences_appearance_status_bar_time_title" = "Час";
-"preferences_appearance_status_bar_time_show_value" = "покажи";
-"preferences_appearance_status_bar_time_show_under_title_value" = "покажи под заглавието";
-"preferences_appearance_status_bar_time_hide_value" = "скрий";
+"preferences_appearance_status_bar_time_show_value" = "Покажи";
+"preferences_appearance_status_bar_time_show_under_title_value" = "Покажи под заглавието";
+"preferences_appearance_status_bar_time_hide_value" = "Скрий";
 "preferences_appearance_status_bar_ongoing_title" = "Видимост на текущо събитие:";
-"preferences_appearance_status_bar_ongoing_time_immediate_value" = "скрий при започване";
-"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "скрий 10 мин след началото";
-"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "скрий 10 мин преди следващото събитие";
-"preferences_appearance_status_bar_next_event_toggle" = "Показвай само събития, започващи до";
+"preferences_appearance_status_bar_ongoing_time_immediate_value" = "Скрий при започване";
+"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Скрий 10 мин след началото";
+"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Скрий 10 мин преди следващото събитие";
+"preferences_appearance_status_bar_next_event_toggle" = "Показвай само събития, които започват скоро";
 "preferences_appearance_status_bar_next_event_stepper" = "%d минути";
-"preferences_appearance_menu_title" = "Меню";
-"preferences_appearance_menu_show_timeline_toggle" = "Показвай визуална времева линия на деня";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Съкрати заглавието на събитието до";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d знака";
 "preferences_appearance_menu_time_format_title" = "Формат на часа:";
-"preferences_appearance_menu_time_format_12_hour_value" = "12-часов (AM/PM)";
+"preferences_appearance_menu_time_format_12_hour_value" = "12-часов";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-часов";
-"preferences_appearance_menu_show_event_title" = "Показвай за събитието:";
-"preferences_appearance_menu_show_event_end_time_value" = "краен час";
-"preferences_appearance_menu_show_event_icon_value" = "икона";
-"preferences_appearance_menu_show_event_details_value" = "детайли като подменю";
 
 // MARK: - Preferences Services
 
 "preferences_services_link_meeting_title" = "Отваряй всички връзки за срещи в";
 "preferences_services_link_service_title" = "Отваряй връзките за %@ в";
 "preferences_services_link_default_browser_value" = "уеб браузъра по подразбиране";
-"preferences_services_create_meeting_title" = "Създавай срещи чрез";
-"preferences_services_create_meeting_custom_url_value" = "Персонализиран URL";
 "preferences_services_create_meeting_custom_url_placeholder" = "Въведи валиден URL (с http:// или https://)";
-"preferences_services_google_meet_tip" = "Съвет: Google Meet поддържа избор на акаунт в URL, напр. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Използвай уеб браузър";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -125,18 +108,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Избери уеб браузър";
 "preferences_configure_browsers_choose_browser_panel_message" = "Избери откъде да се стартира уеб браузърът.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Все още няма отметки";
-"preferences_bookmarks_delete_bookmark_title" = "Изтриване на отметка?";
-"preferences_bookmarks_delete_bookmark_message" = "Да се изтрие ли отметката %@?";
-"preferences_bookmarks_add_bookmark_button" = "Добави отметка";
-"preferences_bookmarks_new_bookmark_title" = "Нова отметка";
-"preferences_bookmarks_new_bookmark_name" = "Име";
-"preferences_bookmarks_new_bookmark_link_phone" = "Връзка/телефонен номер";
-"preferences_bookmarks_new_bookmark_service" = "Услуга";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ вече има тази връзка/телефонен номер:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "Не може да се добави отметка";
 
 // MARK: - Preferences Calendars
 
@@ -145,7 +117,6 @@
 
 // MARK: - Preferences Advanced
 
-"preferences_advanced_setting_warning" = "⚠️ Използвай тези настройки само ако е ясно какво правят";
 "preferences_advanced_apple_script_checkmark" = "Изпълнявай AppleScript при влизане в среща";
 "preferences_advanced_apple_script_placeholder" = "# въведи скрипта тук\ntell application \"Music\" to pause";
 "preferences_advanced_test_script_on_next_event" = "Тествай при следващото събитие";
@@ -157,7 +128,7 @@
 "preferences_advanced_event_regex_title" = "Персонализирани регулярни изрази за филтриране на срещи";
 "preferences_advanced_regex_title" = "Персонализирани регулярни изрази за връзки към срещи";
 "preferences_advanced_regex_add_button" = "Добави регулярен израз";
-"preferences_advanced_regex_edit_button" = "редактирай";
+"preferences_advanced_regex_edit_button" = "Редактирай";
 "preferences_advanced_regex_new_title" = "Въведи регулярен израз";
 "preferences_advanced_regex_new_cant_save_title" = "Регулярният израз не може да бъде запазен";
 
@@ -177,9 +148,6 @@
 "notification_next_meeting_dismissed_message" = "Срещата може да бъде върната от Бързи действия";
 "notification_all_dismissals_removed_title" = "Всички скрити срещи са възстановени";
 "notification_all_dismissals_removed_message" = "Всички скрити срещи отново се показват";
-"status_bar_section_join_create_meeting" = "Създай среща";
-"status_bar_section_bookmarks_title" = "Отметки";
-"status_bar_section_bookmarks_menu" = "Меню с отметки";
 "status_bar_section_date_nothing" = "Нищо за %@";
 "status_bar_event_start_time_all_day" = "Цял ден";
 "status_bar_submenu_calendar_title" = "Календар: %@";
@@ -237,14 +205,12 @@
 // MARK: - Shared
 
 "shared_send_notification_toggle" = "Изпращай системно известие";
-"shared_fullscreen_notification_toggle" = "Показвай известие на цял екран";
 "shared_send_notification_no_alert_style_tip" = "Забележка: Известията са настроени като банери и изчезват след кратко време. За да останат на екрана, смени стила им на предупреждения в настройките на macOS.";
 "shared_send_notification_disabled_tip" = "⚠️ Известията за Soon са изключени в настройките на macOS. Включи ги, за да следиш срещите.";
 "shared_automatic_event_join_toggle" = "Автоматично влизай в следващата среща";
 "shared_automatic_event_join_tip" = "Следващата среща ще се отваря автоматично в избраното приложение или браузър";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "Персонализиран URL";
 "constants_meeting_service_phone" = "Телефонен номер";
 "constants_meeting_service_zoom_native" = "Zoom native";
 "constants_meeting_service_other" = "Друго";
@@ -271,9 +237,9 @@
 "link_url_cant_open_title" = "Връзката не може да се отвори в %@";
 "link_url_cant_open_message" = "Провери дали %@ е инсталиран, или отвори такива връзки в браузър от настройките.";
 "access_screen_provider_authorization_cancelled" = "Упълномощаването беше отменено. Опитайте отново, за да свържете календара си.";
-"general_end_of_event_notification_toggle" = "Изпрати известие, когато събитието приключи";
+"general_end_of_event_notification_toggle" = "Известявай ме, когато събитие приключва";
 "general_refresh" = "Обнови";
-"general_when_event_ends" = "когато събитието приключи";
+"general_when_event_ends" = "Когато събитието приключи";
 "message_clipboard_empty_text" = "Клипбордът не съдържа нищо, затова срещата не може да бъде стартирана.";
 "message_clipboard_empty_title" = "Клипбордът е празен";
 "message_clipboard_invalid_text" = "Клипбордът не съдържа връзка към среща, затова срещата не може да бъде стартирана.";
@@ -316,15 +282,12 @@
 "preferences_calendar_source_title" = "Източник на календар";
 "preferences_configure_browsers_help" = "Добавете персонализирани браузъри, профили или приложения за отваряне на връзки към срещи.";
 "preferences_meeting_opening_behavior_title" = "Отвори връзки към срещи";
-"preferences_notifications_alerts_title" = "Сигнали за срещи";
 "preferences_notifications_automation_title" = "Автоматично присъединяване";
 "preferences_section_apple_script_hooks_title" = "AppleScript куки";
-"preferences_section_create_title" = "Създай срещи";
 "preferences_section_general_settings_title" = "Общи настройки";
 "preferences_section_regex_filters_title" = "Regex филтри";
 "preferences_section_shortcuts_title" = "Клавишни комбинации";
 "preferences_services_link_default_help" = "Този браузър се използва, освен ако не е зададено заместване за конкретен доставчик.";
-"preferences_services_link_overrides_help" = "Тези избори заместват браузъра по подразбиране за всяка услуга за срещи.";
 "preferences_services_link_overrides_title" = "Замествания по доставчик";
 "preferences_status_copy_diagnostics" = "Копирай диагностика";
 "preferences_status_open_calendar_settings" = "Отвори настройките на календара";
@@ -351,7 +314,7 @@
 "status_bar_join_with_other_link" = "Присъедини се с друга връзка";
 "timeline_accessibility_label" = "Времева линия с %d събития";
 "fullscreen_notification_dismiss_action" = "Отхвърли";
-"shared_fullscreen_notification_without_link_toggle" = "Показвай и пълноекранни известия за събития без връзка към среща";
+"shared_fullscreen_notification_without_link_toggle" = "Също за събития без линк за среща";
 "shared_fullscreen_notification_without_link_help" = "Събитията без връзка към среща показват пълноекранно напомняне само с действието Отхвърли.";
 "preferences_advanced_script_link_only_help" = "Изпълнява се само за събития с линкове за срещи.";
 "preferences_meeting_opening_mode_google_meet_pwa" = "Google Meet PWA (Chrome)";
@@ -366,13 +329,9 @@
 "preferences_meeting_opening_mode_zoom_app" = "Zoom App";
 "preferences_meeting_opening_mode_zoom_web_app" = "Zoom Web App";
 "preferences_meeting_opening_mode_zoom_web_app_help" = "Отваря поддържани линкове за срещи в Zoom в уеб клиента на Zoom.";
-"preferences_services_link_modes_help" = "Опциите за приложение, уеб приложение и PWA са незадължителни. Съществуващото поведение на браузъра остава непроменено, докато не изберете.";
-"preferences_sidebar_experience" = "Преживяване";
-"preferences_sidebar_setup" = "Настройка";
 "status_bar_control_current_meeting" = "Текуща среща";
 "status_bar_control_next_meeting" = "Следваща среща";
 "preferences_appearance_events_no_meeting_link_title" = "Събития без връзка за среща";
-"preferences_appearance_menu_show_event_calendar_color_value" = "цвят на календара";
 "status_bar_popover_zoom_in" = "Увеличи";
 "status_bar_popover_zoom_out" = "Намали";
 "status_bar_popover_update_available" = "Налична актуализация";
@@ -391,3 +350,13 @@
 "status_bar_details_open_google_calendar" = "Google Календар";
 "status_bar_details_open_calendar" = "Календар";
 "status_bar_details_open_fantastical" = "Fantastical";
+"preferences_appearance_status_bar_title_max_length" = "Максимална дължина";
+"preferences_appearance_status_bar_next_event_window" = "Започващи до";
+"notifications_event_start_title" = "Начало на събитие";
+"notifications_event_start_toggle" = "Известявай ме, когато събитие започва";
+"notifications_event_end_title" = "Край на събитие";
+"notifications_alert_style_title" = "Тип известие";
+"notifications_alert_style_system" = "Системно известие";
+"notifications_alert_style_fullscreen" = "На цял екран";
+"notifications_alert_style_both" = "И двете";
+"notifications_timing_title" = "Време";
