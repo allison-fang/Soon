@@ -89,8 +89,7 @@ struct StatusBarNotice: Equatable {
 }
 
 struct StatusBarPopoverPresentation: Equatable {
-    var density: TimelineDensity = .comfortable
-    var zoom: TimelineZoom = .closest
+    var zoom: TimelineZoom = .close
     var title = ""
     var dateText = ""
     var notice: StatusBarNotice?
@@ -126,7 +125,6 @@ struct StatusBarPopoverPresenter {
 
     func make() -> StatusBarPopoverPresentation {
         var presentation = StatusBarPopoverPresentation(
-            density: state.menu.timelineDensity,
             zoom: state.menu.resolvedTimelineZoom,
             title: "status_bar_section_today".loco(),
             dateText: dayFormatter.string(from: calendar.startOfDay(for: now)),
@@ -270,8 +268,7 @@ struct StatusBarPopoverPresenter {
     }
 
     private var scale: TimelineScale {
-        let density: TimelineScale = state.menu.timelineDensity == .compact ? .compact : .comfortable
-        return density.zoomed(to: state.menu.resolvedTimelineZoom)
+        TimelineScale.standard.zoomed(to: state.menu.resolvedTimelineZoom)
     }
 
     private func emptyMessage(title: String, isToday: Bool) -> String {

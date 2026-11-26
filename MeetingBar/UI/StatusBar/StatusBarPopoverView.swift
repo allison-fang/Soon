@@ -58,61 +58,33 @@ enum TimelineGrid {
     static let nowAnchorID = "timeline.now"
 }
 
-/// Everything Compact and Comfortable disagree on.
 struct TimelineMetrics {
-    let width: CGFloat
-    let trailingInset: CGFloat
-    let edgeInset: CGFloat
-    let gridVerticalInset: CGFloat
-    let cardGap: CGFloat
-    let cardCornerRadius: CGFloat
-    let cardHorizontalPadding: CGFloat
-    let cardVerticalPadding: CGFloat
-    let cardRowHeight: CGFloat
-    let cardRowSpacing: CGFloat
-    let cardTitleSize: CGFloat
-    let cardDetailSize: CGFloat
-    let avatarSize: CGFloat
-    let joinHeight: CGFloat
-    let allDayRowHeight: CGFloat
-    let allDayRowSpacing: CGFloat
-    let maxTimelineHeight: CGFloat
-    let footerHeight: CGFloat
-    let detailsWidth: CGFloat
-    let detailsPadding: CGFloat
-    let detailsSpacing: CGFloat
-    let detailsRowSpacing: CGFloat
-    let detailsAvatarSize: CGFloat
+    let width: CGFloat = 372
+    let trailingInset: CGFloat = 10
+    let edgeInset: CGFloat = 12
+    let gridVerticalInset: CGFloat = 10
+    let cardGap: CGFloat = 1
+    let cardCornerRadius: CGFloat = 5
+    let cardHorizontalPadding: CGFloat = 6
+    let cardVerticalPadding: CGFloat = 3
+    let cardRowHeight: CGFloat = 16
+    let cardRowSpacing: CGFloat = 1
+    let cardTitleSize: CGFloat = 12
+    let cardDetailSize: CGFloat = 10.5
+    let avatarSize: CGFloat = 16
+    let joinHeight: CGFloat = 16
+    let allDayRowHeight: CGFloat = 22
+    let allDayRowSpacing: CGFloat = 2
+    let maxTimelineHeight: CGFloat = 540
+    let footerHeight: CGFloat = 34
+    let detailsWidth: CGFloat = 320
+    let detailsPadding: CGFloat = 14
+    let detailsSpacing: CGFloat = 12
+    let detailsRowSpacing: CGFloat = 6
+    let detailsAvatarSize: CGFloat = 22
 
     var twoRowCardHeight: CGFloat {
         cardRowHeight * 2 + cardRowSpacing + cardVerticalPadding * 2
-    }
-
-    init(density: TimelineDensity) {
-        let isCompact = density == .compact
-        width = isCompact ? 372 : 396
-        trailingInset = isCompact ? 10 : 14
-        edgeInset = isCompact ? 12 : 14
-        gridVerticalInset = isCompact ? 10 : 14
-        cardGap = isCompact ? 1 : 2
-        cardCornerRadius = isCompact ? 5 : 7
-        cardHorizontalPadding = isCompact ? 6 : 10
-        cardVerticalPadding = isCompact ? 3 : 6
-        cardRowHeight = isCompact ? 16 : 18
-        cardRowSpacing = isCompact ? 1 : 3
-        cardTitleSize = isCompact ? 12 : 12.5
-        cardDetailSize = isCompact ? 10.5 : 11
-        avatarSize = isCompact ? 16 : 18
-        joinHeight = isCompact ? 16 : 18
-        allDayRowHeight = isCompact ? 22 : 28
-        allDayRowSpacing = isCompact ? 2 : 4
-        maxTimelineHeight = isCompact ? 540 : 600
-        footerHeight = isCompact ? 34 : 38
-        detailsWidth = isCompact ? 320 : 340
-        detailsPadding = isCompact ? 14 : 18
-        detailsSpacing = isCompact ? 12 : 16
-        detailsRowSpacing = isCompact ? 6 : 9
-        detailsAvatarSize = isCompact ? 22 : 24
     }
 }
 
@@ -120,7 +92,7 @@ struct StatusBarPopoverView: View {
     @ObservedObject var model: StatusBarPopoverModel
 
     private var presentation: StatusBarPopoverPresentation { model.presentation }
-    private var metrics: TimelineMetrics { TimelineMetrics(density: presentation.density) }
+    private let metrics = TimelineMetrics()
 
     var body: some View {
         VStack(spacing: 0) {

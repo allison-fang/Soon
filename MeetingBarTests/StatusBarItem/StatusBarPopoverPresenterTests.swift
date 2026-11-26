@@ -127,31 +127,21 @@ final class StatusBarPopoverPresenterTests: BaseTestCase {
         XCTAssertEqual(try XCTUnwrap(medium.days.first).gridHeight, try hoursToday() * 56)
     }
 
-    func testWithoutAZoomDensityPicksTheScale() throws {
+    func testWithoutAZoomTheTimelineIsClose() throws {
         var settings = AppSettings.current
         settings.menu.timelineZoom = nil
-        settings.menu.timelineDensity = .compact
-        let compact = presentation([meeting()], settings: settings)
-        settings.menu.timelineDensity = .comfortable
-        let comfortable = presentation([meeting()], settings: settings)
+        let unzoomed = presentation([meeting()], settings: settings)
 
-        XCTAssertEqual(compact.density, .compact)
-        XCTAssertEqual(compact.zoom, .close)
-        XCTAssertEqual(comfortable.density, .comfortable)
-        XCTAssertEqual(comfortable.zoom, .closest)
+        XCTAssertEqual(unzoomed.zoom, .close)
+        XCTAssertEqual(try XCTUnwrap(unzoomed.days.first).gridHeight, try hoursToday() * TimelineZoom.close.hourHeight)
     }
 
-    func testZoomKeepsDensitysOneLineMinimum() throws {
+    func testZoomKeepsTheOneLineMinimum() throws {
         var settings = AppSettings.current
-        settings.menu.timelineDensity = .compact
         settings.menu.timelineZoom = .fullDay
         let day = try XCTUnwrap(presentation([meeting(duration: 900)], settings: settings).days.first)
 
-        XCTAssertEqual(day.timedEvents.first?.placement.height, TimelineScale.compact.minimumEventHeight)
-    }
-
-    func testDensityDefaultsToComfortable() {
-        XCTAssertEqual(Defaults[.timelineDensity], .comfortable)
+        XCTAssertEqual(day.timedEvents.first?.placement.height, TimelineScale.standard.minimumEventHeight)
     }
 
     func testZoomIsUnsetUntilSomeoneZooms() {

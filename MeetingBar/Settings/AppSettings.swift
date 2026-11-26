@@ -51,12 +51,10 @@ struct StatusBarSettings: Equatable {
 }
 
 struct MenuSettings: Equatable {
-    var timelineDensity: TimelineDensity
     var timelineZoom: TimelineZoom?
 
-    /// Until someone zooms, the scale Density set before zoom existed.
     var resolvedTimelineZoom: TimelineZoom {
-        timelineZoom ?? (timelineDensity == .compact ? .close : .closest)
+        timelineZoom ?? .close
     }
 }
 
@@ -215,10 +213,7 @@ extension AppSettings {
                 statusbarEventTitleLength: Defaults[.statusbarEventTitleLength],
                 hideMeetingTitle: eventTitleFormat == .generic
             ),
-            menu: MenuSettings(
-                timelineDensity: Defaults[.timelineDensity],
-                timelineZoom: Defaults[.timelineZoom]
-            ),
+            menu: MenuSettings(timelineZoom: Defaults[.timelineZoom]),
             notifications: NotificationSettings(
                 joinEventNotification: Defaults[.joinEventNotification],
                 joinEventNotificationTime: Defaults[.joinEventNotificationTime],
@@ -279,10 +274,7 @@ extension AppSettings {
                 statusbarEventTitleLength: statusbarEventTitleLengthLimits.max,
                 hideMeetingTitle: false
             ),
-            menu: MenuSettings(
-                timelineDensity: .comfortable,
-                timelineZoom: nil
-            ),
+            menu: MenuSettings(timelineZoom: nil),
             notifications: NotificationSettings(
                 joinEventNotification: true,
                 joinEventNotificationTime: .atStart,

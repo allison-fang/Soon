@@ -69,7 +69,6 @@ extension Defaults.Keys {
         "ongoingEventVisibility", default: .showTenMinBeforeNext)
 
     // Menu Appearance
-    static let timelineDensity = Key<TimelineDensity>("timelineDensity", default: .comfortable)
     static let timelineZoom = Key<TimelineZoom?>("timelineZoom", default: nil)
 
     static let declinedEventsAppereance = Key<DeclinedEventsAppereance>(

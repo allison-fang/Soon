@@ -546,7 +546,6 @@ final class StatusBarItemControllerPresentationTests: BaseTestCase {
 
     func test_zoomFromThePopoverPersistsAcrossOpens() throws {
         configureStatusBarDefaults()
-        Defaults[.timelineDensity] = .comfortable
         let controller = StatusBarItemController()
         defer {
             controller.popover.close()
@@ -561,12 +560,12 @@ final class StatusBarItemControllerPresentationTests: BaseTestCase {
         ))
         controller.events = [makeStatusEvent()]
         controller.openMenu()
-        XCTAssertEqual(controller.popover.model.presentation.zoom, .closest)
+        XCTAssertEqual(controller.popover.model.presentation.zoom, .close)
 
         XCTAssertTrue(try openPanel().performKeyEquivalent(with: commandKey("-", keyCode: 27)))
-        XCTAssertEqual(Defaults[.timelineZoom], .close)
+        XCTAssertEqual(Defaults[.timelineZoom], .medium)
         let applied = expectation(for: NSPredicate { _, _ in
-            controller.popover.model.presentation.zoom == .close
+            controller.popover.model.presentation.zoom == .medium
         }, evaluatedWith: nil)
         wait(for: [applied], timeout: 2)
 
