@@ -29,7 +29,6 @@ struct EventsSection: View {
     @Default(.showPendingEvents) var showPendingEvents
     @Default(.showTentativeEvents) var showTentativeEvents
     @Default(.showEventsForPeriod) var showEventsForPeriod
-    @Default(.timelineDensity) var timelineDensity
 
     var body: some View {
         Section(header: Text("preferences_appearance_events_title".loco())) {
@@ -41,17 +40,6 @@ struct EventsSection: View {
                     .tag(ShowEventsForPeriod.today)
                 Text("preferences_appearance_events_show_events_for_today_tomorrow_value".loco())
                     .tag(ShowEventsForPeriod.today_n_tomorrow)
-            }
-            .pickerStyle(.radioGroup)
-
-            Picker(
-                preferenceLabel("preferences_appearance_menu_density_title"),
-                selection: $timelineDensity
-            ) {
-                Text("preferences_appearance_menu_density_comfortable_value".loco())
-                    .tag(TimelineDensity.comfortable)
-                Text("preferences_appearance_menu_density_compact_value".loco())
-                    .tag(TimelineDensity.compact)
             }
             .pickerStyle(.radioGroup)
         }

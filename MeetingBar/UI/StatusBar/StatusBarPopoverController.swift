@@ -99,9 +99,7 @@ final class StatusBarPopoverController {
 
     var isOpen: Bool { panel != nil }
 
-    private var metrics: TimelineMetrics {
-        TimelineMetrics(density: model.presentation.density)
-    }
+    private let metrics = TimelineMetrics()
 
     init() {
         model.onEventHover = { [weak self] id, isHovering in

@@ -54,8 +54,7 @@ enum TimelineZoom: String, CaseIterable, Sendable {
 /// enough for one line of title, like Google Calendar. Overlap is judged on
 /// that visual height, not on real duration.
 struct TimelineScale: Equatable {
-    static let compact = TimelineScale(hourHeight: TimelineZoom.close.hourHeight, minimumEventHeight: 20)
-    static let comfortable = TimelineScale(hourHeight: TimelineZoom.closest.hourHeight, minimumEventHeight: 26)
+    static let standard = TimelineScale(hourHeight: TimelineZoom.close.hourHeight, minimumEventHeight: 20)
 
     let hourHeight: Double
     let minimumEventHeight: Double
@@ -69,7 +68,7 @@ struct TimelineScale: Equatable {
 struct TimelineWindow: Equatable {
     let start: Date
     let end: Date
-    var scale: TimelineScale = .compact
+    var scale: TimelineScale = .standard
 
     var height: Double { offset(of: end) }
 

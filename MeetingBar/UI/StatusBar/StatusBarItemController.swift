@@ -100,7 +100,7 @@ final class StatusBarItemController {
             keys: .statusbarEventTitleLength, .eventTimeFormat,
             .eventTitleIconFormat, .showEventMaxTimeUntilEventThreshold,
             .showEventMaxTimeUntilEventEnabled,
-            .timeFormat, .timelineDensity, .timelineZoom,
+            .timeFormat, .timelineZoom,
             .pastEventsAppereance, .declinedEventsAppereance,
             .eventTitleFormat,
             options: []

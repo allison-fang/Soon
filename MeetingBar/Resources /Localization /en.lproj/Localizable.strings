@@ -149,9 +149,6 @@
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Hide 10 min before next event";
 "preferences_appearance_status_bar_next_event_toggle" = "Only show events starting soon";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minutes";
-"preferences_appearance_menu_density_title" = "Timeline density";
-"preferences_appearance_menu_density_comfortable_value" = "Comfortable";
-"preferences_appearance_menu_density_compact_value" = "Compact";
 "preferences_appearance_menu_time_format_title" = "Time format:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12-hour";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-hour";
