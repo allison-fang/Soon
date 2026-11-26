@@ -25,7 +25,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Generali";
-"preferences_tab_bookmarks" = "Segnalibri";
 "preferences_tab_calendars" = "Calendari";
 "preferences_tab_advanced" = "Avanzate";
 
@@ -108,18 +107,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Scegli il browser web";
 "preferences_configure_browsers_choose_browser_panel_message" = "Seleziona da dove eseguire il browser web.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Non hai ancora nessun segnalibro";
-"preferences_bookmarks_delete_bookmark_title" = "Elimina segnalibro?";
-"preferences_bookmarks_delete_bookmark_message" = "Elimina il segnalibro %@?";
-"preferences_bookmarks_add_bookmark_button" = "Aggiungi segnalibro";
-"preferences_bookmarks_new_bookmark_title" = "Nuovo segnalibro";
-"preferences_bookmarks_new_bookmark_name" = "Nome";
-"preferences_bookmarks_new_bookmark_link_phone" = "Link/numero di telefono";
-"preferences_bookmarks_new_bookmark_service" = "Servizio";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ ha già questo link/numero di telefono:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "Non posso aggiungere il segnalibro";
 
 // MARK: - Preferences Calendars
 
@@ -160,8 +148,6 @@
 "notification_all_dismissals_removed_title" = "Rimossi tutti i respinti";
 "notification_all_dismissals_removed_message" = "Tutte le riunioni respinte sono tornate in azione";
 "status_bar_section_join_create_meeting" = "Crea riunione";
-"status_bar_section_bookmarks_title" = "Segnalibri";
-"status_bar_section_bookmarks_menu" = "Menù segnalibri";
 "status_bar_section_date_nothing" = "Niente per %@";
 "status_bar_event_start_time_all_day" = "Tutto il giorno";
 "status_bar_submenu_calendar_title" = "Calendario: %@";

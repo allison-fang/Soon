@@ -28,7 +28,6 @@
 
 
 "preferences_tab_general" = "一般";
-"preferences_tab_bookmarks" = "ブックマーク";
 "preferences_tab_calendars" = "カレンダー";
 "preferences_tab_advanced" = "高度な設定";
 
@@ -115,19 +114,8 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "ブラウザーの選択";
 "preferences_configure_browsers_choose_browser_panel_message" = "ブラウザーをどこから起動するか選択します。";
 
-// MARK: - Preferences Bookmarks
 
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "ブックマークはまだありません";
-"preferences_bookmarks_delete_bookmark_title" = "ブックマークを削除しますか？";
-"preferences_bookmarks_delete_bookmark_message" = "ブックマーク%@を削除しますか？";
-"preferences_bookmarks_add_bookmark_button" = "ブックマークを追加する";
-"preferences_bookmarks_new_bookmark_title" = "新しいブックマーク";
-"preferences_bookmarks_new_bookmark_name" = "名前";
-"preferences_bookmarks_new_bookmark_link_phone" = "リンク / 電話番号";
-"preferences_bookmarks_new_bookmark_service" = "サービス";
-"preferences_bookmarks_new_bookmark_already_exist" = "このリンク / 電話番号のブックマークは既に %@ として登録されています:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "ブックマークを追加できません";
 
 // MARK: - Preferences Calendars
 
@@ -161,8 +149,6 @@
 "status_bar_section_join_current_meeting" = "開催中のミーティングに参加する";
 "status_bar_section_join_from_clipboard" = "クリップボードからミーティングを開く";
 "status_bar_section_join_create_meeting" = "ミーティングを作成";
-"status_bar_section_bookmarks_title" = "ブックマーク";
-"status_bar_section_bookmarks_menu" = "ブックマークメニュー";
 "status_bar_section_date_nothing" = "%@はミーティングがありません";
 "status_bar_event_start_time_all_day" = "終日";
 "status_bar_submenu_calendar_title" = "カレンダー: %@";

@@ -87,7 +87,6 @@
 "preferences_general_option_login_launch" = "Beim Anmelden starten";
 "preferences_tab_advanced" = "Erweitert";
 "preferences_tab_calendars" = "Kalender";
-"preferences_tab_bookmarks" = "Lesezeichen";
 
 // MARK: - Preferences tabs
 
@@ -141,8 +140,6 @@
 "status_bar_submenu_calendar_title" = "Kalender: %@";
 "status_bar_event_start_time_all_day" = "Den ganzen Tag";
 "status_bar_section_date_nothing" = "Nichts für %@";
-"status_bar_section_bookmarks_menu" = "Lesezeichenmenü";
-"status_bar_section_bookmarks_title" = "Lesezeichen";
 "status_bar_section_join_create_meeting" = "Meeting erstellen";
 "status_bar_section_join_from_clipboard" = "Meeting in der Zwischenablage öffnen";
 "status_bar_section_join_next_meeting" = "An nächstem Meeting teilnehmen";
@@ -173,19 +170,8 @@
 // MARK: - Preferences Calendars
 
 "preferences_calendars_select_calendars_title" = "Kalender auswählen, um Ereignisse in der Menüleiste anzuzeigen";
-"preferences_bookmarks_new_bookmark_error_title" = "Kann Lesezeichen nicht hinzufügen";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ hat bereits diesen Link/Telefonnummer:\n%@";
-"preferences_bookmarks_new_bookmark_service" = "Service";
-"preferences_bookmarks_new_bookmark_link_phone" = "Link/Telefonnummer";
-"preferences_bookmarks_new_bookmark_name" = "Name";
-"preferences_bookmarks_new_bookmark_title" = "Neues Lesezeichen";
-"preferences_bookmarks_add_bookmark_button" = "Lesezeichen hinzufügen";
-"preferences_bookmarks_delete_bookmark_message" = "Lesezeichen %@ löschen?";
-"preferences_bookmarks_delete_bookmark_title" = "Lesezeichen löschen?";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Sie haben noch keine Lesezeichen";
 "preferences_services_google_meet_tip" = "Tipp: Google Meet unterstützt die Auswahl des Accounts in der URL, z. B. https://meet.google.com/new?authuser=1";
 "preferences_services_create_meeting_custom_url_placeholder" = "Bitte eine gültige URL angeben (mit http:// oder https://)";
 "preferences_services_create_meeting_custom_url_value" = "Benutzerdefinierte URL";

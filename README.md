@@ -84,7 +84,6 @@ Soon works with:
 
 ### Customize and automate
 
-* Bookmark recurring meetings and access them quickly.
 * Launch Soon automatically at login.
 * Use Shortcuts and AppleScript integrations.
 * Run custom AppleScript, for example to pause music when joining a meeting.

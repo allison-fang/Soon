@@ -15,7 +15,7 @@ import Foundation
 // MARK: - Public value types
 
 /// Catalogue of meeting service identifiers used as the primary key for
-/// detection regexes, icons, browser preferences, and bookmarks. Provider
+/// detection regexes, icons, and browser preferences. Provider
 /// metadata (regex, icon, native-app browser) lives on `MeetingProvider.all`.
 enum MeetingServices: String, Codable, CaseIterable, Sendable {
     case phone = "Phone"

@@ -94,8 +94,6 @@ extension Defaults.Keys {
 
     static let timeFormat = Key<TimeFormat>("timeFormat", default: .military)
 
-    // Bookmarks
-    static let bookmarks = Key<[Bookmark]>("bookmarks", default: [])
 
     // all browser configurations
     static let browsers = Key<[Browser]>("browsers", default: [])

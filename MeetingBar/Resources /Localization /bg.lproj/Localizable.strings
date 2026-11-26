@@ -29,7 +29,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Общи";
-"preferences_tab_bookmarks" = "Отметки";
 "preferences_tab_calendars" = "Календари";
 "preferences_tab_advanced" = "Разширени";
 
@@ -116,18 +115,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Избери уеб браузър";
 "preferences_configure_browsers_choose_browser_panel_message" = "Избери откъде да се стартира уеб браузърът.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Все още няма отметки";
-"preferences_bookmarks_delete_bookmark_title" = "Изтриване на отметка?";
-"preferences_bookmarks_delete_bookmark_message" = "Да се изтрие ли отметката %@?";
-"preferences_bookmarks_add_bookmark_button" = "Добави отметка";
-"preferences_bookmarks_new_bookmark_title" = "Нова отметка";
-"preferences_bookmarks_new_bookmark_name" = "Име";
-"preferences_bookmarks_new_bookmark_link_phone" = "Връзка/телефонен номер";
-"preferences_bookmarks_new_bookmark_service" = "Услуга";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ вече има тази връзка/телефонен номер:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "Не може да се добави отметка";
 
 // MARK: - Preferences Calendars
 
@@ -168,8 +156,6 @@
 "notification_all_dismissals_removed_title" = "Всички скрити срещи са възстановени";
 "notification_all_dismissals_removed_message" = "Всички скрити срещи отново се показват";
 "status_bar_section_join_create_meeting" = "Създай среща";
-"status_bar_section_bookmarks_title" = "Отметки";
-"status_bar_section_bookmarks_menu" = "Меню с отметки";
 "status_bar_section_date_nothing" = "Нищо за %@";
 "status_bar_event_start_time_all_day" = "Цял ден";
 "status_bar_submenu_calendar_title" = "Календар: %@";

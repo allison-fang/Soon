@@ -16,7 +16,6 @@
 "window_title_preferences" = "கூட்டத்தின் விருப்பத்தேர்வுகள்";
 "window_title_onboarding" = "கூட்டத்திற்கு வருக";
 "preferences_tab_general" = "பொது";
-"preferences_tab_bookmarks" = "புக்மார்க்குகள்";
 "notifications_event_start_one_minute_body" = "நிகழ்வு ஒரு நிமிடத்தில் தொடங்குகிறது";
 "notifications_event_start_three_minutes_body" = "நிகழ்வு மூன்று நிமிடங்களில் தொடங்குகிறது";
 "notifications_event_start_five_minutes_body" = "நிகழ்வு ஐந்து நிமிடங்களில் தொடங்குகிறது";
@@ -98,16 +97,6 @@
 "preferences_configure_browsers_choose_browser_panel_title" = "வலை உலாவிப் பயன்பாட்டைத் தேர்ந்தெடு";
 "preferences_configure_browsers_choose_browser_panel_prompt" = "வலை உலாவியைத் தேர்வுசெய்க";
 "preferences_configure_browsers_choose_browser_panel_message" = "வலை உலாவியை எங்கிருந்து இயக்க வேண்டும் என்பதைத் தேர்ந்தெடு.";
-"preferences_bookmarks_no_bookmarks_placeholder" = "உங்களிடம் இன்னும் புக்மார்க்குகள் இல்லை";
-"preferences_bookmarks_delete_bookmark_title" = "புத்தகக்குறியை நீக்கவா?";
-"preferences_bookmarks_delete_bookmark_message" = "%@ புத்தகக்குறியை நீக்கு?";
-"preferences_bookmarks_add_bookmark_button" = "புக்மார்க்கைச் சேர்க்கவும்";
-"preferences_bookmarks_new_bookmark_title" = "புதிய புக்மார்க்கு";
-"preferences_bookmarks_new_bookmark_name" = "பெயர்";
-"preferences_bookmarks_new_bookmark_link_phone" = "இணைப்பு/தொலைபேசி எண்";
-"preferences_bookmarks_new_bookmark_service" = "பணி";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ ஏற்கனவே இந்த இணைப்பு/தொலைபேசி எண் உள்ளது:\n %@";
-"preferences_bookmarks_new_bookmark_error_title" = "புக்மார்க்கைச் சேர்க்க முடியாது";
 "preferences_calendars_select_calendars_title" = "நிலை பட்டியில் நிகழ்வுகளைக் காட்ட காலெண்டர்களைத் தேர்ந்தெடுக்கவும்";
 "preferences_calendars_provider_gcalendar_change_account" = "Google கணக்கை மாற்றவும்";
 "preferences_advanced_apple_script_checkmark" = "கூட்டத்தில் சேரும்போது ஆப்பிள்ச்கிரிப்டை இயக்கவும்";
@@ -140,8 +129,6 @@
 "notification_all_dismissals_removed_title" = "அனைத்து பணிநீக்கங்களையும் நீக்கியது";
 "notification_all_dismissals_removed_message" = "தள்ளுபடி செய்யப்பட்ட அனைத்து கூட்டங்களும் மீண்டும் செயல்படுகின்றன";
 "status_bar_section_join_create_meeting" = "கூட்டத்தை உருவாக்கவும்";
-"status_bar_section_bookmarks_title" = "புக்மார்க்குகள்";
-"status_bar_section_bookmarks_menu" = "புக்மார்க்ச் பட்டியல்";
 "status_bar_section_date_nothing" = "%@ க்கு எதுவும் இல்லை";
 "status_bar_event_start_time_all_day" = "நாள் முழுவதும்";
 "status_bar_submenu_calendar_title" = "காலண்டர்: %@";

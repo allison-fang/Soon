@@ -69,15 +69,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "נא לבחור דפדפן";
 "preferences_configure_browsers_choose_browser_panel_message" = "נא לבחור מאיפה להריץ את הדפדפן.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "אין לך סימניות עדיין";
-"preferences_bookmarks_delete_bookmark_title" = "למחוק סימניה?";
-"preferences_bookmarks_delete_bookmark_message" = "למחוק את הסימניה %@?";
-"preferences_bookmarks_new_bookmark_title" = "סימניה חדשה";
-"preferences_bookmarks_new_bookmark_link_phone" = "קישור/מספר טלפון";
-"preferences_bookmarks_new_bookmark_service" = "שירות";
-"preferences_bookmarks_new_bookmark_error_title" = "אי אפשר להוסיף סימניה";
 "preferences_advanced_apple_script_checkmark" = "להפעיל AppleScript בעת הצטרפות לפגישה";
 "preferences_advanced_apple_script_placeholder" = "# כאן ניתן לכתוב את הסקריפט שלך\ntell application \"Music\" to pause";
 "preferences_advanced_test_script_on_next_event" = "בדיקה באירוע הבא";
@@ -101,7 +93,6 @@
 "status_bar_section_join_next_meeting" = "הצטרפות לפגישת האירוע הבאה";
 "status_bar_section_join_from_clipboard" = "פתיחת פגישה מלוח הגזירים";
 "status_bar_section_join_create_meeting" = "יצירת פגישה";
-"status_bar_section_bookmarks_title" = "סימניות";
 "status_bar_submenu_calendar_title" = "לוח שנה: %@";
 "status_bar_submenu_duration_all_day" = "%@ - %@ (%@ דקות)";
 "status_bar_submenu_status_title" = "מצב: %@";
@@ -154,11 +145,9 @@
 // MARK: - Window titles
 
 "window_title_preferences" = "העדפות Soon";
-"preferences_tab_bookmarks" = "סימניות";
 "preferences_tab_calendars" = "לוחות שנה";
 "preferences_appearance_status_bar_title_dot_value" = "נקודה (•)";
 "create_meeting_error_message" = "הכתובת שבחרת „%@” חסרה או שגויה. ";
-"preferences_bookmarks_add_bookmark_button" = "הוספת סימניה";
 
 // MARK: - Link open
 
@@ -200,15 +189,12 @@
 "preferences_services_create_meeting_custom_url_placeholder" = "לא למלא כתובת תקפה (http://‎ או https://‎)";
 "preferences_configure_browsers_delete_alert_message" = "למחוק את הגדרות הדפדפן %@?";
 "preferences_configure_browsers_modal_add_browser_title" = "הוספת דפדפן";
-"preferences_bookmarks_new_bookmark_name" = "שם";
-"preferences_bookmarks_new_bookmark_already_exist" = "ל־%@ כבר יש את הקישור/מספר הטלפון הזה:\n%@";
 
 // MARK: - Preferences Calendars
 
 "preferences_calendars_select_calendars_title" = "נא לבחור לוחות שנה כדי לצפות באירועים בסרגל המצב";
 "preferences_calendars_provider_gcalendar_change_account" = "החלפת חשבון Google";
 "preferences_advanced_wrong_location_message" = "נא לבחור את תיקיית משתמש ← ספרייה ← סקריפטים של יישומים ← com.allisonfang.Soon";
-"status_bar_section_bookmarks_menu" = "תפריט סימניות";
 "status_bar_section_date_nothing" = "שום דבר עבור %@";
 "status_bar_event_start_time_all_day" = "כל היום";
 "status_bar_submenu_open_in_calendar" = "פתיחה ביישום לוח שנה";

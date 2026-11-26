@@ -100,7 +100,7 @@ final class StatusBarItemController {
             keys: .statusbarEventTitleLength, .eventTimeFormat,
             .eventTitleIconFormat, .showEventMaxTimeUntilEventThreshold,
             .showEventMaxTimeUntilEventEnabled,
-            .timeFormat, .bookmarks, .timelineDensity, .timelineZoom,
+            .timeFormat, .timelineDensity, .timelineZoom,
             .pastEventsAppereance, .declinedEventsAppereance,
             .eventTitleFormat,
             options: []
@@ -339,14 +339,6 @@ final class StatusBarItemController {
                 self?.popover.close()
                 MeetingOpener.open(
                     meetingLink: MeetingLink(service: candidate.service, url: candidate.url))
-            },
-            joinBookmark: { [weak self] bookmark in
-                self?.popover.close()
-                MeetingOpener.open(
-                    meetingLink: MeetingLink(
-                        service: MeetingServices(rawValue: bookmark.service),
-                        url: bookmark.url
-                    ))
             },
             copyLink: { [weak self] event in
                 self?.popover.close()

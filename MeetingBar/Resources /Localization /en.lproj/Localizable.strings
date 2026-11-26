@@ -43,7 +43,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "General";
-"preferences_tab_bookmarks" = "Bookmarks";
 "preferences_tab_calendars" = "Calendars";
 "preferences_tab_meeting_opening" = "Meeting Links";
 "preferences_tab_menu_bar" = "Display & Events";
@@ -190,19 +189,6 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Choose web browser";
 "preferences_configure_browsers_choose_browser_panel_message" = "Select where to run the web browser from.";
 
-// MARK: - Preferences Bookmarks
-
-"preferences_bookmarks_no_bookmarks_placeholder" = "You don't have any bookmarks yet";
-"preferences_bookmarks_delete_bookmark_title" = "Delete bookmark?";
-"preferences_bookmarks_delete_bookmark_message" = "Delete %@ bookmark?";
-"preferences_bookmarks_add_bookmark_button" = "Add bookmark";
-"preferences_bookmarks_new_bookmark_title" = "New bookmark";
-"preferences_bookmarks_new_bookmark_name" = "Name";
-"preferences_bookmarks_new_bookmark_link_phone" = "Link/phone number";
-"preferences_bookmarks_new_bookmark_service" = "Service";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ already has this link/phone number:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "Can't add bookmark";
-
 // MARK: - Preferences Calendars
 
 "preferences_calendars_select_calendars_title" = "Select calendars to show meetings in the menu bar";
@@ -275,8 +261,6 @@
 "status_bar_control_select_calendars" = "Select Calendars in Preferences";
 "status_bar_control_refresh_failed" = "Calendar refresh failed";
 "status_bar_control_no_upcoming" = "No upcoming meetings";
-"status_bar_section_bookmarks_title" = "Bookmarks";
-"status_bar_section_bookmarks_menu" = "Bookmarks menu";
 "status_bar_section_date_nothing" = "Nothing for %@";
 "status_bar_event_start_time_all_day" = "All day";
 "status_bar_submenu_calendar_title" = "Calendar: %@";

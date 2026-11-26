@@ -17,7 +17,6 @@
 "window_title_preferences" = "Soon偏好设置";
 "window_title_onboarding" = "欢迎使用Soon";
 "preferences_tab_general" = "通用";
-"preferences_tab_bookmarks" = "书签";
 "preferences_tab_calendars" = "日程表";
 "preferences_tab_advanced" = "高级";
 "preferences_general_option_login_launch" = "登录后启动";
@@ -161,16 +160,6 @@
 "preferences_appearance_status_bar_title_hide_value" = "隐藏";
 "preferences_appearance_status_bar_title_shorten_stepper" = "%d 个字符";
 "preferences_appearance_status_bar_title_title" = "标题";
-"preferences_bookmarks_add_bookmark_button" = "添加书签";
-"preferences_bookmarks_delete_bookmark_message" = "删除 %@ 书签？";
-"preferences_bookmarks_delete_bookmark_title" = "删除书签？";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ 已有此链接/电话号码：\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "无法添加书签";
-"preferences_bookmarks_new_bookmark_link_phone" = "链接/电话号码";
-"preferences_bookmarks_new_bookmark_name" = "名称";
-"preferences_bookmarks_new_bookmark_service" = "服务";
-"preferences_bookmarks_new_bookmark_title" = "新建书签";
-"preferences_bookmarks_no_bookmarks_placeholder" = "您还没有任何书签";
 "preferences_calendar_source_title" = "日历来源";
 "preferences_calendars_provider_gcalendar_change_account" = "更改 Google 账户";
 "preferences_calendars_select_calendars_title" = "选择要在菜单栏显示会议的日历";
@@ -268,8 +257,6 @@
 "status_bar_quick_actions" = "快速操作";
 "status_bar_quit" = "退出 Soon";
 "status_bar_rate_app" = "评价应用";
-"status_bar_section_bookmarks_menu" = "书签菜单";
-"status_bar_section_bookmarks_title" = "书签";
 "status_bar_section_date_nothing" = "%@ 没有事件";
 "status_bar_section_join_create_meeting" = "创建会议";
 "status_bar_section_join_current_meeting" = "加入当前事件会议";

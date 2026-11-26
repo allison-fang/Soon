@@ -11,15 +11,6 @@ import Defaults
 import EventKit
 import Foundation
 
-struct Bookmark: Codable, Defaults.Serializable, Hashable {
-    var name: String
-    /// Provider string ID (= MeetingServices.rawValue for built-in providers).
-    /// Backward-compatible: the old Bookmark.service (MeetingServices) encoded
-    /// its rawValue as the JSON string, so existing stored bookmarks decode fine.
-    var service: String
-    var url: URL
-}
-
 struct ProcessedEvent: Codable, Defaults.Serializable, Hashable {
     var id: String
     var lastModifiedDate: Date?

@@ -483,13 +483,4 @@ final class StatusBarPopoverPresenterTests: BaseTestCase {
         XCTAssertEqual(updated.updateAvailableText, "status_bar_popover_update_available".loco())
         XCTAssertNotNil(updated.notice)
     }
-
-    func testBookmarksStayReachable() throws {
-        var settings = AppSettings.current
-        settings.meetings.bookmarks = [
-            Bookmark(name: "Team room", service: MeetingServices.zoom.rawValue, url: URL(string: "https://zoom.us/j/1")!)
-        ]
-
-        XCTAssertEqual(presentation([], settings: settings).bookmarks.map(\.name), ["Team room"])
-    }
 }

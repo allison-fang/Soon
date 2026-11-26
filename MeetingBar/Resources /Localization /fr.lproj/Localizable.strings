@@ -98,8 +98,6 @@
 "status_bar_submenu_calendar_title" = "Calendrier : %@";
 "status_bar_event_start_time_all_day" = "Toute la journée";
 "status_bar_section_date_nothing" = "Rien pour %@";
-"status_bar_section_bookmarks_menu" = "Menu des marque-pages";
-"status_bar_section_bookmarks_title" = "Marque-pages";
 "status_bar_section_join_create_meeting" = "Créer une réunion";
 "status_bar_section_join_next_meeting" = "Rejoindre la réunion du prochain évènement";
 "status_bar_section_join_current_meeting" = "Rejoindre la réunion de l’évènement en cours";
@@ -124,20 +122,8 @@
 // MARK: - Preferences Calendars
 
 "preferences_calendars_select_calendars_title" = "Sélectionnez les calendriers pour afficher les évènements dans la barre d'état";
-"preferences_bookmarks_new_bookmark_error_title" = "Impossible d'ajouter un marque-page";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ a déjà ce lien/numéro de téléphone :\n%@";
-"preferences_bookmarks_new_bookmark_service" = "Service";
-"preferences_bookmarks_new_bookmark_link_phone" = "Lien/nunéro de téléphone";
-"preferences_bookmarks_new_bookmark_name" = "Nom";
-"preferences_bookmarks_add_bookmark_button" = "Ajouter un marque-page";
-"preferences_bookmarks_delete_bookmark_message" = "Supprimer le marque-page %@ ?";
-"preferences_bookmarks_delete_bookmark_title" = "Supprimer le marque-page ?";
-"preferences_bookmarks_new_bookmark_title" = "Nouveau marque-page";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Vous n'avez pas encore de marque-pages";
-"preferences_tab_bookmarks" = "Marque-pages";
 "preferences_configure_browsers_choose_browser_panel_message" = "Sélectionnez l'endroit duquel exécuter le navigateur web.";
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Choisir le navigateur web";
 "preferences_configure_browsers_choose_browser_panel_title" = "Sélectionner une appli de navigateur web";

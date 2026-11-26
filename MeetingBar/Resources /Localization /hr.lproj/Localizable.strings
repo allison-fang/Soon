@@ -25,7 +25,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Opće";
-"preferences_tab_bookmarks" = "Zabilješke";
 "preferences_tab_calendars" = "Kalendari";
 "preferences_tab_advanced" = "Napredno";
 
@@ -108,18 +107,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Odaberi web-preglednik";
 "preferences_configure_browsers_choose_browser_panel_message" = "Odaberi otkuda pokrenuti web-preglednik.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Još nemaš nijednu zabilješku";
-"preferences_bookmarks_delete_bookmark_title" = "Izbrisati zabilješku?";
-"preferences_bookmarks_delete_bookmark_message" = "Izbrisati zabilješku %@?";
-"preferences_bookmarks_add_bookmark_button" = "Dodaj zabilješku";
-"preferences_bookmarks_new_bookmark_title" = "Nova zabilješka";
-"preferences_bookmarks_new_bookmark_name" = "Ime";
-"preferences_bookmarks_new_bookmark_link_phone" = "Poveznica/broj telefona";
-"preferences_bookmarks_new_bookmark_service" = "Usluga";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ već ima ovu poveznicu/broj telefona:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "Nije moguće dodati zabilješku";
 
 // MARK: - Preferences Calendars
 
@@ -150,8 +138,6 @@
 "status_bar_section_join_current_meeting" = "Pridruži se trenutačnom sastanku";
 "status_bar_section_join_from_clipboard" = "Otvori sastanak iz međuspremnika";
 "status_bar_section_join_create_meeting" = "Stvori sastanak";
-"status_bar_section_bookmarks_title" = "Zabilješke";
-"status_bar_section_bookmarks_menu" = "Izbornik zabilježaka";
 "status_bar_section_date_nothing" = "Ništa za %@";
 "status_bar_event_start_time_all_day" = "Cijeli dan";
 "status_bar_submenu_calendar_title" = "Kalendar: %@";

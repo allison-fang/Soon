@@ -68,7 +68,6 @@
 // MARK: - Preferences Advanced
 
 "preferences_calendars_provider_gcalendar_change_account" = "Change Google Account";
-"preferences_bookmarks_new_bookmark_already_exist" = "Et bokmerke med denne lenken/telefonen finnes allerede med navnet %@:\n%@";
 "preferences_configure_browsers_choose_browser_panel_message" = "Velg en nettleser fra hvilken som helst sti.";
 "preferences_configure_browsers_delete_alert_message" = "Ønsker du å slette %@-nettleseroppsettet?";
 "preferences_services_google_meet_tip" = "Tips: Meet støtter valg av konto via parameter, f.eks. https://meet.google.com/new?authuser=1";
@@ -132,8 +131,6 @@
 "status_bar_submenu_calendar_title" = "Kalender: %@";
 "status_bar_event_start_time_all_day" = "Hele dagen";
 "status_bar_section_date_nothing" = "Ingenting for %@";
-"status_bar_section_bookmarks_menu" = "Bokmerkemeny";
-"status_bar_section_bookmarks_title" = "Bokmerker";
 "status_bar_section_join_create_meeting" = "Opprett møte";
 "status_bar_section_tomorrow" = "I morgen";
 
@@ -151,18 +148,8 @@
 // MARK: - Preferences Calendars
 
 "preferences_calendars_select_calendars_title" = "Velg kalendere for visning av begivenheter i statusfelt";
-"preferences_bookmarks_new_bookmark_error_title" = "Kan ikke legge til bokmerke";
-"preferences_bookmarks_new_bookmark_service" = "Tjeneste";
-"preferences_bookmarks_new_bookmark_link_phone" = "Lenke/telefonnummer";
-"preferences_bookmarks_new_bookmark_name" = "Navn";
-"preferences_bookmarks_new_bookmark_title" = "Nytt bokmerke";
-"preferences_bookmarks_add_bookmark_button" = "Legg til bokmerke";
-"preferences_bookmarks_delete_bookmark_message" = "Ønsker du å slette %@-bokmerket?";
-"preferences_bookmarks_delete_bookmark_title" = "Slett bokmerke?";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Du har ingen bokmerker enda";
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Velg nettleser";
 "preferences_configure_browsers_choose_browser_panel_title" = "Velg et gyldig nettleserprogram";
 "preferences_configure_browsers_modal_alert_title" = "Kan ikke legge til nettleseroppsett";
@@ -229,7 +216,6 @@
 "preferences_general_option_login_launch" = "Start etter innlogging";
 "preferences_tab_advanced" = "Avansert";
 "preferences_tab_calendars" = "Kalendere";
-"preferences_tab_bookmarks" = "Bokmerker";
 
 // MARK: - Preferences tabs
 

@@ -10,7 +10,6 @@
 
 "window_title_preferences" = "Soon instellingen";
 "window_title_onboarding" = "Welkom bij Soon";
-"preferences_tab_bookmarks" = "Bladwijzers";
 "preferences_tab_calendars" = "Agenda's";
 "preferences_tab_advanced" = "Geavanceerd";
 
@@ -106,14 +105,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Kies een browser";
 "preferences_configure_browsers_choose_browser_panel_message" = "Selecteer waar de browser start.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Je hebt nog geen bladwijzers";
-"preferences_bookmarks_delete_bookmark_title" = "Bladwijzer verwijderen?";
-"preferences_bookmarks_delete_bookmark_message" = "Bladwijzer %@ verwijderen?";
-"preferences_bookmarks_add_bookmark_button" = "Bladwijzer toevoegen";
-"preferences_bookmarks_new_bookmark_link_phone" = "Link/telefoonnummer";
-"preferences_bookmarks_new_bookmark_error_title" = "Kan bladwijzer niet toevoegen";
 "preferences_calendars_provider_gcalendar_change_account" = "Verander Google-account";
 
 // MARK: - Preferences Advanced
@@ -145,8 +137,6 @@
 "notification_all_dismissals_removed_title" = "Verwijder all afwijzingen";
 "notification_all_dismissals_removed_message" = "Alle afgewezen meetings zijn weer actief";
 "status_bar_section_join_create_meeting" = "Direct een meeting starten";
-"status_bar_section_bookmarks_title" = "Bladwijzers";
-"status_bar_section_bookmarks_menu" = "Bladwijzers menu";
 "status_bar_section_date_nothing" = "Niets voor %@";
 "status_bar_event_start_time_all_day" = "Hele dag";
 "status_bar_submenu_calendar_title" = "Agenda: %@";
@@ -154,10 +144,6 @@
 "status_bar_submenu_status_title" = "Status: %@";
 "status_bar_submenu_status_declined" = " 👎 Afgewezen";
 "access_screen_try_again" = "Opnieuw proberen";
-"preferences_bookmarks_new_bookmark_title" = "Nieuwe bladwijzer";
-"preferences_bookmarks_new_bookmark_name" = "Naam";
-"preferences_bookmarks_new_bookmark_service" = "Dienst";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ heeft deze link/telefoonnummer al:\n%@";
 
 // MARK: - Preferences Calendars
 

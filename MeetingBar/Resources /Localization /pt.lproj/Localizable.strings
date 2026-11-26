@@ -16,7 +16,6 @@
 "window_title_preferences" = "Preferências do Soon";
 "window_title_onboarding" = "Bem-vindo ao Soon";
 "preferences_tab_general" = "Geral";
-"preferences_tab_bookmarks" = "Favoritos";
 "preferences_tab_calendars" = "Calendários";
 "preferences_tab_advanced" = "Avançado";
 "preferences_general_option_login_launch" = "Abrir após o login";
@@ -161,16 +160,6 @@
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Ocultar 10 min após o início";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Ocultar 10 min antes do próximo evento";
 "preferences_appearance_status_bar_ongoing_title" = "Visibilidade do evento em curso:";
-"preferences_bookmarks_add_bookmark_button" = "Adicionar marcador";
-"preferences_bookmarks_delete_bookmark_message" = "Eliminar o marcador %@?";
-"preferences_bookmarks_delete_bookmark_title" = "Eliminar marcador?";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ já tem este link/número de telefone:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "Não é possível adicionar marcador";
-"preferences_bookmarks_new_bookmark_link_phone" = "Link/número de telefone";
-"preferences_bookmarks_new_bookmark_name" = "Nome";
-"preferences_bookmarks_new_bookmark_service" = "Serviço";
-"preferences_bookmarks_new_bookmark_title" = "Novo marcador";
-"preferences_bookmarks_no_bookmarks_placeholder" = "Ainda não tem marcadores";
 "preferences_calendar_source_title" = "Fonte de Calendário";
 "preferences_calendars_provider_gcalendar_change_account" = "Alterar Conta Google";
 "preferences_calendars_select_calendars_title" = "Selecionar calendários para mostrar reuniões na barra de menus";
@@ -267,8 +256,6 @@
 "status_bar_quick_actions" = "Ações Rápidas";
 "status_bar_quit" = "Sair do Soon";
 "status_bar_rate_app" = "Avaliar App";
-"status_bar_section_bookmarks_menu" = "Menu de marcadores";
-"status_bar_section_bookmarks_title" = "Marcadores";
 "status_bar_section_date_nothing" = "Nada para %@";
 "status_bar_section_join_create_meeting" = "Criar reunião";
 "status_bar_section_join_current_meeting" = "Entrar na reunião do evento atual";

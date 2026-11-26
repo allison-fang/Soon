@@ -12,7 +12,6 @@
 "status_bar_submenu_status_accepted" = " 👍 Kabul edildi";
 "status_bar_submenu_notes_title" = "Notlar:";
 "preferences_configure_browsers_delete_alert_title" = "Tarayıcı konfigurasyonunu sil?";
-"preferences_bookmarks_new_bookmark_name" = "Adı";
 "general_ok" = "Tamam";
 "general_cancel" = "Vazgeç";
 "general_close" = "Kapat";
@@ -26,7 +25,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Genel";
-"preferences_tab_bookmarks" = "Yer İmleri";
 "preferences_tab_calendars" = "Takvimler";
 "preferences_tab_advanced" = "Gelişmiş";
 
@@ -79,16 +77,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Tarayıcı seç";
 "preferences_configure_browsers_choose_browser_panel_message" = "Web tarayıcısının nereden çalıştırılacağını seçin.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Henüz yer iminiz yok";
-"preferences_bookmarks_delete_bookmark_title" = "Yer imini sil?";
-"preferences_bookmarks_delete_bookmark_message" = "%@ yer imini sil?";
-"preferences_bookmarks_add_bookmark_button" = "Yer imi ekle";
-"preferences_bookmarks_new_bookmark_link_phone" = "Link/telefon numarası";
-"preferences_bookmarks_new_bookmark_service" = "Servis";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ zaten bu linkte/telefon numarası:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "Yer imi eklenemedi";
 "preferences_calendars_provider_gcalendar_change_account" = "Google Hesabını Değiştir";
 "preferences_advanced_apple_script_checkmark" = "Toplantıya katıldığında AppleScript çalıştır";
 "preferences_advanced_save_script_button" = "Scripti kaydet";
@@ -102,8 +91,6 @@
 "status_bar_section_join_next_meeting" = "Sonraki toplantıya katıl";
 "status_bar_section_join_from_clipboard" = "Kopyalanan toplantıyı aç";
 "status_bar_section_join_create_meeting" = "Toplantı oluştur";
-"status_bar_section_bookmarks_title" = "Yer imleri";
-"status_bar_section_bookmarks_menu" = "Yer imleri menüsü";
 "status_bar_section_date_nothing" = "%@ için hiçbir şey yok";
 "status_bar_event_start_time_all_day" = "Tüm gün";
 "status_bar_submenu_calendar_title" = "Takvim: %@";
@@ -195,7 +182,6 @@
 "preferences_configure_browsers_modal_add_browser_title" = "Tarayıcı ekle";
 "preferences_configure_browsers_modal_add_browser_path" = "Dosya yolu";
 "preferences_configure_browsers_modal_add_browser_choose_browser_button_title" = "Tarayıcı seç";
-"preferences_bookmarks_new_bookmark_title" = "Yeni yer imi";
 
 // MARK: - Preferences Advanced
 

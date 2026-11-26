@@ -39,12 +39,10 @@
 // MARK: - Preferences Services
 
 "preferences_services_link_meeting_title" = "Otvoriť všetky odkazy na stretnutia v";
-"preferences_bookmarks_new_bookmark_link_phone" = "Odkaz/telefónne číslo";
 
 // MARK: - Preferences Calendars
 
 "preferences_calendars_select_calendars_title" = "Vyber kalendáre na zobrazenie udalostí v lište";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ už má tento odkaz/telefónne číslo:\n%@";
 "preferences_calendars_provider_gcalendar_change_account" = "Zmeniť Google účet";
 "preferences_advanced_regex_title" = "Vlastné regexy pre odkaz na stretnutie";
 
@@ -84,7 +82,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Všeobecné";
-"preferences_tab_bookmarks" = "Záložky";
 "preferences_tab_calendars" = "Kalendáre";
 "preferences_tab_advanced" = "Pokročilé";
 "preferences_general_shortcut_open_menu" = "Otvoriť menu:";
@@ -145,16 +142,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Vyberte aplikáciu webového prehliadača";
 "preferences_configure_browsers_choose_browser_panel_message" = "Vyberte, odkiaľ sa má spustiť webový prehliadač.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Zatiaľ nemáš žiadne záložky";
-"preferences_bookmarks_delete_bookmark_title" = "Odstrániť záložku?";
-"preferences_bookmarks_delete_bookmark_message" = "Odstrániť záložku %@?";
-"preferences_bookmarks_add_bookmark_button" = "Pridať záložku";
-"preferences_bookmarks_new_bookmark_title" = "Nová záložka";
-"preferences_bookmarks_new_bookmark_name" = "Názov";
-"preferences_bookmarks_new_bookmark_service" = "Služba";
-"preferences_bookmarks_new_bookmark_error_title" = "Nie je možné pridať záložku";
 
 // MARK: - Preferences Advanced
 
@@ -196,8 +184,6 @@
 "status_bar_event_dismissed_mark" = "upozornenia vypnuté";
 "notification_next_meeting_dismissed_title" = "Zrušené %@";
 "notification_all_dismissals_removed_message" = "Všetky zrušené stretnutia sú opäť platné";
-"status_bar_section_bookmarks_title" = "Záložky";
-"status_bar_section_bookmarks_menu" = "Menu Záložky";
 "status_bar_submenu_calendar_title" = "Kalendár: %@";
 "status_bar_submenu_status_title" = "Stav: %@";
 "status_bar_submenu_status_declined" = " 👎 Odmietnuté";

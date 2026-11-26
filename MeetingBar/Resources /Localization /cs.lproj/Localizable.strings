@@ -95,8 +95,6 @@
 "status_bar_submenu_status_title" = "Stav: %@";
 "status_bar_submenu_duration_all_day" = "%@–%@ (%@ min)";
 "status_bar_submenu_calendar_title" = "Kalendář: %@";
-"status_bar_section_bookmarks_menu" = "Nabídka záložek";
-"status_bar_section_bookmarks_title" = "Záložky";
 "status_bar_section_join_create_meeting" = "Vytvořit schůzku";
 "status_bar_section_join_from_clipboard" = "Otevřít schůzku ze schránky";
 "status_bar_section_join_next_meeting" = "Připojit se k příští schůzce";
@@ -129,19 +127,8 @@
 // MARK: - Preferences Calendars
 
 "preferences_calendars_select_calendars_title" = "Vyberte kalendáře, jejichž schůzky se mají zobrazovat v řádku nabídek";
-"preferences_bookmarks_new_bookmark_error_title" = "Nelze přidat záložku";
-"preferences_bookmarks_new_bookmark_already_exist" = "Záložka „%@“ již obsahuje tento odkaz nebo telefonní číslo:\n%@";
-"preferences_bookmarks_new_bookmark_service" = "Služba";
-"preferences_bookmarks_new_bookmark_link_phone" = "Odkaz nebo telefonní číslo";
-"preferences_bookmarks_new_bookmark_name" = "Název";
-"preferences_bookmarks_new_bookmark_title" = "Nová záložka";
-"preferences_bookmarks_add_bookmark_button" = "Přidat záložku";
-"preferences_bookmarks_delete_bookmark_message" = "Odstranit záložku „%@“?";
-"preferences_bookmarks_delete_bookmark_title" = "Odstranit záložku?";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Zatím nemáte žádné záložky";
 "preferences_configure_browsers_choose_browser_panel_message" = "Vyberte umístění aplikace webového prohlížeče.";
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Vybrat prohlížeč";
 "preferences_configure_browsers_choose_browser_panel_title" = "Vyberte aplikaci webového prohlížeče";
@@ -222,7 +209,6 @@
 "preferences_general_option_login_launch" = "Spouštět po přihlášení";
 "preferences_tab_advanced" = "Pokročilé";
 "preferences_tab_calendars" = "Kalendáře";
-"preferences_tab_bookmarks" = "Záložky";
 
 // MARK: - Preferences tabs
 

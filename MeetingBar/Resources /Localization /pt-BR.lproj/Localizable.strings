@@ -30,7 +30,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Geral";
-"preferences_tab_bookmarks" = "Favoritos";
 "preferences_tab_calendars" = "Calendários";
 "preferences_tab_advanced" = "Avançado";
 
@@ -113,18 +112,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Escolher navegador da web";
 "preferences_configure_browsers_choose_browser_panel_message" = "Selecione de onde executar o navegador da web.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Você ainda não tem nenhum favorito";
-"preferences_bookmarks_delete_bookmark_title" = "Excluir favorito?";
-"preferences_bookmarks_delete_bookmark_message" = "Excluir o favorito %@?";
-"preferences_bookmarks_add_bookmark_button" = "Adicionar favorito";
-"preferences_bookmarks_new_bookmark_title" = "Novo favorito";
-"preferences_bookmarks_new_bookmark_name" = "Nome";
-"preferences_bookmarks_new_bookmark_link_phone" = "Link/número de telefone";
-"preferences_bookmarks_new_bookmark_service" = "Serviço";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ já possui este link/número de telefone:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "Não é possível adicionar favorito";
 
 // MARK: - Preferences Calendars
 
@@ -165,8 +153,6 @@
 "notification_all_dismissals_removed_title" = "Todas as exclusões removidas";
 "notification_all_dismissals_removed_message" = "Todas as reuniões ignoradas estão de volta";
 "status_bar_section_join_create_meeting" = "Criar reunião";
-"status_bar_section_bookmarks_title" = "Favoritos";
-"status_bar_section_bookmarks_menu" = "Menu de favoritos";
 "status_bar_section_date_nothing" = "Nada para %@";
 "status_bar_event_start_time_all_day" = "Dia inteiro";
 "status_bar_submenu_calendar_title" = "Calendário: %@";

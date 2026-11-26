@@ -26,7 +26,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Ogólne";
-"preferences_tab_bookmarks" = "Zakładki";
 "preferences_tab_calendars" = "Kalendarze";
 "preferences_tab_advanced" = "Zaawansowane";
 
@@ -108,18 +107,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Wybierz przeglądarkę internetową";
 "preferences_configure_browsers_choose_browser_panel_message" = "Wybierz miejsce uruchomienia przeglądarki internetowej.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "Nie masz jeszcze żadnych zakładek";
-"preferences_bookmarks_delete_bookmark_title" = "Usunąć zakładkę?";
-"preferences_bookmarks_delete_bookmark_message" = "Usunąć zakładkę %@?";
-"preferences_bookmarks_add_bookmark_button" = "Dodaj zakładkę";
-"preferences_bookmarks_new_bookmark_title" = "Nowa zakładka";
-"preferences_bookmarks_new_bookmark_name" = "Nazwa";
-"preferences_bookmarks_new_bookmark_link_phone" = "Link/numer telefonu";
-"preferences_bookmarks_new_bookmark_service" = "Usługa";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ posiada już ten link/numer telefonu:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "Nie można dodać zakładki";
 
 // MARK: - Preferences Calendars
 
@@ -152,8 +140,6 @@
 "status_bar_section_join_from_clipboard" = "Otwórz spotkanie ze schowka";
 "status_bar_section_refresh_sources" = "Odśwież źródła";
 "status_bar_section_join_create_meeting" = "Utwórz spotkanie";
-"status_bar_section_bookmarks_title" = "Zakładki";
-"status_bar_section_bookmarks_menu" = "Menu zakładek";
 "status_bar_section_date_nothing" = "Nic dla %@";
 "status_bar_event_start_time_all_day" = "Cały dzień";
 "status_bar_submenu_calendar_title" = "Kalendarz: %@";

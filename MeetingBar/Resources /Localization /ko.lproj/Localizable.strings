@@ -14,7 +14,6 @@
 "next_meeting_empty_title" = "오늘 예정된 회의가 없습니다";
 "preferences_general_option_preferred_language_title" = "언어:";
 "preferences_tab_calendars" = "캘린더";
-"preferences_tab_bookmarks" = "북마크";
 "preferences_tab_general" = "일반";
 "preferences_tab_advanced" = "고급";
 "preferences_general_shortcut_create_meeting" = "회의 생성:";
@@ -88,16 +87,6 @@
 "preferences_configure_browsers_choose_browser_panel_title" = "웹 브라우저 선택";
 "preferences_configure_browsers_choose_browser_panel_prompt" = "웹 브라우저 선택";
 "preferences_configure_browsers_choose_browser_panel_message" = "사용할 웹 브라우저 선택하세요.";
-"preferences_bookmarks_no_bookmarks_placeholder" = "북마크 없음";
-"preferences_bookmarks_delete_bookmark_title" = "북마크를 삭제할까요?";
-"preferences_bookmarks_delete_bookmark_message" = "%@ 북마크를 삭제할까요?";
-"preferences_bookmarks_add_bookmark_button" = "북마크 추가";
-"preferences_bookmarks_new_bookmark_title" = "북마크 추가";
-"preferences_bookmarks_new_bookmark_name" = "이름";
-"preferences_bookmarks_new_bookmark_link_phone" = "연결/휴대폰 번호";
-"preferences_bookmarks_new_bookmark_service" = "서비스";
-"preferences_bookmarks_new_bookmark_already_exist" = "%@ 이미 등록되었어요:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "북마크를 추가할 수 없어요";
 "preferences_calendars_select_calendars_title" = "메뉴 막대 캘린더 선택";
 "preferences_calendars_provider_gcalendar_change_account" = "구글 계정 변경";
 "preferences_advanced_apple_script_checkmark" = "회의 참석 시 AppleScript 실행";
@@ -129,8 +118,6 @@
 "notification_all_dismissals_removed_title" = "모든 회의가 복원됨";
 "notification_all_dismissals_removed_message" = "모든 무시된 회의가 복원됨";
 "status_bar_section_join_create_meeting" = "회의 생성";
-"status_bar_section_bookmarks_title" = "북마크";
-"status_bar_section_bookmarks_menu" = "북마크 메뉴";
 "status_bar_section_date_nothing" = "%@ 일정 없음";
 "status_bar_event_start_time_all_day" = "종일";
 "status_bar_submenu_calendar_title" = "캘린더: %@";

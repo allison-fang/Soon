@@ -93,7 +93,6 @@ struct StatusBarPopoverPresentation: Equatable {
     var dateText = ""
     var notice: StatusBarNotice?
     var days: [TimelineDayPresentation] = []
-    var bookmarks: [Bookmark] = []
     var lastUpdatedText: String?
     var updateAvailableText: String?
 
@@ -129,7 +128,6 @@ struct StatusBarPopoverPresenter {
             title: "status_bar_section_today".loco(),
             dateText: dayFormatter.string(from: calendar.startOfDay(for: now)),
             notice: notice(),
-            bookmarks: state.meetings.bookmarks,
             lastUpdatedText: state.providerHealth.lastSuccessfulRefresh.map {
                 "status_bar_popover_updated".loco(lastUpdatedFormatter.string(from: $0))
             },

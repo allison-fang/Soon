@@ -26,7 +26,6 @@
 // MARK: - Preferences tabs
 
 "preferences_tab_general" = "Загальні";
-"preferences_tab_bookmarks" = "Закладки";
 "preferences_tab_calendars" = "Календарі";
 "preferences_tab_advanced" = "Розширені";
 
@@ -111,18 +110,7 @@
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Виберіть веббраузер";
 "preferences_configure_browsers_choose_browser_panel_message" = "Виберіть, звідки запускати веббраузер.";
 
-// MARK: - Preferences Bookmarks
 
-"preferences_bookmarks_no_bookmarks_placeholder" = "У Вас ще немає закладок";
-"preferences_bookmarks_delete_bookmark_title" = "Видалити закладку?";
-"preferences_bookmarks_delete_bookmark_message" = "Чи хочете Ви видалити закладку %@?";
-"preferences_bookmarks_add_bookmark_button" = "Додати закладку";
-"preferences_bookmarks_new_bookmark_title" = "Нова закладка";
-"preferences_bookmarks_new_bookmark_name" = "Назва";
-"preferences_bookmarks_new_bookmark_link_phone" = "Посилання/номер телефону";
-"preferences_bookmarks_new_bookmark_service" = "Сервіс";
-"preferences_bookmarks_new_bookmark_already_exist" = "Закладка з таким посиланням/телефоном уже існує з назвою %@:\n%@";
-"preferences_bookmarks_new_bookmark_error_title" = "Ой леле! Не вдалось додати закладку";
 
 // MARK: - Preferences Calendars
 
@@ -158,8 +146,6 @@
 "status_bar_section_join_current_meeting" = "Долучитись до поточної зустрічі";
 "status_bar_section_join_from_clipboard" = "Відкрити зустріч із буфера обміну";
 "status_bar_section_join_create_meeting" = "Створити зустріч";
-"status_bar_section_bookmarks_title" = "Закладки";
-"status_bar_section_bookmarks_menu" = "Меню закладок";
 "status_bar_section_date_nothing" = "Жодних подій %@";
 "status_bar_event_start_time_all_day" = "Весь день";
 "status_bar_submenu_calendar_title" = "Календар: %@";
