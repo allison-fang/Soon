@@ -391,7 +391,9 @@
 "preferences_general_check_for_updates" = "Автоматично перевіряти оновлення";
 "preferences_general_check_for_updates_button" = "Перевірити оновлення";
 "preferences_general_update_checking" = "Перевірка оновлень…";
-"preferences_general_update_up_to_date" = "Soon оновлено до останньої версії.";
+"preferences_general_update_up_to_date" = "Актуальна версія";
+"preferences_general_update_badge_available" = "Доступне оновлення";
+"preferences_general_update_badge_failed" = "Не вдалося перевірити";
 "preferences_general_update_failed" = "Не вдалося перевірити оновлення. Спробуйте пізніше.";
 "preferences_general_update_available" = "Доступна версія Soon %@.";
 "preferences_general_update_instructions" = "Щоб оновити, виконайте команду встановлення в Terminal.";

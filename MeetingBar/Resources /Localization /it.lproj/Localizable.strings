@@ -380,7 +380,9 @@
 "preferences_general_check_for_updates" = "Cerca aggiornamenti automaticamente";
 "preferences_general_check_for_updates_button" = "Cerca aggiornamenti";
 "preferences_general_update_checking" = "Ricerca aggiornamenti…";
-"preferences_general_update_up_to_date" = "Soon è aggiornato.";
+"preferences_general_update_up_to_date" = "Aggiornato";
+"preferences_general_update_badge_available" = "Aggiornamento disponibile";
+"preferences_general_update_badge_failed" = "Controllo non riuscito";
 "preferences_general_update_failed" = "Impossibile cercare aggiornamenti. Riprova più tardi.";
 "preferences_general_update_available" = "Soon %@ è disponibile.";
 "preferences_general_update_instructions" = "Per aggiornare, esegui il comando di installazione nel Terminale.";

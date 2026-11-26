@@ -381,7 +381,9 @@
 "preferences_general_check_for_updates" = "Güncellemeleri otomatik olarak denetle";
 "preferences_general_check_for_updates_button" = "Güncellemeleri denetle";
 "preferences_general_update_checking" = "Güncellemeler denetleniyor…";
-"preferences_general_update_up_to_date" = "Soon güncel.";
+"preferences_general_update_up_to_date" = "Güncel";
+"preferences_general_update_badge_available" = "Güncelleme mevcut";
+"preferences_general_update_badge_failed" = "Denetlenemedi";
 "preferences_general_update_failed" = "Güncellemeler denetlenemedi. Daha sonra yeniden deneyin.";
 "preferences_general_update_available" = "Soon %@ kullanılabilir.";
 "preferences_general_update_instructions" = "Güncellemek için kurulum komutunu Terminal'de çalıştırın.";

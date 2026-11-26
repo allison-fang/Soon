@@ -384,7 +384,9 @@
 "preferences_general_check_for_updates" = "Automatisch controleren op updates";
 "preferences_general_check_for_updates_button" = "Controleer op updates";
 "preferences_general_update_checking" = "Controleren op updates…";
-"preferences_general_update_up_to_date" = "Soon is up-to-date.";
+"preferences_general_update_up_to_date" = "Up-to-date";
+"preferences_general_update_badge_available" = "Update beschikbaar";
+"preferences_general_update_badge_failed" = "Controle mislukt";
 "preferences_general_update_failed" = "Kan niet controleren op updates. Probeer het later opnieuw.";
 "preferences_general_update_available" = "Soon %@ is beschikbaar.";
 "preferences_general_update_instructions" = "Voer de installatieopdracht uit in Terminal om bij te werken.";

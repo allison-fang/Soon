@@ -335,7 +335,9 @@
 "preferences_general_check_for_updates" = "自动检查更新";
 "preferences_general_check_for_updates_button" = "检查更新";
 "preferences_general_update_checking" = "正在检查更新…";
-"preferences_general_update_up_to_date" = "Soon 已是最新版本。";
+"preferences_general_update_up_to_date" = "已是最新";
+"preferences_general_update_badge_available" = "有可用更新";
+"preferences_general_update_badge_failed" = "检查失败";
 "preferences_general_update_failed" = "无法检查更新。请稍后再试。";
 "preferences_general_update_available" = "Soon %@ 现已推出。";
 "preferences_general_update_instructions" = "要更新，请在“终端”中运行安装命令。";

@@ -270,6 +270,7 @@ final class WindowCoordinator {
             .environmentObject(appModel)
             .environmentObject(calendarSync)
             .environmentObject(updateChecker)
+            .environment(\.preferencesWindowOpenedAt, Date())
 
         if let preferencesWindow {
             if preferencesWindow.isMiniaturized {
