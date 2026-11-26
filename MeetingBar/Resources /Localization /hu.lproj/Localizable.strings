@@ -334,9 +334,14 @@
 "preferences_general_check_for_updates" = "Frissítések automatikus keresése";
 "preferences_general_check_for_updates_button" = "Frissítések keresése";
 "preferences_general_update_checking" = "Frissítések keresése…";
-"preferences_general_update_up_to_date" = "A Soon naprakész.";
+"preferences_general_update_up_to_date" = "Naprakész";
+"preferences_general_update_badge_available" = "Frissítés érhető el";
+"preferences_general_update_badge_failed" = "Nem sikerült ellenőrizni";
 "preferences_general_update_failed" = "Nem sikerült frissítéseket keresni. Próbáld újra később.";
 "preferences_general_update_available" = "Elérhető a Soon %@.";
 "preferences_general_update_instructions" = "A frissítéshez futtasd a telepítési parancsot a Terminálban.";
 "preferences_general_update_copy_command" = "Telepítési parancs másolása";
 "preferences_general_update_whats_new" = "Újdonságok";
+"status_bar_details_open_google_calendar" = "Google Naptár";
+"status_bar_details_open_calendar" = "Naptár";
+"status_bar_details_open_fantastical" = "Fantastical";

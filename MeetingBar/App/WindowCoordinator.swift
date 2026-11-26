@@ -107,6 +107,9 @@ final class WindowCoordinator {
     /// The observer is registered lazily on the first fullscreen notification.
     private var isObservingScreenParameters = false
 
+    private var pendingPreferencesContent: NSView?
+    private var preferencesActivationObserver: NSObjectProtocol?
+
     func openOnboardingWindow(
         appModel: AppModel,
         onProviderSelected:
@@ -267,6 +270,7 @@ final class WindowCoordinator {
             .environmentObject(appModel)
             .environmentObject(calendarSync)
             .environmentObject(updateChecker)
+            .environment(\.preferencesWindowOpenedAt, Date())
 
         if let preferencesWindow {
             if preferencesWindow.isMiniaturized {
@@ -292,7 +296,7 @@ final class WindowCoordinator {
         )
 
         window.title = WindowTitles.preferences
-        window.contentView = NSHostingView(rootView: contentView)
+        setPreferencesContentOnceActive(NSHostingView(rootView: contentView), in: window)
         // No custom rounded-corner / shadow layer here: this is a standard
         // titled window, so the system draws its own corners and shadow. The
         // transparent titlebar lets the NavigationSplitView sidebar material
@@ -319,6 +323,47 @@ final class WindowCoordinator {
         window.orderFrontRegardless()
 
         preferencesWindow = window
+    }
+
+    /// The timeline popover never activates the app, so Settings opened from it
+    /// would draw before activation lands. SwiftUI switches drawn while the app
+    /// is inactive keep a stale "on" look (no knob) once it activates, so the
+    /// content waits for activation.
+    private func setPreferencesContentOnceActive(_ content: NSView, in window: NSWindow) {
+        stopWaitingForActivation()
+        guard !NSApplication.shared.isActive else {
+            window.contentView = content
+            return
+        }
+        pendingPreferencesContent = content
+        preferencesActivationObserver = NotificationCenter.default.addObserver(
+            forName: NSApplication.didBecomeActiveNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self, weak window] _ in
+            MainActor.assumeIsolated { self?.installPendingPreferencesContent(in: window) }
+        }
+        // Activation can be refused; never leave the window empty.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self, weak window] in
+            MainActor.assumeIsolated { self?.installPendingPreferencesContent(in: window) }
+        }
+    }
+
+    private func installPendingPreferencesContent(in window: NSWindow?) {
+        guard let window, window === preferencesWindow else { return }
+        let content = pendingPreferencesContent
+        stopWaitingForActivation()
+        if let content {
+            window.contentView = content
+        }
+    }
+
+    private func stopWaitingForActivation() {
+        if let preferencesActivationObserver {
+            NotificationCenter.default.removeObserver(preferencesActivationObserver)
+        }
+        preferencesActivationObserver = nil
+        pendingPreferencesContent = nil
     }
 
     func handleWindowClosed(

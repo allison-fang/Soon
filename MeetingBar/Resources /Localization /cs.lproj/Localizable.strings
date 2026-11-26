@@ -395,9 +395,14 @@
 "preferences_general_check_for_updates" = "Automaticky kontrolovat aktualizace";
 "preferences_general_check_for_updates_button" = "Zkontrolovat aktualizace";
 "preferences_general_update_checking" = "Kontrola aktualizací…";
-"preferences_general_update_up_to_date" = "Soon je aktuální.";
+"preferences_general_update_up_to_date" = "Aktuální";
+"preferences_general_update_badge_available" = "K dispozici je aktualizace";
+"preferences_general_update_badge_failed" = "Kontrola selhala";
 "preferences_general_update_failed" = "Aktualizace se nepodařilo zkontrolovat. Zkuste to později.";
 "preferences_general_update_available" = "Je k dispozici Soon %@.";
 "preferences_general_update_instructions" = "Pro aktualizaci spusťte instalační příkaz v Terminálu.";
 "preferences_general_update_copy_command" = "Kopírovat instalační příkaz";
 "preferences_general_update_whats_new" = "Co je nového";
+"status_bar_details_open_google_calendar" = "Kalendář Google";
+"status_bar_details_open_calendar" = "Kalendář";
+"status_bar_details_open_fantastical" = "Fantastical";

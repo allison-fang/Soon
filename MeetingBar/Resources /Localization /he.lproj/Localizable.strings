@@ -376,9 +376,14 @@
 "preferences_general_check_for_updates" = "בדיקה אוטומטית של עדכונים";
 "preferences_general_check_for_updates_button" = "חפש עדכונים";
 "preferences_general_update_checking" = "בודק עדכונים…";
-"preferences_general_update_up_to_date" = "Soon מעודכן.";
+"preferences_general_update_up_to_date" = "מעודכן";
+"preferences_general_update_badge_available" = "עדכון זמין";
+"preferences_general_update_badge_failed" = "הבדיקה נכשלה";
 "preferences_general_update_failed" = "לא ניתן לבדוק עדכונים. נסה שוב מאוחר יותר.";
 "preferences_general_update_available" = "Soon %@ זמין.";
 "preferences_general_update_instructions" = "כדי לעדכן, הרץ את פקודת ההתקנה ב-Terminal.";
 "preferences_general_update_copy_command" = "העתק פקודת התקנה";
 "preferences_general_update_whats_new" = "מה חדש";
+"status_bar_details_open_google_calendar" = "יומן Google";
+"status_bar_details_open_calendar" = "לוח שנה";
+"status_bar_details_open_fantastical" = "Fantastical";

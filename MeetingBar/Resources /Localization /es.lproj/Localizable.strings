@@ -384,9 +384,14 @@
 "preferences_general_check_for_updates" = "Buscar actualizaciones automáticamente";
 "preferences_general_check_for_updates_button" = "Buscar actualizaciones";
 "preferences_general_update_checking" = "Buscando actualizaciones…";
-"preferences_general_update_up_to_date" = "Soon está actualizado.";
+"preferences_general_update_up_to_date" = "Actualizado";
+"preferences_general_update_badge_available" = "Actualización disponible";
+"preferences_general_update_badge_failed" = "No se pudo comprobar";
 "preferences_general_update_failed" = "No se pudo buscar actualizaciones. Inténtalo más tarde.";
 "preferences_general_update_available" = "Soon %@ está disponible.";
 "preferences_general_update_instructions" = "Para actualizar, ejecuta el comando de instalación en Terminal.";
 "preferences_general_update_copy_command" = "Copiar comando de instalación";
 "preferences_general_update_whats_new" = "Novedades";
+"status_bar_details_open_google_calendar" = "Google Calendar";
+"status_bar_details_open_calendar" = "Calendario";
+"status_bar_details_open_fantastical" = "Fantastical";

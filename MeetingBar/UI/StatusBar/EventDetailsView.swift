@@ -143,15 +143,6 @@ struct EventDetailsView: View {
                         .frame(width: Self.gutter)
                     Text(mbEvent.calendar.title)
                         .lineLimit(1)
-                    Spacer(minLength: 0)
-                    if let url = mbEvent.calendarOpenURL {
-                        Button {
-                            actions.openInCalendar(url)
-                        } label: {
-                            Label(openInCalendarTitle(url), systemImage: "arrow.up.right.square")
-                        }
-                        .buttonStyle(TimelineButtonStyle())
-                    }
                 }
             }
         }
@@ -325,12 +316,21 @@ struct EventDetailsView: View {
                     Label("status_bar_submenu_dismiss_meeting".loco(), systemImage: "bell.slash")
                 }
             }
+            // Someone who installed Fantastical likely keeps it as their main calendar.
             if isFantasticalInstalled {
                 Button {
                     actions.openInFantastical(mbEvent)
                 } label: {
-                    Label("status_bar_submenu_open_in_fantastical".loco(), systemImage: "calendar")
+                    Label("status_bar_details_open_fantastical".loco(), systemImage: "arrow.up.right.square")
                 }
+                .help("status_bar_submenu_open_in_fantastical".loco())
+            } else if let url = mbEvent.calendarOpenURL {
+                Button {
+                    actions.openInCalendar(url)
+                } label: {
+                    Label(openInCalendarTitle(url), systemImage: "arrow.up.right.square")
+                }
+                .help(openInCalendarHelp(url))
             }
             Spacer(minLength: 0)
         }
@@ -339,9 +339,19 @@ struct EventDetailsView: View {
 
     /// Google events carry their web link, which opens in the default browser.
     private func openInCalendarTitle(_ url: URL) -> String {
-        url.host?.contains("google.com") == true
+        isGoogleCalendar(url)
+            ? "status_bar_details_open_google_calendar".loco()
+            : "status_bar_details_open_calendar".loco()
+    }
+
+    private func openInCalendarHelp(_ url: URL) -> String {
+        isGoogleCalendar(url)
             ? "status_bar_submenu_open_in_google_calendar".loco()
             : "status_bar_submenu_open_in_calendar".loco()
+    }
+
+    private func isGoogleCalendar(_ url: URL) -> Bool {
+        url.host?.contains("google.com") == true
     }
 
     private func row<Content: View>(

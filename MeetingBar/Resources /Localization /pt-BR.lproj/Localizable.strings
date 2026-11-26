@@ -389,9 +389,14 @@
 "preferences_general_check_for_updates" = "Verificar atualizações automaticamente";
 "preferences_general_check_for_updates_button" = "Verificar atualizações";
 "preferences_general_update_checking" = "Verificando atualizações…";
-"preferences_general_update_up_to_date" = "O Soon está atualizado.";
+"preferences_general_update_up_to_date" = "Atualizado";
+"preferences_general_update_badge_available" = "Atualização disponível";
+"preferences_general_update_badge_failed" = "Não foi possível verificar";
 "preferences_general_update_failed" = "Não foi possível verificar atualizações. Tente novamente mais tarde.";
 "preferences_general_update_available" = "O Soon %@ está disponível.";
 "preferences_general_update_instructions" = "Para atualizar, execute o comando de instalação no Terminal.";
 "preferences_general_update_copy_command" = "Copiar comando de instalação";
 "preferences_general_update_whats_new" = "Novidades";
+"status_bar_details_open_google_calendar" = "Google Agenda";
+"status_bar_details_open_calendar" = "Calendário";
+"status_bar_details_open_fantastical" = "Fantastical";

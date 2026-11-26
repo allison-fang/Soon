@@ -380,9 +380,14 @@
 "preferences_general_check_for_updates" = "Automatski provjeravaj ažuriranja";
 "preferences_general_check_for_updates_button" = "Provjeri ažuriranja";
 "preferences_general_update_checking" = "Provjera ažuriranja…";
-"preferences_general_update_up_to_date" = "Soon je ažuran.";
+"preferences_general_update_up_to_date" = "Ažurno";
+"preferences_general_update_badge_available" = "Dostupno ažuriranje";
+"preferences_general_update_badge_failed" = "Provjera nije uspjela";
 "preferences_general_update_failed" = "Provjera ažuriranja nije uspjela. Pokušajte ponovno kasnije.";
 "preferences_general_update_available" = "Dostupan je Soon %@.";
 "preferences_general_update_instructions" = "Za ažuriranje pokrenite naredbu za instalaciju u Terminalu.";
 "preferences_general_update_copy_command" = "Kopiraj naredbu za instalaciju";
 "preferences_general_update_whats_new" = "Što je novo";
+"status_bar_details_open_google_calendar" = "Google kalendar";
+"status_bar_details_open_calendar" = "Kalendar";
+"status_bar_details_open_fantastical" = "Fantastical";
