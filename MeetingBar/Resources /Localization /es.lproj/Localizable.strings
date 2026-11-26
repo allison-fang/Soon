@@ -82,15 +82,9 @@
 "preferences_appearance_status_bar_next_event_toggle" = "Mostrar solo eventos que comiencen dentro de";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minutos";
 "preferences_appearance_menu_title" = "Menú";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Acortar título de evento a";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d caracteres";
 "preferences_appearance_menu_time_format_title" = "Formato de hora:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12-horas (AM/PM)";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-horas";
-"preferences_appearance_menu_show_event_title" = "Mostrar evento:";
-"preferences_appearance_menu_show_event_end_time_value" = "hora fin";
-"preferences_appearance_menu_show_event_icon_value" = "icono";
-"preferences_appearance_menu_show_event_details_value" = "detalles como submenú";
 
 // MARK: - Preferences Services
 
@@ -270,7 +264,6 @@
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "Esconder despues de empezar";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "esconder 10 min después de empezar";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "esconder 10 min antes del próximo evento";
-"preferences_appearance_menu_show_timeline_toggle" = "Mostrar la linea de tiempo del dia";
 
 "general_refresh" = "Recargar";
 "general_when_event_ends" = "cuando termine el evento";
@@ -374,7 +367,6 @@
 "status_bar_control_current_meeting" = "Reunión actual";
 "status_bar_control_next_meeting" = "Próxima reunión";
 "preferences_appearance_events_no_meeting_link_title" = "Eventos sin enlace de reunión";
-"preferences_appearance_menu_show_event_calendar_color_value" = "color del calendario";
 "preferences_sidebar_advanced" = "Avanzado";
 "preferences_appearance_status_bar_title_generic_value" = "título genérico (Encuentro)";
 "status_bar_popover_zoom_in" = "Acercar";

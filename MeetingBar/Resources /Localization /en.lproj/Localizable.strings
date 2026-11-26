@@ -149,17 +149,9 @@
 "preferences_appearance_menu_density_title" = "Timeline density";
 "preferences_appearance_menu_density_comfortable_value" = "Comfortable";
 "preferences_appearance_menu_density_compact_value" = "Compact";
-"preferences_appearance_menu_show_timeline_toggle" = "Show visual timeline of the day";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Shorten event title to";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d characters";
 "preferences_appearance_menu_time_format_title" = "Time format:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12-hour (AM/PM)";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-hour";
-"preferences_appearance_menu_show_event_title" = "Show event:";
-"preferences_appearance_menu_show_event_end_time_value" = "end time";
-"preferences_appearance_menu_show_event_icon_value" = "icon";
-"preferences_appearance_menu_show_event_calendar_color_value" = "calendar color";
-"preferences_appearance_menu_show_event_details_value" = "details as submenu";
 
 // MARK: - Preferences Services
 

@@ -63,14 +63,9 @@
 "preferences_appearance_status_bar_time_show_value" = "göster";
 "preferences_appearance_status_bar_next_event_stepper" = "%d dakika";
 "preferences_appearance_menu_title" = "Menü";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Etkinlik başlığını kısalt";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d karakter";
 "preferences_appearance_menu_time_format_title" = "Zaman formatı:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12-saat";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-saat";
-"preferences_appearance_menu_show_event_title" = "Etkinliği göster:";
-"preferences_appearance_menu_show_event_icon_value" = "simge";
-"preferences_appearance_menu_show_event_details_value" = "detaylar alt menüde";
 
 // MARK: - Preferences Services
 
@@ -186,7 +181,6 @@
 "preferences_appearance_status_bar_time_show_under_title_value" = "başlığın altında göster";
 "preferences_appearance_status_bar_time_hide_value" = "gizle";
 "preferences_appearance_status_bar_next_event_toggle" = "Sadece şu kadar zaman içinde başlayacak etkinlikleri göster";
-"preferences_appearance_menu_show_event_end_time_value" = "bitiş zamanı";
 "notifications_event_start_five_minutes_body" = "Toplantı beş dakika içinde başlıyor";
 "notifications_snooze_until_start" = "Başlangıç saatine kadar ertele";
 "notifications_snooze_for" = "%@ dakika ertele";
@@ -266,7 +260,6 @@
 "notification_all_dismissals_removed_message" = "Kapatılan tüm toplantılar tekrar aktif";
 "notifications_meetingbar_join_event_action" = "Katıl";
 "notifications_meetingbar_dismiss_event_action" = "Bildirimleri kapat";
-"preferences_appearance_menu_show_timeline_toggle" = "Günün görsel zaman çizelgesini göster";
 "preferences_appearance_status_bar_ongoing_title" = "Devam eden etkinlik görünürlüğü:";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "başladıktan sonra gizle";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "başladıktan 10 dakika sonra gizle";
@@ -373,7 +366,6 @@
 "status_bar_control_current_meeting" = "Mevcut toplantı";
 "status_bar_control_next_meeting" = "Sonraki toplantı";
 "preferences_appearance_events_no_meeting_link_title" = "Toplantı bağlantısı olmayan etkinlikler";
-"preferences_appearance_menu_show_event_calendar_color_value" = "takvim rengi";
 "status_bar_popover_zoom_in" = "Yakınlaştır";
 "status_bar_popover_zoom_out" = "Uzaklaştır";
 "status_bar_popover_update_available" = "Güncelleme mevcut";

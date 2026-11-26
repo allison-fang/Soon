@@ -41,15 +41,9 @@
 "preferences_appearance_status_bar_title_dot_value" = "stip (•)";
 "preferences_appearance_status_bar_title_event_title_value" = "meeting titel";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minuten";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d tekens";
 "preferences_appearance_menu_time_format_title" = "Tijdformaat:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12 uur (AM/PM)";
 "preferences_appearance_menu_time_format_24_hour_value" = "24 uur";
-"preferences_appearance_menu_show_event_end_time_value" = "eindtijd";
-"preferences_appearance_menu_show_event_icon_value" = "icoon";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Verkort de titel van de meeting tot";
-"preferences_appearance_menu_show_event_title" = "Toon meeting:";
-"preferences_appearance_menu_show_event_details_value" = "details als submenu";
 "preferences_services_link_default_browser_value" = "Standaardbrowser";
 "general_ok" = "Oke";
 "general_cancel" = "Annuleren";
@@ -263,7 +257,6 @@
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "verbergen na start";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "verberg 10 minuten  na start";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "verberg 10 minuten voor volgende evenement";
-"preferences_appearance_menu_show_timeline_toggle" = "Toon visuele tijdlijn van de dag";
 "notifications_meetingbar_dismiss_event_action" = "Meldingen uitschakelen";
 
 "general_refresh" = "Vernieuwen";
@@ -368,7 +361,6 @@
 "status_bar_control_current_meeting" = "Huidige vergadering";
 "status_bar_control_next_meeting" = "Volgende vergadering";
 "preferences_appearance_events_no_meeting_link_title" = "Afspraken zonder vergaderlink";
-"preferences_appearance_menu_show_event_calendar_color_value" = "agendakleur";
 "preferences_sidebar_advanced" = "Geavanceerd";
 "preferences_appearance_status_bar_title_generic_value" = "Generieke titel (Meeting)";
 "onboarding_setup_title" = "Soon configuratie";

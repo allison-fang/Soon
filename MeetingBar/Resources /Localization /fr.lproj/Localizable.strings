@@ -168,15 +168,9 @@
 // MARK: - Preferences Services
 
 "preferences_services_link_meeting_title" = "Ouvrir tous les liens de réunion dans";
-"preferences_appearance_menu_show_event_details_value" = "détails comme sous-menu";
-"preferences_appearance_menu_show_event_icon_value" = "icône";
-"preferences_appearance_menu_show_event_end_time_value" = "heure de fin";
-"preferences_appearance_menu_show_event_title" = "Afficher l'évènement :";
 "preferences_appearance_menu_time_format_24_hour_value" = "24 heures";
 "preferences_appearance_menu_time_format_12_hour_value" = "12 heures (AM/PM)";
 "preferences_appearance_menu_time_format_title" = "Format de l'heure :";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Raccourcir le titre de l'évènement à";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d caractères";
 "preferences_appearance_menu_title" = "Menu";
 "preferences_appearance_status_bar_next_event_toggle" = "Afficher uniquement les évènements commençant dans";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minutes";
@@ -264,7 +258,6 @@
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "masquer après le début";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "masquer 10 min après le début";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "masquer 10 min avant le prochain évènement";
-"preferences_appearance_menu_show_timeline_toggle" = "Afficher la chronologie visuelle de la journée";
 "notifications_meetingbar_dismiss_event_action" = "Désactiver les notifications";
 "access_screen_provider_authorization_cancelled" = "L'autorisation a été annulée. Réessayez pour connecter votre calendrier.";
 "general_end_of_event_notification_toggle" = "Envoyer une notification à la fin de l'événement";
@@ -368,7 +361,6 @@
 "status_bar_control_current_meeting" = "Réunion en cours";
 "status_bar_control_next_meeting" = "Prochaine réunion";
 "preferences_appearance_events_no_meeting_link_title" = "Événements sans lien de réunion";
-"preferences_appearance_menu_show_event_calendar_color_value" = "couleur du calendrier";
 "status_bar_popover_zoom_in" = "Zoom avant";
 "status_bar_popover_zoom_out" = "Zoom arrière";
 "status_bar_popover_update_available" = "Mise à jour disponible";

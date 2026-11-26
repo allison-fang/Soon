@@ -75,15 +75,9 @@
 "preferences_appearance_status_bar_next_event_toggle" = "தொடங்கும் நிகழ்வுகளை மட்டுமே காட்டு";
 "preferences_appearance_status_bar_next_event_stepper" = "%d நிமிடங்கள்";
 "preferences_appearance_menu_title" = "பட்டியல்";
-"preferences_appearance_menu_shorten_event_title_toggle" = "நிகழ்வு தலைப்பை சுருக்கவும்";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d எழுத்துக்கள்";
 "preferences_appearance_menu_time_format_title" = "நேர வடிவம்:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12 மணி நேரம் (AM/PM)";
 "preferences_appearance_menu_time_format_24_hour_value" = "24 மணி நேரம்";
-"preferences_appearance_menu_show_event_title" = "நிகழ்வைக் காட்டு:";
-"preferences_appearance_menu_show_event_end_time_value" = "இறுதி நேரம்";
-"preferences_appearance_menu_show_event_icon_value" = "படவுரு";
-"preferences_appearance_menu_show_event_details_value" = "விவரங்கள் துணை";
 "preferences_services_link_meeting_title" = "அனைத்து சந்திப்பு இணைப்புகளையும் திறக்கவும்";
 "preferences_services_link_service_title" = "திறந்த %@ இணைப்புகள்";
 "preferences_services_link_default_browser_value" = "இயல்புநிலை வலை உலாவி";
@@ -213,7 +207,6 @@
 "constants_meeting_service_url" = "முகவரி";
 "notifications_event_start_soon_body" = "நிகழ்வு விரைவில் தொடங்குகிறது";
 "notifications_event_started_body" = "நிகழ்வு தொடங்கியது";
-"preferences_appearance_menu_show_timeline_toggle" = "அன்றைய காட்சி காலவரிசையைக் காட்டு";
 "preferences_appearance_status_bar_ongoing_title" = "தற்போதைய நிகழ்வு தெரிவுநிலை:";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "தொடக்கத்திற்குப் பிறகு மறை";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "தொடங்கிய பிறகு 10 மணித்துளி மறைக்கவும்";
@@ -321,7 +314,6 @@
 "status_bar_control_current_meeting" = "தற்போதைய கூட்டம்";
 "status_bar_control_next_meeting" = "அடுத்த கூட்டம்";
 "preferences_appearance_events_no_meeting_link_title" = "சந்திப்பு இணைப்பு இல்லாத நிகழ்வுகள்";
-"preferences_appearance_menu_show_event_calendar_color_value" = "காலெண்டர் நிறம்";
 "status_bar_popover_zoom_in" = "பெரிதாக்கு";
 "status_bar_popover_zoom_out" = "சிறிதாக்கு";
 "status_bar_popover_update_available" = "புதுப்பிப்பு உள்ளது";

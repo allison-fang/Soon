@@ -83,15 +83,9 @@
 "preferences_appearance_status_bar_next_event_toggle" = "開始中のイベントのみ表示";
 "preferences_appearance_status_bar_next_event_stepper" = "%d分";
 "preferences_appearance_menu_title" = "メニュー";
-"preferences_appearance_menu_shorten_event_title_toggle" = "ミーティング名を短縮する";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d文字";
 "preferences_appearance_menu_time_format_title" = "時刻形式:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12時間 (AM/PM)";
 "preferences_appearance_menu_time_format_24_hour_value" = "24時間";
-"preferences_appearance_menu_show_event_title" = "イベント表示:";
-"preferences_appearance_menu_show_event_end_time_value" = "終了時刻";
-"preferences_appearance_menu_show_event_icon_value" = "アイコン";
-"preferences_appearance_menu_show_event_details_value" = "サブメニューに詳細表示";
 
 // MARK: - Preferences Services
 
@@ -362,7 +356,6 @@
 "shared_fullscreen_notification_without_link_toggle" = "ミーティングリンクのないイベントにもフルスクリーン通知を表示する";
 "shared_fullscreen_notification_without_link_help" = "ミーティングリンクのないイベントは、閉じるアクションのみのフルスクリーンリマインダーを表示します。";
 "notifications_meetingbar_dismiss_event_action" = "通知をオフにする";
-"preferences_appearance_menu_show_timeline_toggle" = "その日のビジュアルタイムラインを表示";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "開始後に非表示";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "開始10分後に非表示";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "次のイベントの10分前に非表示";
@@ -386,7 +379,6 @@
 "status_bar_control_current_meeting" = "現在のミーティング";
 "status_bar_control_next_meeting" = "次のミーティング";
 "preferences_appearance_events_no_meeting_link_title" = "会議リンクのないイベント";
-"preferences_appearance_menu_show_event_calendar_color_value" = "カレンダーの色";
 "onboarding_setup_title" = "Soon セットアップ";
 "onboarding_back" = "もどる";
 "onboarding_essentials_hint" = "後からすべての詳細を調整できます。";

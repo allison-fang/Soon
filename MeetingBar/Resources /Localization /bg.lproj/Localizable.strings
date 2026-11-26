@@ -86,16 +86,9 @@
 "preferences_appearance_status_bar_next_event_toggle" = "Показвай само събития, започващи до";
 "preferences_appearance_status_bar_next_event_stepper" = "%d минути";
 "preferences_appearance_menu_title" = "Меню";
-"preferences_appearance_menu_show_timeline_toggle" = "Показвай визуална времева линия на деня";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Съкрати заглавието на събитието до";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d знака";
 "preferences_appearance_menu_time_format_title" = "Формат на часа:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12-часов (AM/PM)";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-часов";
-"preferences_appearance_menu_show_event_title" = "Показвай за събитието:";
-"preferences_appearance_menu_show_event_end_time_value" = "краен час";
-"preferences_appearance_menu_show_event_icon_value" = "икона";
-"preferences_appearance_menu_show_event_details_value" = "детайли като подменю";
 
 // MARK: - Preferences Services
 
@@ -372,7 +365,6 @@
 "status_bar_control_current_meeting" = "Текуща среща";
 "status_bar_control_next_meeting" = "Следваща среща";
 "preferences_appearance_events_no_meeting_link_title" = "Събития без връзка за среща";
-"preferences_appearance_menu_show_event_calendar_color_value" = "цвят на календара";
 "status_bar_popover_zoom_in" = "Увеличи";
 "status_bar_popover_zoom_out" = "Намали";
 "status_bar_popover_update_available" = "Налична актуализация";

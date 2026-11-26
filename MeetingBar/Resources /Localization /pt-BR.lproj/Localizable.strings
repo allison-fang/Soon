@@ -83,15 +83,9 @@
 "preferences_appearance_status_bar_next_event_toggle" = "Mostrar apenas eventos que começam dentro de";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minutos";
 "preferences_appearance_menu_title" = "Menu";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Encurtar título do evento para";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d caracteres";
 "preferences_appearance_menu_time_format_title" = "Formato de horário:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12 horas (AM/PM)";
 "preferences_appearance_menu_time_format_24_hour_value" = "24 horas";
-"preferences_appearance_menu_show_event_title" = "Mostrar evento:";
-"preferences_appearance_menu_show_event_end_time_value" = "horário do fim";
-"preferences_appearance_menu_show_event_icon_value" = "ícone";
-"preferences_appearance_menu_show_event_details_value" = "detalhes como submenu";
 
 // MARK: - Preferences Services
 
@@ -273,7 +267,6 @@
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "Ocultar e depois de iniciar";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Ocultar 10 min .. depois inicie";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Ocultar 10 min antes do próximo evento";
-"preferences_appearance_menu_show_timeline_toggle" = "Mostre visualmente a linha do tempo do dia";
 "notifications_meetingbar_dismiss_event_action" = "Desativar notificações";
 "access_screen_provider_authorization_cancelled" = "A autorização foi cancelada. Tente novamente para conectar seu calendário.";
 "general_end_of_event_notification_toggle" = "Enviar notificação quando o evento terminar";
@@ -377,7 +370,6 @@
 "status_bar_control_current_meeting" = "Reunião atual";
 "status_bar_control_next_meeting" = "Próxima reunião";
 "preferences_appearance_events_no_meeting_link_title" = "Eventos sem link de reunião";
-"preferences_appearance_menu_show_event_calendar_color_value" = "cor do calendário";
 "preferences_sidebar_advanced" = "Avançado";
 "onboarding_back" = "Voltar";
 "onboarding_start_using" = "Começar a utilizar o Soon";

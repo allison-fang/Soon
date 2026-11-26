@@ -75,7 +75,6 @@
 "link_url_cant_open_title" = "Ups! Nepodarilo sa otvoriť odkaz v %@";
 "link_url_cant_open_message" = "Uisti sa, že máš nainštalovaný %@, alebo namiesto toho otvor takéto odkazy z predvolieb vo webovom prehliadači.";
 "preferences_appearance_events_past_title" = "Uplynulé udalosti:";
-"preferences_appearance_menu_show_event_title" = "Zobraziť udalosť:";
 "create_meeting_error_message" = "Vlastná URL adresa \"%@\" chýba alebo neplatná. ";
 
 // MARK: - Window titles
@@ -124,14 +123,9 @@
 "preferences_appearance_status_bar_next_event_toggle" = "Zobraziť iba udalosti začínajúce počas";
 "preferences_appearance_menu_title" = "Menu";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minút";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Skrátiť názov udalosti na";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d znakov";
 "preferences_appearance_menu_time_format_title" = "Formát času:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12-hodinový (AM/PM)";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-hodinový";
-"preferences_appearance_menu_show_event_end_time_value" = "čas ukončenia";
-"preferences_appearance_menu_show_event_icon_value" = "ikona";
-"preferences_appearance_menu_show_event_details_value" = "podrobnosti ako podmenu";
 "preferences_services_create_meeting_title" = "Vytvárať stretnutia cez";
 "preferences_services_google_meet_tip" = "Tip: Google Meet podporuje výber účtu v URL adrese, napr. https://meet.google.com/new?authuser=1";
 "preferences_services_create_meeting_browser_title" = "Použiť webový prehliadač";
@@ -263,7 +257,6 @@
 "notification_all_dismissals_removed_title" = "Odstránené všetky zrušené";
 "status_bar_section_date_nothing" = "Na %@ nič";
 "status_bar_submenu_undismiss_meeting" = "Zapnúť upozornenia";
-"preferences_appearance_menu_show_timeline_toggle" = "Zobraziť vizuálnu časovú os dňa";
 "notifications_meetingbar_dismiss_event_action" = "Vypnúť upozornenia";
 "preferences_appearance_status_bar_ongoing_title" = "Priebežná viditeľnosť udalosti:";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "skryť po spustení";
@@ -371,7 +364,6 @@
 "status_bar_control_current_meeting" = "Aktuálne stretnutie";
 "status_bar_control_next_meeting" = "Ďalšie stretnutie";
 "preferences_appearance_events_no_meeting_link_title" = "Udalosti bez odkazu na schôdzu";
-"preferences_appearance_menu_show_event_calendar_color_value" = "farba kalendára";
 "status_bar_popover_zoom_in" = "Zväčšiť";
 "status_bar_popover_zoom_out" = "Zmenšiť";
 "status_bar_popover_update_available" = "K dispozícii je aktualizácia";

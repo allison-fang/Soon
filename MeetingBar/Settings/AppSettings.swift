@@ -48,18 +48,11 @@ struct StatusBarSettings: Equatable {
     var eventTitleIconFormat: EventTitleIconFormat
     var statusbarEventTitleLength: Int
     var hideMeetingTitle: Bool
-    var showEventEndTime: Bool
 }
 
 struct MenuSettings: Equatable {
     var timelineDensity: TimelineDensity
     var timelineZoom: TimelineZoom?
-    var showTimelineInMenu: Bool
-    var shortenEventTitle: Bool
-    var menuEventTitleLength: Int
-    var showEventDetails: Bool
-    var showMeetingServiceIcon: Bool
-    var showEventCalendarColor: Bool
 
     /// Until someone zooms, the scale Density set before zoom existed.
     var resolvedTimelineZoom: TimelineZoom {
@@ -186,18 +179,11 @@ extension AppSettings {
                 eventTimeFormat: Defaults[.eventTimeFormat],
                 eventTitleIconFormat: Defaults[.eventTitleIconFormat],
                 statusbarEventTitleLength: Defaults[.statusbarEventTitleLength],
-                hideMeetingTitle: eventTitleFormat == .generic,
-                showEventEndTime: Defaults[.showEventEndTime]
+                hideMeetingTitle: eventTitleFormat == .generic
             ),
             menu: MenuSettings(
                 timelineDensity: Defaults[.timelineDensity],
-                timelineZoom: Defaults[.timelineZoom],
-                showTimelineInMenu: Defaults[.showTimelineInMenu],
-                shortenEventTitle: Defaults[.shortenEventTitle],
-                menuEventTitleLength: Defaults[.menuEventTitleLength],
-                showEventDetails: Defaults[.showEventDetails],
-                showMeetingServiceIcon: Defaults[.showMeetingServiceIcon],
-                showEventCalendarColor: Defaults[.showEventCalendarColor]
+                timelineZoom: Defaults[.timelineZoom]
             ),
             notifications: NotificationSettings(
                 joinEventNotification: Defaults[.joinEventNotification],
@@ -261,18 +247,11 @@ extension AppSettings {
                 eventTimeFormat: .show,
                 eventTitleIconFormat: .none,
                 statusbarEventTitleLength: statusbarEventTitleLengthLimits.max,
-                hideMeetingTitle: false,
-                showEventEndTime: true
+                hideMeetingTitle: false
             ),
             menu: MenuSettings(
                 timelineDensity: .comfortable,
-                timelineZoom: nil,
-                showTimelineInMenu: true,
-                shortenEventTitle: true,
-                menuEventTitleLength: 50,
-                showEventDetails: false,
-                showMeetingServiceIcon: true,
-                showEventCalendarColor: true
+                timelineZoom: nil
             ),
             notifications: NotificationSettings(
                 joinEventNotification: true,

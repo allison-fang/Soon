@@ -65,16 +65,9 @@
 "preferences_appearance_status_bar_next_event_toggle" = "시작 전 이벤트 표시";
 "preferences_appearance_status_bar_next_event_stepper" = "%d분";
 "preferences_appearance_menu_title" = "메뉴";
-"preferences_appearance_menu_show_timeline_toggle" = "오늘 타임라인 표시";
-"preferences_appearance_menu_shorten_event_title_toggle" = "이벤트 제목을 말줄임표로 표시";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d자";
 "preferences_appearance_menu_time_format_title" = "시간 형식:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12시간 (AM/PM)";
 "preferences_appearance_menu_time_format_24_hour_value" = "24시간";
-"preferences_appearance_menu_show_event_title" = "이벤트 표시:";
-"preferences_appearance_menu_show_event_end_time_value" = "종료 시간";
-"preferences_appearance_menu_show_event_icon_value" = "아이콘";
-"preferences_appearance_menu_show_event_details_value" = "세부사항";
 "preferences_services_link_meeting_title" = "모든 회의 연결 시";
 "preferences_services_link_service_title" = "%@ 연결 시";
 "preferences_services_link_default_browser_value" = "기본 웹 브라우저";
@@ -321,7 +314,6 @@
 "status_bar_control_current_meeting" = "현재 회의";
 "status_bar_control_next_meeting" = "다음 회의";
 "preferences_appearance_events_no_meeting_link_title" = "회의 링크가 없는 일정";
-"preferences_appearance_menu_show_event_calendar_color_value" = "캘린더 색상";
 "status_bar_popover_zoom_in" = "확대";
 "status_bar_popover_zoom_out" = "축소";
 "status_bar_popover_update_available" = "업데이트 있음";

@@ -99,13 +99,10 @@ final class StatusBarItemController {
         Defaults.publisher(
             keys: .statusbarEventTitleLength, .eventTimeFormat,
             .eventTitleIconFormat, .showEventMaxTimeUntilEventThreshold,
-            .showEventMaxTimeUntilEventEnabled, .showEventDetails,
-            .shortenEventTitle, .menuEventTitleLength,
-            .showEventEndTime, .showMeetingServiceIcon,
-            .showEventCalendarColor,
+            .showEventMaxTimeUntilEventEnabled,
             .timeFormat, .bookmarks, .timelineDensity, .timelineZoom,
             .pastEventsAppereance, .declinedEventsAppereance,
-            .showTimelineInMenu, .eventTitleFormat,
+            .eventTitleFormat,
             options: []
         )
         .receive(on: DispatchQueue.main)

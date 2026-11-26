@@ -275,13 +275,6 @@ struct StatusBarSection: View {
 
 struct MenuSection: View {
     @Default(.timelineDensity) var timelineDensity
-    @Default(.shortenEventTitle) var shortenEventTitle
-    @Default(.menuEventTitleLength) var menuEventTitleLength
-    @Default(.showEventEndTime) var showEventEndTime
-    @Default(.showEventDetails) var showEventDetails
-    @Default(.showMeetingServiceIcon) var showMeetingServiceIcon
-    @Default(.showEventCalendarColor) var showEventCalendarColor
-    @Default(.showTimelineInMenu) var showTimelineInMenu
 
     var body: some View {
         Section(header: Text("preferences_appearance_menu_title".loco())) {
@@ -294,54 +287,6 @@ struct MenuSection: View {
                 Text("preferences_appearance_menu_density_compact_value".loco())
                     .tag(TimelineDensity.compact)
             }
-            Toggle(
-                preferenceLabel("preferences_appearance_menu_show_timeline_toggle"),
-                isOn: $showTimelineInMenu
-            )
-        }
-
-        Section(header: Text(preferenceLabel("preferences_appearance_menu_show_event_title"))) {
-            Toggle(
-                preferenceLabel("preferences_appearance_menu_show_event_end_time_value"),
-                isOn: $showEventEndTime
-            )
-            Toggle(
-                preferenceLabel("preferences_appearance_menu_show_event_icon_value"),
-                isOn: $showMeetingServiceIcon
-            )
-            Toggle(
-                preferenceLabel("preferences_appearance_menu_show_event_calendar_color_value"),
-                isOn: $showEventCalendarColor
-            )
-            Toggle(
-                preferenceLabel("preferences_appearance_menu_show_event_details_value"),
-                isOn: $showEventDetails
-            )
-        }
-
-        Section {
-            Toggle(
-                preferenceLabel("preferences_appearance_menu_shorten_event_title_toggle"),
-                isOn: $shortenEventTitle
-            )
-
-            HStack {
-                Spacer()
-                Stepper(
-                    value: $menuEventTitleLength,
-                    in: 20 ... 100,
-                    step: 5
-                ) {
-                    Text(
-                        "preferences_appearance_menu_shorten_event_title_stepper".loco(
-                            menuEventTitleLength)
-                    )
-                    .monospacedDigit()
-                }
-                .fixedSize()
-            }
-            .padding(.leading, 16)
-            .disabled(!shortenEventTitle)
         }
     }
 }

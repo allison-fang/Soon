@@ -198,15 +198,9 @@
 // MARK: - Preferences Services
 
 "preferences_services_link_meeting_title" = "Standard-Browser für Meeting-Links";
-"preferences_appearance_menu_show_event_details_value" = "Details als Untermenü";
-"preferences_appearance_menu_show_event_icon_value" = "symbol";
-"preferences_appearance_menu_show_event_end_time_value" = "Endzeit";
-"preferences_appearance_menu_show_event_title" = "Ereignis anzeigen:";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-Stunden";
 "preferences_appearance_menu_time_format_12_hour_value" = "12-Stunden (AM/PM)";
 "preferences_appearance_menu_time_format_title" = "Zeitformat:";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d Zeichen";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Ereignistitel kürzen auf";
 "preferences_appearance_events_value_only_with_link" = "mit Meeting-Link anzeigen";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Meeting-Titel in der Menüleiste ein-/ausblenden:";
 "preferences_general_shortcut_join_from_clipboard" = "An Meeting in Zwischenablage teilnehmen:";
@@ -267,7 +261,6 @@
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "nach Beginn ausblenden";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "10 min nach Beginn ausblenden";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "10 min vor dem nächsten Ereignis ausblenden";
-"preferences_appearance_menu_show_timeline_toggle" = "Visuellen Zeitstrahl für den Tag anzeigen";
 
 "general_refresh" = "Aktualisieren";
 "general_when_event_ends" = "Ende des Ereignisses";
@@ -371,7 +364,6 @@
 "status_bar_control_current_meeting" = "Aktuelles Meeting";
 "status_bar_control_next_meeting" = "Nächstes Meeting";
 "preferences_appearance_events_no_meeting_link_title" = "Ereignisse ohne Meeting-Link";
-"preferences_appearance_menu_show_event_calendar_color_value" = "Kalenderfarbe";
 "preferences_sidebar_advanced" = "Erweitert";
 "preferences_appearance_status_bar_title_generic_value" = "Generischer Titel (Meeting)";
 "onboarding_setup_title" = "Soon Einrichtung";

@@ -28,8 +28,6 @@
 "preferences_appearance_status_bar_time_hide_value" = "elrejt";
 "preferences_appearance_status_bar_next_event_toggle" = "Csak olyan események mutatása, ami ezelőtt kezdődnek";
 "preferences_appearance_status_bar_next_event_stepper" = "%d perc";
-"preferences_appearance_menu_show_event_icon_value" = "ikon";
-"preferences_appearance_menu_show_event_details_value" = "részletek almenüként";
 "preferences_services_link_meeting_title" = "Minden találkozó link megnyitása ebben";
 "preferences_services_create_meeting_title" = "Találkozók létrehozása ezzel";
 "preferences_configure_browsers_add_button_browser_title" = "Webböngésző";
@@ -45,8 +43,6 @@
 "preferences_appearance_status_bar_icon_specific_icon_value" = " Esemény specifikus ikon (pl. MS Teams)";
 "preferences_appearance_status_bar_title_title" = "Cím";
 "preferences_appearance_menu_title" = "Menü";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Esemény címének rövidítése";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d karakterre";
 "preferences_appearance_menu_time_format_title" = "Időformátum:";
 "preferences_services_create_meeting_custom_url_placeholder" = "Légy szíves érvényes URL-t megadni (http:// vagy https://)";
 "preferences_services_google_meet_tip" = "Tipp: Google Meet támogatja a fiókválasztást az URL-ben, pl. https://meet.google.com/new?authuser=1";
@@ -85,8 +81,6 @@
 "preferences_appearance_status_bar_title" = "Állapotsáv";
 "preferences_appearance_status_bar_icon_no_icon_value" = " Nincs ikon";
 "preferences_appearance_menu_time_format_24_hour_value" = "24 órás";
-"preferences_appearance_menu_show_event_title" = "Esemény mutatása:";
-"preferences_appearance_menu_show_event_end_time_value" = "befejezés időpontja";
 "preferences_services_link_default_browser_value" = "Alapértelmezett böngésző";
 "preferences_bookmarks_new_bookmark_already_exist" = "%@ már rendelkezik ezzel a linkkel/telefonszámmal:\n%@";
 "preferences_bookmarks_new_bookmark_link_phone" = "Link/telefonszám";
@@ -205,7 +199,6 @@
 "preferences_appearance_events_value_as_underlined" = "megjelenítés aláhúzással";
 "preferences_appearance_events_value_only_with_link" = "csak értekezlet-hivatkozással rendelkezők megjelenítése";
 "preferences_appearance_events_value_with_strikethrough" = "megjelenítés áthúzással";
-"preferences_appearance_menu_show_timeline_toggle" = "Nap vizuális idővonalának megjelenítése";
 "preferences_appearance_status_bar_icon_app_icon_value" = "\U00A0Soon";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "elrejtés a kezdés után";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "elrejtés 10 perccel a kezdés után";
@@ -326,7 +319,6 @@
 "preferences_sidebar_experience" = "Élmény";
 "preferences_sidebar_setup" = "Beállítás";
 "preferences_appearance_events_no_meeting_link_title" = "Események értekezlet-hivatkozás nélkül";
-"preferences_appearance_menu_show_event_calendar_color_value" = "naptár színe";
 "status_bar_popover_zoom_in" = "Nagyítás";
 "status_bar_popover_zoom_out" = "Kicsinyítés";
 "status_bar_popover_update_available" = "Frissítés érhető el";

@@ -69,14 +69,6 @@ extension Defaults.Keys {
     // Menu Appearance
     static let timelineDensity = Key<TimelineDensity>("timelineDensity", default: .comfortable)
     static let timelineZoom = Key<TimelineZoom?>("timelineZoom", default: nil)
-    static let showTimelineInMenu = Key<Bool>("showTimelineInMenu", default: true)
-    // if the event title in the menu should be shortened or not -> the length will be stored in field menuEventTitleLength
-    static let shortenEventTitle = Key<Bool>("shortenEventTitle", default: true)
-    static let menuEventTitleLength = Key<Int>("menuEventTitleLength", default: 50)
-
-    static let showEventDetails = Key<Bool>("showEventDetails", default: false)
-    static let showMeetingServiceIcon = Key<Bool>("showMeetingServiceIcon", default: true)
-    static let showEventCalendarColor = Key<Bool>("showEventCalendarColor", default: true)
 
     static let declinedEventsAppereance = Key<DeclinedEventsAppereance>(
         "declinedEventsAppereance", default: .strikethrough)
@@ -116,9 +108,6 @@ extension Defaults.Keys {
     // show all day events - by default show all, also events without any link
     static let nonAllDayEvents = Key<NonAlldayEventsAppereance>(
         "nonAllDayEvents", default: NonAlldayEventsAppereance.show)
-
-    // show the end time of a meeting in the meetingbar for each event entry
-    static let showEventEndTime = Key<Bool>("showEventEndTime", default: true)
 
     // Integrations
     static let createMeetingService = Key<CreateMeetingServices>(

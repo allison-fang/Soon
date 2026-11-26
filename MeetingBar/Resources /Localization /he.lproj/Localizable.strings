@@ -48,13 +48,7 @@
 "preferences_appearance_status_bar_time_title" = "הצגת השעה";
 "preferences_appearance_status_bar_time_hide_value" = "הסתרה";
 "preferences_appearance_menu_title" = "תפריט";
-"preferences_appearance_menu_shorten_event_title_toggle" = "קיצור כותרות אירועים לאורך";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d תווים";
 "preferences_appearance_menu_time_format_title" = "תבנית השעה:";
-"preferences_appearance_menu_show_event_title" = "הצגת אירוע:";
-"preferences_appearance_menu_show_event_end_time_value" = "זמן הסיום";
-"preferences_appearance_menu_show_event_icon_value" = "סמל";
-"preferences_appearance_menu_show_event_details_value" = "פרטים כתת־תפריט";
 "preferences_services_link_service_title" = "%@";
 "preferences_services_link_default_browser_value" = "דפדפן ברירת המחדל";
 "preferences_services_create_meeting_title" = "יצירת פגישות דרך";
@@ -265,7 +259,6 @@
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "להסתיר 10 דקות לאחר ההתחלה";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "להסתיר 10 דקות לפני האירוע הבא";
 "preferences_appearance_status_bar_ongoing_title" = "חשיפה של אירוע פעיל:";
-"preferences_appearance_menu_show_timeline_toggle" = "הצגת ציר זמן חזותי של היום";
 "access_screen_provider_authorization_cancelled" = "ההרשאה בוטלה. נסה שוב כדי לחבר את הלוח שנה שלך.";
 "general_end_of_event_notification_toggle" = "שליחת התראה בסיום האירוע";
 "general_refresh" = "ריענון";
@@ -368,7 +361,6 @@
 "status_bar_control_current_meeting" = "פגישה נוכחית";
 "status_bar_control_next_meeting" = "הפגישה הבאה";
 "preferences_appearance_events_no_meeting_link_title" = "אירועים ללא קישור לפגישה";
-"preferences_appearance_menu_show_event_calendar_color_value" = "צבע היומן";
 "status_bar_popover_zoom_in" = "הגדל";
 "status_bar_popover_zoom_out" = "הקטן";
 "status_bar_popover_update_available" = "עדכון זמין";

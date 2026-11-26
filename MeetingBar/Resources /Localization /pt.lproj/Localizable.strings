@@ -60,15 +60,9 @@
 "preferences_appearance_status_bar_next_event_toggle" = "Mostrar apenas eventos que começam dentro de";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minutos";
 "preferences_appearance_menu_title" = "Menu";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Encurtar título do evento para";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d caracteres";
 "preferences_appearance_menu_time_format_title" = "Formato de horário:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12 horas (AM/PM)";
 "preferences_appearance_menu_time_format_24_hour_value" = "24 horas";
-"preferences_appearance_menu_show_event_title" = "Mostrar evento:";
-"preferences_appearance_menu_show_event_end_time_value" = "horário do fim";
-"preferences_appearance_menu_show_event_icon_value" = "ícone";
-"preferences_appearance_menu_show_event_details_value" = "pormenores como submenu";
 "preferences_services_link_meeting_title" = "Abrir todas as ligações de reunião em";
 "preferences_services_link_default_browser_value" = "Navegador padrão";
 "shared_fullscreen_notification_toggle" = "Exibir notificação em ecrã cheio";
@@ -166,7 +160,6 @@
 "preferences_advanced_wrong_location_message" = "Selecione a pasta Utilizador → Biblioteca → Scripts de Aplicações → com.allisonfang.Soon";
 "preferences_advanced_wrong_location_title" = "Localização incorreta";
 "preferences_appearance_events_tentative_title" = "Eventos provisórios:";
-"preferences_appearance_menu_show_timeline_toggle" = "Mostrar linha do tempo visual do dia";
 "preferences_appearance_status_bar_icon_app_icon_value" = "\U00A0Soon";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "ocultar após o início";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "ocultar 10 min após o início";
@@ -321,7 +314,6 @@
 "preferences_sidebar_setup" = "Configuração";
 "preferences_sidebar_experience" = "Experiência";
 "preferences_appearance_events_no_meeting_link_title" = "Eventos sem ligação para a reunião";
-"preferences_appearance_menu_show_event_calendar_color_value" = "cor do calendário";
 "status_bar_popover_zoom_in" = "Ampliar";
 "status_bar_popover_zoom_out" = "Reduzir";
 "status_bar_popover_update_available" = "Atualização disponível";

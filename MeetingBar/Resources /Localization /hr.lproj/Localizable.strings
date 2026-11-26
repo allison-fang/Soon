@@ -78,15 +78,9 @@
 "preferences_appearance_status_bar_next_event_toggle" = "Prikaži samo događaje koji počinju u roku od";
 "preferences_appearance_status_bar_next_event_stepper" = "%d min";
 "preferences_appearance_menu_title" = "Izbornik";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Skrati naslov događaja na";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d znaka/znakova";
 "preferences_appearance_menu_time_format_title" = "Format za sate:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12 sati (AM/PM)";
 "preferences_appearance_menu_time_format_24_hour_value" = "24 sata";
-"preferences_appearance_menu_show_event_title" = "Prikaži događaj:";
-"preferences_appearance_menu_show_event_end_time_value" = "vrijeme kraja";
-"preferences_appearance_menu_show_event_icon_value" = "ikona";
-"preferences_appearance_menu_show_event_details_value" = "detalji kao podizbornik";
 
 // MARK: - Preferences Services
 
@@ -268,7 +262,6 @@
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "sakrij nakon početka";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "sakrij 10 min nakon početka";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "sakrij 10 min prije sljedećeg događaja";
-"preferences_appearance_menu_show_timeline_toggle" = "Prikaži vizualnu vremensku crtu dana";
 "notifications_meetingbar_dismiss_event_action" = "Isključi obavijesti";
 "access_screen_provider_authorization_cancelled" = "Autorizacija je otkazana. Pokušajte ponovo povezati kalendar.";
 "general_end_of_event_notification_toggle" = "Pošalji obavijest kada događaj završi";
@@ -372,7 +365,6 @@
 "status_bar_control_current_meeting" = "Trenutni sastanak";
 "status_bar_control_next_meeting" = "Sljedeći sastanak";
 "preferences_appearance_events_no_meeting_link_title" = "Događaji bez poveznice na sastanak";
-"preferences_appearance_menu_show_event_calendar_color_value" = "boja kalendara";
 "status_bar_popover_zoom_in" = "Povećaj";
 "status_bar_popover_zoom_out" = "Smanji";
 "status_bar_popover_update_available" = "Dostupno ažuriranje";

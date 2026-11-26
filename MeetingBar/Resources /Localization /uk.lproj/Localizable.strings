@@ -81,15 +81,9 @@
 "preferences_appearance_status_bar_next_event_toggle" = "Показувати лише наступну подію, яка починається через";
 "preferences_appearance_status_bar_next_event_stepper" = "%d хвилин";
 "preferences_appearance_menu_title" = "Меню";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Скоротити заголовок події до";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d символів";
 "preferences_appearance_menu_time_format_title" = "Формат часу:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12-годинний (AM/PM)";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-годинний";
-"preferences_appearance_menu_show_event_title" = "Показувати для події:";
-"preferences_appearance_menu_show_event_end_time_value" = "час закінчення";
-"preferences_appearance_menu_show_event_icon_value" = "значок";
-"preferences_appearance_menu_show_event_details_value" = "деталі як підменю";
 
 // MARK: - Preferences Services
 
@@ -276,7 +270,6 @@
 "preferences_appearance_status_bar_ongoing_title" = "Поточна видимість події:";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "приховати за 10 хвилин до наступної події";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "приховати через 10 хвилин після початку";
-"preferences_appearance_menu_show_timeline_toggle" = "Показати візуальну хронологію дня";
 
 "general_refresh" = "Оновити";
 "general_end_of_event_notification_toggle" = "Надсилати сповіщення, коли подія завершується";
@@ -383,7 +376,6 @@
 "preferences_sidebar_setup" = "Налаштування";
 "status_bar_control_current_meeting" = "Поточна зустріч";
 "status_bar_control_next_meeting" = "Наступна зустріч";
-"preferences_appearance_menu_show_event_calendar_color_value" = "колір календаря";
 "status_bar_popover_zoom_in" = "Збільшити";
 "status_bar_popover_zoom_out" = "Зменшити";
 "status_bar_popover_update_available" = "Доступне оновлення";

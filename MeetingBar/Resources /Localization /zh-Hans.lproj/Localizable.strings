@@ -139,13 +139,6 @@
 "preferences_appearance_events_value_show" = "显示";
 "preferences_appearance_events_value_with_strikethrough" = "显示带删除线";
 "preferences_appearance_events_without_guest_title" = "无来宾事件：";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d 个字符";
-"preferences_appearance_menu_shorten_event_title_toggle" = "将事件标题缩短为";
-"preferences_appearance_menu_show_event_details_value" = "详情（子菜单）";
-"preferences_appearance_menu_show_event_end_time_value" = "结束时间";
-"preferences_appearance_menu_show_event_icon_value" = "图标";
-"preferences_appearance_menu_show_event_title" = "显示事件：";
-"preferences_appearance_menu_show_timeline_toggle" = "显示一天的可视时间轴";
 "preferences_appearance_menu_time_format_12_hour_value" = "12小时制（AM/PM）";
 "preferences_appearance_menu_time_format_24_hour_value" = "24小时制";
 "preferences_appearance_menu_time_format_title" = "时间格式：";
@@ -321,7 +314,6 @@
 "status_bar_whats_new" = "有什么新内容？";
 "timeline_accessibility_label" = "包含 %d 个事件的时间轴";
 "preferences_appearance_events_no_meeting_link_title" = "无会议链接的事件";
-"preferences_appearance_menu_show_event_calendar_color_value" = "日历颜色";
 "preferences_appearance_status_bar_title_generic_value" = "通用标题（会议）";
 "preferences_sidebar_advanced" = "高级";
 "onboarding_setup_title" = "Soon 配置";

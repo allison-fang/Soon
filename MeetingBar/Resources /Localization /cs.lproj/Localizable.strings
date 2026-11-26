@@ -172,8 +172,6 @@
 // MARK: - Preferences Services
 
 "preferences_services_link_meeting_title" = "Výchozí prohlížeč pro odkazy na schůzky";
-"preferences_appearance_menu_show_event_details_value" = "podrobnosti jako podnabídku";
-"preferences_appearance_menu_show_event_title" = "U události zobrazit:";
 "preferences_appearance_menu_time_format_24_hour_value" = "24hodinový";
 "preferences_appearance_menu_time_format_12_hour_value" = "12hodinový (AM/PM)";
 "preferences_appearance_menu_time_format_title" = "Formát času:";
@@ -185,10 +183,6 @@
 "preferences_appearance_events_declined_title" = "Odmítnuté události:";
 "preferences_appearance_events_pending_title" = "Události čekající na odpověď";
 "preferences_appearance_events_past_title" = "Proběhlé události:";
-"preferences_appearance_menu_show_event_icon_value" = "ikonu";
-"preferences_appearance_menu_show_event_end_time_value" = "čas konce";
-"preferences_appearance_menu_shorten_event_title_stepper" = "%d znaků";
-"preferences_appearance_menu_shorten_event_title_toggle" = "Zkrátit název události na";
 "preferences_appearance_menu_title" = "Nabídka";
 "preferences_appearance_status_bar_time_hide_value" = "skrýt";
 "preferences_appearance_status_bar_time_show_under_title_value" = "zobrazit pod názvem";
@@ -347,7 +341,6 @@
 "shared_fullscreen_notification_without_link_toggle" = "Zobrazovat celoobrazovková oznámení také pro události bez odkazu na schůzku";
 "shared_fullscreen_notification_without_link_help" = "U událostí bez odkazu na schůzku obsahuje celoobrazovkové připomenutí pouze tlačítko Zavřít.";
 "notifications_meetingbar_dismiss_event_action" = "Vypnout upozornění";
-"preferences_appearance_menu_show_timeline_toggle" = "Zobrazit časovou osu dne";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "skrýt po zahájení";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "skrýt 10 min po zahájení";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "skrýt 10 min před příští událostí";
@@ -371,7 +364,6 @@
 "status_bar_control_current_meeting" = "Aktuální schůzka";
 "status_bar_control_next_meeting" = "Příští schůzka";
 "preferences_appearance_events_no_meeting_link_title" = "Události bez odkazu na schůzku";
-"preferences_appearance_menu_show_event_calendar_color_value" = "barvu kalendáře";
 "preferences_sidebar_advanced" = "Pokročilé";
 "preferences_appearance_status_bar_title_generic_value" = "obecný název (Schůzka)";
 "onboarding_setup_title" = "Nastavení Soon";
