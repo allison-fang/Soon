@@ -267,6 +267,28 @@ final class StatusBarPopoverPresenterTests: BaseTestCase {
         XCTAssertEqual(try presented(meeting(response: .declined)).response, .declined)
     }
 
+    func testResponseShowsOnlyForEventsWithGuestsOrCanceled() throws {
+        XCTAssertTrue(try presented(meeting(response: .accepted)).showsResponse)
+        XCTAssertFalse(try presented(meeting(response: nil)).showsResponse)
+        XCTAssertTrue(try presented(meeting(status: .canceled, response: nil)).showsResponse)
+    }
+
+    func testSpokenLabelUsesRSVPWordsAndSkipsResponseWithoutGuests() throws {
+        let invited = try presented(meeting(response: .tentative))
+        let personal = try presented(meeting(response: nil))
+
+        XCTAssertTrue(TimelineEventAccessibility.label(for: invited).hasSuffix(", Maybe"))
+        XCTAssertFalse(TimelineEventAccessibility.label(for: personal).contains("Going"))
+    }
+
+    func testChipAndGuestBadgesShareResponseStyles() throws {
+        XCTAssertEqual(TimelineResponseStyle.of(try presented(meeting(response: .accepted))), .going)
+        XCTAssertEqual(TimelineResponseStyle.of(try presented(meeting(response: .pending))), .awaitingReply)
+        XCTAssertEqual(TimelineResponseStyle.of(try presented(meeting(status: .canceled))), .canceled)
+        XCTAssertEqual(TimelineResponseStyle.of(.declined), .notGoing)
+        XCTAssertNil(TimelineResponseStyle.of(.pending))
+    }
+
     func testCanceledEventsLookDeclinedWhateverTheResponse() throws {
         let event = try presented(meeting(status: .canceled, response: .accepted))
 

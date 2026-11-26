@@ -326,10 +326,10 @@
 "status_bar_details_open_google_calendar" = "Google Calendar";
 "status_bar_details_open_calendar" = "Calendar";
 "status_bar_details_open_fantastical" = "Fantastical";
-"status_bar_details_status_accepted" = "Accepted";
-"status_bar_details_status_declined" = "Declined";
-"status_bar_details_status_tentative" = "Tentative";
-"status_bar_details_status_pending" = "Not responded";
+"status_bar_details_status_accepted" = "Going";
+"status_bar_details_status_declined" = "Not going";
+"status_bar_details_status_tentative" = "Maybe";
+"status_bar_details_status_pending" = "Awaiting reply";
 "status_bar_details_status_canceled" = "Canceled";
 "status_bar_details_guests_summary" = "%d yes, %d no, %d awaiting";
 "status_bar_popover_updated" = "Updated %@";
