@@ -291,6 +291,7 @@ struct ProviderPicker: View {
                 Text(source.titleKey.loco()).tag(source.provider)
             }
         }
+        .pickerStyle(.radioGroup)
         .onChange(of: picker) { provider in
             guard ProviderPickerSelectionPolicy.shouldRequestChange(
                 selectedProvider: provider,

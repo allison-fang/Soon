@@ -84,6 +84,7 @@ struct EventStartAlertPicker: View {
             Text("notifications_alert_style_fullscreen".loco()).tag(EventStartAlertStyle.fullscreen)
             Text("notifications_alert_style_both".loco()).tag(EventStartAlertStyle.both)
         }
+        .pickerStyle(.radioGroup)
         .padding(.leading, 16)
         .disabled(!isEnabled)
 

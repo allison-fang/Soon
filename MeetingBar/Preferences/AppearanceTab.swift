@@ -42,6 +42,7 @@ struct EventsSection: View {
                 Text("preferences_appearance_events_show_events_for_today_tomorrow_value".loco())
                     .tag(ShowEventsForPeriod.today_n_tomorrow)
             }
+            .pickerStyle(.radioGroup)
 
             Picker(
                 preferenceLabel("preferences_appearance_menu_density_title"),
@@ -79,6 +80,7 @@ struct EventsSection: View {
                 Text("preferences_appearance_events_value_hide".loco())
                     .tag(NonAlldayEventsAppereance.hide_without_meeting_link)
             }
+            .pickerStyle(.radioGroup)
 
             Picker(
                 preferenceLabel("preferences_appearance_events_without_guest_title"),
@@ -91,6 +93,7 @@ struct EventsSection: View {
                 Text("preferences_appearance_events_value_hide".loco())
                     .tag(PastEventsAppereance.hide)
             }
+            .pickerStyle(.radioGroup)
         }
 
         Section {
@@ -131,6 +134,7 @@ struct EventsSection: View {
                 Text("preferences_appearance_events_value_hide".loco())
                     .tag(DeclinedEventsAppereance.hide)
             }
+            .pickerStyle(.radioGroup)
 
             Picker(
                 preferenceLabel("preferences_appearance_events_past_title"),
@@ -141,6 +145,7 @@ struct EventsSection: View {
                 Text("preferences_appearance_events_value_hide".loco())
                     .tag(PastEventsAppereance.hide)
             }
+            .pickerStyle(.radioGroup)
         }
     }
 }
@@ -222,6 +227,7 @@ struct StatusBarSection: View {
                     Text(option.titleKey.loco()).tag(option.format)
                 }
             }
+            .pickerStyle(.radioGroup)
         }
 
         Section {
