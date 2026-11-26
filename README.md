@@ -65,6 +65,8 @@ Soon works with:
 * Hover an event to see its meeting link, guests, and notes.
 * Filter all-day, declined, tentative, pending, or linkless events.
 * Shorten long meeting titles to keep the menu bar readable.
+* Zoom the timeline in or out.
+* Hide events by title with regex filters.
 
 ### Join meetings faster
 
@@ -72,19 +74,23 @@ Soon works with:
 * Join the nearest meeting with a global keyboard shortcut.
 * Move between events with the arrow keys and join with Return.
 * Open meeting links in a preferred browser or native app per service.
+* Detect links from extra services with custom regexes.
 * Open events in Google Calendar, Calendar, or Fantastical.
+* Open Google Calendar from the menu's footer.
 
 ### Get meeting reminders
 
 * Receive macOS notifications before meetings.
 * Use full-screen reminders for important meeting starts.
+* Get notified before a meeting ends.
 * Disable notifications for a single meeting.
 * Configure reminders around your own workflow.
 
 ### Customize and automate
 
 * Launch Soon automatically at login.
-* Use Shortcuts and AppleScript integrations.
+* Join meetings automatically when they start, or a few minutes before.
+* Use Shortcuts actions to join or inspect the nearest meeting.
 * Run custom AppleScript, for example to pause music when joining a meeting.
 
 ## Supported meeting services
