@@ -47,16 +47,45 @@ struct AppVersion: Comparable, CustomStringConvertible {
 }
 
 struct LatestRelease: Decodable, Equatable {
+    struct Asset: Decodable, Equatable {
+        let name: String
+        let downloadURL: URL
+
+        enum CodingKeys: String, CodingKey {
+            case name
+            case downloadURL = "browser_download_url"
+        }
+    }
+
     let tagName: String
     let htmlURL: URL
     let draft: Bool
     let prerelease: Bool
+    let assets: [Asset]
 
     enum CodingKeys: String, CodingKey {
         case tagName = "tag_name"
         case htmlURL = "html_url"
         case draft
         case prerelease
+        case assets
+    }
+
+    init(tagName: String, htmlURL: URL, draft: Bool, prerelease: Bool, assets: [Asset] = []) {
+        self.tagName = tagName
+        self.htmlURL = htmlURL
+        self.draft = draft
+        self.prerelease = prerelease
+        self.assets = assets
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        tagName = try container.decode(String.self, forKey: .tagName)
+        htmlURL = try container.decode(URL.self, forKey: .htmlURL)
+        draft = try container.decode(Bool.self, forKey: .draft)
+        prerelease = try container.decode(Bool.self, forKey: .prerelease)
+        assets = try container.decodeIfPresent([Asset].self, forKey: .assets) ?? []
     }
 
     static func decode(_ data: Data) throws -> LatestRelease {
@@ -67,6 +96,14 @@ struct LatestRelease: Decodable, Equatable {
 struct AvailableUpdate: Equatable {
     let version: String
     let releaseURL: URL
+    /// `nil` when the release has no usable `Soon.zip`; the install command is the only way to update then.
+    let downloadURL: URL?
+
+    init(version: String, releaseURL: URL, downloadURL: URL? = nil) {
+        self.version = version
+        self.releaseURL = releaseURL
+        self.downloadURL = downloadURL
+    }
 }
 
 struct UpdateCheckResult: Equatable {
@@ -103,7 +140,11 @@ enum UpdateCheckPolicy {
               let latest = AppVersion(release.tagName),
               current < latest
         else { return nil }
-        return AvailableUpdate(version: latest.description, releaseURL: release.htmlURL)
+        return AvailableUpdate(
+            version: latest.description,
+            releaseURL: release.htmlURL,
+            downloadURL: UpdateInstallPolicy.downloadURL(in: release.assets)
+        )
     }
 
     /// Only a result that finished while the window was open is shown, so an

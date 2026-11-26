@@ -26,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let urlHandler = URLHandler()
     private let windowCoordinator = WindowCoordinator()
     private let updateChecker = UpdateChecker.live()
+    private lazy var updateInstaller = UpdateInstaller.live(currentVersion: updateChecker.currentVersion)
     private var updateSubscription: AnyCancellable?
 
     private var launchTask: Task<Void, Never>?
@@ -294,7 +295,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         windowCoordinator.openPreferencesWindow(
             appModel: appModel,
             calendarSync: calendarSync,
-            updateChecker: updateChecker
+            updateChecker: updateChecker,
+            updateInstaller: updateInstaller
         )
     }
 
@@ -303,6 +305,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             appModel: appModel,
             calendarSync: calendarSync,
             updateChecker: updateChecker,
+            updateInstaller: updateInstaller,
             tab: .general
         )
     }
@@ -358,6 +361,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusLoopTask = nil
         lifecycleObserver.stop()
         updateChecker.stop()
+        updateInstaller.stop()
         updateSubscription = nil
         appModel?.handleWillTerminate()
         notificationScheduler.stop()

@@ -93,6 +93,29 @@ final class UpdateCheckPolicyTests: XCTestCase {
         XCTAssertEqual(try LatestRelease.decode(Data(json.utf8)), release("v1.3.0"))
     }
 
+    func testDecodesAssetsAndOffersTheZip() throws {
+        let zip = "https://github.com/allison-fang/Soon/releases/download/v1.3.0/Soon.zip"
+        let json = """
+        {"tag_name":"v1.3.0","html_url":"https://github.com/allison-fang/Soon/releases/tag/v1.3.0",
+         "draft":false,"prerelease":false,
+         "assets":[{"name":"Soon.zip","browser_download_url":"\(zip)","size":1}]}
+        """
+        let decoded = try LatestRelease.decode(Data(json.utf8))
+        XCTAssertEqual(decoded.assets, [LatestRelease.Asset(name: "Soon.zip", downloadURL: URL(string: zip)!)])
+        XCTAssertEqual(
+            UpdateCheckPolicy.availableUpdate(currentVersion: "1.2.0", release: decoded)?.downloadURL,
+            URL(string: zip)
+        )
+    }
+
+    func testDecodesWithoutAssets() throws {
+        let json = """
+        {"tag_name":"v1.3.0","html_url":"https://github.com/allison-fang/Soon/releases/tag/v1.3.0",
+         "draft":false,"prerelease":false}
+        """
+        XCTAssertEqual(try LatestRelease.decode(Data(json.utf8)).assets, [])
+    }
+
     func testDecodingFailsWithoutTag() {
         XCTAssertThrowsError(try LatestRelease.decode(Data(#"{"message":"Not Found"}"#.utf8)))
     }

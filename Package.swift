@@ -28,6 +28,7 @@ let package = Package(
                 "Utilities/Diagnostics/DiagnosticsReport.swift",
                 // Updates
                 "Updates/UpdateCheckPolicy.swift",
+                "Updates/UpdateInstallPolicy.swift",
                 // Notifications
                 "Notifications/EventActionPolicy.swift",
                 "Notifications/NotificationPlanner.swift",
