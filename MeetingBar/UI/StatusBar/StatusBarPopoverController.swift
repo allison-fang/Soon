@@ -7,8 +7,7 @@ import AppKit
 import Defaults
 import SwiftUI
 
-/// A borderless panel that takes key status without activating the app, so
-/// opening the timeline leaves the frontmost app's menu bar and focus alone.
+/// A borderless panel that can take key status without activating the app.
 final class StatusBarPanel: NSPanel {
     var onCancel: (() -> Void)?
     var onKeyDown: ((NSEvent) -> Bool)?
@@ -142,13 +141,15 @@ final class StatusBarPopoverController {
         let hosting = StatusBarPanelHostingView(rootView: StatusBarPopoverView(model: model))
         let panel = StatusBarPanel(acceptsKey: true)
         panel.contentView = Self.container(for: hosting)
-        panel.onCancel = { [weak self] in self?.close() }
+        panel.onCancel = { [weak self] in self?.close(returnFocus: true) }
         panel.onKeyDown = { [weak self] in self?.handleKeyDown($0) ?? false }
         panel.onKeyEquivalent = { [weak self] in self?.handleKeyEquivalent($0) ?? false }
 
         self.panel = panel
         hostingView = hosting
         refitPanel()
+        // AppKit shows `.help` tooltips only while the app is active.
+        NSApp.activate(ignoringOtherApps: true)
         panel.makeKeyAndOrderFront(nil)
         // Waits for the first layout pass, and for the button's own mouse
         // tracking, which clears its highlight.
@@ -159,7 +160,9 @@ final class StatusBarPopoverController {
         startMonitoring(panel)
     }
 
-    func close() {
+    /// `returnFocus` hands activation back to the previous app when nothing
+    /// else will take it, such as on Escape or a second click on the status item.
+    func close(returnFocus: Bool = false) {
         guard let panel else { return }
         pendingDetailsChange?.cancel()
         pendingDetailsChange = nil
@@ -175,6 +178,9 @@ final class StatusBarPopoverController {
         anchorButton?.highlight(false)
         anchorButton = nil
         onClose()
+        if returnFocus {
+            NSApp.deactivate()
+        }
     }
 
     private func refitPanel() {

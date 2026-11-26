@@ -143,7 +143,7 @@ final class StatusBarItemController {
 
     func openMenu() {
         guard !popover.isOpen else {
-            popover.close()
+            popover.close(returnFocus: true)
             return
         }
         guard let button = statusItem.button else { return }

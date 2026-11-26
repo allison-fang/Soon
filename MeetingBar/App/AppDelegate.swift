@@ -38,6 +38,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // don't trigger onboarding, status bar setup, or calendar sync.
         guard !AppMessageCenter.shouldSuppressSystemUI() else { return }
 
+        // Icon-only buttons rely on tooltips; AppKit's default wait is about a second.
+        UserDefaults.standard.register(defaults: ["NSInitialToolTipDelay": 50])
+
         // Migrate legacy per-provider browser keys → providerBrowsers map
         MeetingOpenPreferencesMigration.migrateDefaultsIfNeeded()
         StatusBarTitleFormatMigration.migrateDefaultsIfNeeded()

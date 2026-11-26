@@ -268,6 +268,7 @@ struct FilterEventRegexesSection: View {
                             Image(systemName: "minus.circle")
                         }
                         .buttonStyle(.borderless)
+                        .help("general_delete".loco())
                         .accessibilityLabel("general_delete".loco())
                     }
                 }
@@ -333,6 +334,7 @@ struct MeetingRegexesSection: View {
                             Image(systemName: "minus.circle")
                         }
                         .buttonStyle(.borderless)
+                        .help("general_delete".loco())
                         .accessibilityLabel("general_delete".loco())
                     }
                 }
