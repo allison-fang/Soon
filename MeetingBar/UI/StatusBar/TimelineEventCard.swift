@@ -323,11 +323,44 @@ struct TimelineEventCard: View {
     }
 }
 
+/// Response icon and color, shared by the details chip and guest badges.
+struct TimelineResponseStyle: Equatable {
+    let systemImage: String
+    let tint: Color
+
+    static let going = TimelineResponseStyle(systemImage: "checkmark", tint: .green)
+    static let maybe = TimelineResponseStyle(systemImage: "questionmark", tint: .gray)
+    static let notGoing = TimelineResponseStyle(systemImage: "xmark", tint: .red)
+    static let awaitingReply = TimelineResponseStyle(systemImage: "clock", tint: .secondary)
+    static let canceled = TimelineResponseStyle(systemImage: "nosign", tint: .red)
+
+    static func of(_ event: TimelineEventPresentation) -> TimelineResponseStyle {
+        if event.isCanceled { return .canceled }
+        switch event.response {
+        case .accepted: return .going
+        case .pending: return .awaitingReply
+        case .tentative: return .maybe
+        case .declined: return .notGoing
+        }
+    }
+
+    /// Guests who haven't answered get no badge.
+    static func of(_ status: MBEventAttendeeStatus) -> TimelineResponseStyle? {
+        switch status {
+        case .accepted: return .going
+        case .tentative: return .maybe
+        case .declined: return .notGoing
+        default: return nil
+        }
+    }
+}
+
 /// The grid conveys time and response visually, so spoken labels state them.
 @MainActor
 enum TimelineEventAccessibility {
     static func label(for event: TimelineEventPresentation) -> String {
-        ([event.title, timeText(for: event.event), responseText(for: event)]
+        ([event.title, timeText(for: event.event)]
+            + (event.showsResponse ? [responseText(for: event)] : [])
             + (event.isDismissed ? ["status_bar_event_dismissed_mark".loco()] : []))
             .joined(separator: ", ")
     }

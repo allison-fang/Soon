@@ -29,14 +29,6 @@ struct EventDetailsView: View {
         mbEvent.notes.map(cleanUpNotes).flatMap { $0.isEmpty ? nil : $0 }
     }
 
-    private var stateColors: TimelineCardColors {
-        timelineCardColors(
-            for: event.response,
-            calendarColor: mbEvent.calendar.color,
-            colorScheme: colorScheme
-        )
-    }
-
     /// Guests take the hollow palette: they are not the event's state.
     private var neutralColors: TimelineCardColors {
         timelineCardColors(
@@ -131,7 +123,9 @@ struct EventDetailsView: View {
             VStack(alignment: .leading, spacing: 7) {
                 titleText
                     .fixedSize(horizontal: false, vertical: true)
-                stateChip
+                if event.showsResponse {
+                    stateChip
+                }
             }
             VStack(alignment: .leading, spacing: 6) {
                 row(systemImage: "clock") {
@@ -168,16 +162,22 @@ struct EventDetailsView: View {
         return event.response == .declined ? title.strikethrough() : title
     }
 
-    /// Repeats the card's look, so the panel confirms what the timeline showed.
+    /// Status colors, not the calendar's, so the response reads at a glance.
     private var stateChip: some View {
-        Text(TimelineEventAccessibility.responseText(for: event))
-            .font(.system(size: 10.5, weight: .semibold))
-            .foregroundColor(Color(stateColors.title))
-            .lineLimit(1)
-            .fixedSize()
-            .padding(.horizontal, 7)
-            .frame(height: 19)
-            .background(TimelineCardBackground(colors: stateColors, cornerRadius: 4))
+        let style = TimelineResponseStyle.of(event)
+        return HStack(spacing: 4) {
+            Image(systemName: style.systemImage)
+                .font(.system(size: 9, weight: .bold))
+            Text(TimelineEventAccessibility.responseText(for: event))
+                .font(.system(size: 10.5, weight: .semibold))
+        }
+        .foregroundColor(style.tint)
+        .lineLimit(1)
+        .fixedSize()
+        .padding(.horizontal, 7)
+        .frame(height: 19)
+        .background(RoundedRectangle(cornerRadius: 4).fill(style.tint.opacity(0.16)))
+        .accessibilityElement(children: .combine)
     }
 
     private var joinSection: some View {
@@ -300,25 +300,14 @@ struct EventDetailsView: View {
 
     @ViewBuilder
     private func guestBadge(_ status: MBEventAttendeeStatus) -> some View {
-        switch status {
-        case .accepted:
-            badge("checkmark", color: .green)
-        case .declined:
-            badge("xmark", color: .red)
-        case .tentative:
-            badge("questionmark", color: .gray)
-        default:
-            EmptyView()
+        if let style = TimelineResponseStyle.of(status) {
+            Image(systemName: style.systemImage)
+                .font(.system(size: 6, weight: .heavy))
+                .foregroundColor(.white)
+                .frame(width: 10, height: 10)
+                .background(Circle().fill(style.tint))
+                .offset(x: 2, y: 2)
         }
-    }
-
-    private func badge(_ systemImage: String, color: Color) -> some View {
-        Image(systemName: systemImage)
-            .font(.system(size: 6, weight: .heavy))
-            .foregroundColor(.white)
-            .frame(width: 10, height: 10)
-            .background(Circle().fill(color))
-            .offset(x: 2, y: 2)
     }
 
     private var eventActions: some View {

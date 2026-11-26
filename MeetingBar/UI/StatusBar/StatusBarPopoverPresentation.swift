@@ -38,6 +38,8 @@ struct TimelineEventPresentation: Identifiable, Equatable {
 
     var id: String { event.id }
     var isCanceled: Bool { event.status == .canceled }
+    /// An event without guests has no RSVP; providers report it as accepted.
+    var showsResponse: Bool { isCanceled || !guests.isEmpty }
     var canJoin: Bool { event.meetingLink != nil }
 }
 
