@@ -339,12 +339,17 @@
 "preferences_general_check_for_updates" = "Автоматична проверка за актуализации";
 "preferences_general_check_for_updates_button" = "Провери за актуализации";
 "preferences_general_update_checking" = "Проверка за актуализации…";
-"preferences_general_update_up_to_date" = "Soon е актуален.";
+"preferences_general_update_up_to_date" = "Актуален";
+"preferences_general_update_badge_available" = "Налична актуализация";
+"preferences_general_update_badge_failed" = "Неуспешна проверка";
 "preferences_general_update_failed" = "Неуспешна проверка за актуализации. Опитайте отново по-късно.";
 "preferences_general_update_available" = "Soon %@ е наличен.";
 "preferences_general_update_instructions" = "За да актуализирате, изпълнете командата за инсталиране в Terminal.";
 "preferences_general_update_copy_command" = "Копирай командата за инсталиране";
 "preferences_general_update_whats_new" = "Какво ново";
+"status_bar_details_open_google_calendar" = "Google Календар";
+"status_bar_details_open_calendar" = "Календар";
+"status_bar_details_open_fantastical" = "Fantastical";
 "preferences_appearance_status_bar_title_max_length" = "Максимална дължина";
 "preferences_appearance_status_bar_next_event_window" = "Започващи до";
 "notifications_event_start_title" = "Начало на събитие";
@@ -355,4 +360,3 @@
 "notifications_alert_style_fullscreen" = "На цял екран";
 "notifications_alert_style_both" = "И двете";
 "notifications_timing_title" = "Време";
-"status_bar_details_open_google_calendar" = "Google Календар";

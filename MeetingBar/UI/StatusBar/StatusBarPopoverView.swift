@@ -414,16 +414,10 @@ struct StatusBarPopoverView: View {
                 Label("status_bar_preferences".loco(), systemImage: "gearshape")
             }
             if let updateText = presentation.updateAvailableText {
-                // A dot, not an arrow icon: an arrow would promise the update starts on click.
                 Button(action: model.actions.openUpdateSettings) {
-                    HStack(spacing: 6) {
-                        Circle()
-                            .fill(Color.accentColor)
-                            .frame(width: 6, height: 6)
-                        Text(updateText)
-                    }
+                    StatusBadge(title: updateText, tint: .accentColor, icon: .dot)
                 }
-                .buttonStyle(TimelineButtonStyle(tint: .accentColor))
+                .buttonStyle(.plain)
             }
             Spacer(minLength: 0)
             Button(action: model.actions.quit) {

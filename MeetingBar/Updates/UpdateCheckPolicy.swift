@@ -69,6 +69,24 @@ struct AvailableUpdate: Equatable {
     let releaseURL: URL
 }
 
+struct UpdateCheckResult: Equatable {
+    enum Outcome: Equatable {
+        case upToDate
+        case available
+        case failed
+    }
+
+    let outcome: Outcome
+    let finishedAt: Date
+}
+
+enum UpdateStatusBadge: Equatable {
+    case checking
+    case upToDate
+    case available
+    case failed
+}
+
 enum UpdateCheckPolicy {
     static let checkInterval: TimeInterval = 24 * 60 * 60
 
@@ -86,5 +104,21 @@ enum UpdateCheckPolicy {
               current < latest
         else { return nil }
         return AvailableUpdate(version: latest.description, releaseURL: release.htmlURL)
+    }
+
+    /// Only a result that finished while the window was open is shown, so an
+    /// earlier "up to date" never reads as current.
+    static func statusBadge(
+        isChecking: Bool,
+        lastResult: UpdateCheckResult?,
+        shownSince: Date
+    ) -> UpdateStatusBadge? {
+        if isChecking { return .checking }
+        guard let lastResult, lastResult.finishedAt >= shownSince else { return nil }
+        switch lastResult.outcome {
+        case .upToDate: return .upToDate
+        case .available: return .available
+        case .failed: return .failed
+        }
     }
 }

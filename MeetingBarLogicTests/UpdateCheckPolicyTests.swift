@@ -96,4 +96,31 @@ final class UpdateCheckPolicyTests: XCTestCase {
     func testDecodingFailsWithoutTag() {
         XCTAssertThrowsError(try LatestRelease.decode(Data(#"{"message":"Not Found"}"#.utf8)))
     }
+
+    // MARK: Status badge
+
+    func testNoBadgeWithoutACheckWhileShown() {
+        XCTAssertNil(UpdateCheckPolicy.statusBadge(isChecking: false, lastResult: nil, shownSince: now))
+    }
+
+    func testResultFromBeforeTheWindowOpenedIsHidden() {
+        let stale = UpdateCheckResult(outcome: .upToDate, finishedAt: now.addingTimeInterval(-1))
+        XCTAssertNil(UpdateCheckPolicy.statusBadge(isChecking: false, lastResult: stale, shownSince: now))
+    }
+
+    func testResultSinceTheWindowOpenedIsShown() {
+        let cases: [(UpdateCheckResult.Outcome, UpdateStatusBadge)] = [
+            (.upToDate, .upToDate), (.available, .available), (.failed, .failed),
+        ]
+        for (outcome, badge) in cases {
+            let result = UpdateCheckResult(outcome: outcome, finishedAt: now)
+            XCTAssertEqual(UpdateCheckPolicy.statusBadge(isChecking: false, lastResult: result, shownSince: now), badge)
+        }
+    }
+
+    func testCheckingWinsOverAnyResult() {
+        let result = UpdateCheckResult(outcome: .upToDate, finishedAt: now.addingTimeInterval(60))
+        XCTAssertEqual(UpdateCheckPolicy.statusBadge(isChecking: true, lastResult: result, shownSince: now), .checking)
+        XCTAssertEqual(UpdateCheckPolicy.statusBadge(isChecking: true, lastResult: nil, shownSince: now), .checking)
+    }
 }

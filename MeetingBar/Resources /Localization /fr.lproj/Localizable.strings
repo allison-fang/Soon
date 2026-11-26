@@ -334,12 +334,17 @@
 "preferences_general_check_for_updates" = "Rechercher automatiquement les mises à jour";
 "preferences_general_check_for_updates_button" = "Rechercher les mises à jour";
 "preferences_general_update_checking" = "Recherche de mises à jour…";
-"preferences_general_update_up_to_date" = "Soon est à jour.";
+"preferences_general_update_up_to_date" = "À jour";
+"preferences_general_update_badge_available" = "Mise à jour disponible";
+"preferences_general_update_badge_failed" = "Vérification impossible";
 "preferences_general_update_failed" = "Impossible de rechercher les mises à jour. Réessayez plus tard.";
 "preferences_general_update_available" = "Soon %@ est disponible.";
 "preferences_general_update_instructions" = "Pour mettre à jour, exécutez la commande d’installation dans Terminal.";
 "preferences_general_update_copy_command" = "Copier la commande d’installation";
 "preferences_general_update_whats_new" = "Nouveautés";
+"status_bar_details_open_google_calendar" = "Google Agenda";
+"status_bar_details_open_calendar" = "Calendrier";
+"status_bar_details_open_fantastical" = "Fantastical";
 "preferences_appearance_status_bar_title_max_length" = "Longueur maximale";
 "preferences_appearance_status_bar_next_event_window" = "Commençant dans";
 "notifications_event_start_title" = "Début de l’évènement";
@@ -350,4 +355,3 @@
 "notifications_alert_style_fullscreen" = "Plein écran";
 "notifications_alert_style_both" = "Les deux";
 "notifications_timing_title" = "Moment";
-"status_bar_details_open_google_calendar" = "Google Agenda";

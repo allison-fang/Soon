@@ -59,6 +59,7 @@ final class UpdateCheckerTests: BaseTestCase {
         let expected = AvailableUpdate(version: "1.3.0", releaseURL: Self.release("v1.3.0").htmlURL)
         XCTAssertEqual(checker.availableUpdate, expected)
         XCTAssertEqual(checker.status, .available(expected))
+        XCTAssertEqual(checker.lastResult, UpdateCheckResult(outcome: .available, finishedAt: now))
         XCTAssertEqual(lastCheck, now)
     }
 
@@ -97,6 +98,7 @@ final class UpdateCheckerTests: BaseTestCase {
         checker.stop()
         XCTAssertEqual(recorder.fetchCount, 0)
         XCTAssertEqual(checker.status, .idle)
+        XCTAssertNil(checker.lastResult)
     }
 
     func testUpToDateClearsAnEarlierUpdate() async {
@@ -110,6 +112,7 @@ final class UpdateCheckerTests: BaseTestCase {
         await checker.waitForCheck()
         XCTAssertNil(checker.availableUpdate)
         XCTAssertEqual(checker.status, .upToDate)
+        XCTAssertEqual(checker.lastResult, UpdateCheckResult(outcome: .upToDate, finishedAt: now))
     }
 
     func testFailureKeepsLastCheckSoTheNextTriggerRetries() async {
@@ -119,6 +122,7 @@ final class UpdateCheckerTests: BaseTestCase {
         await checker.waitForCheck()
 
         XCTAssertEqual(checker.status, .failed)
+        XCTAssertEqual(checker.lastResult, UpdateCheckResult(outcome: .failed, finishedAt: now))
         XCTAssertNil(lastCheck)
         XCTAssertNil(checker.availableUpdate)
     }

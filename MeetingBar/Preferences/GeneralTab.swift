@@ -28,11 +28,16 @@ struct GeneralTab: View {
             if let update = updateChecker.availableUpdate {
                 Section {
                     AvailableUpdateRow(update: update)
-                        // Grouped forms ignore listRowBackground, so the tint bleeds past the row padding instead.
+                        // Grouped forms ignore listRowBackground, so the card is drawn behind the row at the section's inset and corner radius.
                         .background(
-                            Color.accentColor.opacity(0.14)
+                            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                .fill(Color.accentColor.opacity(0.14))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                        .strokeBorder(Color.accentColor, lineWidth: 1)
+                                )
                                 .padding(.horizontal, -10)
-                                .padding(.vertical, -14)
+                                .padding(.vertical, -9.5)
                         )
                 }
             }
@@ -63,19 +68,27 @@ struct GeneralTab: View {
     }
 }
 
+struct PreferencesWindowOpenedAtKey: EnvironmentKey {
+    static let defaultValue = Date.distantFuture
+}
+
+extension EnvironmentValues {
+    var preferencesWindowOpenedAt: Date {
+        get { self[PreferencesWindowOpenedAtKey.self] }
+        set { self[PreferencesWindowOpenedAtKey.self] = newValue }
+    }
+}
+
 struct VersionSection: View {
     @EnvironmentObject var updateChecker: UpdateChecker
+    @Environment(\.preferencesWindowOpenedAt) var windowOpenedAt
     @Default(.checkForUpdates) var checkForUpdates
 
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 2) {
-                Text("preferences_general_version".loco(updateChecker.currentVersion))
-                if let statusText {
-                    Text(statusText)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
+        HStack(spacing: 8) {
+            Text("preferences_general_version".loco(updateChecker.currentVersion))
+            if let badge {
+                UpdateStatusBadgeView(badge: badge)
             }
             Spacer()
             Button("preferences_general_check_for_updates_button".loco()) {
@@ -86,16 +99,33 @@ struct VersionSection: View {
         Toggle("preferences_general_check_for_updates".loco(), isOn: $checkForUpdates)
     }
 
-    private var statusText: String? {
-        switch updateChecker.status {
+    private var badge: UpdateStatusBadge? {
+        UpdateCheckPolicy.statusBadge(
+            isChecking: updateChecker.status == .checking,
+            lastResult: updateChecker.lastResult,
+            shownSince: windowOpenedAt
+        )
+    }
+}
+
+private struct UpdateStatusBadgeView: View {
+    let badge: UpdateStatusBadge
+
+    var body: some View {
+        switch badge {
         case .checking:
-            return "preferences_general_update_checking".loco()
+            StatusBadge(title: "preferences_general_update_checking".loco(), tint: .secondary, icon: .spinner)
         case .upToDate:
-            return "preferences_general_update_up_to_date".loco()
+            StatusBadge(title: "preferences_general_update_up_to_date".loco(), tint: .green, icon: .symbol("checkmark"))
+        case .available:
+            StatusBadge(title: "preferences_general_update_badge_available".loco(), tint: .accentColor, icon: .dot)
         case .failed:
-            return "preferences_general_update_failed".loco()
-        case .idle, .available:
-            return nil
+            StatusBadge(
+                title: "preferences_general_update_badge_failed".loco(),
+                tint: .orange,
+                icon: .symbol("exclamationmark.triangle.fill")
+            )
+            .help("preferences_general_update_failed".loco())
         }
     }
 }
@@ -106,13 +136,8 @@ struct AvailableUpdateRow: View {
     var body: some View {
         HStack(alignment: .center, spacing: 16) {
             VStack(alignment: .leading, spacing: 4) {
-                HStack(spacing: 6) {
-                    Circle()
-                        .fill(Color.accentColor)
-                        .frame(width: 7, height: 7)
-                    Text("preferences_general_update_available".loco(update.version))
-                        .font(.body.weight(.medium))
-                }
+                Text("preferences_general_update_available".loco(update.version))
+                    .font(.body.weight(.medium))
                 Text("preferences_general_update_instructions".loco())
                     .font(.subheadline)
                     .foregroundStyle(.secondary)

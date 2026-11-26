@@ -338,12 +338,17 @@
 "preferences_general_check_for_updates" = "Se etter oppdateringer automatisk";
 "preferences_general_check_for_updates_button" = "Se etter oppdateringer";
 "preferences_general_update_checking" = "Ser etter oppdateringer …";
-"preferences_general_update_up_to_date" = "Soon er oppdatert.";
+"preferences_general_update_up_to_date" = "Oppdatert";
+"preferences_general_update_badge_available" = "Oppdatering tilgjengelig";
+"preferences_general_update_badge_failed" = "Kunne ikke sjekke";
 "preferences_general_update_failed" = "Kunne ikke se etter oppdateringer. Prøv igjen senere.";
 "preferences_general_update_available" = "Soon %@ er tilgjengelig.";
 "preferences_general_update_instructions" = "For å oppdatere, kjør installasjonskommandoen i Terminal.";
 "preferences_general_update_copy_command" = "Kopier installasjonskommando";
 "preferences_general_update_whats_new" = "Nyheter";
+"status_bar_details_open_google_calendar" = "Google Kalender";
+"status_bar_details_open_calendar" = "Kalender";
+"status_bar_details_open_fantastical" = "Fantastical";
 "preferences_appearance_status_bar_title_max_length" = "Maksimal lengde";
 "preferences_appearance_status_bar_next_event_window" = "Starter innen";
 "notifications_event_start_title" = "Hendelsen starter";
@@ -354,4 +359,3 @@
 "notifications_alert_style_fullscreen" = "Fullskjerm";
 "notifications_alert_style_both" = "Begge";
 "notifications_timing_title" = "Tidspunkt";
-"status_bar_details_open_google_calendar" = "Google Kalender";

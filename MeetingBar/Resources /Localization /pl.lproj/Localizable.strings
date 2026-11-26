@@ -340,12 +340,17 @@
 "preferences_general_check_for_updates" = "Automatycznie sprawdzaj aktualizacje";
 "preferences_general_check_for_updates_button" = "Sprawdź aktualizacje";
 "preferences_general_update_checking" = "Sprawdzanie aktualizacji…";
-"preferences_general_update_up_to_date" = "Soon jest aktualny.";
+"preferences_general_update_up_to_date" = "Aktualny";
+"preferences_general_update_badge_available" = "Dostępna aktualizacja";
+"preferences_general_update_badge_failed" = "Nie udało się sprawdzić";
 "preferences_general_update_failed" = "Nie udało się sprawdzić aktualizacji. Spróbuj ponownie później.";
 "preferences_general_update_available" = "Dostępna jest wersja Soon %@.";
 "preferences_general_update_instructions" = "Aby zaktualizować, uruchom polecenie instalacji w Terminalu.";
 "preferences_general_update_copy_command" = "Kopiuj polecenie instalacji";
 "preferences_general_update_whats_new" = "Co nowego";
+"status_bar_details_open_google_calendar" = "Kalendarz Google";
+"status_bar_details_open_calendar" = "Kalendarz";
+"status_bar_details_open_fantastical" = "Fantastical";
 "preferences_appearance_status_bar_title_max_length" = "Maksymalna długość";
 "preferences_appearance_status_bar_next_event_window" = "Rozpoczynające się w ciągu";
 "notifications_event_start_title" = "Początek wydarzenia";
@@ -356,4 +361,3 @@
 "notifications_alert_style_fullscreen" = "Pełny ekran";
 "notifications_alert_style_both" = "Oba";
 "notifications_timing_title" = "Czas";
-"status_bar_details_open_google_calendar" = "Kalendarz Google";

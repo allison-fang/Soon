@@ -294,12 +294,17 @@
 "preferences_general_check_for_updates" = "自动检查更新";
 "preferences_general_check_for_updates_button" = "检查更新";
 "preferences_general_update_checking" = "正在检查更新…";
-"preferences_general_update_up_to_date" = "Soon 已是最新版本。";
+"preferences_general_update_up_to_date" = "已是最新";
+"preferences_general_update_badge_available" = "有可用更新";
+"preferences_general_update_badge_failed" = "检查失败";
 "preferences_general_update_failed" = "无法检查更新。请稍后再试。";
 "preferences_general_update_available" = "Soon %@ 现已推出。";
 "preferences_general_update_instructions" = "要更新，请在“终端”中运行安装命令。";
 "preferences_general_update_copy_command" = "复制安装命令";
 "preferences_general_update_whats_new" = "新功能";
+"status_bar_details_open_google_calendar" = "Google 日历";
+"status_bar_details_open_calendar" = "日历";
+"status_bar_details_open_fantastical" = "Fantastical";
 "preferences_appearance_status_bar_title_max_length" = "最大长度";
 "preferences_appearance_status_bar_next_event_window" = "开始时间在";
 "notifications_event_start_title" = "事件开始";
@@ -310,4 +315,3 @@
 "notifications_alert_style_fullscreen" = "全屏";
 "notifications_alert_style_both" = "两者";
 "notifications_timing_title" = "时间";
-"status_bar_details_open_google_calendar" = "Google 日历";

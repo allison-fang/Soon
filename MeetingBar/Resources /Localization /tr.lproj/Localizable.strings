@@ -340,12 +340,17 @@
 "preferences_general_check_for_updates" = "Güncellemeleri otomatik olarak denetle";
 "preferences_general_check_for_updates_button" = "Güncellemeleri denetle";
 "preferences_general_update_checking" = "Güncellemeler denetleniyor…";
-"preferences_general_update_up_to_date" = "Soon güncel.";
+"preferences_general_update_up_to_date" = "Güncel";
+"preferences_general_update_badge_available" = "Güncelleme mevcut";
+"preferences_general_update_badge_failed" = "Denetlenemedi";
 "preferences_general_update_failed" = "Güncellemeler denetlenemedi. Daha sonra yeniden deneyin.";
 "preferences_general_update_available" = "Soon %@ kullanılabilir.";
 "preferences_general_update_instructions" = "Güncellemek için kurulum komutunu Terminal'de çalıştırın.";
 "preferences_general_update_copy_command" = "Kurulum komutunu kopyala";
 "preferences_general_update_whats_new" = "Yenilikler";
+"status_bar_details_open_google_calendar" = "Google Takvim";
+"status_bar_details_open_calendar" = "Takvim";
+"status_bar_details_open_fantastical" = "Fantastical";
 "preferences_appearance_status_bar_title_max_length" = "En fazla uzunluk";
 "preferences_appearance_status_bar_next_event_window" = "Şu süre içinde başlayan";
 "notifications_event_start_title" = "Etkinlik başlangıcı";
@@ -356,4 +361,3 @@
 "notifications_alert_style_fullscreen" = "Tam ekran";
 "notifications_alert_style_both" = "İkisi de";
 "notifications_timing_title" = "Zamanlama";
-"status_bar_details_open_google_calendar" = "Google Takvim";
