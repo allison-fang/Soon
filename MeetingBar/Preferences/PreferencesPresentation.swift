@@ -96,34 +96,6 @@ enum PreferencesTab: CaseIterable, Hashable {
 
 }
 
-enum PreferencesSidebarSection: CaseIterable {
-    case setup
-    case experience
-    case advanced
-
-    var titleKey: String {
-        switch self {
-        case .setup:
-            "preferences_sidebar_setup"
-        case .experience:
-            "preferences_sidebar_experience"
-        case .advanced:
-            "preferences_sidebar_advanced"
-        }
-    }
-
-    var tabs: [PreferencesTab] {
-        switch self {
-        case .setup:
-            [.general, .calendars, .meetingOpening]
-        case .experience:
-            [.menuBar, .notifications]
-        case .advanced:
-            [.advanced]
-        }
-    }
-}
-
 enum PreferencesStatusBarTimeOption: CaseIterable, Equatable {
     case show
     case showUnderTitle

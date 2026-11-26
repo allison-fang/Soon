@@ -215,7 +215,10 @@ final class StatusBarItemController {
         button.imagePosition = button.image?.name() == "no_online_session" ? .noImage : .imageLeft
 
         if presentation.mode == .nextEvent {
-            button.attributedTitle = StatusBarTitleRenderer.attributedTitle(for: presentation)
+            let title = StatusBarTitleRenderer.attributedTitle(for: presentation)
+            button.attributedTitle = button.image != nil && button.imagePosition == .imageLeft && title.length > 0
+                ? StatusBarTitleRenderer.addingIconGap(to: title)
+                : title
             button.toolTip = presentation.tooltip
         }
 
@@ -450,6 +453,16 @@ enum StatusBarTitleRenderer {
             // attributed title is intentionally empty here.
             return NSAttributedString(string: "")
         }
+    }
+
+    /// AppKit's default image-to-title gap reads cramped in the menu bar.
+    static func addingIconGap(to title: NSAttributedString) -> NSAttributedString {
+        let result = NSMutableAttributedString(
+            string: "\u{2009}",
+            attributes: title.attributes(at: 0, effectiveRange: nil)
+        )
+        result.append(title)
+        return result
     }
 
     private static func titleAttributes(

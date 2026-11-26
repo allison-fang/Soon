@@ -39,30 +39,28 @@
 "preferences_general_shortcut_create_meeting" = "Yeni toplantı:";
 "preferences_general_shortcut_join_from_clipboard" = "Kopyalanmış toplantı bağlantısına katıl:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Durum çubuğunda başlık görünürlüğünü aç/kapat:";
-"preferences_appearance_events_show_events_for_today_value" = "bugün";
-"preferences_appearance_events_show_events_for_today_tomorrow_value" = "bugün ve yarın";
+"preferences_appearance_events_show_events_for_today_value" = "Bugün";
+"preferences_appearance_events_show_events_for_today_tomorrow_value" = "Bugün ve yarın";
 "preferences_appearance_events_all_day_title" = "Gün boyu etkinlikleri:";
 "preferences_appearance_events_past_title" = "Önceki etkinlikler:";
 "preferences_appearance_events_pending_title" = "Bekleyen etkinlikler";
 "preferences_appearance_events_declined_title" = "Reddedilen etkinlikler:";
 "preferences_appearance_events_tentative_title" = "Geçici Etkinlikler:";
-"preferences_appearance_events_value_show" = "göster";
-"preferences_appearance_events_value_hide" = "gizle";
-"preferences_appearance_events_value_as_underlined" = "altı çizgili göster";
-"preferences_appearance_events_value_with_strikethrough" = "üstü çizgili göster";
+"preferences_appearance_events_value_show" = "Göster";
+"preferences_appearance_events_value_hide" = "Gizle";
+"preferences_appearance_events_value_as_underlined" = "Altı çizgili göster";
 "preferences_appearance_status_bar_title" = "Durum çubuğu";
 "preferences_appearance_status_bar_icon_app_icon_value" = " Soon";
 "preferences_appearance_status_bar_icon_calendar_icon_value" = " Takvim";
 "preferences_appearance_status_bar_icon_specific_icon_value" = " Etkinliğe özel simge (MS Teams vs. gibi)";
 "preferences_appearance_status_bar_icon_no_icon_value" = " Simge yok";
 "preferences_appearance_status_bar_title_title" = "Başlık";
-"preferences_appearance_status_bar_title_dot_value" = "nokta (•)";
-"preferences_appearance_status_bar_title_hide_value" = "gizle";
-"preferences_appearance_status_bar_title_shorten_stepper" = "%d karakterle kısıtla";
+"preferences_appearance_status_bar_title_dot_value" = "Nokta (•)";
+"preferences_appearance_status_bar_title_hide_value" = "Gizle";
+"preferences_appearance_status_bar_title_shorten_stepper" = "%d karakter";
 "preferences_appearance_status_bar_time_title" = "Zaman";
-"preferences_appearance_status_bar_time_show_value" = "göster";
+"preferences_appearance_status_bar_time_show_value" = "Göster";
 "preferences_appearance_status_bar_next_event_stepper" = "%d dakika";
-"preferences_appearance_menu_title" = "Menü";
 "preferences_appearance_menu_time_format_title" = "Zaman formatı:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12-saat";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-saat";
@@ -98,7 +96,7 @@
 "preferences_advanced_wrong_location_button" = "Anladım!";
 "preferences_advanced_event_regex_title" = "Toplantıları filtrelemek için özel regex betikleri";
 "preferences_advanced_regex_add_button" = "Regex ekle";
-"preferences_advanced_regex_edit_button" = "düzenle";
+"preferences_advanced_regex_edit_button" = "Düzenle";
 "preferences_advanced_regex_new_title" = "Regex gir";
 "preferences_advanced_regex_new_cant_save_title" = "Regex kaydedilemedi";
 "status_bar_section_join_next_meeting" = "Sonraki toplantıya katıl";
@@ -174,13 +172,13 @@
 // MARK: - Preferences Appearance
 
 "preferences_appearance_events_title" = "Etkinlikler";
-"preferences_appearance_events_value_as_inactive" = "inaktif göster";
+"preferences_appearance_events_value_as_inactive" = "Inaktif göster";
 "preferences_appearance_events_show_events_for_title" = "Etkinlikleri göster";
-"preferences_appearance_events_value_only_with_link" = "yalnızca toplantı bağlantılarına sahip olanları göster";
+"preferences_appearance_events_value_only_with_link" = "Yalnızca toplantı bağlantılarına sahip olanları göster";
 "preferences_appearance_status_bar_title_event_title_value" = "Etkinlik başlığı";
-"preferences_appearance_status_bar_time_show_under_title_value" = "başlığın altında göster";
-"preferences_appearance_status_bar_time_hide_value" = "gizle";
-"preferences_appearance_status_bar_next_event_toggle" = "Sadece şu kadar zaman içinde başlayacak etkinlikleri göster";
+"preferences_appearance_status_bar_time_show_under_title_value" = "Başlığın altında göster";
+"preferences_appearance_status_bar_time_hide_value" = "Gizle";
+"preferences_appearance_status_bar_next_event_toggle" = "Yalnızca yakında başlayacak etkinlikleri göster";
 "notifications_event_start_five_minutes_body" = "Toplantı beş dakika içinde başlıyor";
 "notifications_snooze_until_start" = "Başlangıç saatine kadar ertele";
 "notifications_snooze_for" = "%@ dakika ertele";
@@ -201,7 +199,6 @@
 
 // MARK: - Preferences Advanced
 
-"preferences_advanced_setting_warning" = "⚠️ Sadece ne yaptğınızı biliyorsanız, bu ayarları kullanın";
 "preferences_advanced_apple_script_placeholder" = "# scriptinizi buraya yazın\ntell application \"Music\" to pause";
 "preferences_advanced_test_script_on_next_event" = "Bir sonraki etkinlikte test edin";
 "preferences_advanced_edit_script" = "Komut dosyasını düzenle";
@@ -231,8 +228,7 @@
 // MARK: - Shared
 
 "shared_send_notification_toggle" = "Bir sonraki etkinlik toplantısına katılmak için sistem bildirimi gönderin";
-"shared_fullscreen_notification_toggle" = "Tam ekran bildirimi göster";
-"general_when_event_starts" = "etkinlik başladığında";
+"general_when_event_starts" = "Etkinlik başladığında";
 "access_screen_access_denied_system_preferences_button" = "Sistem Tercihleri";
 "general_one_minute_before" = "1 dakika önce";
 "general_three_minute_before" = "3 dakika önce";
@@ -261,13 +257,13 @@
 "notifications_meetingbar_join_event_action" = "Katıl";
 "notifications_meetingbar_dismiss_event_action" = "Bildirimleri kapat";
 "preferences_appearance_status_bar_ongoing_title" = "Devam eden etkinlik görünürlüğü:";
-"preferences_appearance_status_bar_ongoing_time_immediate_value" = "başladıktan sonra gizle";
-"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "başladıktan 10 dakika sonra gizle";
-"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "bir sonraki etkinlikten 10 dakika önce gizle";
+"preferences_appearance_status_bar_ongoing_time_immediate_value" = "Başladıktan sonra gizle";
+"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Başladıktan 10 dakika sonra gizle";
+"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Bir sonraki etkinlikten 10 dakika önce gizle";
 "access_screen_provider_authorization_cancelled" = "Yetkilendirme iptal edildi. Takviminizi bağlamak için tekrar deneyin.";
-"general_end_of_event_notification_toggle" = "Etkinlik sona erdiğinde bildirim gönder";
+"general_end_of_event_notification_toggle" = "Bir etkinlik bittiğinde uyar";
 "general_refresh" = "Yenile";
-"general_when_event_ends" = "etkinlik sona erdiğinde";
+"general_when_event_ends" = "Etkinlik sona erdiğinde";
 "message_clipboard_empty_text" = "Pano boş olduğu için toplantı başlatılamıyor.";
 "message_clipboard_empty_title" = "Pano boş";
 "message_clipboard_invalid_text" = "Panoda toplantı bağlantısı olmadığı için toplantı başlatılamıyor.";
@@ -310,7 +306,6 @@
 "preferences_calendar_source_title" = "Takvim Kaynağı";
 "preferences_configure_browsers_help" = "Toplantı bağlantılarını açmak için özel tarayıcı, profil veya uygulama ekleyin.";
 "preferences_meeting_opening_behavior_title" = "Toplantı bağlantılarını aç";
-"preferences_notifications_alerts_title" = "Toplantı Uyarıları";
 "preferences_notifications_automation_title" = "Otomatik Katılım";
 "preferences_section_apple_script_hooks_title" = "AppleScript Kancaları";
 "preferences_section_create_title" = "Toplantı oluştur";
@@ -318,7 +313,6 @@
 "preferences_section_regex_filters_title" = "Regex Filtreleri";
 "preferences_section_shortcuts_title" = "Klavye Kısayolları";
 "preferences_services_link_default_help" = "Sağlayıcıya özgü geçersiz kılma ayarlanmadığında bu tarayıcı kullanılır.";
-"preferences_services_link_overrides_help" = "Bu seçimler her toplantı hizmeti için varsayılan tarayıcıyı geçersiz kılar.";
 "preferences_services_link_overrides_title" = "Sağlayıcı geçersiz kılmaları";
 "preferences_status_copy_diagnostics" = "Tanılamayı kopyala";
 "preferences_status_open_calendar_settings" = "Takvim Ayarlarını Aç";
@@ -345,7 +339,7 @@
 "status_bar_join_with_other_link" = "Başka bağlantıyla katıl";
 "timeline_accessibility_label" = "%d etkinlikli zaman çizelgesi";
 "fullscreen_notification_dismiss_action" = "Kapat";
-"shared_fullscreen_notification_without_link_toggle" = "Toplantı bağlantısı olmayan etkinlikler için de tam ekran bildirim göster";
+"shared_fullscreen_notification_without_link_toggle" = "Toplantı bağlantısı olmayan etkinlikler için de";
 "shared_fullscreen_notification_without_link_help" = "Toplantı bağlantısı olmayan etkinlikler yalnızca Kapat eylemiyle tam ekran hatırlatıcı gösterir.";
 "preferences_advanced_script_link_only_help" = "Yalnızca toplantı bağlantısı olan etkinlikler için çalışır.";
 "preferences_meeting_opening_mode_google_meet_pwa" = "Google Meet PWA (Chrome)";
@@ -360,9 +354,6 @@
 "preferences_meeting_opening_mode_zoom_app" = "Zoom App";
 "preferences_meeting_opening_mode_zoom_web_app" = "Zoom Web App";
 "preferences_meeting_opening_mode_zoom_web_app_help" = "Desteklenen Zoom toplantı bağlantılarını Zoom web istemcisinde açar.";
-"preferences_services_link_modes_help" = "Uygulama, web uygulaması ve PWA seçenekleri isteğe bağlıdır. Bir seçim yapana kadar mevcut tarayıcı davranışı değişmez.";
-"preferences_sidebar_experience" = "Deneyim";
-"preferences_sidebar_setup" = "Kurulum";
 "status_bar_control_current_meeting" = "Mevcut toplantı";
 "status_bar_control_next_meeting" = "Sonraki toplantı";
 "preferences_appearance_events_no_meeting_link_title" = "Toplantı bağlantısı olmayan etkinlikler";
@@ -379,3 +370,13 @@
 "preferences_general_update_instructions" = "Güncellemek için kurulum komutunu Terminal'de çalıştırın.";
 "preferences_general_update_copy_command" = "Kurulum komutunu kopyala";
 "preferences_general_update_whats_new" = "Yenilikler";
+"preferences_appearance_status_bar_title_max_length" = "En fazla uzunluk";
+"preferences_appearance_status_bar_next_event_window" = "Şu süre içinde başlayan";
+"notifications_event_start_title" = "Etkinlik başlangıcı";
+"notifications_event_start_toggle" = "Bir etkinlik başladığında uyar";
+"notifications_event_end_title" = "Etkinlik bitişi";
+"notifications_alert_style_title" = "Uyarı türü";
+"notifications_alert_style_system" = "Sistem bildirimi";
+"notifications_alert_style_fullscreen" = "Tam ekran";
+"notifications_alert_style_both" = "İkisi de";
+"notifications_timing_title" = "Zamanlama";

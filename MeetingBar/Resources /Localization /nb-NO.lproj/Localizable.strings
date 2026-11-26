@@ -27,12 +27,10 @@
 "constants_meeting_service_other" = "Annet";
 
 // MARK: - Constants
-"general_when_event_starts" = "når begivenheten starter";
-
+"general_when_event_starts" = "Når begivenheten starter";
 // MARK: - Shared
 
 "shared_send_notification_toggle" = "Send merknad om å ta del i neste begivenhetsmøte";
-"shared_fullscreen_notification_toggle" = "Show a fullscreen notification";
 "access_screen_access_denied_relaunch_title" = "Så må du kjøre programmet manuelt for å fortsette oppsettet.";
 "shared_automatic_event_join_toggle" = "Automatically join next event meeting";
 "shared_automatic_event_join_tip" = "This setting will automatically open your next meeting in your configured app or browser";
@@ -69,16 +67,15 @@
 
 // MARK: - Preferences Advanced
 
-"preferences_advanced_setting_warning" = "⚠️ Kun bruk disse innstillingene hvis du forstår hva de gjør";
 "preferences_calendars_provider_gcalendar_change_account" = "Change Google Account";
 "preferences_bookmarks_new_bookmark_already_exist" = "Et bokmerke med denne lenken/telefonen finnes allerede med navnet %@:\n%@";
 "preferences_configure_browsers_choose_browser_panel_message" = "Velg en nettleser fra hvilken som helst sti.";
 "preferences_configure_browsers_delete_alert_message" = "Ønsker du å slette %@-nettleseroppsettet?";
 "preferences_services_google_meet_tip" = "Tips: Meet støtter valg av konto via parameter, f.eks. https://meet.google.com/new?authuser=1";
-"preferences_appearance_status_bar_next_event_toggle" = "Vis kun begivenheter som starter innen";
+"preferences_appearance_status_bar_next_event_toggle" = "Vis bare hendelser som starter snart";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minutter";
-"preferences_appearance_status_bar_title_dot_value" = "punkt (•)";
-"preferences_appearance_status_bar_title_event_title_value" = "begivenhetstittel";
+"preferences_appearance_status_bar_title_dot_value" = "Punkt (•)";
+"preferences_appearance_status_bar_title_event_title_value" = "Begivenhetstittel";
 "preferences_appearance_status_bar_title_title" = "Tittel";
 "preferences_appearance_status_bar_icon_no_icon_value" = " Uten ikon";
 "preferences_appearance_status_bar_icon_specific_icon_value" = " Begivenhetssesifikt ikon (f.eks. MS Teams)";
@@ -145,7 +142,7 @@
 "status_bar_section_today" = "I dag";
 "preferences_advanced_regex_new_cant_save_title" = "Kan ikke lagre regulært uttrykk";
 "preferences_advanced_regex_new_title" = "Skriv inn regulært uttrykk";
-"preferences_advanced_regex_edit_button" = "rediger";
+"preferences_advanced_regex_edit_button" = "Rediger";
 "preferences_advanced_regex_add_button" = "Legg til regulært uttrykk";
 "preferences_advanced_wrong_location_button" = "Skjønner.";
 "preferences_advanced_wrong_location_title" = "Feil plassering";
@@ -192,32 +189,30 @@
 
 "preferences_services_link_meeting_title" = "Åpne alle møtelenker i";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-timersklokke";
-"preferences_appearance_menu_time_format_12_hour_value" = "12-timersklokke (AM/PM)";
+"preferences_appearance_menu_time_format_12_hour_value" = "12-timersklokke";
 "preferences_appearance_menu_time_format_title" = "Tidsformat:;";
-"preferences_appearance_menu_title" = "Meny";
-"preferences_appearance_status_bar_time_hide_value" = "skjul";
-"preferences_appearance_status_bar_time_show_under_title_value" = "vis under tittel";
-"preferences_appearance_status_bar_time_show_value" = "vis";
+"preferences_appearance_status_bar_time_hide_value" = "Skjul";
+"preferences_appearance_status_bar_time_show_under_title_value" = "Vis under tittel";
+"preferences_appearance_status_bar_time_show_value" = "Vis";
 "preferences_appearance_status_bar_time_title" = "Tid";
-"preferences_appearance_status_bar_title_shorten_stepper" = "forkort til %d tegn";
-"preferences_appearance_status_bar_title_hide_value" = "skjul";
+"preferences_appearance_status_bar_title_shorten_stepper" = "%d tegn";
+"preferences_appearance_status_bar_title_hide_value" = "Skjul";
 "preferences_appearance_status_bar_icon_calendar_icon_value" = " Kalender";
 "preferences_appearance_status_bar_icon_app_icon_value" = " Soon";
 "preferences_appearance_status_bar_icon_title" = "Ikon";
 "preferences_appearance_status_bar_title" = "Statusfelt";
-"preferences_appearance_events_value_only_with_link" = "vis kun dem med møtelenker";
-"preferences_appearance_events_value_with_strikethrough" = "vis med gjennomstrek";
-"preferences_appearance_events_value_as_underlined" = "vis som understreket";
-"preferences_appearance_events_value_as_inactive" = "vis som inaktiv";
-"preferences_appearance_events_value_hide" = "skjul";
+"preferences_appearance_events_value_only_with_link" = "Vis kun dem med møtelenker";
+"preferences_appearance_events_value_as_underlined" = "Vis som understreket";
+"preferences_appearance_events_value_as_inactive" = "Vis som inaktiv";
+"preferences_appearance_events_value_hide" = "Skjul";
 "preferences_appearance_events_tentative_title" = "Tentative events:";
-"preferences_appearance_events_value_show" = "vis";
+"preferences_appearance_events_value_show" = "Vis";
 "preferences_appearance_events_declined_title" = "Avslåtte begivenheter:";
 "preferences_appearance_events_past_title" = "Tidligere begivenheter:";
 "preferences_appearance_events_without_guest_title" = "Begivenheter uten gjester:";
 "preferences_appearance_events_all_day_title" = "Heldagsbegivenheter:";
-"preferences_appearance_events_show_events_for_today_tomorrow_value" = "i dag og i morgen";
-"preferences_appearance_events_show_events_for_today_value" = "i dag";
+"preferences_appearance_events_show_events_for_today_tomorrow_value" = "I dag og i morgen";
+"preferences_appearance_events_show_events_for_today_value" = "I dag";
 "preferences_appearance_events_show_events_for_title" = "Vise begivenheter for";
 
 // MARK: - Preferences Appearance
@@ -259,9 +254,9 @@
 "notification_all_dismissals_removed_message" = "All dismissed meetings are back in action";
 "notifications_event_started_body" = "Begivenheten har begynt";
 "access_screen_provider_authorization_cancelled" = "Autorisasjonen ble avbrutt. Prøv igjen for å koble til kalenderen din.";
-"general_end_of_event_notification_toggle" = "Send et varsel når hendelsen avsluttes";
+"general_end_of_event_notification_toggle" = "Varsle meg når en hendelse slutter";
 "general_refresh" = "Oppdater";
-"general_when_event_ends" = "når hendelsen avsluttes";
+"general_when_event_ends" = "Når hendelsen avsluttes";
 "message_clipboard_empty_text" = "Utklippstavlen inneholder ingenting, så møtet kan ikke startes.";
 "message_clipboard_empty_title" = "Utklippstavlen er tom";
 "message_clipboard_invalid_text" = "Utklippstavlen inneholder ingen møtekobling, så møtet kan ikke startes.";
@@ -304,7 +299,6 @@
 "preferences_calendar_source_title" = "Kalenderkilde";
 "preferences_configure_browsers_help" = "Legg til egendefinerte nettlesere, profiler eller apper for å åpne møtekoblinger.";
 "preferences_meeting_opening_behavior_title" = "Åpne møtekoblinger";
-"preferences_notifications_alerts_title" = "Møtevarsler";
 "preferences_notifications_automation_title" = "Automatisk deltakelse";
 "preferences_section_apple_script_hooks_title" = "AppleScript-kroker";
 "preferences_section_create_title" = "Opprett møter";
@@ -312,7 +306,6 @@
 "preferences_section_regex_filters_title" = "Regex-filtre";
 "preferences_section_shortcuts_title" = "Tastatursnarveier";
 "preferences_services_link_default_help" = "Denne nettleseren brukes med mindre en leverandørspesifikk overstyring er angitt.";
-"preferences_services_link_overrides_help" = "Disse valgene overstyrer standardnettleseren for hver møtetjeneste.";
 "preferences_services_link_overrides_title" = "Leverandøroverstyringer";
 "preferences_status_copy_diagnostics" = "Kopier diagnostikk";
 "preferences_status_open_calendar_settings" = "Åpne kalenderinnstillinger";
@@ -339,12 +332,12 @@
 "status_bar_join_with_other_link" = "Bli med med annen kobling";
 "timeline_accessibility_label" = "Tidslinje med %d hendelser";
 "fullscreen_notification_dismiss_action" = "Lukk";
-"shared_fullscreen_notification_without_link_toggle" = "Vis også fullskjermvarsler for hendelser uten møtekobling";
+"shared_fullscreen_notification_without_link_toggle" = "Også for hendelser uten møtelenke";
 "shared_fullscreen_notification_without_link_help" = "Hendelser uten møtekobling viser en fullskjermpåminnelse med bare Lukk-handlingen.";
 "notifications_meetingbar_dismiss_event_action" = "Slå av varsler";
-"preferences_appearance_status_bar_ongoing_time_immediate_value" = "skjul etter start";
-"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "skjul 10 min etter start";
-"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "skjul 10 min før neste hendelse";
+"preferences_appearance_status_bar_ongoing_time_immediate_value" = "Skjul etter start";
+"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Skjul 10 min etter start";
+"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Skjul 10 min før neste hendelse";
 "preferences_appearance_status_bar_ongoing_title" = "Synlighet for pågående hendelse:";
 "preferences_advanced_script_link_only_help" = "Kjøres bare for hendelser med møtelenker.";
 "preferences_meeting_opening_mode_google_meet_pwa" = "Google Meet PWA (Chrome)";
@@ -359,9 +352,6 @@
 "preferences_meeting_opening_mode_zoom_app" = "Zoom App";
 "preferences_meeting_opening_mode_zoom_web_app" = "Zoom Web App";
 "preferences_meeting_opening_mode_zoom_web_app_help" = "Åpner støttede Zoom-møtelenker i Zooms webklient.";
-"preferences_services_link_modes_help" = "App-, nettapp- og PWA-alternativene er valgfrie. Eksisterende nettleseratferd forblir uendret til du velger ett.";
-"preferences_sidebar_experience" = "Opplevelse";
-"preferences_sidebar_setup" = "Oppsett";
 "status_bar_control_current_meeting" = "Nåværende møte";
 "status_bar_control_next_meeting" = "Neste møte";
 "preferences_appearance_events_no_meeting_link_title" = "Hendelser uten møtelenke";
@@ -378,3 +368,13 @@
 "preferences_general_update_instructions" = "For å oppdatere, kjør installasjonskommandoen i Terminal.";
 "preferences_general_update_copy_command" = "Kopier installasjonskommando";
 "preferences_general_update_whats_new" = "Nyheter";
+"preferences_appearance_status_bar_title_max_length" = "Maksimal lengde";
+"preferences_appearance_status_bar_next_event_window" = "Starter innen";
+"notifications_event_start_title" = "Hendelsen starter";
+"notifications_event_start_toggle" = "Varsle meg når en hendelse starter";
+"notifications_event_end_title" = "Hendelsen slutter";
+"notifications_alert_style_title" = "Varseltype";
+"notifications_alert_style_system" = "Systemvarsel";
+"notifications_alert_style_fullscreen" = "Fullskjerm";
+"notifications_alert_style_both" = "Begge";
+"notifications_timing_title" = "Tidspunkt";

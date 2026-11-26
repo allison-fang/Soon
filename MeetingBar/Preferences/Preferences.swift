@@ -44,13 +44,9 @@ struct PreferencesView: View {
     @available(macOS 13.0, *)
     private var sidebar: some View {
         List(selection: $navigation.selectedTab) {
-            ForEach(PreferencesSidebarSection.allCases, id: \.self) { section in
-                Section(section.titleKey.loco()) {
-                    ForEach(section.tabs, id: \.self) { tab in
-                        Label(tab.titleKey.loco(), systemImage: tab.systemImage)
-                            .tag(tab)
-                    }
-                }
+            ForEach(PreferencesTab.allCases, id: \.self) { tab in
+                Label(tab.titleKey.loco(), systemImage: tab.systemImage)
+                    .tag(tab)
             }
         }
         .listStyle(.sidebar)
@@ -61,28 +57,24 @@ struct PreferencesView: View {
     private var legacyLayout: some View {
         HStack(spacing: 0) {
             List {
-                ForEach(PreferencesSidebarSection.allCases, id: \.self) { section in
-                    Section(header: Text(section.titleKey.loco())) {
-                        ForEach(section.tabs, id: \.self) { tab in
-                            Button {
-                                navigation.selectedTab = tab
-                            } label: {
-                                Label(tab.titleKey.loco(), systemImage: tab.systemImage)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .contentShape(Rectangle())
-                                    .padding(.vertical, 5)
-                                    .padding(.horizontal, 7)
-                            }
-                            .buttonStyle(.plain)
-                            .foregroundStyle(selectedTab == tab ? Color.white : Color.primary)
-                            .listRowInsets(EdgeInsets())
-                            .listRowBackground(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .fill(selectedTab == tab ? Color.accentColor : Color.clear)
-                                    .padding(.horizontal, 6)
-                            )
-                        }
+                ForEach(PreferencesTab.allCases, id: \.self) { tab in
+                    Button {
+                        navigation.selectedTab = tab
+                    } label: {
+                        Label(tab.titleKey.loco(), systemImage: tab.systemImage)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .contentShape(Rectangle())
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 7)
                     }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(selectedTab == tab ? Color.white : Color.primary)
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(
+                        RoundedRectangle(cornerRadius: 5)
+                            .fill(selectedTab == tab ? Color.accentColor : Color.clear)
+                            .padding(.horizontal, 6)
+                    )
                 }
             }
             .listStyle(.sidebar)
@@ -125,6 +117,29 @@ func preferenceLabel(_ key: String) -> String {
         label.removeLast()
     }
     return label
+}
+
+/// An indented row that refines the row above it, such as a length limit
+/// under a title format.
+struct PreferencesChildStepperRow: View {
+    let title: String
+    let valueText: String
+    @Binding var value: Int
+    let range: ClosedRange<Int>
+    let step: Int
+
+    var body: some View {
+        HStack {
+            Text(title)
+            Spacer()
+            Text(valueText)
+                .monospacedDigit()
+                .foregroundStyle(.secondary)
+            Stepper("", value: $value, in: range, step: step)
+                .labelsHidden()
+        }
+        .padding(.leading, 16)
+    }
 }
 
 /// Shared container for preferences tabs: a grouped form matching the

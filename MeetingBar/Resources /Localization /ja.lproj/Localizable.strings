@@ -63,7 +63,6 @@
 "preferences_appearance_events_value_hide" = "非表示";
 "preferences_appearance_events_value_as_inactive" = "非アクティブとして表示";
 "preferences_appearance_events_value_as_underlined" = "下線を表示";
-"preferences_appearance_events_value_with_strikethrough" = "取り消し線で表示";
 "preferences_appearance_events_value_only_with_link" = "リンクのあるイベントのみ表示";
 "preferences_appearance_status_bar_title" = "ステータスバー";
 "preferences_appearance_status_bar_icon_title" = "アイコン";
@@ -75,16 +74,15 @@
 "preferences_appearance_status_bar_title_event_title_value" = "イベント名";
 "preferences_appearance_status_bar_title_dot_value" = "ドット (•)";
 "preferences_appearance_status_bar_title_hide_value" = "非表示";
-"preferences_appearance_status_bar_title_shorten_stepper" = "%d 文字に切り詰める";
+"preferences_appearance_status_bar_title_shorten_stepper" = "%d文字";
 "preferences_appearance_status_bar_time_title" = "時間の表示";
 "preferences_appearance_status_bar_time_show_value" = "表示";
 "preferences_appearance_status_bar_time_show_under_title_value" = "タイトルの下に表示";
 "preferences_appearance_status_bar_time_hide_value" = "非表示";
-"preferences_appearance_status_bar_next_event_toggle" = "開始中のイベントのみ表示";
+"preferences_appearance_status_bar_next_event_toggle" = "まもなく始まるイベントのみ表示";
 "preferences_appearance_status_bar_next_event_stepper" = "%d分";
-"preferences_appearance_menu_title" = "メニュー";
 "preferences_appearance_menu_time_format_title" = "時刻形式:";
-"preferences_appearance_menu_time_format_12_hour_value" = "12時間 (AM/PM)";
+"preferences_appearance_menu_time_format_12_hour_value" = "12時間";
 "preferences_appearance_menu_time_format_24_hour_value" = "24時間";
 
 // MARK: - Preferences Services
@@ -140,7 +138,6 @@
 // MARK: - Preferences Advanced
 
 
-"preferences_advanced_setting_warning" = "⚠️ これらの設定は、内容をご理解の上でご利用ください。";
 "preferences_advanced_apple_script_checkmark" = "参加時にAppleScriptを実行する";
 "preferences_advanced_apple_script_placeholder" = "# ここにスクリプトを書いてください\ntell application \"Music\" to pause";
 "preferences_advanced_test_script_on_next_event" = "次のイベントをテストする";
@@ -225,7 +222,6 @@
 
 
 "shared_send_notification_toggle" = "システム通知を送信する";
-"shared_fullscreen_notification_toggle" = "全画面通知";
 "general_when_event_starts" = "イベント開始時";
 "general_one_minute_before" = "1分前";
 "general_three_minute_before" = "3分前";
@@ -273,7 +269,7 @@
 "notification_all_dismissals_removed_message" = "閉じたミーティングがすべて元に戻りました。";
 "status_bar_section_refresh_sources" = "ソースを更新";
 "access_screen_provider_authorization_cancelled" = "認証がキャンセルされました。カレンダーを接続するためにもう一度お試しください。";
-"general_end_of_event_notification_toggle" = "イベント終了時に通知を送信する";
+"general_end_of_event_notification_toggle" = "イベント終了時に通知";
 "general_refresh" = "再読み込み";
 "general_when_event_ends" = "イベント終了時";
 "message_clipboard_empty_text" = "クリップボードに内容がないため、ミーティングを開始できません。";
@@ -318,7 +314,6 @@
 "preferences_calendar_source_title" = "カレンダーソース";
 "preferences_configure_browsers_help" = "ミーティングリンクを開くためのカスタムブラウザ、プロファイル、またはアプリを追加します。";
 "preferences_meeting_opening_behavior_title" = "ミーティングリンクを開く";
-"preferences_notifications_alerts_title" = "ミーティングアラート";
 "preferences_notifications_automation_title" = "自動参加";
 "preferences_section_apple_script_hooks_title" = "AppleScriptフック";
 "preferences_section_create_title" = "ミーティングを作成";
@@ -326,7 +321,6 @@
 "preferences_section_regex_filters_title" = "正規表現フィルター";
 "preferences_section_shortcuts_title" = "キーボードショートカット";
 "preferences_services_link_default_help" = "プロバイダー固有の上書きが設定されている場合を除き、このブラウザが使用されます。";
-"preferences_services_link_overrides_help" = "これらの設定は各ミーティングサービスのデフォルトブラウザを上書きします。";
 "preferences_services_link_overrides_title" = "サービス固有のオープン";
 "preferences_status_copy_diagnostics" = "診断情報をコピー";
 "preferences_status_open_calendar_settings" = "カレンダー設定を開く";
@@ -353,7 +347,7 @@
 "status_bar_join_with_other_link" = "別のリンクで参加";
 "timeline_accessibility_label" = "%d 件のイベントのタイムライン";
 "fullscreen_notification_dismiss_action" = "閉じる";
-"shared_fullscreen_notification_without_link_toggle" = "ミーティングリンクのないイベントにもフルスクリーン通知を表示する";
+"shared_fullscreen_notification_without_link_toggle" = "ミーティングリンクのないイベントにも表示";
 "shared_fullscreen_notification_without_link_help" = "ミーティングリンクのないイベントは、閉じるアクションのみのフルスクリーンリマインダーを表示します。";
 "notifications_meetingbar_dismiss_event_action" = "通知をオフにする";
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "開始後に非表示";
@@ -373,9 +367,6 @@
 "preferences_meeting_opening_mode_zoom_app" = "Zoom アプリ";
 "preferences_meeting_opening_mode_zoom_web_app" = "Zoom Web アプリ";
 "preferences_meeting_opening_mode_zoom_web_app_help" = "サポートされているZoomミーティングリンクをZoomのWebクライアントで開きます。";
-"preferences_services_link_modes_help" = "アプリ、ウェブアプリ、PWAはオプションです。 既存のブラウザの動作は、選択するまで変更されません.";
-"preferences_sidebar_experience" = "エクスペリエンス";
-"preferences_sidebar_setup" = "セットアップ";
 "status_bar_control_current_meeting" = "現在のミーティング";
 "status_bar_control_next_meeting" = "次のミーティング";
 "preferences_appearance_events_no_meeting_link_title" = "会議リンクのないイベント";
@@ -383,7 +374,6 @@
 "onboarding_back" = "もどる";
 "onboarding_essentials_hint" = "後からすべての詳細を調整できます。";
 "onboarding_start_using" = "Soonを使い始める";
-"preferences_sidebar_advanced" = "詳細設定";
 "preferences_appearance_status_bar_title_generic_value" = "一般的なタイトル（会議）";
 "onboarding_essentials_title" = "毎日の振る舞い";
 "onboarding_essentials_description" = "ミーティングを開き、スケジュールに滞在するためのいくつかのデフォルトを選択します.";
@@ -400,3 +390,13 @@
 "preferences_general_update_instructions" = "アップデートするには、ターミナルでインストールコマンドを実行してください。";
 "preferences_general_update_copy_command" = "インストールコマンドをコピー";
 "preferences_general_update_whats_new" = "新機能";
+"preferences_appearance_status_bar_title_max_length" = "最大文字数";
+"preferences_appearance_status_bar_next_event_window" = "開始までの時間";
+"notifications_event_start_title" = "イベント開始";
+"notifications_event_start_toggle" = "イベント開始時に通知";
+"notifications_event_end_title" = "イベント終了";
+"notifications_alert_style_title" = "通知の種類";
+"notifications_alert_style_system" = "システム通知";
+"notifications_alert_style_fullscreen" = "フルスクリーン";
+"notifications_alert_style_both" = "両方";
+"notifications_timing_title" = "タイミング";

@@ -36,6 +36,8 @@ extension Defaults.Keys {
     static let endOfEventNotificationTime = Key<TimeBeforeEventEnd>(
         "endOfEventNotificationTime", default: .atEnd)
 
+    // Remembers the alert type while event-start alerts are off; nil until migrated.
+    static let eventStartAlertStyle = Key<EventStartAlertStyle?>("eventStartAlertStyle", default: nil)
     static let fullscreenNotification = Key<Bool>("fullscreenNotification", default: false)
     static let fullscreenNotificationTime = Key<TimeBeforeEvent>(
         "fullscreenNotificationTime", default: .atStart)

@@ -148,6 +148,12 @@ enum TimeBeforeEvent: Int, Defaults.Serializable, Codable {
     case fiveMinuteBefore = 300
 }
 
+enum EventStartAlertStyle: String, Defaults.Serializable, Codable, CaseIterable {
+    case system
+    case fullscreen
+    case both
+}
+
 enum TimeBeforeEventEnd: Int, Defaults.Serializable, Codable {
     case atEnd = 5
     case minuteBefore = 60

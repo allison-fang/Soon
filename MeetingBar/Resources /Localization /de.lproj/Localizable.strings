@@ -44,15 +44,14 @@
 
 "link_url_cant_open_title" = "Hoppla! Kann den Link in %@ nicht öffnen";
 "preferences_appearance_status_bar_title_event_title_value" = "Ereignistitel";
-"preferences_appearance_menu_title" = "Menü";
-"preferences_appearance_status_bar_next_event_toggle" = "Nur Ereignisse anzeigen, die innerhalb von";
-"preferences_appearance_status_bar_next_event_stepper" = "%d Minuten beginnt";
-"preferences_appearance_status_bar_time_hide_value" = "ausblenden";
-"preferences_appearance_status_bar_time_show_under_title_value" = "unter Titel anzeigen";
-"preferences_appearance_status_bar_time_show_value" = "anzeigen";
+"preferences_appearance_status_bar_next_event_toggle" = "Nur bald beginnende Ereignisse anzeigen";
+"preferences_appearance_status_bar_next_event_stepper" = "%d Minuten";
+"preferences_appearance_status_bar_time_hide_value" = "Ausblenden";
+"preferences_appearance_status_bar_time_show_under_title_value" = "Unter Titel anzeigen";
+"preferences_appearance_status_bar_time_show_value" = "Anzeigen";
 "preferences_appearance_status_bar_time_title" = "Zeige Uhrzeit";
-"preferences_appearance_status_bar_title_shorten_stepper" = "auf %d Zeichen kürzen";
-"preferences_appearance_status_bar_title_hide_value" = "ausblenden";
+"preferences_appearance_status_bar_title_shorten_stepper" = "%d Zeichen";
+"preferences_appearance_status_bar_title_hide_value" = "Ausblenden";
 "preferences_appearance_status_bar_title_dot_value" = "Punkt (•)";
 "preferences_appearance_status_bar_title_title" = "Titel";
 "preferences_appearance_status_bar_icon_no_icon_value" = " Kein Symbol";
@@ -61,19 +60,18 @@
 "preferences_appearance_status_bar_icon_app_icon_value" = " Soon";
 "preferences_appearance_status_bar_icon_title" = "Icon";
 "preferences_appearance_status_bar_title" = "Menüleiste";
-"preferences_appearance_events_value_with_strikethrough" = "durchgestrichen anzeigen";
-"preferences_appearance_events_value_as_underlined" = "unterstrichen anzeigen";
-"preferences_appearance_events_value_as_inactive" = "abdunkeln";
-"preferences_appearance_events_value_hide" = "ausblenden";
+"preferences_appearance_events_value_as_underlined" = "Unterstrichen anzeigen";
+"preferences_appearance_events_value_as_inactive" = "Abdunkeln";
+"preferences_appearance_events_value_hide" = "Ausblenden";
 "preferences_appearance_events_tentative_title" = "Vorläufige Veranstaltungen:";
-"preferences_appearance_events_value_show" = "anzeigen";
+"preferences_appearance_events_value_show" = "Anzeigen";
 "preferences_appearance_events_declined_title" = "Abgelehnte Ereignisse:";
 "preferences_appearance_events_pending_title" = "Anstehende Ereignisse";
 "preferences_appearance_events_past_title" = "Vergangene Ereignisse:";
 "preferences_appearance_events_without_guest_title" = "Ereignisse ohne Gäste:";
 "preferences_appearance_events_all_day_title" = "Ganztägige Ereignisse:";
-"preferences_appearance_events_show_events_for_today_tomorrow_value" = "heute und morgen";
-"preferences_appearance_events_show_events_for_today_value" = "heute";
+"preferences_appearance_events_show_events_for_today_tomorrow_value" = "Heute und morgen";
+"preferences_appearance_events_show_events_for_today_value" = "Heute";
 "preferences_appearance_events_show_events_for_title" = "Ereignisse anzeigen für";
 
 // MARK: - Preferences Appearance
@@ -156,7 +154,7 @@
 "status_bar_section_today" = "Heute";
 "preferences_advanced_regex_new_cant_save_title" = "Kann Regex nicht speichern";
 "preferences_advanced_regex_new_title" = "Regex eingeben";
-"preferences_advanced_regex_edit_button" = "bearbeiten";
+"preferences_advanced_regex_edit_button" = "Bearbeiten";
 "preferences_advanced_regex_add_button" = "Regex hinzufügen";
 "preferences_advanced_regex_title" = "Benutzerdefinierte reguläre Ausdrücke für Meeting-Links";
 "preferences_advanced_wrong_location_button" = "Verstanden!";
@@ -170,7 +168,6 @@
 
 // MARK: - Preferences Advanced
 
-"preferences_advanced_setting_warning" = "Diese Einstellungen sind für Fortgeschrittene Benutzer vorgesehen";
 "preferences_calendars_provider_gcalendar_change_account" = "Ändere den Google Account";
 
 // MARK: - Preferences Calendars
@@ -199,9 +196,9 @@
 
 "preferences_services_link_meeting_title" = "Standard-Browser für Meeting-Links";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-Stunden";
-"preferences_appearance_menu_time_format_12_hour_value" = "12-Stunden (AM/PM)";
+"preferences_appearance_menu_time_format_12_hour_value" = "12-Stunden";
 "preferences_appearance_menu_time_format_title" = "Zeitformat:";
-"preferences_appearance_events_value_only_with_link" = "mit Meeting-Link anzeigen";
+"preferences_appearance_events_value_only_with_link" = "Mit Meeting-Link anzeigen";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Meeting-Titel in der Menüleiste ein-/ausblenden:";
 "preferences_general_shortcut_join_from_clipboard" = "An Meeting in Zwischenablage teilnehmen:";
 "preferences_general_shortcut_join_next" = "Am nächsten Meeting teilnehmen:";
@@ -216,12 +213,10 @@
 "general_five_minute_before" = "5 Minuten vorher";
 "general_three_minute_before" = "3 Minuten vorher";
 "general_one_minute_before" = "1 Minute vorher";
-"general_when_event_starts" = "zum Ereignisstart";
-
+"general_when_event_starts" = "Zum Ereignisstart";
 // MARK: - Shared
 
 "shared_send_notification_toggle" = "System-Benachrichtigung senden";
-"shared_fullscreen_notification_toggle" = "Benachrichtigung im Vollbildmodus anzeigen";
 "access_screen_access_denied_relaunch_title" = "Anschließend die App manuell starten, um die Einrichtung fortzusetzen.";
 "access_screen_access_denied_system_preferences_button" = "Systemeinstellungen";
 "access_screen_access_screen_access_denied_go_to_title" = "Gehe zu";
@@ -258,13 +253,13 @@
 "notification_all_dismissals_removed_message" = "Alle verworfenen Meetings sind wieder in Aktion";
 "notifications_event_started_body" = "Die Veranstaltung hat begonnen";
 "preferences_appearance_status_bar_ongoing_title" = "Sichtbarkeit aktiver Ereignisse:";
-"preferences_appearance_status_bar_ongoing_time_immediate_value" = "nach Beginn ausblenden";
+"preferences_appearance_status_bar_ongoing_time_immediate_value" = "Nach Beginn ausblenden";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "10 min nach Beginn ausblenden";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "10 min vor dem nächsten Ereignis ausblenden";
 
 "general_refresh" = "Aktualisieren";
 "general_when_event_ends" = "Ende des Ereignisses";
-"general_end_of_event_notification_toggle" = "Benachrichtigen am Ende des Ereignisses";
+"general_end_of_event_notification_toggle" = "Benachrichtigen, wenn ein Ereignis endet";
 "timeline_accessibility_label" = "Zeitleiste mit %d Ereignissen";
 "message_clipboard_invalid_title" = "Kein gültiger Link";
 "message_clipboard_invalid_text" = "Kein Meeting-Link in der Zwischenablage, kann nicht gestartet werden.";
@@ -286,7 +281,6 @@
 "preferences_section_regex_filters_title" = "Regex-Filter";
 "preferences_calendar_source_title" = "Kalenderquelle";
 "preferences_meeting_opening_behavior_title" = "Meeting-Links öffnen";
-"preferences_notifications_alerts_title" = "Meeting-Benachrichtigungen";
 "preferences_notifications_automation_title" = "Automatischer Beitritt";
 "preferences_status_state_ok" = "Aktuell";
 "preferences_status_state_stale" = "Zeigt zwischengespeicherte Daten";
@@ -300,7 +294,6 @@
 "preferences_configure_browsers_help" = "Benutzerdefinierte Browser, Profile oder Apps zum Öffnen von Meeting-Links hinzufügen.";
 "preferences_services_link_default_help" = "Dieser Browser wird verwendet, sofern keine anbieterspezifische Überschreibung festgelegt ist.";
 "preferences_services_link_overrides_title" = "Anbieter-Überschreibungen";
-"preferences_services_link_overrides_help" = "Diese Auswahl überschreibt den Standardbrowser für jeden Meeting-Dienst.";
 "preferences_advanced_regex_duplicate_error" = "Dieser reguläre Ausdruck existiert bereits.";
 "preferences_advanced_regex_test_title" = "Meeting-Link-Regex testen";
 "preferences_advanced_regex_test_placeholder" = "Beispielereignistext einfügen";
@@ -343,7 +336,7 @@
 "status_bar_control_no_upcoming" = "Keine bevorstehenden Meetings";
 "status_bar_join_with_other_link" = "Mit anderem Link beitreten";
 "fullscreen_notification_dismiss_action" = "Schließen";
-"shared_fullscreen_notification_without_link_toggle" = "Auch Vollbild-Benachrichtigungen für Ereignisse ohne Meeting-Link anzeigen";
+"shared_fullscreen_notification_without_link_toggle" = "Auch für Ereignisse ohne Meeting-Link";
 "shared_fullscreen_notification_without_link_help" = "Ereignisse ohne Meeting-Link zeigen eine Vollbild-Erinnerung nur mit der Aktion Schließen.";
 "preferences_advanced_script_link_only_help" = "Wird nur für Ereignisse mit Meeting-Links ausgeführt.";
 "preferences_meeting_opening_mode_google_meet_pwa" = "Google Meet PWA (Chrome)";
@@ -358,13 +351,9 @@
 "preferences_meeting_opening_mode_zoom_app" = "Zoom App";
 "preferences_meeting_opening_mode_zoom_web_app" = "Zoom Web App";
 "preferences_meeting_opening_mode_zoom_web_app_help" = "Öffnet unterstützte Zoom-Meeting-Links im Web-Client von Zoom.";
-"preferences_services_link_modes_help" = "App-, Web-App- und PWA-Optionen sind optional. Das bestehende Browser-Verhalten bleibt unverändert, bis Sie eine Auswahl treffen.";
-"preferences_sidebar_experience" = "Erlebnis";
-"preferences_sidebar_setup" = "Einrichtung";
 "status_bar_control_current_meeting" = "Aktuelles Meeting";
 "status_bar_control_next_meeting" = "Nächstes Meeting";
 "preferences_appearance_events_no_meeting_link_title" = "Ereignisse ohne Meeting-Link";
-"preferences_sidebar_advanced" = "Erweitert";
 "preferences_appearance_status_bar_title_generic_value" = "Generischer Titel (Meeting)";
 "onboarding_setup_title" = "Soon Einrichtung";
 "onboarding_back" = "Zurück";
@@ -385,3 +374,13 @@
 "preferences_general_update_instructions" = "Führe zum Aktualisieren den Installationsbefehl im Terminal aus.";
 "preferences_general_update_copy_command" = "Installationsbefehl kopieren";
 "preferences_general_update_whats_new" = "Neuerungen";
+"preferences_appearance_status_bar_title_max_length" = "Maximale Länge";
+"preferences_appearance_status_bar_next_event_window" = "Beginnt innerhalb von";
+"notifications_event_start_title" = "Ereignisbeginn";
+"notifications_event_start_toggle" = "Benachrichtigen, wenn ein Ereignis beginnt";
+"notifications_event_end_title" = "Ereignisende";
+"notifications_alert_style_title" = "Art der Benachrichtigung";
+"notifications_alert_style_system" = "Systemmitteilung";
+"notifications_alert_style_fullscreen" = "Vollbild";
+"notifications_alert_style_both" = "Beides";
+"notifications_timing_title" = "Zeitpunkt";

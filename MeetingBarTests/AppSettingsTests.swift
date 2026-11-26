@@ -206,6 +206,76 @@ final class AppSettingsTests: BaseTestCase {
         XCTAssertFalse(Defaults[.hideMeetingTitle])
     }
 
+    func testEventAppearanceMigrationMapsDroppedOptionsToShow() {
+        Defaults[.declinedEventsAppereance] = .show_inactive
+        Defaults[.pastEventsAppereance] = .show_active
+
+        EventAppearanceMigration.migrateDefaultsIfNeeded()
+
+        XCTAssertEqual(Defaults[.declinedEventsAppereance], .strikethrough)
+        XCTAssertEqual(Defaults[.pastEventsAppereance], .show_inactive)
+    }
+
+    func testEventAppearanceMigrationKeepsHide() {
+        Defaults[.declinedEventsAppereance] = .hide
+        Defaults[.pastEventsAppereance] = .hide
+
+        EventAppearanceMigration.migrateDefaultsIfNeeded()
+
+        XCTAssertEqual(Defaults[.declinedEventsAppereance], .hide)
+        XCTAssertEqual(Defaults[.pastEventsAppereance], .hide)
+    }
+
+    func testEventStartAlertMigrationKeepsBothAlertTypesOnWithTheSystemTiming() {
+        Defaults[.eventStartAlertStyle] = nil
+        Defaults[.joinEventNotification] = true
+        Defaults[.joinEventNotificationTime] = .minuteBefore
+        Defaults[.fullscreenNotification] = true
+        Defaults[.fullscreenNotificationTime] = .fiveMinuteBefore
+
+        EventStartAlertPreferences.migrateDefaultsIfNeeded()
+
+        XCTAssertEqual(Defaults[.eventStartAlertStyle], .both)
+        XCTAssertTrue(Defaults[.joinEventNotification])
+        XCTAssertTrue(Defaults[.fullscreenNotification])
+        XCTAssertEqual(Defaults[.joinEventNotificationTime], .minuteBefore)
+        XCTAssertEqual(Defaults[.fullscreenNotificationTime], .minuteBefore)
+    }
+
+    func testEventStartAlertMigrationKeepsFullscreenOnlyWithItsTiming() {
+        Defaults[.eventStartAlertStyle] = nil
+        Defaults[.joinEventNotification] = false
+        Defaults[.fullscreenNotification] = true
+        Defaults[.fullscreenNotificationTime] = .threeMinuteBefore
+
+        EventStartAlertPreferences.migrateDefaultsIfNeeded()
+
+        XCTAssertEqual(Defaults[.eventStartAlertStyle], .fullscreen)
+        XCTAssertFalse(Defaults[.joinEventNotification])
+        XCTAssertTrue(Defaults[.fullscreenNotification])
+        XCTAssertEqual(Defaults[.joinEventNotificationTime], .threeMinuteBefore)
+    }
+
+    func testEventStartAlertMigrationRunsOnce() {
+        Defaults[.eventStartAlertStyle] = .fullscreen
+        Defaults[.joinEventNotification] = true
+        Defaults[.fullscreenNotification] = false
+
+        EventStartAlertPreferences.migrateDefaultsIfNeeded()
+
+        XCTAssertEqual(Defaults[.eventStartAlertStyle], .fullscreen)
+        XCTAssertTrue(Defaults[.joinEventNotification])
+        XCTAssertFalse(Defaults[.fullscreenNotification])
+    }
+
+    func testEventStartAlertTurnedOffRemembersItsType() {
+        EventStartAlertPreferences.apply(enabled: false, style: .both, time: .atStart)
+
+        XCTAssertFalse(Defaults[.joinEventNotification])
+        XCTAssertFalse(Defaults[.fullscreenNotification])
+        XCTAssertEqual(Defaults[.eventStartAlertStyle], .both)
+    }
+
     // MARK: - NotificationSettings
 
     func testNotificationSettings_joinEventNotification() {

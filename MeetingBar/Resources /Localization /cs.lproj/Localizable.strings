@@ -38,12 +38,10 @@
 "general_five_minute_before" = "5 minut předem";
 "general_three_minute_before" = "3 minuty předem";
 "general_one_minute_before" = "1 minutu předem";
-"general_when_event_starts" = "při zahájení události";
-
+"general_when_event_starts" = "Při zahájení události";
 // MARK: - Shared
 
 "shared_send_notification_toggle" = "Odeslat systémové oznámení";
-"shared_fullscreen_notification_toggle" = "Zobrazit celoobrazovkové oznámení";
 "access_screen_access_denied_relaunch_title" = "Pak spusťte aplikaci ručně a pokračujte v nastavení.";
 "access_screen_access_screen_access_denied_go_to_title" = "Přejděte na";
 "access_screen_access_denied_system_preferences_button" = "Předvolby systému";
@@ -126,7 +124,6 @@
 
 // MARK: - Preferences Advanced
 
-"preferences_advanced_setting_warning" = "Tato nastavení jsou určena pokročilým uživatelům.";
 "preferences_calendars_provider_gcalendar_change_account" = "Změnit účet Google";
 
 // MARK: - Preferences Calendars
@@ -173,40 +170,38 @@
 
 "preferences_services_link_meeting_title" = "Výchozí prohlížeč pro odkazy na schůzky";
 "preferences_appearance_menu_time_format_24_hour_value" = "24hodinový";
-"preferences_appearance_menu_time_format_12_hour_value" = "12hodinový (AM/PM)";
+"preferences_appearance_menu_time_format_12_hour_value" = "12hodinový";
 "preferences_appearance_menu_time_format_title" = "Formát času:";
-"preferences_appearance_status_bar_next_event_toggle" = "Zobrazovat jen události začínající během";
+"preferences_appearance_status_bar_next_event_toggle" = "Zobrazovat jen události, které brzy začnou";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minut";
-"preferences_appearance_status_bar_title_event_title_value" = "název události";
+"preferences_appearance_status_bar_title_event_title_value" = "Název události";
 "preferences_appearance_status_bar_title_title" = "Název";
-"preferences_appearance_events_value_only_with_link" = "zobrazit pouze s odkazem na schůzku";
+"preferences_appearance_events_value_only_with_link" = "Zobrazit pouze s odkazem na schůzku";
 "preferences_appearance_events_declined_title" = "Odmítnuté události:";
 "preferences_appearance_events_pending_title" = "Události čekající na odpověď";
 "preferences_appearance_events_past_title" = "Proběhlé události:";
-"preferences_appearance_menu_title" = "Nabídka";
-"preferences_appearance_status_bar_time_hide_value" = "skrýt";
-"preferences_appearance_status_bar_time_show_under_title_value" = "zobrazit pod názvem";
-"preferences_appearance_status_bar_time_show_value" = "zobrazit";
+"preferences_appearance_status_bar_time_hide_value" = "Skrýt";
+"preferences_appearance_status_bar_time_show_under_title_value" = "Zobrazit pod názvem";
+"preferences_appearance_status_bar_time_show_value" = "Zobrazit";
 "preferences_appearance_status_bar_time_title" = "Zobrazit čas";
-"preferences_appearance_status_bar_title_shorten_stepper" = "zkrátit na %d znaků";
-"preferences_appearance_status_bar_title_hide_value" = "skrýt";
-"preferences_appearance_status_bar_title_dot_value" = "bod (•)";
+"preferences_appearance_status_bar_title_shorten_stepper" = "%d znaků";
+"preferences_appearance_status_bar_title_hide_value" = "Skrýt";
+"preferences_appearance_status_bar_title_dot_value" = "Bod (•)";
 "preferences_appearance_status_bar_icon_no_icon_value" = " Bez ikony";
 "preferences_appearance_status_bar_icon_specific_icon_value" = " Ikona dané události (např. MS Teams)";
 "preferences_appearance_status_bar_icon_calendar_icon_value" = " Kalendář";
 "preferences_appearance_status_bar_icon_app_icon_value" = " Soon";
 "preferences_appearance_status_bar_icon_title" = "Ikona";
 "preferences_appearance_status_bar_title" = "Řádek nabídek";
-"preferences_appearance_events_value_with_strikethrough" = "zobrazit jako přeškrtnuté";
-"preferences_appearance_events_value_as_underlined" = "zobrazit jako podtržené";
-"preferences_appearance_events_value_as_inactive" = "zobrazit jako neaktivní";
-"preferences_appearance_events_value_hide" = "skrýt";
+"preferences_appearance_events_value_as_underlined" = "Zobrazit jako podtržené";
+"preferences_appearance_events_value_as_inactive" = "Zobrazit jako neaktivní";
+"preferences_appearance_events_value_hide" = "Skrýt";
 "preferences_appearance_events_tentative_title" = "Události s nezávaznou účastí:";
-"preferences_appearance_events_value_show" = "zobrazit";
+"preferences_appearance_events_value_show" = "Zobrazit";
 "preferences_appearance_events_without_guest_title" = "Události bez účastníků:";
 "preferences_appearance_events_all_day_title" = "Celodenní události:";
-"preferences_appearance_events_show_events_for_today_tomorrow_value" = "dnes a zítra";
-"preferences_appearance_events_show_events_for_today_value" = "dnes";
+"preferences_appearance_events_show_events_for_today_tomorrow_value" = "Dnes a zítra";
+"preferences_appearance_events_show_events_for_today_value" = "Dnes";
 "preferences_appearance_events_show_events_for_title" = "Období zobrazení událostí";
 
 // MARK: - Preferences Appearance
@@ -258,9 +253,9 @@
 "notification_all_dismissals_removed_message" = "Všechny skryté schůzky jsou opět v nabídce.";
 "status_bar_section_refresh_sources" = "Obnovit zdroje";
 "access_screen_provider_authorization_cancelled" = "Autorizace byla zrušena. Zkuste kalendář připojit znovu.";
-"general_end_of_event_notification_toggle" = "Odeslat oznámení při skončení události";
+"general_end_of_event_notification_toggle" = "Upozornit mě, když událost končí";
 "general_refresh" = "Obnovit";
-"general_when_event_ends" = "při skončení události";
+"general_when_event_ends" = "Při skončení události";
 "message_clipboard_empty_text" = "Schránka je prázdná, takže schůzku nelze zahájit.";
 "message_clipboard_empty_title" = "Schránka je prázdná";
 "message_clipboard_invalid_text" = "Schránka neobsahuje odkaz na schůzku, takže schůzku nelze zahájit.";
@@ -303,7 +298,6 @@
 "preferences_calendar_source_title" = "Zdroj kalendářů";
 "preferences_configure_browsers_help" = "Přidejte vlastní prohlížeče, profily nebo aplikace pro otevírání odkazů na schůzky.";
 "preferences_meeting_opening_behavior_title" = "Otevírání odkazů na schůzky";
-"preferences_notifications_alerts_title" = "Oznámení o schůzkách";
 "preferences_notifications_automation_title" = "Automatické připojování";
 "preferences_section_apple_script_hooks_title" = "Automatizace pomocí AppleScriptu";
 "preferences_section_create_title" = "Vytváření schůzek";
@@ -311,7 +305,6 @@
 "preferences_section_regex_filters_title" = "Filtry s regulárními výrazy";
 "preferences_section_shortcuts_title" = "Klávesové zkratky";
 "preferences_services_link_default_help" = "Tento prohlížeč se použije, pokud pro danou službu nezvolíte jinou možnost.";
-"preferences_services_link_overrides_help" = "Těmito volbami lze pro každou službu schůzek změnit výchozí způsob otevírání.";
 "preferences_services_link_overrides_title" = "Otevírání podle služby";
 "preferences_status_copy_diagnostics" = "Zkopírovat diagnostické údaje";
 "preferences_status_open_calendar_settings" = "Otevřít nastavení Kalendáře";
@@ -338,12 +331,12 @@
 "status_bar_join_with_other_link" = "Připojit se pomocí jiného odkazu";
 "timeline_accessibility_label" = "Počet událostí na časové ose: %d";
 "fullscreen_notification_dismiss_action" = "Zavřít";
-"shared_fullscreen_notification_without_link_toggle" = "Zobrazovat celoobrazovková oznámení také pro události bez odkazu na schůzku";
+"shared_fullscreen_notification_without_link_toggle" = "Také pro události bez odkazu na schůzku";
 "shared_fullscreen_notification_without_link_help" = "U událostí bez odkazu na schůzku obsahuje celoobrazovkové připomenutí pouze tlačítko Zavřít.";
 "notifications_meetingbar_dismiss_event_action" = "Vypnout upozornění";
-"preferences_appearance_status_bar_ongoing_time_immediate_value" = "skrýt po zahájení";
-"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "skrýt 10 min po zahájení";
-"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "skrýt 10 min před příští událostí";
+"preferences_appearance_status_bar_ongoing_time_immediate_value" = "Skrýt po zahájení";
+"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Skrýt 10 min po zahájení";
+"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Skrýt 10 min před příští událostí";
 "preferences_appearance_status_bar_ongoing_title" = "Viditelnost probíhající události:";
 "preferences_advanced_script_link_only_help" = "Spouští se pouze u událostí s odkazem na schůzku.";
 "preferences_meeting_opening_mode_google_meet_pwa" = "PWA Google Meet (Chrome)";
@@ -358,14 +351,10 @@
 "preferences_meeting_opening_mode_zoom_app" = "Aplikace Zoom";
 "preferences_meeting_opening_mode_zoom_web_app" = "Webová aplikace Zoom";
 "preferences_meeting_opening_mode_zoom_web_app_help" = "Otevře podporované odkazy na schůzky Zoom ve webovém klientu Zoom.";
-"preferences_services_link_modes_help" = "Možnosti nativní aplikace, webové aplikace a PWA jsou volitelné. Dokud některou nevyberete, odkazy se budou otevírat v dosavadním prohlížeči.";
-"preferences_sidebar_experience" = "Používání";
-"preferences_sidebar_setup" = "Nastavení";
 "status_bar_control_current_meeting" = "Aktuální schůzka";
 "status_bar_control_next_meeting" = "Příští schůzka";
 "preferences_appearance_events_no_meeting_link_title" = "Události bez odkazu na schůzku";
-"preferences_sidebar_advanced" = "Pokročilé";
-"preferences_appearance_status_bar_title_generic_value" = "obecný název (Schůzka)";
+"preferences_appearance_status_bar_title_generic_value" = "Obecný název (Schůzka)";
 "onboarding_setup_title" = "Nastavení Soon";
 "onboarding_back" = "Zpět";
 "onboarding_essentials_title" = "Nastavte běžné chování";
@@ -393,3 +382,13 @@
 "preferences_general_update_instructions" = "Pro aktualizaci spusťte instalační příkaz v Terminálu.";
 "preferences_general_update_copy_command" = "Kopírovat instalační příkaz";
 "preferences_general_update_whats_new" = "Co je nového";
+"preferences_appearance_status_bar_title_max_length" = "Maximální délka";
+"preferences_appearance_status_bar_next_event_window" = "Začínající do";
+"notifications_event_start_title" = "Začátek události";
+"notifications_event_start_toggle" = "Upozornit mě, když událost začíná";
+"notifications_event_end_title" = "Konec události";
+"notifications_alert_style_title" = "Typ upozornění";
+"notifications_alert_style_system" = "Systémové oznámení";
+"notifications_alert_style_fullscreen" = "Celá obrazovka";
+"notifications_alert_style_both" = "Obojí";
+"notifications_timing_title" = "Načasování";

@@ -145,6 +145,44 @@ enum StatusBarTitleFormatMigration {
     }
 }
 
+/// Declined and past events now offer only Show or Hide, because the
+/// timeline renders the dropped options identically.
+enum EventAppearanceMigration {
+    @MainActor
+    static func migrateDefaultsIfNeeded() {
+        if Defaults[.declinedEventsAppereance] == .show_inactive {
+            Defaults[.declinedEventsAppereance] = .strikethrough
+        }
+        if Defaults[.pastEventsAppereance] == .show_active {
+            Defaults[.pastEventsAppereance] = .show_inactive
+        }
+    }
+}
+
+/// Preferences shows one event-start alert with a type and a single timing.
+/// It writes through to the separate system and fullscreen keys the
+/// notification scheduler reads.
+enum EventStartAlertPreferences {
+    @MainActor
+    static func apply(enabled: Bool, style: EventStartAlertStyle, time: TimeBeforeEvent) {
+        Defaults[.eventStartAlertStyle] = style
+        Defaults[.joinEventNotification] = enabled && style != .fullscreen
+        Defaults[.fullscreenNotification] = enabled && style != .system
+        Defaults[.joinEventNotificationTime] = time
+        Defaults[.fullscreenNotificationTime] = time
+    }
+
+    @MainActor
+    static func migrateDefaultsIfNeeded() {
+        guard Defaults[.eventStartAlertStyle] == nil else { return }
+        let system = Defaults[.joinEventNotification]
+        let fullscreen = Defaults[.fullscreenNotification]
+        let style: EventStartAlertStyle = system && fullscreen ? .both : (fullscreen ? .fullscreen : .system)
+        let time = system ? Defaults[.joinEventNotificationTime] : Defaults[.fullscreenNotificationTime]
+        apply(enabled: system || fullscreen, style: style, time: time)
+    }
+}
+
 // MARK: - Defaults factory
 
 extension AppSettings {

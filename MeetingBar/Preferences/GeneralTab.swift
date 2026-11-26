@@ -53,6 +53,7 @@ struct GeneralTab: View {
                     Text("preferences_appearance_menu_time_format_24_hour_value".loco())
                         .tag(TimeFormat.military)
                 }
+                .pickerStyle(.radioGroup)
             }
 
             Section(header: Text("preferences_section_shortcuts_title".loco())) {
@@ -142,23 +143,23 @@ struct AvailableUpdateRow: View {
 struct ShortcutsSection: View {
     var body: some View {
         ShortcutRow(
-            title: "preferences_general_shortcut_open_menu".loco(),
+            title: preferenceLabel("preferences_general_shortcut_open_menu"),
             recorder: KeyboardShortcuts.Recorder(for: .openMenuShortcut)
         )
         ShortcutRow(
-            title: "preferences_general_shortcut_join_next".loco(),
+            title: preferenceLabel("preferences_general_shortcut_join_next"),
             recorder: KeyboardShortcuts.Recorder(for: .joinEventShortcut)
         )
         ShortcutRow(
-            title: "preferences_general_shortcut_create_meeting".loco(),
+            title: preferenceLabel("preferences_general_shortcut_create_meeting"),
             recorder: KeyboardShortcuts.Recorder(for: .createMeetingShortcut)
         )
         ShortcutRow(
-            title: "preferences_general_shortcut_join_from_clipboard".loco(),
+            title: preferenceLabel("preferences_general_shortcut_join_from_clipboard"),
             recorder: KeyboardShortcuts.Recorder(for: .openClipboardShortcut)
         )
         ShortcutRow(
-            title: "preferences_general_shortcut_toggle_meeting_name_visibility".loco(),
+            title: preferenceLabel("preferences_general_shortcut_toggle_meeting_name_visibility"),
             recorder: KeyboardShortcuts.Recorder(for: .toggleMeetingTitleVisibilityShortcut)
         )
     }

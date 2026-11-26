@@ -20,7 +20,7 @@
 "preferences_general_option_preferred_language_title" = "Taal:";
 "preferences_general_option_preferred_language_system_value" = "Systeem";
 "general_meeting" = "Meeting";
-"general_when_event_starts" = "wanneer meeting start";
+"general_when_event_starts" = "Wanneer meeting start";
 "preferences_general_shortcut_open_menu" = "Menu openen:";
 "preferences_general_shortcut_create_meeting" = "Meeting maken:";
 "preferences_general_shortcut_join_next" = "Deelnemen aan volgende meeting:";
@@ -35,14 +35,14 @@
 "preferences_appearance_events_pending_title" = "Meetings in afwachting";
 "preferences_appearance_status_bar_title" = "Statusbalk";
 "preferences_appearance_status_bar_icon_title" = "Icoon";
-"preferences_appearance_events_value_only_with_link" = "toon alleen meetings met links";
+"preferences_appearance_events_value_only_with_link" = "Toon alleen meetings met links";
 "preferences_appearance_status_bar_icon_specific_icon_value" = " App icoon (bijv. MS Teams)";
 "preferences_appearance_status_bar_title_title" = "Titel";
-"preferences_appearance_status_bar_title_dot_value" = "stip (•)";
-"preferences_appearance_status_bar_title_event_title_value" = "meeting titel";
+"preferences_appearance_status_bar_title_dot_value" = "Stip (•)";
+"preferences_appearance_status_bar_title_event_title_value" = "Meeting titel";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minuten";
 "preferences_appearance_menu_time_format_title" = "Tijdformaat:";
-"preferences_appearance_menu_time_format_12_hour_value" = "12 uur (AM/PM)";
+"preferences_appearance_menu_time_format_12_hour_value" = "12 uur";
 "preferences_appearance_menu_time_format_24_hour_value" = "24 uur";
 "preferences_services_link_default_browser_value" = "Standaardbrowser";
 "general_ok" = "Oke";
@@ -58,33 +58,30 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Schakel de zichtbaarheid van titels in de statusbalk:";
 "preferences_general_meeting_bar_description" = "Een vergaderapp voor de menubalk van je Mac. Zie je volgende vergadering, een live aftelling en je agenda.";
 "preferences_general_version" = "Versie %@";
-"preferences_appearance_events_show_events_for_today_tomorrow_value" = "vandaag en morgen";
-"preferences_appearance_events_show_events_for_today_value" = "vandaag";
+"preferences_appearance_events_show_events_for_today_tomorrow_value" = "Vandaag en morgen";
+"preferences_appearance_events_show_events_for_today_value" = "Vandaag";
 "preferences_appearance_events_without_guest_title" = "Meetings zonder deelnemers:";
 "preferences_appearance_events_tentative_title" = "Voorlopige meetings:";
-"preferences_appearance_events_value_show" = "toon";
-"preferences_appearance_events_value_hide" = "verberg";
-"preferences_appearance_events_value_as_inactive" = "toon als inactief";
-"preferences_appearance_events_value_as_underlined" = "toon onderstreept";
-"preferences_appearance_events_value_with_strikethrough" = "toon doorgestreept";
+"preferences_appearance_events_value_show" = "Toon";
+"preferences_appearance_events_value_hide" = "Verberg";
+"preferences_appearance_events_value_as_inactive" = "Toon als inactief";
+"preferences_appearance_events_value_as_underlined" = "Toon onderstreept";
 "preferences_appearance_status_bar_icon_calendar_icon_value" = " Agenda";
 "preferences_appearance_status_bar_icon_no_icon_value" = " Geen icoon";
-"preferences_appearance_status_bar_title_hide_value" = "verberg";
-"preferences_appearance_status_bar_title_shorten_stepper" = "verkorten tot %d tekens";
+"preferences_appearance_status_bar_title_hide_value" = "Verberg";
+"preferences_appearance_status_bar_title_shorten_stepper" = "%d tekens";
 "preferences_appearance_status_bar_time_title" = "Toon tijd";
-"preferences_appearance_status_bar_time_show_value" = "toon";
-"preferences_appearance_status_bar_time_show_under_title_value" = "toon oder titel";
-"preferences_appearance_status_bar_time_hide_value" = "verberg";
-
+"preferences_appearance_status_bar_time_show_value" = "Toon";
+"preferences_appearance_status_bar_time_show_under_title_value" = "Toon oder titel";
+"preferences_appearance_status_bar_time_hide_value" = "Verberg";
 // MARK: - Preferences Services
 
 "preferences_services_link_meeting_title" = "Standaardbrowser voor alle meeting links";
 "create_meeting_error_title" = "Kan geen nieuwe meeting maken";
 "next_meeting_empty_title" = "Er zijn vandaag geen geplande meetings";
 "preferences_appearance_events_declined_title" = "Afgewezen meetings:";
-"preferences_appearance_status_bar_next_event_toggle" = "Toon alleen meetings die beginnen binnen";
+"preferences_appearance_status_bar_next_event_toggle" = "Alleen meetings tonen die binnenkort beginnen";
 "preferences_appearance_status_bar_icon_app_icon_value" = " Soon";
-"preferences_appearance_menu_title" = "Menu";
 "preferences_services_link_service_title" = "%@";
 "preferences_services_create_meeting_title" = "Maak meetings met";
 "preferences_services_create_meeting_custom_url_value" = "Aangepaste webadres";
@@ -121,7 +118,6 @@
 
 // MARK: - Preferences Advanced
 
-"preferences_advanced_setting_warning" = "Deze instellingen zijn bedoeld voor geavanceerde gebruikers.";
 "preferences_advanced_apple_script_checkmark" = "Voer AppleScript uit bij het deelnemen";
 "preferences_advanced_apple_script_placeholder" = "# schrijf hier je script\nvertel de applicatie \"Muziek\" om te pauzeren";
 "preferences_advanced_test_script_on_next_event" = "Test bij de volgende meeting";
@@ -158,7 +154,6 @@
 "status_bar_submenu_status_title" = "Status: %@";
 "status_bar_submenu_status_declined" = " 👎 Afgewezen";
 "access_screen_try_again" = "Opnieuw proberen";
-"shared_fullscreen_notification_toggle" = "Toon een melding op volledig scherm";
 "preferences_bookmarks_new_bookmark_title" = "Nieuwe bladwijzer";
 "preferences_bookmarks_new_bookmark_name" = "Naam";
 "preferences_bookmarks_new_bookmark_service" = "Dienst";
@@ -168,7 +163,7 @@
 
 "preferences_calendars_select_calendars_title" = "Kies agenda's die meetings laten zien in de menubalk";
 "preferences_advanced_wrong_location_button" = "Begrepen!";
-"preferences_advanced_regex_edit_button" = "bewerken";
+"preferences_advanced_regex_edit_button" = "Bewerken";
 "status_bar_section_join_current_meeting" = "Direct deelnemen aan huidige meeting";
 "status_bar_section_refresh_sources" = "Ververs bronnen";
 "notification_next_meeting_dismissed_message" = "Je kan afgewezen niet verwijderen uit snelle acties";
@@ -254,14 +249,14 @@
 "shared_send_notification_disabled_tip" = "⚠️ Je macOS meldingsinstellingen voor Soon zijn uitgeschakeld. Schakel meldingen in de macOS systeeminstellingen in om meetings bij te houden.";
 "shared_automatic_event_join_tip" = "Met deze instelling wordt je volgende meeting automatisch geopend in je geconfigureerde app of browser";
 "preferences_appearance_status_bar_ongoing_title" = "Zichtbaarheid van lopende evenementen:";
-"preferences_appearance_status_bar_ongoing_time_immediate_value" = "verbergen na start";
-"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "verberg 10 minuten  na start";
-"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "verberg 10 minuten voor volgende evenement";
+"preferences_appearance_status_bar_ongoing_time_immediate_value" = "Verbergen na start";
+"preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Verberg 10 minuten na start";
+"preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Verberg 10 minuten voor volgende evenement";
 "notifications_meetingbar_dismiss_event_action" = "Meldingen uitschakelen";
 
 "general_refresh" = "Vernieuwen";
-"general_when_event_ends" = "wanneer de meeting eindigt";
-"general_end_of_event_notification_toggle" = "Stuur een melding wanneer de meeting eindigt";
+"general_when_event_ends" = "Wanneer de meeting eindigt";
+"general_end_of_event_notification_toggle" = "Waarschuw me als een meeting eindigt";
 "timeline_accessibility_label" = "Tijdlijn met %d meetings";
 "message_clipboard_invalid_title" = "Geen geldige webadres";
 "message_clipboard_invalid_text" = "Het klembord bevat geen meetinglink, dus de meeting kan niet worden gestart.";
@@ -283,7 +278,6 @@
 "preferences_section_regex_filters_title" = "Regex-filters";
 "preferences_calendar_source_title" = "Agendabron";
 "preferences_meeting_opening_behavior_title" = "Meetinglinks openen";
-"preferences_notifications_alerts_title" = "Meetingmeldingen";
 "preferences_notifications_automation_title" = "Automatisch deelnemen";
 "preferences_status_state_ok" = "Bijgewerkt";
 "preferences_status_state_stale" = "Gecachte gegevens worden weergegeven";
@@ -297,7 +291,6 @@
 "preferences_configure_browsers_help" = "Voeg aangepaste browsers, profielen of apps toe voor het openen van meetinglinks.";
 "preferences_services_link_default_help" = "Deze browser wordt gebruikt tenzij een provider-specifieke overschrijving is ingesteld.";
 "preferences_services_link_overrides_title" = "Provider-overschrijvingen";
-"preferences_services_link_overrides_help" = "Deze keuzes overschrijven de standaardbrowser voor elke meetingdienst.";
 "preferences_advanced_regex_duplicate_error" = "Deze regex bestaat al.";
 "preferences_advanced_regex_test_title" = "Meetinglink-regex testen";
 "preferences_advanced_regex_test_placeholder" = "Plak voorbeeldtekst van een meeting";
@@ -340,7 +333,7 @@
 "status_bar_control_no_upcoming" = "Geen aankomende meetings";
 "status_bar_join_with_other_link" = "Deelnemen met andere link";
 "fullscreen_notification_dismiss_action" = "Sluiten";
-"shared_fullscreen_notification_without_link_toggle" = "Toon ook schermvullende meldingen voor evenementen zonder vergaderlink";
+"shared_fullscreen_notification_without_link_toggle" = "Ook voor meetings zonder meetinglink";
 "shared_fullscreen_notification_without_link_help" = "Evenementen zonder vergaderlink tonen een schermvullende herinnering met alleen de actie Sluiten.";
 "preferences_advanced_script_link_only_help" = "Wordt alleen uitgevoerd voor evenementen met vergaderlinks.";
 "preferences_meeting_opening_mode_google_meet_pwa" = "Google Meet PWA (Chrome)";
@@ -355,13 +348,9 @@
 "preferences_meeting_opening_mode_zoom_app" = "Zoom App";
 "preferences_meeting_opening_mode_zoom_web_app" = "Zoom Web App";
 "preferences_meeting_opening_mode_zoom_web_app_help" = "Opent ondersteunde Zoom-vergaderlinks in de webclient van Zoom.";
-"preferences_services_link_modes_help" = "App-, web-app- en PWA-opties zijn optioneel. Bestaand browsergedrag blijft ongewijzigd totdat u een keuze maakt.";
-"preferences_sidebar_experience" = "Ervaring";
-"preferences_sidebar_setup" = "Instelling";
 "status_bar_control_current_meeting" = "Huidige vergadering";
 "status_bar_control_next_meeting" = "Volgende vergadering";
 "preferences_appearance_events_no_meeting_link_title" = "Afspraken zonder vergaderlink";
-"preferences_sidebar_advanced" = "Geavanceerd";
 "preferences_appearance_status_bar_title_generic_value" = "Generieke titel (Meeting)";
 "onboarding_setup_title" = "Soon configuratie";
 "onboarding_back" = "Terug";
@@ -382,3 +371,13 @@
 "preferences_general_update_instructions" = "Voer de installatieopdracht uit in Terminal om bij te werken.";
 "preferences_general_update_copy_command" = "Kopieer installatieopdracht";
 "preferences_general_update_whats_new" = "Nieuw";
+"preferences_appearance_status_bar_title_max_length" = "Maximale lengte";
+"preferences_appearance_status_bar_next_event_window" = "Begint binnen";
+"notifications_event_start_title" = "Begin van meeting";
+"notifications_event_start_toggle" = "Waarschuw me als een meeting begint";
+"notifications_event_end_title" = "Einde van meeting";
+"notifications_alert_style_title" = "Soort melding";
+"notifications_alert_style_system" = "Systeemmelding";
+"notifications_alert_style_fullscreen" = "Volledig scherm";
+"notifications_alert_style_both" = "Beide";
+"notifications_timing_title" = "Tijdstip";

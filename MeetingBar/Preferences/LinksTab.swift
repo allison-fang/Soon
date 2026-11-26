@@ -41,28 +41,28 @@ struct LinksTab: View {
     var body: some View {
         PreferencesGroupedForm {
             Section(header: Text("preferences_meeting_opening_behavior_title".loco())) {
-                Picker(
-                    "preferences_services_link_meeting_title".loco(),
-                    selection: BrowserPickerOptions.selection($defaultBrowser)
-                ) {
-                    ForEach(defaultBrowserOptions, id: \.self) { (browser: Browser) in
-                        Text(browser.name).tag(browser)
+                HStack {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("preferences_services_link_meeting_title".loco())
+                        Text("preferences_services_link_default_help".loco())
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                     }
+                    Spacer()
+                    Picker(
+                        "preferences_services_link_meeting_title".loco(),
+                        selection: BrowserPickerOptions.selection($defaultBrowser)
+                    ) {
+                        ForEach(defaultBrowserOptions, id: \.self) { (browser: Browser) in
+                            Text(browser.name).tag(browser)
+                        }
+                    }
+                    .labelsHidden()
+                    .fixedSize()
                 }
-
-                Text("preferences_services_link_default_help".loco())
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
             }
 
             Section(header: Text("preferences_services_link_overrides_title".loco())) {
-                Text("preferences_services_link_overrides_help".loco())
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                Text("preferences_services_link_modes_help".loco())
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-
                 ForEach(
                     MeetingProvider.all.filter { !$0.openingModes.isEmpty }, id: \.id
                 ) { provider in
