@@ -200,6 +200,17 @@ struct StatusBarPopoverView: View {
             .buttonStyle(TimelineButtonStyle(isIconOnly: true))
             .help("general_refresh".loco())
             .accessibilityLabel("general_refresh".loco())
+            if presentation.showsGoogleCalendarButton {
+                Button {
+                    model.actions.openInCalendar(Links.googleCalendar)
+                } label: {
+                    Image(systemName: "arrow.up.right.square")
+                        .font(.system(size: 11, weight: .medium))
+                }
+                .buttonStyle(TimelineButtonStyle(isIconOnly: true))
+                .help("status_bar_submenu_open_in_google_calendar".loco())
+                .accessibilityLabel("status_bar_submenu_open_in_google_calendar".loco())
+            }
         }
         .padding(.horizontal, metrics.edgeInset)
         .frame(height: metrics.footerHeight + 4)
@@ -402,14 +413,6 @@ struct StatusBarPopoverView: View {
 
     private var footer: some View {
         HStack(spacing: 8) {
-            if presentation.showsGoogleCalendarButton {
-                Button {
-                    model.actions.openInCalendar(Links.googleCalendar)
-                } label: {
-                    Label("status_bar_details_open_google_calendar".loco(), systemImage: "arrow.up.right.square")
-                }
-                .help("status_bar_submenu_open_in_google_calendar".loco())
-            }
             Button(action: model.actions.openPreferences) {
                 Label("status_bar_preferences".loco(), systemImage: "gearshape")
             }

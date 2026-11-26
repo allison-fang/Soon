@@ -39,6 +39,8 @@ struct BrowserConfigView: View {
                         }) {
                             Image(nsImage: getPencilImage())
                         }.buttonStyle(PlainButtonStyle())
+                        .help("preferences_configure_browsers_modal_edit_browser_title".loco())
+                        .accessibilityLabel("preferences_configure_browsers_modal_edit_browser_title".loco())
 
                         Button(action: {
                             self.browser = browser
@@ -46,6 +48,8 @@ struct BrowserConfigView: View {
                         }) {
                             Image(nsImage: NSImage(named: NSImage.stopProgressFreestandingTemplateName)!)
                         }.buttonStyle(PlainButtonStyle())
+                        .help("general_delete".loco())
+                        .accessibilityLabel("general_delete".loco())
                     }.padding(3)
                 }
             }
