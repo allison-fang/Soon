@@ -4,8 +4,6 @@
 "general_one_minute_before" = "1分钟前";
 "general_three_minute_before" = "3分钟前";
 "general_five_minute_before" = "5分钟前";
-"create_meeting_error_title" = "无法创建新的会议";
-"create_meeting_error_message" = "自定义URL\"%@\"缺失或无效。 ";
 "preferences_general_option_preferred_language_title" = "语言：";
 "general_add" = "新建";
 "general_delete" = "删除";
@@ -22,7 +20,6 @@
 "preferences_general_option_login_launch" = "登录后启动";
 "preferences_general_option_preferred_language_system_value" = "系统";
 "preferences_general_shortcut_open_menu" = "打开菜单：";
-"preferences_general_shortcut_create_meeting" = "新建会议：";
 "preferences_general_shortcut_join_next" = "加入下场会议：";
 "preferences_general_shortcut_join_from_clipboard" = "从剪贴板加入会议：";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "会议名在状态栏中是否可见：";
@@ -40,7 +37,6 @@
 "access_screen_provider_picker_label" = "选择日历来源";
 "access_screen_try_again" = "重试";
 "calendars_screen_select_calendar_title" = "至少选择一个日历";
-"constants_create_meeting_service_url" = "自定义 URL";
 "constants_meeting_service_other" = "其他";
 "constants_meeting_service_phone" = "电话号码";
 "constants_meeting_service_url" = "URL";
@@ -193,15 +189,10 @@
 "preferences_meeting_opening_mode_zoom_web_app_help" = "在 Zoom 网页客户端中打开受支持的 Zoom 会议链接。";
 "preferences_notifications_automation_title" = "自动加入";
 "preferences_section_apple_script_hooks_title" = "AppleScript 钩子";
-"preferences_section_create_title" = "创建会议";
 "preferences_section_general_settings_title" = "常规设置";
 "preferences_section_regex_filters_title" = "正则表达式过滤器";
 "preferences_section_shortcuts_title" = "键盘快捷键";
-"preferences_services_create_meeting_browser_title" = "使用浏览器";
 "preferences_services_create_meeting_custom_url_placeholder" = "请输入有效的 URL（以 http:// 或 https:// 开头）";
-"preferences_services_create_meeting_custom_url_value" = "自定义 URL";
-"preferences_services_create_meeting_title" = "通过以下方式创建会议";
-"preferences_services_google_meet_tip" = "提示：Google Meet 支持在 URL 中选择账户，例如 https://meet.google.com/new?authuser=1";
 "preferences_services_link_default_browser_value" = "默认浏览器";
 "preferences_services_link_default_help" = "除非设置了特定提供商覆盖，否则使用此浏览器。";
 "preferences_services_link_meeting_title" = "会议链接的默认浏览器";
@@ -258,7 +249,6 @@
 "status_bar_quit" = "退出 Soon";
 "status_bar_rate_app" = "评价应用";
 "status_bar_section_date_nothing" = "%@ 没有事件";
-"status_bar_section_join_create_meeting" = "创建会议";
 "status_bar_section_join_current_meeting" = "加入当前事件会议";
 "status_bar_section_join_from_clipboard" = "从剪贴板打开会议";
 "status_bar_section_join_next_meeting" = "加入下一个事件会议";
@@ -320,3 +310,4 @@
 "notifications_alert_style_fullscreen" = "全屏";
 "notifications_alert_style_both" = "两者";
 "notifications_timing_title" = "时间";
+"status_bar_details_open_google_calendar" = "Google 日历";

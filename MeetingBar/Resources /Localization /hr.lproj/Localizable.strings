@@ -12,8 +12,6 @@
 "general_delete" = "Izbriši";
 "general_save" = "Spremi";
 "general_meeting" = "Sastanak";
-"create_meeting_error_title" = "Nije moguće stvoriti novi sastanak";
-"create_meeting_error_message" = "Prilagođeni URL „%@“ nedostaje ili ne valja. ";
 "next_meeting_empty_title" = "Danas više nema sastanaka";
 "next_meeting_empty_message" = "Opa! Vrijeme je za cocoa";
 
@@ -34,7 +32,6 @@
 "preferences_general_option_preferred_language_title" = "Jezik:";
 "preferences_general_option_preferred_language_system_value" = "Sustav";
 "preferences_general_shortcut_open_menu" = "Otvori izbornik:";
-"preferences_general_shortcut_create_meeting" = "Stvori sastanak:";
 "preferences_general_shortcut_join_next" = "Pridruži se sljedećem sastanku:";
 "preferences_general_shortcut_join_from_clipboard" = "Pridruži se sastanku iz međuspremnika:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Uključi/isključi prikaz naslova u traci stanja:";
@@ -84,11 +81,7 @@
 "preferences_services_link_meeting_title" = "Otvori sve poveznice sastanaka u";
 "preferences_services_link_service_title" = "Otvori %@ poveznice u";
 "preferences_services_link_default_browser_value" = "Standardni web-preglednik";
-"preferences_services_create_meeting_title" = "Stvori sastanke putem";
-"preferences_services_create_meeting_custom_url_value" = "Prilagođeni URL";
 "preferences_services_create_meeting_custom_url_placeholder" = "Upiši valjani URL (http:// ili https://)";
-"preferences_services_google_meet_tip" = "Savjet: Google Meet podržava biranje računa u URL-u, npr. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Koristi web-preglednik";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -137,7 +130,6 @@
 "status_bar_section_join_next_meeting" = "Pridruži se sljedećem sastanku";
 "status_bar_section_join_current_meeting" = "Pridruži se trenutačnom sastanku";
 "status_bar_section_join_from_clipboard" = "Otvori sastanak iz međuspremnika";
-"status_bar_section_join_create_meeting" = "Stvori sastanak";
 "status_bar_section_date_nothing" = "Ništa za %@";
 "status_bar_event_start_time_all_day" = "Cijeli dan";
 "status_bar_submenu_calendar_title" = "Kalendar: %@";
@@ -205,7 +197,6 @@
 "shared_automatic_event_join_tip" = "Ova postavka automatski otvara tvoj sljedeći sastanak u konfiguriranon programu ili pregledniku";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "Prilagođeni URL";
 "constants_meeting_service_phone" = "Broj telefona";
 "constants_meeting_service_zoom_native" = "Zoom native";
 "constants_meeting_service_other" = "Druge";
@@ -293,7 +284,6 @@
 "preferences_meeting_opening_behavior_title" = "Otvori veze sastanka";
 "preferences_notifications_automation_title" = "Automatsko pridruživanje";
 "preferences_section_apple_script_hooks_title" = "AppleScript kuke";
-"preferences_section_create_title" = "Stvori sastanke";
 "preferences_section_general_settings_title" = "Opće postavke";
 "preferences_section_regex_filters_title" = "Regex filtri";
 "preferences_section_shortcuts_title" = "Tipkovnički prečaci";
@@ -365,3 +355,4 @@
 "notifications_alert_style_fullscreen" = "Cijeli zaslon";
 "notifications_alert_style_both" = "Oboje";
 "notifications_timing_title" = "Vrijeme";
+"status_bar_details_open_google_calendar" = "Google kalendar";

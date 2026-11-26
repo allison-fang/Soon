@@ -3,7 +3,6 @@
 "general_one_minute_before" = "1 minuut ervoor";
 "general_three_minute_before" = "3 minuten ervoor";
 "general_five_minute_before" = "5 minuten ervoor";
-"create_meeting_error_message" = "Aangepaste webadres '%@' ontbreekt of is ongeldig. ";
 "next_meeting_empty_message" = "Woehoe! Het is tijd om chocolademelk te maken";
 
 // MARK: - Window titles
@@ -21,7 +20,6 @@
 "general_meeting" = "Meeting";
 "general_when_event_starts" = "Wanneer meeting start";
 "preferences_general_shortcut_open_menu" = "Menu openen:";
-"preferences_general_shortcut_create_meeting" = "Meeting maken:";
 "preferences_general_shortcut_join_next" = "Deelnemen aan volgende meeting:";
 "preferences_general_shortcut_join_from_clipboard" = "Deelnemen aan meeting vanaf het klembord:";
 
@@ -76,17 +74,12 @@
 // MARK: - Preferences Services
 
 "preferences_services_link_meeting_title" = "Standaardbrowser voor alle meeting links";
-"create_meeting_error_title" = "Kan geen nieuwe meeting maken";
 "next_meeting_empty_title" = "Er zijn vandaag geen geplande meetings";
 "preferences_appearance_events_declined_title" = "Afgewezen meetings:";
 "preferences_appearance_status_bar_next_event_toggle" = "Alleen meetings tonen die binnenkort beginnen";
 "preferences_appearance_status_bar_icon_app_icon_value" = " Soon";
 "preferences_services_link_service_title" = "%@";
-"preferences_services_create_meeting_title" = "Maak meetings met";
-"preferences_services_create_meeting_custom_url_value" = "Aangepaste webadres";
 "preferences_services_create_meeting_custom_url_placeholder" = "Voer een geldige webadres in (met http:// of https://)";
-"preferences_services_google_meet_tip" = "Tip: Google Meet ondersteunt het kiezen van een account in het webadres, bijvoorbeeld https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Gebruik browser";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -136,7 +129,6 @@
 "notification_next_meeting_dismissed_title" = "Afgewezen %@";
 "notification_all_dismissals_removed_title" = "Verwijder all afwijzingen";
 "notification_all_dismissals_removed_message" = "Alle afgewezen meetings zijn weer actief";
-"status_bar_section_join_create_meeting" = "Direct een meeting starten";
 "status_bar_section_date_nothing" = "Niets voor %@";
 "status_bar_event_start_time_all_day" = "Hele dag";
 "status_bar_submenu_calendar_title" = "Agenda: %@";
@@ -192,7 +184,6 @@
 "access_screen_provider_gcalendar_number_of_accounts" = "Eén Google-account tegelijk";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "Gepersonaliseerde webadres";
 "constants_meeting_service_url" = "Webadres";
 "shared_send_notification_no_alert_style_tip" = "Opmerking: Meldingen zijn ingesteld op Stroken, dus ze verschijnen kort en verdwijnen daarna weer. Om ze op het scherm te houden totdat je ze zelf sluit, schakel je over naar Waarschuwingen in de meldingsinstellingen van macOS.";
 "shared_automatic_event_join_toggle" = "Neem automatisch deel aan de volgende meeting";
@@ -259,7 +250,6 @@
 "preferences_tab_notifications" = "Meldingen";
 "preferences_section_general_settings_title" = "Algemene instellingen";
 "preferences_section_shortcuts_title" = "Sneltoetsen";
-"preferences_section_create_title" = "Meetings maken";
 "preferences_section_apple_script_hooks_title" = "AppleScript-hooks";
 "preferences_section_regex_filters_title" = "Regex-filters";
 "preferences_calendar_source_title" = "Agendabron";
@@ -367,3 +357,4 @@
 "notifications_alert_style_fullscreen" = "Volledig scherm";
 "notifications_alert_style_both" = "Beide";
 "notifications_timing_title" = "Tijdstip";
+"status_bar_details_open_google_calendar" = "Google Agenda";

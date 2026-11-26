@@ -24,7 +24,6 @@ enum AppMessage: Equatable, Sendable {
     case allDismissalsRemoved
     case meetingLinkMissing(title: String)
     case meetingAppUnavailable(name: String)
-    case createMeetingInvalidURL(value: String)
     case browserUnavailable(name: String)
     case defaultBrowserUnavailable
     case clipboardInvalid
@@ -60,11 +59,6 @@ enum AppMessage: Equatable, Sendable {
             notification(
                 title: "status_bar_error_app_link_title".loco(name),
                 text: "status_bar_error_app_link_message".loco(name)
-            )
-        case .createMeetingInvalidURL(let value):
-            notification(
-                title: "create_meeting_error_title".loco(),
-                text: "create_meeting_error_message".loco(value)
             )
         case .browserUnavailable(let name):
             notification(

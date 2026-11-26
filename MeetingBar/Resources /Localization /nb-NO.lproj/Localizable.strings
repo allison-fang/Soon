@@ -70,7 +70,6 @@
 "preferences_calendars_provider_gcalendar_change_account" = "Change Google Account";
 "preferences_configure_browsers_choose_browser_panel_message" = "Velg en nettleser fra hvilken som helst sti.";
 "preferences_configure_browsers_delete_alert_message" = "Ønsker du å slette %@-nettleseroppsettet?";
-"preferences_services_google_meet_tip" = "Tips: Meet støtter valg av konto via parameter, f.eks. https://meet.google.com/new?authuser=1";
 "preferences_appearance_status_bar_next_event_toggle" = "Vis bare hendelser som starter snart";
 "preferences_appearance_status_bar_next_event_stepper" = "%d minutter";
 "preferences_appearance_status_bar_title_dot_value" = "Punkt (•)";
@@ -89,7 +88,6 @@
 "window_title_preferences" = "Soon-innstillinger";
 "next_meeting_empty_message" = "Hurra. Det er på tide å lage kakao";
 "next_meeting_empty_title" = "Ingen kommende møter i dag";
-"create_meeting_error_message" = "Den egendefinerte nettadressen «%@» mangler eller er ugyldig. Skriv inn en verdi i programinnstillingene.";
 "link_url_cant_open_message" = "Forsikre deg om at du har %@ installert, eller åpne slike lenker i en nettleser fra innstillingene istedenfor.";
 
 // MARK: - Link open
@@ -97,7 +95,6 @@
 "link_url_cant_open_title" = "Oida. Kunne ikke åpne lenken i %@";
 "constants_meeting_service_url" = "Nettadresse";
 "constants_meeting_service_phone" = "Telefon";
-"constants_create_meeting_service_url" = "Egendefinert nettadresse";
 "general_five_minute_before" = "fem minutter før";
 "general_three_minute_before" = "tre minutter før";
 "general_one_minute_before" = "ett minutt før";
@@ -131,7 +128,6 @@
 "status_bar_submenu_calendar_title" = "Kalender: %@";
 "status_bar_event_start_time_all_day" = "Hele dagen";
 "status_bar_section_date_nothing" = "Ingenting for %@";
-"status_bar_section_join_create_meeting" = "Opprett møte";
 "status_bar_section_tomorrow" = "I morgen";
 
 // MARK: - Status bar
@@ -165,10 +161,7 @@
 // MARK: - Preferences Services Browsers Configuration
 
 "preferences_configure_browsers_button" = "Sett opp nettlesere";
-"preferences_services_create_meeting_browser_title" = "Bruk nettleser";
 "preferences_services_create_meeting_custom_url_placeholder" = "Skriv inn en gyldig nettadresse (med nettadressedirigering, f.eks https://)";
-"preferences_services_create_meeting_custom_url_value" = "Egendefinert nettadresse";
-"preferences_services_create_meeting_title" = "Opprett møter via";
 "preferences_services_link_default_browser_value" = "Forvalgt nettleser";
 "preferences_services_link_service_title" = "Åpne %@-lenker i";
 
@@ -206,7 +199,6 @@
 
 "preferences_appearance_events_title" = "Begivenheter";
 "preferences_general_shortcut_join_next" = "Ta del i neste møte:";
-"preferences_general_shortcut_create_meeting" = "Opprett møte:";
 "preferences_general_shortcut_open_menu" = "Åpne meny:";
 "preferences_general_option_preferred_language_system_value" = "System";
 "preferences_general_option_preferred_language_title" = "Språk:";
@@ -221,7 +213,6 @@
 
 "preferences_tab_general" = "Generelt";
 "window_title_onboarding" = "Velkommen til Soon";
-"create_meeting_error_title" = "Kan ikke opprette nytt møte";
 "general_meeting" = "Møte";
 "general_save" = "Lagre";
 "general_delete" = "Slett";
@@ -287,7 +278,6 @@
 "preferences_meeting_opening_behavior_title" = "Åpne møtekoblinger";
 "preferences_notifications_automation_title" = "Automatisk deltakelse";
 "preferences_section_apple_script_hooks_title" = "AppleScript-kroker";
-"preferences_section_create_title" = "Opprett møter";
 "preferences_section_general_settings_title" = "Generelle innstillinger";
 "preferences_section_regex_filters_title" = "Regex-filtre";
 "preferences_section_shortcuts_title" = "Tastatursnarveier";
@@ -364,3 +354,4 @@
 "notifications_alert_style_fullscreen" = "Fullskjerm";
 "notifications_alert_style_both" = "Begge";
 "notifications_timing_title" = "Tidspunkt";
+"status_bar_details_open_google_calendar" = "Google Kalender";

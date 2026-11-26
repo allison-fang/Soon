@@ -114,8 +114,6 @@ final class StatusBarItemController {
     }
 
     private func setupKeyboardShortcuts() {
-        KeyboardShortcuts.onKeyUp(for: .createMeetingShortcut, action: createMeeting)
-
         KeyboardShortcuts.onKeyUp(for: .joinEventShortcut) {
             Task { @MainActor in self.joinNextMeeting() }
         }

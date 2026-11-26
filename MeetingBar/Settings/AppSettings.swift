@@ -71,11 +71,8 @@ struct NotificationSettings: Equatable {
 }
 
 struct MeetingSettings: Equatable {
-    var createMeetingService: CreateMeetingServices
-    var createMeetingServiceUrl: String
     var browsers: [Browser]
     var defaultBrowser: Browser
-    var browserForCreateMeeting: Browser
     /// Unified per-provider browser preferences (keyed by provider ID).
     /// Replaces the individual meetBrowser/zoomBrowser/… fields.
     var providerBrowsers: [String: Browser]
@@ -233,11 +230,8 @@ extension AppSettings {
                     Defaults[.fullscreenNotificationsForEventsWithoutMeetingLink]
             ),
             meetings: MeetingSettings(
-                createMeetingService: Defaults[.createMeetingService],
-                createMeetingServiceUrl: Defaults[.createMeetingServiceUrl],
                 browsers: Defaults[.browsers],
                 defaultBrowser: Defaults[.defaultBrowser],
-                browserForCreateMeeting: Defaults[.browserForCreateMeeting],
                 providerBrowsers: Defaults[.providerBrowsers],
                 providerOpeningModes: Defaults[.providerOpeningModes]
             ),
@@ -299,11 +293,8 @@ extension AppSettings {
                 fullscreenNotificationsForEventsWithoutMeetingLink: false
             ),
             meetings: MeetingSettings(
-                createMeetingService: .zoom,
-                createMeetingServiceUrl: "",
                 browsers: [],
                 defaultBrowser: systemDefaultBrowser,
-                browserForCreateMeeting: systemDefaultBrowser,
                 providerBrowsers: [:],
                 providerOpeningModes: [:]
             ),

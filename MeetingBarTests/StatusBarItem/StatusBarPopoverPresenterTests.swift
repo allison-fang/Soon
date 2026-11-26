@@ -483,4 +483,15 @@ final class StatusBarPopoverPresenterTests: BaseTestCase {
         XCTAssertEqual(updated.updateAvailableText, "status_bar_popover_update_available".loco())
         XCTAssertNotNil(updated.notice)
     }
+
+    func testGoogleCalendarButtonShowsOnlyForGoogleSource() {
+        var googleState = state([])
+        googleState.activeProvider = .googleCalendar
+        XCTAssertTrue(StatusBarPopoverPresenter.presentation(for: googleState, now: now).showsGoogleCalendarButton)
+
+        var appleState = state([])
+        appleState.activeProvider = .macOSEventKit
+        XCTAssertFalse(StatusBarPopoverPresenter.presentation(for: appleState, now: now).showsGoogleCalendarButton)
+    }
+
 }

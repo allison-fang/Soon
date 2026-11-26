@@ -9,14 +9,11 @@
 "general_one_minute_before" = "1분 전";
 "general_three_minute_before" = "3분 전";
 "general_five_minute_before" = "5분 전";
-"create_meeting_error_title" = "새로운 회의를 생성할 수 없습니다";
-"create_meeting_error_message" = "사용자 지정 URL \"%@\" 이(가) 없거나 유효하지 않습니다. ";
 "next_meeting_empty_title" = "오늘 예정된 회의가 없습니다";
 "preferences_general_option_preferred_language_title" = "언어:";
 "preferences_tab_calendars" = "캘린더";
 "preferences_tab_general" = "일반";
 "preferences_tab_advanced" = "고급";
-"preferences_general_shortcut_create_meeting" = "회의 생성:";
 "preferences_general_shortcut_join_next" = "다음 회의 참석:";
 "preferences_general_shortcut_join_from_clipboard" = "클립보드의 회의 참석:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "메뉴 막대에서 제목 표시 토글:";
@@ -68,11 +65,7 @@
 "preferences_services_link_meeting_title" = "모든 회의 연결 시";
 "preferences_services_link_service_title" = "%@ 연결 시";
 "preferences_services_link_default_browser_value" = "기본 웹 브라우저";
-"preferences_services_create_meeting_title" = "회의 생성";
-"preferences_services_create_meeting_custom_url_value" = "커스텀 URL";
 "preferences_services_create_meeting_custom_url_placeholder" = "유효한 URL을 입력하세요 (http:// 또는 https://)";
-"preferences_services_google_meet_tip" = "팁: Google Meet은 URL로 계정을 선택할 수 있어요 (예시 - https://meet.google.com/new?authuser=1)";
-"preferences_services_create_meeting_browser_title" = "웹 브라우저 사용";
 "preferences_configure_browsers_button" = "웹 브라우저 설정";
 "preferences_configure_browsers_delete_alert_title" = "웹 브라우저 설정을 삭제할까요?";
 "preferences_configure_browsers_delete_alert_message" = "%@ 브라우저 설정을 삭제할까요?";
@@ -117,7 +110,6 @@
 "notification_next_meeting_dismissed_message" = "무시된 회의는 빠른 행동에서 복원할 수 있어요";
 "notification_all_dismissals_removed_title" = "모든 회의가 복원됨";
 "notification_all_dismissals_removed_message" = "모든 무시된 회의가 복원됨";
-"status_bar_section_join_create_meeting" = "회의 생성";
 "status_bar_section_date_nothing" = "%@ 일정 없음";
 "status_bar_event_start_time_all_day" = "종일";
 "status_bar_submenu_calendar_title" = "캘린더: %@";
@@ -212,7 +204,6 @@
 "preferences_meeting_opening_behavior_title" = "미팅 링크 열기";
 "preferences_notifications_automation_title" = "자동 참여";
 "preferences_section_apple_script_hooks_title" = "AppleScript 훅";
-"preferences_section_create_title" = "미팅 만들기";
 "preferences_section_general_settings_title" = "일반 설정";
 "preferences_section_regex_filters_title" = "정규식 필터";
 "preferences_section_shortcuts_title" = "키보드 단축키";
@@ -262,7 +253,6 @@
 "access_screen_provider_gcalendar_number_of_accounts" = "한 번에 하나의 Google 계정";
 "access_screen_provider_macos_number_of_accounts" = "구성된 모든 계정: iCloud, Google, Exchange, CalDAV 등";
 "access_screen_try_again" = "다시 시도";
-"constants_create_meeting_service_url" = "사용자 지정 URL";
 "constants_meeting_service_other" = "기타";
 "constants_meeting_service_phone" = "전화번호";
 "constants_meeting_service_url" = "URL";
@@ -315,3 +305,4 @@
 "notifications_alert_style_fullscreen" = "전체 화면";
 "notifications_alert_style_both" = "둘 다";
 "notifications_timing_title" = "타이밍";
+"status_bar_details_open_google_calendar" = "Google 캘린더";

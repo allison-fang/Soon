@@ -35,7 +35,6 @@
 "constants_meeting_service_url" = "URL";
 "constants_meeting_service_other" = "Autre";
 "constants_meeting_service_phone" = "Numéro de téléphone";
-"constants_create_meeting_service_url" = "URL personnalisée";
 
 // MARK: - Constants
 "shared_send_notification_disabled_tip" = "⚠️ Vos paramètres de notification macOS pour Soon sont désactivés. Activez les notifications dans les paramètres système de macOS pour garder une trace des réunions.";
@@ -98,7 +97,6 @@
 "status_bar_submenu_calendar_title" = "Calendrier : %@";
 "status_bar_event_start_time_all_day" = "Toute la journée";
 "status_bar_section_date_nothing" = "Rien pour %@";
-"status_bar_section_join_create_meeting" = "Créer une réunion";
 "status_bar_section_join_next_meeting" = "Rejoindre la réunion du prochain évènement";
 "status_bar_section_join_current_meeting" = "Rejoindre la réunion de l’évènement en cours";
 "status_bar_section_tomorrow" = "Demain";
@@ -141,10 +139,6 @@
 // MARK: - Preferences Services Browsers Configuration
 
 "preferences_configure_browsers_button" = "Configurer les navigateurs";
-"preferences_services_create_meeting_browser_title" = "Utiliser le navigateur";
-"preferences_services_google_meet_tip" = "Conseil : Google Meet prend en charge le choix du compte dans l'URL, par exemple https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_custom_url_value" = "URL personnalisée";
-"preferences_services_create_meeting_title" = "Créer des réunions via";
 "preferences_services_link_default_browser_value" = "Navigateur par défaut";
 "preferences_services_link_service_title" = "Ouvrir les liens %@ dans";
 
@@ -194,7 +188,6 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Basculer la visibilité du titre dans la barre d'état :";
 "preferences_general_shortcut_join_from_clipboard" = "Rejoindre la réunion à partir du presse-papier :";
 "preferences_general_shortcut_join_next" = "Rejoindre la prochaine réunion :";
-"preferences_general_shortcut_create_meeting" = "Créer une réunion :";
 "preferences_general_shortcut_open_menu" = "Ouvrir le menu :";
 "preferences_general_option_preferred_language_system_value" = "Système";
 "preferences_general_option_preferred_language_title" = "Langue :";
@@ -215,8 +208,6 @@
 "window_title_preferences" = "Préférences Soon";
 "next_meeting_empty_message" = "Youhou ! C'est le moment de faire du cacao";
 "next_meeting_empty_title" = "Il n'y a pas de réunions aujourd'hui";
-"create_meeting_error_message" = "L'URL personnalisée « %@ » est manquante ou invalide. ";
-"create_meeting_error_title" = "Impossible de créer une nouvelle réunion";
 "general_meeting" = "Réunion";
 "general_save" = "Enregistrer";
 "general_delete" = "Supprimer";
@@ -288,7 +279,6 @@
 "preferences_meeting_opening_behavior_title" = "Ouvrir les liens de réunion";
 "preferences_notifications_automation_title" = "Rejoindre automatiquement";
 "preferences_section_apple_script_hooks_title" = "Hooks AppleScript";
-"preferences_section_create_title" = "Créer des réunions";
 "preferences_section_general_settings_title" = "Paramètres généraux";
 "preferences_section_regex_filters_title" = "Filtres regex";
 "preferences_section_shortcuts_title" = "Raccourcis clavier";
@@ -360,3 +350,4 @@
 "notifications_alert_style_fullscreen" = "Plein écran";
 "notifications_alert_style_both" = "Les deux";
 "notifications_timing_title" = "Moment";
+"status_bar_details_open_google_calendar" = "Google Agenda";

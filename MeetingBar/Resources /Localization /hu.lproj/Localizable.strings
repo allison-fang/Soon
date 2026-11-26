@@ -10,7 +10,6 @@
 "general_one_minute_before" = "1 perccel előtte";
 "general_three_minute_before" = "3 perccel előtte";
 "general_five_minute_before" = "5 perccel előtte";
-"create_meeting_error_title" = "Nem lehet új megbeszélést létrehozni!";
 "next_meeting_empty_title" = "Nincs jövőbeli megbeszélés a mai napra!";
 "window_title_onboarding" = "Üdvözli a Soon";
 
@@ -28,7 +27,6 @@
 "preferences_appearance_status_bar_next_event_toggle" = "Csak a hamarosan kezdődő események mutatása";
 "preferences_appearance_status_bar_next_event_stepper" = "%d perc";
 "preferences_services_link_meeting_title" = "Minden találkozó link megnyitása ebben";
-"preferences_services_create_meeting_title" = "Találkozók létrehozása ezzel";
 "preferences_configure_browsers_add_button_browser_title" = "Webböngésző";
 "preferences_advanced_apple_script_checkmark" = "AppleScript futtatása találkozóhoz való csatlakozásnál";
 "status_bar_section_tomorrow" = "Holnap";
@@ -42,8 +40,6 @@
 "preferences_appearance_status_bar_title_title" = "Cím";
 "preferences_appearance_menu_time_format_title" = "Időformátum:";
 "preferences_services_create_meeting_custom_url_placeholder" = "Légy szíves érvényes URL-t megadni (http:// vagy https://)";
-"preferences_services_google_meet_tip" = "Tipp: Google Meet támogatja a fiókválasztást az URL-ben, pl. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Használj webböngészőt";
 "preferences_configure_browsers_button" = "Webböngésző konfigurálása";
 "preferences_configure_browsers_modal_edit_browser_title" = "Webböngésző szerkesztése";
 "preferences_configure_browsers_modal_add_browser_path" = "Elérési útvonal";
@@ -56,14 +52,12 @@
 "preferences_advanced_wrong_location_button" = "Megértettem!";
 "preferences_advanced_regex_edit_button" = "Szerkesztés";
 "status_bar_section_today" = "Ma";
-"create_meeting_error_message" = "Egyéni URL \"%@\" hiányzik vagy érvénytelen. ";
 "preferences_tab_calendars" = "Naptárak";
 "preferences_tab_advanced" = "Speciális";
 "preferences_general_option_login_launch" = "Indítás bejelentkezés után";
 "preferences_general_option_preferred_language_title" = "Nyelv:";
 "preferences_general_option_preferred_language_system_value" = "Rendszer";
 "preferences_general_shortcut_open_menu" = "Menü megnyitása:";
-"preferences_general_shortcut_create_meeting" = "Találkozó létrehozása:";
 "preferences_general_shortcut_join_next" = "Csatlakozás a következő találkozóhoz:";
 "preferences_appearance_events_title" = "Események";
 "preferences_appearance_events_show_events_for_today_value" = "Ma";
@@ -88,7 +82,6 @@
 "preferences_appearance_status_bar_title_hide_value" = "Elrejtés";
 "preferences_appearance_menu_time_format_12_hour_value" = "12 órás";
 "preferences_services_link_service_title" = "%@ linkek megnyitása ebben";
-"preferences_services_create_meeting_custom_url_value" = "Egyéni URL";
 "preferences_configure_browsers_delete_alert_title" = "Törli a webböngésző konfigurációt?";
 "preferences_configure_browsers_delete_alert_message" = "Törli a %@ böngésző konfigurációt?";
 "preferences_advanced_test_script_on_next_event" = "Tesztelés a következő eseményen";
@@ -107,7 +100,6 @@
 "access_screen_provider_picker_label" = "Válasszon naptárforrást";
 "access_screen_try_again" = "Próbálja újra";
 "calendars_screen_select_calendar_title" = "Válasszon ki legalább egy naptárat";
-"constants_create_meeting_service_url" = "Egyéni URL";
 "constants_meeting_service_other" = "Egyéb";
 "constants_meeting_service_phone" = "Telefonszám";
 "constants_meeting_service_url" = "URL";
@@ -210,7 +202,6 @@
 "preferences_meeting_opening_mode_zoom_web_app_help" = "Megnyitja a támogatott Zoom értekezlet-hivatkozásokat a Zoom webes ügyfélben.";
 "preferences_notifications_automation_title" = "Automatikus csatlakozás";
 "preferences_section_apple_script_hooks_title" = "AppleScript horgok";
-"preferences_section_create_title" = "Értekezletek létrehozása";
 "preferences_section_general_settings_title" = "Általános beállítások";
 "preferences_section_regex_filters_title" = "Regex-szűrők";
 "preferences_section_shortcuts_title" = "Billentyűparancsok";
@@ -265,7 +256,6 @@
 "status_bar_quit" = "Soon bezárása";
 "status_bar_rate_app" = "Alkalmazás értékelése";
 "status_bar_section_date_nothing" = "Semmi %@-ra";
-"status_bar_section_join_create_meeting" = "Értekezlet létrehozása";
 "status_bar_section_join_current_meeting" = "Csatlakozás az aktuális esemény értekezletéhez";
 "status_bar_section_join_from_clipboard" = "Értekezlet megnyitása vágólapról";
 "status_bar_section_join_next_meeting" = "Csatlakozás a következő esemény értekezletéhez";
@@ -320,3 +310,4 @@
 "notifications_alert_style_fullscreen" = "Teljes képernyő";
 "notifications_alert_style_both" = "Mindkettő";
 "notifications_timing_title" = "Időzítés";
+"status_bar_details_open_google_calendar" = "Google Naptár";

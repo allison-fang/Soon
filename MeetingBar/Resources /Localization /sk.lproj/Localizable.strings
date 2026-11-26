@@ -27,8 +27,6 @@
 "shared_automatic_event_join_toggle" = "Automaticky sa pripojiť k ďalšiemu stretnutiu";
 "shared_send_notification_no_alert_style_tip" = "Poznámka: Upozornenia sú nastavené ako bannery, takže sa krátko zobrazia a potom zmiznú. Ak chcete, aby zostali na obrazovke, kým ich nezrušíte, prepnite v nastaveniach upozornení v systéme macOS na možnosť Upozornenia.";
 "next_meeting_empty_title" = "Dnes nie sú žiadne naplánované stretnutia";
-"create_meeting_error_title" = "Nie je možné vytvoriť nové stretnutie";
-"preferences_general_shortcut_create_meeting" = "Vytvoriť stretnutie:";
 "preferences_appearance_events_show_events_for_today_value" = "Dnes";
 "preferences_appearance_events_show_events_for_today_tomorrow_value" = "Dnes a zajtra";
 "preferences_appearance_events_all_day_title" = "Celodenné udalosti:";
@@ -73,7 +71,6 @@
 "link_url_cant_open_title" = "Ups! Nepodarilo sa otvoriť odkaz v %@";
 "link_url_cant_open_message" = "Uisti sa, že máš nainštalovaný %@, alebo namiesto toho otvor takéto odkazy z predvolieb vo webovom prehliadači.";
 "preferences_appearance_events_past_title" = "Uplynulé udalosti:";
-"create_meeting_error_message" = "Vlastná URL adresa \"%@\" chýba alebo neplatná. ";
 
 // MARK: - Window titles
 
@@ -121,9 +118,6 @@
 "preferences_appearance_menu_time_format_title" = "Formát času:";
 "preferences_appearance_menu_time_format_12_hour_value" = "12-hodinový";
 "preferences_appearance_menu_time_format_24_hour_value" = "24-hodinový";
-"preferences_services_create_meeting_title" = "Vytvárať stretnutia cez";
-"preferences_services_google_meet_tip" = "Tip: Google Meet podporuje výber účtu v URL adrese, napr. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Použiť webový prehliadač";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -149,7 +143,6 @@
 "status_bar_section_join_from_clipboard" = "Otvoriť stretnutie zo schránky";
 "status_bar_section_refresh_sources" = "Aktualizovať zdroje";
 "notification_next_meeting_dismissed_message" = "Z Rýchlych akcií môžeš odstrániť \"Zrušené\"";
-"status_bar_section_join_create_meeting" = "Vytvoriť stretnutie";
 "status_bar_quick_actions" = "Rýchle akcie";
 "status_bar_hide_meeting_names" = "Skryť názov stretnutia";
 "status_bar_whats_new" = "Čo je nové?";
@@ -159,10 +152,8 @@
 "preferences_general_meeting_bar_description" = "Aplikácia na stretnutia v lište ponúk Macu. Pozrite si ďalšie stretnutie, odpočítavanie naživo a svoj rozvrh.";
 "preferences_general_version" = "Verzia %@";
 "preferences_services_create_meeting_custom_url_placeholder" = "Zadaj platnú URL adresu (s http:// alebo https://)";
-"preferences_services_create_meeting_custom_url_value" = "Vlastná URL adresa";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "Vlastná URL adresa";
 "next_meeting_empty_message" = "Hurá! Čas spraviť si kakao";
 "preferences_advanced_apple_script_checkmark" = "Pri pripájaní k schôdzi spustiť AppleScript";
 "preferences_advanced_apple_script_placeholder" = "# sem napíš svoj skript\ntell application \"Music\" to pause";
@@ -292,7 +283,6 @@
 "preferences_meeting_opening_behavior_title" = "Otvárať odkazy na stretnutia";
 "preferences_notifications_automation_title" = "Automatické pripojenie";
 "preferences_section_apple_script_hooks_title" = "Háčiky AppleScript";
-"preferences_section_create_title" = "Vytvoriť stretnutia";
 "preferences_section_general_settings_title" = "Všeobecné nastavenia";
 "preferences_section_regex_filters_title" = "Filtre regex";
 "preferences_section_shortcuts_title" = "Klávesové skratky";
@@ -364,3 +354,4 @@
 "notifications_alert_style_fullscreen" = "Celá obrazovka";
 "notifications_alert_style_both" = "Oboje";
 "notifications_timing_title" = "Načasovanie";
+"status_bar_details_open_google_calendar" = "Kalendár Google";

@@ -16,8 +16,6 @@
 "general_three_minute_before" = "3 minutos antes";
 "general_five_minute_before" = "5 minutos antes";
 "general_meeting" = "Reunión";
-"create_meeting_error_message" = "URL personalizada \"%@\" no disponible o inválida. ";
-"create_meeting_error_title" = "No se puede crear una nueva reunión";
 "next_meeting_empty_title" = "No hay más reuniones pendientes hoy";
 "next_meeting_empty_message" = "¡Woohoo! Hora de preparar un chocolate";
 
@@ -38,7 +36,6 @@
 "preferences_general_option_preferred_language_title" = "Idioma:";
 "preferences_general_option_preferred_language_system_value" = "Sistema";
 "preferences_general_shortcut_open_menu" = "Abrir menú:";
-"preferences_general_shortcut_create_meeting" = "Nueva reunión:";
 "preferences_general_shortcut_join_next" = "Unirse a la próxima reunión:";
 "preferences_general_shortcut_join_from_clipboard" = "Unirse a la reunión desde el portapapeles:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Alternar la visibilidad del título en la barra de estado:";
@@ -88,11 +85,7 @@
 "preferences_services_link_meeting_title" = "Navegador por defecto para enlaces de reunión";
 "preferences_services_link_service_title" = "%@";
 "preferences_services_link_default_browser_value" = "Navegador web por defecto";
-"preferences_services_create_meeting_title" = "Crear reuniones vía";
-"preferences_services_create_meeting_custom_url_value" = "URL personalizada";
 "preferences_services_create_meeting_custom_url_placeholder" = "Por favor, proporciona una URL válida (con http:// o https://)";
-"preferences_services_google_meet_tip" = "Consejo: Google Meet admite seleccionar cuenta en la URL, p. ej. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Usar navegador web";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -151,7 +144,6 @@
 "notification_next_meeting_dismissed_message" = "Puedes borrar reuniones descartadas desde Acciones Rápidas";
 "notification_all_dismissals_removed_title" = "Eliminar todos los descartados";
 "notification_all_dismissals_removed_message" = "Todas las reuniones descartadas vuelven a estar activas";
-"status_bar_section_join_create_meeting" = "Crear reunión";
 "status_bar_section_date_nothing" = "Nada para %@";
 "status_bar_event_start_time_all_day" = "Todo el día";
 "status_bar_submenu_calendar_title" = "Calendario: %@";
@@ -216,7 +208,6 @@
 
 // MARK: - Constants
 
-"constants_create_meeting_service_url" = "URL personalizada";
 "constants_meeting_service_phone" = "Número de teléfono";
 "constants_meeting_service_zoom_native" = "Zoom nativo";
 "constants_meeting_service_other" = "Otro";
@@ -265,7 +256,6 @@
 "preferences_tab_notifications" = "Notificaciones";
 "preferences_section_general_settings_title" = "Ajustes generales";
 "preferences_section_shortcuts_title" = "Atajos de teclado";
-"preferences_section_create_title" = "Crear reuniones";
 "preferences_section_apple_script_hooks_title" = "Ganchos de AppleScript";
 "preferences_section_regex_filters_title" = "Filtros de exreg";
 "preferences_calendar_source_title" = "Inicio del calendario";
@@ -367,3 +357,4 @@
 "notifications_alert_style_fullscreen" = "Pantalla completa";
 "notifications_alert_style_both" = "Ambos";
 "notifications_timing_title" = "Momento";
+"status_bar_details_open_google_calendar" = "Google Calendar";

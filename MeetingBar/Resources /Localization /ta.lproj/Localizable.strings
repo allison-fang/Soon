@@ -9,8 +9,6 @@
 "general_one_minute_before" = "1 மணித்துளி முன்";
 "general_three_minute_before" = "3 நிமிடங்களுக்கு முன்";
 "general_five_minute_before" = "5 நிமிடங்களுக்கு முன்";
-"create_meeting_error_title" = "புதிய சந்திப்பை உருவாக்க முடியாது";
-"create_meeting_error_message" = "தனிப்பயன் முகவரி \"%@\" காணவில்லை அல்லது தவறானது. ";
 "next_meeting_empty_title" = "இன்று வரவிருக்கும் கூட்டங்கள் எதுவும் இல்லை";
 "next_meeting_empty_message" = "வூஊ! கோகோவை உருவாக்க வேண்டிய நேரம் இது";
 "window_title_preferences" = "கூட்டத்தின் விருப்பத்தேர்வுகள்";
@@ -34,7 +32,6 @@
 "preferences_general_option_preferred_language_title" = "மொழி:";
 "preferences_general_option_preferred_language_system_value" = "மண்டலம்";
 "preferences_general_shortcut_open_menu" = "திறந்த மெனு:";
-"preferences_general_shortcut_create_meeting" = "கூட்டத்தை உருவாக்கு:";
 "preferences_general_shortcut_join_next" = "அடுத்த கூட்டத்தில் சேரவும்:";
 "preferences_general_shortcut_join_from_clipboard" = "கிளிப்போர்டில் இருந்து கூட்டத்தில் சேரவும்:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "நிலை பட்டியில் தலைப்பு தெரிவுநிலையை மாற்றவும்:";
@@ -78,11 +75,7 @@
 "preferences_services_link_meeting_title" = "அனைத்து சந்திப்பு இணைப்புகளையும் திறக்கவும்";
 "preferences_services_link_service_title" = "திறந்த %@ இணைப்புகள்";
 "preferences_services_link_default_browser_value" = "இயல்புநிலை வலை உலாவி";
-"preferences_services_create_meeting_title" = "கூட்டங்களை உருவாக்கவும்";
-"preferences_services_create_meeting_custom_url_value" = "தனிப்பயன் முகவரி";
 "preferences_services_create_meeting_custom_url_placeholder" = "செல்லுபடியாகும் முகவரி ஐ உள்ளிடவும் (http: // அல்லது https: //)";
-"preferences_services_google_meet_tip" = "உதவிக்குறிப்பு: கூகிள் சந்திப்பு முகவரி இல் கணக்கைத் தேர்ந்தெடுப்பதை ஆதரிக்கிறது, எ.கா. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "வலை உலாவியைப் பயன்படுத்தவும்";
 "preferences_configure_browsers_button" = "வலை உலாவிகளை உள்ளமைக்கவும்";
 "preferences_configure_browsers_delete_alert_title" = "வலை உலாவி உள்ளமைவை நீக்கவா?";
 "preferences_configure_browsers_delete_alert_message" = "%@ உலாவி உள்ளமைவை நீக்கவா?";
@@ -128,7 +121,6 @@
 "notification_next_meeting_dismissed_message" = "விரைவான செயல்களிலிருந்து நீங்கள் பணிநீக்கத்தை அகற்றலாம்";
 "notification_all_dismissals_removed_title" = "அனைத்து பணிநீக்கங்களையும் நீக்கியது";
 "notification_all_dismissals_removed_message" = "தள்ளுபடி செய்யப்பட்ட அனைத்து கூட்டங்களும் மீண்டும் செயல்படுகின்றன";
-"status_bar_section_join_create_meeting" = "கூட்டத்தை உருவாக்கவும்";
 "status_bar_section_date_nothing" = "%@ க்கு எதுவும் இல்லை";
 "status_bar_event_start_time_all_day" = "நாள் முழுவதும்";
 "status_bar_submenu_calendar_title" = "காலண்டர்: %@";
@@ -185,7 +177,6 @@
 "constants_meeting_service_other" = "மற்றொன்று";
 "shared_automatic_event_join_toggle" = "அடுத்த நிகழ்வு கூட்டத்தில் தானாகவே சேரவும்";
 "shared_automatic_event_join_tip" = "இந்த அமைப்பு உங்கள் கட்டமைக்கப்பட்ட பயன்பாடு அல்லது உலாவியில் உங்கள் அடுத்த கூட்டத்தை தானாகவே திறக்கும்";
-"constants_create_meeting_service_url" = "தனிப்பயன் முகவரி";
 "constants_meeting_service_phone" = "தொலைபேசி எண்";
 "constants_meeting_service_url" = "முகவரி";
 "notifications_event_start_soon_body" = "நிகழ்வு விரைவில் தொடங்குகிறது";
@@ -243,7 +234,6 @@
 "preferences_meeting_opening_behavior_title" = "கூட்ட இணைப்புகளை திற";
 "preferences_notifications_automation_title" = "தானியங்கி சேர்க்கை";
 "preferences_section_apple_script_hooks_title" = "AppleScript இணைப்புகள்";
-"preferences_section_create_title" = "கூட்டங்களை உருவாக்கு";
 "preferences_section_general_settings_title" = "பொதுவான அமைப்புகள்";
 "preferences_section_regex_filters_title" = "Regex வடிகட்டிகள்";
 "preferences_section_shortcuts_title" = "விசைப்பலகை குறுக்குவழிகள்";
@@ -315,3 +305,4 @@
 "notifications_alert_style_fullscreen" = "முழுத்திரை";
 "notifications_alert_style_both" = "இரண்டும்";
 "notifications_timing_title" = "நேரம்";
+"status_bar_details_open_google_calendar" = "Google Calendar";

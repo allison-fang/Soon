@@ -13,8 +13,6 @@
 "general_delete" = "Usuń";
 "general_save" = "Zapisz";
 "general_meeting" = "Spotkanie";
-"create_meeting_error_title" = "Nie można utworzyć nowego spotkania";
-"create_meeting_error_message" = "Brak niestandardowego adresu URL \"%@\" lub jest on nieprawidłowy. ";
 "next_meeting_empty_title" = "Nie ma dzisiaj żadnych nadchodzących spotkań";
 "next_meeting_empty_message" = "Woohoo! Nadszedł czas, aby zrobić kakao";
 
@@ -35,7 +33,6 @@
 "preferences_general_option_preferred_language_title" = "Język:";
 "preferences_general_option_preferred_language_system_value" = "System";
 "preferences_general_shortcut_open_menu" = "Otwórz menu:";
-"preferences_general_shortcut_create_meeting" = "Utwórz spotkanie:";
 "preferences_general_shortcut_join_next" = "Dołącz do następnego spotkania:";
 "preferences_general_shortcut_join_from_clipboard" = "Dołącz do spotkania ze schowka:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Przełącz widoczność tytułu na pasku stanu:";
@@ -84,11 +81,7 @@
 
 "preferences_services_link_meeting_title" = "Otwórz wszystkie linki spotkań w";
 "preferences_services_link_default_browser_value" = "Domyślna przeglądarka internetowa";
-"preferences_services_create_meeting_title" = "Utwórz spotkania za pomocą";
-"preferences_services_create_meeting_custom_url_value" = "Niestandardowy adres URL";
 "preferences_services_create_meeting_custom_url_placeholder" = "Proszę wpisać prawidłowy adres URL (z http:// lub https://)";
-"preferences_services_google_meet_tip" = "Wskazówka: Google Meet obsługuje wybieranie konta w adresie URL, np. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Użyj przeglądarki internetowej";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -139,7 +132,6 @@
 "status_bar_section_join_current_meeting" = "Dołącz do bieżącego spotkania";
 "status_bar_section_join_from_clipboard" = "Otwórz spotkanie ze schowka";
 "status_bar_section_refresh_sources" = "Odśwież źródła";
-"status_bar_section_join_create_meeting" = "Utwórz spotkanie";
 "status_bar_section_date_nothing" = "Nic dla %@";
 "status_bar_event_start_time_all_day" = "Cały dzień";
 "status_bar_submenu_calendar_title" = "Kalendarz: %@";
@@ -203,7 +195,6 @@
 "shared_automatic_event_join_tip" = "To ustawienie automatycznie otworzy następne spotkanie w skonfigurowanej aplikacji lub przeglądarce";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "Własny URL";
 "constants_meeting_service_phone" = "Numer telefonu";
 "constants_meeting_service_zoom_native" = "Zoom native";
 "constants_meeting_service_other" = "Inne";
@@ -294,7 +285,6 @@
 "preferences_meeting_opening_behavior_title" = "Otwórz linki do spotkań";
 "preferences_notifications_automation_title" = "Automatyczne dołączanie";
 "preferences_section_apple_script_hooks_title" = "Hooki AppleScript";
-"preferences_section_create_title" = "Tworzenie spotkań";
 "preferences_section_general_settings_title" = "Ustawienia ogólne";
 "preferences_section_regex_filters_title" = "Filtry regex";
 "preferences_section_shortcuts_title" = "Skróty klawiaturowe";
@@ -366,3 +356,4 @@
 "notifications_alert_style_fullscreen" = "Pełny ekran";
 "notifications_alert_style_both" = "Oba";
 "notifications_timing_title" = "Czas";
+"status_bar_details_open_google_calendar" = "Kalendarz Google";

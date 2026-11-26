@@ -13,8 +13,6 @@
 "general_delete" = "Видалити";
 "general_save" = "Зберегти";
 "general_meeting" = "Зустріч";
-"create_meeting_error_title" = "Ой леле! Не вдалось створити зустріч";
-"create_meeting_error_message" = "Власне посилання \"%@\" відсутнє або неправильне. ";
 "next_meeting_empty_title" = "Сьогодні більше немає зустрічей";
 "next_meeting_empty_message" = "Овва! Час для какао";
 
@@ -35,7 +33,6 @@
 "preferences_general_option_preferred_language_title" = "Мова:";
 "preferences_general_option_preferred_language_system_value" = "Системна";
 "preferences_general_shortcut_open_menu" = "Відкрити меню:";
-"preferences_general_shortcut_create_meeting" = "Створити зустріч:";
 "preferences_general_shortcut_join_next" = "Долучитись до наступної зустрічі:";
 "preferences_general_shortcut_join_from_clipboard" = "Долучитись до зустрічі з буфера обміну:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Показати/сховати заголовок у смузі меню:";
@@ -87,11 +84,7 @@
 "preferences_services_link_meeting_title" = "Відкривати усі посилання в";
 "preferences_services_link_service_title" = "Відкривати посилання %@ у";
 "preferences_services_link_default_browser_value" = "основному браузері";
-"preferences_services_create_meeting_title" = "Створювати зустрічі в";
-"preferences_services_create_meeting_custom_url_value" = "Власне посилання";
 "preferences_services_create_meeting_custom_url_placeholder" = "Будь ласка, введіть коректне посилання (з url-схемою, напр. https://)";
-"preferences_services_google_meet_tip" = "Підказка: Google Meet підтримує вибір акаунта через параметр, напр. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Використовувати браузер";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -145,7 +138,6 @@
 "status_bar_section_join_next_meeting" = "Долучитись до наступної зустрічі";
 "status_bar_section_join_current_meeting" = "Долучитись до поточної зустрічі";
 "status_bar_section_join_from_clipboard" = "Відкрити зустріч із буфера обміну";
-"status_bar_section_join_create_meeting" = "Створити зустріч";
 "status_bar_section_date_nothing" = "Жодних подій %@";
 "status_bar_event_start_time_all_day" = "Весь день";
 "status_bar_submenu_calendar_title" = "Календар: %@";
@@ -213,7 +205,6 @@
 "shared_automatic_event_join_tip" = "Це налаштування автоматично відкриє вашу наступну зустріч у вибраному застосунку чи браузері";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "Власне посилання";
 "constants_meeting_service_phone" = "Телефон";
 "constants_meeting_service_zoom_native" = "Zoom native";
 "constants_meeting_service_other" = "інше";
@@ -271,7 +262,6 @@
 "preferences_tab_notifications" = "Сповіщення";
 "preferences_section_general_settings_title" = "Загальні налаштування";
 "preferences_section_shortcuts_title" = "Клавіатурні скорочення";
-"preferences_section_create_title" = "Створити зустрічі";
 "preferences_section_apple_script_hooks_title" = "AppleScript хуки";
 "preferences_section_regex_filters_title" = "Regex фільтри";
 "preferences_calendar_source_title" = "Джерело календаря";
@@ -375,3 +365,4 @@
 "notifications_alert_style_fullscreen" = "На весь екран";
 "notifications_alert_style_both" = "Обидва";
 "notifications_timing_title" = "Час";
+"status_bar_details_open_google_calendar" = "Google Календар";

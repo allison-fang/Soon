@@ -20,8 +20,6 @@
 "general_refresh" = "Refresh";
 "general_end_of_event_notification_toggle" = "Alert me when an event ends";
 "timeline_accessibility_label" = "Timeline with %d events";
-"create_meeting_error_title" = "Cannot create new meeting";
-"create_meeting_error_message" = "Custom URL \"%@\" missing or invalid. ";
 "next_meeting_empty_title" = "There are no upcoming meetings today";
 "next_meeting_empty_message" = "Woohoo! It's time to make cocoa";
 "message_clipboard_invalid_title" = "No valid URL";
@@ -53,7 +51,6 @@
 
 "preferences_section_general_settings_title" = "General settings";
 "preferences_section_shortcuts_title" = "Keyboard shortcuts";
-"preferences_section_create_title" = "Create meetings";
 "preferences_section_apple_script_hooks_title" = "AppleScript hooks";
 "preferences_section_regex_filters_title" = "Regex filters";
 "preferences_calendar_configuration_title" = "Calendar configuration";
@@ -82,7 +79,6 @@
 "preferences_general_option_preferred_language_title" = "Language:";
 "preferences_general_option_preferred_language_system_value" = "System";
 "preferences_general_shortcut_open_menu" = "Open menu:";
-"preferences_general_shortcut_create_meeting" = "Create meeting:";
 "preferences_general_shortcut_join_next" = "Join next meeting:";
 "preferences_general_shortcut_join_from_clipboard" = "Join meeting from clipboard:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Toggle title visibility in status bar:";
@@ -165,11 +161,7 @@
 "preferences_meeting_opening_mode_jitsi_app" = "Jitsi App";
 "preferences_meeting_opening_mode_slack_app" = "Slack App";
 "preferences_meeting_opening_mode_riverside_app" = "Riverside App";
-"preferences_services_create_meeting_title" = "Create meetings via";
-"preferences_services_create_meeting_custom_url_value" = "Custom URL";
 "preferences_services_create_meeting_custom_url_placeholder" = "Please enter a valid URL (with http:// or https://)";
-"preferences_services_google_meet_tip" = "Tip: Google Meet supports choosing account in the URL, e.g. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Use web browser";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -247,7 +239,6 @@
 "notification_next_meeting_dismissed_message" = "You can remove dismissal from Quick Actions";
 "notification_all_dismissals_removed_title" = "Removed all dismissals";
 "notification_all_dismissals_removed_message" = "All dismissed meetings are back in action";
-"status_bar_section_join_create_meeting" = "Create meeting";
 "status_bar_control_actions" = "More actions";
 "status_bar_control_current_meeting" = "Current meeting";
 "status_bar_control_next_meeting" = "Next meeting";
@@ -381,7 +372,6 @@
 "shared_automatic_event_join_tip" = "This setting will automatically open your next meeting in your configured app or browser";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "Custom URL";
 "constants_meeting_service_phone" = "Phone number";
 "constants_meeting_service_zoom_native" = "Zoom native";
 "constants_meeting_service_other" = "Other";
@@ -424,3 +414,4 @@
 "notifications_alert_style_fullscreen" = "Full screen";
 "notifications_alert_style_both" = "Both";
 "notifications_timing_title" = "Timing";
+"status_bar_details_open_google_calendar" = "Google Calendar";

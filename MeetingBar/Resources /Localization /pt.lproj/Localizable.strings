@@ -9,8 +9,6 @@
 "general_one_minute_before" = "1 minuto antes";
 "general_three_minute_before" = "3 minutos antes";
 "general_five_minute_before" = "5 minutos antes";
-"create_meeting_error_title" = "Não é possível criar uma reunião";
-"create_meeting_error_message" = "URL personalizada \"%@\" ausente ou inválida. ";
 "next_meeting_empty_title" = "Não há reuniões agendadas para hoje";
 "next_meeting_empty_message" = "Uau! É hora de preparar um chocolate quente";
 "window_title_preferences" = "Preferências do Soon";
@@ -22,7 +20,6 @@
 "preferences_general_option_preferred_language_title" = "Idioma:";
 "preferences_general_option_preferred_language_system_value" = "Sistema";
 "preferences_general_shortcut_open_menu" = "Abrir menu:";
-"preferences_general_shortcut_create_meeting" = "Criar reunião:";
 "preferences_general_shortcut_join_next" = "Entrar na próxima reunião:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Alternar visibilidade do título na barra de estado:";
 "preferences_general_meeting_bar_description" = "Uma app de reuniões para a barra de menus do Mac. Veja a sua próxima reunião, uma contagem decrescente em direto e a sua agenda.";
@@ -77,7 +74,6 @@
 "access_screen_provider_picker_label" = "Selecionar fonte de calendário";
 "access_screen_try_again" = "Tente novamente";
 "calendars_screen_select_calendar_title" = "Selecione pelo menos um calendário";
-"constants_create_meeting_service_url" = "URL personalizado";
 "constants_meeting_service_other" = "Outro";
 "constants_meeting_service_phone" = "Número de telefone";
 "constants_meeting_service_url" = "URL";
@@ -194,15 +190,10 @@
 "preferences_meeting_opening_mode_zoom_web_app_help" = "Abre links de reunião Zoom suportados no cliente web do Zoom.";
 "preferences_notifications_automation_title" = "Entrada Automática";
 "preferences_section_apple_script_hooks_title" = "Hooks AppleScript";
-"preferences_section_create_title" = "Criar reuniões";
 "preferences_section_general_settings_title" = "Definições Gerais";
 "preferences_section_regex_filters_title" = "Filtros Regex";
 "preferences_section_shortcuts_title" = "Atalhos de Teclado";
-"preferences_services_create_meeting_browser_title" = "Usar browser web";
 "preferences_services_create_meeting_custom_url_placeholder" = "Por favor introduza um URL válido (com http:// ou https://)";
-"preferences_services_create_meeting_custom_url_value" = "URL personalizado";
-"preferences_services_create_meeting_title" = "Criar reuniões via";
-"preferences_services_google_meet_tip" = "Dica: O Google Meet suporta a escolha de conta no URL, por exemplo https://meet.google.com/new?authuser=1";
 "preferences_services_link_default_help" = "Este browser é usado a menos que seja definida uma substituição específica do fornecedor.";
 "preferences_services_link_overrides_title" = "Substituições do fornecedor";
 "preferences_services_link_service_title" = "%@";
@@ -257,7 +248,6 @@
 "status_bar_quit" = "Sair do Soon";
 "status_bar_rate_app" = "Avaliar App";
 "status_bar_section_date_nothing" = "Nada para %@";
-"status_bar_section_join_create_meeting" = "Criar reunião";
 "status_bar_section_join_current_meeting" = "Entrar na reunião do evento atual";
 "status_bar_section_join_from_clipboard" = "Abrir reunião da área de transferência";
 "status_bar_section_join_next_meeting" = "Entrar na reunião do próximo evento";
@@ -315,3 +305,4 @@
 "notifications_alert_style_fullscreen" = "Ecrã inteiro";
 "notifications_alert_style_both" = "Ambos";
 "notifications_timing_title" = "Momento";
+"status_bar_details_open_google_calendar" = "Google Agenda";

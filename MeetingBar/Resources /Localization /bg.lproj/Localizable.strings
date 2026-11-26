@@ -16,8 +16,6 @@
 "general_one_minute_before" = "1 минута по-рано";
 "general_three_minute_before" = "3 минути по-рано";
 "general_five_minute_before" = "5 минути по-рано";
-"create_meeting_error_title" = "Не може да се създаде нова среща";
-"create_meeting_error_message" = "Персонализираният URL \"%@\" липсва или е невалиден. ";
 "next_meeting_empty_title" = "Няма предстоящи срещи днес";
 "next_meeting_empty_message" = "Няма повече срещи за днес";
 
@@ -38,7 +36,6 @@
 "preferences_general_option_preferred_language_title" = "Език:";
 "preferences_general_option_preferred_language_system_value" = "Системен";
 "preferences_general_shortcut_open_menu" = "Отвори менюто:";
-"preferences_general_shortcut_create_meeting" = "Създай среща:";
 "preferences_general_shortcut_join_next" = "Влез в следващата среща:";
 "preferences_general_shortcut_join_from_clipboard" = "Отвори среща от клипборда:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Покажи/скрий заглавието в лентата:";
@@ -92,11 +89,7 @@
 "preferences_services_link_meeting_title" = "Отваряй всички връзки за срещи в";
 "preferences_services_link_service_title" = "Отваряй връзките за %@ в";
 "preferences_services_link_default_browser_value" = "уеб браузъра по подразбиране";
-"preferences_services_create_meeting_title" = "Създавай срещи чрез";
-"preferences_services_create_meeting_custom_url_value" = "Персонализиран URL";
 "preferences_services_create_meeting_custom_url_placeholder" = "Въведи валиден URL (с http:// или https://)";
-"preferences_services_google_meet_tip" = "Съвет: Google Meet поддържа избор на акаунт в URL, напр. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Използвай уеб браузър";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -155,7 +148,6 @@
 "notification_next_meeting_dismissed_message" = "Срещата може да бъде върната от Бързи действия";
 "notification_all_dismissals_removed_title" = "Всички скрити срещи са възстановени";
 "notification_all_dismissals_removed_message" = "Всички скрити срещи отново се показват";
-"status_bar_section_join_create_meeting" = "Създай среща";
 "status_bar_section_date_nothing" = "Нищо за %@";
 "status_bar_event_start_time_all_day" = "Цял ден";
 "status_bar_submenu_calendar_title" = "Календар: %@";
@@ -219,7 +211,6 @@
 "shared_automatic_event_join_tip" = "Следващата среща ще се отваря автоматично в избраното приложение или браузър";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "Персонализиран URL";
 "constants_meeting_service_phone" = "Телефонен номер";
 "constants_meeting_service_zoom_native" = "Zoom native";
 "constants_meeting_service_other" = "Друго";
@@ -293,7 +284,6 @@
 "preferences_meeting_opening_behavior_title" = "Отвори връзки към срещи";
 "preferences_notifications_automation_title" = "Автоматично присъединяване";
 "preferences_section_apple_script_hooks_title" = "AppleScript куки";
-"preferences_section_create_title" = "Създай срещи";
 "preferences_section_general_settings_title" = "Общи настройки";
 "preferences_section_regex_filters_title" = "Regex филтри";
 "preferences_section_shortcuts_title" = "Клавишни комбинации";
@@ -365,3 +355,4 @@
 "notifications_alert_style_fullscreen" = "На цял екран";
 "notifications_alert_style_both" = "И двете";
 "notifications_timing_title" = "Време";
+"status_bar_details_open_google_calendar" = "Google Календар";

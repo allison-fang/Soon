@@ -30,7 +30,6 @@
 "constants_meeting_service_other" = "Jiná";
 "constants_meeting_service_zoom_native" = "Zoom (nativní aplikace)";
 "constants_meeting_service_phone" = "Telefonní číslo";
-"constants_create_meeting_service_url" = "Vlastní adresa URL";
 
 // MARK: - Constants
 "shared_send_notification_disabled_tip" = "⚠️ Oznámení Soon jsou v macOS vypnutá. Abyste měli přehled o schůzkách, povolte oznámení v Nastavení systému.";
@@ -95,7 +94,6 @@
 "status_bar_submenu_status_title" = "Stav: %@";
 "status_bar_submenu_duration_all_day" = "%@–%@ (%@ min)";
 "status_bar_submenu_calendar_title" = "Kalendář: %@";
-"status_bar_section_join_create_meeting" = "Vytvořit schůzku";
 "status_bar_section_join_from_clipboard" = "Otevřít schůzku ze schránky";
 "status_bar_section_join_next_meeting" = "Připojit se k příští schůzce";
 "status_bar_section_join_current_meeting" = "Připojit se k aktuální schůzce";
@@ -146,10 +144,6 @@
 // MARK: - Preferences Services Browsers Configuration
 
 "preferences_configure_browsers_button" = "Spravovat prohlížeče…";
-"preferences_services_create_meeting_browser_title" = "Použít webový prohlížeč";
-"preferences_services_google_meet_tip" = "Tip: Google Meet umožňuje zvolit účet v adrese URL, například https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_custom_url_value" = "Vlastní adresa URL";
-"preferences_services_create_meeting_title" = "Vytvářet schůzky pomocí";
 "preferences_services_link_default_browser_value" = "Výchozí webový prohlížeč";
 "preferences_services_link_service_title" = "%@";
 
@@ -199,7 +193,6 @@
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Přepnout zobrazení názvu v řádku nabídek:";
 "preferences_general_shortcut_join_from_clipboard" = "Připojit se ke schůzce ze schránky:";
 "preferences_general_shortcut_join_next" = "Připojit se k příští schůzce:";
-"preferences_general_shortcut_create_meeting" = "Vytvořit schůzku:";
 "preferences_general_shortcut_open_menu" = "Otevřít nabídku:";
 "preferences_general_option_preferred_language_system_value" = "Podle systému";
 "preferences_general_option_preferred_language_title" = "Jazyk:";
@@ -220,8 +213,6 @@
 "window_title_onboarding" = "Vítejte v Soon";
 "next_meeting_empty_message" = "Hurá! Je čas na kakao.";
 "next_meeting_empty_title" = "Dnes vás nečekají žádné další schůzky";
-"create_meeting_error_message" = "Vlastní adresa URL „%@“ chybí nebo je neplatná. ";
-"create_meeting_error_title" = "Nelze vytvořit novou schůzku";
 "general_meeting" = "Schůzka";
 "general_save" = "Uložit";
 "general_delete" = "Odstranit";
@@ -286,7 +277,6 @@
 "preferences_meeting_opening_behavior_title" = "Otevírání odkazů na schůzky";
 "preferences_notifications_automation_title" = "Automatické připojování";
 "preferences_section_apple_script_hooks_title" = "Automatizace pomocí AppleScriptu";
-"preferences_section_create_title" = "Vytváření schůzek";
 "preferences_section_general_settings_title" = "Obecná nastavení";
 "preferences_section_regex_filters_title" = "Filtry s regulárními výrazy";
 "preferences_section_shortcuts_title" = "Klávesové zkratky";
@@ -378,3 +368,4 @@
 "notifications_alert_style_fullscreen" = "Celá obrazovka";
 "notifications_alert_style_both" = "Obojí";
 "notifications_timing_title" = "Načasování";
+"status_bar_details_open_google_calendar" = "Kalendář Google";

@@ -12,8 +12,6 @@
 "general_delete" = "Elimina";
 "general_save" = "Salva";
 "general_meeting" = "Riunione";
-"create_meeting_error_title" = "Impossibile creare una nuova riunione";
-"create_meeting_error_message" = "URL personalizzato \"%@\" mancante o non valido. ";
 "next_meeting_empty_title" = "Non ci sono riunioni oggi";
 "next_meeting_empty_message" = "Woohoo! È ora di fare la cioccolata calda";
 
@@ -34,7 +32,6 @@
 "preferences_general_option_preferred_language_title" = "Lingua:";
 "preferences_general_option_preferred_language_system_value" = "Sistema";
 "preferences_general_shortcut_open_menu" = "Apri menu:";
-"preferences_general_shortcut_create_meeting" = "Crea riunione:";
 "preferences_general_shortcut_join_next" = "Entra nella prossima riunione:";
 "preferences_general_shortcut_join_from_clipboard" = "Partecipa alla riunione da link negli appunti:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Mostra/nascondi il titolo nella barra di stato:";
@@ -84,11 +81,7 @@
 "preferences_services_link_meeting_title" = "Apri tutti i link delle riunioni in";
 "preferences_services_link_service_title" = "Apri i link %@ in";
 "preferences_services_link_default_browser_value" = "Browser di default";
-"preferences_services_create_meeting_title" = "Crea riunioni tramite";
-"preferences_services_create_meeting_custom_url_value" = "URL personalizzato";
 "preferences_services_create_meeting_custom_url_placeholder" = "Per favore, inserisci un URL valido (con http:// o https://)";
-"preferences_services_google_meet_tip" = "Suggerimento: Google Meet supporta la scelta dell'account nell'URL, es. https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Usa il browser";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -147,7 +140,6 @@
 "notification_next_meeting_dismissed_message" = "Puoi rimuovere il respingimento da Azioni Rapide";
 "notification_all_dismissals_removed_title" = "Rimossi tutti i respinti";
 "notification_all_dismissals_removed_message" = "Tutte le riunioni respinte sono tornate in azione";
-"status_bar_section_join_create_meeting" = "Crea riunione";
 "status_bar_section_date_nothing" = "Niente per %@";
 "status_bar_event_start_time_all_day" = "Tutto il giorno";
 "status_bar_submenu_calendar_title" = "Calendario: %@";
@@ -215,7 +207,6 @@
 "shared_automatic_event_join_tip" = "Quest'impostazione aprirà automaticamente la tua prossima riunione nell'app o nel browser configurati";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "URL personalizzato";
 "constants_meeting_service_phone" = "Numero di telefono";
 "constants_meeting_service_zoom_native" = "Zoom nativo";
 "constants_meeting_service_other" = "Altro";
@@ -293,7 +284,6 @@
 "preferences_meeting_opening_behavior_title" = "Apri i link delle riunioni";
 "preferences_notifications_automation_title" = "Partecipazione automatica";
 "preferences_section_apple_script_hooks_title" = "Hook AppleScript";
-"preferences_section_create_title" = "Crea riunioni";
 "preferences_section_general_settings_title" = "Impostazioni generali";
 "preferences_section_regex_filters_title" = "Filtri regex";
 "preferences_section_shortcuts_title" = "Scorciatoie da tastiera";
@@ -365,3 +355,4 @@
 "notifications_alert_style_fullscreen" = "Schermo intero";
 "notifications_alert_style_both" = "Entrambi";
 "notifications_timing_title" = "Tempistica";
+"status_bar_details_open_google_calendar" = "Google Calendar";

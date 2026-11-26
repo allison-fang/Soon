@@ -402,6 +402,14 @@ struct StatusBarPopoverView: View {
 
     private var footer: some View {
         HStack(spacing: 8) {
+            if presentation.showsGoogleCalendarButton {
+                Button {
+                    model.actions.openInCalendar(Links.googleCalendar)
+                } label: {
+                    Label("status_bar_details_open_google_calendar".loco(), systemImage: "arrow.up.right.square")
+                }
+                .help("status_bar_submenu_open_in_google_calendar".loco())
+            }
             Button(action: model.actions.openPreferences) {
                 Label("status_bar_preferences".loco(), systemImage: "gearshape")
             }

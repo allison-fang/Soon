@@ -100,7 +100,7 @@ MeetingBar/                         (~76 .swift files)
 │
 ├── Meetings/                       — meeting URL detection, opening, services catalog
 │   ├── MeetingProvider.swift       — struct + static all (single source of provider metadata) [SPM]
-│   ├── MeetingServices.swift       — enum extensions: localization, icons, opening, create-meeting URLs
+│   ├── MeetingServices.swift       — enum extensions: localization, icons, opening
 │   ├── MeetingLinkDetector.swift   — MeetingServices enum + MeetingLink + helpers + Candidate + OpeningPolicy [SPM]
 │   ├── MeetingOpener.swift         — runs join script + opens URL + per-provider OpenStrategy structs
 │   └── MeetingOpenPreferencesMigration.swift — migrates old per-provider browser prefs

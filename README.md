@@ -71,7 +71,6 @@ Soon works with:
 * Join any upcoming online meeting with one click.
 * Join the nearest meeting with a global keyboard shortcut.
 * Move between events with the arrow keys and join with Return.
-* Create ad-hoc meetings from your preferred meeting service with a keyboard shortcut.
 * Open meeting links in a preferred browser or native app per service.
 * Open events in Google Calendar, Calendar, or Fantastical.
 

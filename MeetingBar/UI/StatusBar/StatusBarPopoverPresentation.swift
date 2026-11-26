@@ -95,6 +95,7 @@ struct StatusBarPopoverPresentation: Equatable {
     var days: [TimelineDayPresentation] = []
     var lastUpdatedText: String?
     var updateAvailableText: String?
+    var showsGoogleCalendarButton = false
 
     /// Display order, used for arrow-key navigation.
     var events: [TimelineEventPresentation] {
@@ -133,7 +134,8 @@ struct StatusBarPopoverPresenter {
             },
             updateAvailableText: state.availableUpdate.map { _ in
                 "status_bar_popover_update_available".loco()
-            }
+            },
+            showsGoogleCalendarButton: state.activeProvider == .googleCalendar
         )
         guard state.hasSelectedCalendars, !hidesEmptyDays(for: presentation.notice) else {
             return presentation

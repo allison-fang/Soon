@@ -17,8 +17,6 @@
 "general_one_minute_before" = "1 minuto antes";
 "general_three_minute_before" = "3 minutos antes";
 "general_five_minute_before" = "5 minutos antes";
-"create_meeting_error_title" = "Não é possível criar uma reunião";
-"create_meeting_error_message" = "URL personalizada \"%@\" ausente ou inválida. ";
 "next_meeting_empty_title" = "Não há reuniões agendadas para hoje";
 "next_meeting_empty_message" = "Woohoo! É hora de preparar um chocolate quente";
 
@@ -39,7 +37,6 @@
 "preferences_general_option_preferred_language_title" = "Idioma:";
 "preferences_general_option_preferred_language_system_value" = "Sistema";
 "preferences_general_shortcut_open_menu" = "Abrir menu:";
-"preferences_general_shortcut_create_meeting" = "Criar reunião:";
 "preferences_general_shortcut_join_next" = "Entrar na próxima reunião:";
 "preferences_general_shortcut_join_from_clipboard" = "Entrar na reunião a partir da área de transferência:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Alternar visibilidade do título na barra de status:";
@@ -89,11 +86,7 @@
 "preferences_services_link_meeting_title" = "Abrir todos os links de reunião em";
 "preferences_services_link_service_title" = "Abrir links %@ em";
 "preferences_services_link_default_browser_value" = "Navegador padrão";
-"preferences_services_create_meeting_title" = "Criar reuniões via";
-"preferences_services_create_meeting_custom_url_value" = "URL Personalizada";
 "preferences_services_create_meeting_custom_url_placeholder" = "Digite uma URL válida (com http:// ou https://)";
-"preferences_services_google_meet_tip" = "Dica: O Google Meet permite escolher uma conta no URL, por exemplo, https://meet.google.com/new?authuser=1";
-"preferences_services_create_meeting_browser_title" = "Usar navegador da web";
 
 // MARK: - Preferences Services Browsers Configuration
 
@@ -152,7 +145,6 @@
 "notification_next_meeting_dismissed_message" = "Você pode remover a exclusão por meio das Ações Rápidas";
 "notification_all_dismissals_removed_title" = "Todas as exclusões removidas";
 "notification_all_dismissals_removed_message" = "Todas as reuniões ignoradas estão de volta";
-"status_bar_section_join_create_meeting" = "Criar reunião";
 "status_bar_section_date_nothing" = "Nada para %@";
 "status_bar_event_start_time_all_day" = "Dia inteiro";
 "status_bar_submenu_calendar_title" = "Calendário: %@";
@@ -216,7 +208,6 @@
 "shared_automatic_event_join_tip" = "Essa configuração abrirá automaticamente sua próxima reunião no aplicativo ou navegador configurado";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "URL Personalizada";
 "constants_meeting_service_phone" = "Número de telefone";
 "constants_meeting_service_zoom_native" = "Zoom nativo";
 "constants_meeting_service_other" = "Outros";
@@ -298,7 +289,6 @@
 "preferences_meeting_opening_behavior_title" = "Abrir links de reunião";
 "preferences_notifications_automation_title" = "Participação automática";
 "preferences_section_apple_script_hooks_title" = "Hooks AppleScript";
-"preferences_section_create_title" = "Criar reuniões";
 "preferences_section_general_settings_title" = "Configurações gerais";
 "preferences_section_regex_filters_title" = "Filtros regex";
 "preferences_section_shortcuts_title" = "Atalhos de teclado";
@@ -373,3 +363,4 @@
 "notifications_alert_style_fullscreen" = "Tela cheia";
 "notifications_alert_style_both" = "Ambos";
 "notifications_timing_title" = "Momento";
+"status_bar_details_open_google_calendar" = "Google Agenda";

@@ -151,10 +151,6 @@ struct ShortcutsSection: View {
             recorder: KeyboardShortcuts.Recorder(for: .joinEventShortcut)
         )
         ShortcutRow(
-            title: preferenceLabel("preferences_general_shortcut_create_meeting"),
-            recorder: KeyboardShortcuts.Recorder(for: .createMeetingShortcut)
-        )
-        ShortcutRow(
             title: preferenceLabel("preferences_general_shortcut_join_from_clipboard"),
             recorder: KeyboardShortcuts.Recorder(for: .openClipboardShortcut)
         )

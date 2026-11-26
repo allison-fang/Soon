@@ -10,10 +10,7 @@ import Defaults
 import SwiftUI
 
 struct LinksTab: View {
-    @Default(.browserForCreateMeeting) var browserForCreateMeeting
     @Default(.defaultBrowser) var defaultBrowser
-    @Default(.createMeetingServiceUrl) var createMeetingServiceUrl
-    @Default(.createMeetingService) var createMeetingService
     @Default(.browsers) var allBrowser
 
     @State var showBrowserConfiguration = false
@@ -22,13 +19,6 @@ struct LinksTab: View {
         BrowserPickerOptions.make(
             configured: allBrowser,
             selected: defaultBrowser
-        )
-    }
-
-    private var createMeetingBrowserOptions: [Browser] {
-        BrowserPickerOptions.make(
-            configured: allBrowser,
-            selected: browserForCreateMeeting
         )
     }
 
@@ -74,37 +64,6 @@ struct LinksTab: View {
                     Text("preferences_configure_browsers_help".loco())
                         .font(.caption)
                         .foregroundStyle(.secondary)
-                }
-            }
-
-            Section(header: Text("preferences_section_create_title".loco())) {
-                HStack {
-                    Text("preferences_services_create_meeting_title".loco())
-                    Spacer()
-                    CreateMeetingServicePicker()
-                        .fixedSize()
-                }
-
-                if createMeetingService == CreateMeetingServices.url {
-                    HStack {
-                        Text("preferences_services_create_meeting_custom_url_value".loco())
-                        TextField(
-                            "preferences_services_create_meeting_custom_url_placeholder".loco(),
-                            text: $createMeetingServiceUrl
-                        ).textFieldStyle(RoundedBorderTextFieldStyle())
-                    }
-                    Text("preferences_services_google_meet_tip".loco())
-                        .foregroundStyle(.secondary)
-                        .font(.caption)
-                }
-
-                Picker(
-                    "preferences_services_create_meeting_browser_title".loco(),
-                    selection: BrowserPickerOptions.selection($browserForCreateMeeting)
-                ) {
-                    ForEach(createMeetingBrowserOptions, id: \.self) { (browser: Browser) in
-                        Text(browser.name).tag(browser)
-                    }
                 }
             }
         }
@@ -192,27 +151,6 @@ struct MeetingProviderOpeningPicker: View {
         } else {
             label
         }
-    }
-}
-
-struct CreateMeetingServicePicker: View {
-    @Default(.createMeetingService) var createMeetingService
-
-    var body: some View {
-        Picker(selection: $createMeetingService, label: EmptyView()) {
-            Text(CreateMeetingServices.meet.localizedValue).tag(CreateMeetingServices.meet)
-            Text(CreateMeetingServices.zoom.localizedValue).tag(CreateMeetingServices.zoom)
-            Text(CreateMeetingServices.teams.localizedValue).tag(CreateMeetingServices.teams)
-            Text(CreateMeetingServices.jam.localizedValue).tag(CreateMeetingServices.jam)
-            Text(CreateMeetingServices.coscreen.localizedValue).tag(CreateMeetingServices.coscreen)
-            Text(CreateMeetingServices.gcalendar.localizedValue).tag(
-                CreateMeetingServices.gcalendar)
-            Text(CreateMeetingServices.outlook_live.localizedValue).tag(
-                CreateMeetingServices.outlook_live)
-            Text(CreateMeetingServices.outlook_office365.localizedValue).tag(
-                CreateMeetingServices.outlook_office365)
-            Text(CreateMeetingServices.url.localizedValue).tag(CreateMeetingServices.url)
-        }.labelsHidden()
     }
 }
 

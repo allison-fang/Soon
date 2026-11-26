@@ -109,13 +109,6 @@ extension Defaults.Keys {
     static let nonAllDayEvents = Key<NonAlldayEventsAppereance>(
         "nonAllDayEvents", default: NonAlldayEventsAppereance.show)
 
-    // Integrations
-    static let createMeetingService = Key<CreateMeetingServices>(
-        "createMeetingService", default: .zoom)
-
-    // custom url to create meetings
-    static let createMeetingServiceUrl = Key<String>("createMeetingServiceUrl", default: "")
-
     static let meetBrowser = Key<Browser>("meetBrowser", default: systemDefaultBrowser)
     static let zoomBrowser = Key<Browser>("zoomBrowser", default: systemDefaultBrowser)
     static let teamsBrowser = Key<Browser>("teamsBrowser", default: systemDefaultBrowser)
@@ -131,12 +124,6 @@ extension Defaults.Keys {
     /// Opt-in provider-specific app/web/PWA mode IDs.
     /// Unknown values are ignored and fall back to normal browser resolution.
     static let providerOpeningModes = Key<[String: String]>("providerOpeningModes", default: [:])
-
-    /**
-     * browser used for creating a new meeting
-     */
-    static let browserForCreateMeeting = Key<Browser>(
-        "browserForCreateMeeting", default: systemDefaultBrowser)
 
     // Advanced
     static let automaticEventJoin = Key<Bool>("automaticEventJoin", default: false)

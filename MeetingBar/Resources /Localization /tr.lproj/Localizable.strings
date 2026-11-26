@@ -17,8 +17,6 @@
 "general_close" = "Kapat";
 "general_delete" = "Sil";
 "general_save" = "Kaydet";
-"create_meeting_error_title" = "Yeni toplantı oluşturulamıyor";
-"create_meeting_error_message" = "Özel bağlantı \\%@\\ eksik veya geçersiz. ";
 "next_meeting_empty_title" = "Bugün yaklaşmakta olan toplantı yok";
 "next_meeting_empty_message" = "Yaşasın! Kakao içme zamanı";
 
@@ -34,7 +32,6 @@
 "preferences_general_option_preferred_language_title" = "Dil:";
 "preferences_general_option_preferred_language_system_value" = "Sistem";
 "preferences_general_shortcut_open_menu" = "Menüyü aç:";
-"preferences_general_shortcut_create_meeting" = "Yeni toplantı:";
 "preferences_general_shortcut_join_from_clipboard" = "Kopyalanmış toplantı bağlantısına katıl:";
 "preferences_general_shortcut_toggle_meeting_name_visibility" = "Durum çubuğunda başlık görünürlüğünü aç/kapat:";
 "preferences_appearance_events_show_events_for_today_value" = "Bugün";
@@ -67,10 +64,7 @@
 
 "preferences_services_link_meeting_title" = "Tüm toplantıları şununla aç";
 "preferences_services_link_service_title" = "%@ bağlantıyı şurada aç";
-"preferences_services_create_meeting_title" = "Toplantıları şununla oluştur";
-"preferences_services_create_meeting_custom_url_value" = "Özel bağlantı";
 "preferences_services_create_meeting_custom_url_placeholder" = "Lütfen geçerli bir bağlantı girin (http:// veya https://)";
-"preferences_services_create_meeting_browser_title" = "Web tarayıcı kullan";
 "preferences_configure_browsers_delete_alert_message" = "%@ tarayıcı konfigurasyonunu sil?";
 "preferences_configure_browsers_modal_edit_browser_title" = "Tarayıcı düzenle";
 "preferences_configure_browsers_choose_browser_panel_title" = "Bir tarayıcı uygulaması seç";
@@ -90,7 +84,6 @@
 "preferences_advanced_regex_new_cant_save_title" = "Regex kaydedilemedi";
 "status_bar_section_join_next_meeting" = "Sonraki toplantıya katıl";
 "status_bar_section_join_from_clipboard" = "Kopyalanan toplantıyı aç";
-"status_bar_section_join_create_meeting" = "Toplantı oluştur";
 "status_bar_section_date_nothing" = "%@ için hiçbir şey yok";
 "status_bar_event_start_time_all_day" = "Tüm gün";
 "status_bar_submenu_calendar_title" = "Takvim: %@";
@@ -131,7 +124,6 @@
 "shared_send_notification_no_alert_style_tip" = "Not: Bildirimler Banner'lara ayarlanmıştır, bu nedenle kaybolmadan önce kısa bir süre görünürler. Siz kapatana kadar ekranda kalmalarını sağlamak için macOS bildirim ayarlarınızda Uyarılar'a geçin.";
 
 // MARK: - Constants
-"constants_create_meeting_service_url" = "Özel bağlantı";
 "constants_meeting_service_zoom_native" = "Zoom";
 "constants_meeting_service_other" = "Diğer";
 "constants_meeting_service_url" = "URL";
@@ -177,7 +169,6 @@
 "preferences_configure_browsers_add_button_all_system_title" = "Tüm sistem tarayıcıları";
 "preferences_configure_browsers_modal_add_browser_name" = "Adı";
 "preferences_configure_browsers_modal_alert_title" = "Tarayıcı konfigurasyonu eklenemez";
-"preferences_services_google_meet_tip" = "İpucu: Google Meet bağlantıdan hesap seçmeyi destekler, örnek: https://meet.google.com/new?authuser=1";
 "preferences_configure_browsers_add_button_browser_title" = "Tarayıcı";
 "preferences_configure_browsers_modal_add_browser_title" = "Tarayıcı ekle";
 "preferences_configure_browsers_modal_add_browser_path" = "Dosya yolu";
@@ -294,7 +285,6 @@
 "preferences_meeting_opening_behavior_title" = "Toplantı bağlantılarını aç";
 "preferences_notifications_automation_title" = "Otomatik Katılım";
 "preferences_section_apple_script_hooks_title" = "AppleScript Kancaları";
-"preferences_section_create_title" = "Toplantı oluştur";
 "preferences_section_general_settings_title" = "Genel Ayarlar";
 "preferences_section_regex_filters_title" = "Regex Filtreleri";
 "preferences_section_shortcuts_title" = "Klavye Kısayolları";
@@ -366,3 +356,4 @@
 "notifications_alert_style_fullscreen" = "Tam ekran";
 "notifications_alert_style_both" = "İkisi de";
 "notifications_timing_title" = "Zamanlama";
+"status_bar_details_open_google_calendar" = "Google Takvim";
