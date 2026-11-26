@@ -134,7 +134,7 @@ struct AvailableUpdateRow: View {
     let update: AvailableUpdate
 
     var body: some View {
-        HStack(alignment: .center, spacing: 16) {
+        VStack(alignment: .leading, spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
                 Text("preferences_general_update_available".loco(update.version))
                     .font(.body.weight(.medium))
@@ -143,24 +143,18 @@ struct AvailableUpdateRow: View {
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
-            Spacer(minLength: 0)
-            // Same equal-width stack as the About card's buttons.
-            VStack(spacing: 6) {
-                Button {
+            HStack(spacing: 8) {
+                Button("preferences_general_update_whats_new".loco()) {
                     NSWorkspace.shared.open(update.releaseURL)
-                } label: {
-                    Text("preferences_general_update_whats_new".loco()).frame(maxWidth: .infinity)
                 }
-                Button {
+                Button("preferences_general_update_copy_command".loco()) {
                     let pasteboard = NSPasteboard.general
                     pasteboard.clearContents()
                     pasteboard.setString(UpdateChecker.installCommand, forType: .string)
-                } label: {
-                    Text("preferences_general_update_copy_command".loco()).frame(maxWidth: .infinity)
                 }
             }
-            .fixedSize(horizontal: true, vertical: false)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.vertical, 4)
     }
 }
