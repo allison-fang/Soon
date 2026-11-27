@@ -420,7 +420,12 @@ final class StatusBarItemController {
             dependencies.send(.reconnectCalendarAccount(id))
         case .grantPermission:
             popover.close()
-            NSWorkspace.shared.open(Links.calendarPreferences)
+            // macOS lists an app in Privacy settings only after it has asked once.
+            if EventKitReadAccessError.current() == .notDetermined {
+                dependencies.send(.reconnectProvider)
+            } else {
+                NSWorkspace.shared.open(Links.calendarPreferences)
+            }
         case .refresh:
             dependencies.send(.refreshCalendars)
         case .openPreferences:
