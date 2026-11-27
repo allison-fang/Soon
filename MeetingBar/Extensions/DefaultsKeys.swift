@@ -60,7 +60,7 @@ extension Defaults.Keys {
     static let eventTitleIconFormat = Key<EventTitleIconFormat>(
         "eventTitleIconFormat", default: .none)
     static let statusbarEventTitleLength = Key<Int>(
-        "statusbarEventTitleLength", default: statusbarEventTitleLengthLimits.max)
+        "statusbarEventTitleLength", default: statusbarEventTitleLengthLimits.defaultValue)
 
     static let hideMeetingTitle = Key<Bool>("hideMeetingTitle", default: false)
     static let dismissedEvents = Key<[ProcessedEvent]>("dismissedEvents", default: [])

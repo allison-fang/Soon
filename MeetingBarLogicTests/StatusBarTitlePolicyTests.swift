@@ -54,7 +54,7 @@ final class StatusBarTitlePolicyTests: XCTestCase {
             settings: settings(titleLength: 11)
         )
 
-        XCTAssertEqual(result.title, "Very long m...")
+        XCTAssertEqual(result.title, "Very long m…")
     }
 
     func testGenericTitleFormatUsesGenericLabel() {
@@ -105,6 +105,38 @@ final class StatusBarTitlePolicyTests: XCTestCase {
     func testShortenTitleWithZeroLimitReturnsEllipsis() {
         let result = StatusBarTitlePolicy.shortenTitle("Weekly sync", limit: 0, noTitle: "No title")
 
-        XCTAssertEqual(result, "...")
+        XCTAssertEqual(result, "…")
+    }
+
+    func testShortenTitleCutsMidWordAtExactLimit() {
+        let result = StatusBarTitlePolicy.shortenTitle("Design review sync", limit: 10, noTitle: "No title")
+
+        XCTAssertEqual(result, "Design rev…")
+    }
+
+    func testShortenTitleLeavesTitleAtLimitUntouched() {
+        let result = StatusBarTitlePolicy.shortenTitle("Standup", limit: 7, noTitle: "No title")
+
+        XCTAssertEqual(result, "Standup")
+    }
+
+    func testShortenTitleTrimsSpaceAtCut() {
+        let result = StatusBarTitlePolicy.shortenTitle("Weekly sync", limit: 7, noTitle: "No title")
+
+        XCTAssertEqual(result, "Weekly…")
+    }
+
+    func testShortenTitleCountsEmojiAndCombinedCharactersAsOne() {
+        let family = "👨‍👩‍👧"
+        let accented = "e\u{301}"
+
+        XCTAssertEqual(
+            StatusBarTitlePolicy.shortenTitle("🎉\(family)Party", limit: 3, noTitle: "No title"),
+            "🎉\(family)P…"
+        )
+        XCTAssertEqual(
+            StatusBarTitlePolicy.shortenTitle("Caf\(accented) chat", limit: 4, noTitle: "No title"),
+            "Caf\(accented)…"
+        )
     }
 }

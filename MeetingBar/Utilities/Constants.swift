@@ -20,10 +20,7 @@ let riversideAppBrowser = Browser(name: "Riverside", path: "")
 enum statusbarEventTitleLengthLimits {
     static let min = 5
     static let max = 55
-}
-
-enum TitleTruncationRules {
-    static let excludeAtEnds = CharacterSet.whitespacesAndNewlines
+    static let defaultValue = 10
 }
 
 enum Links {
