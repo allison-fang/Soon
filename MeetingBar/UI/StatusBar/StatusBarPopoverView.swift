@@ -28,6 +28,10 @@ final class StatusBarPopoverModel: ObservableObject {
     @Published var highlightedEventID: String?
 
     var maxTimelineHeight: CGFloat = 520
+    #if DEBUG
+        /// Offscreen rendering can't blur, so screenshots get solid chrome and no debug frame.
+        var rendersForScreenshot = false
+    #endif
     var actions = StatusBarPopoverActions()
     var onEventHover: @MainActor (String, Bool) -> Void = { _, _ in }
     var onEventClick: @MainActor (String) -> Void = { _ in }
@@ -152,12 +156,21 @@ struct StatusBarPopoverView: View {
     private let metrics = TimelineMetrics()
     @State private var topChromeHeight: CGFloat = 0
 
+    private var chromeMaterial: AnyShapeStyle {
+        #if DEBUG
+            if model.rendersForScreenshot {
+                return AnyShapeStyle(Color(nsColor: .windowBackgroundColor))
+            }
+        #endif
+        return AnyShapeStyle(.regularMaterial)
+    }
+
     var body: some View {
         Group {
             if presentation.days.isEmpty {
                 VStack(spacing: 0) {
                     topBar
-                        .background(.regularMaterial)
+                        .background(chromeMaterial)
                     if let notice = presentation.notice {
                         Divider()
                         TimelineUnavailableState(notice: notice) {
@@ -174,7 +187,7 @@ struct StatusBarPopoverView: View {
         #if DEBUG
             .overlay(
                 RoundedRectangle(cornerRadius: StatusBarPopoverController.cornerRadius)
-                    .strokeBorder(Color.orange, lineWidth: 2)
+                    .strokeBorder(Color.orange, lineWidth: model.rendersForScreenshot ? 0 : 2)
                     .allowsHitTesting(false)
             )
         #endif
@@ -287,7 +300,7 @@ struct StatusBarPopoverView: View {
             let isPinned = top <= 0.5 && top > -height
             let start = isPinned ? -top - topChromeHeight : max(-top, 0)
             Rectangle()
-                .fill(.regularMaterial)
+                .fill(chromeMaterial)
                 .frame(height: max(height - start, 0))
                 .offset(y: start)
         }
@@ -363,7 +376,7 @@ struct StatusBarPopoverView: View {
             Divider()
             footer
         }
-        .background(.regularMaterial)
+        .background(chromeMaterial)
     }
 
     @ViewBuilder

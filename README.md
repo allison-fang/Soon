@@ -9,6 +9,10 @@ It keeps meetings visible in the status bar, detects meeting links from calendar
 
 Soon is free, open source, and privacy-respecting.
 
+<p align="center">
+  <img src="docs/images/readme-screenshot.png" width="836" alt="Soon's timeline popover and event details for the Planet Express Staff Meeting, half light and half dark">
+</p>
+
 ## Install
 
 Soon requires **macOS 12.0 or later**.
