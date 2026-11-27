@@ -93,6 +93,10 @@ The follow-up design for component/layer-aware checks is tracked in
 implemented, system-boundary exceptions are exceptional and release smoke is
 still required.
 
+### README screenshots
+
+Run `make readme-screenshots` to re-render `docs/images/readme-screenshot.png`. `ReadmeScreenshotTests` renders the real popover and details views offscreen from the fictional events in `ReadmeScreenshotFixtures`, composes the light and dark renders on one background split by a slightly tilted line, and is skipped in normal runs. Never use real calendar data for these images.
+
 ### Optional performance measurements
 
 Run `make test-performance` on macOS with the pinned toolchain. `PerformanceBaselineTests` is skipped by default in the normal SwiftPM suite. Synthetic workloads cover:

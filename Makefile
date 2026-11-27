@@ -19,7 +19,7 @@ XCFILTER := $(shell command -v xcbeautify >/dev/null 2>&1 && echo 'xcbeautify --
 # Append a JUnit report to app-hosted test runs when xcbeautify is available.
 JUNIT_REPORT := $(shell command -v xcbeautify >/dev/null 2>&1 && echo '--report junit --report-path $(BUILD_DIR)/test-results')
 
-.PHONY: build build-quiet build-release test-config test test-quiet test-app test-app-quiet test-logic test-logic-quiet test-performance coverage coverage-report coverage-logic-report coverage-app-report coverage-gate test-summary coverage-codecov coverage-codecov-logic lint lint-fix open validate-strings
+.PHONY: build build-quiet build-release test-config test test-quiet test-app test-app-quiet test-logic test-logic-quiet test-performance readme-screenshots coverage coverage-report coverage-logic-report coverage-app-report coverage-gate test-summary coverage-codecov coverage-codecov-logic lint lint-fix open validate-strings
 
 build:
 	@mkdir -p $(BUILD_DIR)
@@ -63,6 +63,11 @@ test-logic-quiet:
 # Opt-in reproducible workload baselines. These are not CI gates.
 test-performance:
 	MEETINGBAR_PERF_TESTS=1 $(SWIFT) test --filter PerformanceBaselineTests
+
+# Re-renders docs/images/readme-*.png from MeetingBarTests/ReadmeScreenshots fixtures.
+readme-screenshots:
+	@mkdir -p $(BUILD_DIR)
+	TEST_RUNNER_SOON_README_SCREENSHOTS=1 $(XCODEBUILD) $(XCODEBUILD_FLAGS) -configuration Debug test -only-testing:MeetingBarTests/ReadmeScreenshotTests $(LOCAL_CODESIGN_FLAGS)
 
 coverage: test
 
