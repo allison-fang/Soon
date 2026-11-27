@@ -14,12 +14,6 @@ struct CalendarsScreen: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("onboarding_calendar_selection_title".loco())
-                .font(.title2)
-                .bold()
-            Text("onboarding_calendar_selection_description".loco())
-                .foregroundStyle(.secondary)
-
             if let appModel = onboardingHandler.appModel {
                 // Observe appModel here so the footer's enabled state recomputes
                 // when a calendar is toggled (CalendarsScreen itself only
@@ -28,7 +22,7 @@ struct CalendarsScreen: View {
             } else {
                 ProgressView()
                 Spacer()
-                OnboardingFooter(onBack: { router.currentStep = .calendarSource })
+                OnboardingFooter(onBack: { router.currentStep = .welcome })
             }
         }
     }
@@ -37,97 +31,53 @@ struct CalendarsScreen: View {
 private struct CalendarSelectionStep: View {
     @ObservedObject var router: OnboardingRouter
     @ObservedObject var appModel: AppModel
+    @EnvironmentObject var onboardingHandler: OnboardingHandler
+    @State private var isCompleting = false
+    @State private var errorMessage: String?
 
     var body: some View {
-        CalendarSelectionContent(appModel: appModel)
+        CalendarsTab()
+            .environmentObject(appModel)
+            .frame(maxHeight: .infinity)
+
+        if let errorMessage {
+            Text(errorMessage)
+                .foregroundStyle(.red)
+        }
 
         OnboardingFooter(
-            onBack: { router.currentStep = .calendarSource },
-            hint: canContinue ? nil : "calendars_screen_select_calendar_title".loco(),
-            primaryTitle: "onboarding_continue".loco(),
-            primaryEnabled: canContinue,
-            primaryAction: { router.currentStep = .essentials }
+            onBack: { router.currentStep = .welcome },
+            hint: canFinish
+                ? nil
+                : PreferencesCalendarPresentation.make(from: appModel.state).nextStepHintKey.loco(),
+            isBusy: isCompleting,
+            primaryTitle: "onboarding_done".loco(),
+            primaryEnabled: canFinish,
+            primaryAction: { Task { await complete() } }
         )
     }
 
-    private var canContinue: Bool {
-        OnboardingFlowPolicy.canContinueCalendarSelection(
-            selectedCalendarIDs: appModel.state.selectedCalendarIDs,
-            availableCalendarIDs: appModel.state.calendars.map(\.id)
-        )
-    }
-}
+    private func complete() async {
+        isCompleting = true
+        errorMessage = nil
+        let result = await onboardingHandler.onComplete(appModel.state.activeProvider)
+        isCompleting = false
 
-private struct CalendarSelectionContent: View {
-    @ObservedObject var appModel: AppModel
-
-    var body: some View {
-        // Same grouped-form presentation as Preferences → Calendars, so the
-        // selection list looks identical in both places.
-        PreferencesGroupedForm {
-            if appModel.state.activeProvider == .googleCalendar {
-                AddGoogleAccountSection(showsTitle: true)
-            }
-            if appModel.state.calendars.isEmpty, accounts.isEmpty {
-                Section {
-                    emptyState
-                }
-            } else {
-                CalendarSectionsView(calendars: appModel.state.calendars, accounts: accounts)
-            }
+        switch result {
+        case .success:
+            NSApplication.shared.keyWindow?.close()
+        case .cancelled:
+            break
+        case .authRequired(let message), .failed(let message):
+            errorMessage = message
         }
-        .environmentObject(appModel)
-        .frame(maxHeight: .infinity)
     }
 
-    private var accounts: [ProviderAccountHealth] {
-        appModel.state.activeProvider == .googleCalendar ? appModel.state.providerHealth.accounts : []
-    }
-
-    @ViewBuilder
-    private var emptyState: some View {
-        let presentation = PreferencesCalendarPresentation.make(from: appModel.state)
-        VStack(spacing: 10) {
-            Image(systemName: emptyStateIcon)
-                .font(.title)
-                .foregroundStyle(.secondary)
-            Text(emptyStateText)
-                .multilineTextAlignment(.center)
-            HStack {
-                if presentation.canReconnect {
-                    Button("preferences_status_reconnect".loco()) {
-                        appModel.send(.reconnectProvider)
-                    }
-                }
-                if presentation.canOpenCalendarSettings {
-                    Button("preferences_status_open_calendar_settings".loco()) {
-                        NSWorkspace.shared.open(Links.calendarPreferences)
-                    }
-                }
-                Button("general_refresh".loco()) {
-                    appModel.send(.refreshCalendars)
-                }
-            }
-            .disabled(appModel.state.providerChangeInProgress)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 8)
-    }
-
-    private var emptyStateIcon: String {
-        appModel.state.providerHealth.authRequired
-            ? "person.crop.circle.badge.exclamationmark"
-            : "calendar.badge.exclamationmark"
-    }
-
-    private var emptyStateText: String {
-        let connection = PreferencesCalendarPresentation.make(from: appModel.state).connectionState
-        if connection == .authRequired {
-            return "onboarding_calendar_selection_reconnect".loco()
-        }
-        if connection == .permissionRequired {
-            return "onboarding_calendar_selection_permission".loco()
-        }
-        return "onboarding_calendar_selection_empty".loco()
+    private var canFinish: Bool {
+        !appModel.state.providerChangeInProgress
+            && OnboardingFlowPolicy.canContinueCalendarSelection(
+                selectedCalendarIDs: appModel.state.selectedCalendarIDs,
+                availableCalendarIDs: appModel.state.calendars.map(\.id)
+            )
     }
 }

@@ -104,7 +104,6 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Wybierz kalendarze, aby pokazać wydarzenia w pasku stanu";
 "preferences_calendars_provider_gcalendar_change_account" = "Zmień Konto Google";
 
 // MARK: - Preferences Advanced
@@ -175,16 +174,10 @@
 "calendars_screen_select_calendar_title" = "Wybierz co najmniej jeden kalendarz";
 "access_screen_access_denied_system_preferences_button" = "Preferencje systemowe";
 "access_screen_access_denied_relaunch_title" = "Następnie uruchom aplikację ręcznie, aby kontynuować konfigurację.";
-"access_screen_provider_picker_label" = "Wybierz dostawcę kalendarza";
-"access_screen_provider_macos_data_source" = "Pobierz dane z Kalendarza MacOS";
-"access_screen_provider_macos_number_of_accounts" = "Dowolna liczba dowolnych połączonych kont";
-"access_screen_provider_gcalendar_data_source" = "Pobierz dane bezpośrednio z Kalendarza Google";
 "access_screen_provider_gcalendar_number_of_accounts" = "Tylko jedno konto Google";
-"access_screen_try_again" = "Spróbuj ponownie";
 
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "Wyślij powiadomienie systemowe";
 "general_when_event_starts" = "Gdy wydarzenie się rozpocznie";
 "general_one_minute_before" = "1 minutę przed";
 "general_three_minute_before" = "3 minuty przed";
@@ -237,7 +230,6 @@
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "Ukryj po rozpoczęciu";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Ukryj 10 min po rozpoczęciu";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Ukryj do 10 min przed następnym wydarzeniem";
-"access_screen_provider_authorization_cancelled" = "Autoryzacja została anulowana. Spróbuj ponownie, aby połączyć swój kalendarz.";
 "general_end_of_event_notification_toggle" = "Powiadom mnie, gdy wydarzenie się kończy";
 "general_refresh" = "Odśwież";
 "general_when_event_ends" = "Gdy wydarzenie się kończy";
@@ -251,28 +243,13 @@
 "message_event_script_file_missing_title" = "Nie znaleziono pliku AppleScript";
 "message_google_account_connected_text" = "%@ jest połączone";
 "message_google_account_connected_title" = "Konto Google połączone";
-"onboarding_apple_calendar_description" = "Odczytuje kalendarze z aplikacji Kalendarz na tym Macu, w tym wszystkie skonfigurowane konta.";
-"onboarding_apple_calendar_title" = "Aplikacja Kalendarz macOS";
-"onboarding_authorization_apple_description" = "Zezwól aplikacji Soon na odczytywanie wydarzeń z aplikacji Kalendarz na tym Macu.";
-"onboarding_authorization_google_description" = "Zakończ logowanie Google w przeglądarce, a następnie wróć do Soon.";
-"onboarding_authorization_title" = "Weryfikuj dostęp do kalendarza";
-"onboarding_authorization_waiting" = "Oczekiwanie na autoryzację…";
-"onboarding_calendar_selection_description" = "Wybierz kalendarze, których spotkania mają być wyświetlane w Soon.";
+"onboarding_apple_calendar_title" = "Kalendarz Apple";
 "onboarding_calendar_selection_empty" = "Nie znaleziono kalendarzy. Odśwież lub sprawdź swoje konta kalendarza.";
-"onboarding_calendar_selection_permission" = "Wymagane jest uprawnienie do kalendarza. Udziel dostępu w Ustawieniach systemowych, a następnie odśwież.";
+"onboarding_calendar_selection_permission" = "Soon potrzebuje uprawnienia, aby widzieć Twoje kalendarze. Włącz je w Ustawieniach systemowych, a potem kliknij Odśwież.";
 "onboarding_calendar_selection_reconnect" = "Google Calendar wymaga ponownego połączenia.";
-"onboarding_calendar_selection_title" = "Wybierz kalendarze";
-"onboarding_calendar_source_description" = "Wybierz, jak Soon odczytuje dane kalendarza. Obie opcje mogą zawierać kalendarze Google.";
-"onboarding_calendar_source_title" = "Wybierz źródło kalendarza";
-"onboarding_choose_different_source" = "Wybierz inne źródło";
 "onboarding_continue" = "Kontynuuj";
 "onboarding_done" = "Gotowe";
-"onboarding_google_calendar_description" = "Łączy Soon bezpośrednio z Google Calendar bez używania aplikacji Kalendarz macOS.";
-"onboarding_google_calendar_title" = "Google Calendar API";
-"onboarding_progress" = "Krok %@ z %@";
-"onboarding_success_description" = "Twoje następne spotkanie pojawi się na pasku menu.";
-"onboarding_success_title" = "Jesteś gotowy";
-"onboarding_welcome_description" = "Soon pomaga zobaczyć i dołączyć do następnego spotkania bezpośrednio z paska menu.";
+"onboarding_google_calendar_title" = "Kalendarz Google";
 "onboarding_welcome_title" = "Witaj w Soon";
 "preferences_advanced_regex_duplicate_error" = "To wyrażenie regularne już istnieje.";
 "preferences_advanced_regex_test_button" = "Testuj regex";
@@ -293,12 +270,8 @@
 "preferences_status_copy_diagnostics" = "Kopiuj diagnostykę";
 "preferences_status_open_calendar_settings" = "Otwórz ustawienia kalendarza";
 "preferences_status_reconnect" = "Połącz ponownie";
-"preferences_status_state_auth_required" = "Wymagana autoryzacja";
-"preferences_status_state_error" = "Ostatnie odświeżenie nie powiodło się";
-"preferences_status_state_initializing" = "Inicjowanie";
+"preferences_status_state_error" = "Nie udało się wczytać kalendarzy";
 "preferences_status_state_ok" = "Aktualne";
-"preferences_status_state_permission_required" = "Wymagane uprawnienie do kalendarza";
-"preferences_status_state_stale" = "Wyświetlanie danych z pamięci podręcznej";
 "preferences_tab_meeting_opening" = "Linki do spotkań";
 "preferences_tab_menu_bar" = "Wyświetlanie i wydarzenia";
 "preferences_tab_notifications" = "Powiadomienia";
@@ -377,3 +350,12 @@
 "notifications_alert_style_fullscreen" = "Pełny ekran";
 "notifications_alert_style_both" = "Oba";
 "notifications_timing_title" = "Czas";
+"preferences_calendars_refresh_failed" = "Nie udało się odświeżyć — wyświetlane są ostatnio znane spotkania";
+"preferences_calendars_all" = "Wszystkie kalendarze";
+"preferences_calendars_google_no_account" = "Dodaj konto Google, aby wybrać, które kalendarze mają być wyświetlane.";
+"preferences_calendars_source_title" = "Źródło danych";
+"preferences_calendars_source_label" = "Spotkania z";
+"preferences_calendars_show_title" = "Twoje kalendarze";
+"onboarding_welcome_menu_bar" = "Soon znajduje się na pasku menu. Jeśli go nie widzisz, pasek może być pełny. Zamknij lub ukryj inne aplikacje na pasku menu, aby zrobić miejsce.";
+"onboarding_hint_add_google_account" = "Dodaj konto Google";
+"onboarding_hint_allow_calendar_access" = "Zezwól na dostęp do kalendarza";

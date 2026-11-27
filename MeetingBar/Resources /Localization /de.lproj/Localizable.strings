@@ -164,7 +164,6 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Kalender auswählen, um Ereignisse in der Menüleiste anzuzeigen";
 
 
 "preferences_services_create_meeting_custom_url_placeholder" = "Bitte eine gültige URL angeben (mit http:// oder https://)";
@@ -193,18 +192,12 @@
 "general_when_event_starts" = "Zum Ereignisstart";
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "System-Benachrichtigung senden";
 "access_screen_access_denied_relaunch_title" = "Anschließend die App manuell starten, um die Einrichtung fortzusetzen.";
 "access_screen_access_denied_system_preferences_button" = "Systemeinstellungen";
 "access_screen_access_screen_access_denied_go_to_title" = "Gehe zu";
 "shared_automatic_event_join_toggle" = "Automatisch zum nächsten Meeting beitreten";
 "shared_automatic_event_join_tip" = "Diese Einstellung wird automatisch das nächste Meeting in ihrer voreingestellten App oder dem Browser öffnen";
-"access_screen_provider_picker_label" = "Wähle eine Kalenderquelle aus";
-"access_screen_provider_macos_data_source" = "Nutzt die MacOS Kalender App als Quelle der Daten";
-"access_screen_provider_macos_number_of_accounts" = "Alle konfigurieren Konten: iCloud, Google, Exchange, CalDAV, und weitere";
-"access_screen_provider_gcalendar_data_source" = "Verbindet direkt durch die Google Kalender API";
 "access_screen_provider_gcalendar_number_of_accounts" = "Nur ein Google Account gleichzeitig";
-"access_screen_try_again" = "Neuer Versuch";
 
 // MARK: - Calendars screen
 
@@ -259,11 +252,7 @@
 "preferences_meeting_opening_behavior_title" = "Meeting-Links öffnen";
 "preferences_notifications_automation_title" = "Automatischer Beitritt";
 "preferences_status_state_ok" = "Aktuell";
-"preferences_status_state_stale" = "Zeigt zwischengespeicherte Daten";
-"preferences_status_state_error" = "Letzte Aktualisierung fehlgeschlagen";
-"preferences_status_state_auth_required" = "Autorisierung erforderlich";
-"preferences_status_state_permission_required" = "Kalenderberechtigung erforderlich";
-"preferences_status_state_initializing" = "Wird initialisiert";
+"preferences_status_state_error" = "Deine Kalender konnten nicht geladen werden";
 "preferences_status_reconnect" = "Erneut verbinden";
 "preferences_status_open_calendar_settings" = "Kalendereinstellungen öffnen";
 "preferences_status_copy_diagnostics" = "Diagnose kopieren";
@@ -276,30 +265,14 @@
 "preferences_advanced_regex_test_button" = "Regex testen";
 "preferences_advanced_regex_test_match" = "Übereinstimmung: %@";
 "preferences_advanced_regex_test_no_match" = "Keine Übereinstimmung";
-"onboarding_progress" = "Schritt %@ von %@";
 "onboarding_continue" = "Weiter";
 "onboarding_done" = "Fertig";
-"onboarding_choose_different_source" = "Eine andere Quelle wählen";
 "onboarding_welcome_title" = "Willkommen bei Soon";
-"onboarding_welcome_description" = "Soon zeigt Ihnen das nächste Meeting direkt in der Menüleiste an und ermöglicht den Beitritt mit einem Klick.";
-"onboarding_calendar_source_title" = "Kalenderquelle wählen";
-"onboarding_calendar_source_description" = "Wählen Sie, wie Soon Kalenderdaten liest. Beide Optionen können Google-Kalender einschließen.";
-"onboarding_apple_calendar_title" = "macOS Kalender-App";
-"onboarding_apple_calendar_description" = "Liest Kalender aus der Kalender-App auf diesem Mac, einschließlich aller dort konfigurierten Konten.";
-"onboarding_google_calendar_title" = "Google Kalendar API";
-"onboarding_google_calendar_description" = "Verbindet Soon direkt mit Google Kalendar, ohne die macOS Kalender-App zu verwenden.";
-"onboarding_authorization_title" = "Kalenderzugriff bestätigen";
-"onboarding_authorization_waiting" = "Warte auf Autorisierung…";
-"onboarding_authorization_apple_description" = "Soon erlauben, Ereignisse aus der Kalender-App auf diesem Mac zu lesen.";
-"onboarding_authorization_google_description" = "Schließen Sie die Google-Anmeldung in Ihrem Browser ab und kehren Sie dann zu Soon zurück.";
-"onboarding_calendar_selection_title" = "Kalender auswählen";
-"onboarding_calendar_selection_description" = "Wählen Sie die Kalender aus, deren Meetings in Soon erscheinen sollen.";
+"onboarding_apple_calendar_title" = "Apple Kalender";
+"onboarding_google_calendar_title" = "Google Kalender";
 "onboarding_calendar_selection_empty" = "Keine Kalender gefunden. Aktualisieren Sie oder überprüfen Sie Ihre Kalenderkonten.";
-"onboarding_calendar_selection_permission" = "Kalenderberechtigung erforderlich. Gewähren Sie den Zugriff in den Systemeinstellungen und aktualisieren Sie dann.";
+"onboarding_calendar_selection_permission" = "Soon braucht die Erlaubnis, deine Kalender zu sehen. Aktiviere sie in den Systemeinstellungen und klicke dann auf Aktualisieren.";
 "onboarding_calendar_selection_reconnect" = "Google Calendar muss erneut verbunden werden.";
-"onboarding_success_title" = "Sie sind startklar";
-"onboarding_success_description" = "Ihr nächstes Meeting erscheint in der Menüleiste.";
-"access_screen_provider_authorization_cancelled" = "Autorisierung wurde abgebrochen. Versuchen Sie es erneut, um Ihren Kalender zu verbinden.";
 "status_bar_control_actions" = "Weitere Aktionen";
 "status_bar_control_stale" = "Kalenderaktualisierung fehlgeschlagen – zeigt zuletzt bekannte Daten";
 "status_bar_control_auth_required" = "Google Calendar muss erneut verbunden werden";
@@ -333,10 +306,6 @@
 "preferences_appearance_status_bar_title_generic_value" = "Generischer Titel (Meeting)";
 "onboarding_setup_title" = "Soon Einrichtung";
 "onboarding_back" = "Zurück";
-"onboarding_essentials_title" = "Wähle das tägliche Verhalten";
-"onboarding_essentials_description" = "Wähle Standards für öffnen von Meetings und im Zeitplan zu bleiben.";
-"onboarding_essentials_hint" = "Du kannst jedes Detail in den Einstellungen später ändern.";
-"onboarding_start_using" = "Beginne Soon zu nutzen";
 "status_bar_popover_zoom_in" = "Vergrößern";
 "status_bar_popover_more" = "Mehr";
 "status_bar_popover_open_google_calendar" = "Google Kalender öffnen";
@@ -381,3 +350,12 @@
 "notifications_alert_style_fullscreen" = "Vollbild";
 "notifications_alert_style_both" = "Beides";
 "notifications_timing_title" = "Zeitpunkt";
+"preferences_calendars_refresh_failed" = "Aktualisierung fehlgeschlagen – zuletzt bekannte Termine werden angezeigt";
+"preferences_calendars_all" = "Alle Kalender";
+"preferences_calendars_google_no_account" = "Füge ein Google-Konto hinzu, um auszuwählen, welche Kalender angezeigt werden.";
+"preferences_calendars_source_title" = "Datenquelle";
+"preferences_calendars_source_label" = "Termine aus";
+"preferences_calendars_show_title" = "Deine Kalender";
+"onboarding_welcome_menu_bar" = "Soon befindet sich in deiner Menüleiste. Wenn du es nicht siehst, ist die Menüleiste vielleicht voll. Beende oder blende andere Menüleisten-Apps aus, um Platz zu schaffen.";
+"onboarding_hint_add_google_account" = "Füge ein Google-Konto hinzu";
+"onboarding_hint_allow_calendar_access" = "Erlaube den Kalenderzugriff";

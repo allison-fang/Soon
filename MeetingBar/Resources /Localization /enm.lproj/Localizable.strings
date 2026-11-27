@@ -1,1 +1,12 @@
 "preferences_appearance_events_no_meeting_link_title" = "Events without a meeting link";
+"preferences_calendars_refresh_failed" = "Couldn’t refresh — showing last known meetings";
+"preferences_calendars_all" = "All calendars";
+"preferences_calendars_google_no_account" = "Add a Google account to pick which calendars to show.";
+"preferences_calendars_source_title" = "Data source";
+"preferences_calendars_source_label" = "Get meetings from";
+"preferences_calendars_show_title" = "Your calendars";
+"onboarding_welcome_menu_bar" = "Soon lives in your menu bar. If you don't see it, your menu bar may be full. Quit or hide other menu bar apps to make room.";
+"onboarding_hint_add_google_account" = "Add a Google account";
+"onboarding_hint_allow_calendar_access" = "Allow calendar access";
+"preferences_status_state_error" = "Couldn’t load your calendars";
+"onboarding_calendar_selection_permission" = "Soon needs permission to see your calendars. Turn it on in System Settings, then click Refresh.";

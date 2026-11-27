@@ -115,12 +115,7 @@
 
 "calendars_screen_select_calendar_title" = "En az bir takvim seçin";
 "access_screen_access_denied_relaunch_title" = "Sonra uygulamayı manuel olarak açın ve kuruluma devam edin.";
-"access_screen_provider_picker_label" = "Takvim sağlayıcısı seçin";
-"access_screen_provider_macos_data_source" = "MacOS Takvim uygulamasından veri alın";
-"access_screen_provider_macos_number_of_accounts" = "Bağlı hesap sayısı";
-"access_screen_provider_gcalendar_data_source" = "Verileri doğrudan Google Takvim'den alın";
 "access_screen_provider_gcalendar_number_of_accounts" = "Yalnızca bir Google hesabı";
-"access_screen_try_again" = "Tekrar deneyin";
 "shared_send_notification_no_alert_style_tip" = "Not: Bildirimler Banner'lara ayarlanmıştır, bu nedenle kaybolmadan önce kısa bir süre görünürler. Siz kapatana kadar ekranda kalmalarını sağlamak için macOS bildirim ayarlarınızda Uyarılar'a geçin.";
 
 // MARK: - Constants
@@ -188,7 +183,6 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Etkinlikleri durum çubuğunda göstermek için takvim seçin";
 "status_bar_section_join_current_meeting" = "Mevcut toplantıya katıl";
 "status_bar_submenu_location_title" = "Konum:";
 "status_bar_submenu_copy_meeting_link" = "Bağlantı linkini kopyala";
@@ -204,7 +198,6 @@
 
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "Bir sonraki etkinlik toplantısına katılmak için sistem bildirimi gönderin";
 "general_when_event_starts" = "Etkinlik başladığında";
 "access_screen_access_denied_system_preferences_button" = "Sistem Tercihleri";
 "general_one_minute_before" = "1 dakika önce";
@@ -237,7 +230,6 @@
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "Başladıktan sonra gizle";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Başladıktan 10 dakika sonra gizle";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Bir sonraki etkinlikten 10 dakika önce gizle";
-"access_screen_provider_authorization_cancelled" = "Yetkilendirme iptal edildi. Takviminizi bağlamak için tekrar deneyin.";
 "general_end_of_event_notification_toggle" = "Bir etkinlik bittiğinde uyar";
 "general_refresh" = "Yenile";
 "general_when_event_ends" = "Etkinlik sona erdiğinde";
@@ -251,28 +243,13 @@
 "message_event_script_file_missing_title" = "AppleScript dosyası bulunamadı";
 "message_google_account_connected_text" = "%@ bağlandı";
 "message_google_account_connected_title" = "Google Hesabı bağlandı";
-"onboarding_apple_calendar_description" = "Bu Mac'teki Takvim uygulamasından takvim okur; orada yapılandırılmış tüm hesaplar dahildir.";
-"onboarding_apple_calendar_title" = "macOS Takvim uygulaması";
-"onboarding_authorization_apple_description" = "Soon'un bu Mac'teki Takvim uygulamasından etkinlikleri okumasına izin verin.";
-"onboarding_authorization_google_description" = "Tarayıcınızda Google girişini tamamlayın, ardından Soon'a dönün.";
-"onboarding_authorization_title" = "Takvim erişimini doğrula";
-"onboarding_authorization_waiting" = "Yetkilendirme bekleniyor…";
-"onboarding_calendar_selection_description" = "Toplantıları Soon'da görünmesi gereken takvimleri seçin.";
+"onboarding_apple_calendar_title" = "Apple Takvim";
 "onboarding_calendar_selection_empty" = "Takvim bulunamadı. Yenileyin veya takvim hesaplarınızı kontrol edin.";
-"onboarding_calendar_selection_permission" = "Takvim izni gerekli. Sistem Ayarları'nda erişim verin, ardından yenileyin.";
+"onboarding_calendar_selection_permission" = "Soon’un takvimlerinizi görmesi için izin gerekiyor. Sistem Ayarları’nda açın, ardından Yenile’ye tıklayın.";
 "onboarding_calendar_selection_reconnect" = "Google Takvim'in yeniden bağlanması gerekiyor.";
-"onboarding_calendar_selection_title" = "Takvim seç";
-"onboarding_calendar_source_description" = "Soon'un takvim verilerini nasıl okuyacağını seçin. Her iki seçenek de Google takvimlerini içerebilir.";
-"onboarding_calendar_source_title" = "Takvim kaynağınızı seçin";
-"onboarding_choose_different_source" = "Farklı kaynak seç";
 "onboarding_continue" = "Devam";
 "onboarding_done" = "Bitti";
-"onboarding_google_calendar_description" = "Soon'u macOS Takvim uygulaması kullanmadan doğrudan Google Takvim'e bağlar.";
-"onboarding_google_calendar_title" = "Google Calendar API";
-"onboarding_progress" = "Adım %@ / %@";
-"onboarding_success_description" = "Bir sonraki toplantınız menü çubuğunda görünecek.";
-"onboarding_success_title" = "Hazırsınız";
-"onboarding_welcome_description" = "Soon, bir sonraki toplantınızı doğrudan menü çubuğundan görmenize ve katılmanıza yardımcı olur.";
+"onboarding_google_calendar_title" = "Google Takvim";
 "onboarding_welcome_title" = "Soon'a Hoş Geldiniz";
 "preferences_advanced_regex_duplicate_error" = "Bu düzenli ifade zaten mevcut.";
 "preferences_advanced_regex_test_button" = "Regex'i test et";
@@ -293,12 +270,8 @@
 "preferences_status_copy_diagnostics" = "Tanılamayı kopyala";
 "preferences_status_open_calendar_settings" = "Takvim Ayarlarını Aç";
 "preferences_status_reconnect" = "Yeniden bağlan";
-"preferences_status_state_auth_required" = "Yetkilendirme gerekli";
-"preferences_status_state_error" = "Son yenileme başarısız";
-"preferences_status_state_initializing" = "Başlatılıyor";
+"preferences_status_state_error" = "Takvimleriniz yüklenemedi";
 "preferences_status_state_ok" = "Güncel";
-"preferences_status_state_permission_required" = "Takvim izni gerekli";
-"preferences_status_state_stale" = "Önbelleğe alınmış veriler gösteriliyor";
 "preferences_tab_meeting_opening" = "Toplantı Bağlantıları";
 "preferences_tab_menu_bar" = "Görünüm ve Etkinlikler";
 "preferences_tab_notifications" = "Bildirimler";
@@ -377,3 +350,12 @@
 "notifications_alert_style_fullscreen" = "Tam ekran";
 "notifications_alert_style_both" = "İkisi de";
 "notifications_timing_title" = "Zamanlama";
+"preferences_calendars_refresh_failed" = "Yenilenemedi — bilinen son toplantılar gösteriliyor";
+"preferences_calendars_all" = "Tüm takvimler";
+"preferences_calendars_google_no_account" = "Hangi takvimlerin gösterileceğini seçmek için bir Google hesabı ekleyin.";
+"preferences_calendars_source_title" = "Veri kaynağı";
+"preferences_calendars_source_label" = "Toplantıların kaynağı";
+"preferences_calendars_show_title" = "Takvimleriniz";
+"onboarding_welcome_menu_bar" = "Soon menü çubuğunuzda bulunur. Göremiyorsanız menü çubuğu dolu olabilir. Yer açmak için diğer menü çubuğu uygulamalarından çıkın veya onları gizleyin.";
+"onboarding_hint_add_google_account" = "Bir Google hesabı ekleyin";
+"onboarding_hint_allow_calendar_access" = "Takvim erişimine izin verin";

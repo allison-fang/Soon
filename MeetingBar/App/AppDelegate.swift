@@ -68,6 +68,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             andEventID: AEEventID(kAEGetURL)
         )
 
+        AppSettings.preselectFirstRunProviderIfNeeded()
+
         startLaunch { [weak self] in
             guard let self else { return }
             let manager = await CalendarSync()
@@ -125,12 +127,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let appModel else { return }
         windowCoordinator.openOnboardingWindow(
             appModel: appModel,
-            onProviderSelected: { [weak appModel] provider in
-                guard let appModel else {
-                    return .failed("Application state is unavailable")
-                }
-                return await appModel.changeProvider(to: provider)
-            },
             onComplete: { [weak appModel] provider in
                 guard let appModel else {
                     return .failed("Application state is unavailable")

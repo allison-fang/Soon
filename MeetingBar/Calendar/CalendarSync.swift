@@ -53,6 +53,9 @@ public class CalendarSync: ObservableObject {
     private var refreshCycleTask: Task<Void, Never>?
     private var providerGeneration = 0
     private var providerSwitchGeneration = 0
+    /// Accounts added since their calendars were last listed. Each starts
+    /// with every calendar on.
+    private var newAccountIDs = Set<String>()
     let refreshSubject = PassthroughSubject<Void, Never>()
 
     /// Upper bound on a single refresh cycle.
@@ -122,7 +125,12 @@ public class CalendarSync: ObservableObject {
 
     /// Connects another account to the active provider (Google).
     public func addAccount() async -> ProviderSelectionResult {
-        await authorizeAccount { [repository] in try await repository.addAccount() }
+        let existingIDs = Set(repository.accounts.map(\.id))
+        return await authorizeAccount { [weak self, repository] in
+            try await repository.addAccount()
+            let added = repository.accounts.map(\.id).filter { !existingIDs.contains($0) }
+            self?.newAccountIDs.formUnion(added)
+        }
     }
 
     /// Signs one account in again without touching the others.
@@ -133,6 +141,7 @@ public class CalendarSync: ObservableObject {
     /// Disconnects one account. Its meetings leave the menu bar at once; the
     /// other accounts keep working.
     public func removeAccount(_ id: String) async {
+        newAccountIDs.remove(id)
         guard let removal = repository.removeAccount(id) else { return }
         AppSettings.deselectCalendars(removal.orphanedCalendarIDs)
         calendars.removeAll { removal.calendarIDs.contains($0.id) }
@@ -413,8 +422,24 @@ public class CalendarSync: ObservableObject {
                 self.calendars = result.calendars
                 self.events = result.events
                 self.providerHealth = result.health
+                self.selectCalendarsOfNewAccounts(result.calendars)
             }
             .store(in: &cancellables)
+    }
+
+    /// Selecting a calendar triggers another refresh, which fetches its meetings.
+    private func selectCalendarsOfNewAccounts(_ calendars: [MBCalendar]) {
+        guard !newAccountIDs.isEmpty else { return }
+        for account in repository.accounts where newAccountIDs.contains(account.id) {
+            guard let email = account.email else { continue }
+            let key = GoogleAccountKey.make(email: email)
+            let owned = calendars.filter { $0.email.map(GoogleAccountKey.make(email:)) == key }
+            guard !owned.isEmpty else { continue }
+            for calendar in owned {
+                AppSettings.setCalendarSelection(id: calendar.id, selected: true)
+            }
+            newAccountIDs.remove(account.id)
+        }
     }
 
     /// Result of a single refresh cycle. On failure, `calendars` and `events`

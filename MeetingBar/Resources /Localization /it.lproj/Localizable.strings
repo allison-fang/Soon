@@ -104,7 +104,6 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Seleziona i calendari per mostrare gli eventi nella menubar";
 "preferences_calendars_provider_gcalendar_change_account" = "Cambia account Google";
 
 // MARK: - Preferences Advanced
@@ -187,16 +186,10 @@
 "access_screen_access_screen_access_denied_go_to_title" = "Vai a";
 "access_screen_access_denied_system_preferences_button" = "Preferenze di sistema";
 "access_screen_access_denied_relaunch_title" = "Quindi avvia l'app manualmente per continuare la configurazione.";
-"access_screen_provider_picker_label" = "Seleziona calendar provider";
-"access_screen_provider_macos_data_source" = "Importa dati dal Calendario macOS";
-"access_screen_provider_macos_number_of_accounts" = "Qualsiasi numero di account connessi";
-"access_screen_provider_gcalendar_data_source" = "Importa dati direttamente da Google Calendar";
 "access_screen_provider_gcalendar_number_of_accounts" = "Solo un account Google";
-"access_screen_try_again" = "Riprova";
 
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "Invia una notifica di sistema";
 "general_when_event_starts" = "Quando inizia l'evento";
 "general_one_minute_before" = "1 minuto prima";
 "general_three_minute_before" = "3 minuti prima";
@@ -236,7 +229,6 @@
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "Nascondi dopo l'avvio";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Nascondi 10 minuti dopo l'inizio";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Nascondi 10 minuti prima del prossimo evento";
-"access_screen_provider_authorization_cancelled" = "Autorizzazione annullata. Riprova per connettere il tuo calendario.";
 "general_end_of_event_notification_toggle" = "Avvisami quando un evento termina";
 "general_refresh" = "Aggiorna";
 "general_when_event_ends" = "Alla fine dell'evento";
@@ -250,28 +242,13 @@
 "message_event_script_file_missing_title" = "File AppleScript non trovato";
 "message_google_account_connected_text" = "%@ è connesso";
 "message_google_account_connected_title" = "Account Google connesso";
-"onboarding_apple_calendar_description" = "Legge i calendari dall'app Calendario su questo Mac, inclusi tutti gli account configurati.";
-"onboarding_apple_calendar_title" = "App Calendario macOS";
-"onboarding_authorization_apple_description" = "Consenti a Soon di leggere gli eventi dall'app Calendario su questo Mac.";
-"onboarding_authorization_google_description" = "Completa l'accesso a Google nel tuo browser, poi torna a Soon.";
-"onboarding_authorization_title" = "Verifica accesso al calendario";
-"onboarding_authorization_waiting" = "In attesa di autorizzazione…";
-"onboarding_calendar_selection_description" = "Seleziona i calendari le cui riunioni devono apparire in Soon.";
+"onboarding_apple_calendar_title" = "Calendario Apple";
 "onboarding_calendar_selection_empty" = "Nessun calendario trovato. Aggiorna o controlla i tuoi account calendario.";
-"onboarding_calendar_selection_permission" = "È richiesta l'autorizzazione al calendario. Concedi l'accesso nelle Impostazioni di Sistema, poi aggiorna.";
+"onboarding_calendar_selection_permission" = "Soon ha bisogno dell’autorizzazione per vedere i tuoi calendari. Attivala in Impostazioni di Sistema, poi fai clic su Aggiorna.";
 "onboarding_calendar_selection_reconnect" = "Google Calendar deve essere riconnesso.";
-"onboarding_calendar_selection_title" = "Scegli i calendari";
-"onboarding_calendar_source_description" = "Scegli come Soon legge i dati del calendario. Entrambe le opzioni possono includere i calendari Google.";
-"onboarding_calendar_source_title" = "Scegli la tua fonte di calendario";
-"onboarding_choose_different_source" = "Scegli una fonte diversa";
 "onboarding_continue" = "Continua";
 "onboarding_done" = "Fine";
-"onboarding_google_calendar_description" = "Collega Soon direttamente a Google Calendar senza usare l'app Calendario macOS.";
-"onboarding_google_calendar_title" = "Google Calendar API";
-"onboarding_progress" = "Passo %@ di %@";
-"onboarding_success_description" = "La tua prossima riunione apparirà nella barra dei menu.";
-"onboarding_success_title" = "Sei pronto";
-"onboarding_welcome_description" = "Soon ti aiuta a vedere e unirti alla tua prossima riunione direttamente dalla barra dei menu.";
+"onboarding_google_calendar_title" = "Google Calendar";
 "onboarding_welcome_title" = "Benvenuto in Soon";
 "preferences_advanced_regex_duplicate_error" = "Questa espressione regolare esiste già.";
 "preferences_advanced_regex_test_button" = "Testa regex";
@@ -292,12 +269,8 @@
 "preferences_status_copy_diagnostics" = "Copia diagnostica";
 "preferences_status_open_calendar_settings" = "Apri impostazioni calendario";
 "preferences_status_reconnect" = "Riconnetti";
-"preferences_status_state_auth_required" = "Autorizzazione richiesta";
-"preferences_status_state_error" = "Ultimo aggiornamento fallito";
-"preferences_status_state_initializing" = "Inizializzazione";
+"preferences_status_state_error" = "Impossibile caricare i tuoi calendari";
 "preferences_status_state_ok" = "Aggiornato";
-"preferences_status_state_permission_required" = "Autorizzazione calendario richiesta";
-"preferences_status_state_stale" = "Visualizzazione dati in cache";
 "preferences_tab_meeting_opening" = "Link riunioni";
 "preferences_tab_menu_bar" = "Display ed eventi";
 "preferences_tab_notifications" = "Notifiche";
@@ -376,3 +349,12 @@
 "notifications_alert_style_fullscreen" = "Schermo intero";
 "notifications_alert_style_both" = "Entrambi";
 "notifications_timing_title" = "Tempistica";
+"preferences_calendars_refresh_failed" = "Aggiornamento non riuscito: vengono mostrate le ultime riunioni note";
+"preferences_calendars_all" = "Tutti i calendari";
+"preferences_calendars_google_no_account" = "Aggiungi un account Google per scegliere quali calendari mostrare.";
+"preferences_calendars_source_title" = "Origine dati";
+"preferences_calendars_source_label" = "Riunioni da";
+"preferences_calendars_show_title" = "I tuoi calendari";
+"onboarding_welcome_menu_bar" = "Soon si trova nella barra dei menu. Se non lo vedi, la barra potrebbe essere piena. Chiudi o nascondi altre app della barra dei menu per fare spazio.";
+"onboarding_hint_add_google_account" = "Aggiungi un account Google";
+"onboarding_hint_allow_calendar_access" = "Consenti l’accesso al calendario";

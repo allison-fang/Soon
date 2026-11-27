@@ -22,7 +22,6 @@
 
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "Upozorniť systémovým hlásením";
 "shared_send_notification_disabled_tip" = "⚠️ Tvoje MacOS nastavenia hlásení pre Soon sú vypnuté. Zapni upozornenia v Systémových nastaveniach macOS pre prehľad o stretnutiach.";
 "shared_automatic_event_join_toggle" = "Automaticky sa pripojiť k ďalšiemu stretnutiu";
 "shared_send_notification_no_alert_style_tip" = "Poznámka: Upozornenia sú nastavené ako bannery, takže sa krátko zobrazia a potom zmiznú. Ak chcete, aby zostali na obrazovke, kým ich nezrušíte, prepnite v nastaveniach upozornení v systéme macOS na možnosť Upozornenia.";
@@ -40,7 +39,6 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Vyber kalendáre na zobrazenie udalostí v lište";
 "preferences_calendars_provider_gcalendar_change_account" = "Zmeniť Google účet";
 "preferences_advanced_regex_title" = "Vlastné regexy pre odkaz na stretnutie";
 
@@ -59,9 +57,6 @@
 
 "calendars_screen_select_calendar_title" = "Vyber aspoň jeden kalendár";
 "access_screen_access_denied_relaunch_title" = "Potom spusti aplikáciu manuálne a pokračuj v nastavovaní.";
-"access_screen_provider_picker_label" = "Vyber poskytovateľa kalendára";
-"access_screen_provider_macos_data_source" = "Získať údaje z MacOS Kalendár aplikácie";
-"access_screen_provider_macos_number_of_accounts" = "Ľubovoľný počet akýchkoľvek prepojených účtov";
 "access_screen_provider_gcalendar_number_of_accounts" = "Iba jeden Google účet";
 "constants_meeting_service_other" = "Iné";
 
@@ -197,8 +192,6 @@
 "status_bar_event_status_in" = "za %@";
 "status_bar_error_apple_script_title" = "Chyba AppleScriptu";
 "status_bar_error_link_missed_message" = "Odkaz sa nenašiel alebo poskytovateľ vášho stretnutia ešte nie je podporovaný";
-"access_screen_provider_gcalendar_data_source" = "Získať údaje priamo z Google kalendára";
-"access_screen_try_again" = "Skús to znova";
 "constants_meeting_service_phone" = "Telefónne číslo";
 
 // MARK: - Notifications
@@ -235,7 +228,6 @@
 "preferences_appearance_status_bar_ongoing_time_immediate_value" = "Skryť po spustení";
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Skryť 10 minút.. po začiatku";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Skryť 10 minút pred ďalšou udalosťou";
-"access_screen_provider_authorization_cancelled" = "Autorizácia bola zrušená. Skúste sa znova pripojiť k svojmu kalendáru.";
 "general_end_of_event_notification_toggle" = "Upozorniť ma, keď sa udalosť končí";
 "general_refresh" = "Obnoviť";
 "general_when_event_ends" = "Keď sa udalosť skončí";
@@ -249,28 +241,13 @@
 "message_event_script_file_missing_title" = "Súbor AppleScript sa nenašiel";
 "message_google_account_connected_text" = "%@ je pripojený";
 "message_google_account_connected_title" = "Účet Google pripojený";
-"onboarding_apple_calendar_description" = "Číta kalendáre z aplikácie Kalendár na tomto Macu vrátane všetkých nakonfigurovaných účtov.";
-"onboarding_apple_calendar_title" = "Aplikácia Kalendár macOS";
-"onboarding_authorization_apple_description" = "Povoľte aplikácii Soon čítať udalosti z aplikácie Kalendár na tomto Macu.";
-"onboarding_authorization_google_description" = "Dokončite prihlásenie Google v prehliadači a vráťte sa do Soon.";
-"onboarding_authorization_title" = "Overiť prístup ku kalendáru";
-"onboarding_authorization_waiting" = "Čaká sa na autorizáciu…";
-"onboarding_calendar_selection_description" = "Vyberte kalendáre, ktorých stretnutia sa majú zobrazovať v Soon.";
+"onboarding_apple_calendar_title" = "Kalendár Apple";
 "onboarding_calendar_selection_empty" = "Nenašli sa žiadne kalendáre. Obnovte alebo skontrolujte svoje účty kalendára.";
-"onboarding_calendar_selection_permission" = "Je potrebné povolenie kalendára. Udeľte prístup v Systémových nastaveniach a obnovte.";
+"onboarding_calendar_selection_permission" = "Soon potrebuje povolenie na zobrazenie vašich kalendárov. Zapnite ho v Nastaveniach systému a potom kliknite na Obnoviť.";
 "onboarding_calendar_selection_reconnect" = "Google Kalendár je potrebné znova pripojiť.";
-"onboarding_calendar_selection_title" = "Vybrať kalendáre";
-"onboarding_calendar_source_description" = "Vyberte, ako Soon číta kalendárne dáta. Obe možnosti môžu zahŕňať kalendáre Google.";
-"onboarding_calendar_source_title" = "Vyberte zdroj kalendára";
-"onboarding_choose_different_source" = "Vybrať iný zdroj";
 "onboarding_continue" = "Pokračovať";
 "onboarding_done" = "Hotovo";
-"onboarding_google_calendar_description" = "Pripojí Soon priamo ku Google Kalendáru bez použitia aplikácie Kalendár macOS.";
-"onboarding_google_calendar_title" = "Google Calendar API";
-"onboarding_progress" = "Krok %@ z %@";
-"onboarding_success_description" = "Vaše ďalšie stretnutie sa zobrazí v paneli s ponukami.";
-"onboarding_success_title" = "Ste pripravený";
-"onboarding_welcome_description" = "Soon vám pomáha vidieť a pripojiť sa k vášmu ďalšiemu stretnutiu priamo z panela s ponukami.";
+"onboarding_google_calendar_title" = "Kalendár Google";
 "onboarding_welcome_title" = "Vitajte v Soon";
 "preferences_advanced_regex_duplicate_error" = "Tento regulárny výraz už existuje.";
 "preferences_advanced_regex_test_button" = "Testovať regex";
@@ -291,12 +268,8 @@
 "preferences_status_copy_diagnostics" = "Kopírovať diagnostiku";
 "preferences_status_open_calendar_settings" = "Otvoriť nastavenia kalendára";
 "preferences_status_reconnect" = "Znova pripojiť";
-"preferences_status_state_auth_required" = "Vyžaduje sa autorizácia";
-"preferences_status_state_error" = "Posledná obnova zlyhala";
-"preferences_status_state_initializing" = "Inicializácia";
+"preferences_status_state_error" = "Kalendáre sa nepodarilo načítať";
 "preferences_status_state_ok" = "Aktuálne";
-"preferences_status_state_permission_required" = "Vyžaduje sa povolenie kalendára";
-"preferences_status_state_stale" = "Zobrazovanie údajov z vyrovnávacej pamäte";
 "preferences_tab_meeting_opening" = "Odkazy na stretnutia";
 "preferences_tab_menu_bar" = "Zobrazenie a udalosti";
 "preferences_tab_notifications" = "Upozornenia";
@@ -375,3 +348,12 @@
 "notifications_alert_style_fullscreen" = "Celá obrazovka";
 "notifications_alert_style_both" = "Oboje";
 "notifications_timing_title" = "Načasovanie";
+"preferences_calendars_refresh_failed" = "Nepodarilo sa obnoviť — zobrazujú sa posledné známe stretnutia";
+"preferences_calendars_all" = "Všetky kalendáre";
+"preferences_calendars_google_no_account" = "Pridajte účet Google a vyberte, ktoré kalendáre sa majú zobraziť.";
+"preferences_calendars_source_title" = "Zdroj údajov";
+"preferences_calendars_source_label" = "Stretnutia z";
+"preferences_calendars_show_title" = "Vaše kalendáre";
+"onboarding_welcome_menu_bar" = "Soon nájdete na lište ponúk. Ak ho nevidíte, lišta môže byť plná. Ukončite alebo skryte iné aplikácie na lište, aby ste uvoľnili miesto.";
+"onboarding_hint_add_google_account" = "Pridajte účet Google";
+"onboarding_hint_allow_calendar_access" = "Povoľte prístup ku kalendáru";

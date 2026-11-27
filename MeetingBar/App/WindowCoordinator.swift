@@ -112,8 +112,6 @@ final class WindowCoordinator {
 
     func openOnboardingWindow(
         appModel: AppModel,
-        onProviderSelected:
-            @escaping @MainActor (EventStoreProvider) async -> ProviderSelectionResult,
         onComplete:
             @escaping @MainActor (EventStoreProvider) async -> ProviderSelectionResult
     ) {
@@ -123,10 +121,7 @@ final class WindowCoordinator {
             onboardingWindow.orderFrontRegardless()
             return
         }
-        let handler = OnboardingHandler(
-            onProviderSelected: onProviderSelected,
-            onComplete: onComplete
-        )
+        let handler = OnboardingHandler(onComplete: onComplete)
         handler.appModel = appModel
         onboardingHandler = handler
         let contentView = OnboardingView().environmentObject(handler)

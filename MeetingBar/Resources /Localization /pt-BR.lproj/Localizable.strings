@@ -109,7 +109,6 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Selecione os calendários para mostrar eventos na barra de status";
 "preferences_calendars_provider_gcalendar_change_account" = "Alterar Conta do Google";
 
 // MARK: - Preferences Advanced
@@ -192,16 +191,10 @@
 "access_screen_access_screen_access_denied_go_to_title" = "Acesse";
 "access_screen_access_denied_system_preferences_button" = "Preferências do Sistema";
 "access_screen_access_denied_relaunch_title" = "Em seguida, inicie o aplicativo manualmente para continuar a configuração.";
-"access_screen_provider_picker_label" = "Selecione o provedor de calendários";
-"access_screen_provider_macos_data_source" = "Obter dados do aplicativo de Calendário do macOS";
-"access_screen_provider_macos_number_of_accounts" = "Qualquer número de contas conectadas";
-"access_screen_provider_gcalendar_data_source" = "Obter dados diretamente do Google Calendar";
 "access_screen_provider_gcalendar_number_of_accounts" = "Apenas uma conta do Google";
-"access_screen_try_again" = "Tentar novamente";
 
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "Enviar notificação para entrar na próxima reunião";
 "shared_send_notification_no_alert_style_tip" = "⚠️ Suas configurações de notificação do macOS para o Soon não estão definidas como alerta. Faça isso se você quiser notificações persistentes.";
 "shared_send_notification_disabled_tip" = "⚠️ Suas configurações de notificação do macOS para o Soon estão desativadas. Ative as notificações nas configurações do sistema macOS para acompanhar as reuniões.";
 "shared_automatic_event_join_toggle" = "Entrar automaticamente na próxima reunião";
@@ -241,7 +234,6 @@
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Ocultar 10 min .. depois inicie";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Ocultar 10 min antes do próximo evento";
 "notifications_meetingbar_dismiss_event_action" = "Desativar notificações";
-"access_screen_provider_authorization_cancelled" = "A autorização foi cancelada. Tente novamente para conectar seu calendário.";
 "general_end_of_event_notification_toggle" = "Avisar quando um evento terminar";
 "general_refresh" = "Atualizar";
 "general_when_event_ends" = "Quando o evento terminar";
@@ -255,28 +247,13 @@
 "message_event_script_file_missing_title" = "Arquivo AppleScript não encontrado";
 "message_google_account_connected_text" = "%@ está conectado";
 "message_google_account_connected_title" = "Conta Google conectada";
-"onboarding_apple_calendar_description" = "Lê calendários do app Calendário neste Mac, incluindo todas as contas configuradas.";
-"onboarding_apple_calendar_title" = "App Calendário do macOS";
-"onboarding_authorization_apple_description" = "Permita que o Soon leia eventos do app Calendário neste Mac.";
-"onboarding_authorization_google_description" = "Conclua o login do Google no seu navegador e retorne ao Soon.";
-"onboarding_authorization_title" = "Verificar acesso ao calendário";
-"onboarding_authorization_waiting" = "Aguardando autorização…";
-"onboarding_calendar_selection_description" = "Selecione os calendários cujas reuniões devem aparecer no Soon.";
+"onboarding_apple_calendar_title" = "Calendário da Apple";
 "onboarding_calendar_selection_empty" = "Nenhum calendário encontrado. Atualize ou verifique suas contas de calendário.";
-"onboarding_calendar_selection_permission" = "A permissão do calendário é necessária. Conceda acesso nas Configurações do Sistema e atualize.";
+"onboarding_calendar_selection_permission" = "O Soon precisa de permissão para ver seus calendários. Ative-a nos Ajustes do Sistema e clique em Atualizar.";
 "onboarding_calendar_selection_reconnect" = "O Google Agenda precisa ser reconectado.";
-"onboarding_calendar_selection_title" = "Escolher calendários";
-"onboarding_calendar_source_description" = "Escolha como o Soon lê os dados do calendário. Ambas as opções podem incluir calendários do Google.";
-"onboarding_calendar_source_title" = "Escolha sua fonte de calendário";
-"onboarding_choose_different_source" = "Escolher outra fonte";
 "onboarding_continue" = "Continuar";
 "onboarding_done" = "Concluído";
-"onboarding_google_calendar_description" = "Conecta o Soon diretamente ao Google Agenda sem usar o app Calendário do macOS.";
-"onboarding_google_calendar_title" = "API do Google Agenda";
-"onboarding_progress" = "Etapa %@ de %@";
-"onboarding_success_description" = "Sua próxima reunião aparecerá na barra de menus.";
-"onboarding_success_title" = "Você está pronto";
-"onboarding_welcome_description" = "O Soon ajuda você a ver e entrar na próxima reunião diretamente pela barra de menus.";
+"onboarding_google_calendar_title" = "Google Agenda";
 "onboarding_welcome_title" = "Bem-vindo ao Soon";
 "preferences_advanced_regex_duplicate_error" = "Esta expressão regular já existe.";
 "preferences_advanced_regex_test_button" = "Testar regex";
@@ -297,12 +274,8 @@
 "preferences_status_copy_diagnostics" = "Copiar diagnósticos";
 "preferences_status_open_calendar_settings" = "Abrir Configurações do Calendário";
 "preferences_status_reconnect" = "Reconectar";
-"preferences_status_state_auth_required" = "Autorização necessária";
-"preferences_status_state_error" = "Última atualização falhou";
-"preferences_status_state_initializing" = "Inicializando";
+"preferences_status_state_error" = "Não foi possível carregar seus calendários";
 "preferences_status_state_ok" = "Atualizado";
-"preferences_status_state_permission_required" = "Permissão de calendário necessária";
-"preferences_status_state_stale" = "Exibindo dados em cache";
 "preferences_tab_meeting_opening" = "Links de reunião";
 "preferences_tab_menu_bar" = "Exibição e eventos";
 "preferences_tab_notifications" = "Notificações";
@@ -338,7 +311,6 @@
 "status_bar_control_next_meeting" = "Próxima reunião";
 "preferences_appearance_events_no_meeting_link_title" = "Eventos sem link de reunião";
 "onboarding_back" = "Voltar";
-"onboarding_start_using" = "Começar a utilizar o Soon";
 "preferences_appearance_status_bar_title_generic_value" = "Título genérico (Reunião)";
 "status_bar_popover_zoom_in" = "Ampliar";
 "status_bar_popover_more" = "Mais";
@@ -384,3 +356,12 @@
 "notifications_alert_style_fullscreen" = "Tela cheia";
 "notifications_alert_style_both" = "Ambos";
 "notifications_timing_title" = "Momento";
+"preferences_calendars_refresh_failed" = "Não foi possível atualizar — mostrando as últimas reuniões conhecidas";
+"preferences_calendars_all" = "Todos os calendários";
+"preferences_calendars_google_no_account" = "Adicione uma conta do Google para escolher quais calendários mostrar.";
+"preferences_calendars_source_title" = "Fonte de dados";
+"preferences_calendars_source_label" = "Reuniões de";
+"preferences_calendars_show_title" = "Seus calendários";
+"onboarding_welcome_menu_bar" = "O Soon fica na barra de menus. Se você não o vê, a barra pode estar cheia. Feche ou oculte outros apps da barra de menus para abrir espaço.";
+"onboarding_hint_add_google_account" = "Adicione uma conta do Google";
+"onboarding_hint_allow_calendar_access" = "Permita o acesso ao calendário";

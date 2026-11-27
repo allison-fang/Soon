@@ -113,7 +113,6 @@
 // MARK: - Preferences Calendars
 
 
-"preferences_calendars_select_calendars_title" = "表示するカレンダーの選択";
 "preferences_calendars_provider_gcalendar_change_account" = "Googleアカウントの変更";
 
 // MARK: - Preferences Advanced
@@ -189,17 +188,11 @@
 "access_screen_access_screen_access_denied_go_to_title" = "以下を開く";
 "access_screen_access_denied_system_preferences_button" = "システム設定";
 "access_screen_access_denied_relaunch_title" = "手動でアプリを起動して設定を続ける必要があります。";
-"access_screen_provider_picker_label" = "カレンダーソースを選択";
-"access_screen_provider_macos_data_source" = "macOSカレンダーアプリをデータソースとして使用";
-"access_screen_provider_macos_number_of_accounts" = "すべての構成アカウント:iCloud、Google、Exchange、CalDAVなど";
-"access_screen_provider_gcalendar_data_source" = "Google Calendar API から直接接続";
 "access_screen_provider_gcalendar_number_of_accounts" = "一度に1つのGoogleアカウント";
-"access_screen_try_again" = "もう一度試してください";
 
 // MARK: - Shared
 
 
-"shared_send_notification_toggle" = "システム通知を送信する";
 "general_when_event_starts" = "イベント開始時";
 "general_one_minute_before" = "1分前";
 "general_three_minute_before" = "3分前";
@@ -245,7 +238,6 @@
 "notification_all_dismissals_removed_title" = "すべて元に戻しました";
 "notification_all_dismissals_removed_message" = "閉じたミーティングがすべて元に戻りました。";
 "status_bar_section_refresh_sources" = "ソースを更新";
-"access_screen_provider_authorization_cancelled" = "認証がキャンセルされました。カレンダーを接続するためにもう一度お試しください。";
 "general_end_of_event_notification_toggle" = "イベント終了時に通知";
 "general_refresh" = "再読み込み";
 "general_when_event_ends" = "イベント終了時";
@@ -259,28 +251,13 @@
 "message_event_script_file_missing_title" = "AppleScriptファイルが見つかりません";
 "message_google_account_connected_text" = "%@ が接続されました";
 "message_google_account_connected_title" = "Googleアカウントが接続されました";
-"onboarding_apple_calendar_description" = "このMacのカレンダーアプリからカレンダーを読み取ります。設定済みのすべてのアカウントが含まれます。";
-"onboarding_apple_calendar_title" = "macOSカレンダーアプリ";
-"onboarding_authorization_apple_description" = "SoonがMacのカレンダーアプリからイベントを読み取ることを許可してください。";
-"onboarding_authorization_google_description" = "ブラウザでGoogleサインインを完了してから、Soonに戻ってください。";
-"onboarding_authorization_title" = "カレンダーアクセスを確認";
-"onboarding_authorization_waiting" = "認証を待っています…";
-"onboarding_calendar_selection_description" = "Soonに表示するミーティングのカレンダーを選択してください。";
+"onboarding_apple_calendar_title" = "Apple カレンダー";
 "onboarding_calendar_selection_empty" = "カレンダーが見つかりません。更新するかカレンダーアカウントを確認してください。";
-"onboarding_calendar_selection_permission" = "カレンダーの許可が必要です。システム設定でアクセスを許可してから更新してください。";
+"onboarding_calendar_selection_permission" = "Soon がカレンダーを表示するには許可が必要です。システム設定で許可してから、「更新」をクリックしてください。";
 "onboarding_calendar_selection_reconnect" = "Google カレンダーを再接続する必要があります。";
-"onboarding_calendar_selection_title" = "カレンダーを選択";
-"onboarding_calendar_source_description" = "Soonがカレンダーデータを読み取る方法を選択してください。どちらのオプションもGoogleカレンダーを含めることができます。";
-"onboarding_calendar_source_title" = "カレンダーソースを選択";
-"onboarding_choose_different_source" = "別のソースを選択";
 "onboarding_continue" = "続ける";
 "onboarding_done" = "完了";
-"onboarding_google_calendar_description" = "macOSカレンダーアプリを使わずに、SoonをGoogle カレンダーに直接接続します。";
-"onboarding_google_calendar_title" = "Google Calendar API";
-"onboarding_progress" = "ステップ %@ / %@";
-"onboarding_success_description" = "次のミーティングがメニューバーに表示されます。";
-"onboarding_success_title" = "準備完了";
-"onboarding_welcome_description" = "Soonは次のミーティングをメニューバーから直接確認・参加するのに役立ちます。";
+"onboarding_google_calendar_title" = "Google カレンダー";
 "onboarding_welcome_title" = "Soonへようこそ";
 "preferences_advanced_regex_duplicate_error" = "この正規表現はすでに存在します。";
 "preferences_advanced_regex_test_button" = "正規表現をテスト";
@@ -301,12 +278,8 @@
 "preferences_status_copy_diagnostics" = "診断情報をコピー";
 "preferences_status_open_calendar_settings" = "カレンダー設定を開く";
 "preferences_status_reconnect" = "再接続";
-"preferences_status_state_auth_required" = "認証が必要です";
-"preferences_status_state_error" = "最後の更新が失敗しました";
-"preferences_status_state_initializing" = "初期化中";
+"preferences_status_state_error" = "カレンダーを読み込めませんでした";
 "preferences_status_state_ok" = "最新";
-"preferences_status_state_permission_required" = "カレンダーの許可が必要";
-"preferences_status_state_stale" = "キャッシュデータを表示中";
 "preferences_tab_meeting_opening" = "ミーティングリンク";
 "preferences_tab_menu_bar" = "表示とイベント";
 "preferences_tab_notifications" = "通知";
@@ -348,11 +321,7 @@
 "preferences_appearance_events_no_meeting_link_title" = "会議リンクのないイベント";
 "onboarding_setup_title" = "Soon セットアップ";
 "onboarding_back" = "もどる";
-"onboarding_essentials_hint" = "後からすべての詳細を調整できます。";
-"onboarding_start_using" = "Soonを使い始める";
 "preferences_appearance_status_bar_title_generic_value" = "一般的なタイトル（会議）";
-"onboarding_essentials_title" = "毎日の振る舞い";
-"onboarding_essentials_description" = "ミーティングを開き、スケジュールに滞在するためのいくつかのデフォルトを選択します.";
 "status_bar_popover_zoom_in" = "拡大";
 "status_bar_popover_more" = "その他";
 "status_bar_popover_open_google_calendar" = "Google カレンダーを開く";
@@ -397,3 +366,12 @@
 "notifications_alert_style_fullscreen" = "フルスクリーン";
 "notifications_alert_style_both" = "両方";
 "notifications_timing_title" = "タイミング";
+"preferences_calendars_refresh_failed" = "更新できませんでした — 最後に取得したミーティングを表示しています";
+"preferences_calendars_all" = "すべてのカレンダー";
+"preferences_calendars_google_no_account" = "Google アカウントを追加して、表示するカレンダーを選びましょう。";
+"preferences_calendars_source_title" = "データソース";
+"preferences_calendars_source_label" = "ミーティングの取得元";
+"preferences_calendars_show_title" = "あなたのカレンダー";
+"onboarding_welcome_menu_bar" = "Soon はメニューバーにあります。見当たらない場合は、メニューバーがいっぱいかもしれません。ほかのメニューバーアプリを終了するか非表示にして、スペースを空けてください。";
+"onboarding_hint_add_google_account" = "Google アカウントを追加";
+"onboarding_hint_allow_calendar_access" = "カレンダーへのアクセスを許可";

@@ -154,6 +154,35 @@ final class CalendarSyncAccountTests: BaseTestCase {
         await fulfillment(of: [exp], timeout: 2)
     }
 
+    func testAddedAccountStartsWithAllItsCalendarsOnAndLeavesOthersAlone() async {
+        let (store, work, personal, shared) = workAndPersonal()
+        let sync = makeSync(store, selected: [work.id])
+        await waitForEvents(sync, "initial meetings") { $0.count == 1 }
+        let school = calendar("school-cal", account: "school@example.com")
+        let clubs = calendar("clubs-cal", account: "school@example.com")
+        store.pendingAccount = (
+            ProviderAccountHealth(id: "school@example.com", email: "school@example.com", status: .connected),
+            [school, clubs]
+        )
+
+        let result = await sync.addAccount()
+
+        XCTAssertEqual(result, .success)
+        let exp = expectation(description: "new account's calendars selected")
+        Defaults.publisher(.selectedCalendarIDsByProvider)
+            .map { $0.newValue[EventStoreProvider.googleCalendar.rawValue] ?? [] }
+            .first { $0.contains(school.id) && $0.contains(clubs.id) }
+            .sink { _ in exp.fulfill() }
+            .store(in: &cancellables)
+        await fulfillment(of: [exp], timeout: 2)
+        XCTAssertEqual(
+            Set(AppSettings.selectedCalendarIDs(for: .googleCalendar)),
+            [work.id, school.id, clubs.id]
+        )
+        XCTAssertFalse(AppSettings.selectedCalendarIDs(for: .googleCalendar).contains(personal.id))
+        XCTAssertFalse(AppSettings.selectedCalendarIDs(for: .googleCalendar).contains(shared.id))
+    }
+
     func testFailedAddLeavesTheConnectedAccountsAlone() async {
         let (store, work, personal, shared) = workAndPersonal()
         let sync = makeSync(store, selected: [work.id, personal.id, shared.id])
