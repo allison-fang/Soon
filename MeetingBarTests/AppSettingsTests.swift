@@ -128,6 +128,10 @@ final class AppSettingsTests: BaseTestCase {
         XCTAssertTrue(AppSettings.current.statusBar.hideMeetingTitle)
     }
 
+    func testStatusBarSettings_titleLength_defaultIsShort() {
+        XCTAssertEqual(AppSettings.current.statusBar.statusbarEventTitleLength, 10)
+    }
+
     func testStatusBarSettings_hideMeetingTitle_default() {
         XCTAssertFalse(AppSettings.current.statusBar.hideMeetingTitle)
     }

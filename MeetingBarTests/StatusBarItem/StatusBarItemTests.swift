@@ -311,7 +311,7 @@ final class StatusBarItemControllerPresentationTests: BaseTestCase {
         let button = try XCTUnwrap(controller.statusItem.button)
         XCTAssertNil(button.image)
         XCTAssertEqual(button.imagePosition, .imageLeft)
-        XCTAssertTrue(button.attributedTitle.string.contains("..."))
+        XCTAssertTrue(button.attributedTitle.string.contains("…"))
         XCTAssertLessThan(button.attributedTitle.string.count, longTitle.count)
         XCTAssertEqual(button.alignment, .center)
         XCTAssertEqual(button.cell?.lineBreakMode, .byTruncatingTail)

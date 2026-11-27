@@ -271,7 +271,7 @@ extension AppSettings {
                 eventTitleFormat: .show,
                 eventTimeFormat: .show,
                 eventTitleIconFormat: .none,
-                statusbarEventTitleLength: statusbarEventTitleLengthLimits.max,
+                statusbarEventTitleLength: statusbarEventTitleLengthLimits.defaultValue,
                 hideMeetingTitle: false
             ),
             menu: MenuSettings(timelineZoom: nil),

@@ -272,11 +272,11 @@ enum StatusBarTitlePolicy {
 
     static func shortenTitle(_ rawTitle: String?, limit: Int, noTitle: String) -> String {
         var eventTitle = String(rawTitle ?? noTitle).trimmingCharacters(in: .whitespacesAndNewlines)
-        guard limit > 0 else { return "..." }
+        guard limit > 0 else { return "…" }
         if eventTitle.count > limit {
             let index = eventTitle.index(eventTitle.startIndex, offsetBy: limit - 1)
             eventTitle = String(eventTitle[...index]).trimmingCharacters(in: .whitespacesAndNewlines)
-            eventTitle += "..."
+            eventTitle += "…"
         }
         return eventTitle
     }
