@@ -12,6 +12,7 @@ HOST_ARCH := $(shell uname -m)
 DESTINATION ?= platform=macOS,arch=$(HOST_ARCH)
 XCODEBUILD_FLAGS := -project $(PROJECT) -scheme $(SCHEME) -destination '$(DESTINATION)' -derivedDataPath $(DERIVED_DATA_DIR) -clonedSourcePackagesDirPath $(XCODE_SOURCE_PACKAGES_DIR) -onlyUsePackageVersionsFromResolvedFile
 LOCAL_CODESIGN_FLAGS := CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+SIGN_DEV_APP := bash Scripts/sign_dev.sh $(DERIVED_DATA_DIR)/Build/Products/Debug/SoonDev.app
 LOGIC_COVERAGE_SOURCES := MeetingBar/Calendar MeetingBar/Meetings MeetingBar/Notifications MeetingBar/UI/StatusBar MeetingBar/Utilities/Diagnostics
 
 # Pipe xcodebuild through xcbeautify when available; otherwise grep for the lines that matter.
@@ -24,10 +25,12 @@ JUNIT_REPORT := $(shell command -v xcbeautify >/dev/null 2>&1 && echo '--report 
 build:
 	@mkdir -p $(BUILD_DIR)
 	$(XCODEBUILD) $(XCODEBUILD_FLAGS) -configuration Debug build $(LOCAL_CODESIGN_FLAGS)
+	@$(SIGN_DEV_APP)
 
 build-quiet:
 	@mkdir -p $(BUILD_DIR)
 	@set -o pipefail; $(XCODEBUILD) $(XCODEBUILD_FLAGS) -configuration Debug build $(LOCAL_CODESIGN_FLAGS) 2>&1 | $(XCFILTER)
+	@$(SIGN_DEV_APP)
 
 build-release:
 	@mkdir -p $(BUILD_DIR)
@@ -44,12 +47,14 @@ test-app:
 	@mkdir -p $(COVERAGE_DIR)
 	@rm -rf $(XCODE_RESULT_BUNDLE)
 	$(XCODEBUILD) $(XCODEBUILD_FLAGS) -configuration Debug -enableCodeCoverage YES -resultBundlePath $(XCODE_RESULT_BUNDLE) build test $(LOCAL_CODESIGN_FLAGS)
+	@$(SIGN_DEV_APP)
 	@$(MAKE) --no-print-directory coverage-app-report
 
 test-app-quiet:
 	@mkdir -p $(COVERAGE_DIR) $(BUILD_DIR)/test-results
 	@rm -rf $(XCODE_RESULT_BUNDLE)
 	@set -o pipefail; $(XCODEBUILD) $(XCODEBUILD_FLAGS) -configuration Debug -enableCodeCoverage YES -resultBundlePath $(XCODE_RESULT_BUNDLE) build test $(LOCAL_CODESIGN_FLAGS) 2>&1 | $(XCFILTER) $(JUNIT_REPORT)
+	@$(SIGN_DEV_APP)
 	@$(MAKE) --no-print-directory coverage-app-report
 
 test-logic:

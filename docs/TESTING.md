@@ -12,6 +12,8 @@ MeetingBar is trusted precisely when a meeting is about to start. Protect correc
 | **App-hosted** | `MeetingBarTests/` via `make test-app` | Provider adapters and calendar refresh, `AppModel` actions, settings propagation, `StatusBarPopoverPresenter`, notification reconciliation, AppKit layout and native interaction |
 | **Manual macOS verification** | Real, preferably release-configured app | EventKit permission prompts, Google OAuth, installed meeting apps, screen/notch/VoiceOver behavior, signed distributions and upgrades |
 
+`make build` and `make test-app` sign SoonDev with the local "Soon Code Signing" certificate (`Scripts/sign_dev.sh`), so its Calendar grant survives rebuilds. Without the certificate, macOS asks again after every build, and a build started from Xcode needs `Scripts/sign_dev.sh` run by hand.
+
 `make test` runs both automated suites. The app-hosted suite needs Xcode/macOS; SwiftPM logic tests are intentionally independent of a launched app. These are complementary layers, not three copies of the same test matrix.
 
 ## Writing useful tests
