@@ -69,6 +69,8 @@ struct StatusBarMenuState: Equatable {
     /// Time-format display (military vs am/pm) used when formatting event times.
     var timeFormat: TimeFormat = .military
 
+    var isFantasticalInstalled = false
+
     // MARK: - Convenience accessors
 
     /// Settings groups exposed for shorter call sites.

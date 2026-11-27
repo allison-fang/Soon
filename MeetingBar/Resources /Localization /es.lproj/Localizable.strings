@@ -335,6 +335,10 @@
 "preferences_appearance_events_no_meeting_link_title" = "Eventos sin enlace de reunión";
 "preferences_appearance_status_bar_title_generic_value" = "Título genérico (Encuentro)";
 "status_bar_popover_zoom_in" = "Acercar";
+"status_bar_popover_more" = "Más";
+"status_bar_popover_open_google_calendar" = "Abrir Google Calendar";
+"status_bar_popover_open_fantastical" = "Abrir Fantastical";
+"status_bar_popover_open_calendar" = "Abrir Calendario";
 "status_bar_popover_zoom_out" = "Alejar";
 "status_bar_popover_update_available" = "Actualización disponible";
 "preferences_section_updates_title" = "Actualizaciones";

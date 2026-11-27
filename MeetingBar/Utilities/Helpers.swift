@@ -79,9 +79,15 @@ func hexStringToUIColor(hex: String) -> NSColor {
  * ------------------------
  */
 
+let fantasticalBundleIdentifier = "com.flexibits.fantastical2.mac"
+
 func checkIsFantasticalInstalled() -> Bool {
-    NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.flexibits.fantastical2.mac")
-        != nil
+    NSWorkspace.shared.urlForApplication(withBundleIdentifier: fantasticalBundleIdentifier) != nil
+}
+
+func openApplication(bundleIdentifier: String) {
+    guard let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleIdentifier) else { return }
+    NSWorkspace.shared.openApplication(at: url, configuration: NSWorkspace.OpenConfiguration())
 }
 
 func openInFantastical(startDate: Date, title: String) {

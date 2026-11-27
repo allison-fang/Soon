@@ -413,8 +413,12 @@ final class TimelineAnchorView: NSView {
         window?.convertToScreen(convert(bounds, to: nil))
     }
 
-    func scrollIntoView() {
-        scrollToVisible(bounds)
+    /// `topInset` keeps the view clear of a pinned header above it.
+    func scrollIntoView(topInset: CGFloat = 0) {
+        var rect = bounds
+        rect.size.height += topInset
+        if isFlipped { rect.origin.y -= topInset }
+        scrollToVisible(rect)
     }
 
     /// Scrolls so this view sits `ratio` of the way down the visible area.
@@ -423,14 +427,9 @@ final class TimelineAnchorView: NSView {
               let document = scrollView.documentView
         else { return }
 
-        let clip = scrollView.contentView
         let frame = convert(bounds, to: document)
         let top = document.isFlipped ? frame.minY : document.bounds.maxY - frame.maxY
-        let maxOffset = max(document.bounds.height - clip.bounds.height, 0)
-        let offset = min(max(top - clip.bounds.height * ratio, 0), maxOffset)
-        let y = document.isFlipped ? offset : maxOffset - offset
-        clip.scroll(to: NSPoint(x: clip.bounds.minX, y: y))
-        scrollView.reflectScrolledClipView(clip)
+        scrollView.scrollDocument(toVisibleTop: top - scrollView.visibleHeight * ratio)
     }
 
     override func updateTrackingAreas() {
@@ -455,5 +454,24 @@ final class TimelineAnchorView: NSView {
 
     override func mouseExited(with _: NSEvent) {
         onHover?(false)
+    }
+}
+
+extension NSScrollView {
+    /// The height left between the bars that float over the content.
+    var visibleHeight: CGFloat {
+        contentView.bounds.height - contentInsets.top - contentInsets.bottom
+    }
+
+    /// Scrolls so `offset`, measured from the document's top, sits just below
+    /// the top bar, clamped to the document.
+    func scrollDocument(toVisibleTop offset: CGFloat) {
+        guard let document = documentView else { return }
+        let clip = contentView
+        let maxOffset = max(document.bounds.height - visibleHeight, 0)
+        let top = min(max(offset, 0), maxOffset)
+        let y = document.isFlipped ? top - contentInsets.top : maxOffset - top - contentInsets.bottom
+        clip.scroll(to: NSPoint(x: clip.bounds.minX, y: y))
+        reflectScrolledClipView(clip)
     }
 }

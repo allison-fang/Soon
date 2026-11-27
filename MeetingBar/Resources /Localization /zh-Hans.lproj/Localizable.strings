@@ -288,6 +288,10 @@
 "onboarding_start_using" = "开始使用Soon";
 "onboarding_essentials_hint" = "你可以稍后在偏好设置中微调每处细节。";
 "status_bar_popover_zoom_in" = "放大";
+"status_bar_popover_more" = "更多";
+"status_bar_popover_open_google_calendar" = "打开 Google 日历";
+"status_bar_popover_open_fantastical" = "打开 Fantastical";
+"status_bar_popover_open_calendar" = "打开日历";
 "status_bar_popover_zoom_out" = "缩小";
 "status_bar_popover_update_available" = "有可用更新";
 "preferences_section_updates_title" = "更新";

@@ -300,8 +300,11 @@
 "status_bar_details_status_canceled" = "Canceled";
 "status_bar_details_guests_summary" = "%d yes, %d no, %d awaiting";
 "status_bar_popover_updated" = "Updated %@";
-"status_bar_popover_quit" = "Quit";
 "status_bar_popover_zoom_in" = "Zoom In";
+"status_bar_popover_more" = "More";
+"status_bar_popover_open_google_calendar" = "Open Google Calendar";
+"status_bar_popover_open_fantastical" = "Open Fantastical";
+"status_bar_popover_open_calendar" = "Open Calendar";
 "status_bar_popover_update_available" = "Update available";
 "status_bar_popover_zoom_out" = "Zoom Out";
 "status_bar_quick_actions" = "Quick Actions";

@@ -346,6 +346,10 @@
 "preferences_calendars_unavailable_help" = "Tyto uložené kalendáře nejsou dostupné. Zkontrolujte přístup ke kalendáři v macOS nebo z výběru odeberte nedostupné kalendáře, aby se schůzky mohly znovu aktualizovat.";
 "preferences_calendars_remove_missing" = "Odebrat";
 "status_bar_popover_zoom_in" = "Zvětšit";
+"status_bar_popover_more" = "Další";
+"status_bar_popover_open_google_calendar" = "Otevřít Kalendář Google";
+"status_bar_popover_open_fantastical" = "Otevřít Fantastical";
+"status_bar_popover_open_calendar" = "Otevřít Kalendář";
 "status_bar_popover_zoom_out" = "Zmenšit";
 "status_bar_popover_update_available" = "K dispozici je aktualizace";
 "preferences_section_updates_title" = "Aktualizace";

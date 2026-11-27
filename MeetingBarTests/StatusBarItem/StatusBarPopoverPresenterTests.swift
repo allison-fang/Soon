@@ -496,14 +496,15 @@ final class StatusBarPopoverPresenterTests: BaseTestCase {
         XCTAssertNotNil(updated.notice)
     }
 
-    func testGoogleCalendarButtonShowsOnlyForGoogleSource() {
-        var googleState = state([])
-        googleState.activeProvider = .googleCalendar
-        XCTAssertTrue(StatusBarPopoverPresenter.presentation(for: googleState, now: now).showsGoogleCalendarButton)
-
-        var appleState = state([])
-        appleState.activeProvider = .macOSEventKit
-        XCTAssertFalse(StatusBarPopoverPresenter.presentation(for: appleState, now: now).showsGoogleCalendarButton)
+    func testCalendarAppFollowsTheSourceAndFantastical() {
+        func app(_ provider: EventStoreProvider, fantastical: Bool) -> TimelineCalendarApp {
+            var state = state([])
+            state.activeProvider = provider
+            state.isFantasticalInstalled = fantastical
+            return StatusBarPopoverPresenter.presentation(for: state, now: now).calendarApp
+        }
+        XCTAssertEqual(app(.googleCalendar, fantastical: true), .googleCalendar)
+        XCTAssertEqual(app(.macOSEventKit, fantastical: true), .fantastical)
+        XCTAssertEqual(app(.macOSEventKit, fantastical: false), .calendar)
     }
-
 }

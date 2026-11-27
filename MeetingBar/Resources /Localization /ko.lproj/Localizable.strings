@@ -283,6 +283,10 @@
 "status_bar_control_next_meeting" = "다음 회의";
 "preferences_appearance_events_no_meeting_link_title" = "회의 링크가 없는 일정";
 "status_bar_popover_zoom_in" = "확대";
+"status_bar_popover_more" = "더 보기";
+"status_bar_popover_open_google_calendar" = "Google 캘린더 열기";
+"status_bar_popover_open_fantastical" = "Fantastical 열기";
+"status_bar_popover_open_calendar" = "캘린더 열기";
 "status_bar_popover_zoom_out" = "축소";
 "status_bar_popover_update_available" = "업데이트 있음";
 "preferences_section_updates_title" = "업데이트";

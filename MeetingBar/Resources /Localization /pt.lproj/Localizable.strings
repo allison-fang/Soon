@@ -283,6 +283,10 @@
 "preferences_advanced_script_link_only_help" = "Executa apenas para eventos com links de reunião.";
 "preferences_appearance_events_no_meeting_link_title" = "Eventos sem ligação para a reunião";
 "status_bar_popover_zoom_in" = "Ampliar";
+"status_bar_popover_more" = "Mais";
+"status_bar_popover_open_google_calendar" = "Abrir Google Calendar";
+"status_bar_popover_open_fantastical" = "Abrir Fantastical";
+"status_bar_popover_open_calendar" = "Abrir Calendário";
 "status_bar_popover_zoom_out" = "Reduzir";
 "status_bar_popover_update_available" = "Atualização disponível";
 "preferences_section_updates_title" = "Atualizações";
