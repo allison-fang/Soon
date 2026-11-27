@@ -20,59 +20,37 @@ struct CalendarsTab: View {
             provider: appModel.state.activeProvider,
             health: appModel.state.providerHealth
         )
+        let isEmpty = appModel.state.calendars.isEmpty && accounts.isEmpty
+        let notice = isEmpty ? nil : presentation.notice
 
         PreferencesGroupedForm {
-            Section(header: Text("preferences_calendar_configuration_title".loco())) {
+            Section {
                 ProviderPicker()
-
-                HStack(spacing: 6) {
-                    VStack(alignment: .leading, spacing: 3) {
-                        HStack(spacing: 6) {
-                            PreferencesStatusLabel(text: statusText(presentation), tone: presentation.statusTone)
-                            if let lastSuccess = appModel.state.providerHealth.lastSuccessfulRefresh {
-                                Text("·")
-                                    .foregroundStyle(.tertiary)
-                                    .font(.callout)
-                                Text("status_bar_popover_updated".loco(
-                                    lastSuccess.formatted(date: .omitted, time: .shortened)
-                                ))
-                                .foregroundStyle(.secondary)
-                                .font(.callout)
-                            }
-                        }
-                        if presentation.showsErrorDetail,
-                           let error = appModel.state.providerHealth.lastErrorDescription {
-                            Text(error)
-                                .foregroundStyle(.secondary)
-                                .font(.caption)
-                                .textSelection(.enabled)
-                                .lineLimit(3)
-                        }
-                    }
-                    Spacer()
-                    if presentation.canReconnect {
-                        Button("preferences_status_reconnect".loco()) {
-                            appModel.send(.reconnectProvider)
-                        }
-                        .disabled(appModel.state.providerChangeInProgress)
-                    }
-                    if presentation.canOpenCalendarSettings {
-                        Button("preferences_status_open_calendar_settings".loco()) {
-                            NSWorkspace.shared.open(Links.calendarPreferences)
-                        }
-                    }
-                    // Google accounts each have their own Refresh.
-                    if appModel.state.activeProvider != .googleCalendar {
-                        Button("general_refresh".loco()) {
-                            appModel.send(.refreshCalendars)
-                        }
-                        .disabled(appModel.state.providerChangeInProgress)
-                    }
-                }
+            } header: {
+                Text("preferences_calendars_source_title".loco())
             }
 
-            if appModel.state.activeProvider == .googleCalendar {
-                AddGoogleAccountSection()
+            if isGoogle {
+                AddGoogleAccountSection(
+                    title: "preferences_calendars_show_title".loco(),
+                    notice: notice
+                )
+                CalendarSectionsView(
+                    calendars: appModel.state.calendars,
+                    accounts: accounts,
+                    isStale: appModel.state.providerHealth.isStale
+                )
+            } else if isEmpty {
+                Section {
+                    CalendarPreferencesEmptyState(presentation: presentation)
+                } header: {
+                    CalendarsSectionHeader()
+                }
+            } else {
+                CalendarSectionsView(
+                    calendars: appModel.state.calendars,
+                    header: CalendarsSectionHeader(notice: notice)
+                )
             }
 
             if !missingIDs.isEmpty {
@@ -96,30 +74,39 @@ struct CalendarsTab: View {
                     }
                 }
             }
-
-            if appModel.state.calendars.isEmpty, accounts.isEmpty {
-                Section(header: Text("preferences_calendars_select_calendars_title".loco())) {
-                    CalendarPreferencesEmptyState(presentation: presentation)
-                }
-            } else {
-                CalendarSectionsView(calendars: appModel.state.calendars, accounts: accounts)
-            }
         }
     }
 
-    private var accounts: [ProviderAccountHealth] {
-        appModel.state.activeProvider == .googleCalendar ? appModel.state.providerHealth.accounts : []
-    }
+    private var isGoogle: Bool { appModel.state.activeProvider == .googleCalendar }
 
-    private func statusText(_ presentation: PreferencesCalendarPresentation) -> String {
-        let arguments = presentation.statusTextArguments
-        switch arguments.count {
-        case 1:
-            return presentation.statusTextKey.loco(arguments[0])
-        case 2:
-            return presentation.statusTextKey.loco(arguments[0], arguments[1])
-        default:
-            return presentation.statusTextKey.loco()
+    private var accounts: [ProviderAccountHealth] {
+        isGoogle ? appModel.state.providerHealth.accounts : []
+    }
+}
+
+/// "Your calendars", with Refresh beside it and any problem under it. The
+/// Calendar app syncs every source at once, so neither can sit on one source.
+struct CalendarsSectionHeader: View {
+    @EnvironmentObject var appModel: AppModel
+    var notice: CalendarNotice?
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text("preferences_calendars_show_title".loco())
+                Spacer()
+                Button("general_refresh".loco()) {
+                    appModel.send(.refreshCalendars)
+                }
+                .controlSize(.small)
+                .disabled(appModel.state.providerChangeInProgress)
+            }
+            if let notice {
+                CalendarNoticeBanner(notice: notice) {
+                    appModel.send(.reconnectProvider)
+                }
+                .font(.body.weight(.regular))
+            }
         }
     }
 }
@@ -147,23 +134,62 @@ private struct CalendarPreferencesEmptyState: View {
 
     var body: some View {
         VStack(spacing: 10) {
-            Text(emptyStateText)
+            Text(presentation.emptyStateTextKey.loco())
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
+            if let action = presentation.notice?.action {
+                CalendarNoticeActionButton(action: action) {
+                    appModel.send(.reconnectProvider)
+                }
+            }
         }
         .frame(maxWidth: .infinity, minHeight: 160)
     }
+}
 
-    private var emptyStateText: String {
-        presentation.emptyStateTextKey.loco()
+/// A source's or account's problem, with its fix on the right, tinted so it
+/// doesn't read as one more setting.
+private struct CalendarNoticeBanner: View {
+    let notice: CalendarNotice
+    let reconnect: () -> Void
+
+    var body: some View {
+        HStack {
+            PreferencesStatusLabel(text: notice.textKey.loco(), tone: notice.tone)
+            Spacer()
+            if let action = notice.action {
+                CalendarNoticeActionButton(action: action, reconnect: reconnect)
+            }
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 6)
+        .background(
+            RoundedRectangle(cornerRadius: 6)
+                .fill(statusColor(notice.tone).opacity(0.12))
+        )
+    }
+}
+
+private struct CalendarNoticeActionButton: View {
+    @EnvironmentObject var appModel: AppModel
+    let action: CalendarNotice.Action
+    let reconnect: () -> Void
+
+    var body: some View {
+        switch action {
+        case .reconnect:
+            Button("preferences_status_reconnect".loco(), action: reconnect)
+                .disabled(appModel.state.providerChangeInProgress)
+        case .openCalendarSettings:
+            Button("preferences_status_open_calendar_settings".loco()) {
+                NSWorkspace.shared.open(Links.calendarPreferences)
+            }
+        }
     }
 }
 
 private func statusSystemImage(_ tone: PreferencesStatusTone) -> String? {
     switch tone {
-    case .neutral: "circle"
-    case .info: "person.crop.circle"
-    case .success: "checkmark.circle.fill"
     case .warning: "exclamationmark.triangle.fill"
     case .error: "xmark.circle.fill"
     case .busy: nil
@@ -172,8 +198,7 @@ private func statusSystemImage(_ tone: PreferencesStatusTone) -> String? {
 
 private func statusColor(_ tone: PreferencesStatusTone) -> Color {
     switch tone {
-    case .neutral, .info, .busy: .secondary
-    case .success: .green
+    case .busy: .secondary
     case .warning: .orange
     case .error: .red
     }
@@ -204,30 +229,36 @@ struct PreferencesStatusLabel: View {
 }
 
 /// Calendars grouped by source. For Google, each connected account's section
-/// starts with its status and actions.
+/// starts with its actions and any problem it has.
 struct CalendarSectionsView: View {
     @EnvironmentObject var appModel: AppModel
     let calendars: [MBCalendar]
     var accounts: [ProviderAccountHealth] = []
+    var isStale = false
+    /// Over the first card, when nothing above already names the list.
+    var header: CalendarsSectionHeader?
     @State private var accountPendingRemoval: CalendarAccountRowPresentation?
 
     var body: some View {
         Group {
-            ForEach(CalendarListPresentation.sections(for: calendars, accounts: accounts)) { section in
-                if let account = section.account {
-                    // The account's connection gets its own card so its status
-                    // does not read as one of the calendar rows below it.
-                    Section(header: Text(title(of: section))) {
-                        accountRow(account)
+            // One card per account (or Calendar app source), headed by the
+            // account with a switch for all its calendars, like an account's
+            // services in System Settings › Internet Accounts.
+            let sections = CalendarListPresentation.sections(
+                for: calendars,
+                accounts: accounts,
+                isStale: isStale
+            )
+            ForEach(sections) { section in
+                Section {
+                    parentRow(section)
+                    ForEach(section.calendars, id: \.id) { cal in
+                        CalendarRow(calendar: cal)
+                            .padding(.leading, Self.childIndent)
                     }
-                    if !section.calendars.isEmpty {
-                        Section {
-                            calendarRows(section)
-                        }
-                    }
-                } else {
-                    Section(header: Text(title(of: section))) {
-                        calendarRows(section)
+                } header: {
+                    if section.id == sections.first?.id {
+                        header
                     }
                 }
             }
@@ -244,42 +275,72 @@ struct CalendarSectionsView: View {
         }
     }
 
-    private func calendarRows(_ section: CalendarListSection) -> some View {
-        ForEach(section.calendars, id: \.id) { cal in
-            CalendarRow(calendar: cal)
-        }
-    }
+    private static let iconSize: CGFloat = 20
+    private static let childIndent: CGFloat = iconSize + 8
 
-    private func accountRow(_ row: CalendarAccountRowPresentation) -> some View {
-        HStack(spacing: 8) {
-            VStack(alignment: .leading, spacing: 3) {
-                PreferencesStatusLabel(text: row.statusTextKey.loco(), tone: row.statusTone)
-                if let detail = row.errorDetail {
-                    Text(detail)
-                        .foregroundStyle(.secondary)
-                        .font(.caption)
-                        .textSelection(.enabled)
-                        .lineLimit(3)
+    /// An account's problem sits under its name in the same row, so it reads
+    /// as the account's rather than as another calendar.
+    private func parentRow(_ section: CalendarListSection) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            parentRowControls(section)
+            if let account = section.account, let notice = account.notice {
+                CalendarNoticeBanner(notice: notice) {
+                    appModel.send(.reconnectCalendarAccount(account.id))
                 }
-            }
-            Spacer()
-            // Every refresh checks all accounts side by side, so any account's
-            // Refresh retries them all.
-            if row.canRefresh {
-                Button("general_refresh".loco()) {
-                    appModel.send(.refreshCalendars)
-                }
-            }
-            if row.canReconnect {
-                Button("preferences_status_reconnect".loco()) {
-                    appModel.send(.reconnectCalendarAccount(row.id))
-                }
-            }
-            Button("preferences_calendars_google_account_remove".loco()) {
-                accountPendingRemoval = row
             }
         }
         .disabled(appModel.state.providerChangeInProgress)
+    }
+
+    private func parentRowControls(_ section: CalendarListSection) -> some View {
+        HStack(spacing: 8) {
+            Image(systemName: section.account == nil ? "calendar" : "person.crop.circle.fill")
+                .font(.system(size: Self.iconSize))
+                .foregroundStyle(.secondary)
+                .frame(width: Self.iconSize)
+            Text(title(of: section))
+                .fontWeight(.medium)
+                .lineLimit(1)
+                .truncationMode(.middle)
+            Spacer()
+            if let account = section.account {
+                accountActions(account)
+            }
+            if !section.calendars.isEmpty {
+                allCalendarsToggle(section)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func accountActions(_ row: CalendarAccountRowPresentation) -> some View {
+        // Every refresh checks all accounts side by side, so any account's
+        // Refresh retries them all.
+        if row.canRefresh {
+            Button("general_refresh".loco()) {
+                appModel.send(.refreshCalendars)
+            }
+        }
+        Button("preferences_calendars_google_account_remove".loco()) {
+            accountPendingRemoval = row
+        }
+    }
+
+    private func allCalendarsToggle(_ section: CalendarListSection) -> some View {
+        Toggle(
+            "preferences_calendars_all".loco(),
+            isOn: Binding(
+                get: { section.allSelected(in: appModel.state.selectedCalendarIDs) },
+                set: { selected in
+                    let current = Set(appModel.state.selectedCalendarIDs)
+                    for cal in section.calendars where current.contains(cal.id) != selected {
+                        appModel.toggleCalendarSelection(id: cal.id, selected: selected)
+                    }
+                }
+            )
+        )
+        .labelsHidden()
+        .help("preferences_calendars_all".loco())
     }
 
     private func title(of section: CalendarListSection) -> String {
@@ -296,7 +357,7 @@ struct ProviderPicker: View {
     @State private var picker = EventStoreProvider.macOSEventKit
 
     var body: some View {
-        Picker("access_screen_provider_picker_label".loco(), selection: $picker) {
+        Picker("preferences_calendars_source_label".loco(), selection: $picker) {
             ForEach(CalendarSourcePresentation.all) { source in
                 Text(source.titleKey.loco()).tag(source.provider)
             }
@@ -328,38 +389,60 @@ struct ProviderPicker: View {
 }
 
 /// "Add Google account", with the latest add's failure under the button.
-/// Shared by Preferences and setup.
+/// With no account yet, it is the section's empty state, asking for one.
 struct AddGoogleAccountSection: View {
     @EnvironmentObject var appModel: AppModel
-    /// Off where it follows the titled configuration section as a sub-group.
-    var showsTitle = false
+    var title: String?
+    /// A problem with Google as a whole rather than one account.
+    var notice: CalendarNotice?
 
     var body: some View {
+        let hasNoAccount = PreferencesCalendarPresentation.make(from: appModel.state).hasNoGoogleAccount
         Section {
-            row
+            if hasNoAccount {
+                VStack(spacing: 10) {
+                    Text("preferences_calendars_google_no_account".loco())
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                    addButton.buttonStyle(.borderedProminent)
+                    error
+                }
+                .frame(maxWidth: .infinity, minHeight: 160)
+            } else {
+                VStack(alignment: .leading, spacing: 8) {
+                    addButton
+                    error
+                    if let notice {
+                        CalendarNoticeBanner(notice: notice) {
+                            appModel.send(.reconnectProvider)
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
         } header: {
-            if showsTitle {
-                Text("preferences_calendar_configuration_title".loco())
+            if let title {
+                Text(title)
             }
         }
     }
 
-    private var row: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Button("preferences_calendars_google_add_account".loco()) {
-                appModel.send(.addCalendarAccount)
-            }
-            .disabled(appModel.state.providerChangeInProgress)
-
-            if let error = appModel.state.accountActionError {
-                Text(error)
-                    .foregroundStyle(.red)
-                    .font(.caption)
-                    .textSelection(.enabled)
-                    .lineLimit(3)
-            }
+    private var addButton: some View {
+        Button("preferences_calendars_google_add_account".loco()) {
+            appModel.send(.addCalendarAccount)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .disabled(appModel.state.providerChangeInProgress)
+    }
+
+    @ViewBuilder
+    private var error: some View {
+        if let error = appModel.state.accountActionError {
+            Text(error)
+                .foregroundStyle(.red)
+                .font(.caption)
+                .textSelection(.enabled)
+                .lineLimit(3)
+        }
     }
 }
 

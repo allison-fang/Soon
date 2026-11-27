@@ -138,7 +138,6 @@ final class WindowCoordinatorTests: XCTestCase {
         let harness = AppModelTestHarness()
         coordinator.openOnboardingWindow(
             appModel: harness.model,
-            onProviderSelected: { _ in .success },
             onComplete: { _ in .success }
         )
         let window = try XCTUnwrap(coordinator.onboardingWindow)
@@ -158,7 +157,6 @@ final class WindowCoordinatorTests: XCTestCase {
         var originalCompletionCount = 0
         coordinator.openOnboardingWindow(
             appModel: harness.model,
-            onProviderSelected: { _ in .success },
             onComplete: { _ in
                 originalCompletionCount += 1
                 return .success
@@ -170,10 +168,6 @@ final class WindowCoordinatorTests: XCTestCase {
 
         coordinator.openOnboardingWindow(
             appModel: harness.model,
-            onProviderSelected: { _ in
-                XCTFail("Must retain the original flow")
-                return .cancelled
-            },
             onComplete: { _ in
                 XCTFail("Must retain the original flow")
                 return .cancelled

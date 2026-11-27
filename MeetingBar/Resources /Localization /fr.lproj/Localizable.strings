@@ -45,17 +45,11 @@
 "general_when_event_starts" = "Quand l'évènement commence";
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "Envoyer une notification système";
 "access_screen_access_screen_access_denied_go_to_title" = "Allez dans les";
 "access_screen_access_denied_system_preferences_button" = "Préférences du système";
 "shared_automatic_event_join_toggle" = "Rejoindre automatiquement la réunion de l'évènement suivant";
 "shared_automatic_event_join_tip" = "Ce paramètre permet d'ouvrir automatiquement votre prochaine réunion dans l'application ou le navigateur configuré";
-"access_screen_provider_picker_label" = "Sélectionnez le fournisseur de calendriers";
-"access_screen_provider_macos_data_source" = "Récupérer les données de l'application Calendrier de MacOS";
-"access_screen_provider_macos_number_of_accounts" = "N'importe quel nombre de comptes connectés";
-"access_screen_provider_gcalendar_data_source" = "Obtenez des données directement à partir de Google Agenda";
 "access_screen_provider_gcalendar_number_of_accounts" = "Un seul compte Google";
-"access_screen_try_again" = "Réessayer";
 
 // MARK: - Calendars screen
 
@@ -119,7 +113,6 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Sélectionnez les calendriers pour afficher les évènements dans la barre d'état";
 
 
 "preferences_configure_browsers_choose_browser_panel_message" = "Sélectionnez l'endroit duquel exécuter le navigateur web.";
@@ -231,7 +224,6 @@
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Masquer 10 min après le début";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Masquer 10 min avant le prochain évènement";
 "notifications_meetingbar_dismiss_event_action" = "Désactiver les notifications";
-"access_screen_provider_authorization_cancelled" = "L'autorisation a été annulée. Réessayez pour connecter votre calendrier.";
 "general_end_of_event_notification_toggle" = "M’alerter à la fin d’un évènement";
 "general_refresh" = "Actualiser";
 "general_when_event_ends" = "À la fin de l'événement";
@@ -245,28 +237,13 @@
 "message_event_script_file_missing_title" = "Fichier AppleScript introuvable";
 "message_google_account_connected_text" = "%@ est connecté";
 "message_google_account_connected_title" = "Compte Google connecté";
-"onboarding_apple_calendar_description" = "Lit les calendriers depuis l'application Calendrier sur ce Mac, y compris tous les comptes configurés.";
-"onboarding_apple_calendar_title" = "Application Calendrier macOS";
-"onboarding_authorization_apple_description" = "Autorisez Soon à lire les événements depuis l'application Calendrier sur ce Mac.";
-"onboarding_authorization_google_description" = "Terminez la connexion Google dans votre navigateur, puis revenez à Soon.";
-"onboarding_authorization_title" = "Vérifier l'accès au calendrier";
-"onboarding_authorization_waiting" = "En attente d'autorisation…";
-"onboarding_calendar_selection_description" = "Sélectionnez les calendriers dont les réunions doivent apparaître dans Soon.";
+"onboarding_apple_calendar_title" = "Calendrier Apple";
 "onboarding_calendar_selection_empty" = "Aucun calendrier trouvé. Actualisez ou vérifiez vos comptes de calendrier.";
-"onboarding_calendar_selection_permission" = "L'autorisation du calendrier est requise. Accordez l'accès dans les Réglages système, puis actualisez.";
+"onboarding_calendar_selection_permission" = "Soon a besoin d’une autorisation pour voir vos calendriers. Activez-la dans Réglages Système, puis cliquez sur Actualiser.";
 "onboarding_calendar_selection_reconnect" = "Google Agenda doit être reconnecté.";
-"onboarding_calendar_selection_title" = "Choisir des calendriers";
-"onboarding_calendar_source_description" = "Choisissez comment Soon lit les données de calendrier. Les deux options peuvent inclure des calendriers Google.";
-"onboarding_calendar_source_title" = "Choisissez votre source de calendrier";
-"onboarding_choose_different_source" = "Choisir une source différente";
 "onboarding_continue" = "Continuer";
 "onboarding_done" = "Terminé";
-"onboarding_google_calendar_description" = "Connecte Soon directement à Google Agenda sans utiliser l'application Calendrier macOS.";
-"onboarding_google_calendar_title" = "Google Calendar API";
-"onboarding_progress" = "Étape %@ sur %@";
-"onboarding_success_description" = "Votre prochaine réunion apparaîtra dans la barre des menus.";
-"onboarding_success_title" = "Vous êtes prêt";
-"onboarding_welcome_description" = "Soon vous aide à voir et rejoindre votre prochaine réunion directement depuis la barre des menus.";
+"onboarding_google_calendar_title" = "Google Agenda";
 "onboarding_welcome_title" = "Bienvenue dans Soon";
 "preferences_advanced_regex_duplicate_error" = "Cette expression régulière existe déjà.";
 "preferences_advanced_regex_test_button" = "Tester l'expression";
@@ -287,12 +264,8 @@
 "preferences_status_copy_diagnostics" = "Copier les diagnostics";
 "preferences_status_open_calendar_settings" = "Ouvrir les réglages du calendrier";
 "preferences_status_reconnect" = "Reconnecter";
-"preferences_status_state_auth_required" = "Autorisation requise";
-"preferences_status_state_error" = "La dernière actualisation a échoué";
-"preferences_status_state_initializing" = "Initialisation";
+"preferences_status_state_error" = "Impossible de charger vos calendriers";
 "preferences_status_state_ok" = "À jour";
-"preferences_status_state_permission_required" = "Autorisation du calendrier requise";
-"preferences_status_state_stale" = "Affichage des données en cache";
 "preferences_tab_meeting_opening" = "Liens de réunion";
 "preferences_tab_menu_bar" = "Affichage et événements";
 "preferences_tab_notifications" = "Notifications";
@@ -371,3 +344,12 @@
 "notifications_alert_style_fullscreen" = "Plein écran";
 "notifications_alert_style_both" = "Les deux";
 "notifications_timing_title" = "Moment";
+"preferences_calendars_refresh_failed" = "Échec de l’actualisation — affichage des dernières réunions connues";
+"preferences_calendars_all" = "Tous les calendriers";
+"preferences_calendars_google_no_account" = "Ajoutez un compte Google pour choisir les calendriers à afficher.";
+"preferences_calendars_source_title" = "Source des données";
+"preferences_calendars_source_label" = "Réunions de";
+"preferences_calendars_show_title" = "Vos calendriers";
+"onboarding_welcome_menu_bar" = "Soon se trouve dans votre barre des menus. Si vous ne le voyez pas, la barre est peut-être pleine. Quittez ou masquez d’autres apps de la barre des menus pour faire de la place.";
+"onboarding_hint_add_google_account" = "Ajoutez un compte Google";
+"onboarding_hint_allow_calendar_access" = "Autorisez l’accès au calendrier";

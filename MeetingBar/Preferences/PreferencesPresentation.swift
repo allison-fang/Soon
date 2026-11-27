@@ -9,17 +9,12 @@ import SwiftUI
 struct CalendarSourcePresentation: Equatable, Identifiable {
     let provider: EventStoreProvider
     let titleKey: String
-    let descriptionKey: String
-    let dataSourceKey: String
-    let accountScopeKey: String
-    let authorizationDescriptionKey: String
-    let systemImage: String
 
     var id: EventStoreProvider { provider }
 
     static let all: [CalendarSourcePresentation] = [
-        make(for: .macOSEventKit),
-        make(for: .googleCalendar)
+        make(for: .googleCalendar),
+        make(for: .macOSEventKit)
     ]
 
     static func make(for provider: EventStoreProvider) -> CalendarSourcePresentation {
@@ -27,22 +22,12 @@ struct CalendarSourcePresentation: Equatable, Identifiable {
         case .macOSEventKit:
             CalendarSourcePresentation(
                 provider: provider,
-                titleKey: "onboarding_apple_calendar_title",
-                descriptionKey: "onboarding_apple_calendar_description",
-                dataSourceKey: "access_screen_provider_macos_data_source",
-                accountScopeKey: "access_screen_provider_macos_number_of_accounts",
-                authorizationDescriptionKey: "onboarding_authorization_apple_description",
-                systemImage: "calendar"
+                titleKey: "onboarding_apple_calendar_title"
             )
         case .googleCalendar:
             CalendarSourcePresentation(
                 provider: provider,
-                titleKey: "onboarding_google_calendar_title",
-                descriptionKey: "onboarding_google_calendar_description",
-                dataSourceKey: "access_screen_provider_gcalendar_data_source",
-                accountScopeKey: "access_screen_provider_gcalendar_accounts",
-                authorizationDescriptionKey: "onboarding_authorization_google_description",
-                systemImage: "globe"
+                titleKey: "onboarding_google_calendar_title"
             )
         }
     }
@@ -125,11 +110,6 @@ enum PreferencesStatusBarTimeOption: CaseIterable, Equatable {
 }
 
 enum PreferencesStatusTone: Equatable {
-    case neutral
-    /// A plain fact, such as how many accounts Soon reads, that says nothing
-    /// about whether they are working.
-    case info
-    case success
     case warning
     case error
     /// Work under way; shows a spinner instead of an icon.
@@ -148,108 +128,110 @@ enum PreferencesProviderConnectionState: Equatable {
     case error
 }
 
+/// Something wrong with a calendar source or one of its accounts, with the
+/// fix when there is one.
+struct CalendarNotice: Equatable {
+    enum Action: Equatable {
+        case reconnect
+        case openCalendarSettings
+    }
+
+    let textKey: String
+    let tone: PreferencesStatusTone
+    var action: Action?
+}
+
 struct PreferencesCalendarPresentation: Equatable {
     let activeProvider: EventStoreProvider
     let connectionState: PreferencesProviderConnectionState
-    let statusTone: PreferencesStatusTone
     let selectedCalendarCount: Int
     let availableCalendarCount: Int
-    let canReconnect: Bool
-    let canOpenCalendarSettings: Bool
+    /// Google is the source but no account was ever added.
+    let hasNoGoogleAccount: Bool
     let providerTitleKey: String
-    let statusTextKey: String
-    /// Numbers the status text is formatted with, in order.
-    let statusTextArguments: [Int]
+    /// Nil while everything works: the calendars listed are the sign of that.
+    let notice: CalendarNotice?
     let emptyStateTextKey: String
-
-    /// The provider-wide failure reason. Google shows each account's reason
-    /// on that account instead.
-    var showsErrorDetail: Bool { activeProvider != .googleCalendar }
+    /// What setup needs next while Done is unavailable.
+    let nextStepHintKey: String
 
     static func make(from state: AppState) -> PreferencesCalendarPresentation {
         let connectionState: PreferencesProviderConnectionState
-        let statusTone: PreferencesStatusTone
-        let statusTextKey: String
-        var statusTextArguments: [Int] = []
 
         let availableIDs = Set(state.calendars.map(\.id))
         let selectedIDs = Set(state.selectedCalendarIDs.filter { availableIDs.contains($0) })
         let accounts = state.activeProvider == .googleCalendar ? state.providerHealth.accounts : []
         let connectedAccountCount = accounts.filter { $0.status == .connected }.count
+        let hasNoGoogleAccount = state.activeProvider == .googleCalendar
+            && accounts.isEmpty
+            && state.calendars.isEmpty
 
         if state.activeProvider == .macOSEventKit,
            state.providerHealth.calendarPermissionRequired {
             connectionState = .permissionRequired
-            statusTone = .error
-            statusTextKey = "preferences_status_state_permission_required"
         } else if state.providerHealth.authRequired {
             connectionState = .authRequired
-            statusTone = .error
-            statusTextKey = "preferences_status_state_auth_required"
         } else if !accounts.isEmpty {
-            // Google checks every account on each refresh, so this count is real.
-            if connectedAccountCount == accounts.count {
-                connectionState = .connected
-                statusTone = .success
-                statusTextKey = accounts.count == 1
-                    ? "preferences_status_state_one_account_connected"
-                    : "preferences_status_state_accounts_connected"
-                statusTextArguments = accounts.count == 1 ? [] : [accounts.count]
-            } else {
-                connectionState = .accountsNeedAttention
-                statusTone = connectedAccountCount == 0 ? .error : .warning
-                statusTextKey = "preferences_status_state_some_accounts_connected"
-                statusTextArguments = [connectedAccountCount, accounts.count]
-            }
+            connectionState = connectedAccountCount == accounts.count ? .connected : .accountsNeedAttention
         } else if state.providerHealth.isStale {
             connectionState = .stale
-            statusTone = .warning
-            statusTextKey = "preferences_status_state_stale"
         } else if state.providerHealth.lastErrorDescription != nil {
             connectionState = .error
-            statusTone = .error
-            statusTextKey = "preferences_status_state_error"
         } else if state.providerHealth.lastSuccessfulRefresh != nil {
-            // The Calendar app doesn't say whether its accounts are syncing,
-            // so only state how many Soon can read.
             connectionState = .connected
-            statusTone = .info
-            let accountCount = Set(state.calendars.map(\.source)).count
-            statusTextKey = accountCount == 1
-                ? "preferences_status_state_one_account"
-                : "preferences_status_state_accounts"
-            statusTextArguments = accountCount == 1 ? [] : [accountCount]
         } else {
             connectionState = .initializing
-            statusTone = .neutral
-            statusTextKey = "preferences_status_state_initializing"
         }
 
-        let calendarSource = CalendarSourcePresentation.make(for: state.activeProvider)
-
-        let emptyStateTextKey = switch connectionState {
-        case .authRequired:
-            "onboarding_calendar_selection_reconnect"
+        // Each account shows its own problem, so only problems no account
+        // explains get a notice.
+        let notice: CalendarNotice? = switch connectionState {
         case .permissionRequired:
-            "onboarding_calendar_selection_permission"
-        case .initializing, .connected, .stale, .accountsNeedAttention, .error:
-            "onboarding_calendar_selection_empty"
+            CalendarNotice(
+                textKey: "onboarding_calendar_selection_permission",
+                tone: .error,
+                action: .openCalendarSettings
+            )
+        case .authRequired where !hasNoGoogleAccount && accounts.isEmpty:
+            CalendarNotice(
+                textKey: "onboarding_calendar_selection_reconnect",
+                tone: .error,
+                action: .reconnect
+            )
+        case .connected where state.providerHealth.isStale, .stale:
+            accounts.isEmpty
+                ? CalendarNotice(textKey: "preferences_calendars_refresh_failed", tone: .warning)
+                : nil
+        case .error:
+            CalendarNotice(textKey: "preferences_status_state_error", tone: .error)
+        case .initializing, .connected, .authRequired, .accountsNeedAttention:
+            nil
+        }
+
+        let emptyStateTextKey = if hasNoGoogleAccount {
+            "preferences_calendars_google_no_account"
+        } else {
+            notice?.textKey ?? "onboarding_calendar_selection_empty"
+        }
+
+        let nextStepHintKey = if hasNoGoogleAccount {
+            "onboarding_hint_add_google_account"
+        } else if connectionState == .permissionRequired {
+            "onboarding_hint_allow_calendar_access"
+        } else {
+            "calendars_screen_select_calendar_title"
         }
 
         return PreferencesCalendarPresentation(
             activeProvider: state.activeProvider,
             connectionState: connectionState,
-            statusTone: statusTone,
             selectedCalendarCount: selectedIDs.count,
             availableCalendarCount: state.calendars.count,
-            canReconnect: state.activeProvider == .googleCalendar
-                && connectionState == .authRequired,
-            canOpenCalendarSettings: state.activeProvider == .macOSEventKit
-                && connectionState == .permissionRequired,
-            providerTitleKey: calendarSource.titleKey,
-            statusTextKey: statusTextKey,
-            statusTextArguments: statusTextArguments,
-            emptyStateTextKey: emptyStateTextKey
+            hasNoGoogleAccount: hasNoGoogleAccount,
+            providerTitleKey: CalendarSourcePresentation.make(for: state.activeProvider).titleKey,
+            notice: notice,
+            emptyStateTextKey: emptyStateTextKey,
+            nextStepHintKey: nextStepHintKey
         )
     }
 }
@@ -275,42 +257,49 @@ enum ProviderPickerSelectionPolicy {
 struct CalendarAccountRowPresentation: Equatable, Identifiable {
     let id: String
     let email: String?
-    let statusTextKey: String
-    let statusTone: PreferencesStatusTone
-    let canReconnect: Bool
-    var errorDetail: String?
+    /// Nil while the account works.
+    let notice: CalendarNotice?
+    var canReconnect: Bool { notice?.action == .reconnect }
     /// An account that must sign in again cannot refresh until it does.
     var canRefresh: Bool { !canReconnect }
 
     /// Google accounts in name order, each with how its latest refresh went.
-    static func rows(for accounts: [ProviderAccountHealth]) -> [CalendarAccountRowPresentation] {
+    /// A refresh that failed as a whole, such as one that timed out, leaves
+    /// every account showing its last known meetings.
+    static func rows(
+        for accounts: [ProviderAccountHealth],
+        refreshFailed: Bool = false
+    ) -> [CalendarAccountRowPresentation] {
         accounts
             .map { account in
                 switch account.status {
+                case .connected where refreshFailed:
+                    CalendarAccountRowPresentation(
+                        id: account.id,
+                        email: account.email,
+                        notice: CalendarNotice(textKey: "preferences_calendars_refresh_failed", tone: .warning)
+                    )
                 case .connected:
                     CalendarAccountRowPresentation(
                         id: account.id,
                         email: account.email,
-                        statusTextKey: "preferences_calendars_google_account_connected",
-                        statusTone: .success,
-                        canReconnect: false
+                        notice: nil
                     )
                 case .authRequired:
                     CalendarAccountRowPresentation(
                         id: account.id,
                         email: account.email,
-                        statusTextKey: "preferences_calendars_google_account_reconnect_required",
-                        statusTone: .error,
-                        canReconnect: true
+                        notice: CalendarNotice(
+                            textKey: "preferences_calendars_google_account_reconnect_required",
+                            tone: .error,
+                            action: .reconnect
+                        )
                     )
-                case .failed(let message):
+                case .failed:
                     CalendarAccountRowPresentation(
                         id: account.id,
                         email: account.email,
-                        statusTextKey: "preferences_calendars_google_account_refresh_failed",
-                        statusTone: .warning,
-                        canReconnect: false,
-                        errorDetail: message
+                        notice: CalendarNotice(textKey: "preferences_calendars_refresh_failed", tone: .warning)
                     )
                 }
             }
@@ -327,6 +316,12 @@ struct CalendarListSection: Equatable, Identifiable {
     var account: CalendarAccountRowPresentation?
 
     var id: String { account?.id ?? source }
+
+    /// Drives the section's "all calendars" switch: on only when every
+    /// calendar in it is selected.
+    func allSelected(in selectedIDs: [String]) -> Bool {
+        !calendars.isEmpty && Set(calendars.map(\.id)).isSubset(of: selectedIDs)
+    }
 }
 
 enum CalendarListPresentation {
@@ -348,11 +343,15 @@ enum CalendarListPresentation {
     /// section so it can be reconnected or removed.
     static func sections(
         for calendars: [MBCalendar],
-        accounts: [ProviderAccountHealth]
+        accounts: [ProviderAccountHealth],
+        isStale: Bool = false
     ) -> [CalendarListSection] {
         guard !accounts.isEmpty else { return sections(for: calendars) }
         var remaining = calendars
-        let accountSections = CalendarAccountRowPresentation.rows(for: accounts).map { row in
+        // Stale with every account fine means the refresh failed as a whole.
+        let refreshFailed = isStale && accounts.allSatisfy { $0.status == .connected }
+        let rows = CalendarAccountRowPresentation.rows(for: accounts, refreshFailed: refreshFailed)
+        let accountSections = rows.map { row in
             let key = row.email.map(GoogleAccountKey.make(email:))
             let owned = remaining.filter { $0.email.map(GoogleAccountKey.make(email:)) == key }
             remaining.removeAll { $0.email.map(GoogleAccountKey.make(email:)) == key }

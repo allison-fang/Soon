@@ -40,18 +40,12 @@
 "general_when_event_starts" = "Při zahájení události";
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "Odeslat systémové oznámení";
 "access_screen_access_denied_relaunch_title" = "Pak spusťte aplikaci ručně a pokračujte v nastavení.";
 "access_screen_access_screen_access_denied_go_to_title" = "Přejděte na";
 "access_screen_access_denied_system_preferences_button" = "Předvolby systému";
 "shared_automatic_event_join_toggle" = "Automaticky se připojit k příští schůzce";
 "shared_automatic_event_join_tip" = "Tato volba automaticky otevře příští schůzku v nastavené aplikaci nebo prohlížeči.";
-"access_screen_provider_picker_label" = "Vybrat zdroj kalendářů";
-"access_screen_provider_macos_data_source" = "Používá jako zdroj aplikaci Kalendář v macOS";
-"access_screen_provider_macos_number_of_accounts" = "Všechny nastavené účty: iCloud, Google, Exchange, CalDAV a další";
-"access_screen_provider_gcalendar_data_source" = "Připojuje se přímo přes rozhraní API Kalendáře Google";
 "access_screen_provider_gcalendar_number_of_accounts" = "Vždy jeden účet Google";
-"access_screen_try_again" = "Zkuste znovu";
 
 // MARK: - Calendars screen
 
@@ -124,7 +118,6 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Vyberte kalendáře, jejichž schůzky se mají zobrazovat v řádku nabídek";
 
 
 "preferences_configure_browsers_choose_browser_panel_message" = "Vyberte umístění aplikace webového prohlížeče.";
@@ -229,7 +222,6 @@
 "notification_all_dismissals_removed_title" = "Všechny schůzky byly znovu zobrazeny";
 "notification_all_dismissals_removed_message" = "Všechny skryté schůzky jsou opět v nabídce.";
 "status_bar_section_refresh_sources" = "Obnovit zdroje";
-"access_screen_provider_authorization_cancelled" = "Autorizace byla zrušena. Zkuste kalendář připojit znovu.";
 "general_end_of_event_notification_toggle" = "Upozornit mě, když událost končí";
 "general_refresh" = "Obnovit";
 "general_when_event_ends" = "Při skončení události";
@@ -243,28 +235,13 @@
 "message_event_script_file_missing_title" = "Soubor AppleScriptu nebyl nalezen";
 "message_google_account_connected_text" = "Připojený účet: %@";
 "message_google_account_connected_title" = "Účet Google byl připojen";
-"onboarding_apple_calendar_description" = "Čte kalendáře z aplikace Kalendář na tomto Macu včetně všech účtů, které jsou v ní nastavené.";
-"onboarding_apple_calendar_title" = "Aplikace Kalendář v macOS";
-"onboarding_authorization_apple_description" = "Povolte Soon číst události z aplikace Kalendář na tomto Macu.";
-"onboarding_authorization_google_description" = "Dokončete v prohlížeči přihlášení k účtu Google a potom se vraťte do Soon.";
-"onboarding_authorization_title" = "Ověřte přístup ke kalendáři";
-"onboarding_authorization_waiting" = "Čekání na autorizaci…";
-"onboarding_calendar_selection_description" = "Vyberte kalendáře, jejichž schůzky se mají zobrazovat v Soon.";
+"onboarding_apple_calendar_title" = "Kalendář Apple";
 "onboarding_calendar_selection_empty" = "Nebyly nalezeny žádné kalendáře. Obnovte seznam nebo zkontrolujte účty kalendářů.";
-"onboarding_calendar_selection_permission" = "Soon potřebuje oprávnění ke kalendáři. Udělte mu přístup v Nastavení systému a potom seznam obnovte.";
+"onboarding_calendar_selection_permission" = "Soon potřebuje oprávnění k zobrazení vašich kalendářů. Zapněte ho v Nastavení systému a pak klikněte na Obnovit.";
 "onboarding_calendar_selection_reconnect" = "Kalendář Google je nutné znovu připojit.";
-"onboarding_calendar_selection_title" = "Vyberte kalendáře";
-"onboarding_calendar_source_description" = "Zvolte, jak má Soon číst data kalendářů. Obě možnosti podporují také kalendáře Google.";
-"onboarding_calendar_source_title" = "Vyberte zdroj kalendářů";
-"onboarding_choose_different_source" = "Vybrat jiný zdroj";
 "onboarding_continue" = "Pokračovat";
 "onboarding_done" = "Hotovo";
-"onboarding_google_calendar_description" = "Připojí Soon přímo ke Kalendáři Google bez použití aplikace Kalendář v macOS.";
-"onboarding_google_calendar_title" = "Rozhraní API Kalendáře Google";
-"onboarding_progress" = "Krok %@ z %@";
-"onboarding_success_description" = "Příští schůzka se zobrazí v řádku nabídek.";
-"onboarding_success_title" = "Vše je připraveno";
-"onboarding_welcome_description" = "Soon zobrazuje příští schůzku přímo v řádku nabídek a umožňuje se k ní připojit.";
+"onboarding_google_calendar_title" = "Kalendář Google";
 "onboarding_welcome_title" = "Vítejte v Soon";
 "preferences_advanced_regex_duplicate_error" = "Tento regulární výraz již existuje.";
 "preferences_advanced_regex_test_button" = "Otestovat regulární výraz";
@@ -285,12 +262,8 @@
 "preferences_status_copy_diagnostics" = "Zkopírovat diagnostické údaje";
 "preferences_status_open_calendar_settings" = "Otevřít nastavení Kalendáře";
 "preferences_status_reconnect" = "Znovu připojit";
-"preferences_status_state_auth_required" = "Je vyžadována autorizace";
-"preferences_status_state_error" = "Poslední obnovení se nezdařilo";
-"preferences_status_state_initializing" = "Probíhá inicializace";
+"preferences_status_state_error" = "Kalendáře se nepodařilo načíst";
 "preferences_status_state_ok" = "Aktuální";
-"preferences_status_state_permission_required" = "Je vyžadováno oprávnění ke kalendáři";
-"preferences_status_state_stale" = "Zobrazují se data z mezipaměti";
 "preferences_tab_meeting_opening" = "Odkazy na schůzky";
 "preferences_tab_menu_bar" = "Zobrazení a události";
 "preferences_tab_notifications" = "Oznámení";
@@ -333,10 +306,6 @@
 "preferences_appearance_status_bar_title_generic_value" = "Obecný název (Schůzka)";
 "onboarding_setup_title" = "Nastavení Soon";
 "onboarding_back" = "Zpět";
-"onboarding_essentials_title" = "Nastavte běžné chování";
-"onboarding_essentials_description" = "Zvolte základní nastavení otevírání schůzek a dodržování času.";
-"onboarding_essentials_hint" = "Všechny podrobnosti můžete později upravit v Předvolbách.";
-"onboarding_start_using" = "Začít používat Soon";
 "preferences_advanced_run_script_before_event_start" = "Spouštět AppleScript před událostmi";
 "preferences_advanced_script_save_failed_title" = "AppleScript nelze uložit";
 "preferences_advanced_script_save_failed_message" = "Vaše změny byly zachovány. Zkontrolujte přístup ke složce Application Scripts a zkuste to znovu. %@";
@@ -389,3 +358,12 @@
 "notifications_alert_style_fullscreen" = "Celá obrazovka";
 "notifications_alert_style_both" = "Obojí";
 "notifications_timing_title" = "Načasování";
+"preferences_calendars_refresh_failed" = "Nepodařilo se obnovit — zobrazují se poslední známé schůzky";
+"preferences_calendars_all" = "Všechny kalendáře";
+"preferences_calendars_google_no_account" = "Přidejte účet Google a vyberte, které kalendáře se mají zobrazit.";
+"preferences_calendars_source_title" = "Zdroj dat";
+"preferences_calendars_source_label" = "Schůzky z";
+"preferences_calendars_show_title" = "Vaše kalendáře";
+"onboarding_welcome_menu_bar" = "Soon najdete v řádku nabídek. Pokud ho nevidíte, řádek může být plný. Ukončete nebo skryjte jiné aplikace v řádku nabídek, abyste uvolnili místo.";
+"onboarding_hint_add_google_account" = "Přidejte účet Google";
+"onboarding_hint_allow_calendar_access" = "Povolte přístup ke kalendáři";

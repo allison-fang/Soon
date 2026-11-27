@@ -113,16 +113,10 @@
 "calendars_screen_select_calendar_title" = "נא לבחור לפחות לוח שנה אחד";
 "access_screen_access_screen_access_denied_go_to_title" = "מעבר אל";
 "access_screen_access_denied_relaunch_title" = "ואז להפעיל את היישום ידנית כדי להמשיך את ההגדרות.";
-"access_screen_provider_picker_label" = "בחירת ספק לוחות שנה";
-"access_screen_provider_macos_data_source" = "משיכת נתונים מיישום לוח השנה של MacOS";
-"access_screen_provider_macos_number_of_accounts" = "כל מספר של כל חשבון שהוא שמחובר";
-"access_screen_provider_gcalendar_data_source" = "משיכת נתונים ישירות מ־Google Calendar";
 "access_screen_provider_gcalendar_number_of_accounts" = "חשבון Google אחד בלבד";
-"access_screen_try_again" = "לנסות שוב";
 
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "לשלוח התראת מערכת";
 "general_when_event_starts" = "כאשר אירוע מתחיל";
 "general_one_minute_before" = "דקה לפני";
 "general_three_minute_before" = "3 דקות לפני";
@@ -183,7 +177,6 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "נא לבחור לוחות שנה כדי לצפות באירועים בסרגל המצב";
 "preferences_calendars_provider_gcalendar_change_account" = "החלפת חשבון Google";
 "preferences_advanced_wrong_location_message" = "נא לבחור את תיקיית משתמש ← ספרייה ← סקריפטים של יישומים ← com.allisonfang.Soon";
 "status_bar_section_date_nothing" = "שום דבר עבור %@";
@@ -232,7 +225,6 @@
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "להסתיר 10 דקות לאחר ההתחלה";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "להסתיר 10 דקות לפני האירוע הבא";
 "preferences_appearance_status_bar_ongoing_title" = "חשיפה של אירוע פעיל:";
-"access_screen_provider_authorization_cancelled" = "ההרשאה בוטלה. נסה שוב כדי לחבר את הלוח שנה שלך.";
 "general_end_of_event_notification_toggle" = "להתריע כשאירוע מסתיים";
 "general_refresh" = "ריענון";
 "general_when_event_ends" = "כאשר האירוע הסתיים";
@@ -246,28 +238,13 @@
 "message_event_script_file_missing_title" = "קובץ AppleScript לא נמצא";
 "message_google_account_connected_text" = "%@ מחובר";
 "message_google_account_connected_title" = "חשבון Google חובר";
-"onboarding_apple_calendar_description" = "קורא לוחות שנה מיישום ה‑Calendars ב‑Mac זה, כולל כל החשבונות המוגדרים.";
-"onboarding_apple_calendar_title" = "יישום Calendars של macOS";
-"onboarding_authorization_apple_description" = "אפשר ל‑Soon לקרוא אירועים מיישום ה‑Calendars ב‑Mac זה.";
-"onboarding_authorization_google_description" = "השלם את כניסת Google בדפדפן שלך, ולאחר מכן חזור ל‑Soon.";
-"onboarding_authorization_title" = "אמת גישה ללוח שנה";
-"onboarding_authorization_waiting" = "ממתין להרשאה…";
-"onboarding_calendar_selection_description" = "בחר את לוחות השנה שפגישותיהם יופיעו ב‑Soon.";
+"onboarding_apple_calendar_title" = "לוח השנה של Apple";
 "onboarding_calendar_selection_empty" = "לא נמצאו לוחות שנה. רענן או בדוק את חשבונות לוח השנה שלך.";
-"onboarding_calendar_selection_permission" = "נדרשת הרשאה ללוח שנה. הענק גישה בהגדרות המערכת, ולאחר מכן רענן.";
+"onboarding_calendar_selection_permission" = "Soon צריך הרשאה כדי לראות את היומנים שלך. הפעילו אותה בהגדרות המערכת ואז לחצו על רענון.";
 "onboarding_calendar_selection_reconnect" = "יש לחבר מחדש את Google Calendar.";
-"onboarding_calendar_selection_title" = "בחר לוחות שנה";
-"onboarding_calendar_source_description" = "בחר כיצד Soon קורא נתוני לוח שנה. שתי האפשרויות יכולות לכלול לוחות שנה של Google.";
-"onboarding_calendar_source_title" = "בחר את מקור לוח השנה שלך";
-"onboarding_choose_different_source" = "בחר מקור אחר";
 "onboarding_continue" = "המשך";
 "onboarding_done" = "סיים";
-"onboarding_google_calendar_description" = "מחבר את Soon ישירות ל‑Google Calendar מבלי להשתמש ביישום Calendars של macOS.";
-"onboarding_google_calendar_title" = "Google Calendar API";
-"onboarding_progress" = "שלב %@ מתוך %@";
-"onboarding_success_description" = "הפגישה הבאה שלך תופיע בסרגל התפריטים.";
-"onboarding_success_title" = "אתה מוכן";
-"onboarding_welcome_description" = "Soon עוזר לך לראות ולהצטרף לפגישה הבאה שלך ישירות מסרגל התפריטים.";
+"onboarding_google_calendar_title" = "יומן Google";
 "onboarding_welcome_title" = "ברוך הבא ל‑Soon";
 "preferences_advanced_regex_duplicate_error" = "ביטוי רגולרי זה כבר קיים.";
 "preferences_advanced_regex_test_button" = "בדוק regex";
@@ -288,12 +265,8 @@
 "preferences_status_copy_diagnostics" = "העתק אבחון";
 "preferences_status_open_calendar_settings" = "פתח הגדרות לוח שנה";
 "preferences_status_reconnect" = "התחבר מחדש";
-"preferences_status_state_auth_required" = "נדרשת הרשאה";
-"preferences_status_state_error" = "הרענון האחרון נכשל";
-"preferences_status_state_initializing" = "מאתחל";
+"preferences_status_state_error" = "לא ניתן לטעון את היומנים שלך";
 "preferences_status_state_ok" = "עדכני";
-"preferences_status_state_permission_required" = "נדרשת הרשאה ללוח שנה";
-"preferences_status_state_stale" = "מציג נתונים שמורים";
 "preferences_tab_meeting_opening" = "קישורי פגישות";
 "preferences_tab_menu_bar" = "תצוגה ואירועים";
 "preferences_tab_notifications" = "התראות";
@@ -372,3 +345,12 @@
 "notifications_alert_style_fullscreen" = "מסך מלא";
 "notifications_alert_style_both" = "שניהם";
 "notifications_timing_title" = "תזמון";
+"preferences_calendars_refresh_failed" = "הרענון נכשל — מוצגות הפגישות האחרונות הידועות";
+"preferences_calendars_all" = "כל היומנים";
+"preferences_calendars_google_no_account" = "הוסיפו חשבון Google כדי לבחור אילו יומנים להציג.";
+"preferences_calendars_source_title" = "מקור נתונים";
+"preferences_calendars_source_label" = "פגישות מתוך";
+"preferences_calendars_show_title" = "היומנים שלך";
+"onboarding_welcome_menu_bar" = "Soon נמצא בשורת התפריטים. אם אינכם רואים אותו, ייתכן ששורת התפריטים מלאה. צאו מאפליקציות אחרות בשורת התפריטים או הסתירו אותן כדי לפנות מקום.";
+"onboarding_hint_add_google_account" = "הוסיפו חשבון Google";
+"onboarding_hint_allow_calendar_access" = "אפשרו גישה ליומן";

@@ -112,7 +112,6 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Избери календари, чиито събития да се показват в лентата";
 "preferences_calendars_provider_gcalendar_change_account" = "Смени Google акаунта";
 
 // MARK: - Preferences Advanced
@@ -195,16 +194,10 @@
 "access_screen_access_screen_access_denied_go_to_title" = "Отиди в";
 "access_screen_access_denied_system_preferences_button" = "Системни настройки";
 "access_screen_access_denied_relaunch_title" = "След това стартирай приложението отново, за да продължиш настройката.";
-"access_screen_provider_picker_label" = "Избери източник на календари";
-"access_screen_provider_macos_data_source" = "Вземай данни от приложението Calendar на macOS";
-"access_screen_provider_macos_number_of_accounts" = "Неограничен брой свързани акаунти";
-"access_screen_provider_gcalendar_data_source" = "Вземай данни директно от Google Calendar";
 "access_screen_provider_gcalendar_number_of_accounts" = "Само един Google акаунт";
-"access_screen_try_again" = "Опитай отново";
 
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "Изпращай системно известие";
 "shared_send_notification_no_alert_style_tip" = "Забележка: Известията са настроени като банери и изчезват след кратко време. За да останат на екрана, смени стила им на предупреждения в настройките на macOS.";
 "shared_send_notification_disabled_tip" = "⚠️ Известията за Soon са изключени в настройките на macOS. Включи ги, за да следиш срещите.";
 "shared_automatic_event_join_toggle" = "Автоматично влизай в следващата среща";
@@ -236,7 +229,6 @@
 
 "link_url_cant_open_title" = "Връзката не може да се отвори в %@";
 "link_url_cant_open_message" = "Провери дали %@ е инсталиран, или отвори такива връзки в браузър от настройките.";
-"access_screen_provider_authorization_cancelled" = "Упълномощаването беше отменено. Опитайте отново, за да свържете календара си.";
 "general_end_of_event_notification_toggle" = "Известявай ме, когато събитие приключва";
 "general_refresh" = "Обнови";
 "general_when_event_ends" = "Когато събитието приключи";
@@ -250,28 +242,13 @@
 "message_event_script_file_missing_title" = "Файлът AppleScript не е намерен";
 "message_google_account_connected_text" = "%@ е свързан";
 "message_google_account_connected_title" = "Google акаунтът е свързан";
-"onboarding_apple_calendar_description" = "Чете календари от приложението Календар на този Mac, включително всички конфигурирани акаунти.";
-"onboarding_apple_calendar_title" = "Приложение Календар на macOS";
-"onboarding_authorization_apple_description" = "Разрешете на Soon да чете събития от приложението Календар на този Mac.";
-"onboarding_authorization_google_description" = "Завършете влизането в Google в браузъра си, след което се върнете в Soon.";
-"onboarding_authorization_title" = "Потвърди достъпа до календара";
-"onboarding_authorization_waiting" = "Изчакване на упълномощаване…";
-"onboarding_calendar_selection_description" = "Изберете календарите, чиито срещи трябва да се показват в Soon.";
+"onboarding_apple_calendar_title" = "Apple Календар";
 "onboarding_calendar_selection_empty" = "Не са намерени календари. Обновете или проверете акаунтите на календара.";
-"onboarding_calendar_selection_permission" = "Необходимо е разрешение за календар. Дайте достъп в Системни настройки, след което обновете.";
+"onboarding_calendar_selection_permission" = "Soon се нуждае от разрешение, за да вижда календарите ви. Включете го в Системни настройки, след което натиснете Обнови.";
 "onboarding_calendar_selection_reconnect" = "Google Календар трябва да бъде свързан отново.";
-"onboarding_calendar_selection_title" = "Избери календари";
-"onboarding_calendar_source_description" = "Изберете как Soon чете данните от календара. И двете опции могат да включват календари на Google.";
-"onboarding_calendar_source_title" = "Изберете вашия източник на календар";
-"onboarding_choose_different_source" = "Избери различен източник";
 "onboarding_continue" = "Продължи";
 "onboarding_done" = "Готово";
-"onboarding_google_calendar_description" = "Свързва Soon директно с Google Календар без използване на приложението Календар на macOS.";
-"onboarding_google_calendar_title" = "Google Calendar API";
-"onboarding_progress" = "Стъпка %@ от %@";
-"onboarding_success_description" = "Следващата ви среща ще се появи в лентата с менюта.";
-"onboarding_success_title" = "Готови сте";
-"onboarding_welcome_description" = "Soon ви помага да видите и се присъедините към следващата среща директно от лентата с менюта.";
+"onboarding_google_calendar_title" = "Google Календар";
 "onboarding_welcome_title" = "Добре дошли в Soon";
 "preferences_advanced_regex_duplicate_error" = "Този регулярен израз вече съществува.";
 "preferences_advanced_regex_test_button" = "Тествай regex";
@@ -292,12 +269,8 @@
 "preferences_status_copy_diagnostics" = "Копирай диагностика";
 "preferences_status_open_calendar_settings" = "Отвори настройките на календара";
 "preferences_status_reconnect" = "Свържи отново";
-"preferences_status_state_auth_required" = "Необходимо е упълномощаване";
-"preferences_status_state_error" = "Последното обновяване се провали";
-"preferences_status_state_initializing" = "Инициализация";
+"preferences_status_state_error" = "Календарите не можаха да се заредят";
 "preferences_status_state_ok" = "Актуален";
-"preferences_status_state_permission_required" = "Необходимо е разрешение за календар";
-"preferences_status_state_stale" = "Показват се кешираните данни";
 "preferences_tab_meeting_opening" = "Връзки към срещи";
 "preferences_tab_menu_bar" = "Дисплей и събития";
 "preferences_tab_notifications" = "Известия";
@@ -376,3 +349,12 @@
 "notifications_alert_style_fullscreen" = "На цял екран";
 "notifications_alert_style_both" = "И двете";
 "notifications_timing_title" = "Време";
+"preferences_calendars_refresh_failed" = "Не можа да се обнови — показват се последните известни срещи";
+"preferences_calendars_all" = "Всички календари";
+"preferences_calendars_google_no_account" = "Добавете акаунт в Google, за да изберете кои календари да се показват.";
+"preferences_calendars_source_title" = "Източник на данни";
+"preferences_calendars_source_label" = "Срещи от";
+"preferences_calendars_show_title" = "Вашите календари";
+"onboarding_welcome_menu_bar" = "Soon се намира в лентата с менюта. Ако не го виждате, лентата може да е пълна. Затворете или скрийте други приложения в лентата, за да освободите място.";
+"onboarding_hint_add_google_account" = "Добавете акаунт в Google";
+"onboarding_hint_allow_calendar_access" = "Разрешете достъп до календара";

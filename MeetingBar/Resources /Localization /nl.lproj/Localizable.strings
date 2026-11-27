@@ -135,11 +135,9 @@
 "status_bar_submenu_duration_all_day" = "%@ - %@ (%@ minuten)";
 "status_bar_submenu_status_title" = "Status: %@";
 "status_bar_submenu_status_declined" = " 👎 Afgewezen";
-"access_screen_try_again" = "Opnieuw proberen";
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Kies agenda's die meetings laten zien in de menubalk";
 "preferences_advanced_wrong_location_button" = "Begrepen!";
 "preferences_advanced_regex_edit_button" = "Bewerken";
 "status_bar_section_join_current_meeting" = "Direct deelnemen aan huidige meeting";
@@ -149,7 +147,6 @@
 
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "Stuur een systeemmelding";
 "status_bar_submenu_status_tentative" = " ☝️ Voorlopig";
 "status_bar_submenu_status_pending" = " ⏳ In behandeling";
 "status_bar_submenu_status_unknown" = " ❔ Onbekend";
@@ -178,9 +175,6 @@
 "constants_meeting_service_other" = "Andere";
 "access_screen_access_screen_access_denied_go_to_title" = "Ga naar";
 "access_screen_access_denied_relaunch_title" = "Start vervolgens de app handmatig om door te gaan met de installatie.";
-"access_screen_provider_picker_label" = "Selecteer agendaprovider";
-"access_screen_provider_macos_data_source" = "Gebruik de macOS Agenda-app als gegevensbron";
-"access_screen_provider_macos_number_of_accounts" = "Alle geconfigureerde accounts: iCloud, Google, Exchange, CalDAV en meer";
 "access_screen_provider_gcalendar_number_of_accounts" = "Eén Google-account tegelijk";
 
 // MARK: - Constants
@@ -222,7 +216,6 @@
 "status_bar_no_title" = "Geen titel";
 "status_bar_error_apple_script_title" = "AppleScrift fout";
 "status_bar_event_status_in" = "in %@";
-"access_screen_provider_gcalendar_data_source" = "Maakt rechtstreeks verbinding via de Google Calendar API";
 "shared_send_notification_disabled_tip" = "⚠️ Je macOS meldingsinstellingen voor Soon zijn uitgeschakeld. Schakel meldingen in de macOS systeeminstellingen in om meetings bij te houden.";
 "shared_automatic_event_join_tip" = "Met deze instelling wordt je volgende meeting automatisch geopend in je geconfigureerde app of browser";
 "preferences_appearance_status_bar_ongoing_title" = "Zichtbaarheid van lopende evenementen:";
@@ -256,11 +249,7 @@
 "preferences_meeting_opening_behavior_title" = "Meetinglinks openen";
 "preferences_notifications_automation_title" = "Automatisch deelnemen";
 "preferences_status_state_ok" = "Bijgewerkt";
-"preferences_status_state_stale" = "Gecachte gegevens worden weergegeven";
-"preferences_status_state_error" = "Laatste vernieuwing mislukt";
-"preferences_status_state_auth_required" = "Autorisatie vereist";
-"preferences_status_state_permission_required" = "Agendamachtiging vereist";
-"preferences_status_state_initializing" = "Initialiseren";
+"preferences_status_state_error" = "Je agenda’s konden niet worden geladen";
 "preferences_status_reconnect" = "Opnieuw verbinden";
 "preferences_status_open_calendar_settings" = "Agenda-instellingen openen";
 "preferences_status_copy_diagnostics" = "Diagnose kopiëren";
@@ -273,30 +262,14 @@
 "preferences_advanced_regex_test_button" = "Regex testen";
 "preferences_advanced_regex_test_match" = "Overeenkomst %@";
 "preferences_advanced_regex_test_no_match" = "Geen overeenkomst";
-"onboarding_progress" = "Stap %@ van %@";
 "onboarding_continue" = "Doorgaan";
 "onboarding_done" = "Klaar";
-"onboarding_choose_different_source" = "Een andere bron kiezen";
 "onboarding_welcome_title" = "Welkom bij Soon";
-"onboarding_welcome_description" = "Soon helpt je je volgende meeting te zien en eraan deel te nemen direct vanuit de menubalk.";
-"onboarding_calendar_source_title" = "Kies je agendabron";
-"onboarding_calendar_source_description" = "Kies hoe Soon agendagegevens leest. Beide opties kunnen Google-agenda's bevatten.";
-"onboarding_apple_calendar_title" = "macOS Agenda-app";
-"onboarding_apple_calendar_description" = "Leest agenda's uit de Agenda-app op deze Mac, inclusief elk account dat daar is geconfigureerd.";
-"onboarding_google_calendar_title" = "Google Calendar API";
-"onboarding_google_calendar_description" = "Verbindt Soon rechtstreeks met Google Calendar zonder de macOS Agenda-app te gebruiken.";
-"onboarding_authorization_title" = "Toegang tot agenda bevestigen";
-"onboarding_authorization_waiting" = "Wachten op autorisatie…";
-"onboarding_authorization_apple_description" = "Geef Soon toestemming om meetings te lezen uit de Agenda-app op deze Mac.";
-"onboarding_authorization_google_description" = "Voltooi de Google-aanmelding in je browser en keer dan terug naar Soon.";
-"onboarding_calendar_selection_title" = "Agenda's kiezen";
-"onboarding_calendar_selection_description" = "Selecteer de agenda's waarvan meetings in Soon moeten verschijnen.";
+"onboarding_apple_calendar_title" = "Apple Agenda";
+"onboarding_google_calendar_title" = "Google Agenda";
 "onboarding_calendar_selection_empty" = "Geen agenda's gevonden. Vernieuw of controleer je agenda-accounts.";
-"onboarding_calendar_selection_permission" = "Agendamachtiging vereist. Verleen toegang in Systeeminstellingen en vernieuw dan.";
+"onboarding_calendar_selection_permission" = "Soon heeft toestemming nodig om je agenda’s te zien. Zet dit aan in Systeeminstellingen en klik daarna op Vernieuw.";
 "onboarding_calendar_selection_reconnect" = "Google Calendar moet opnieuw worden verbonden.";
-"onboarding_success_title" = "Je bent klaar";
-"onboarding_success_description" = "Je volgende meeting verschijnt in de menubalk.";
-"access_screen_provider_authorization_cancelled" = "Autorisatie is geannuleerd. Probeer opnieuw om je agenda te verbinden.";
 "status_bar_control_actions" = "Meer acties";
 "status_bar_control_stale" = "Agenda vernieuwen mislukt — laatste bekende gegevens worden weergegeven";
 "status_bar_control_auth_required" = "Google Calendar moet opnieuw worden verbonden";
@@ -330,10 +303,6 @@
 "preferences_appearance_status_bar_title_generic_value" = "Generieke titel (Meeting)";
 "onboarding_setup_title" = "Soon configuratie";
 "onboarding_back" = "Terug";
-"onboarding_essentials_title" = "Kies dagelijks gedrag";
-"onboarding_essentials_description" = "Kies een paar vaste werkwijzen voor het openen van vergaderingen en het bewaken van de planning.";
-"onboarding_essentials_hint" = "Je kunt elk detail later nog verfijnen in de Instellingen.";
-"onboarding_start_using" = "Begin met het gebruik van Soon";
 "status_bar_popover_zoom_in" = "Zoom in";
 "status_bar_popover_more" = "Meer";
 "status_bar_popover_open_google_calendar" = "Open Google Agenda";
@@ -378,3 +347,12 @@
 "notifications_alert_style_fullscreen" = "Volledig scherm";
 "notifications_alert_style_both" = "Beide";
 "notifications_timing_title" = "Tijdstip";
+"preferences_calendars_refresh_failed" = "Vernieuwen mislukt — laatst bekende vergaderingen worden getoond";
+"preferences_calendars_all" = "Alle agenda’s";
+"preferences_calendars_google_no_account" = "Voeg een Google-account toe om te kiezen welke agenda’s je ziet.";
+"preferences_calendars_source_title" = "Gegevensbron";
+"preferences_calendars_source_label" = "Vergaderingen uit";
+"preferences_calendars_show_title" = "Je agenda’s";
+"onboarding_welcome_menu_bar" = "Soon staat in je menubalk. Zie je het niet, dan is je menubalk misschien vol. Stop of verberg andere menubalk-apps om ruimte te maken.";
+"onboarding_hint_add_google_account" = "Voeg een Google-account toe";
+"onboarding_hint_allow_calendar_access" = "Sta agendatoegang toe";

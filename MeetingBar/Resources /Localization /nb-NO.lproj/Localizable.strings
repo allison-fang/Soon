@@ -30,16 +30,10 @@
 "general_when_event_starts" = "Når begivenheten starter";
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "Send merknad om å ta del i neste begivenhetsmøte";
 "access_screen_access_denied_relaunch_title" = "Så må du kjøre programmet manuelt for å fortsette oppsettet.";
 "shared_automatic_event_join_toggle" = "Automatically join next event meeting";
 "shared_automatic_event_join_tip" = "This setting will automatically open your next meeting in your configured app or browser";
-"access_screen_provider_picker_label" = "Select calendars provider";
-"access_screen_provider_macos_data_source" = "Get data from MacOS Calendar app";
-"access_screen_provider_macos_number_of_accounts" = "Any number of any connected accounts";
-"access_screen_provider_gcalendar_data_source" = "Get data directly from Google Calendar";
 "access_screen_provider_gcalendar_number_of_accounts" = "Only one Google account";
-"access_screen_try_again" = "Try again";
 "status_bar_error_app_link_title" = "Oida. Kunne ikke åpne lenken i  %@-programmet";
 "status_bar_error_app_link_message" = "Forsikre deg om at du har %@-programmet installert, eller endre programmet i innstillingene.";
 "status_bar_error_link_missed_message" = "Fant ikke lenken, eller så støttes ikke møtetjenesten enda";
@@ -143,7 +137,6 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Velg kalendere for visning av begivenheter i statusfelt";
 
 
 "preferences_configure_browsers_choose_browser_panel_prompt" = "Velg nettleser";
@@ -230,7 +223,6 @@
 "notification_all_dismissals_removed_title" = "Removed all dismissals";
 "notification_all_dismissals_removed_message" = "All dismissed meetings are back in action";
 "notifications_event_started_body" = "Begivenheten har begynt";
-"access_screen_provider_authorization_cancelled" = "Autorisasjonen ble avbrutt. Prøv igjen for å koble til kalenderen din.";
 "general_end_of_event_notification_toggle" = "Varsle meg når en hendelse slutter";
 "general_refresh" = "Oppdater";
 "general_when_event_ends" = "Når hendelsen avsluttes";
@@ -244,28 +236,13 @@
 "message_event_script_file_missing_title" = "AppleScript-fil ikke funnet";
 "message_google_account_connected_text" = "%@ er tilkoblet";
 "message_google_account_connected_title" = "Google-konto tilkoblet";
-"onboarding_apple_calendar_description" = "Leser kalendere fra Kalender-appen på denne Macen, inkludert alle konfigurerte kontoer.";
-"onboarding_apple_calendar_title" = "macOS Kalender-app";
-"onboarding_authorization_apple_description" = "Tillat Soon å lese hendelser fra Kalender-appen på denne Macen.";
-"onboarding_authorization_google_description" = "Fullfør Google-pålogging i nettleseren, og gå deretter tilbake til Soon.";
-"onboarding_authorization_title" = "Bekreft kalendertilgang";
-"onboarding_authorization_waiting" = "Venter på autorisasjon…";
-"onboarding_calendar_selection_description" = "Velg kalenderne hvis møter skal vises i Soon.";
+"onboarding_apple_calendar_title" = "Apple Kalender";
 "onboarding_calendar_selection_empty" = "Ingen kalendere funnet. Oppdater eller sjekk kalenderkontoene dine.";
-"onboarding_calendar_selection_permission" = "Kalendertillatelse er nødvendig. Gi tilgang i Systeminnstillinger, og oppdater deretter.";
+"onboarding_calendar_selection_permission" = "Soon trenger tillatelse til å se kalenderne dine. Slå det på i Systeminnstillinger, og klikk deretter Oppdater.";
 "onboarding_calendar_selection_reconnect" = "Google Kalender må kobles til på nytt.";
-"onboarding_calendar_selection_title" = "Velg kalendere";
-"onboarding_calendar_source_description" = "Velg hvordan Soon leser kalenderdata. Begge alternativer kan inkludere Google-kalendere.";
-"onboarding_calendar_source_title" = "Velg kalenderkilden din";
-"onboarding_choose_different_source" = "Velg en annen kilde";
 "onboarding_continue" = "Fortsett";
 "onboarding_done" = "Ferdig";
-"onboarding_google_calendar_description" = "Kobler Soon direkte til Google Kalender uten å bruke macOS Kalender-appen.";
-"onboarding_google_calendar_title" = "Google Calendar API";
-"onboarding_progress" = "Trinn %@ av %@";
-"onboarding_success_description" = "Neste møte vil vises i menylinjen.";
-"onboarding_success_title" = "Du er klar";
-"onboarding_welcome_description" = "Soon hjelper deg med å se og delta i neste møte direkte fra menylinjen.";
+"onboarding_google_calendar_title" = "Google Kalender";
 "onboarding_welcome_title" = "Velkommen til Soon";
 "preferences_advanced_regex_duplicate_error" = "Dette regulære uttrykket finnes allerede.";
 "preferences_advanced_regex_test_button" = "Test regex";
@@ -286,12 +263,8 @@
 "preferences_status_copy_diagnostics" = "Kopier diagnostikk";
 "preferences_status_open_calendar_settings" = "Åpne kalenderinnstillinger";
 "preferences_status_reconnect" = "Koble til på nytt";
-"preferences_status_state_auth_required" = "Autorisasjon kreves";
-"preferences_status_state_error" = "Siste oppdatering mislyktes";
-"preferences_status_state_initializing" = "Initialiserer";
+"preferences_status_state_error" = "Kunne ikke laste inn kalenderne dine";
 "preferences_status_state_ok" = "Oppdatert";
-"preferences_status_state_permission_required" = "Kalendertillatelse kreves";
-"preferences_status_state_stale" = "Viser bufrede data";
 "preferences_tab_meeting_opening" = "Møtekoblinger";
 "preferences_tab_menu_bar" = "Visning og hendelser";
 "preferences_tab_notifications" = "Varsler";
@@ -375,3 +348,12 @@
 "notifications_alert_style_fullscreen" = "Fullskjerm";
 "notifications_alert_style_both" = "Begge";
 "notifications_timing_title" = "Tidspunkt";
+"preferences_calendars_refresh_failed" = "Kunne ikke oppdatere — viser siste kjente møter";
+"preferences_calendars_all" = "Alle kalendere";
+"preferences_calendars_google_no_account" = "Legg til en Google-konto for å velge hvilke kalendere som vises.";
+"preferences_calendars_source_title" = "Datakilde";
+"preferences_calendars_source_label" = "Møter fra";
+"preferences_calendars_show_title" = "Kalenderne dine";
+"onboarding_welcome_menu_bar" = "Soon ligger i menylinjen. Hvis du ikke ser det, kan menylinjen være full. Avslutt eller skjul andre menylinjeapper for å gi plass.";
+"onboarding_hint_add_google_account" = "Legg til en Google-konto";
+"onboarding_hint_allow_calendar_access" = "Gi tilgang til kalenderen";

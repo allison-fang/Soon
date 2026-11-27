@@ -115,6 +115,28 @@ final class AppSettingsTests: BaseTestCase {
         )
     }
 
+    func testFreshInstallPreselectsGoogleCalendar() {
+        AppSettings.preselectFirstRunProviderIfNeeded()
+
+        XCTAssertEqual(Defaults[.eventStoreProvider], .googleCalendar)
+    }
+
+    func testFirstRunPreselectionKeepsAStoredProvider() {
+        Defaults[.eventStoreProvider] = .macOSEventKit
+
+        AppSettings.preselectFirstRunProviderIfNeeded()
+
+        XCTAssertEqual(Defaults[.eventStoreProvider], .macOSEventKit)
+    }
+
+    func testFirstRunPreselectionSkipsCompletedSetup() {
+        Defaults[.onboardingCompleted] = true
+
+        AppSettings.preselectFirstRunProviderIfNeeded()
+
+        XCTAssertEqual(Defaults[.eventStoreProvider], .macOSEventKit)
+    }
+
     func testCompleteOnboardingWriteHelper() {
         AppSettings.completeOnboarding()
 

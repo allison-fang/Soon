@@ -104,7 +104,6 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Odaberi kalendare za prikaz događaja na traci stanja";
 "preferences_calendars_provider_gcalendar_change_account" = "Promijeni Google račun";
 
 // MARK: - Preferences Advanced
@@ -177,16 +176,10 @@
 "access_screen_access_screen_access_denied_go_to_title" = "Idi na";
 "access_screen_access_denied_system_preferences_button" = "Postavke sustava";
 "access_screen_access_denied_relaunch_title" = "Zatim pokreni program ručno za daljnje postavljanje programa.";
-"access_screen_provider_picker_label" = "Odaberi pružatelja kalendara";
-"access_screen_provider_macos_data_source" = "Preuzmi podatke iz MacOS programa Kalendar";
-"access_screen_provider_macos_number_of_accounts" = "Bilo koji broj bilo kojih povezanih računa";
-"access_screen_provider_gcalendar_data_source" = "Preuzmi podatke izravno iz Google Kalendar";
 "access_screen_provider_gcalendar_number_of_accounts" = "Samo jedan Google račun";
-"access_screen_try_again" = "Pokušaj ponovo";
 
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "Pošalji obavijest sustava";
 "general_when_event_starts" = "Kad događaj počne";
 "general_one_minute_before" = "1 minutu prije";
 "general_three_minute_before" = "3 minute prije";
@@ -236,7 +229,6 @@
 "preferences_appearance_status_bar_ongoing_time_ten_after_value" = "Sakrij 10 min nakon početka";
 "preferences_appearance_status_bar_ongoing_time_ten_before_next_value" = "Sakrij 10 min prije sljedećeg događaja";
 "notifications_meetingbar_dismiss_event_action" = "Isključi obavijesti";
-"access_screen_provider_authorization_cancelled" = "Autorizacija je otkazana. Pokušajte ponovo povezati kalendar.";
 "general_end_of_event_notification_toggle" = "Upozori me kada događaj završi";
 "general_refresh" = "Osvježi";
 "general_when_event_ends" = "Kada događaj završi";
@@ -250,28 +242,13 @@
 "message_event_script_file_missing_title" = "AppleScript datoteka nije pronađena";
 "message_google_account_connected_text" = "%@ je povezan";
 "message_google_account_connected_title" = "Google račun je povezan";
-"onboarding_apple_calendar_description" = "Čita kalendare iz aplikacije Kalendar na ovom Macu, uključujući sve konfigurirane račune.";
-"onboarding_apple_calendar_title" = "macOS aplikacija Kalendar";
-"onboarding_authorization_apple_description" = "Dopustite Soon-u čitanje događaja iz aplikacije Kalendar na ovom Macu.";
-"onboarding_authorization_google_description" = "Dovršite Google prijavu u pregledniku, zatim se vratite u Soon.";
-"onboarding_authorization_title" = "Provjeri pristup kalendaru";
-"onboarding_authorization_waiting" = "Čeka se autorizacija…";
-"onboarding_calendar_selection_description" = "Odaberite kalendare čiji sastanci trebaju biti prikazani u Soon-u.";
+"onboarding_apple_calendar_title" = "Apple Kalendar";
 "onboarding_calendar_selection_empty" = "Nisu pronađeni kalendari. Osvježite ili provjerite račune kalendara.";
-"onboarding_calendar_selection_permission" = "Potrebno je dopuštenje za kalendar. Dodijelite pristup u Postavkama sustava, zatim osvježite.";
+"onboarding_calendar_selection_permission" = "Soon treba dopuštenje za prikaz vaših kalendara. Uključite ga u Postavkama sustava, a zatim kliknite Osvježi.";
 "onboarding_calendar_selection_reconnect" = "Google Kalendar treba biti ponovo povezan.";
-"onboarding_calendar_selection_title" = "Odaberi kalendare";
-"onboarding_calendar_source_description" = "Odaberite kako Soon čita podatke kalendara. Obje opcije mogu uključivati Google kalendare.";
-"onboarding_calendar_source_title" = "Odaberite izvor kalendara";
-"onboarding_choose_different_source" = "Odaberi drugi izvor";
 "onboarding_continue" = "Nastavi";
 "onboarding_done" = "Gotovo";
-"onboarding_google_calendar_description" = "Povezuje Soon izravno s Google Kalendarom bez korištenja macOS aplikacije Kalendar.";
-"onboarding_google_calendar_title" = "Google Calendar API";
-"onboarding_progress" = "Korak %@ od %@";
-"onboarding_success_description" = "Sljedeći sastanak pojavit će se u traci izbornika.";
-"onboarding_success_title" = "Spremni ste";
-"onboarding_welcome_description" = "Soon vam pomaže vidjeti i pridružiti se sljedećem sastanku izravno iz trake izbornika.";
+"onboarding_google_calendar_title" = "Google Kalendar";
 "onboarding_welcome_title" = "Dobrodošli u Soon";
 "preferences_advanced_regex_duplicate_error" = "Ovaj regularni izraz već postoji.";
 "preferences_advanced_regex_test_button" = "Testiraj regex";
@@ -292,12 +269,8 @@
 "preferences_status_copy_diagnostics" = "Kopiraj dijagnostiku";
 "preferences_status_open_calendar_settings" = "Otvori postavke kalendara";
 "preferences_status_reconnect" = "Ponovno poveži";
-"preferences_status_state_auth_required" = "Potrebna autorizacija";
-"preferences_status_state_error" = "Zadnje osvježavanje nije uspjelo";
-"preferences_status_state_initializing" = "Inicijalizacija";
+"preferences_status_state_error" = "Nije moguće učitati vaše kalendare";
 "preferences_status_state_ok" = "Ažurirano";
-"preferences_status_state_permission_required" = "Potrebno dopuštenje za kalendar";
-"preferences_status_state_stale" = "Prikazuju se predmemorirani podaci";
 "preferences_tab_meeting_opening" = "Veze sastanka";
 "preferences_tab_menu_bar" = "Prikaz i događaji";
 "preferences_tab_notifications" = "Obavijesti";
@@ -376,3 +349,12 @@
 "notifications_alert_style_fullscreen" = "Cijeli zaslon";
 "notifications_alert_style_both" = "Oboje";
 "notifications_timing_title" = "Vrijeme";
+"preferences_calendars_refresh_failed" = "Osvježavanje nije uspjelo — prikazuju se posljednji poznati sastanci";
+"preferences_calendars_all" = "Svi kalendari";
+"preferences_calendars_google_no_account" = "Dodajte Google račun da biste odabrali koje kalendare prikazati.";
+"preferences_calendars_source_title" = "Izvor podataka";
+"preferences_calendars_source_label" = "Sastanci iz";
+"preferences_calendars_show_title" = "Vaši kalendari";
+"onboarding_welcome_menu_bar" = "Soon se nalazi u traci izbornika. Ako ga ne vidite, traka je možda puna. Zatvorite ili sakrijte druge aplikacije u traci izbornika kako biste oslobodili mjesto.";
+"onboarding_hint_add_google_account" = "Dodajte Google račun";
+"onboarding_hint_allow_calendar_access" = "Dopustite pristup kalendaru";

@@ -385,6 +385,20 @@ extension AppSettings {
         Defaults[.selectedCalendarIDsByProviderMigrated] = true
     }
 
+    /// Fresh installs start on Google Calendar without signing in, so setup
+    /// leads with "Add Google account". A provider stored by an earlier
+    /// launch or an unfinished setup is kept.
+    @MainActor
+    static func preselectFirstRunProviderIfNeeded() {
+        // Defaults registers each key's default, so only the persistent
+        // domain tells whether a provider was ever stored.
+        let key = Defaults.Keys.eventStoreProvider
+        let stored = Bundle.main.bundleIdentifier
+            .flatMap { key.suite.persistentDomain(forName: $0) }?[key.name]
+        guard !Defaults[.onboardingCompleted], stored == nil else { return }
+        setEventStoreProvider(.googleCalendar)
+    }
+
     @MainActor
     static func completeOnboarding() {
         Defaults[.onboardingCompleted] = true

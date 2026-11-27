@@ -53,22 +53,12 @@
 "preferences_section_shortcuts_title" = "Keyboard shortcuts";
 "preferences_section_apple_script_hooks_title" = "AppleScript hooks";
 "preferences_section_regex_filters_title" = "Regex filters";
-"preferences_calendar_configuration_title" = "Calendar configuration";
 "preferences_meeting_opening_behavior_title" = "Open meeting links";
 "preferences_notifications_automation_title" = "Automatic joining";
 
 // MARK: - Preferences Status
 
-"preferences_status_state_one_account_connected" = "1 account connected";
-"preferences_status_state_accounts_connected" = "%d accounts connected";
-"preferences_status_state_some_accounts_connected" = "%1$d of %2$d accounts connected";
-"preferences_status_state_one_account" = "1 account";
-"preferences_status_state_accounts" = "%d accounts";
-"preferences_status_state_stale" = "Showing cached data";
-"preferences_status_state_error" = "Last refresh failed";
-"preferences_status_state_auth_required" = "Authorization required";
-"preferences_status_state_permission_required" = "Calendar permission required";
-"preferences_status_state_initializing" = "Initializing";
+"preferences_status_state_error" = "Couldn’t load your calendars";
 "preferences_status_reconnect" = "Reconnect";
 "preferences_status_open_calendar_settings" = "Open Calendar Settings";
 "preferences_status_copy_diagnostics" = "Copy diagnostics";
@@ -194,12 +184,15 @@
 
 // MARK: - Preferences Calendars
 
-"preferences_calendars_select_calendars_title" = "Select calendars to show meetings in the menu bar";
 "preferences_calendars_google_add_account" = "Add Google account";
-"preferences_calendars_google_account_connected" = "Connected";
 "preferences_calendars_google_account_reconnect_required" = "Needs to be reconnected";
-"preferences_calendars_google_account_refresh_failed" = "Couldn’t refresh — showing last known meetings";
+"preferences_calendars_refresh_failed" = "Couldn’t refresh — showing last known meetings";
 "preferences_calendars_google_account_remove" = "Remove";
+"preferences_calendars_all" = "All calendars";
+"preferences_calendars_google_no_account" = "Add a Google account to pick which calendars to show.";
+"preferences_calendars_source_title" = "Data source";
+"preferences_calendars_source_label" = "Get meetings from";
+"preferences_calendars_show_title" = "Your calendars";
 "preferences_calendars_google_account_remove_title" = "Remove %@?";
 "preferences_calendars_google_account_remove_message" = "Soon will sign this account out and stop showing its calendars. You can add it again later.";
 "preferences_calendars_unavailable_title" = "Unavailable selected calendars";
@@ -325,61 +318,33 @@
 // MARK: - Welcome screen
 
 "onboarding_setup_title" = "Soon Setup";
-"onboarding_progress" = "Step %@ of %@";
-"onboarding_stage_welcome" = "Welcome";
-"onboarding_stage_calendar_source" = "Calendar source";
-"onboarding_stage_calendars" = "Calendars";
-"onboarding_stage_essentials" = "Daily behavior";
 "onboarding_continue" = "Continue";
 "onboarding_back" = "Back";
 "onboarding_done" = "Done";
-"onboarding_choose_different_source" = "Choose a different source";
 "onboarding_welcome_title" = "Welcome to Soon";
-"onboarding_welcome_description" = "Soon helps you see and join your next meeting directly from the menu bar.";
-"onboarding_calendar_source_title" = "Choose your calendar source";
-"onboarding_calendar_source_description" = "Choose how Soon reads calendar data. Both options can include Google calendars.";
-"onboarding_apple_calendar_title" = "macOS Calendar app";
-"onboarding_apple_calendar_description" = "Reads calendars from the Calendar app on this Mac, including every account configured there.";
-"onboarding_google_calendar_title" = "Google Calendar API";
+"onboarding_welcome_menu_bar" = "Soon lives in your menu bar. If you don't see it, your menu bar may be full. Quit or hide other menu bar apps to make room.";
+"onboarding_apple_calendar_title" = "Apple Calendar";
+"onboarding_google_calendar_title" = "Google Calendar";
 "google_calendar_account_fallback" = "Google Calendar";
-"onboarding_google_calendar_description" = "Connects Soon directly to Google Calendar without using the macOS Calendar app.";
-"onboarding_authorization_title" = "Verify calendar access";
-"onboarding_authorization_waiting" = "Waiting for authorization…";
-"onboarding_authorization_apple_description" = "Allow Soon to read events from the Calendar app on this Mac.";
-"onboarding_authorization_google_description" = "Complete Google sign-in in your browser, then return to Soon.";
-"onboarding_calendar_selection_title" = "Choose calendars";
-"onboarding_calendar_selection_description" = "Select the calendars whose meetings should appear in Soon.";
 "onboarding_calendar_selection_empty" = "No calendars found. Refresh or check your calendar accounts.";
-"onboarding_calendar_selection_permission" = "Calendar permission is required. Grant access in System Settings, then refresh.";
+"onboarding_calendar_selection_permission" = "Soon needs permission to see your calendars. Turn it on in System Settings, then click Refresh.";
 "onboarding_calendar_selection_reconnect" = "Google Calendar needs to be reconnected.";
-"onboarding_essentials_title" = "Choose daily behavior";
-"onboarding_essentials_description" = "Choose a few defaults for opening meetings and staying on schedule.";
-"onboarding_essentials_hint" = "You can tune every detail later in Preferences.";
-"onboarding_start_using" = "Start using Soon";
-"onboarding_success_title" = "You’re ready";
-"onboarding_success_description" = "Your next meeting will appear in the menu bar.";
 
 
 // MARK: - Calendars screen
 
 "calendars_screen_select_calendar_title" = "Select at least one calendar";
+"onboarding_hint_add_google_account" = "Add a Google account";
+"onboarding_hint_allow_calendar_access" = "Allow calendar access";
 
 // MARK: - Access screen
 
 "access_screen_access_screen_access_denied_go_to_title" = "Go to";
 "access_screen_access_denied_system_preferences_button" = "System Preferences";
 "access_screen_access_denied_relaunch_title" = "Then launch the app manually to continue the setup.";
-"access_screen_provider_picker_label" = "Select calendar source";
-"access_screen_provider_macos_data_source" = "Uses the macOS Calendar app as the data source";
-"access_screen_provider_macos_number_of_accounts" = "All configured accounts: iCloud, Google, Exchange, CalDAV, and more";
-"access_screen_provider_gcalendar_data_source" = "Connects directly through the Google Calendar API";
-"access_screen_provider_gcalendar_accounts" = "One or more Google accounts";
-"access_screen_try_again" = "Try again";
-"access_screen_provider_authorization_cancelled" = "Authorization was cancelled. Try again to connect your calendar.";
 
 // MARK: - Shared
 
-"shared_send_notification_toggle" = "Send a system notification";
 "shared_fullscreen_notification_without_link_toggle" = "Also for events without meeting links";
 "shared_fullscreen_notification_without_link_help" = "Events without meeting links show a fullscreen reminder with a Dismiss action only.";
 "fullscreen_notification_dismiss_action" = "Dismiss";
