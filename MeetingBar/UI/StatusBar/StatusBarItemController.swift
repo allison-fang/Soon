@@ -149,9 +149,9 @@ final class StatusBarItemController {
         }
         guard let button = statusItem.button else { return }
 
+        popover.isFantasticalInstalled = checkIsFantasticalInstalled()
         let state = menuState()
         popover.timeFormat = state.timeFormat
-        popover.isFantasticalInstalled = checkIsFantasticalInstalled()
         popover.update(StatusBarPopoverPresenter.presentation(for: state, now: Date()))
         popover.open(relativeTo: button)
     }
@@ -325,7 +325,9 @@ final class StatusBarItemController {
     private func menuState(now: Date = Date()) -> StatusBarMenuState {
         var appState = dependencies.appState()
         appState.events = events
-        return StatusBarMenuState.make(from: appState, now: now)
+        var state = StatusBarMenuState.make(from: appState, now: now)
+        state.isFantasticalInstalled = popover.isFantasticalInstalled
+        return state
     }
 
     private func popoverActions() -> StatusBarPopoverActions {
@@ -354,6 +356,14 @@ final class StatusBarItemController {
             openInFantastical: { [weak self] event in
                 self?.popover.close()
                 openInFantastical(startDate: event.startDate, title: event.title)
+            },
+            openCalendarApp: { [weak self] app in
+                self?.popover.close()
+                switch app {
+                case .googleCalendar: Links.googleCalendar.openInDefaultBrowser()
+                case .fantastical: openApplication(bundleIdentifier: fantasticalBundleIdentifier)
+                case .calendar: openApplication(bundleIdentifier: "com.apple.iCal")
+                }
             },
             performNotice: { [weak self] action in self?.perform(action) },
             refresh: { [weak self] in self?.dependencies.send(.refreshCalendars) },

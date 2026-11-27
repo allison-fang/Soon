@@ -333,6 +333,10 @@
 "status_bar_control_next_meeting" = "Prossima riunione";
 "preferences_appearance_events_no_meeting_link_title" = "Eventi senza link alla riunione";
 "status_bar_popover_zoom_in" = "Ingrandisci";
+"status_bar_popover_more" = "Altro";
+"status_bar_popover_open_google_calendar" = "Apri Google Calendar";
+"status_bar_popover_open_fantastical" = "Apri Fantastical";
+"status_bar_popover_open_calendar" = "Apri Calendario";
 "status_bar_popover_zoom_out" = "Riduci";
 "status_bar_popover_update_available" = "Aggiornamento disponibile";
 "preferences_section_updates_title" = "Aggiornamenti";

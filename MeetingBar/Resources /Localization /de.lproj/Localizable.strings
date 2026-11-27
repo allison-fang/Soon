@@ -338,6 +338,10 @@
 "onboarding_essentials_hint" = "Du kannst jedes Detail in den Einstellungen später ändern.";
 "onboarding_start_using" = "Beginne Soon zu nutzen";
 "status_bar_popover_zoom_in" = "Vergrößern";
+"status_bar_popover_more" = "Mehr";
+"status_bar_popover_open_google_calendar" = "Google Kalender öffnen";
+"status_bar_popover_open_fantastical" = "Fantastical öffnen";
+"status_bar_popover_open_calendar" = "Kalender öffnen";
 "status_bar_popover_zoom_out" = "Verkleinern";
 "status_bar_popover_update_available" = "Update verfügbar";
 "preferences_section_updates_title" = "Updates";

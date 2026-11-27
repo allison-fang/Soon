@@ -288,6 +288,10 @@
 "preferences_advanced_script_link_only_help" = "Csak értekezlet-hivatkozással rendelkező eseményeknél fut.";
 "preferences_appearance_events_no_meeting_link_title" = "Események értekezlet-hivatkozás nélkül";
 "status_bar_popover_zoom_in" = "Nagyítás";
+"status_bar_popover_more" = "Továbbiak";
+"status_bar_popover_open_google_calendar" = "Google Naptár megnyitása";
+"status_bar_popover_open_fantastical" = "Fantastical megnyitása";
+"status_bar_popover_open_calendar" = "Naptár megnyitása";
 "status_bar_popover_zoom_out" = "Kicsinyítés";
 "status_bar_popover_update_available" = "Frissítés érhető el";
 "preferences_section_updates_title" = "Frissítések";

@@ -333,6 +333,10 @@
 "status_bar_control_next_meeting" = "Sljedeći sastanak";
 "preferences_appearance_events_no_meeting_link_title" = "Događaji bez poveznice na sastanak";
 "status_bar_popover_zoom_in" = "Povećaj";
+"status_bar_popover_more" = "Više";
+"status_bar_popover_open_google_calendar" = "Otvori Google kalendar";
+"status_bar_popover_open_fantastical" = "Otvori Fantastical";
+"status_bar_popover_open_calendar" = "Otvori Kalendar";
 "status_bar_popover_zoom_out" = "Smanji";
 "status_bar_popover_update_available" = "Dostupno ažuriranje";
 "preferences_section_updates_title" = "Ažuriranja";

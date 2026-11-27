@@ -328,6 +328,10 @@
 "status_bar_control_next_meeting" = "Prochaine réunion";
 "preferences_appearance_events_no_meeting_link_title" = "Événements sans lien de réunion";
 "status_bar_popover_zoom_in" = "Zoom avant";
+"status_bar_popover_more" = "Plus";
+"status_bar_popover_open_google_calendar" = "Ouvrir Google Agenda";
+"status_bar_popover_open_fantastical" = "Ouvrir Fantastical";
+"status_bar_popover_open_calendar" = "Ouvrir Calendrier";
 "status_bar_popover_zoom_out" = "Zoom arrière";
 "status_bar_popover_update_available" = "Mise à jour disponible";
 "preferences_section_updates_title" = "Mises à jour";

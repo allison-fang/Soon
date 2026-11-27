@@ -334,6 +334,10 @@
 "status_bar_control_next_meeting" = "Sonraki toplantı";
 "preferences_appearance_events_no_meeting_link_title" = "Toplantı bağlantısı olmayan etkinlikler";
 "status_bar_popover_zoom_in" = "Yakınlaştır";
+"status_bar_popover_more" = "Diğer";
+"status_bar_popover_open_google_calendar" = "Google Takvim'i Aç";
+"status_bar_popover_open_fantastical" = "Fantastical'ı Aç";
+"status_bar_popover_open_calendar" = "Takvim'i Aç";
 "status_bar_popover_zoom_out" = "Uzaklaştır";
 "status_bar_popover_update_available" = "Güncelleme mevcut";
 "preferences_section_updates_title" = "Güncellemeler";

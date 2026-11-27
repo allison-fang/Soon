@@ -316,6 +316,7 @@ struct EventDetailsView: View {
                     Label("status_bar_submenu_dismiss_meeting".loco(), systemImage: "bell.slash")
                 }
             }
+            Spacer(minLength: 0)
             // Someone who installed Fantastical likely keeps it as their main calendar.
             if isFantasticalInstalled {
                 Button {
@@ -332,7 +333,6 @@ struct EventDetailsView: View {
                 }
                 .help(openInCalendarHelp(url))
             }
-            Spacer(minLength: 0)
         }
         .buttonStyle(TimelineButtonStyle())
     }

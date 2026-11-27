@@ -329,6 +329,10 @@
 "status_bar_control_next_meeting" = "הפגישה הבאה";
 "preferences_appearance_events_no_meeting_link_title" = "אירועים ללא קישור לפגישה";
 "status_bar_popover_zoom_in" = "הגדל";
+"status_bar_popover_more" = "עוד";
+"status_bar_popover_open_google_calendar" = "פתח את יומן Google";
+"status_bar_popover_open_fantastical" = "פתח את Fantastical";
+"status_bar_popover_open_calendar" = "פתח את לוח השנה";
 "status_bar_popover_zoom_out" = "הקטן";
 "status_bar_popover_update_available" = "עדכון זמין";
 "preferences_section_updates_title" = "עדכונים";

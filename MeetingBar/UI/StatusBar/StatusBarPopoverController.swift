@@ -68,7 +68,7 @@ enum StatusBarPopoverKey {
 
 @MainActor
 final class StatusBarPopoverController {
-    private static let cornerRadius: CGFloat = 12
+    static let cornerRadius: CGFloat = 12
     private static let detailsMaxHeight: CGFloat = 560
     private static let chromeHeight: CGFloat = 160
     private static let clockInterval: TimeInterval = 30
@@ -517,6 +517,13 @@ final class StatusBarPopoverController {
         model.presentation.events.first { $0.id == model.highlightedEventID }
     }
 
+    private func pinnedHeaderHeight(above eventID: String) -> CGFloat {
+        guard let day = model.presentation.days.first(where: { day in
+            day.timedEvents.contains { $0.id == eventID }
+        }) else { return 0 }
+        return metrics.dayHeaderHeight(day)
+    }
+
     private func moveHighlight(by step: Int) {
         let events = model.presentation.events
         guard !events.isEmpty else { return }
@@ -531,7 +538,16 @@ final class StatusBarPopoverController {
 
         let id = events[index].id
         model.highlightedEventID = id
-        model.anchor(id: id)?.scrollIntoView()
+        let topInset = pinnedHeaderHeight(above: id)
+        if let anchor = model.anchor(id: id) {
+            anchor.scrollIntoView(topInset: topInset)
+        } else if let offset = metrics.scrollOffset(toShow: id, in: model.presentation.days) {
+            // Scrolling near the card builds it; its exact frame is known only then.
+            model.scroll(toOffset: offset)
+            DispatchQueue.main.async { [weak self] in
+                self?.model.anchor(id: id)?.scrollIntoView(topInset: topInset)
+            }
+        }
         scheduleDetailsChange(after: Self.switchDetailsDelay) { [weak self] in
             self?.showDetails(eventID: id)
         }

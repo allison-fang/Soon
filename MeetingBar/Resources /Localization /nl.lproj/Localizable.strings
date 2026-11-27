@@ -335,6 +335,10 @@
 "onboarding_essentials_hint" = "Je kunt elk detail later nog verfijnen in de Instellingen.";
 "onboarding_start_using" = "Begin met het gebruik van Soon";
 "status_bar_popover_zoom_in" = "Zoom in";
+"status_bar_popover_more" = "Meer";
+"status_bar_popover_open_google_calendar" = "Open Google Agenda";
+"status_bar_popover_open_fantastical" = "Open Fantastical";
+"status_bar_popover_open_calendar" = "Open Agenda";
 "status_bar_popover_zoom_out" = "Zoom uit";
 "status_bar_popover_update_available" = "Update beschikbaar";
 "preferences_section_updates_title" = "Updates";

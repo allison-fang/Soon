@@ -341,6 +341,10 @@
 "onboarding_start_using" = "Começar a utilizar o Soon";
 "preferences_appearance_status_bar_title_generic_value" = "Título genérico (Reunião)";
 "status_bar_popover_zoom_in" = "Ampliar";
+"status_bar_popover_more" = "Mais";
+"status_bar_popover_open_google_calendar" = "Abrir Google Agenda";
+"status_bar_popover_open_fantastical" = "Abrir Fantastical";
+"status_bar_popover_open_calendar" = "Abrir Calendário";
 "status_bar_popover_zoom_out" = "Reduzir";
 "status_bar_popover_update_available" = "Atualização disponível";
 "preferences_section_updates_title" = "Atualizações";

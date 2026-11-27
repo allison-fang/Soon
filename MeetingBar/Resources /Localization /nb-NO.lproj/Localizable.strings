@@ -332,6 +332,10 @@
 "status_bar_control_next_meeting" = "Neste møte";
 "preferences_appearance_events_no_meeting_link_title" = "Hendelser uten møtelenke";
 "status_bar_popover_zoom_in" = "Zoom inn";
+"status_bar_popover_more" = "Mer";
+"status_bar_popover_open_google_calendar" = "Åpne Google Kalender";
+"status_bar_popover_open_fantastical" = "Åpne Fantastical";
+"status_bar_popover_open_calendar" = "Åpne Kalender";
 "status_bar_popover_zoom_out" = "Zoom ut";
 "status_bar_popover_update_available" = "Oppdatering tilgjengelig";
 "preferences_section_updates_title" = "Oppdateringer";

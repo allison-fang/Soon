@@ -88,15 +88,19 @@ struct StatusBarNotice: Equatable {
     let action: StatusBarNoticeAction
 }
 
+enum TimelineCalendarApp: Equatable {
+    case googleCalendar
+    case fantastical
+    case calendar
+}
+
 struct StatusBarPopoverPresentation: Equatable {
     var zoom: TimelineZoom = .close
-    var title = ""
-    var dateText = ""
     var notice: StatusBarNotice?
     var days: [TimelineDayPresentation] = []
     var lastUpdatedText: String?
     var updateAvailableText: String?
-    var showsGoogleCalendarButton = false
+    var calendarApp: TimelineCalendarApp = .calendar
 
     /// Display order, used for arrow-key navigation.
     var events: [TimelineEventPresentation] {
@@ -126,8 +130,6 @@ struct StatusBarPopoverPresenter {
     func make() -> StatusBarPopoverPresentation {
         var presentation = StatusBarPopoverPresentation(
             zoom: state.menu.resolvedTimelineZoom,
-            title: "status_bar_section_today".loco(),
-            dateText: dayFormatter.string(from: calendar.startOfDay(for: now)),
             notice: notice(),
             lastUpdatedText: state.providerHealth.lastSuccessfulRefresh.map {
                 "status_bar_popover_updated".loco(lastUpdatedFormatter.string(from: $0))
@@ -135,7 +137,7 @@ struct StatusBarPopoverPresenter {
             updateAvailableText: state.availableUpdate.map { _ in
                 "status_bar_popover_update_available".loco()
             },
-            showsGoogleCalendarButton: state.activeProvider == .googleCalendar
+            calendarApp: calendarApp
         )
         guard state.hasSelectedCalendars, !hidesEmptyDays(for: presentation.notice) else {
             return presentation
@@ -156,6 +158,11 @@ struct StatusBarPopoverPresenter {
             )
         }
         return presentation
+    }
+
+    private var calendarApp: TimelineCalendarApp {
+        if state.activeProvider == .googleCalendar { return .googleCalendar }
+        return state.isFantasticalInstalled ? .fantastical : .calendar
     }
 
     // MARK: - Notices
