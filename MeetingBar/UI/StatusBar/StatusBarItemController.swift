@@ -137,6 +137,7 @@ final class StatusBarItemController {
             // Right button click
             joinNextMeeting()
         } else if event == nil || event?.type == .leftMouseDown {
+            if popover.isClosingClick(event) { return }
             openMenu()
         }
     }

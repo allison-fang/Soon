@@ -192,6 +192,19 @@ enum StatusBarPopoverPlacement {
     static let screenMargin: CGFloat = 8
     static let buttonGap: CGFloat = 6
     static let detailsGap: CGFloat = 8
+    static let statusItemClickSlop: CGFloat = 12
+    static let sameClickInterval: TimeInterval = 0.5
+
+    /// The status item takes clicks past its button's frame: a few points to
+    /// either side, and up to the top of the screen.
+    static func isAroundStatusItem(_ point: CGPoint, button: CGRect) -> Bool {
+        point.y >= button.minY
+            && abs(point.x - button.midX) <= button.width / 2 + statusItemClickSlop
+    }
+
+    static func isSameClick(actionTime: TimeInterval, dismissalTime: TimeInterval) -> Bool {
+        (0 ..< sameClickInterval).contains(actionTime - dismissalTime)
+    }
 
     /// Centers under the status item, kept fully on screen.
     static func popoverFrame(size: CGSize, button: CGRect, visible: CGRect) -> CGRect {

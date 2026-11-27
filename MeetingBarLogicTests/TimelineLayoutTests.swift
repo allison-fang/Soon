@@ -302,6 +302,30 @@ final class TimelineLayoutTests: XCTestCase {
         XCTAssertEqual(frame.maxX, screen.maxX - StatusBarPopoverPlacement.screenMargin)
     }
 
+    func testStatusItemTakesClicksAboveAndJustBesideItsButton() {
+        let button = CGRect(x: 700, y: 850, width: 40, height: 25)
+
+        XCTAssertTrue(StatusBarPopoverPlacement.isAroundStatusItem(CGPoint(x: 720, y: 862), button: button))
+        XCTAssertTrue(StatusBarPopoverPlacement.isAroundStatusItem(CGPoint(x: 720, y: 875), button: button))
+        XCTAssertTrue(StatusBarPopoverPlacement.isAroundStatusItem(CGPoint(x: 695, y: 875), button: button))
+        XCTAssertTrue(StatusBarPopoverPlacement.isAroundStatusItem(CGPoint(x: 752, y: 860), button: button))
+    }
+
+    func testClicksBesideOrBelowTheStatusItemAreElsewhere() {
+        let button = CGRect(x: 700, y: 850, width: 40, height: 25)
+
+        XCTAssertFalse(StatusBarPopoverPlacement.isAroundStatusItem(CGPoint(x: 600, y: 875), button: button))
+        XCTAssertFalse(StatusBarPopoverPlacement.isAroundStatusItem(CGPoint(x: 753, y: 875), button: button))
+        XCTAssertFalse(StatusBarPopoverPlacement.isAroundStatusItem(CGPoint(x: 720, y: 849), button: button))
+    }
+
+    func testStatusItemActionMatchesTheClickThatJustClosedThePopover() {
+        XCTAssertTrue(StatusBarPopoverPlacement.isSameClick(actionTime: 100, dismissalTime: 100))
+        XCTAssertTrue(StatusBarPopoverPlacement.isSameClick(actionTime: 100.008, dismissalTime: 100))
+        XCTAssertFalse(StatusBarPopoverPlacement.isSameClick(actionTime: 100.5, dismissalTime: 100))
+        XCTAssertFalse(StatusBarPopoverPlacement.isSameClick(actionTime: 99.9, dismissalTime: 100))
+    }
+
     func testDetailsOpenLeftOfThePopover() {
         let popover = CGRect(x: 900, y: 200, width: 372, height: 600)
 
