@@ -92,6 +92,9 @@ final class StatusBarPopoverController {
     private var pinnedEventID: String?
     private var hoveredEventID: String?
     private var pendingDetailsChange: DispatchWorkItem?
+    /// When a click around the status item last closed the popover, by the
+    /// event clock. See `isClosingClick(_:)`.
+    private var itemClickDismissal: TimeInterval?
     private var monitors: [Any] = []
     private var observers: [NSObjectProtocol] = []
     private var clock: Timer?
@@ -239,8 +242,9 @@ final class StatusBarPopoverController {
 
         if let global = NSEvent.addGlobalMonitorForEvents(
             matching: closeOnOutsideClick,
-            handler: { [weak self] _ in
-                MainActor.assumeIsolated { self?.close() }
+            handler: { [weak self] event in
+                nonisolated(unsafe) let click = event
+                MainActor.assumeIsolated { self?.closeOnGlobalClick(click) }
             }
         ) {
             monitors.append(global)
@@ -293,6 +297,27 @@ final class StatusBarPopoverController {
         observers = []
         clock?.invalidate()
         clock = nil
+    }
+
+    /// The menu bar is drawn by Control Center, so a click on the status item
+    /// past its button's frame, such as just above its pill, reaches this
+    /// monitor first. The item's action then runs on the same click, so it is
+    /// recorded for that action to leave the popover closed.
+    private func closeOnGlobalClick(_ event: NSEvent) {
+        let isItemClick = event.type == .leftMouseDown
+            && StatusBarPopoverPlacement.isAroundStatusItem(event.locationInWindow, button: anchorFrame)
+        close()
+        if isItemClick {
+            itemClickDismissal = event.timestamp
+        }
+    }
+
+    /// Whether `event` is the status item click that just closed the popover.
+    /// Answers once, so the next click opens it again.
+    func isClosingClick(_ event: NSEvent?) -> Bool {
+        defer { itemClickDismissal = nil }
+        guard let event, let dismissal = itemClickDismissal else { return false }
+        return StatusBarPopoverPlacement.isSameClick(actionTime: event.timestamp, dismissalTime: dismissal)
     }
 
     private func isOutsideClick(_ event: NSEvent) -> Bool {
